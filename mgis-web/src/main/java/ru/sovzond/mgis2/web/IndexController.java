@@ -13,9 +13,14 @@ public class IndexController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView indexPage() {
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Hello World");
-		model.addObject("message", "This is welcome page!");
 		model.setViewName("index");
+		return model;
+	}
+
+	@RequestMapping(value = { "/mgis" }, method = RequestMethod.GET)
+	public ModelAndView mgisPage() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("mgis");
 		return model;
 	}
 

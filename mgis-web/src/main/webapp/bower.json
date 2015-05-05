@@ -14,6 +14,12 @@
   ],
   "dependencies": {
     "backgrid": "~0.3.5",
-    "bootstrap": "~3.3.4"
+    "bootstrap": "~3.3.4",
+    "require": "*",
+    "jquery-ui": "~1.11.4",
+    "requirejs": "~2.1.17",
+    "bootstrap-datetimepicker": "~0.0.11",
+    "marionette": "~2.4.1",
+    "requirejs-text": "~2.0.14"
   }
 }
