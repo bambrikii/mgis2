@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<groupId>ru.sovzond.mgis2</groupId>
 		<artifactId>mgis-parent</artifactId>
@@ -70,6 +69,13 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
+		</dependency>
+
+		<!-- mgis dependencies -->
+		<dependency>
+			<groupId>ru.sovzond.mgis2</groupId>
+			<artifactId>mgis-model</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 
 	</dependencies>
