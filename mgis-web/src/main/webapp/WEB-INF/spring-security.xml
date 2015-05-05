@@ -20,11 +20,12 @@
 
 
 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="asd" password="asd" authorities="ROLE_USER" />
-			</user-service>
-		</authentication-provider>
+		<!-- <authentication-provider> -->
+		<!-- <user-service> -->
+		<!-- <user name="asd" password="asd" authorities="ROLE_USER" /> -->
+		<!-- </user-service> -->
+		<!-- </authentication-provider> -->
+		<authentication-provider user-service-ref="customUserDetailsService" />
 	</authentication-manager>
 
 </beans:beans>
