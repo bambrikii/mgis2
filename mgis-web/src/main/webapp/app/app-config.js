@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			// backbone_modal :
 			// '../bower_components/backbone-modal/backbone.modal',
 			wreqr : "../bower_components/backbone.wreqr/lib/backbone.wreqr",
-			backgrid : "../bower_components/backgrid/lib/backgrid"
+			backgrid : "../bower_components/backgrid/lib/backgrid",
+			slicknav: "../bower_components/slicknav/dist/jquery.slicknav"
 		},
 		shim : {
 			underscore : {
@@ -37,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			backgrid : {
 				depends : [ "backbone", "jquery" ],
 				exports : "Backgrid"
+			},
+			slicknav: {
+				depends: ["jquery", "jquery-ui"],
+				exports: "Plugin"
 			}
 		},
 		enforceDefine : true

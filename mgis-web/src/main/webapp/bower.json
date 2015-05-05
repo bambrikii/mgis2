@@ -20,6 +20,7 @@
     "requirejs": "~2.1.17",
     "bootstrap-datetimepicker": "~0.0.11",
     "marionette": "~2.4.1",
-    "requirejs-text": "~2.0.14"
+    "requirejs-text": "~2.0.14",
+    "slicknav": "~1.0.3"
   }
 }
