@@ -15,6 +15,9 @@
 	</properties>
 
 	<modules>
+		<module>mgis-model</module>
+		<module>mgis-data-access</module>
+		<module>mgis-business</module>
 		<module>mgis-web</module>
 	</modules>
 
