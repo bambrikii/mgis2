@@ -1,0 +1,23 @@
+﻿DECLARE @user_id, @priv_id_user, @priv_id_group;
+BEGIN
+
+	truncate table mgis2_user_mgis2_privilege CASCADE;
+	truncate table mgis2_user CASCADE;
+	truncate table mgis2_privilege CASCADE;
+
+	insert into mgis2_privilege (id, name) values (nextval('hibernate_sequence'), 'ROLE_USER');
+	insert into mgis2_privilege (id, name) values (nextval('hibernate_sequence'), 'ROLE_ADMIN');
+	insert into mgis2_user (id, active, "password", username) values (nextval('hibernate_sequence'), true, 'asd', 'asd');
+
+	set @user_id = select id from mgis2_user where username = 'asd';
+	set @priv_id_user = select id from mgis2_privilege where "name" = 'ROLE_USER';
+	set @priv_id_group = select id from mgis2_privilege where "name" = 'ROLE_ADMIN';
+
+	print 'user_id: ' + CAST (@user_id AS STRING);
+	print 'priv_id_user: ' + CAST (@priv_id_user AS STRING);
+	print 'priv_id_group: ' + CAST (@priv_id_group AS STRING);
+
+	insert into mgis2_user_mgis2_privilege (users_id, privileges_id) values (@user_id, @priv_id_user);
+	insert into mgis2_user_mgis2_privilege (users_id, privileges_id) values (@user_id, @priv_id_group);
+
+END
