@@ -18,7 +18,7 @@ define([ "jquery", "underscore", "backbone", "marionette", "main/MainView" ],
 						return mainView;
 					}
 					return arcaApp.mainView;
-				}
+				},
 			});
 			return app;
 		});
