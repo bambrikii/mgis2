@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,7 +24,7 @@ public class Privilege {
 	@Column(unique = true, nullable = false, updatable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "privileges", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "privileges", fetch = FetchType.LAZY)
 	private List<User> users = new ArrayList<User>();
 
 	public Long getId() {
