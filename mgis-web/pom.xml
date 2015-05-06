@@ -72,9 +72,21 @@
 		</dependency>
 
 		<!-- mgis dependencies -->
+		<!-- <dependency> -->
+		<!-- <groupId>ru.sovzond.mgis2</groupId> -->
+		<!-- <artifactId>mgis-model</artifactId> -->
+		<!-- <version>${project.version}</version> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>ru.sovzond.mgis2</groupId> -->
+		<!-- <artifactId>mgis-data-access</artifactId> -->
+		<!-- <version>${project.version}</version> -->
+		<!-- </dependency> -->
+
 		<dependency>
 			<groupId>ru.sovzond.mgis2</groupId>
-			<artifactId>mgis-model</artifactId>
+			<artifactId>mgis-business</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

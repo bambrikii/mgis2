@@ -1,44 +1,45 @@
 package ru.sovzond.mgis2.web.authentication;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
+import ru.sovzond.mgis2.authentication.business.AuthenticationBean;
+import ru.sovzond.mgis2.authentication.model.User;
+
 @Service
 public class LoginService {
-	private Map<String, UserModel> users = new HashMap<String, UserModel>();
 
-	public LoginService() {
-		createUserModel("asd", new String[] { "ROLE_USER" });
-		createUserModel("qwe", new String[] { "ROLE_USER" });
-		createUserModel("zxc", new String[] { "ROLE_USER" });
-	}
+	@Autowired
+	private AuthenticationBean authenticationBean;
 
-	private UserModel createUserModel(String username, String[] authorities) {
-		UserModel asd = new UserModel();
-		asd.setUsername(username);
-		asd.setPassword(username);
-		asd.setGrantedAuthorities(Arrays.asList(authorities));
-		users.put(asd.getUsername(), asd);
-		return asd;
-	}
-
+	@Transactional
 	public UserModel findUserByUserName(String username) {
-		return users.get(username);
-	}
-
-	public List<GrantedAuthority> buildGrantedAuthorities(UserModel user) {
-		List<GrantedAuthority> grantedAuths = new ArrayList<>();
-		for (String role : user.getGrantedAuthorities()) {
-			grantedAuths.add(new SimpleGrantedAuthority(role));
+		User user = authenticationBean.findUserByName(username);
+		if (user != null) {
+			UserModel userModel = new UserModel();
+			userModel.setUsername(user.getUsername());
+			userModel.setPassword(user.getPassword());
+			List<String> grantedAuthorities = user.getPrivileges().stream().map(privilege -> privilege.getName()).collect(Collectors.toList());
+			userModel.setGrantedAuthorities(grantedAuthorities);
+			return userModel;
 		}
-		return grantedAuths;
+		return null;
 	}
 
+	@Transactional
+	public List<GrantedAuthority> buildGrantedAuthorities(UserModel userModel) {
+		String username = userModel.getUsername();
+		User user = authenticationBean.findUserByName(username);
+		List<GrantedAuthority> grantedAuthorities = user.getPrivileges().stream().map(privilege -> {
+			return new SimpleGrantedAuthority(privilege.getName());
+		}).collect(Collectors.toList());
+		return grantedAuthorities;
+	}
 }
