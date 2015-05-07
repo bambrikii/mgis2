@@ -9,36 +9,36 @@
         http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
 
-	<context:component-scan base-package="ru.sovzond.mgis2.web" />
+	<context:component-scan base-package="ru.sovzond.mgis2" />
 
 	<!-- <mvc:resources mapping="/app/**" location="/app/" /> -->
 
-	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<property name="mediaTypes">
-			<map>
-				<entry key="json" value="application/jsom" />
-				<entry key="xml" value="application/xml" />
-				<entry key="html" value="text/html" />
-			</map>
-		</property>
-		<property name="viewResolvers">
-			<list>
-				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-				<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-					<property name="prefix" value="/WEB-INF/pages/" />
-					<property name="suffix" value=".jsp" />
-				</bean>
-				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-					<property name="prefix">
-						<value>/WEB-INF/pages/</value>
-					</property>
-					<property name="suffix">
-						<value>.jsp</value>
-					</property>
-				</bean>
-			</list>
-		</property>
-	</bean>
+<!-- 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"> -->
+<!-- 		<property name="mediaTypes"> -->
+<!-- 			<map> -->
+<!-- 				<entry key="json" value="application/jsom" /> -->
+<!-- 				<entry key="xml" value="application/xml" /> -->
+<!-- 				<entry key="html" value="text/html" /> -->
+<!-- 			</map> -->
+<!-- 		</property> -->
+<!-- 		<property name="viewResolvers"> -->
+<!-- 			<list> -->
+<!-- 				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" /> -->
+<!-- 				<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
+<!-- 					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+<!-- 					<property name="prefix" value="/WEB-INF/pages/" /> -->
+<!-- 					<property name="suffix" value=".jsp" /> -->
+<!-- 				</bean> -->
+<!-- 				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!-- 					<property name="prefix"> -->
+<!-- 						<value>/WEB-INF/pages/</value> -->
+<!-- 					</property> -->
+<!-- 					<property name="suffix"> -->
+<!-- 						<value>.jsp</value> -->
+<!-- 					</property> -->
+<!-- 				</bean> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 
 </beans>
