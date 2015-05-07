@@ -1,6 +1,5 @@
-define([ "jquery", "underscore", "backbone", 'marionette', 'Application',
-		'ApplicationRouter' ], function($, _, Backbone, Marionette,
-		application, ApplicationRouter) {
+define([ "jquery", "underscore", "backbone", 'marionette', 'Application', 'ApplicationRouter', "authentication/AuthenticationService" ], function($,
+		_, Backbone, Marionette, application, ApplicationRouter, authenticationService) {
 	application.start({});
 	application.addRegions({
 		mainRegion : ".main-container"
@@ -8,14 +7,16 @@ define([ "jquery", "underscore", "backbone", 'marionette', 'Application',
 	application.addInitializer(function(options) {
 		console.log("addInitializer");
 
-		var arcaController = {
+		var controller = {
 			main : function() {
 				console.log("main route");
-				application.buildMain();
+				authenticationService.getPrivileges(function(privileges) {
+					application.buildMain(privileges);
+				});
 			}
 		}
 		var router = new ApplicationRouter({
-			controller : arcaController,
+			controller : controller,
 			onRoute : function(name, path, args) {
 				console.log("onRoute..." + name + ", " + path);
 			}

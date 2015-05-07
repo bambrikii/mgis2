@@ -7,8 +7,9 @@
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name} | <a href="<c:url value="/logout" />"> Logout</a>
+			Welcome : ${pageContext.request.userPrincipal.name} | <a href="<c:url value="/logout" />">Logout</a>
 		</h2>
+		<a href="<c:url value="/mgis" />">mgis</a>
 	</c:if>
 
 	Alternative

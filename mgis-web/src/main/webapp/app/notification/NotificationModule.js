@@ -10,5 +10,5 @@ define([ "jquery", "notification/NotificationView" ], function($,
 			// TODO:
 		}
 	}
-	return new NotificationModule();
+	return NotificationModule;
 });

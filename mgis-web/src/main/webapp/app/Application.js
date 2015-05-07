@@ -1,24 +1,27 @@
-define([ "jquery", "underscore", "backbone", "marionette", "main/MainView" ],
-		function($, _, Backbone, Marionette, MainView) {
-			var Application = Marionette.Application.extend({
-				initialize : function() {
+define([ "jquery", "underscore", "backbone", "marionette", "main/MainModule", "notification/NotificationAggregator" ], function($, _, Backbone,
+		Marionette, MainModule, notificationAggregator) {
 
-				},
-				channelName : 'appChannel'
-			});
+	var Application = Marionette.Application.extend({
+		initialize : function() {
+		},
+		channelName : 'appChannel'
+	});
 
-			var app = new Application({
-				container : ".main-container",
-				buildMain : function() {
-					if (!app.mainView) {
-						var mainView = new MainView();
-						mainView.render();
-						app.mainView = mainView;
-						app.mainRegion.show(mainView);
-						return mainView;
-					}
-					return arcaApp.mainView;
-				},
-			});
-			return app;
-		});
+	var app = new Application({
+		container : ".main-container",
+		buildMain : function(privileges) {
+			if (!app.mainInitialized) {
+				this.mainModule = new MainModule({
+					region : app.mainRegion
+				});
+				app.mainRegion.show(this.mainModule.createView(privileges));
+				app.mainInitialized = true;
+			}
+		},
+		openModule : function() {
+			this.mainModule.openModule(moduleName);
+		}
+	});
+
+	return app;
+});
