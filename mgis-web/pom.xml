@@ -9,6 +9,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<properties>
+		<jackson.version>1.9.10</jackson.version>
+	</properties>
+
 	<dependencies>
 
 
@@ -89,6 +93,17 @@
 			<artifactId>mgis-business</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<!-- Jackson -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>com.fasterxml.jackson.dataformat</groupId> -->
+		<!-- <artifactId>jackson-dataformat-xml</artifactId> -->
+		<!-- </dependency> -->
 
 	</dependencies>
 

@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 @Component("customAuthenticationProvider")
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-	private LoginService loginService;
+	private AuthenticationService loginService;
 
 	@Autowired
-	public CustomAuthenticationProvider(LoginService loginService) {
+	public CustomAuthenticationProvider(AuthenticationService loginService) {
 		this.loginService = loginService;
 	}
 

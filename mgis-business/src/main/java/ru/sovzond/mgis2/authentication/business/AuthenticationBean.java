@@ -1,5 +1,7 @@
 package ru.sovzond.mgis2.authentication.business;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +24,9 @@ public class AuthenticationBean {
 
 	public User findUserByName(String username) {
 		return userDAO.findByName(username);
+	}
+
+	public List<User> findUsers() {
+		return userDAO.list(0, 0);
 	}
 }
