@@ -1,15 +1,14 @@
-define([ "jquery", "notification/NotificationAggregator" ], function($, NotificationAggregator) {
+define([ "jquery", "notification/NotificationAggregator" ], function($, notificationAggregator) {
 	var AuthenticationService = function() {
 		this.getPrivileges = function(successHandler) {
-			successHandler([ "ROLE_ADMIN", "ROLE_USER" ]);
-			return;
 			$.ajax({
-				url : "auth/privileges",
+				method : "GET",
+				url : "rest/auth/privileges.json",
 				success : function(data) {
 					successHandler(data);
 				},
 				error : function(data, status, error) {
-					NotificationModule
+					notificationAggregator.error(error);
 				}
 			});
 		}

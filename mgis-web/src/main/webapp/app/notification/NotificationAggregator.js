@@ -1,5 +1,22 @@
-define([ "backbone", "wreqr", "Application" ], function(Backbone, Wreqr,
-		application) {
+define([ "backbone", "wreqr", "Application" ], function(Backbone, Wreqr, application) {
 	var notificationEventAggregator = new Backbone.Wreqr.EventAggregator();
+	notificationEventAggregator.error = function(message) {
+		this.trigger("error", {
+			title : "Error",
+			message : message
+		});
+	}
+	notificationEventAggregator.information = function(message) {
+		this.trigger("information", {
+			title : "Information",
+			message : message
+		});
+	}
+	notificationEventAggregator.information = function(message) {
+		this.trigger("warning", {
+			title : "Warning",
+			message : message
+		});
+	}
 	return notificationEventAggregator;
 });
