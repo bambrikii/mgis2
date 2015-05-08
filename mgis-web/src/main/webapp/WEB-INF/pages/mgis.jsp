@@ -11,7 +11,6 @@
 <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"></link>
 <link type="text/css" rel="stylesheet" href="bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"></link>
 <link type="text/css" rel="stylesheet" href="bower_components/backgrid/lib/backgrid.css"></link>
-<link type="text/css" rel="stylesheet" href="bower_components/slicknav/dist/slicknav.css"></link>
 
 <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
 <script type="text/javascript" src="app/app-config.js"></script>

@@ -1,5 +1,5 @@
-define([ "jquery", "underscore", "backbone", "marionette", "main/MainModule", "notification/NotificationAggregator" ], function($, _, Backbone,
-		Marionette, MainModule, notificationAggregator) {
+define([ "jquery", "underscore", "backbone", "marionette", "main/MainModule", "notification/NotificationModule",
+		"notification/NotificationAggregator" ], function($, _, Backbone, Marionette, MainModule, NotificationModule, notificationAggregator) {
 
 	var Application = Marionette.Application.extend({
 		initialize : function() {

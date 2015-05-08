@@ -7,18 +7,23 @@ define([ "jquery", "jquery-ui", "backbone", "marionette", "text!main/MenuView.ht
 		},
 		events : {
 			"click a#mgis2-isogd-menu-link" : "menuIsogdClicked",
-			"click a#mgis2-privileges-menu-link" : "menuPrivilegesClicked"
+			"click a#mgis2-privileges-menu-link" : "menuPrivilegesClicked",
+			"click a#mgis2-invalid-menu-link" : "menuInvalidClicked",
 		},
+		// TODO: aggregate all click handlers into a single one
 		menuIsogdClicked : function(target, options) {
-			console.log("menuIsogdClicked");
 			mainModuleAggregator.trigger("openModule", target, {
 				moduleName : "isogd"
 			});
 		},
 		menuPrivilegesClicked : function(target, options) {
-			console.log("menuPrivilegesClicked");
 			mainModuleAggregator.trigger("openModule", target, {
 				moduleName : "privileges"
+			});
+		},
+		menuInvalidClicked : function(target, options) {
+			mainModuleAggregator.trigger("openModule", target, {
+				moduleName : "invalid"
 			});
 		},
 		onShow : function() {

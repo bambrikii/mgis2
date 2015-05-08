@@ -7,7 +7,8 @@ define([ "jquery", "underscore", "backbone", "marionette", "text!main/MainView.h
 		},
 		regions : {
 			menuRegion : ".main-view-menu",
-			contentRegion : ".main-view-content"
+			contentRegion : ".main-view-content",
+			notificationRegion : ".main-view-notification"
 		},
 		onShow : function() {
 			var menu = new MenuView({
