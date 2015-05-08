@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -30,6 +31,7 @@ import ru.sovzond.mgis2.web.resolvers.JsonViewResolver;
 
 @Configuration
 @EnableTransactionManagement
+@EnableWebMvc
 @ComponentScan({ "ru.sovzond.mgis2" })
 @PropertySource(value = { "classpath:application.properties" })
 public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
