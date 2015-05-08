@@ -1,15 +1,9 @@
 package ru.sovzond.mgis2.authentication.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,8 +18,8 @@ public class Privilege {
 	@Column(unique = true, nullable = false, updatable = false)
 	private String name;
 
-	@ManyToMany(mappedBy = "privileges", fetch = FetchType.LAZY)
-	private List<User> users = new ArrayList<User>();
+	// @ManyToMany(mappedBy = "privileges", fetch = FetchType.EAGER)
+	// private List<User> users = new ArrayList<User>();
 
 	public Long getId() {
 		return id;
@@ -43,26 +37,27 @@ public class Privilege {
 		this.name = name;
 	}
 
-	public List<User> getUsers() {
-		return Collections.unmodifiableList(users);
-	}
+	// public List<User> getUsers() {
+	// return Collections.unmodifiableList(users);
+	// return users;
+	// }
 
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+	// public void setUsers(List<User> users) {
+	// this.users = users;
+	// }
+	//
+	// public void addUser(User user) {
+	// if (!users.contains(user)) {
+	// users.add(user);
+	// user.addPrivilege(this);
+	// }
+	// }
 
-	public void addUser(User user) {
-		if (!users.contains(user)) {
-			users.add(user);
-			user.addPrivilege(this);
-		}
-	}
-
-	public void removeUser(User user) {
-		if (users.contains(user)) {
-			users.remove(user);
-			user.removePrivilege(this);
-		}
-	}
+	// public void removeUser(User user) {
+	// if (users.contains(user)) {
+	// users.remove(user);
+	// user.removePrivilege(this);
+	// }
+	// }
 
 }

@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.sovzond.mgis2.authentication.model.User;
 
 @RestController
-@RequestMapping("/rest/auth")
+// @Controller
+@RequestMapping("/auth")
 @Scope("session")
 // @ResponseBody
 public class AuthenticationRESTController implements Serializable {
@@ -27,18 +28,17 @@ public class AuthenticationRESTController implements Serializable {
 	@Autowired
 	private AuthenticationService authenticationService;
 
-	@RequestMapping(value = "privileges", method = { RequestMethod.GET, RequestMethod.POST }, produces = { "application/json" }, headers = "Accept=application/json", consumes = { "application/json" })
-	@ResponseBody
-	public List<String> privileges() {
+	@RequestMapping(value = "/privileges", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody List<String> privileges() {
 		Collection<? extends GrantedAuthority> grantedAuthorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 		List<String> privileges = grantedAuthorities.stream().map(authority -> authority.getAuthority()).collect(Collectors.toList());
 		return privileges;
 	}
 
-	@RequestMapping(value = "users", method = { RequestMethod.GET, RequestMethod.POST }, produces = { "application/json" }, headers = "Accept=application/json", consumes = { "application/json" })
-	@ResponseBody
-	public List<User> users() {
-		return authenticationService.users();
+	@RequestMapping(value = "/users", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody List<User> users() {
+		List<User> users = authenticationService.users();
+		return users;
 	}
 
 }

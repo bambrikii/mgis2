@@ -71,14 +71,14 @@ public class UserDAOTest {
 		testUser.setUsername(username);
 		testUser.setPassword("testPassword");
 		testUser.setActive(true);
-		testUser.addPrivilege(priv1);
-		testUser.addPrivilege(priv2);
+		testUser.getPrivileges().add(priv1);
+		testUser.getPrivileges().add(priv2);
 		userDAO.persist(testUser);
 
 		testUser = userDAO.findByName(username);
 		Assert.assertNotNull(testUser);
-		Assert.assertTrue(testUser.containsPrivilege(priv1));
-		Assert.assertTrue(testUser.containsPrivilege(priv2));
+		Assert.assertTrue(testUser.getPrivileges().contains(priv1));
+		Assert.assertTrue(testUser.getPrivileges().contains(priv2));
 
 		userDAO.delete(testUser);
 
@@ -92,16 +92,16 @@ public class UserDAOTest {
 		testUser.setUsername(username);
 		testUser.setPassword("testPassword");
 		testUser.setActive(true);
-		testUser.addPrivilege(priv1);
+		testUser.getPrivileges().add(priv1);
 		userDAO.persist(testUser);
 		Assert.assertNotNull(testUser);
 
 		testUser = userDAO.findByName(username);
-		Assert.assertTrue(testUser.containsPrivilege(priv1));
+		Assert.assertTrue(testUser.getPrivileges().contains(priv1));
 
-		testUser.removePrivilege(priv1);
+		testUser.getPrivileges().remove(priv1);
 		userDAO.persist(testUser);
-		Assert.assertFalse(testUser.containsPrivilege(priv1));
+		Assert.assertFalse(testUser.getPrivileges().contains(priv1));
 
 		userDAO.delete(testUser);
 	}

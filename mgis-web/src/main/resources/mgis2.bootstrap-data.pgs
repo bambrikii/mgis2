@@ -1,7 +1,7 @@
 ﻿DECLARE @user_id, @priv_id_user, @priv_id_group;
 BEGIN
 
-	truncate table mgis2_user_mgis2_privilege CASCADE;
+	truncate table mgis2_user_privilege CASCADE;
 	truncate table mgis2_user CASCADE;
 	truncate table mgis2_privilege CASCADE;
 
@@ -17,7 +17,7 @@ BEGIN
 	print 'priv_id_user: ' + CAST (@priv_id_user AS STRING);
 	print 'priv_id_group: ' + CAST (@priv_id_group AS STRING);
 
-	insert into mgis2_user_mgis2_privilege (users_id, privileges_id) values (@user_id, @priv_id_user);
-	insert into mgis2_user_mgis2_privilege (users_id, privileges_id) values (@user_id, @priv_id_group);
+	insert into mgis2_user_privilege (user_id, privilege_id) values (@user_id, @priv_id_user);
+	insert into mgis2_user_privilege (user_id, privilege_id) values (@user_id, @priv_id_group);
 
 END

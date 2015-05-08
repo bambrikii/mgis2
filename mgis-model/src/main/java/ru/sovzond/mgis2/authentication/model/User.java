@@ -1,7 +1,6 @@
 package ru.sovzond.mgis2.authentication.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -32,6 +33,7 @@ public class User {
 	private boolean active;
 
 	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@JoinTable(name = "mgis2_user_privilege", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "privilege_id"))
 	private List<Privilege> privileges = new ArrayList<Privilege>();
 
 	public Long getId() {
@@ -67,28 +69,30 @@ public class User {
 	}
 
 	public List<Privilege> getPrivileges() {
-		return Collections.unmodifiableList(privileges);
+		// return Collections.unmodifiableList(privileges);
+		return privileges;
+
 	}
 
 	public void setPrivileges(List<Privilege> privileges) {
 		this.privileges = privileges;
 	}
 
-	public void addPrivilege(Privilege privilege) {
-		if (!privileges.contains(privilege)) {
-			privileges.add(privilege);
-			privilege.addUser(this);
-		}
-	}
+	// public void addPrivilege(Privilege privilege) {
+	// if (!privileges.contains(privilege)) {
+	// privileges.add(privilege);
+	// privilege.addUser(this);
+	// }
+	// }
 
-	public void removePrivilege(Privilege privilege) {
-		if (privileges.contains(privilege)) {
-			privileges.remove(privilege);
-			privilege.removeUser(this);
-		}
-	}
+	// public void removePrivilege(Privilege privilege) {
+	// if (privileges.contains(privilege)) {
+	// privileges.remove(privilege);
+	// privilege.removeUser(this);
+	// }
+	// }
 
-	public boolean containsPrivilege(Privilege privilege) {
-		return privileges.contains(privilege);
-	}
+	// public boolean containsPrivilege(Privilege privilege) {
+	// return privileges.contains(privilege);
+	// }
 }
