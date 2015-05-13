@@ -2,9 +2,10 @@ package ru.sovzond.mgis2.processes;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+//@Service
+@Component("calculateInterestService")
 public class CalculateInterestService implements JavaDelegate {
 
 	@Override

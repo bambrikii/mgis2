@@ -1,21 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 	<parent>
+		<!-- Your own application should inherit from spring-boot-starter-parent -->
 		<groupId>ru.sovzond.mgis2</groupId>
 		<artifactId>mgis-parent</artifactId>
 		<version>0.0.1</version>
 	</parent>
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>mgis-web</artifactId>
+
+	<artifactId>mgis-web-test</artifactId>
 	<packaging>war</packaging>
 
-	<properties>
-		<jackson.version>1.9.10</jackson.version>
-	</properties>
-
 	<dependencies>
-
-
 		<!-- Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -35,11 +31,17 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-context</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-orm</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 		</dependency> -->
 
 		<!-- Spring Security -->
 		<dependency>

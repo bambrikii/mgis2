@@ -77,7 +77,8 @@ public class BusinessProcessConfiguration {
 		configuration.setTransactionManager(transactionManager);
 		configuration.setDatabaseSchemaUpdate("true");
 		configuration.setJobExecutorActivate(false);
-		configuration.setDeploymentResources(new Resource[] { new ClassPathResource("classpath*:*.bpmn") });
+		configuration.setDeploymentResources(new Resource[] { new ClassPathResource("loanApproval.bpmn") });
+		configuration.buildProcessEngine();
 		return configuration;
 	}
 
