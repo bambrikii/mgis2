@@ -7,7 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
 
 public abstract class PageableDAOBase<T> extends DAOBase<T> {
-	private Class<T> persistentClass;
+	protected Class<T> persistentClass;
 
 	@SuppressWarnings("unchecked")
 	public PageableDAOBase() {

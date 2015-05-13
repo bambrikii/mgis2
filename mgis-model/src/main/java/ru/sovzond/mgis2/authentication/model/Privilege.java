@@ -18,9 +18,6 @@ public class Privilege {
 	@Column(unique = true, nullable = false, updatable = false)
 	private String name;
 
-	// @ManyToMany(mappedBy = "privileges", fetch = FetchType.EAGER)
-	// private List<User> users = new ArrayList<User>();
-
 	public Long getId() {
 		return id;
 	}
@@ -36,28 +33,5 @@ public class Privilege {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	// public List<User> getUsers() {
-	// return Collections.unmodifiableList(users);
-	// return users;
-	// }
-
-	// public void setUsers(List<User> users) {
-	// this.users = users;
-	// }
-	//
-	// public void addUser(User user) {
-	// if (!users.contains(user)) {
-	// users.add(user);
-	// user.addPrivilege(this);
-	// }
-	// }
-
-	// public void removeUser(User user) {
-	// if (users.contains(user)) {
-	// users.remove(user);
-	// user.removePrivilege(this);
-	// }
-	// }
 
 }
