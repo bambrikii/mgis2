@@ -19,6 +19,7 @@
 		<module>mgis-data-access</module>
 		<module>mgis-business</module>
 		<module>mgis-web</module>
+		<module>mgis-process</module>
 	</modules>
 
 	<dependencyManagement>
