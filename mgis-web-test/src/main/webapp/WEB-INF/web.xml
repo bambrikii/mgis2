@@ -58,6 +58,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
+			/WEB-INF/applicationContext.xml
 			/WEB-INF/spring-hibernate-configuration.xml
 		</param-value>
 	</context-param>

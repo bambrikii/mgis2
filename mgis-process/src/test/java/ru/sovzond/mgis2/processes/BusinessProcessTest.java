@@ -54,7 +54,7 @@ public class BusinessProcessTest {
 		// processApp.deploy();
 		// Map<String, Object> variables = new HashMap<String, Object>();
 		// variables.put("calculateInterestService", calculateInterestService);
-		// runtimeService.startProcessInstanceByKey("loanApproval"/* , variables */);
+		runtimeService.startProcessInstanceByKey("loanApproval"/* , variables */);
 		// System.out.println(businessProcessStarter);
 		// ProcessEngineConfiguration.createStandaloneProcessEngineConfiguration();
 		// ProcessEngine processEngine = ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration()

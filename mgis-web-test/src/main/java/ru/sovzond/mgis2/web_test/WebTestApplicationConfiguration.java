@@ -22,6 +22,12 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.camunda.bpm.engine.ManagementService;
+import org.camunda.bpm.engine.RepositoryService;
+import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.TaskService;
+import org.camunda.bpm.engine.spring.ProcessEngineFactoryBean;
+import org.camunda.bpm.engine.spring.SpringProcessEngineConfiguration;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +35,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -129,4 +137,45 @@ public class WebTestApplicationConfiguration extends WebMvcConfigurerAdapter {
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
+
+	@Bean
+	public SpringProcessEngineConfiguration processEngineConfiguration(DataSource dataSource, HibernateTransactionManager transactionManager) {
+		SpringProcessEngineConfiguration configuration = new SpringProcessEngineConfiguration();
+		configuration.setProcessEngineName("engine");
+		configuration.setDataSource(dataSource);
+		configuration.setTransactionManager(transactionManager);
+		configuration.setDatabaseSchemaUpdate("true");
+		configuration.setJobExecutorActivate(false);
+		configuration.setDeploymentResources(new Resource[] { new ClassPathResource("loanApproval.bpmn") });
+		configuration.buildProcessEngine();
+		return configuration;
+	}
+
+	@Bean
+	public ProcessEngineFactoryBean processEngine(SpringProcessEngineConfiguration processEngineConfiguration) {
+		ProcessEngineFactoryBean processEngineFactory = new ProcessEngineFactoryBean();
+		processEngineFactory.setProcessEngineConfiguration(processEngineConfiguration);
+		return processEngineFactory;
+	}
+
+	@Bean
+	public RepositoryService repositoryService(ProcessEngineFactoryBean processEngineFactoryBean) throws Exception {
+		return processEngineFactoryBean.getProcessEngineConfiguration().getRepositoryService();
+	}
+
+	@Bean
+	public RuntimeService runtimeService(ProcessEngineFactoryBean processEngineFactoryBean) throws Exception {
+		return processEngineFactoryBean.getProcessEngineConfiguration().getRuntimeService();
+	}
+
+	@Bean
+	public ManagementService managementService(ProcessEngineFactoryBean processEngineFactoryBean) throws Exception {
+		return processEngineFactoryBean.getProcessEngineConfiguration().getManagementService();
+	}
+
+	@Bean
+	public TaskService taskService(ProcessEngineFactoryBean processEngineFactoryBean) throws Exception {
+		return processEngineFactoryBean.getProcessEngineConfiguration().getTaskService();
+	}
+
 }

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
-<body>index
+<body>
+	<h3>index</h3>
+	<div>
+		<a href="rest/test/loanApplication.json">rest/test/loanApplication.json</a>
+	</div>
 </body>
 </html>
