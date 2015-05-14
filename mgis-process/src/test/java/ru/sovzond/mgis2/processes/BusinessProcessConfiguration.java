@@ -12,6 +12,7 @@ import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.spring.ProcessEngineFactoryBean;
 import org.camunda.bpm.engine.spring.SpringProcessEngineConfiguration;
+import org.camunda.spin.plugin.impl.SpinProcessEnginePlugin;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -73,14 +74,16 @@ public class BusinessProcessConfiguration {
 
 	@Bean
 	public SpringProcessEngineConfiguration processEngineConfiguration(DataSource dataSource, HibernateTransactionManager transactionManager,
-			CalculateInterestService calculateInterestService) {
+			CalculateInterestService calculateInterestService, SpinProcessEnginePlugin spinProcessEnginePlugin) {
 		SpringProcessEngineConfiguration configuration = new SpringProcessEngineConfiguration();
 		configuration.setProcessEngineName("engine");
 		configuration.setDataSource(dataSource);
 		configuration.setTransactionManager(transactionManager);
 		configuration.setDatabaseSchemaUpdate("true");
 		configuration.setJobExecutorActivate(false);
-		configuration.setDeploymentResources(new Resource[] { new ClassPathResource("loanApproval.bpmn") });
+		configuration.getProcessEnginePlugins().add(spinProcessEnginePlugin);
+		configuration
+				.setDeploymentResources(new Resource[] { new ClassPathResource("loanApproval.bpmn"), new ClassPathResource("newDiagram_1.bpmn") });
 		configuration.setBeans(buildBeans(calculateInterestService));
 		configuration.buildProcessEngine();
 		return configuration;
@@ -90,6 +93,12 @@ public class BusinessProcessConfiguration {
 		Map<Object, Object> beans = new HashMap<Object, Object>();
 		beans.put("calculateInterestService", calculateInterestService);
 		return beans;
+	}
+
+	@Bean
+	public SpinProcessEnginePlugin spintProcessEnginePlugin() {
+		SpinProcessEnginePlugin plugin = new SpinProcessEnginePlugin();
+		return plugin;
 	}
 
 	@Bean
