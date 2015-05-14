@@ -17,7 +17,9 @@
 package ru.sovzond.mgis2.web_test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -50,6 +52,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import ru.sovzond.mgis2.processes.CalculateInterestService;
 
 @Configuration
 @EnableTransactionManagement
@@ -139,7 +143,8 @@ public class WebTestApplicationConfiguration extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
-	public SpringProcessEngineConfiguration processEngineConfiguration(DataSource dataSource, HibernateTransactionManager transactionManager) {
+	public SpringProcessEngineConfiguration processEngineConfiguration(DataSource dataSource, HibernateTransactionManager transactionManager,
+			CalculateInterestService calculateInterestService) {
 		SpringProcessEngineConfiguration configuration = new SpringProcessEngineConfiguration();
 		configuration.setProcessEngineName("engine");
 		configuration.setDataSource(dataSource);
@@ -147,8 +152,15 @@ public class WebTestApplicationConfiguration extends WebMvcConfigurerAdapter {
 		configuration.setDatabaseSchemaUpdate("true");
 		configuration.setJobExecutorActivate(false);
 		configuration.setDeploymentResources(new Resource[] { new ClassPathResource("loanApproval.bpmn") });
+		configuration.setBeans(buildBeans(calculateInterestService));
 		configuration.buildProcessEngine();
 		return configuration;
+	}
+
+	private Map<Object, Object> buildBeans(CalculateInterestService calculateInterestService) {
+		Map<Object, Object> beans = new HashMap<Object, Object>();
+		beans.put("calculateInterestService", calculateInterestService);
+		return beans;
 	}
 
 	@Bean

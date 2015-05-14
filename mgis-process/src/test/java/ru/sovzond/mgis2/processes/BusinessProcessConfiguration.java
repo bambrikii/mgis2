@@ -81,11 +81,15 @@ public class BusinessProcessConfiguration {
 		configuration.setDatabaseSchemaUpdate("true");
 		configuration.setJobExecutorActivate(false);
 		configuration.setDeploymentResources(new Resource[] { new ClassPathResource("loanApproval.bpmn") });
-		Map<Object, Object> beans = new HashMap<Object, Object>();
-		beans.put("calculateInterestService", calculateInterestService);
-		configuration.setBeans(beans);
+		configuration.setBeans(buildBeans(calculateInterestService));
 		configuration.buildProcessEngine();
 		return configuration;
+	}
+
+	private Map<Object, Object> buildBeans(CalculateInterestService calculateInterestService) {
+		Map<Object, Object> beans = new HashMap<Object, Object>();
+		beans.put("calculateInterestService", calculateInterestService);
+		return beans;
 	}
 
 	@Bean
