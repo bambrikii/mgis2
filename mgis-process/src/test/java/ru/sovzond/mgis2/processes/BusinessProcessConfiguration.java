@@ -1,5 +1,7 @@
 package ru.sovzond.mgis2.processes;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -70,7 +72,8 @@ public class BusinessProcessConfiguration {
 	}
 
 	@Bean
-	public SpringProcessEngineConfiguration processEngineConfiguration(DataSource dataSource, HibernateTransactionManager transactionManager) {
+	public SpringProcessEngineConfiguration processEngineConfiguration(DataSource dataSource, HibernateTransactionManager transactionManager,
+			CalculateInterestService calculateInterestService) {
 		SpringProcessEngineConfiguration configuration = new SpringProcessEngineConfiguration();
 		configuration.setProcessEngineName("engine");
 		configuration.setDataSource(dataSource);
@@ -78,6 +81,9 @@ public class BusinessProcessConfiguration {
 		configuration.setDatabaseSchemaUpdate("true");
 		configuration.setJobExecutorActivate(false);
 		configuration.setDeploymentResources(new Resource[] { new ClassPathResource("loanApproval.bpmn") });
+		Map<Object, Object> beans = new HashMap<Object, Object>();
+		beans.put("calculateInterestService", calculateInterestService);
+		configuration.setBeans(beans);
 		configuration.buildProcessEngine();
 		return configuration;
 	}
