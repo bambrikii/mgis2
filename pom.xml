@@ -22,7 +22,8 @@
 		<module>mgis-web</module>
 		<module>mgis-process</module>
     <module>mgis-web-test</module>
-  </modules>
+    <module>mgis-report</module>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>
