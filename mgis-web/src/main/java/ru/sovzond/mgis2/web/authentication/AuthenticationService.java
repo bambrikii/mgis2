@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import ru.sovzond.mgis2.authentication.business.AuthenticationBean;
+import ru.sovzond.mgis2.authentication.model.Privilege;
 import ru.sovzond.mgis2.authentication.model.User;
 
 @Service
@@ -38,8 +39,8 @@ public class AuthenticationService {
 	@Transactional
 	public List<GrantedAuthority> buildGrantedAuthorities(UserModel userModel) {
 		String username = userModel.getUsername();
-		User user = authenticationBean.findUserByName(username);
-		List<GrantedAuthority> grantedAuthorities = user.getPrivileges().stream().map(privilege -> {
+		List<Privilege> privileges = authenticationBean.loadPrivileges(username);
+		List<GrantedAuthority> grantedAuthorities = privileges.stream().map(privilege -> {
 			return new SimpleGrantedAuthority(privilege.getName());
 		}).collect(Collectors.toList());
 		return grantedAuthorities;

@@ -36,6 +36,10 @@ public class User {
 	@JoinTable(name = "mgis2_user_privilege", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "privilege_id"))
 	private List<Privilege> privileges = new ArrayList<Privilege>();
 
+	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
+	@JoinTable(name = "mgis2_user_groups", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+	private List<Group> groups = new ArrayList<Group>();
+
 	public Long getId() {
 		return id;
 	}
@@ -78,21 +82,12 @@ public class User {
 		this.privileges = privileges;
 	}
 
-	// public void addPrivilege(Privilege privilege) {
-	// if (!privileges.contains(privilege)) {
-	// privileges.add(privilege);
-	// privilege.addUser(this);
-	// }
-	// }
+	public List<Group> getGroups() {
+		return groups;
+	}
 
-	// public void removePrivilege(Privilege privilege) {
-	// if (privileges.contains(privilege)) {
-	// privileges.remove(privilege);
-	// privilege.removeUser(this);
-	// }
-	// }
+	public void setGroups(List<Group> groups) {
+		this.groups = groups;
+	}
 
-	// public boolean containsPrivilege(Privilege privilege) {
-	// return privileges.contains(privilege);
-	// }
 }
