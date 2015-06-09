@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	require.config({
 		baseUrl : 'app',
 		paths : {
-			jquery : "../bower_components/jquery/dist/jquery",
+			jquery : "../bower_components/jquery/jquery",
 			"jquery-ui" : "../bower_components/jquery-ui/jquery-ui.min",
 			underscore : "../bower_components/underscore/underscore",
 			backbone : "../bower_components/backbone/backbone",
