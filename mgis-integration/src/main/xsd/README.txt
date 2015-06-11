@@ -1,0 +1,1 @@
+ISOGD: http://ogd.mka.mos.ru/wps/portal/iaisogd/root/docregistriespublic
