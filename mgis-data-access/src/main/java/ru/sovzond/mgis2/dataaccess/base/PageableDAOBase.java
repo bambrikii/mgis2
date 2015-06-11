@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Projections;
 
 public abstract class PageableDAOBase<T> extends DAOBase<T> {
@@ -24,6 +25,10 @@ public abstract class PageableDAOBase<T> extends DAOBase<T> {
 			criteria.setMaxResults(maxResults);
 		}
 		return criteria.list();
+	}
+
+	protected Criteria filter(Criterion criterion) {
+		return getSession().createCriteria(persistentClass).add(criterion);
 	}
 
 	public Number count() {
