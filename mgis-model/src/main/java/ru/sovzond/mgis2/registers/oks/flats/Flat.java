@@ -29,7 +29,7 @@ public class Flat {
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "rosreg_entity_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
-	private Integer id;
+	private Long id;
 
 	@ElementCollection
 	private List<String> cadastralBlocks = new ArrayList<String>();
