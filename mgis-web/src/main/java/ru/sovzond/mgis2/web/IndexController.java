@@ -24,4 +24,10 @@ public class IndexController {
 		return model;
 	}
 
+	@RequestMapping(value = { "/mgis2" }, method = RequestMethod.GET)
+	public ModelAndView mgis2Page() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("mgis2");
+		return model;
+	}
 }

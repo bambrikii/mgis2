@@ -7,11 +7,14 @@
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name} | <a href="<c:url value="/logout" />">Logout</a>
+			Welcome : ${pageContext.request.userPrincipal.name} | <a
+				href="<c:url value="/logout" />">Logout</a>
 		</h2>
-		<a href="<c:url value="/mgis" />">mgis</a>
+		<a href="<c:url value="/mgis" />">mgis - BackboneJS</a>
+		<br />
+		<a href="<c:url value="/mgis2" />">mgis - AngularJS</a>
 	</c:if>
-
+	<hr />
 	Alternative
 	<c:if test="${pageContext.request.remoteUser != null}">
 		<h2>Welcome : ${pageContext.request.remoteUser}</h2>
