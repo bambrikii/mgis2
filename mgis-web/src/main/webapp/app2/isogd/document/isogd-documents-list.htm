@@ -1,0 +1,10 @@
+stateParams: {{stateParams}}
+<div ng-repeat="document in documents(book.id)">
+    <a ui-sref="isogd.documents.edit(sectionId:stateParams.sectionId,volumenId:stateParams.volumenId,bookId:stateParams.bookId,document.id)">{{document.id}}
+        {{document.name}}</a>
+
+    <div style="padding: 5px 15px;">
+        <button class="btn btn-info" ng-click="editDocument(document.id)">Edit Document</button>
+    </div>
+
+</div>

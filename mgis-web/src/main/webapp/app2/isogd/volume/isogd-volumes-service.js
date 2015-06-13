@@ -1,4 +1,4 @@
-angular.module("mgis.isogd.volumes.service", [ "ui.router" ]) //
+angular.module("mgis.isogd.volumes.service", [ "ui.router", "ui.bootstrap" ]) //
 .factory("ISOGDVolumesService", function($http) {
 	var factory = {};
 	var volumes = [ //
