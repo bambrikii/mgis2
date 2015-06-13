@@ -1,4 +1,5 @@
 angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", //
+"mgis.common", //
 "mgis.isogd.sections.service", "mgis.isogd.sections.module", //
 "mgis.isogd.volumes.service", "mgis.isogd.volumes.module", //
 "mgis.isogd.books.service", "mgis.isogd.books.module",//
@@ -43,7 +44,7 @@ angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", //
 	$scope.addSection = function() {
 		console.log("add section");
 		var modalInstance = $modal.open({
-			animation : $scope.animationsEnabled,
+			animation : true,
 			templateUrl : 'app2/isogd/section/isogd-section-form.htm',
 			controller : 'ISOGDSectionsCtrl'// ,
 		// size : size,
@@ -57,9 +58,25 @@ angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", //
 	}
 	$scope.editSection = function(sectionId) {
 		console.log("edit section");
+		var modalInstance = $modal.open({
+			templateUrl : 'app2/isogd/section/isogd-section-form.htm',
+			controller : 'ISOGDSectionsCtrl'
+		});
 	}
 	$scope.removeSection = function(sectionId) {
-		console.log("remove section");
+		var modalInstance = $modal.open({
+			templateUrl : 'app2/isogd/isogd-confirm-deletion.htm',
+			controller : function($scope, $modalInstance) {
+				$scope.ok = function() {
+					$modalInstance.close("");
+					console.log("remove section");
+					// TODO:
+				}
+				$scope.cancel = function() {
+					$modalInstance.dismiss('cancel');
+				}
+			}
+		});
 	}
 
 	// Volume
@@ -70,7 +87,19 @@ angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", //
 		console.log("edit Volume");
 	}
 	$scope.removeVolume = function(volumeId) {
-		console.log("remove Volume");
+		var modalInstance = $modal.open({
+			templateUrl : 'app2/isogd/isogd-confirm-deletion.htm',
+			controller : function($scope, $modalInstance) {
+				$scope.ok = function() {
+					$modalInstance.close("");
+					console.log("remove Volume");
+					// TODO:
+				}
+				$scope.cancel = function() {
+					$modalInstance.dismiss('cancel');
+				}
+			}
+		});
 	}
 
 	// Book
@@ -81,7 +110,19 @@ angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", //
 		console.log("edit Book");
 	}
 	$scope.removeBook = function(bookId) {
-		console.log("add Book");
+		var modalInstance = $modal.open({
+			templateUrl : 'app2/isogd/isogd-confirm-deletion.htm',
+			controller : function($scope, $modalInstance) {
+				$scope.ok = function() {
+					$modalInstance.close("");
+					console.log("remove Book");
+					// TODO:
+				}
+				$scope.cancel = function() {
+					$modalInstance.dismiss('cancel');
+				}
+			}
+		});
 	}
 
 	// Document
@@ -92,6 +133,18 @@ angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", //
 		console.log("edit Document");
 	}
 	$scope.removeDocument = function() {
-		console.log("add Document");
+		var modalInstance = $modal.open({
+			templateUrl : 'app2/isogd/isogd-confirm-deletion.htm',
+			controller : function($scope, $modalInstance) {
+				$scope.ok = function() {
+					$modalInstance.close("");
+					console.log("remove Document");
+					// TODO:
+				}
+				$scope.cancel = function() {
+					$modalInstance.dismiss('cancel');
+				}
+			}
+		});
 	}
 });

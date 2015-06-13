@@ -1,0 +1,24 @@
+<div class="modal-header">
+	<h3 class="modal-title">Confirm  {{section.name}}</h3>
+</div>
+<div class="modal-body">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-6">
+				<form name="sectionForm" ng-submit="saveSection()" novalidate>
+
+					<!-- NAME -->
+					<div class="form-group" ng-class="{ 'has-error' : sectionForm.name.$invalid && !sectionForm.name.$pristine }">
+						<label>Name</label> <input type="text" name="name" class="form-control" ng-model="section.name" required>
+						<p ng-show="sectionForm.name.$invalid && !sectionForm.name.$pristine" class="help-block">Name is required.</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="sectionForm.$invalid" ng-click="ok()">Submit</button>
+	<button type="submit" class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>
