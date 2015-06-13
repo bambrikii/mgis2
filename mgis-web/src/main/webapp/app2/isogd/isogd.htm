@@ -1,1 +1,40 @@
-// TODO:
+ISOGD Template
+<div ng-click='sayA()'>aaaaaa</div>
+
+ <p>
+   <button class="btn btn-info btn-sm">Add a New Section</button>
+ </p>
+<accordion close-others="true">
+	<accordion-group heading="{{section.id}} {{section.name}}" ng-repeat="section in sections">
+		<a href="">{{section.id}} {{section.name}}</a>
+	 	This content is straight in the template.
+
+		<accordion close-others="true">
+			<accordion-group heading="{{volume.id}} {{volume.name}}" ng-repeat="volume in volumes(section.id)">
+				<a href="">{{volume.id}} {{volume.name}}</a>
+
+				<accordion close-others="true">
+					<accordion-group heading="{{book.id}} {{book.name}}" ng-repeat="book in books(volume.id)">
+						<a href="">{{book.id}} {{book.name}}</a>
+						<div ng-repeat="document in documents(book.id)"><a href="">{{document.id}} {{document.name}}</a></div>
+
+					  <p style="float: right">
+						<button class="btn btn-info btn-sm">Add a New Document</button>
+					    <button class="btn btn-warning btn-sm">Delete The Book</button>
+					  </p>
+					</accordion-group>
+				</accordion>
+
+			  <p style="float: right">
+				<button class="btn btn-info btn-sm">Add a New Book</button>
+			    <button class="btn btn-warning btn-sm">Delete The Volume</button>
+			  </p>
+			</accordion-group>
+		</accordion>
+
+	  <p style="float: right">
+		<button class="btn btn-info btn-sm">Add a New Volume</button>
+	    <button class="btn btn-warning btn-sm">Delete The Section</button>
+	  </p>
+	</accordion-group>
+</accordion>

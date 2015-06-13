@@ -15,6 +15,8 @@
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <!-- <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script> -->
 <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+
 <script type="text/javascript" src="app2/app.js"></script>
 <script type="text/javascript" src="app2/menu/app-menu.js"></script>
 <script type="text/javascript" src="app2/isogd/isogd.js"></script>
@@ -29,25 +31,7 @@
 <body>
 
 	<div class="main-container" ng-app="mgis">
-		<script type="text/ng-template" id="isogd/isogd.htm">
 
-ISOGD Template
-<div ng-click='sayA()'>aaaaaa</div>
-
-		<ol ng-repeat="section in sections">
-			<li>{{section.id}} {{section.name}}
-				<ol ng-repeat="volume in volumes(section.id)">
-					<li>{{volume.id}} {{volume.name}}
-						<ol ng-repeat="book in books(volume.id)">
-							<li>{{book.id}} {{book.name}}
-								<ol ng-repeat="document in documents(book.id)">
-									<li>{{document.id}} {{document.name}}
-								</li>
-						</li>
-				</li>
-		</ol>
-
-</script>
 
 		<main-menu>
 			<menu-item link="#/isogd">ISOGD</menu-item>

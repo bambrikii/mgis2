@@ -11,7 +11,7 @@ mgisApp.config(function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider.state("isogd", {
 		url : "/isogd",
-		templateUrl : "isogd/isogd.htm",
+		templateUrl : "app2/isogd/isogd.htm",
 		controller : "ISOGDCtrl"
 	})
 

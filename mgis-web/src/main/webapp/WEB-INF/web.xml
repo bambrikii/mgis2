@@ -70,7 +70,15 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>/app/*</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/app2/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/template/*</url-pattern>
+	</servlet-mapping>
+		
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
