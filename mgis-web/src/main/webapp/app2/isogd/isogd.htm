@@ -1,9 +1,6 @@
 ISOGD Template
 <div ng-click='sayA()'>aaaaaa</div>
 
- <p>
-   <button class="btn btn-info btn-sm">Add a New Section</button>
- </p>
 <accordion close-others="true">
 	<accordion-group heading="{{section.id}} {{section.name}}" ng-repeat="section in sections">
 		<a href="">{{section.id}} {{section.name}}</a>
@@ -19,22 +16,28 @@ ISOGD Template
 						<div ng-repeat="document in documents(book.id)"><a href="">{{document.id}} {{document.name}}</a></div>
 
 					  <p style="float: right">
-						<button class="btn btn-info btn-sm">Add a New Document</button>
-					    <button class="btn btn-warning btn-sm">Delete The Book</button>
+						<button class="btn btn-info btn-sm" ng-click="addDocument(book.id)">Add a New Document</button>
+					    <button class="btn btn-info btn-sm" ng-click="editBook(book.id)">Edit The Book</button>
+					    <button class="btn btn-warning btn-sm" ng-click="removeBook(book.id)">Delete The Book</button>
 					  </p>
 					</accordion-group>
 				</accordion>
 
 			  <p style="float: right">
-				<button class="btn btn-info btn-sm">Add a New Book</button>
-			    <button class="btn btn-warning btn-sm">Delete The Volume</button>
+				<button class="btn btn-info btn-sm" ng-click="addSection(volume.id)">Add a New Book</button>
+			    <button class="btn btn-info btn-sm" ng-click="editVolume(volume.id)">Edit The Volume</button>
+			    <button class="btn btn-warning btn-sm" ng-click="removeVolume(volume.id)">Delete The Volume</button>
 			  </p>
 			</accordion-group>
 		</accordion>
 
 	  <p style="float: right">
-		<button class="btn btn-info btn-sm">Add a New Volume</button>
-	    <button class="btn btn-warning btn-sm">Delete The Section</button>
+		<button class="btn btn-info btn-sm" ng-click="addVolume(section.id)">Add a New Volume</button>
+	    <button class="btn btn-info btn-sm" ng-click="editSection(section.id)">Edit The Section</button>
+	    <button class="btn btn-warning btn-sm" ng-click="removeSection(section.id)">Delete The Section</button>
 	  </p>
 	</accordion-group>
 </accordion>
+ <p style="float: right">
+   <button class="btn btn-info btn-sm" ng-click="addSection()">Add a New Section</button>
+ </p>
