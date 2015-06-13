@@ -1,5 +1,8 @@
-angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap",//
-"mgis.isogd.sections", "mgis.isogd.volumes", "mgis.isogd.books", "mgis.isogd.documents" //
+angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", //
+"mgis.isogd.sections.service", "mgis.isogd.sections.module", //
+"mgis.isogd.volumes.service", "mgis.isogd.volumes.module", //
+"mgis.isogd.books.service", "mgis.isogd.books.module",//
+"mgis.isogd.documents.service", "mgis.isogd.documents.module" //
 ]) //
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -19,7 +22,7 @@ angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap",//
 	}) //
 	; //
 }) //
-.controller("ISOGDCtrl", function($scope, ISOGDSectionsService, ISOGDVolumesService, ISOGDBooksService, ISOGDDocumentsService) {
+.controller("ISOGDCtrl", function($scope, $modal, ISOGDSectionsService, ISOGDVolumesService, ISOGDBooksService, ISOGDDocumentsService) {
 	console.log("isogd");
 	$scope.sayA = function() {
 		alert("aaa");
@@ -39,6 +42,18 @@ angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap",//
 	// Section
 	$scope.addSection = function() {
 		console.log("add section");
+		var modalInstance = $modal.open({
+			animation : $scope.animationsEnabled,
+			templateUrl : 'app2/isogd/section/isogd-section-form.htm',
+			controller : 'ISOGDSectionsCtrl'// ,
+		// size : size,
+		// resolve : {
+		// items : function() {
+		// return $scope.items;
+		// }
+		// }
+		});
+
 	}
 	$scope.editSection = function(sectionId) {
 		console.log("edit section");

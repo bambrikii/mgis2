@@ -1,6 +1,4 @@
-ISOGD Template
-<div ng-click='sayA()'>aaaaaa</div>
-
+<h2>ISOGD</h2>
 <accordion close-others="true">
 	<accordion-group heading="{{section.id}} {{section.name}}" ng-repeat="section in sections">
 		<a href="">{{section.id}} {{section.name}}</a>
@@ -24,7 +22,7 @@ ISOGD Template
 				</accordion>
 
 			  <p style="float: right">
-				<button class="btn btn-info btn-sm" ng-click="addSection(volume.id)">Add a New Book</button>
+				<button class="btn btn-info btn-sm" ng-click="addBook(volume.id)">Add a New Book</button>
 			    <button class="btn btn-info btn-sm" ng-click="editVolume(volume.id)">Edit The Volume</button>
 			    <button class="btn btn-warning btn-sm" ng-click="removeVolume(volume.id)">Delete The Volume</button>
 			  </p>

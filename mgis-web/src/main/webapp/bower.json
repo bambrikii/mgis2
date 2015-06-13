@@ -31,6 +31,8 @@
   "resolutions": {
     "jquery": "1.10.2",
     "bootstrap": "3.3.4",
-    "underscore": "1.7.0"
+    "underscore": "1.7.0",
+    "angular": "1.4.0",
+    "angular-bootstrap": "0.13.0"
   }
 }

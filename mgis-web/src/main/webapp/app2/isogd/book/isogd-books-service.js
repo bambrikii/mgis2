@@ -1,4 +1,4 @@
-angular.module("mgis.isogd.books", [ "ui.router" ]) //
+angular.module("mgis.isogd.books.service", [ "ui.router" ]) //
 .factory("ISOGDBooksService", function($http) {
 	var factory = {};
 	var books = [ //

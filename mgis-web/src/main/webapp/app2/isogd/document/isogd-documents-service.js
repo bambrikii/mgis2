@@ -1,4 +1,4 @@
-angular.module("mgis.isogd.documents", [ "ui.router" ]) //
+angular.module("mgis.isogd.documents.service", [ "ui.router" ]) //
 .factory("ISOGDDocumentsService", function($http) {
 	var factory = {};
 	var documents = [ //

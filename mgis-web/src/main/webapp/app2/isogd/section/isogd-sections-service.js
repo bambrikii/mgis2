@@ -1,4 +1,4 @@
-angular.module("mgis.isogd.sections", [ "ui.router" ]) //
+angular.module("mgis.isogd.sections.service", [ "ui.router" ]) //
 .factory("ISOGDSectionsService", function($http) {
 	var factory = {};
 	var sections = [ //
