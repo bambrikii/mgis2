@@ -4,7 +4,11 @@ angular.module("mgis.isogd.sections.service", [ "ui.router", 'ngResource' ]) //
 	var sections = [];
 	factory.list = function(first, max) {
 		var deferred = $q.defer();
-		sections = $resource('rest/isogd/sections/list.json').get({
+		$resource('rest/isogd/sections/list.json', {}, {
+			get : {
+				method : 'GET'
+			}
+		}).get({
 			first : first,
 			max : max
 		}, function(data) {
@@ -39,8 +43,20 @@ angular.module("mgis.isogd.sections.service", [ "ui.router", 'ngResource' ]) //
 		});
 		return deferred.promise;
 	}
-	factory.remove = function() {
-
+	factory.remove = function(sectionId) {
+		var deferred = $q.defer();
+		$resource('rest/isogd/sections/:sectionId.json', {
+			sectionId : sectionId
+		}, {
+			remove : {
+				method : 'DELETE'
+			}
+		}).remove({
+			id : sectionId
+		}, function(data) {
+			deferred.resolve(data);
+		});
+		return deferred.promise;
 	}
 	return factory;
 });

@@ -7,40 +7,41 @@ angular.module("mgis.isogd.sections", [ "ui.router", "ui.bootstrap",//
 		url : "/sections/:sectionId",
 		templateUrl : "app2/isogd/section/isogd-sections-list.htm",
 		controller : function($scope, $state, $stateParams, ISOGDSectionsService, $modal, $q) {
-			console.log("sections...");
 			$scope.stateParams = $stateParams;
 
-			var promise = ISOGDSectionsService.list(0, 15);
-			promise.then(function(data) {
-				console.log("aaaaa");
-				console.log($scope.sections = data.list);
-			});
+			function updateGrid() {
+				ISOGDSectionsService.list(0, 15).then(function(data) {
+					$scope.sections = data.list;
+				});
+			}
+			updateGrid();
 
 			// Section
 			$scope.addSection = function() {
 				console.log("add section");
+				$scope.section = {
+					id : 0,
+					name : ""
+				};
 				var modalInstance = $modal.open({
 					animation : true,
+					scope : $scope,
 					templateUrl : 'app2/isogd/section/isogd-section-form.htm',
 					controller : function($scope, $modalInstance) {
 						$scope.ok = function() {
 							$modalInstance.close(/* $scope.selected.item */);
+							ISOGDSectionsService.save($scope.section).then(function(data) {
+								updateGrid();
+							});
 						}
 						$scope.cancel = function() {
 							$modalInstance.dismiss('cancel');
 						}
-					}// ,
-				// size : size,
-				// resolve : {
-				// items : function() {
-				// return $scope.items;
-				// }
-				// }
+					}
 				});
 
 			}
 			$scope.editSection = function(sectionId) {
-				console.log("edit section");
 				ISOGDSectionsService.get(sectionId).then(function(data) {
 					$scope.section = data;
 					var modalInstance = $modal.open({
@@ -49,7 +50,9 @@ angular.module("mgis.isogd.sections", [ "ui.router", "ui.bootstrap",//
 						controller : function($scope, $modalInstance) {
 							$scope.ok = function() {
 								$modalInstance.close(/* $scope.selected.item */);
-								ISOGDSectionsService.save($scope.section);
+								ISOGDSectionsService.save($scope.section).then(function(data) {
+									updateGrid();
+								});
 							}
 							$scope.cancel = function() {
 								$modalInstance.dismiss('cancel');
@@ -65,7 +68,9 @@ angular.module("mgis.isogd.sections", [ "ui.router", "ui.bootstrap",//
 						$scope.ok = function() {
 							$modalInstance.close("");
 							console.log("remove section");
-							// TODO:
+							ISOGDSectionsService.remove(sectionId).then(function(data) {
+								updateGrid();
+							});
 						}
 						$scope.cancel = function() {
 							$modalInstance.dismiss('cancel');

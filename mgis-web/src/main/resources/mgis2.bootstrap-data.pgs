@@ -20,4 +20,8 @@ BEGIN
 	insert into mgis2_user_privilege (user_id, privilege_id) values (@user_id, @priv_id_user);
 	insert into mgis2_user_privilege (user_id, privilege_id) values (@user_id, @priv_id_group);
 
+	insert into isogd_section (id, name) values (nextval('isogd_entity_seq'), 'Section 1');
+	insert into isogd_section (id, name) values (nextval('isogd_entity_seq'), 'Section 2');
+	insert into isogd_section (id, name) values (nextval('isogd_entity_seq'), 'Section 3');
+	
 END

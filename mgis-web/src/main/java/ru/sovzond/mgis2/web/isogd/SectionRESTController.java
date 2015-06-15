@@ -39,7 +39,7 @@ public class SectionRESTController implements Serializable {
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@Transactional
 	public Section save(@PathVariable("id") Long id, @RequestBody Section section) {
-		Section section2 = isogdBean.readSection(id);
+		Section section2 = (id == 0) ? new Section() : isogdBean.readSection(id);
 		section2.setName(section.getName());
 		isogdBean.save(section2);
 		return section2;
@@ -53,7 +53,7 @@ public class SectionRESTController implements Serializable {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	@Transactional
-	public void delete(@RequestParam Long id) {
+	public void delete(@PathVariable Long id) {
 		isogdBean.delete(isogdBean.readSection(id));
 	}
 }
