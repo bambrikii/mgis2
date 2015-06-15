@@ -31,7 +31,7 @@ public class Section {
 	@Column
 	private String name;
 
-	@OneToMany(mappedBy = "section", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })
+	@OneToMany(mappedBy = "section", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST })
 	private List<Volume> volumes = new ArrayList<Volume>();
 
 	public Long getId() {

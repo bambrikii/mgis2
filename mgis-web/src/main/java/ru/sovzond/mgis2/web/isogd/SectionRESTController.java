@@ -6,6 +6,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +18,7 @@ import ru.sovzond.mgis2.isogd.Section;
 import ru.sovzond.mgis2.isogd.business.ISOGDBean;
 
 @RestController
-@RequestMapping("/isogd/section")
+@RequestMapping("/isogd/sections")
 @Scope("session")
 public class SectionRESTController implements Serializable {
 
@@ -34,15 +36,18 @@ public class SectionRESTController implements Serializable {
 		return isogdBean.pageSections(first, max);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@Transactional
-	public void save(@RequestParam Section section) {
-		isogdBean.save(section);
+	public Section save(@PathVariable("id") Long id, @RequestBody Section section) {
+		Section section2 = isogdBean.readSection(id);
+		section2.setName(section.getName());
+		isogdBean.save(section2);
+		return section2;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
-	public Section read(@RequestParam Long id) {
+	public Section read(@PathVariable Long id) {
 		return isogdBean.readSection(id);
 	}
 
