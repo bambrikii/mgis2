@@ -26,7 +26,7 @@ public class Document {
 	@Column
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Book book;
 
 	public Long getId() {

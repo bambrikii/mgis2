@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ru.sovzond.mgis2.business.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.PageableFilter;
 import ru.sovzond.mgis2.isogd.Book;
 import ru.sovzond.mgis2.isogd.BookDao;
 import ru.sovzond.mgis2.isogd.Document;
@@ -52,7 +53,14 @@ public class ISOGDBean {
 	}
 
 	public PageableContainer<Section> pageSections(int first, int max) {
-		return new PageableContainer<Section>(sectionDao.list(first, max), sectionDao.count());
+		List<Section> sections = new ArrayList<Section>();
+		for (Section item : sectionDao.list(first, max)) {
+			Section section = new Section();
+			section.setId(item.getId());
+			section.setName(item.getName());
+			sections.add(section);
+		}
+		return new PageableContainer<Section>(sections, sectionDao.count());
 	}
 
 	public Volume readVolume(Long id) {
@@ -75,15 +83,16 @@ public class ISOGDBean {
 		return volumeDao.count();
 	}
 
-	public PageableContainer<Volume> pageVolumes(int first, int max) {
+	public PageableContainer<Volume> pageVolumes(Section section, int first, int max) {
 		List<Volume> list = new ArrayList<Volume>();
-		for (Volume volume : volumeDao.list(first, max)) {
+		PageableFilter<Volume> filter = volumeDao.createFilter(section);
+		for (Volume volume : volumeDao.list(first, max, filter)) {
 			Volume vol = new Volume();
 			vol.setId(volume.getId());
 			vol.setName(volume.getName());
 			list.add(vol);
 		}
-		return new PageableContainer<Volume>(list, volumeDao.count());
+		return new PageableContainer<Volume>(list, volumeDao.count(filter));
 	}
 
 	public Book readBook(Long id) {
@@ -106,8 +115,9 @@ public class ISOGDBean {
 		return bookDao.count();
 	}
 
-	public PageableContainer<Book> pageBooks(int first, int max) {
-		return new PageableContainer<Book>(bookDao.list(first, max), bookDao.count());
+	public PageableContainer<Book> pageBooks(Volume volume, int first, int max) {
+		PageableFilter<Book> filter = bookDao.createFilter(volume);
+		return new PageableContainer<Book>(bookDao.list(first, max, filter), bookDao.count(filter));
 	}
 
 	public Document readDocument(Long id) {
@@ -130,8 +140,9 @@ public class ISOGDBean {
 		return documentDao.count();
 	}
 
-	public PageableContainer<Document> pageDocuments(int first, int max) {
-		return new PageableContainer<Document>(documentDao.list(first, max), documentDao.count());
+	public PageableContainer<Document> pageDocuments(Book book, int first, int max) {
+		PageableFilter<Document> filter = documentDao.createFilter(book);
+		return new PageableContainer<Document>(documentDao.list(first, max, filter), documentDao.count(filter));
 	}
 
 }

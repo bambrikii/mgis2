@@ -29,8 +29,8 @@ angular.module("mgis.isogd.sections", [ "ui.router", "ui.bootstrap",//
 					templateUrl : 'app2/isogd/section/isogd-section-form.htm',
 					controller : function($scope, $modalInstance) {
 						$scope.ok = function() {
-							$modalInstance.close(/* $scope.selected.item */);
 							ISOGDSectionsService.save($scope.section).then(function(data) {
+								$modalInstance.close(/* $scope.selected.item */);
 								updateGrid();
 							});
 						}

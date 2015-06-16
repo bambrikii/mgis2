@@ -32,7 +32,7 @@ public class Book {
 	@Column
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Volume volume;
 
 	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })

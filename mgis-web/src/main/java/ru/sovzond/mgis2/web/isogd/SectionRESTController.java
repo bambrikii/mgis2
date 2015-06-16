@@ -48,7 +48,11 @@ public class SectionRESTController implements Serializable {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
 	public Section read(@PathVariable Long id) {
-		return isogdBean.readSection(id);
+		Section section = isogdBean.readSection(id);
+		Section section2 = new Section();
+		section2.setId(section.getId());
+		section2.setName(section.getName());
+		return section2;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")

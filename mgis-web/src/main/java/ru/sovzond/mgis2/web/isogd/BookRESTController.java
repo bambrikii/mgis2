@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.Book;
+import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.business.ISOGDBean;
 
 @RestController
@@ -30,8 +31,10 @@ public class BookRESTController implements Serializable {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
-	public PageableContainer<Book> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		return isogdBean.pageBooks(first, max);
+	public PageableContainer<Book> list(@RequestParam Long volumeId, @RequestParam(defaultValue = "0") int first,
+			@RequestParam(defaultValue = "0") int max) {
+		Volume volume = isogdBean.readVolume(volumeId);
+		return isogdBean.pageBooks(volume, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = "application/json")

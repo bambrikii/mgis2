@@ -36,16 +36,19 @@ public class DocumentDaoTest {
 
 		try {
 			Volume volume = new Volume();
+			volume.setSection(section);
 			volumeDao.persist(volume);
 			Assert.assertTrue(volume.getId() != null);
 
 			try {
 				Book book = new Book();
+				book.setVolume(volume);
 				bookDao.persist(book);
 				Assert.assertTrue(book.getId() != null);
 
 				try {
 					Document document = new Document();
+					document.setBook(book);
 					documentDao.persist(document);
 
 					Assert.assertTrue(section.getId() != null);

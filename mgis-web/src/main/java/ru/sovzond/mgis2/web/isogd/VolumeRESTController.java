@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ru.sovzond.mgis2.business.PageableContainer;
+import ru.sovzond.mgis2.isogd.Section;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.business.ISOGDBean;
 
@@ -32,23 +33,43 @@ public class VolumeRESTController implements Serializable {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
-	public PageableContainer<Volume> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		return isogdBean.pageVolumes(first, max);
+	public PageableContainer<Volume> list(@RequestParam("sectionId") Long sectionId, @RequestParam(defaultValue = "0") int first,
+			@RequestParam(defaultValue = "0") int max) {
+		Section section = isogdBean.readSection(sectionId);
+		return isogdBean.pageVolumes(section, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@Transactional
 	public Volume save(@PathVariable("id") Long id, @RequestBody Volume volume) {
-		Volume volume2 = (id == 0) ? new Volume() : isogdBean.readVolume(id);
+		Volume volume2;
+		if (id == 0) {
+			volume2 = new Volume();
+			volume2.setSection(isogdBean.readSection(volume.getSection().getId()));
+		} else {
+			volume2 = isogdBean.readVolume(id);
+		}
 		volume2.setName(volume.getName());
 		isogdBean.save(volume2);
-		return volume2;
+		return clone(volume2);
+	}
+
+	private Volume clone(Volume volume2) {
+		Volume volume3 = new Volume();
+		volume3.setId(volume2.getId());
+		volume3.setName(volume2.getName());
+		Section section3 = new Section();
+		section3.setId(volume2.getId());
+		section3.setName(volume2.getName());
+		volume3.setSection(section3);
+		return volume3;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
 	public Volume read(@PathVariable Long id) {
-		return isogdBean.readVolume(id);
+		Volume volume = isogdBean.readVolume(id);
+		return clone(volume);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")

@@ -31,7 +31,7 @@ public class Volume {
 	@Column
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Section section;
 
 	@OneToMany(mappedBy = "volume", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })
