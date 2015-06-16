@@ -15,10 +15,12 @@
 						<label>Name</label> <input type="text" name="name" class="form-control" ng-model="volume.name" required>
 						<p ng-show="volumeForm.name.$invalid && !volumeForm.name.$pristine" class="help-block">Name is required.</p>
 					</div>
-					<button type="submit" class="btn btn-primary" ng-disabled="volumeForm.$invalid">Submit</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="modal-footer"></div>
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="volumeForm.$invalid" ng-click="ok()">Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>

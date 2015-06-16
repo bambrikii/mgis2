@@ -1,5 +1,6 @@
 package ru.sovzond.mgis2.isogd.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +76,14 @@ public class ISOGDBean {
 	}
 
 	public PageableContainer<Volume> pageVolumes(int first, int max) {
-		return new PageableContainer<Volume>(volumeDao.list(first, max), volumeDao.count());
+		List<Volume> list = new ArrayList<Volume>();
+		for (Volume volume : volumeDao.list(first, max)) {
+			Volume vol = new Volume();
+			vol.setId(volume.getId());
+			vol.setName(volume.getName());
+			list.add(vol);
+		}
+		return new PageableContainer<Volume>(list, volumeDao.count());
 	}
 
 	public Book readBook(Long id) {

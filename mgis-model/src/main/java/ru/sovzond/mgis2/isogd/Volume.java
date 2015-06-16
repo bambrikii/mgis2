@@ -17,8 +17,6 @@ import javax.persistence.Table;
 
 /**
  * @author Alexander Arakelyan
- *
- *
  */
 @Entity
 @Table(name = "isogd_volume")
@@ -37,7 +35,7 @@ public class Volume {
 	private Section section;
 
 	@OneToMany(mappedBy = "volume", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })
-	private List<Book> bools = new ArrayList<Book>();
+	private List<Book> books = new ArrayList<Book>();
 
 	public Long getId() {
 		return id;
@@ -63,12 +61,12 @@ public class Volume {
 		this.section = section;
 	}
 
-	public List<Book> getBools() {
-		return bools;
+	public List<Book> getBooks() {
+		return books;
 	}
 
-	public void setBools(List<Book> bools) {
-		this.bools = bools;
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 }

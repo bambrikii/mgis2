@@ -6,6 +6,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +18,7 @@ import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.business.ISOGDBean;
 
 @RestController
-@RequestMapping("/isogd/volume")
+@RequestMapping("/isogd/volumes")
 @Scope("session")
 public class VolumeRESTController implements Serializable {
 
@@ -34,21 +36,24 @@ public class VolumeRESTController implements Serializable {
 		return isogdBean.pageVolumes(first, max);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@Transactional
-	public void save(@RequestParam Volume section) {
-		isogdBean.save(section);
+	public Volume save(@PathVariable("id") Long id, @RequestBody Volume volume) {
+		Volume volume2 = (id == 0) ? new Volume() : isogdBean.readVolume(id);
+		volume2.setName(volume.getName());
+		isogdBean.save(volume2);
+		return volume2;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
-	public Volume read(@RequestParam Long id) {
+	public Volume read(@PathVariable Long id) {
 		return isogdBean.readVolume(id);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	@Transactional
-	public void delete(@RequestParam Long id) {
+	public void delete(@PathVariable Long id) {
 		isogdBean.delete(isogdBean.readVolume(id));
 	}
 
