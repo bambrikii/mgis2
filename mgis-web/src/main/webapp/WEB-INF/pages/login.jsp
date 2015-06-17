@@ -33,7 +33,7 @@
 							<!-- Username input -->
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="username">Username</label>
-								<div class="col-md-4">
+								<div class="col-md-8">
 									<input id="username" name="username" placeholder="placeholder" class="form-control input-md" type="text" value="" /> <span
 										class="help-block">User name</span>
 								</div>
@@ -41,8 +41,8 @@
 
 							<!-- Password input -->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="password">password</label>
-								<div class="col-md-4">
+								<label class="col-md-4 control-label" for="password">Password</label>
+								<div class="col-md-8">
 									<input id="password" name="password" placeholder="placeholder" class="form-control input-md" type="password"> <span
 										class="help-block">help</span>
 								</div>
@@ -51,7 +51,7 @@
 							<!-- Button -->
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="submitButton"></label>
-								<div class="col-md-4">
+								<div class="col-md-8">
 									<button id="submitButton" name="" type="submit" class="btn btn-primary">Login</button>
 								</div>
 							</div>

@@ -51,25 +51,14 @@ public class VolumeRESTController implements Serializable {
 		}
 		volume2.setName(volume.getName());
 		isogdBean.save(volume2);
-		return clone(volume2);
-	}
-
-	private Volume clone(Volume volume2) {
-		Volume volume3 = new Volume();
-		volume3.setId(volume2.getId());
-		volume3.setName(volume2.getName());
-		Section section3 = new Section();
-		section3.setId(volume2.getId());
-		section3.setName(volume2.getName());
-		volume3.setSection(section3);
-		return volume3;
+		return CloneManager.clone(volume2);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
 	public Volume read(@PathVariable Long id) {
 		Volume volume = isogdBean.readVolume(id);
-		return clone(volume);
+		return CloneManager.clone(volume);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
