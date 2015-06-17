@@ -44,7 +44,7 @@ angular.module("mgis.isogd.books", [ "ui.router", "ui.bootstrap", //
 				});
 			}
 
-			$scope.editBook = function(bookId) {
+			$scope.editBook = function(volumeId, bookId) {
 				console.log("edit Book");
 				ISOGDBooksService.get(bookId).then(function(data) {
 					$scope.book = data;
@@ -54,7 +54,7 @@ angular.module("mgis.isogd.books", [ "ui.router", "ui.bootstrap", //
 						templateUrl : 'app2/isogd/book/isogd-book-form.htm',
 						controller : function($scope, $modalInstance) {
 							$scope.ok = function() {
-								ISOGDBooksService.save(sectionId, $scope.book).then(function(data) {
+								ISOGDBooksService.save(volumeId, $scope.book).then(function(data) {
 									$modalInstance.close(/* $scope.selected.item */);
 									updateGrid();
 								})

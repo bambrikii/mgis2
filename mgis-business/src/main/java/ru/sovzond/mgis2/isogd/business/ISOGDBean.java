@@ -54,11 +54,8 @@ public class ISOGDBean {
 
 	public PageableContainer<Section> pageSections(int first, int max) {
 		List<Section> sections = new ArrayList<Section>();
-		for (Section item : sectionDao.list(first, max)) {
-			Section section = new Section();
-			section.setId(item.getId());
-			section.setName(item.getName());
-			sections.add(section);
+		for (Section section : sectionDao.list(first, max)) {
+			sections.add(CloneManager.clone(section));
 		}
 		return new PageableContainer<Section>(sections, sectionDao.count());
 	}
@@ -87,10 +84,7 @@ public class ISOGDBean {
 		List<Volume> list = new ArrayList<Volume>();
 		PageableFilter<Volume> filter = volumeDao.createFilter(section);
 		for (Volume volume : volumeDao.list(first, max, filter)) {
-			Volume vol = new Volume();
-			vol.setId(volume.getId());
-			vol.setName(volume.getName());
-			list.add(vol);
+			list.add(CloneManager.clone(volume));
 		}
 		return new PageableContainer<Volume>(list, volumeDao.count(filter));
 	}
@@ -116,8 +110,12 @@ public class ISOGDBean {
 	}
 
 	public PageableContainer<Book> pageBooks(Volume volume, int first, int max) {
+		List<Book> books = new ArrayList<Book>();
 		PageableFilter<Book> filter = bookDao.createFilter(volume);
-		return new PageableContainer<Book>(bookDao.list(first, max, filter), bookDao.count(filter));
+		for (Book book : bookDao.list(first, max, filter)) {
+			books.add(CloneManager.clone(book));
+		}
+		return new PageableContainer<Book>(books, bookDao.count(filter));
 	}
 
 	public Document readDocument(Long id) {
@@ -141,8 +139,12 @@ public class ISOGDBean {
 	}
 
 	public PageableContainer<Document> pageDocuments(Book book, int first, int max) {
+		List<Document> documents = new ArrayList<Document>();
 		PageableFilter<Document> filter = documentDao.createFilter(book);
-		return new PageableContainer<Document>(documentDao.list(first, max, filter), documentDao.count(filter));
+		for (Document document : documentDao.list(first, max, filter)) {
+			documents.add(CloneManager.clone(document));
+		}
+		return new PageableContainer<Document>(documents, documentDao.count(filter));
 	}
 
 }

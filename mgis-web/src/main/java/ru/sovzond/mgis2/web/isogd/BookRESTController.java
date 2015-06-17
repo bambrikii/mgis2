@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.Book;
 import ru.sovzond.mgis2.isogd.Volume;
+import ru.sovzond.mgis2.isogd.business.CloneManager;
 import ru.sovzond.mgis2.isogd.business.ISOGDBean;
 
 @RestController
@@ -45,18 +46,19 @@ public class BookRESTController implements Serializable {
 		Book book2;
 		if (id == 0) {
 			book2 = new Book();
-			book.setVolume(isogdBean.readVolume(book.getVolume().getId()));
+			book2.setVolume(isogdBean.readVolume(book.getVolume().getId()));
 		} else {
 			book2 = isogdBean.readBook(id);
 		}
+		book2.setName(book.getName());
 		isogdBean.save(book2);
 		return CloneManager.clone(book2);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
-	public Book read(@RequestParam Long id) {
-		return isogdBean.readBook(id);
+	public Book read(@PathVariable Long id) {
+		return CloneManager.clone(isogdBean.readBook(id));
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")

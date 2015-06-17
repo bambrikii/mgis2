@@ -4,7 +4,7 @@ stateParams: {{stateParams}}
 
 	<div style="padding: 5px 15px;">
 		<button class="btn btn-info btn-sm" ng-click="addDocument(book.id)">Add a New Document</button>
-		<button class="btn btn-info btn-sm" ng-click="editBook(book.id)">Edit The Book</button>
+		<button class="btn btn-info btn-sm" ng-click="editBook(stateParams.volumeId, book.id)">Edit The Book</button>
 		<button class="btn btn-warning btn-sm" ng-click="removeBook(book.id)">Delete The Book</button>
 	</div>
 
