@@ -12,6 +12,9 @@ mgisApp.config(function($stateProvider, $urlRouterProvider, $translateProvider) 
 	$stateProvider //
 	.state("isogd", {
 		url : "/isogd",
+		data : {
+			displayName : "ISOGD"
+		},
 		views : {
 			"" : {
 				templateUrl : "app2/isogd/isogd.htm",

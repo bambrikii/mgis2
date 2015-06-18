@@ -30,7 +30,8 @@
     "angular-resource": "~1.4.0",
     "angular-translate": "~2.7.2",
     "angular-translate-loader-url": "~2.7.2",
-    "angular-translate-loader-static-files": "~2.7.2"
+    "angular-translate-loader-static-files": "~2.7.2",
+    "angular-utils-ui-breadcrumbs": "~0.2.1"
   },
   "resolutions": {
     "jquery": "1.10.2",

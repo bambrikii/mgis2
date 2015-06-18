@@ -3,6 +3,9 @@ angular.module("mgis.isogd.documents", [ "ui.router", "ui.bootstrap",//
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider //
 	.state("isogd.documents", {
+		data : {
+			displayName : "Documents"
+		},
 		url : "/sections/:sectionId/books/:bookId/volumes/:volumeId/documents/",
 		templateUrl : "app2/isogd/document/isogd-documents-list.htm",
 		controller : function($scope, $state, $stateParams, ISOGDDocumentsService, $modal) {

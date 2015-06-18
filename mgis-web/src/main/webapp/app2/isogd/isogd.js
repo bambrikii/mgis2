@@ -1,4 +1,4 @@
-angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", //
+angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", "angularUtils.directives.uiBreadcrumbs", //
 "mgis.common", //
 "mgis.isogd.sections", "mgis.isogd.sections.service", //
 "mgis.isogd.volumes", "mgis.isogd.volumes.service", //
@@ -21,4 +21,15 @@ angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", //
 }) //
 .controller("ISOGDCtrl", function($scope, $modal, ISOGDSectionsService, ISOGDVolumesService, ISOGDBooksService, ISOGDDocumentsService) {
 }) //
-.d;
+.directive("breadcrumb", function() {
+	// element, ui-sref/href
+	return {
+		restrict : "E",
+		scope : {
+			section : "&",
+			book : "&",
+			volume : "&"
+		},
+		template : "<ol class=\"breadcrumb\"><li><a href=\"#\">Home</a></li><li><a href=\"#\">Library</a></li><li class=\"active\">Data</li></ol>"
+	}
+});
