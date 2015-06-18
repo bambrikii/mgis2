@@ -79,13 +79,7 @@ angular.module("mgis.isogd.sections", [ "ui.router", "ui.bootstrap",//
 
 		}
 	})//
-	.state("isogd.sections.edit", {
-		url : "edit/:sectionId",
-		templateUrl : "app2/isogd/section/isogd-section-form.htm",
-		controller : function($scope, $state) {
-			console.log("edit section...");
-		}
-	}) //
+	;
 }) //
 .controller("ISOGDSectionCtrl", function($scope, ISOGDSectionsService) {
 	$scope.sectionIsOpen = false;

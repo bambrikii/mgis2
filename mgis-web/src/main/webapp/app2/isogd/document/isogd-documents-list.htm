@@ -1,20 +1,14 @@
-stateParams: {{stateParams}}
 <div ng-repeat="document in documents">
-	<a
-		ui-sref="isogd.documents.edit({
-	sectionId:stateParams.sectionId,
-	bookId:stateParams.bookId,
-	volumeId:stateParams.volumeId,
-	documentId:document.id})">{{document.id}}
-		{{document.name}}</a>
+	<div class="col-sm-12" style="padding: 5px;">
+		<a href="javascript:return false;" ng-click="editDocument(stateParams.volumeId, document.id)">{{document.name}}</a>
 
-	<div style="padding: 5px 15px;">
-		<button class="btn btn-info btn-sm" ng-click="editDocument(stateParams.volumeId, document.id)" translate>ISOGD.EditTheDocument</button>
-		<button class="btn btn-warning btn-sm" ng-click="removeDocument(document.id)" translate>ISOGD.RemoveTheDocument</button>
+		<div style="float: right">
+			<button class="btn btn-info btn-sm" ng-click="editDocument(stateParams.volumeId, document.id)" translate>ISOGD.EditTheDocument</button>
+			<button class="btn btn-warning btn-sm" ng-click="removeDocument(document.id)" translate>ISOGD.RemoveTheDocument</button>
+		</div>
 	</div>
-
 </div>
 
-<p style="float: right">
+<div style="float: left">
 	<button class="btn btn-info btn-sm" ng-click="addDocument(stateParams.volumeId)" translate>ISOGD.AddADocument</button>
-</p>
+</div>

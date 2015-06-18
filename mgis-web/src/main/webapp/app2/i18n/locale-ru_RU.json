@@ -6,6 +6,8 @@
 
 	"Submit" : "Применить",
 	"Cancel" : "Отменить",
+	"Confirm" : "Подвтердить",
+	"ConfirmDeletion" : "Подвердите удаление",
 
 	"ISOGD.AddASection": "Добавить Раздел",
 	"ISOGD.EditTheSection": "Редактировать Раздел",

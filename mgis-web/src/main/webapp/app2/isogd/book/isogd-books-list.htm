@@ -1,14 +1,14 @@
 <div ng-repeat="book in books">
-	<a ui-sref="isogd.volumes({sectionId: stateParams.sectionId, bookId:book.id})">Book {{book.id}} {{book.name}}</a>
-
-	<div style="padding: 5px 15px;">
-		<button class="btn btn-info btn-sm" ng-click="editBook(stateParams.sectionId, book.id)" translate>ISOGD.EditTheBook</button>
-		<button class="btn btn-warning btn-sm" ng-click="removeBook(book.id)" translate>ISOGD.RemoveTheBook</button>
+	<div class="col-sm-12" style="padding: 5px;">
+		<a ui-sref="isogd.volumes({sectionId: stateParams.sectionId, bookId:book.id})">{{book.name}}</a>
+		<div style="float: right">
+			<button class="btn btn-info btn-sm" ng-click="editBook(stateParams.sectionId, book.id)" translate>ISOGD.EditTheBook</button>
+			<button class="btn btn-warning btn-sm" ng-click="removeBook(book.id)" translate>ISOGD.RemoveTheBook</button>
+		</div>
 	</div>
-
 </div>
-<p style="float: right">
+<div style="float: left;">
 	<button class="btn btn-info btn-sm" ng-click="addBook(stateParams.sectionId)" translate>ISOGD.AddABook</button>
-</p>
+</div>
 
 <div ui-view></div>
