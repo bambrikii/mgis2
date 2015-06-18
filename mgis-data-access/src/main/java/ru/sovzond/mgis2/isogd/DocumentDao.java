@@ -12,13 +12,13 @@ public class DocumentDao extends PageableDAOBase<Document> {
 		return (Document) filter(Restrictions.eq("id", id)).uniqueResult();
 	}
 
-	public DocumentFilterBuilder createFilter(Book book) {
-		return new DocumentFilterBuilder(book);
+	public DocumentFilterBuilder createFilter(Volume volume) {
+		return new DocumentFilterBuilder(volume);
 	}
 
 	class DocumentFilterBuilder extends PageableFilter<Document> {
-		private DocumentFilterBuilder(Book book) {
-			addCriterion(Restrictions.eq("book", book));
+		private DocumentFilterBuilder(Volume volume) {
+			addCriterion(Restrictions.eq("volume", volume));
 		}
 	}
 }

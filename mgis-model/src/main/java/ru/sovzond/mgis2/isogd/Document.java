@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 /**
  * @author Alexander Arakelyan
- *
  */
 @Entity
 @Table(name = "isogd_document")
@@ -27,7 +26,8 @@ public class Document {
 	private String name;
 
 	@ManyToOne(optional = false)
-	private Book book;
+	private Volume volume;
+
 
 	public Long getId() {
 		return id;
@@ -45,12 +45,12 @@ public class Document {
 		this.name = name;
 	}
 
-	public Book getBook() {
-		return book;
+	public Volume getVolume() {
+		return volume;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setVolume(Volume volume) {
+		this.volume = volume;
 	}
 
 }

@@ -1,14 +1,19 @@
 volumes: stateParams: {{stateParams}}
 <div ng-repeat="volume in volumes">
-	<a ui-sref="isogd.books({sectionId: stateParams.sectionId, volumeId:volume.id})">{{volume.id}} {{volume.name}}</a>
+	<a ui-sref="isogd.documents({
+	sectionId:stateParams.sectionId,
+	bookId:stateParams.bookId,
+	volumeId:volume.id
+	})">{{volume.id}}
+		{{volume.name}}</a>
 
 	<div style="padding: 5px 15px;">
-		<button class="btn btn-info btn-sm" ng-click="editVolume(stateParams.sectionId, volume.id)" translate>ISOGD.EditTheVolume</button>
+		<button class="btn btn-info btn-sm" ng-click="editVolume(stateParams.bookId, volume.id)" translate>ISOGD.EditTheVolume</button>
 		<button class="btn btn-warning btn-sm" ng-click="removeVolume(volume.id)" translate>ISOGD.RemoveTheVolume</button>
 	</div>
 </div>
 <p style="float: right">
-	<button class="btn btn-info btn-sm" ng-click="addVolume(stateParams.sectionId)" translate>ISOGD.AddAVolume</button>
+	<button class="btn btn-info btn-sm" ng-click="addVolume(stateParams.bookId)" translate>ISOGD.AddAVolume</button>
 </p>
 
 

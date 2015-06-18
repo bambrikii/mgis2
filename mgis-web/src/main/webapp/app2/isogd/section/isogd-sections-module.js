@@ -18,7 +18,6 @@ angular.module("mgis.isogd.sections", [ "ui.router", "ui.bootstrap",//
 
 			// Section
 			$scope.addSection = function() {
-				console.log("add section");
 				$scope.section = {
 					id : 0,
 					name : ""
@@ -30,7 +29,7 @@ angular.module("mgis.isogd.sections", [ "ui.router", "ui.bootstrap",//
 					controller : function($scope, $modalInstance) {
 						$scope.ok = function() {
 							ISOGDSectionsService.save($scope.section).then(function(data) {
-								$modalInstance.close(/* $scope.selected.item */);
+								$modalInstance.close();
 								updateGrid();
 							});
 						}
@@ -49,7 +48,7 @@ angular.module("mgis.isogd.sections", [ "ui.router", "ui.bootstrap",//
 						templateUrl : 'app2/isogd/section/isogd-section-form.htm',
 						controller : function($scope, $modalInstance) {
 							$scope.ok = function() {
-								$modalInstance.close(/* $scope.selected.item */);
+								$modalInstance.close();
 								ISOGDSectionsService.save($scope.section).then(function(data) {
 									updateGrid();
 								});
@@ -66,8 +65,7 @@ angular.module("mgis.isogd.sections", [ "ui.router", "ui.bootstrap",//
 					templateUrl : 'app2/isogd/isogd-confirm-deletion.htm',
 					controller : function($scope, $modalInstance) {
 						$scope.ok = function() {
-							$modalInstance.close("");
-							console.log("remove section");
+							$modalInstance.close();
 							ISOGDSectionsService.remove(sectionId).then(function(data) {
 								updateGrid();
 							});

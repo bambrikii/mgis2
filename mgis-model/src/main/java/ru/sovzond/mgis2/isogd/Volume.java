@@ -32,10 +32,10 @@ public class Volume {
 	private String name;
 
 	@ManyToOne(optional = false)
-	private Section section;
+	private Book book;
 
 	@OneToMany(mappedBy = "volume", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })
-	private List<Book> books = new ArrayList<Book>();
+	private List<Document> documents = new ArrayList<Document>();
 
 	public Long getId() {
 		return id;
@@ -53,20 +53,20 @@ public class Volume {
 		this.name = name;
 	}
 
-	public Section getSection() {
-		return section;
+	public Book getBook() {
+		return book;
 	}
 
-	public void setSection(Section section) {
-		this.section = section;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
-	public List<Book> getBooks() {
-		return books;
+	public List<Document> getDocuments() {
+		return documents;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public void setDocuments(List<Document> documents) {
+		this.documents = documents;
 	}
 
 }

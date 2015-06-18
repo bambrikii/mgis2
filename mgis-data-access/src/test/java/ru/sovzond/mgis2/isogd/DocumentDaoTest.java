@@ -35,29 +35,29 @@ public class DocumentDaoTest {
 		Assert.assertTrue(section.getId() != null);
 
 		try {
-			Volume volume = new Volume();
-			volume.setSection(section);
-			volumeDao.persist(volume);
-			Assert.assertTrue(volume.getId() != null);
+			Book book = new Book();
+			book.setSection(section);
+			bookDao.persist(book);
+			Assert.assertTrue(book.getId() != null);
 
 			try {
-				Book book = new Book();
-				book.setVolume(volume);
-				bookDao.persist(book);
-				Assert.assertTrue(book.getId() != null);
+				Volume volume = new Volume();
+				volume.setBook(book);
+				volumeDao.persist(volume);
+				Assert.assertTrue(volume.getId() != null);
 
 				try {
 					Document document = new Document();
-					document.setBook(book);
+					document.setVolume(volume);
 					documentDao.persist(document);
 
 					Assert.assertTrue(section.getId() != null);
 					documentDao.delete(document);
 				} finally {
-					bookDao.delete(book);
+					volumeDao.delete(volume);
 				}
 			} finally {
-				volumeDao.delete(volume);
+				bookDao.delete(book);
 			}
 		} finally {
 			sectionDao.delete(section);

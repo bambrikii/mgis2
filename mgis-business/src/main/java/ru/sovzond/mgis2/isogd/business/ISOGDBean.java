@@ -80,9 +80,9 @@ public class ISOGDBean {
 		return volumeDao.count();
 	}
 
-	public PageableContainer<Volume> pageVolumes(Section section, int first, int max) {
+	public PageableContainer<Volume> pageVolumes(Book book, int first, int max) {
 		List<Volume> list = new ArrayList<Volume>();
-		PageableFilter<Volume> filter = volumeDao.createFilter(section);
+		PageableFilter<Volume> filter = volumeDao.createFilter(book);
 		for (Volume volume : volumeDao.list(first, max, filter)) {
 			list.add(CloneManager.clone(volume));
 		}
@@ -109,9 +109,9 @@ public class ISOGDBean {
 		return bookDao.count();
 	}
 
-	public PageableContainer<Book> pageBooks(Volume volume, int first, int max) {
+	public PageableContainer<Book> pageBooks(Section section, int first, int max) {
 		List<Book> books = new ArrayList<Book>();
-		PageableFilter<Book> filter = bookDao.createFilter(volume);
+		PageableFilter<Book> filter = bookDao.createFilter(section);
 		for (Book book : bookDao.list(first, max, filter)) {
 			books.add(CloneManager.clone(book));
 		}
@@ -138,9 +138,9 @@ public class ISOGDBean {
 		return documentDao.count();
 	}
 
-	public PageableContainer<Document> pageDocuments(Book book, int first, int max) {
+	public PageableContainer<Document> pageDocuments(Volume volume, int first, int max) {
 		List<Document> documents = new ArrayList<Document>();
-		PageableFilter<Document> filter = documentDao.createFilter(book);
+		PageableFilter<Document> filter = documentDao.createFilter(volume);
 		for (Document document : documentDao.list(first, max, filter)) {
 			documents.add(CloneManager.clone(document));
 		}

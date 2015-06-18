@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.Book;
-import ru.sovzond.mgis2.isogd.Volume;
+import ru.sovzond.mgis2.isogd.Section;
 import ru.sovzond.mgis2.isogd.business.CloneManager;
 import ru.sovzond.mgis2.isogd.business.ISOGDBean;
 
@@ -34,10 +34,10 @@ public class BookRESTController implements Serializable {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
-	public PageableContainer<Book> list(@RequestParam("volumeId") Long volumeId, @RequestParam(defaultValue = "0") int first,
+	public PageableContainer<Book> list(@RequestParam("sectionId") Long sectionId, @RequestParam(defaultValue = "0") int first,
 			@RequestParam(defaultValue = "0") int max) {
-		Volume volume = isogdBean.readVolume(volumeId);
-		return isogdBean.pageBooks(volume, first, max);
+		Section section = isogdBean.readSection(sectionId);
+		return isogdBean.pageBooks(section, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -46,7 +46,7 @@ public class BookRESTController implements Serializable {
 		Book book2;
 		if (id == 0) {
 			book2 = new Book();
-			book2.setVolume(isogdBean.readVolume(book.getVolume().getId()));
+			book2.setSection(isogdBean.readSection(book.getSection().getId()));
 		} else {
 			book2 = isogdBean.readBook(id);
 		}

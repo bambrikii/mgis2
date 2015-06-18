@@ -1,10 +1,11 @@
 angular.module("mgis.isogd.books.service", [ "ui.router", "ngResource" ]) //
 .factory("ISOGDBooksService", function($resource, $q) {
 	var factory = {};
-	factory.list = function(volumeId, first, max) {
+
+	factory.list = function(sectionId, first, max) {
 		var deferred = $q.defer();
 		$resource('rest/isogd/books/list.json', {
-			volumeId : volumeId
+			sectionId : sectionId
 		}, {
 			get : {
 				method : 'GET'
@@ -28,7 +29,7 @@ angular.module("mgis.isogd.books.service", [ "ui.router", "ngResource" ]) //
 		return deferred.promise;
 	}
 
-	factory.save = function(volumeId, book) {
+	factory.save = function(sectionId, book) {
 		var deferred = $q.defer();
 		$resource('rest/isogd/books/:bookId.json', {
 			bookId : book.id
@@ -39,8 +40,8 @@ angular.module("mgis.isogd.books.service", [ "ui.router", "ngResource" ]) //
 		}).save({
 			id : book.id,
 			name : book.name,
-			volume : {
-				id : volumeId
+			section : {
+				id : sectionId
 			}
 		}, function(data) {
 			deferred.resolve(data);

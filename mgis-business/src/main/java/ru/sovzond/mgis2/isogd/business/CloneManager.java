@@ -11,7 +11,7 @@ public class CloneManager {
 		Book book2 = new Book();
 		book2.setId(book.getId());
 		book2.setName(book.getName());
-		book2.setVolume(clone(book.getVolume()));
+		book2.setSection(clone(book.getSection()));
 		return book2;
 	}
 
@@ -19,7 +19,7 @@ public class CloneManager {
 		Volume volume2 = new Volume();
 		volume2.setId(volume.getId());
 		volume2.setName(volume.getName());
-		volume2.setSection(clone(volume.getSection()));
+		volume2.setBook(clone(volume.getBook()));
 		return volume2;
 	}
 
@@ -34,7 +34,7 @@ public class CloneManager {
 		Document document2 = new Document();
 		document2.setId(document.getId());
 		document2.setName(document.getName());
-		document2.setBook(clone(document.getBook()));
+		document2.setVolume(clone(document.getVolume()));
 		return document2;
 	}
 }

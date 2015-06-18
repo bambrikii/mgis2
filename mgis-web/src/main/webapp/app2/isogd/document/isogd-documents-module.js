@@ -3,25 +3,25 @@ angular.module("mgis.isogd.documents", [ "ui.router", "ui.bootstrap",//
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider //
 	.state("isogd.documents", {
-		url : "/sections/:sectionId/volumes/:volumeId/books/:bookId/documents/",
+		url : "/sections/:sectionId/books/:bookId/volumes/:volumeId/documents/",
 		templateUrl : "app2/isogd/document/isogd-documents-list.htm",
 		controller : function($scope, $state, $stateParams, ISOGDDocumentsService, $modal) {
 			$scope.stateParams = $stateParams;
 
 			function updateGrid() {
-				ISOGDDocumentsService.list($stateParams.bookId).then(function(data) {
+				ISOGDDocumentsService.list($stateParams.volumeId).then(function(data) {
 					$scope.documents = data.list;
 				});
 			}
 			updateGrid();
 
 			// Document
-			$scope.addDocument = function(bookId) {
+			$scope.addDocument = function(volumeId) {
 				$scope.document = {
 					id : 0,
 					name : "",
 					book : {
-						id : bookId
+						id : volumeId
 					}
 				}
 				var modalInstance = $modal.open({
@@ -30,7 +30,7 @@ angular.module("mgis.isogd.documents", [ "ui.router", "ui.bootstrap",//
 					templateUrl : 'app2/isogd/document/isogd-document-form.htm',
 					controller : function($scope, $modalInstance) {
 						$scope.ok = function() {
-							ISOGDDocumentsService.save(bookId, $scope.document).then(function(data) {
+							ISOGDDocumentsService.save(volumeId, $scope.document).then(function(data) {
 								$modalInstance.close();
 								updateGrid();
 							});
@@ -42,7 +42,7 @@ angular.module("mgis.isogd.documents", [ "ui.router", "ui.bootstrap",//
 				});
 			}
 
-			$scope.editDocument = function(bookId, documentId) {
+			$scope.editDocument = function(volumeId, documentId) {
 				ISOGDDocumentsService.get(documentId).then(function(data) {
 					$scope.document = data;
 					var modalInstance = $modal.open({
@@ -51,7 +51,7 @@ angular.module("mgis.isogd.documents", [ "ui.router", "ui.bootstrap",//
 						templateUrl : 'app2/isogd/document/isogd-document-form.htm',
 						controller : function($scope, $modalInstance) {
 							$scope.ok = function() {
-								ISOGDDocumentsService.save(bookId, $scope.document).then(function(data) {
+								ISOGDDocumentsService.save(volumeId, $scope.document).then(function(data) {
 									$modalInstance.close();
 									updateGrid();
 								});

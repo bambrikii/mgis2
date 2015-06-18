@@ -1,5 +1,5 @@
 <div ng-repeat="section in sections">
-	<a ui-sref="isogd.volumes({sectionId:section.id})">{{section.id}} {{section.name}}</a>.
+	<a ui-sref="isogd.books({sectionId:section.id})">{{section.id}} {{section.name}}</a>.
 	<div style="padding: 5px 15px;">
 		<button class="btn btn-info btn-sm" ng-click="editSection(section.id)" translate>ISOGD.EditTheSection</button>
 		<button class="btn btn-warning btn-sm" ng-click="removeSection(section.id)" translate>ISOGD.RemoveTheSection</button>

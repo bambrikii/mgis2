@@ -3,27 +3,25 @@ angular.module("mgis.isogd.books", [ "ui.router", "ui.bootstrap", //
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider//
 	.state("isogd.books", {
-		url : "/sections/:sectionId/volumes/:volumeId/books/",
+		url : "/sections/:sectionId/books/",
 		templateUrl : "app2/isogd/book/isogd-books-list.htm",
 		controller : function($scope, $state, $stateParams, ISOGDBooksService, $modal) {
-			console.log("books...");
 			$scope.stateParams = $stateParams;
 
 			function updateGrid() {
-				return ISOGDBooksService.list($stateParams.volumeId, 0, 15).then(function(data) {
+				return ISOGDBooksService.list($stateParams.sectionId, 0, 15).then(function(data) {
 					$scope.books = data.list;
 				});
 			}
 			updateGrid();
 
 			// Book
-			$scope.addBook = function(volumeId) {
-				console.log("add Book");
+			$scope.addBook = function(sectionId) {
 				$scope.book = {
 					id : 0,
 					name : "",
 					volume : {
-						id : volumeId
+						id : sectionId
 					}
 				}
 				var modalInstance = $modal.open({
@@ -33,7 +31,7 @@ angular.module("mgis.isogd.books", [ "ui.router", "ui.bootstrap", //
 					controller : function($scope, $modalInstance) {
 						$scope.ok = function() {
 							$modalInstance.close();
-							ISOGDBooksService.save(volumeId, $scope.book).then(function(data) {
+							ISOGDBooksService.save(sectionId, $scope.book).then(function(data) {
 								updateGrid();
 							});
 						}
@@ -44,7 +42,7 @@ angular.module("mgis.isogd.books", [ "ui.router", "ui.bootstrap", //
 				});
 			}
 
-			$scope.editBook = function(volumeId, bookId) {
+			$scope.editBook = function(sectionId, bookId) {
 				console.log("edit Book");
 				ISOGDBooksService.get(bookId).then(function(data) {
 					$scope.book = data;
@@ -54,7 +52,7 @@ angular.module("mgis.isogd.books", [ "ui.router", "ui.bootstrap", //
 						templateUrl : 'app2/isogd/book/isogd-book-form.htm',
 						controller : function($scope, $modalInstance) {
 							$scope.ok = function() {
-								ISOGDBooksService.save(volumeId, $scope.book).then(function(data) {
+								ISOGDBooksService.save(sectionId, $scope.book).then(function(data) {
 									$modalInstance.close(/* $scope.selected.item */);
 									updateGrid();
 								})
