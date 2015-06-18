@@ -8,17 +8,19 @@
 			<div class="col-sm-6">
 				<!-- FORM ============ -->
 
-				<form name="volumeForm" ng-submit="saveDocument()" novalidate>
+				<form name="documentForm" ng-submit="saveDocument()" novalidate>
 
 					<!-- NAME -->
-					<div class="form-group" ng-class="{ 'has-error' : volumeForm.name.$invalid && !volumeForm.name.$pristine }">
+					<div class="form-group" ng-class="{ 'has-error' : documentForm.name.$invalid && !documentForm.name.$pristine }">
 						<label>Name</label> <input type="text" name="name" class="form-control" ng-model="document.name" required>
-						<p ng-show="volumeForm.name.$invalid && !volumeForm.name.$pristine" class="help-block">Name is required.</p>
+						<p ng-show="documentForm.name.$invalid && !documentForm.name.$pristine" class="help-block">Name is required.</p>
 					</div>
-					<button type="submit" class="btn btn-primary" ng-disabled="volumeForm.$invalid">Submit</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="modal-footer"></div>
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="documentForm.$invalid" ng-click="ok()">Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>

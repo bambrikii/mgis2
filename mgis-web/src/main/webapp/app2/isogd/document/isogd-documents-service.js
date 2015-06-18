@@ -1,28 +1,69 @@
 angular.module("mgis.isogd.documents.service", [ "ui.router" ]) //
-.factory("ISOGDDocumentsService", function($http) {
+.factory("ISOGDDocumentsService", function($resource, $q) {
 	var factory = {};
-	var documents = [ //
-	{
-		"id" : 1,
-		"name" : "Document1"
-	}, //
-	{
-		"id" : 2,
-		"name" : "Document2"
-	}, //
-	{
-		"id" : 3,
-		"name" : "Document3"
-	} //
-	];
-	factory.list = function(bookId) {
-		return documents;
-	}
-	factory.save = function() {
 
+	factory.list = function(bookId, first, max) {
+		var deferred = $q.defer();
+		$resource('rest/isogd/documents/list.json', {
+			bookId : bookId
+		}, {
+			get : {
+				method : 'GET'
+			}
+		}).get({
+			first : first,
+			max : max
+		}, function(data) {
+			deferred.resolve(data);
+		});
+		return deferred.promise;
 	}
-	factory.remove = function() {
 
+	factory.get = function(documentId) {
+		var deferred = $q.defer();
+		$resource('rest/isogd/documents/:documentId.json', {
+			documentId : documentId
+		}).get({}, function(data) {
+			deferred.resolve(data);
+		});
+		return deferred.promise;
 	}
+
+	factory.save = function(bookId, document) {
+		var deferred = $q.defer();
+		$resource('rest/isogd/documents/:documentId.json', {
+			documentId : document.id
+		}, {
+			save : {
+				method : 'POST'
+			}
+		}).save({
+			id : bookId,
+			name : document.name,
+			book : {
+				id : bookId
+			}
+		}, function(data) {
+			deferred.resolve(data);
+		});
+		return deferred.promise;
+	}
+
+	factory.remove = function(documentId) {
+		var deferred = $q.defer();
+		$resource('rest/isogd/documents/:documentId.json', {
+			documentId : documentId
+		}, {
+			remove : {
+				method : 'DELETE'
+			}
+		}).remove({
+			id : documentId
+		}, function(data) {
+			deferred.resolve(data);
+		});
+		return deferred.promise;
+	}
+
 	return factory;
 });
