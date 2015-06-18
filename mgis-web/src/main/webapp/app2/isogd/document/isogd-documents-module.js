@@ -57,7 +57,7 @@ angular.module("mgis.isogd.documents", [ "ui.router", "ui.bootstrap",//
 								});
 							}
 							$scope.cancel = function() {
-								$modalinstance.dismiss('cancel');
+								$modalInstance.dismiss('cancel');
 							}
 						}
 					})
