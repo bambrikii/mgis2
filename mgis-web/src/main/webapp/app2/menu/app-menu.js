@@ -4,7 +4,7 @@ angular.module("mgis.menu.main", [ "ui.router" ]) //
 		restrict : "E",
 		replace : true,
 		transclude : true,
-		template : '<div class="navbar navbar-default"><div class="container-fluid"><menu-title>MGIS</menu-title><ul class="nav navbar-nav" ng-transclude></ul></div></div></div>'
+		template : '<div class="navbar navbar-default"><div class="container-fluid"><menu-title><span translate>MGIS</span></menu-title><ul class="nav navbar-nav" ng-transclude></ul></div></div></div>'
 
 	}
 }) //

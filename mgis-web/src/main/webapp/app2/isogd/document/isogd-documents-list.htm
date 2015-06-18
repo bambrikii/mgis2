@@ -9,12 +9,12 @@ stateParams: {{stateParams}}
 		{{document.name}}</a>
 
 	<div style="padding: 5px 15px;">
-		<button class="btn btn-info btn-sm" ng-click="editDocument(stateParams.bookId, document.id)">Edit Document</button>
-		<button class="btn btn-warning btn-sm" ng-click="removeDocument(document.id)">Delete the Document</button>
+		<button class="btn btn-info btn-sm" ng-click="editDocument(stateParams.bookId, document.id)" translate>ISOGD.EditTheDocument</button>
+		<button class="btn btn-warning btn-sm" ng-click="removeDocument(document.id)" translate>ISOGD.RemoveTheDocument</button>
 	</div>
 
 </div>
 
 <p style="float: right">
-	<button class="btn btn-info btn-sm" ng-click="addDocument(stateParams.bookId)">Add a New Document</button>
+	<button class="btn btn-info btn-sm" ng-click="addDocument(stateParams.bookId)" translate>ISOGD.AddADocument</button>
 </p>

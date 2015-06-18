@@ -35,7 +35,7 @@ angular.module("mgis.isogd.documents", [ "ui.router", "ui.bootstrap",//
 								updateGrid();
 							});
 						}
-						$scope.cance = function() {
+						$scope.cancel = function() {
 							$modalInstance.dismiss('cancel');
 						}
 					}

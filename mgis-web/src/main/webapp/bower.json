@@ -27,7 +27,10 @@
     "angular-route": "~1.4.0",
     "angular-ui-router": "~0.2.15",
     "angular-bootstrap": "~0.13.0",
-    "angular-resource": "~1.4.0"
+    "angular-resource": "~1.4.0",
+    "angular-translate": "~2.7.2",
+    "angular-translate-loader-url": "~2.7.2",
+    "angular-translate-loader-static-files": "~2.7.2"
   },
   "resolutions": {
     "jquery": "1.10.2",

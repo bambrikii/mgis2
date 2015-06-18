@@ -20,6 +20,8 @@
     <!-- <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script> -->
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <!-- <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script> -->
     <!-- <script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script> -->
     <!-- <script type="text/javascript" src="bower_components/angular-dialog-service/dist/dialogs-default-translations.js"></script> -->
@@ -47,10 +49,10 @@
 
 
     <main-menu>
-        <menu-item link="#/isogd">ISOGD</menu-item>
-        <menu-item link="#/oks">OKS</menu-item>
-        <menu-item link="#/">Item 3</menu-item>
-        <menu-item link="logout">Logout</menu-item>
+        <menu-item link="#/isogd"><span translate>ISOGD</span></menu-item>
+        <menu-item link="#/oks"><span translate>OKS</span></menu-item>
+        <menu-item link="#/"><span translaet>Item 3</span></menu-item>
+        <menu-item link="logout"><span translate>Logout</span></menu-item>
     </main-menu>
 
     <div class="container-fluid" ui-view></div>

@@ -1,19 +1,17 @@
 <div class="modal-header">
-	<h3 class="modal-title">Volume {{volume.name}}</h3>
+	<h3 class="modal-title">
+		<span translate>ISOGD.Volume</span>: {{volume.name}}
+	</h3>
 </div>
 <div class="modal-body">
 	<div class="container">
 		<div class="row">
-
 			<div class="col-sm-6">
-				<!-- FORM ============ -->
-
 				<form name="volumeForm" ng-submit="saveVolume()" novalidate>
-
 					<!-- NAME -->
 					<div class="form-group" ng-class="{ 'has-error' : volumeForm.name.$invalid && !volumeForm.name.$pristine }">
-						<label>Name</label> <input type="text" name="name" class="form-control" ng-model="volume.name" required>
-						<p ng-show="volumeForm.name.$invalid && !volumeForm.name.$pristine" class="help-block">Name is required.</p>
+						<label translate>ISOGD.Name</label> <input type="text" name="name" class="form-control" ng-model="volume.name" required>
+						<p ng-show="volumeForm.name.$invalid && !volumeForm.name.$pristine" class="help-block" translate>ISOGD.NameRequired</p>
 					</div>
 				</form>
 			</div>
@@ -21,6 +19,6 @@
 	</div>
 </div>
 <div class="modal-footer">
-	<button type="submit" class="btn btn-primary" ng-disabled="volumeForm.$invalid" ng-click="ok()">Submit</button>
-	<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+	<button type="submit" class="btn btn-primary" ng-disabled="volumeForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
 </div>

@@ -1,8 +1,8 @@
 var mgisApp = angular.module("mgis", //
-[ "ui.router", //
+[ "ui.router", 'pascalprecht.translate', //
 "mgis.isogd", "mgis.menu.main", "mgis.oks" ]);
 
-mgisApp.config(function($stateProvider, $urlRouterProvider) {
+mgisApp.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
 	// $urlRouterProvider //
 	// .when("isogd", function() {
 	// console.log("isogd...");
@@ -21,5 +21,16 @@ mgisApp.config(function($stateProvider, $urlRouterProvider) {
 		controller : "OKSCtrl"
 	}) //
 	;
+
+	$translateProvider.preferredLanguage('ru_RU');
+	// $translateProvider.translations({
+	// "MGIS" : "МГИС",
+	// "ISOGD" : "ИСОГД",
+	// "Logout" : "Выйти"
+	// });
+	$translateProvider.useStaticFilesLoader({
+		prefix : 'app2/i18n/locale-',
+		suffix : '.json'
+	});
 
 });
