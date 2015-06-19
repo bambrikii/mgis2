@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.Section;
+import ru.sovzond.mgis2.isogd.business.CloneManager;
 import ru.sovzond.mgis2.isogd.business.ISOGDBean;
 
 @RestController
@@ -42,17 +43,14 @@ public class SectionRESTController implements Serializable {
 		Section section2 = (id == 0) ? new Section() : isogdBean.readSection(id);
 		section2.setName(section.getName());
 		isogdBean.save(section2);
-		return section2;
+		return CloneManager.clone(section2);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
 	public Section read(@PathVariable Long id) {
 		Section section = isogdBean.readSection(id);
-		Section section2 = new Section();
-		section2.setId(section.getId());
-		section2.setName(section.getName());
-		return section2;
+		return CloneManager.clone(section);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")

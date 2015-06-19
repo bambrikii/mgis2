@@ -1,3 +1,5 @@
+<breadcrumb sectionId="{{stateParams.sectionId}}" bookId="{{stateParams.bookId}}" volumeId="{{stateParams.volumeId}}"></breadcrumb>
+
 <div ng-repeat="document in documents">
 	<div class="col-sm-12" style="padding: 5px;">
 		<a href="javascript:return false;" ng-click="editDocument(stateParams.volumeId, document.id)">{{document.name}}</a>

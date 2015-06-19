@@ -19,17 +19,56 @@ angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", "angularUtils.direct
 	// }) //
 	// ;
 }) //
-.controller("ISOGDCtrl", function($scope, $modal, ISOGDSectionsService, ISOGDVolumesService, ISOGDBooksService, ISOGDDocumentsService) {
+.controller("ISOGDCtrl", function($scope, $modal, ISOGDSectionsService, ISOGDBooksService, ISOGDVolumesService, ISOGDDocumentsService) {
 }) //
-.directive("breadcrumb", function() {
+.directive("breadcrumb", function(ISOGDSectionsService, ISOGDBooksService, ISOGDVolumesService) {
 	// element, ui-sref/href
 	return {
 		restrict : "E",
-		scope : {
-			section : "&",
-			book : "&",
-			volume : "&"
-		},
-		template : "<ol class=\"breadcrumb\"><li><a href=\"#\">Home</a></li><li><a href=\"#\">Library</a></li><li class=\"active\">Data</li></ol>"
+		// scope : {
+		// sectionId : "@",
+		// bookId : "@",
+		// volumeId : "@"
+		// },
+		templateUrl : 'app2/isogd/breadcrumb.htm',
+		link : function(scope, elem, args) {
+			var sectionId = args.sectionid;
+			var bookId = args.bookid;
+			var volumeId = args.volumeid;
+			var links = [];
+
+			links.push({
+				text : 'ISOGD.Sections',
+				sref : 'isogd.sections()',
+				active : true
+			});
+
+			if (sectionId) {
+				ISOGDSectionsService.get(sectionId).then(function(section) {
+					links.push({
+						text : section.name,
+						sref : 'isogd.books({sectionId:' + sectionId + '})',
+						active : true
+					});
+					if (bookId) {
+						ISOGDBooksService.get(bookId).then(function(book) {
+							links.push({
+								text : book.name,
+								sref : 'isogd.volumes({sectionId:' + sectionId + ',bookId:' + bookId + '})'
+							});
+							if (volumeId) {
+								ISOGDVolumesService.get(volumeId).then(function(volume) {
+									links.push({
+										text : volume.name,
+										sref : 'isogd.documents({sectionId:' + sectionId + ',bookId:' + bookId + ',volumeId:' + volumeId + '})'
+									});
+								})
+							}
+						});
+					}
+				});
+			}
+			scope.links = links;
+		}
 	}
 });

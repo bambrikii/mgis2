@@ -23,7 +23,7 @@ public class CloneManager {
 		return volume2;
 	}
 
-	static Section clone(Section section) {
+	public static Section clone(Section section) {
 		Section section2 = new Section();
 		section2.setId(section.getId());
 		section2.setName(section.getName());
