@@ -1,36 +1,46 @@
 {
-	"MGIS" : "МГИС",
-	"ISOGD" : "ИСОГД",
-	"OKS" : "ОКС",
-	"Logout" : "Выйти",
+    "MGIS": "МГИС",
+    "ISOGD": "ИСОГД",
+    "OKS": "ОКС",
 
-	"Submit" : "Применить",
-	"Cancel" : "Отменить",
-	"Confirm" : "Подвтердить",
-	"ConfirmDeletion" : "Подвердите удаление",
+    "ADMINISTRATION": "Администрирование",
+    "ADMINISTRATION.Users": "Пользователи",
+    "ADMINISTRATION.Groups": "Группы",
+    "ADMINISTRATION.Roles": "Роли",
+    "Logout": "Выйти",
 
-	"ISOGD.AddASection": "Добавить Раздел",
-	"ISOGD.EditTheSection": "Редактировать Раздел",
-	"ISOGD.RemoveTheSection": "Удалить Раздел",
-	"ISOGD.Section" : "Раздел",
+    "Submit": "Применить",
+    "Cancel": "Отменить",
+    "Confirm": "Подвтердить",
+    "ConfirmDeletion": "Подвердите удаление",
 
-	"ISOGD.Sections" : "Разделы",
+    "ISOGD.AddASection": "Добавить Раздел",
+    "ISOGD.EditTheSection": "Редактировать Раздел",
+    "ISOGD.RemoveTheSection": "Удалить Раздел",
+    "ISOGD.Section": "Раздел",
 
-	"ISOGD.AddAVolume": "Добавить Том",
-	"ISOGD.EditTheVolume": "Редактировать Том",
-	"ISOGD.RemoveTheVolume": "Удалить Том",
-	"ISOGD.Volume" : "Том",
+    "ISOGD.Sections": "Разделы",
 
-	"ISOGD.AddABook": "Добавить Книгу",
-	"ISOGD.EditTheBook": "Редактировать Книгу",
-	"ISOGD.RemoveTheBook": "Удалить Книгу",
-	"ISOGD.Book" : "Книга",
+    "ISOGD.AddAVolume": "Добавить Том",
+    "ISOGD.EditTheVolume": "Редактировать Том",
+    "ISOGD.RemoveTheVolume": "Удалить Том",
+    "ISOGD.Volume": "Том",
 
-	"ISOGD.AddADocument": "Добавить Документ",
-	"ISOGD.EditTheDocument": "Редактировать Документ",
-	"ISOGD.RemoveTheDocument": "Удалить Документ",
-	"ISOGD.Document": "Документ",
-	
-	"ISOGD.Name" : "Наименование",
-	"ISOGD.NameRequired" : "Поле &lt;Наименование&gt; обязательное"
+    "ISOGD.AddABook": "Добавить Книгу",
+    "ISOGD.EditTheBook": "Редактировать Книгу",
+    "ISOGD.RemoveTheBook": "Удалить Книгу",
+    "ISOGD.Book": "Книга",
+
+    "ISOGD.AddADocument": "Добавить Документ",
+    "ISOGD.EditTheDocument": "Редактировать Документ",
+    "ISOGD.RemoveTheDocument": "Удалить Документ",
+    "ISOGD.Document": "Документ",
+
+    "ISOGD.Name": "Наименование",
+    "ISOGD.NameRequired": "Поле &lt;Наименование&gt; обязательное",
+
+    "ISOGD.Classifiers": "Классификаторы",
+    "ISOGD.Classifiers.DocumentTypes": "Типы документов",
+    "ISOGD.Classifiers.DocumentRepresentations": "Формы представления документов",
+    "ISOGD.Classifiers.DocumentStructure": "Структура документов"
 }

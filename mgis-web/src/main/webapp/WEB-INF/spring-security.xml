@@ -11,7 +11,7 @@
 		<session-management invalid-session-url="/login">
 			<concurrency-control max-sessions="1" expired-url="/login" />
 		</session-management>
-		<form-login login-page="/login" default-target-url="/" always-use-default-target="true" authentication-failure-url="/login"
+		<form-login login-page="/login" default-target-url="/mgis2" always-use-default-target="true" authentication-failure-url="/login"
 			username-parameter="username" password-parameter="password" />
 		<intercept-url pattern="/login*" access="permitAll()" />
 		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
