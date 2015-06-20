@@ -52,7 +52,7 @@ public class UserDAOTest {
 		testUser.setUsername(username);
 		testUser.setPassword("testPassword");
 		testUser.setActive(true);
-		userDAO.persist(testUser);
+		userDAO.save(testUser);
 		Assert.assertNotNull(testUser.getId());
 		Assert.assertNotEquals(Long.valueOf(0), testUser.getId());
 
@@ -73,7 +73,7 @@ public class UserDAOTest {
 		testUser.setActive(true);
 		testUser.getPrivileges().add(priv1);
 		testUser.getPrivileges().add(priv2);
-		userDAO.persist(testUser);
+		userDAO.save(testUser);
 
 		testUser = userDAO.findByName(username);
 		Assert.assertNotNull(testUser);
@@ -93,14 +93,14 @@ public class UserDAOTest {
 		testUser.setPassword("testPassword");
 		testUser.setActive(true);
 		testUser.getPrivileges().add(priv1);
-		userDAO.persist(testUser);
+		userDAO.save(testUser);
 		Assert.assertNotNull(testUser);
 
 		testUser = userDAO.findByName(username);
 		Assert.assertTrue(testUser.getPrivileges().contains(priv1));
 
 		testUser.getPrivileges().remove(priv1);
-		userDAO.persist(testUser);
+		userDAO.save(testUser);
 		Assert.assertFalse(testUser.getPrivileges().contains(priv1));
 
 		userDAO.delete(testUser);
@@ -109,7 +109,7 @@ public class UserDAOTest {
 	private Privilege createPrivilege() {
 		Privilege testPrivilege = new Privilege();
 		testPrivilege.setName("testPrivilege-" + UUID.randomUUID().toString());
-		privilegeDAO.persist(testPrivilege);
+		privilegeDAO.save(testPrivilege);
 		return testPrivilege;
 	}
 

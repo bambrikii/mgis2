@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.dataaccess.base;
+package ru.sovzond.mgis2.dataaccess.base.impl;
 
 import java.util.ArrayList;
 import java.util.List;

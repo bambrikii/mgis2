@@ -37,7 +37,7 @@ public class GroupDAOTest {
 		String groupname1 = "testGroup-" + UUID.randomUUID().toString();
 		Group testGroup = new Group();
 		testGroup.setGroupname(groupname1);
-		groupDAO.persist(testGroup);
+		groupDAO.save(testGroup);
 		Assert.assertTrue(testGroup.getId() > 0);
 
 		testGroup = groupDAO.findByName(groupname1);
@@ -58,15 +58,15 @@ public class GroupDAOTest {
 		try {
 			testGroup1 = new Group();
 			testGroup1.setGroupname(groupname1);
-			groupDAO.persist(testGroup1);
+			groupDAO.save(testGroup1);
 
 			// adding parent
 			testGroup2 = new Group();
 			testGroup2.setGroupname(groupname2);
 			testGroup2.setParentGroup(testGroup1);
 			testGroup1.getChildGroups().add(testGroup2);
-			// groupDAO.persist(testGroup1);
-			groupDAO.persist(testGroup2);
+			// groupDAO.save(testGroup1);
+			groupDAO.save(testGroup2);
 
 			Group testGroup1f2 = groupDAO.findByName(groupname1);
 			Assert.assertTrue("Child group not int childGroup collection!", testGroup1f2.getChildGroups().contains(testGroup2));
@@ -77,7 +77,7 @@ public class GroupDAOTest {
 			// removing parent
 			testGroup1f2.getChildGroups().remove(testGroup2);
 			testGroup2.setParentGroup(null);
-			groupDAO.persist(testGroup1f2);
+			groupDAO.save(testGroup1f2);
 			Group testGroup1f3 = groupDAO.findByName(groupname1);
 			Assert.assertTrue("Child group still not removed!", !testGroup1f3.getChildGroups().contains(testGroup2));
 
@@ -106,18 +106,18 @@ public class GroupDAOTest {
 		try {
 			privilege = new Privilege();
 			privilege.setName(privilegename1);
-			privilegeDAO.persist(privilege);
+			privilegeDAO.save(privilege);
 
 			group = new Group();
 			group.setGroupname(groupname1);
 			group.getPrivileges().add(privilege);
-			groupDAO.persist(group);
+			groupDAO.save(group);
 
 			Group group2 = groupDAO.findByName(groupname1);
 			Assert.assertTrue(group2.getPrivileges().contains(privilege));
 
 			group2.getPrivileges().remove(privilege);
-			groupDAO.persist(group);
+			groupDAO.save(group);
 
 			Group group3 = groupDAO.findByName(groupname1);
 			Assert.assertTrue(!group3.getPrivileges().contains(privilege));
@@ -145,13 +145,13 @@ public class GroupDAOTest {
 			user.setUsername(username1);
 			user.setPassword(username1);
 			user.setActive(true);
-			userDAO.persist(user);
+			userDAO.save(user);
 
 			group = new Group();
 			group.setGroupname(groupname1);
 			user.getGroups().add(group);
 			group.getUsers().add(user);
-			groupDAO.persist(group);
+			groupDAO.save(group);
 
 			Group group2 = groupDAO.findByName(groupname1);
 			Assert.assertTrue(group2.getUsers().contains(user));
@@ -160,7 +160,7 @@ public class GroupDAOTest {
 
 			group2.getUsers().remove(user);
 			user2.getGroups().remove(group2);
-			groupDAO.persist(group);
+			groupDAO.save(group);
 
 			Group group3 = groupDAO.findByName(groupname1);
 			Assert.assertTrue(!group3.getUsers().contains(user));

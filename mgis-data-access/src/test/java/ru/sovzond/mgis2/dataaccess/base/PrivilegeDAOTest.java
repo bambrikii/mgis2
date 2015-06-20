@@ -28,7 +28,7 @@ public class PrivilegeDAOTest {
 
 		Privilege testPrivilege = new Privilege();
 		testPrivilege.setName(name);
-		privilegeDAO.persist(testPrivilege);
+		privilegeDAO.save(testPrivilege);
 		Assert.assertNotNull(testPrivilege.getId());
 		Assert.assertNotEquals(Long.valueOf(0), testPrivilege.getId());
 

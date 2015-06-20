@@ -32,25 +32,25 @@ public class DocumentDaoTest {
 	@Transactional
 	public void testDocument() {
 		Section section = new Section();
-		sectionDao.persist(section);
+		sectionDao.save(section);
 		Assert.assertTrue(section.getId() != null);
 
 		try {
 			Book book = new Book();
 			book.setSection(section);
-			bookDao.persist(book);
+			bookDao.save(book);
 			Assert.assertTrue(book.getId() != null);
 
 			try {
 				Volume volume = new Volume();
 				volume.setBook(book);
-				volumeDao.persist(volume);
+				volumeDao.save(volume);
 				Assert.assertTrue(volume.getId() != null);
 
 				try {
 					Document document = new Document();
 					document.setVolume(volume);
-					documentDao.persist(document);
+					documentDao.save(document);
 
 					Assert.assertTrue(section.getId() != null);
 					documentDao.delete(document);

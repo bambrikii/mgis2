@@ -1,8 +1,9 @@
-package ru.sovzond.mgis2.dataaccess.base;
+package ru.sovzond.mgis2.dataaccess.base.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.sovzond.mgis2.dataaccess.base.IDAOBase;
 
 public abstract class DAOBase<T> implements IDAOBase<T> {
 
@@ -14,7 +15,7 @@ public abstract class DAOBase<T> implements IDAOBase<T> {
 	}
 
 	@Override
-	public void persist(T entity) {
+	public void save(T entity) {
 		getSession().persist(entity);
 	}
 

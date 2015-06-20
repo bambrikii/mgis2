@@ -3,8 +3,8 @@ package ru.sovzond.mgis2.isogd;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import ru.sovzond.mgis2.dataaccess.base.PageableDAOBase;
-import ru.sovzond.mgis2.dataaccess.base.PageableFilter;
+import ru.sovzond.mgis2.dataaccess.base.impl.PageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PageableFilter;
 
 @Repository
 public class VolumeDao extends PageableDAOBase<Volume> {
