@@ -1,9 +1,9 @@
 package ru.sovzond.mgis2.isogd.business;
 
 import ru.sovzond.mgis2.isogd.Book;
-import ru.sovzond.mgis2.isogd.Document;
 import ru.sovzond.mgis2.isogd.Section;
 import ru.sovzond.mgis2.isogd.Volume;
+import ru.sovzond.mgis2.isogd.document.Document;
 
 public class CloneManager {
 

@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ru.sovzond.mgis2.business.PageableContainer;
-import ru.sovzond.mgis2.isogd.Document;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.business.CloneManager;
 import ru.sovzond.mgis2.isogd.business.ISOGDBean;
+import ru.sovzond.mgis2.isogd.document.Document;
 
 @RestController
 @RequestMapping("/isogd/documents")

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import ru.sovzond.mgis2.dataaccess.base.PageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableFilter;
+import ru.sovzond.mgis2.isogd.document.Document;
 
 @Repository
 public class DocumentDao extends PageableDAOBase<Document> {

@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ru.sovzond.mgis2.isogd.document.Document;
+
 /**
  * @author Alexander Arakelyan
  */

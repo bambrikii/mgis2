@@ -10,12 +10,12 @@ import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.PageableFilter;
 import ru.sovzond.mgis2.isogd.Book;
 import ru.sovzond.mgis2.isogd.BookDao;
-import ru.sovzond.mgis2.isogd.Document;
 import ru.sovzond.mgis2.isogd.DocumentDao;
 import ru.sovzond.mgis2.isogd.Section;
 import ru.sovzond.mgis2.isogd.SectionDao;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.VolumeDao;
+import ru.sovzond.mgis2.isogd.document.Document;
 
 @Service
 public class ISOGDBean {

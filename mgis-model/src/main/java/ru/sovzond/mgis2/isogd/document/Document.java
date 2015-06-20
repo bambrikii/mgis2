@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.isogd;
+package ru.sovzond.mgis2.isogd.document;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,8 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import ru.sovzond.mgis2.isogd.Volume;
 
 /**
  * @author Alexander Arakelyan
@@ -28,6 +31,8 @@ public class Document {
 	@ManyToOne(optional = false)
 	private Volume volume;
 
+	@OneToOne(mappedBy = "document")
+	private SpecialPart specialPart;
 
 	public Long getId() {
 		return id;
