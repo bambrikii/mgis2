@@ -3,3 +3,4 @@
 .project
 .tern-project
 target
+*.iml
