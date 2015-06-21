@@ -1,0 +1,14 @@
+<h4 translate>ADMINISTRATION.Privileges</h4>
+
+<div ng-controller="AdminPrivilegesController">
+    <div ng-repeat="privilege in privileges" class="" style="padding-bottom: 41px">
+        <div class="col-sm-2">{{privilege.id}}</div>
+        <div class="col-sm-4">{{privilege.name}}</div>
+        <div class="col-sm-4">{{privilege.roles}}</div>
+        <div class="col-sm-2">
+            <button class="btn btn-info x-btn-disabled" ng-click="edit()" translate>Edit</button>
+            <button class="btn btn-danger x-btn-disabled" ng-click="remove()" translate>Remove</button>
+        </div>
+    </div>
+    <button class="btn btn-info x-btn-disabled" ng-click="add()" translate>Add</button>
+</div>

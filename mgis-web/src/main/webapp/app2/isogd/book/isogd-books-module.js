@@ -66,7 +66,7 @@ angular.module("mgis.isogd.books", [ "ui.router", "ui.bootstrap", //
 
 			$scope.removeBook = function(bookId) {
 				var modalInstance = $modal.open({
-					templateUrl : 'app2/isogd/isogd-confirm-deletion.htm',
+					templateUrl : 'app2/common/confirm-deletion.htm',
 					controller : function($scope, $modalInstance) {
 						$scope.ok = function() {
 							$modalInstance.close("");

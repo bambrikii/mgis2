@@ -1,33 +1,23 @@
-angular.module("mgis.admin", ["ui.router"]) //
+angular.module("mgis.admin", ["ui.router", //
+    "mgis.admin.users", "mgis.admin.privileges"
+]) //
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider //
             .state("admin", {
                 url: "/admin",
-                templateUrl: "app2/admin/admin.htm",
-                controller: function ($scope) {
-                    console.log("admin");
-                }
+                templateUrl: "app2/admin/admin.htm"
             }) //
             .state("admin.users", {
                 url: "/users",
-                templateUrl: "app2/admin/users-list.htm",
-                controller: function ($scope) {
-                    console.log("users");
-                }
+                templateUrl: "app2/admin/users/admin-users-list.htm"
             }) //
             .state("admin.groups", {
                 url: "/groups",
-                templateUrl: "app2/admin/groups-list.htm",
-                controller: function ($scope) {
-                    console.log("groups");
-                }
+                templateUrl: "app2/admin/groups/groups-list.htm"
             }) //
-            .state("admin.roles", {
-                url: "/roles",
-                templateUrl: "app2/admin/roles-list.htm",
-                controller: function ($scope) {
-                    console.log("roles");
-                }
+            .state("admin.privileges", {
+                url: "/privileges",
+                templateUrl: "app2/admin/privileges/privileges-list.htm"
             }) //
         ;
     }) //

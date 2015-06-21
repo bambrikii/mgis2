@@ -5,7 +5,7 @@
 		<a ui-sref="isogd.volumes({sectionId: stateParams.sectionId, bookId:book.id})">{{book.name}}</a>
 		<div style="float: right">
 			<button class="btn btn-info btn-sm" ng-click="editBook(stateParams.sectionId, book.id)" translate>ISOGD.EditTheBook</button>
-			<button class="btn btn-warning btn-sm" ng-click="removeBook(book.id)" translate>ISOGD.RemoveTheBook</button>
+			<button class="btn btn-danger btn-sm" ng-click="removeBook(book.id)" translate>ISOGD.RemoveTheBook</button>
 		</div>
 	</div>
 </div>

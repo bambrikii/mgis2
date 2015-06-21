@@ -6,13 +6,22 @@
     "ADMINISTRATION": "Администрирование",
     "ADMINISTRATION.Users": "Пользователи",
     "ADMINISTRATION.Groups": "Группы",
-    "ADMINISTRATION.Roles": "Роли",
+    "ADMINISTRATION.Privileges": "Роли",
+
+    "Admin.User.UserName": "Имя пользователя",
+    "Admin.User.Password": "Пароль",
+    "Admin.User.Active": "Действует",
+    "Admin.User.Roles": "Роли",
+
     "Logout": "Выйти",
 
     "Submit": "Применить",
     "Cancel": "Отменить",
     "Confirm": "Подвтердить",
     "ConfirmDeletion": "Подвердите удаление",
+    "Edit": "Редактировать",
+    "Remove": "Удалить",
+    "Add": "Добавить",
 
     "ISOGD.AddASection": "Добавить Раздел",
     "ISOGD.EditTheSection": "Редактировать Раздел",

@@ -27,6 +27,7 @@
     <script type="text/javascript"
             src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <script type="text/javascript" src="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap-multiselect/angular-bootstrap-multiselect.js"></script>
     <!-- <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script> -->
     <!-- <script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script> -->
     <!-- <script type="text/javascript" src="bower_components/angular-dialog-service/dist/dialogs-default-translations.js"></script> -->
@@ -47,6 +48,10 @@
     <script type="text/javascript" src="app2/isogd/isogd.js"></script>
     <script type="text/javascript" src="app2/isogd/classifiers/classifiers.js"></script>
     <script type="text/javascript" src="app2/admin/admin.js"></script>
+    <script type="text/javascript" src="app2/admin/users/admin-users-service.js"></script>
+    <script type="text/javascript" src="app2/admin/users/admin-users-module.js"></script>
+    <script type="text/javascript" src="app2/admin/privileges/admin-privileges-service.js"></script>
+    <script type="text/javascript" src="app2/admin/privileges/admin-privileges-module.js"></script>
     <script type="text/javascript" src="app2/oks/oks.js"></script>
 
 </head>

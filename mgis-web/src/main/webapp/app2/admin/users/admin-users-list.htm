@@ -1,0 +1,14 @@
+<h4 translate>ADMINISTRATION.Users</h4>
+
+<div ng-controller="AdminUsersController">
+    <div ng-repeat="user in users" class="" style="padding-bottom: 41px">
+        <div class="col-sm-2">{{user.id}}</div>
+        <div class="col-sm-4">{{user.username}}</div>
+        <div class="col-sm-4">{{user.roles}}</div>
+        <div class="col-sm-2">
+            <button class="btn btn-info" ng-click="edit(user.id)" translate>Edit</button>
+            <button class="btn btn-danger" ng-click="remove(user.id)" translate>Remove</button>
+        </div>
+    </div>
+    <button class="btn btn-info" ng-click="add()" translate>Add</button>
+</div>

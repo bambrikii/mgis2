@@ -69,7 +69,7 @@ angular.module("mgis.isogd.documents", [ "ui.router", "ui.bootstrap",//
 
 			$scope.removeDocument = function(documentId) {
 				var modalInstance = $modal.open({
-					templateUrl : 'app2/isogd/isogd-confirm-deletion.htm',
+					templateUrl : 'app2/common/confirm-deletion.htm',
 					controller : function($scope, $modalInstance) {
 						$scope.ok = function() {
 							ISOGDDocumentsService.remove(documentId).then(function(data) {

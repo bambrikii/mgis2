@@ -25,17 +25,8 @@ public class PrivilegeDAO extends PageableDAOBase<Privilege> implements IPrivile
 	}
 
 	@Override
-	public Privilege findByName(String name) {
-		return (Privilege) createCriteria().add(Restrictions.eq(NAME, name)).uniqueResult();
+	public Privilege findByName(String privilegeName) {
+		return (Privilege) createCriteria().add(Restrictions.eq(NAME, privilegeName)).uniqueResult();
 	}
 
-	@Override
-	public List<Privilege> list(int firstResult, int maxResults) {
-		return null;
-	}
-
-	@Override
-	public Number count() {
-		return null;
-	}
 }

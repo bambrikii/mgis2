@@ -68,7 +68,7 @@ angular.module("mgis.isogd.volumes", [ "ui.router", "ui.bootstrap",//
 			}
 			$scope.removeVolume = function(volumeId) {
 				var modalInstance = $modal.open({
-					templateUrl : 'app2/isogd/isogd-confirm-deletion.htm',
+					templateUrl : 'app2/common/confirm-deletion.htm',
 					controller : function($scope, $modalInstance) {
 						$scope.ok = function() {
 							$modalInstance.close("");
