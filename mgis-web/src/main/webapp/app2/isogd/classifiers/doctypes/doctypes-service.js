@@ -2,7 +2,7 @@
  * Created by Alexander Arakelyan on 22.06.15.
  */
 angular.module("mgis.isogd.classifiers.doctypes.service", ["ngResource"]) //
-    .factory("ISOGDDocTypesService", function () {
+    .factory("ISOGDDocTypesService", function ($resource, $q) {
         var res = $resource("rest/isogd/classifiers/doctypes/:id.json");
         return {
             get: function (id, first, max) {

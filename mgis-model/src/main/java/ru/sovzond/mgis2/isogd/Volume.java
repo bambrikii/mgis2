@@ -1,28 +1,18 @@
 package ru.sovzond.mgis2.isogd;
 
+import ru.sovzond.mgis2.isogd.document.Document;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import ru.sovzond.mgis2.isogd.document.Document;
+import java.util.stream.Collectors;
 
 /**
  * @author Alexander Arakelyan
  */
 @Entity
 @Table(name = "isogd_volume")
-public class Volume {
+public class Volume implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
@@ -36,7 +26,7 @@ public class Volume {
 	@ManyToOne(optional = false)
 	private Book book;
 
-	@OneToMany(mappedBy = "volume", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })
+	@OneToMany(mappedBy = "volume", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
 	private List<Document> documents = new ArrayList<Document>();
 
 	public Long getId() {
@@ -71,4 +61,19 @@ public class Volume {
 		this.documents = documents;
 	}
 
+	public Volume clone() {
+		Volume volume = new Volume();
+		volume.setId(id);
+		volume.setName(name);
+		volume.setBook(book.clone());
+		volume.setDocuments(documents.stream().map(document -> {
+			Document document2 = new Document();
+			document2.setId(document.getId());
+			document2.setDocNumber(document.getDocNumber());
+			document2.setDocDate(document.getDocDate());
+			document2.setName(document.getName());
+			return document2;
+		}).collect(Collectors.toList()));
+		return volume;
+	}
 }

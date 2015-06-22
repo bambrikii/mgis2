@@ -5,64 +5,78 @@ import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Alexander Arakelyan
  */
 @Entity
 @Table(name = "isogd_book")
-public class Book {
+public class Book implements Cloneable {
 
-    @Id
-    @SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-    @Column
-    private Long id;
+	@Id
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+	@Column
+	private Long id;
 
-    @Column
-    private String name;
+	@Column
+	private String name;
 
-    @ManyToOne(optional = false)
-    private Section section;
-
-
-    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
-    private List<Volume> volumes = new ArrayList<>();
+	@ManyToOne(optional = false)
+	private Section section;
 
 
-    @ManyToOne
-    private DocumentObject documentObject;
+	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+	private List<Volume> volumes = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@ManyToOne
+	private DocumentObject documentObject;
 
-    public String getName() {
-        return name;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Section getSection() {
-        return section;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setSection(Section section) {
-        this.section = section;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public List<Volume> getVolumes() {
-        return volumes;
-    }
+	public Section getSection() {
+		return section;
+	}
 
-    public void setVolumes(List<Volume> volumes) {
-        this.volumes = volumes;
-    }
+	public void setSection(Section section) {
+		this.section = section;
+	}
 
+	public List<Volume> getVolumes() {
+		return volumes;
+	}
+
+	public void setVolumes(List<Volume> volumes) {
+		this.volumes = volumes;
+	}
+
+	public Book clone() {
+		Book book2 = new Book();
+		book2.setId(id);
+		book2.setName(name);
+		book2.setSection(section.clone());
+		book2.setVolumes(volumes.stream().map(volume -> {
+			Volume volume2 = new Volume();
+			volume2.setId(volume.getId());
+			volume2.setName(volume.getName());
+			return volume2;
+		}).collect(Collectors.toList()));
+		return book2;
+	}
 }

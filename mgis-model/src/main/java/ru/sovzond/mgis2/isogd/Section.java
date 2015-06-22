@@ -2,17 +2,17 @@ package ru.sovzond.mgis2.isogd;
 
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentClass;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Alexander Arakelyan
  */
 @Entity
 @Table(name = "isogd_section")
-public class Section {
+public class Section implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
@@ -23,7 +23,7 @@ public class Section {
 	@Column
 	private String name;
 
-	@OneToMany(mappedBy = "section", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })
+	@OneToMany(mappedBy = "section", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
 	private List<Book> books = new ArrayList<>();
 
 	@ManyToOne
@@ -51,6 +51,27 @@ public class Section {
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
+	}
+
+	public DocumentClass getDocumentClass() {
+		return documentClass;
+	}
+
+	public void setDocumentClass(DocumentClass documentClass) {
+		this.documentClass = documentClass;
+	}
+
+	public Section clone() {
+		Section section = new Section();
+		section.setId(id);
+		section.setName(name);
+		section.setBooks(books.stream().map(book -> {
+			Book book2 = new Book();
+			book2.setId(book.getId());
+			book2.setName(book.getName());
+			return book2;
+		}).collect(Collectors.toList()));
+		return section;
 	}
 
 }

@@ -1,22 +1,14 @@
 package ru.sovzond.mgis2.web.isogd;
 
-import java.io.Serializable;
-
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.Section;
-import ru.sovzond.mgis2.isogd.business.CloneManager;
-import ru.sovzond.mgis2.isogd.business.ISOGDBean;
+import ru.sovzond.mgis2.isogd.business.SectionBean;
+
+import javax.transaction.Transactional;
+import java.io.Serializable;
 
 @RestController
 @RequestMapping("/isogd/sections")
@@ -29,7 +21,7 @@ public class SectionRESTController implements Serializable {
 	private static final long serialVersionUID = -4574289150137039686L;
 
 	@Autowired
-	private ISOGDBean isogdBean;
+	private SectionBean isogdBean;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
@@ -43,14 +35,13 @@ public class SectionRESTController implements Serializable {
 		Section section2 = (id == 0) ? new Section() : isogdBean.readSection(id);
 		section2.setName(section.getName());
 		isogdBean.save(section2);
-		return CloneManager.clone(section2);
+		return section2.clone();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
 	public Section read(@PathVariable Long id) {
-		Section section = isogdBean.readSection(id);
-		return CloneManager.clone(section);
+		return isogdBean.readSection(id).clone();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")

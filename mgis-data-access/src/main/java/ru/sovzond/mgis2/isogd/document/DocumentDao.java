@@ -1,10 +1,11 @@
-package ru.sovzond.mgis2.isogd;
+package ru.sovzond.mgis2.isogd.document;
 
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableFilter;
+import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.document.Document;
 
 @Repository

@@ -16,50 +16,76 @@ import java.util.stream.Collectors;
 @Table(name = "isogd_cls_document_class")
 public class DocumentClass implements Cloneable {
 
-    @Id
-    @SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-    @Column
-    private Long id;
+	@Id
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+	@Column
+	private Long id;
 
-    /**
-     * Код объекта
-     */
-    @Column(unique = true, nullable = false)
-    private String code;
+	/**
+	 * Код объекта
+	 */
+	@Column(unique = true, nullable = false)
+	private String code;
 
-    @OneToMany(mappedBy = "documentClass", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
-    private List<DocumentObject> documentObjects = new ArrayList<DocumentObject>();
+	@OneToMany(mappedBy = "documentClass", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+	private List<DocumentObject> documentObjects = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
+	@Column
+	private boolean hasCommonPart;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Column
+	private boolean hasSpecialPart;
 
-    public String getCode() {
-        return code;
-    }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public List<DocumentObject> getDocumentObjects() {
-        return documentObjects;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setDocumentObjects(List<DocumentObject> documentObjects) {
-        this.documentObjects = documentObjects;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public DocumentClass clone() {
-        DocumentClass documentClass = new DocumentClass();
-        documentClass.setId(id);
-        documentClass.setCode(code);
-        documentClass.setDocumentObjects(documentObjects.stream().map(documentObject -> documentObject.clone()).collect(Collectors.toList()));
-        return documentClass;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public List<DocumentObject> getDocumentObjects() {
+		return documentObjects;
+	}
+
+	public void setDocumentObjects(List<DocumentObject> documentObjects) {
+		this.documentObjects = documentObjects;
+	}
+
+	public boolean isHasCommonPart() {
+		return hasCommonPart;
+	}
+
+	public void setHasCommonPart(boolean hasCommonPart) {
+		this.hasCommonPart = hasCommonPart;
+	}
+
+	public boolean isHasSpecialPart() {
+		return hasSpecialPart;
+	}
+
+	public void setHasSpecialPart(boolean hasSpecialPart) {
+		this.hasSpecialPart = hasSpecialPart;
+	}
+
+	public DocumentClass clone() {
+		DocumentClass documentClass = new DocumentClass();
+		documentClass.setId(id);
+		documentClass.setCode(code);
+		documentClass.setHasCommonPart(hasCommonPart);
+		documentClass.setHasCommonPart(hasSpecialPart);
+		documentClass.setDocumentObjects(documentObjects.stream().map(documentObject -> documentObject.clone()).collect(Collectors.toList()));
+		return documentClass;
+	}
+
 }

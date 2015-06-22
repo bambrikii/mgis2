@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import ru.sovzond.mgis2.dataaccess.base.HibernateConfiguration;
 import ru.sovzond.mgis2.isogd.document.Document;
+import ru.sovzond.mgis2.isogd.document.DocumentDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = HibernateConfiguration.class)
