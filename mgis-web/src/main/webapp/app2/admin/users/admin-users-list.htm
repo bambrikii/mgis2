@@ -2,10 +2,15 @@
 
 <div ng-controller="AdminUsersController">
     <div ng-repeat="user in users" class="" style="padding-bottom: 41px">
-        <div class="col-sm-2">{{user.id}}</div>
-        <div class="col-sm-4">{{user.username}}</div>
-        <div class="col-sm-4">{{user.roles}}</div>
-        <div class="col-sm-2">
+        <div class="col-sm-1">{{user.id}}</div>
+        <div class="col-sm-2">{{user.username}}</div>
+        <div class="col-sm-1"><span translate>{{user.active}}</span></div>
+        <div class="col-sm-4">
+            <span ng-repeat="priv in user.privileges">
+                {{priv.name}}
+            </span>
+        </div>
+        <div class="col-sm-4">
             <button class="btn btn-info" ng-click="edit(user.id)" translate>Edit</button>
             <button class="btn btn-danger" ng-click="remove(user.id)" translate>Remove</button>
         </div>

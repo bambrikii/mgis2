@@ -11,6 +11,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import ru.sovzond.mgis2.isogd.Volume;
+import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
+import ru.sovzond.mgis2.isogd.classifiers.documents.representation.RepresentationFormat;
+import ru.sovzond.mgis2.common.classifiers.oktmo.Territory;
+
+import java.util.Date;
 
 /**
  * @author Alexander Arakelyan
@@ -19,43 +24,89 @@ import ru.sovzond.mgis2.isogd.Volume;
 @Table(name = "isogd_document")
 public class Document {
 
-	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-	@Column
-	private Long id;
+    @Id
+    @SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+    @Column
+    private Long id;
 
-	@Column
-	private String name;
+    @Column
+    private String docNumber;
 
-	@ManyToOne(optional = false)
-	private Volume volume;
+    @Column
+    private Date docDate;
 
-	@OneToOne(mappedBy = "document")
-	private SpecialPart specialPart;
+    @Column
+    private String name;
 
-	public Long getId() {
-		return id;
-	}
+    @ManyToOne(optional = false)
+    private Volume volume;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @OneToOne(mappedBy = "document")
+    private SpecialPart specialPart;
 
-	public String getName() {
-		return name;
-	}
+    @ManyToOne
+    private DocumentSubObject documentSubObject;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @ManyToOne
+    private RepresentationFormat representationFormat;
 
-	public Volume getVolume() {
-		return volume;
-	}
+    @ManyToOne
+    private Territory oktmo;
 
-	public void setVolume(Volume volume) {
-		this.volume = volume;
-	}
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Volume getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Volume volume) {
+        this.volume = volume;
+    }
+
+    public String getDocNumber() {
+        return docNumber;
+    }
+
+    public void setDocNumber(String docNumber) {
+        this.docNumber = docNumber;
+    }
+
+    public Date getDocDate() {
+        return docDate;
+    }
+
+    public void setDocDate(Date docDate) {
+        this.docDate = docDate;
+    }
+
+    public RepresentationFormat getRepresentationFormat() {
+        return representationFormat;
+    }
+
+    public void setRepresentationFormat(RepresentationFormat representationFormat) {
+        this.representationFormat = representationFormat;
+    }
+
+    public Territory getOktmo() {
+        return oktmo;
+    }
+
+    public void setOktmo(Territory oktmo) {
+        this.oktmo = oktmo;
+    }
 }

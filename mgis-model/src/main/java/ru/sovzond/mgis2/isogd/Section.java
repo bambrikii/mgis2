@@ -1,18 +1,11 @@
 package ru.sovzond.mgis2.isogd;
 
+import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentClass;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Alexander Arakelyan
@@ -31,7 +24,10 @@ public class Section {
 	private String name;
 
 	@OneToMany(mappedBy = "section", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })
-	private List<Book> books = new ArrayList<Book>();
+	private List<Book> books = new ArrayList<>();
+
+	@ManyToOne
+	private DocumentClass documentClass;
 
 	public Long getId() {
 		return id;

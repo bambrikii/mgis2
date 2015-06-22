@@ -1,19 +1,10 @@
 package ru.sovzond.mgis2.isogd;
 
+import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 /**
  * @author Alexander Arakelyan
@@ -22,51 +13,56 @@ import javax.persistence.Table;
 @Table(name = "isogd_book")
 public class Book {
 
-	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-	@Column
-	private Long id;
+    @Id
+    @SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+    @Column
+    private Long id;
 
-	@Column
-	private String name;
+    @Column
+    private String name;
 
-	@ManyToOne(optional = false)
-	private Section section;
+    @ManyToOne(optional = false)
+    private Section section;
 
-	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST })
-	private List<Volume> volumes = new ArrayList<Volume>();
 
-	public Long getId() {
-		return id;
-	}
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+    private List<Volume> volumes = new ArrayList<>();
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	public String getName() {
-		return name;
-	}
+    @ManyToOne
+    private DocumentObject documentObject;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Section getSection() {
-		return section;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setSection(Section section) {
-		this.section = section;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public List<Volume> getVolumes() {
-		return volumes;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setVolumes(List<Volume> volumes) {
-		this.volumes = volumes;
-	}
+    public Section getSection() {
+        return section;
+    }
+
+    public void setSection(Section section) {
+        this.section = section;
+    }
+
+    public List<Volume> getVolumes() {
+        return volumes;
+    }
+
+    public void setVolumes(List<Volume> volumes) {
+        this.volumes = volumes;
+    }
 
 }
