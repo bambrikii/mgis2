@@ -1,20 +1,11 @@
 package ru.sovzond.mgis2.isogd.document;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
+import ru.sovzond.mgis2.common.classifiers.oktmo.Territory;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
 import ru.sovzond.mgis2.isogd.classifiers.documents.representation.RepresentationFormat;
-import ru.sovzond.mgis2.common.classifiers.oktmo.Territory;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -108,5 +99,13 @@ public class Document {
 
     public void setOktmo(Territory oktmo) {
         this.oktmo = oktmo;
+    }
+
+    public DocumentSubObject getDocumentSubObject() {
+        return documentSubObject;
+    }
+
+    public void setDocumentSubObject(DocumentSubObject documentSubObject) {
+        this.documentSubObject = documentSubObject;
     }
 }
