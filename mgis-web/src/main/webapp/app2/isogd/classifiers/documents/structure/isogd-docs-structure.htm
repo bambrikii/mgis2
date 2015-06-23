@@ -1,53 +1,74 @@
 <h4 translate>ISOGD.Classifiers.Documents.Structure</h4>
 
-<div ng-controller="ISOGDClassifiersDocumentsStructureController">
-    <div ng-repeat="docClass in docClasses" class="row isogd-classifiers-docs-class highlight">
-        <div class="col-sm-1 glyphicon glyphicon-menu-right" style="text-align: right;"><strong
-                translate>ISOGD.Classifiers.Documents.Class.Name</strong>:
-        </div>
-        <div class="col-sm-1">{{docClass.code}}</div>
-        <div class="col-sm-4">{{docClass.name}}</div>
-        <div class="col-sm-1">{{docClass.hasCommonPart}}</div>
-        <div class="col-sm-1">{{docClass.hasSpecialPart}}</div>
-        <div class="col-sm-4">
-            <button class="btn btn-info btn-sm" ng-click="editClass(docClass.id)" translate>ISOGD.Classifiers.Documents.Class.Edit</button>
-            <button class="btn btn-info btn-sm" ng-click="addObject(docClass.id)" translate>ISOGD.Classifiers.Documents.Object.Add</button>
-            <button class="btn btn-danger btn-sm" ng-click="removeClass(docClass.id)" translate>ISOGD.Classifiers.Documents.Class.Remove</button>
-        </div>
+<ul ng-controller="ISOGDClassifiersDocumentsStructureController" class="treeview">
+    <li ng-repeat="docClass in docClasses" class="list-group-item">
+        <table>
+            <tr>
+                <td class="col-sm-1"><strong
+                        translate>ISOGD.Classifiers.Documents.Class.Name</strong>:
+                </td>
+                <td class="col-sm-1">{{docClass.code}}</td>
+                <td class="col-sm-4">{{docClass.name}}</td>
+                <td class="col-sm-1">{{docClass.hasCommonPart}}</td>
+                <td class="col-sm-1">{{docClass.hasSpecialPart}}</td>
+                <td class="col-sm-4">
+                    <button class="btn btn-info btn-sm" ng-click="editClass(docClass.id)" translate>ISOGD.Classifiers.Documents.Class.Edit</button>
+                    <button class="btn btn-info btn-sm" ng-click="addObject(docClass.id)" translate>ISOGD.Classifiers.Documents.Object.Add</button>
+                    <button class="btn btn-danger btn-sm" ng-click="removeClass(docClass.id)" translate>ISOGD.Classifiers.Documents.Class.Remove
+                    </button>
+                </td>
+            </tr>
+        </table>
 
-        <div ng-repeat="docObject in docClass.documentObjects" class="">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-1 glyphicon glyphicon-menu-right" style="text-align: right;"><strong
-                    translate>ISOGD.Classifiers.Documents.Object.Name</strong>:
-            </div>
-            <div class="col-sm-2">{{docObject.code}}</div>
-            <div class="col-sm-4 ">{{docObject.name}}</div>
-            <div class="col-sm-4">
-                <button class="btn btn-info btn-sm" ng-click="addSubObject(docObject.id)" translate>ISOGD.Classifiers.Documents.SubObject.Add</button>
-                <button class="btn btn-danger btn-sm" ng-click="removeObject(docObject.id)" translate>ISOGD.Classifiers.Documents.Object.Remove
-                </button>
-            </div>
+        <ul class="treeview">
+            <li ng-repeat="docObject in docClass.documentObjects" class="list-group-item">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td><strong
+                                translate>ISOGD.Classifiers.Documents.Object.Name</strong>:
+                        </td>
+                        <td>{{docObject.code}}</td>
+                        <td>{{docObject.name}}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm" ng-click="editObject(docObject.id)" translate>
+                                ISOGD.Classifiers.Documents.SubObject.Edit
+                            </button>
+                            <button class="btn btn-info btn-sm" ng-click="addSubObject(docObject.id)" translate>
+                                ISOGD.Classifiers.Documents.SubObject.Add
+                            </button>
+                            <button class="btn btn-danger btn-sm" ng-click="removeObject(docObject.id)" translate>
+                                ISOGD.Classifiers.Documents.Object.Remove
+                            </button>
+                        </td>
+                    </tr>
+                </table>
 
-            <div ng-controller="ISOGDDocumentsClassifiersDocumentsSubObjectsController">
-                <div ng-repeat="docSubObject in documentSubObjects">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-2 glyphicon glyphicon-menu-right" style="text-align: right;"><strong translate>
-                        ISOGD.Classifiers.Documents.SubObject.Name</strong>:
-                    </div>
-                    <div class="col-sm-1">{{docSubObject.code}}</div>
-                    <div class="col-sm-3">{{docSubObject.name}}</div>
-                    <div class="col-sm-4">
-                        <button class="btn btn-danger btn-sm" ng-click="removeSubObject(docSubObject.id)" translate>
-                            ISOGD.Classifiers.Documents.SubObject.Remove
-                        </button>
-                    </div>
+                <ul ng-controller="ISOGDDocumentsClassifiersDocumentsSubObjectsController" class="treeview">
+                    <li class="list-group-item">
+                        <table>
+                            <tr ng-repeat="docSubObject in documentSubObjects">
+                                <td><strong translate>ISOGD.Classifiers.Documents.SubObject.Name</strong>:
+                                <td>{{docSubObject.code}}</td>
+                                <td>{{docSubObject.name}}</td>
+                                <td>
+                                    <button class="btn btn-info btn-sm" ng-click="editSubObject(docSubObject.id)" translate>
+                                        ISOGD.Classifiers.Documents.SubObject.Edit
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" ng-click="removeSubObject(docSubObject.id)" translate>
+                                        ISOGD.Classifiers.Documents.SubObject.Remove
+                                    </button>
+                                </td>
 
-                </div>
-            </div>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
 
-        </div>
+            </li>
+        </ul>
 
-    </div>
+    </li>
     <button class="btn btn-info btn-sm" ng-click="addClass()" translate>ISOGD.Classifiers.Documents.Class.Add</button>
 
-</div>
+</ul>

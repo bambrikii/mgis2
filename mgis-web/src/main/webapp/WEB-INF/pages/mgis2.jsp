@@ -12,6 +12,7 @@
     <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"></link>
     <link type="text/css" rel="stylesheet"
           href="bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"></link>
+    <link type="text/css" rel="stylesheet" href="bower_components/bootstra-treeview/.css">
     <link type="text/css" rel="stylesheet" href="bower_components/backgrid/lib/backgrid.css"></link>
     <link type="text/css" rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css"></link>
     <link type="text/css" rel="stylesheet" href="bower_components/angular-dialog-service/dist/dialogs.css"></link>

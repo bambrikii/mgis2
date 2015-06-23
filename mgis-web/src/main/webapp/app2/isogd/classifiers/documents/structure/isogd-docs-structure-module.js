@@ -110,7 +110,7 @@ angular.module("mgis.isogd.classifiers.documents.structure", ["ui.router", "ui.b
                 var modalInstance = $modal.open({
                     scope: modalScope,
                     templateUrl: OBJECT_EDIT_TEMPLATE_URL,
-                    controller: function () {
+                    controller: function ($scope, $modalInstance) {
                         $scope.ok = function () {
                             ISOGClassifiersDocumentsObjectsService.save(modalScope.documentObject).then(function () {
                                 $modalInstance.close();
