@@ -4,14 +4,14 @@
     <li ng-repeat="docClass in docClasses" class="list-group-item">
         <table>
             <tr>
-                <td class="col-sm-1"><strong
+                <td><strong
                         translate>ISOGD.Classifiers.Documents.Class.Name</strong>:
                 </td>
-                <td class="col-sm-1">{{docClass.code}}</td>
-                <td class="col-sm-4">{{docClass.name}}</td>
-                <td class="col-sm-1">{{docClass.hasCommonPart}}</td>
-                <td class="col-sm-1">{{docClass.hasSpecialPart}}</td>
-                <td class="col-sm-4">
+                <td><strong>{{docClass.code}}</strong></td>
+                <td>{{docClass.name}}</td>
+                <td translate>{{docClass.hasCommonPart}}</td>
+                <td translate>{{docClass.hasSpecialPart}}</td>
+                <td>
                     <button class="btn btn-info btn-sm" ng-click="editClass(docClass.id)" translate>ISOGD.Classifiers.Documents.Class.Edit</button>
                     <button class="btn btn-info btn-sm" ng-click="addObject(docClass.id)" translate>ISOGD.Classifiers.Documents.Object.Add</button>
                     <button class="btn btn-danger btn-sm" ng-click="removeClass(docClass.id)" translate>ISOGD.Classifiers.Documents.Class.Remove
@@ -24,11 +24,10 @@
             <li ng-repeat="docObject in docClass.documentObjects" class="list-group-item">
                 <table>
                     <tr>
-                        <td></td>
                         <td><strong
                                 translate>ISOGD.Classifiers.Documents.Object.Name</strong>:
                         </td>
-                        <td>{{docObject.code}}</td>
+                        <td><strong>{{docObject.code}}</strong></td>
                         <td>{{docObject.name}}</td>
                         <td>
                             <button class="btn btn-info btn-sm" ng-click="editObject(docObject.id)" translate>
@@ -49,7 +48,7 @@
                         <table>
                             <tr ng-repeat="docSubObject in documentSubObjects">
                                 <td><strong translate>ISOGD.Classifiers.Documents.SubObject.Name</strong>:
-                                <td>{{docSubObject.code}}</td>
+                                <td><strong>{{docSubObject.code}}</strong></td>
                                 <td>{{docSubObject.name}}</td>
                                 <td>
                                     <button class="btn btn-info btn-sm" ng-click="editSubObject(docSubObject.id)" translate>
@@ -69,6 +68,8 @@
         </ul>
 
     </li>
-    <button class="btn btn-info btn-sm" ng-click="addClass()" translate>ISOGD.Classifiers.Documents.Class.Add</button>
+    <div style="padding-top: 15px;">
+        <button class="btn btn-info btn-sm" ng-click="addClass()" translate>ISOGD.Classifiers.Documents.Class.Add</button>
+    </div>
 
 </ul>
