@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentClassBean;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentObjectBean;
+import ru.sovzond.mgis2.isogd.business.classifiers.DocumentSubObjectBean;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
 
 import javax.transaction.Transactional;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 22.06.15.
  */
 @RestController
-@RequestMapping("/isogd/classifiers/docobj")
+@RequestMapping("/isogd/classifiers/documents/objects")
 public class DocumentObjectRESTController implements Serializable {
 
     @Autowired
@@ -23,6 +24,9 @@ public class DocumentObjectRESTController implements Serializable {
 
     @Autowired
     private DocumentObjectBean documentObjectBean;
+
+    @Autowired
+    private DocumentSubObjectBean documentSubObjectBean;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     @Transactional
@@ -43,7 +47,13 @@ public class DocumentObjectRESTController implements Serializable {
             result = documentObjectBean.load(id);
         }
         result.setCode(documentObject.getCode());
+        result.setName(documentObject.getName());
         result.setDocumentClass(documentClassBean.load(documentObject.getDocumentClass().getId()));
+        if (documentObject.getDocumentSubObjects().size() > 0) {
+            result.setDocumentSubObjects(documentSubObjectBean.load(documentObject.getDocumentSubObjects().stream().map(documentSubObject -> documentSubObject.getId()).collect(Collectors.toList())));
+        } else {
+            result.getDocumentSubObjects().clear();
+        }
         documentObjectBean.save(result);
         return result.clone();
     }

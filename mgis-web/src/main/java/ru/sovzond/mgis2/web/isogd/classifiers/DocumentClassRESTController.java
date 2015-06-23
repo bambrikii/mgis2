@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 22.06.15.
  */
 @RestController
-@RequestMapping("/isogd/classifiers/docclass")
+@RequestMapping("/isogd/classifiers/documents/classes")
 public class DocumentClassRESTController implements Serializable {
 
     @Autowired
@@ -33,7 +33,7 @@ public class DocumentClassRESTController implements Serializable {
         ).collect(Collectors.toList()), pager.getCount());
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     @Transactional
     public DocumentClass save(@PathVariable("id") Long id, @RequestBody DocumentClass documentClass) {
         DocumentClass result;
@@ -43,7 +43,14 @@ public class DocumentClassRESTController implements Serializable {
             result = documentClassBean.load(id);
         }
         result.setCode(documentClass.getCode());
-        result.setDocumentObjects(documentObjectBean.load(documentClass.getDocumentObjects().stream().map(item -> item.getId()).collect(Collectors.toList())));
+        result.setName(documentClass.getName());
+        result.setHasCommonPart(documentClass.isHasCommonPart());
+        result.setHasSpecialPart(documentClass.isHasSpecialPart());
+        if (documentClass.getDocumentObjects().size() > 0) {
+            result.setDocumentObjects(documentObjectBean.load(documentClass.getDocumentObjects().stream().map(item -> item.getId()).collect(Collectors.toList())));
+        } else {
+            result.getDocumentObjects().clear();
+        }
         documentClassBean.save(result);
         return result.clone();
     }

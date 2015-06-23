@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        <span translate>ISOGD.Classifiers.Documents.Object.Name</span>: {{documentObject.name}}
+    </h3>
+</div>
+<div class="modal-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <form name="form" novalidate>
+                    <!-- Code -->
+                    <div class="form-group" ng-class="{ 'has-error' : form.code.$invalid && !form.code.$pristine }">
+                        <label translate>ISOGD.Code</label>
+                        <input type="text" name="code" class="form-control" ng-model="documentObject.code" required>
+
+                        <p ng-show="form.code.$invalid && !form.code.$pristine" class="help-block" translate>ISOGD.CodeRequired</p>
+                    </div>
+                    <!-- Name -->
+                    <div class="form-group" ng-class="{ 'has-error' : form.name.$invalid && !form.name.$pristine }">
+                        <label translate>ISOGD.Name</label>
+                        <input type="text" name="name" class="form-control" ng-model="documentObject.name" required>
+
+                        <p ng-show="form.name.$invalid && !form.name.$pristine" class="help-block" translate>ISOGD.NameRequired</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid" ng-click="ok()" translate>Submit</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>
+

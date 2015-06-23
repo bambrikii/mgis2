@@ -98,3 +98,29 @@
     /*-moz-border-radius: 6px 0 6px 6px;*/
     /*border-radius: 6px 0 6px 6px;*/
 }
+
+/*
+*/
+
+[class*="col-"] {
+    /*border-top: 1px solid rgba(86, 61, 124, 0.2);*/
+    padding: 5px;
+}
+
+.isogd-classifiers-docs-class {
+    background-color: #fff;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    border-width: 1px;
+    box-shadow: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.highlight {
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    padding: 9px 14px;
+}

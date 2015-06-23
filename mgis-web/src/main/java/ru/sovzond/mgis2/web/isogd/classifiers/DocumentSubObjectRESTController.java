@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentObjectBean;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentSubObjectBean;
+import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
 
 import javax.transaction.Transactional;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 22.06.15.
  */
 @RestController
-@RequestMapping("/isogd/classifiers/docsubobj")
+@RequestMapping("/isogd/classifiers/documents/subobjects")
 public class DocumentSubObjectRESTController implements Serializable {
 
     @Autowired
@@ -26,8 +27,9 @@ public class DocumentSubObjectRESTController implements Serializable {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     @Transactional
-    public PageableContainer<DocumentSubObject> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-        PageableContainer<DocumentSubObject> pager = documentSubObjectBean.list(first, max);
+    public PageableContainer<DocumentSubObject> list(@RequestParam("objectId") Long objectId, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+        DocumentObject documentObject = documentObjectBean.load(objectId);
+        PageableContainer<DocumentSubObject> pager = documentSubObjectBean.list(documentObject, first, max);
         return new PageableContainer<>(pager.getList().stream().map(item ->
                         item.clone()
         ).collect(Collectors.toList()), pager.getCount());
@@ -43,6 +45,7 @@ public class DocumentSubObjectRESTController implements Serializable {
             result = documentSubObjectBean.load(id);
         }
         result.setCode(documentSubObject.getCode());
+        result.setName(documentSubObject.getName());
         result.setDocumentObject(documentObjectBean.load(documentSubObject.getDocumentObject().getId()));
         documentSubObjectBean.save(result);
         return result.clone();

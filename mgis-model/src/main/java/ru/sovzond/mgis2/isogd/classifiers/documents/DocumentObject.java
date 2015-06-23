@@ -28,6 +28,9 @@ public class DocumentObject implements Cloneable {
     @Column(unique = true, nullable = false)
     private String code;
 
+    @Column(unique = true, nullable = false)
+    private String name;
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private DocumentClass documentClass;
 
@@ -50,6 +53,14 @@ public class DocumentObject implements Cloneable {
         this.code = code;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public DocumentClass getDocumentClass() {
         return documentClass;
     }
@@ -70,6 +81,7 @@ public class DocumentObject implements Cloneable {
         DocumentObject documentObject = new DocumentObject();
         documentObject.setId(id);
         documentObject.setCode(code);
+        documentObject.setName(name);
         DocumentClass documentClass = new DocumentClass();
         documentClass.setId(this.documentClass.getId());
         documentClass.setCode(this.documentClass.getCode());
@@ -77,4 +89,5 @@ public class DocumentObject implements Cloneable {
         documentObject.setDocumentSubObjects(documentSubObjects.stream().map(documentSubObject -> documentSubObject.clone()).collect(Collectors.toList()));
         return documentObject;
     }
+
 }

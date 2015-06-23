@@ -10,7 +10,8 @@ import java.util.List;
  */
 public class PageableCRUDDaoBase<T> extends PageableDAOBase<T> implements IIdentifiableDao<T> {
 
-    public static final String ID = "ID";
+    public static final String ID = "id";
+    public static final String NO_IDENTIFIERS_PROVIDED = "NO_IDENTIFIERS_PROVIDED";
 
     @Override
     public T findById(Long id) {
@@ -19,6 +20,9 @@ public class PageableCRUDDaoBase<T> extends PageableDAOBase<T> implements IIdent
 
     @Override
     public List<T> findByIds(List<Long> ids) {
+        if (ids.size() == 0) {
+            throw new IllegalArgumentException(NO_IDENTIFIERS_PROVIDED);
+        }
         return createCriteria().add(Restrictions.in(ID, ids)).list();
     }
 }

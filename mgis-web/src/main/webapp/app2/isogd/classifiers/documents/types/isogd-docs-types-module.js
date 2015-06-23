@@ -1,8 +1,8 @@
 /**
  * Created by Alexander Arakelyan on 22.06.15.
  */
-angular.module("mgis.isogd.classifiers.doctypes", ["ui-router", "ui.bootstrap", //
-        "mgis.isogd.classifiers.doctypes.service"
+angular.module("mgis.isogd.classifiers.documents.types", ["ui.router", "ui.bootstrap", //
+        "mgis.isogd.classifiers.documents.types.service"
     ]
 ) //
     .config(function ($stateProvider, $urlRouterProvider) {

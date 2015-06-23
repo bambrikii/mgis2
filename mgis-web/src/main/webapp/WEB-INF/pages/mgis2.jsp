@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <link type="text/css" rel="stylesheet" href="app/app.css"></link>
-    <link type="text/css" rel="stylesheet" href="app2/app2.css"></link>
+    <link type="text/css" rel="stylesheet" href="app2/app.css"></link>
     <link type="text/css" rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css"></link>
     <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"></link>
     <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"></link>
@@ -47,6 +47,10 @@
     <script type="text/javascript" src="app2/isogd/document/isogd-documents-module.js"></script>
     <script type="text/javascript" src="app2/isogd/isogd.js"></script>
     <script type="text/javascript" src="app2/isogd/classifiers/classifiers.js"></script>
+    <script type="text/javascript" src="app2/isogd/classifiers/documents/structure/isogd-docs-structure-service.js"></script>
+    <script type="text/javascript" src="app2/isogd/classifiers/documents/structure/isogd-docs-structure-module.js"></script>
+    <script type="text/javascript" src="app2/isogd/classifiers/documents/types/isogd-docs-types-service.js"></script>
+    <script type="text/javascript" src="app2/isogd/classifiers/documents/types/isogd-docs-types-module.js"></script>
     <script type="text/javascript" src="app2/admin/admin.js"></script>
     <script type="text/javascript" src="app2/admin/users/admin-users-service.js"></script>
     <script type="text/javascript" src="app2/admin/users/admin-users-module.js"></script>

@@ -1,5 +1,5 @@
 angular.module("mgis.isogd.classifiers", ["ui.router", //
-    "mgis.common" //
+    "mgis.common", "mgis.isogd.classifiers.documents.structure", "mgis.isogd.classifiers.documents.types" //
 ]) //
     .config(function ($stateProvider, $urlRouterProvider) {
 //        $urlRouterProvider.when("/isogd/classifiers", "/isogd/classifiers/structure");
@@ -13,14 +13,14 @@ angular.module("mgis.isogd.classifiers", ["ui.router", //
             }) //
             .state("isogd.classifiers.doctypes", {
                 url: "/classifiers/doctypes",
-                templateUrl: "app2/isogd/classifiers/doctypes/list.htm",
+                templateUrl: "app2/isogd/classifiers/documents/types/list.htm",
                 controller: function ($scope, $state, $stateParams) {
                     console.log("doctypes");
                 }
             }) //
             .state("isogd.classifiers.docstructure", {
                 url: "/classifiers/structure",
-                templateUrl: "app2/isogd/classifiers/structure/classes-list.htm",
+                templateUrl: "app2/isogd/classifiers/documents/structure/isogd-docs-structure.htm",
                 controller: function ($scope, $state, $stateParams) {
                     console.log("structure: classes, objects and subobjects");
                 }
