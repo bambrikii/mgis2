@@ -139,7 +139,7 @@ public class Document implements Cloneable {
 		document.setOktmo(oktmo);
 		document.setCommonPart(commonPart != null ? commonPart.clone() : null);
 		document.setSpecialPart(specialPart != null ? specialPart : null);
-		document.setDocumentSubObject(documentSubObject.clone());
+		document.setDocumentSubObject(documentSubObject != null ? documentSubObject.clone() : null);
 		document.setVolume(volume.clone());
 		return document;
 	}
