@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 22.06.15.
  */
 @RestController
-@RequestMapping("/isogd/classifiers/doctype")
+@RequestMapping("/isogd/classifiers/documents/types")
 @Scope("session")
 public class DocumentTypeRESTController implements Serializable {
     @Autowired
@@ -30,7 +30,7 @@ public class DocumentTypeRESTController implements Serializable {
         ).collect(Collectors.toList()), pager.getCount());
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     @Transactional
     public DocumentType save(@PathVariable("id") Long id, @RequestBody DocumentType documentType) {
         DocumentType documentType2;

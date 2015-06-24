@@ -2,8 +2,8 @@
  * Created by Alexander Arakelyan on 22.06.15.
  */
 angular.module("mgis.isogd.classifiers.documents.types.service", ["ngResource"]) //
-    .factory("ISOGDDocTypesService", function ($resource, $q) {
-        var res = $resource("rest/isogd/classifiers/doctypes/:id.json");
+    .factory("ISOGDClassifiersDocumentsTypesService", function ($resource, $q) {
+        var res = $resource("rest/isogd/classifiers/documents/types/:id.json");
         return {
             get: function (id, first, max) {
                 var deferred = $q.defer();
@@ -14,9 +14,11 @@ angular.module("mgis.isogd.classifiers.documents.types.service", ["ngResource"])
             },
             save: function (item) {
                 var deferred = $q.defer();
+                console.log(item);
                 res.save({id: item.id}, {
                     id: item.id,
-                    code: item.code
+                    code: item.code,
+                    name: item.name
                 }, function (result) {
                     deferred.resolve(result);
                 });

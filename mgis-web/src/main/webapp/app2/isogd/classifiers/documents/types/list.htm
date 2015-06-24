@@ -1,1 +1,23 @@
-<h4 translate>ISOGD.Classifiers.DocumentTypes</h4>
+<h4 translate>ISOGD.Classifiers.Documents.Types</h4>
+
+<div ng-controller="ISOGDClassifiersDocumentsTypesController">
+    <div ng-repeat="docType in documentTypes">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <strong>{{docType.code}}</strong> {{docType.name}}
+                </td>
+                <td style="width: 450px; padding: 5px;">
+                    <button class="btn btn-info btn-sm" ng-click="editDocumentType(docType.id)" translate>
+                        ISOGD.Classifiers.Documents.Types.Edit
+                    </button>
+                    <button class="btn btn-danger btn-sm" ng-click="removeDocumentType(docType.id)" translate>
+                        ISOGD.Classifiers.Documents.Types.Remove
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button class="btn btn-info btn-sm" ng-click="addDocumentType()" translate>ISOGD.Classifiers.Documents.Types.Add</button>
+
+</div>

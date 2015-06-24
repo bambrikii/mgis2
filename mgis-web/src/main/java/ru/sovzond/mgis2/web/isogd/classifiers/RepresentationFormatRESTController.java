@@ -34,7 +34,7 @@ public class RepresentationFormatRESTController implements Serializable {
         ).collect(Collectors.toList()), pager.getCount());
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     @Transactional
     public RepresentationFormat save(@PathVariable("id") Long id, @RequestBody RepresentationFormat representationFormat) {
         RepresentationFormat representationFormat2;
