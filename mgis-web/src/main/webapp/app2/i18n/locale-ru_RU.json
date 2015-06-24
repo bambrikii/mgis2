@@ -56,6 +56,7 @@
   "ISOGD.Classifiers.Documents.Class.Add": "Добавить класс",
   "ISOGD.Classifiers.Documents.Class.Edit": "Редактировать класс",
   "ISOGD.Classifiers.Documents.Class.Remove": "Удалить класс",
+  "ISOGD.Classifiers.Documents.Class.Required": "Поле &lt;Класс&gt; обязательное",
   "ISOGD.Classifiers.Documents.Object.Name": "Объект",
   "ISOGD.Classifiers.Documents.Object.Add": "Добавить объект",
   "ISOGD.Classifiers.Documents.Object.Edit": "Редактировать объект",

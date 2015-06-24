@@ -1,62 +1,38 @@
-angular.module("mgis.isogd.sections.service", [ "ui.router", 'ngResource' ]) //
-.factory("ISOGDSectionsService", function($resource, $q) {
-	var factory = {};
-	var sections = [];
-	factory.list = function(first, max) {
-		var deferred = $q.defer();
-		$resource('rest/isogd/sections/list.json', {}, {
-			get : {
-				method : 'GET'
-			}
-		}).get({
-			first : first,
-			max : max
-		}, function(data) {
-			deferred.resolve(data);
-		});
-		return deferred.promise;
-	}
-	factory.get = function(sectionId) {
-		var deferred = $q.defer();
-		$resource('rest/isogd/sections/:sectionId.json', {
-			sectionId : sectionId
-		}).get({
-
-		}, function(data) {
-			deferred.resolve(data);
-		});
-		return deferred.promise;
-	}
-	factory.save = function(section) {
-		var deferred = $q.defer();
-		$resource('rest/isogd/sections/:sectionId.json', {
-			sectionId : section.id
-		}, {
-			save : {
-				method : 'POST'
-			}
-		}).save({
-			id : section.id,
-			name : section.name
-		}, function(data) {
-			deferred.resolve(data);
-		});
-		return deferred.promise;
-	}
-	factory.remove = function(sectionId) {
-		var deferred = $q.defer();
-		$resource('rest/isogd/sections/:sectionId.json', {
-			sectionId : sectionId
-		}, {
-			remove : {
-				method : 'DELETE'
-			}
-		}).remove({
-			id : sectionId
-		}, function(data) {
-			deferred.resolve(data);
-		});
-		return deferred.promise;
-	}
-	return factory;
-});
+angular.module("mgis.isogd.sections.service", ["ui.router", 'ngResource']) //
+    .factory("ISOGDSectionsService", function ($resource, $q) {
+        var factory = {};
+        var sections = [];
+        var res = $resource('rest/isogd/sections/:id.json');
+        return {
+            get: function (id, first, max) {
+                var deferred = $q.defer();
+                res.get({id: id}, {
+                    first: first,
+                    max: max
+                }, function (data) {
+                    deferred.resolve(data);
+                });
+                return deferred.promise;
+            },
+            save: function (section) {
+                var deferred = $q.defer();
+                res.save({id: section.id,}, {
+                    id: section.id,
+                    name: section.name,
+                    documentClass: section.documentClass ? {id: section.documentClass.id} : null
+                }, function (data) {
+                    deferred.resolve(data);
+                });
+                return deferred.promise;
+            },
+            remove: function (id) {
+                var deferred = $q.defer();
+                res.remove({
+                    id: id
+                }, function (data) {
+                    deferred.resolve(data);
+                });
+                return deferred.promise;
+            }
+        }
+    });
