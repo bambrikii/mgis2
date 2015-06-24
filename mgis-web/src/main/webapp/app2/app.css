@@ -138,17 +138,20 @@
     text-align: left;
     width: 450px;
     padding: 3px;
+    white-space: nowrap;
 }
 
 .treeview .treeview table td:last-child {
     text-align: left;
     width: 450px;
     padding: 3px;
+    white-space: nowrap;
 }
 
 .treeview .treeview .treeview table td:last-child {
     text-align: left;
     width: 450px;
     padding: 3px;
+    white-space: nowrap;
 }
 

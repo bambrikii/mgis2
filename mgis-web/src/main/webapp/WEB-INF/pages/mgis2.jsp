@@ -5,17 +5,16 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <link type="text/css" rel="stylesheet" href="app/app.css"></link>
-    <link type="text/css" rel="stylesheet" href="app2/app.css"></link>
-    <link type="text/css" rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css"></link>
-    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"></link>
-    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"></link>
+    <link type="text/css" rel="stylesheet" href="app/app.css">
+    <link type="text/css" rel="stylesheet" href="app2/app.css">
+    <link type="text/css" rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
+    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
     <link type="text/css" rel="stylesheet"
-          href="bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"></link>
-    <link type="text/css" rel="stylesheet" href="bower_components/bootstra-treeview/.css">
-    <link type="text/css" rel="stylesheet" href="bower_components/backgrid/lib/backgrid.css"></link>
-    <link type="text/css" rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css"></link>
-    <link type="text/css" rel="stylesheet" href="bower_components/angular-dialog-service/dist/dialogs.css"></link>
+          href="bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap-treeview/src/css/bootstrap-treeview.css">
+    <link type="text/css" rel="stylesheet" href="bower_components/backgrid/lib/backgrid.css">
+    <link type="text/css" rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
 
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
@@ -36,7 +35,8 @@
 
     <script type="text/javascript" src="app2/app.js"></script>
     <script type="text/javascript" src="app2/menu/app-menu.js"></script>
-    <script type="text/javascript" src="app2/common/app-confirmation.js"></script>
+    <script type="text/javascript" src="app2/commons/app-confirmation.js"></script>
+    <script type="text/javascript" src="app2/commons/app-modal-forms.js"></script>
     <script type="text/javascript" src="app2/isogd/isogd.js"></script>
     <script type="text/javascript" src="app2/isogd/section/isogd-sections-service.js"></script>
     <script type="text/javascript" src="app2/isogd/section/isogd-sections-module.js"></script>
@@ -52,6 +52,8 @@
     <script type="text/javascript" src="app2/isogd/classifiers/documents/structure/isogd-docs-structure-module.js"></script>
     <script type="text/javascript" src="app2/isogd/classifiers/documents/types/isogd-docs-types-service.js"></script>
     <script type="text/javascript" src="app2/isogd/classifiers/documents/types/isogd-docs-types-module.js"></script>
+    <script type="text/javascript" src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-service.js"></script>
+    <script type="text/javascript" src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-module.js"></script>
     <script type="text/javascript" src="app2/admin/admin.js"></script>
     <script type="text/javascript" src="app2/admin/users/admin-users-service.js"></script>
     <script type="text/javascript" src="app2/admin/users/admin-users-module.js"></script>

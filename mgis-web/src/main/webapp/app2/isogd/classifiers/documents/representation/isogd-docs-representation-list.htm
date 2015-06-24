@@ -1,0 +1,47 @@
+<h4 translate>ISOGD.Classifiers.DocumentRepresentations</h4>
+
+<div ng-controller="ISOGDClassifiersDocumentsRepresentationController">
+    <ul class="treeview">
+        <li ng-repeat="reprForm in representationForms" class="list-group-item">
+            <table>
+                <tr>
+                    <td>
+                        <strong>{{reprForm.code}}</strong> {{reprForm.name}}
+                    </td>
+                    <td>
+                        <button class="btn btn-info btn-sm" ng-click="editRepresentationForm(reprForm.id)" translate>
+                            ISOGD.Classifiers.Documents.Representation.Form.Edit
+                        </button>
+                        <button class="btn btn-danger btn-sm" ng-click="removeRepresentationForm(reprForm.id)" translate>
+                            ISOGD.Classifiers.Documents.Representation.Form.Remove
+                        </button>
+                        <button class="btn btn-info btn-sm" ng-click="addRepresentationFormat(reprForm.id)" translate>
+                            ISOGD.Classifiers.Documents.Representation.Format.Add
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <ul class="treeview">
+                <li ng-repeat="reprFormat in reprForm.representationFormats" class="list-group-item">
+                    <table>
+                        <tr>
+                            <td>
+                                <strong>{{reprFormat.code}}</strong> {{reprFormat.name}}
+                            </td>
+                            <td>
+                                <button class="btn btn-info btn-sm" ng-click="editRepresentationFormat(reprFormat.id)" translate>
+                                    ISOGD.Classifiers.Documents.Representation.Format.Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm" ng-click="removeRepresentationFormat(reprFormat.id)" translate>
+                                    ISOGD.Classifiers.Documents.Representation.Format.Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <button class="btn btn-info btn-sm" ng-click="addRepresentationForm()" translate>ISOGD.Classifiers.Documents.Representation.Form.Add</button>
+</div>

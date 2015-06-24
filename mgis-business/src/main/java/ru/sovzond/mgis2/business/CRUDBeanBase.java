@@ -1,6 +1,5 @@
 package ru.sovzond.mgis2.business;
 
-import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 
@@ -29,12 +28,12 @@ public abstract class CRUDBeanBase<T> {
 		return getIIdentifiableDao().findByIds(ids);
 	}
 
-	public T save(T privilege) {
-		getPageableDao().save(privilege);
-		return privilege;
+	public T save(T entity) {
+		getPageableDao().save(entity);
+		return entity;
 	}
 
-	public void remove(T privilege) {
-		getPageableDao().delete(privilege);
+	public void remove(T entity) {
+		getPageableDao().delete(entity);
 	}
 }

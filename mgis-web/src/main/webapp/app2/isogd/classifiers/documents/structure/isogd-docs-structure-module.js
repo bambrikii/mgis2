@@ -1,83 +1,77 @@
 angular.module("mgis.isogd.classifiers.documents.structure", ["ui.router", "ui.bootstrap", //
+        "mgis.commons", //
         "mgis.isogd.classifiers.documents.structure.services"
     ] //
 ) //
-    .controller("ISOGDClassifiersDocumentsStructureController", function ($rootScope, $scope, ISOGClassifiersDocumentsClassesService, ISOGClassifiersDocumentsObjectsService, ISOGClassifiersDocumentsSubObjectsService, $modal) {
-        var CLASS_EDIT_TEMPLATE_URL = "app2/isogd/classifiers/documents/structure/isogd-docs-class.htm";
-        var OBJECT_EDIT_TEMPLATE_URL = "app2/isogd/classifiers/documents/structure/isogd-docs-object.htm";
-        var SUB_OBJECT_EDIT_TEMPLATE_URL = "app2/isogd/classifiers/documents/structure/isogd-docs-subobject.htm";
+    .controller("ISOGDClassifiersDocumentsStructureController", function ($rootScope, $scope, ISOGClassifiersDocumentsClassesService, ISOGClassifiersDocumentsObjectsService, ISOGClassifiersDocumentsSubObjectsService, $modal, MGISCommonsModalForm) {
 
         $scope.docClasses = [];
+
         function updateTree() {
             ISOGClassifiersDocumentsClassesService.get("", 0, 0).then(function (classes) {
                 $scope.docClasses = classes.list;
             });
         }
 
+        function openEditClassForm(modalScope) {
+            MGISCommonsModalForm.edit("app2/isogd/classifiers/documents/structure/isogd-docs-class.htm", modalScope, function ($scope, $modalInstance) {
+                ISOGClassifiersDocumentsClassesService.save(modalScope.documentClass).then(function () {
+                    $modalInstance.close();
+                    updateTree();
+                });
+            });
+        }
+
+        function openEditObjectForm(modalScope) {
+            MGISCommonsModalForm.edit("app2/isogd/classifiers/documents/structure/isogd-docs-object.htm", modalScope, function ($scope, $modalInstance) {
+                ISOGClassifiersDocumentsObjectsService.save(modalScope.documentObject).then(function () {
+                    $modalInstance.close();
+                    updateTree();
+                });
+            });
+        }
+
+        function openEditSubObjectModal(modalScope) {
+            MGISCommonsModalForm.edit("app2/isogd/classifiers/documents/structure/isogd-docs-subobject.htm", modalScope, function ($scope, $modalInstance) {
+                ISOGClassifiersDocumentsSubObjectsService.save($scope.documentSubObject).then(function () {
+                    updateTree();
+                    $modalInstance.close();
+                });
+            });
+        }
+
         updateTree();
 
         // Class
+
         $scope.addClass = function () {
             var modalScope = $rootScope.$new();
             modalScope.documentClass = {
                 id: 0,
                 code: ""
             }
-            var modalInstance = $modal.open({
-                scope: modalScope,
-                templateUrl: CLASS_EDIT_TEMPLATE_URL,
-                controller: function ($scope, $modalInstance) {
-                    $scope.ok = function () {
-                        ISOGClassifiersDocumentsClassesService.save($scope.documentClass).then(function () {
-                            $modalInstance.close();
-                            updateTree();
-                        });
-                    }
-                    $scope.cancel = function () {
-                        $modalInstance.dismiss("cancel");
-                    }
-                }
-            });
+            openEditClassForm(modalScope);
         }
+
         $scope.editClass = function (id) {
             ISOGClassifiersDocumentsClassesService.get(id).then(function (data) {
                 var modalScope = $rootScope.$new();
                 modalScope.documentClass = data;
-                var modalInstance = $modal.open({
-                    scope: modalScope,
-                    templateUrl: CLASS_EDIT_TEMPLATE_URL,
-                    controller: function ($scope, $modalInstance) {
-                        $scope.ok = function () {
-                            ISOGClassifiersDocumentsClassesService.save(modalScope.documentClass).then(function () {
-                                $modalInstance.close();
-                                updateTree();
-                            });
-                        }
-                        $scope.cancel = function () {
-                            $modalInstance.dismiss("cancel");
-                        }
-                    }
-                });
+                openEditClassForm(modalScope);
             });
         }
+
         $scope.removeClass = function (id) {
-            var modalInstance = $modal.open({
-                templateUrl: "app2/common/confirm-deletion.htm",
-                controller: function ($scope, $modalInstance) {
-                    $scope.ok = function () {
-                        $modalInstance.close();
-                        ISOGClassifiersDocumentsClassesService.remove(id).then(function (data) {
-                            updateTree();
-                        });
-                    }
-                    $scope.cancel = function () {
-                        $modalInstance.dismiss('cancel');
-                    }
-                }
+            MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
+                $modalInstance.close();
+                ISOGClassifiersDocumentsClassesService.remove(id).then(function (data) {
+                    updateTree();
+                });
             });
         }
 
         // Object
+
         $scope.addObject = function (classId) {
             var modalScope = $rootScope.$new();
             modalScope.documentObject = {
@@ -87,57 +81,21 @@ angular.module("mgis.isogd.classifiers.documents.structure", ["ui.router", "ui.b
                     id: classId
                 }
             }
-            var modalInstance = $modal.open({
-                scope: modalScope,
-                templateUrl: OBJECT_EDIT_TEMPLATE_URL,
-                controller: function ($scope, $modalInstance) {
-                    $scope.ok = function () {
-                        ISOGClassifiersDocumentsObjectsService.save(modalScope.documentObject).then(function () {
-                            $modalInstance.close();
-                            updateTree();
-                        });
-                    }
-                    $scope.cancel = function () {
-                        $modalInstance.dismiss("cancel");
-                    }
-                }
-            });
+            openEditObjectForm(modalScope);
         }
         $scope.editObject = function (objectId) {
             ISOGClassifiersDocumentsObjectsService.get(objectId).then(function (data) {
                 var modalScope = $rootScope.$new();
                 modalScope.documentObject = data;
-                var modalInstance = $modal.open({
-                    scope: modalScope,
-                    templateUrl: OBJECT_EDIT_TEMPLATE_URL,
-                    controller: function ($scope, $modalInstance) {
-                        $scope.ok = function () {
-                            ISOGClassifiersDocumentsObjectsService.save(modalScope.documentObject).then(function () {
-                                $modalInstance.close();
-                                updateTree();
-                            });
-                        }
-                        $scope.cancel = function () {
-                            $modalInstance.dismiss("cancel");
-                        }
-                    }
-                });
+                openEditObjectForm(modalScope);
             });
         }
         $scope.removeObject = function (objectId) {
-            var modalInstance = $modal.open({
-                templateUrl: 'app2/common/confirm-deletion.htm',
-                controller: function ($scope, $modalInstance) {
-                    $scope.ok = function () {
-                        $modalInstance.close();
-                        ISOGClassifiersDocumentsObjectsService.remove(objectId).then(function (data) {
-                            updateTree();
-                        });
-                    }
-                    $scope.cancel = function () {
-                        $modalInstance.dismiss('cancel');
-                    }
-                }
+            MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
+                ISOGClassifiersDocumentsObjectsService.remove(objectId).then(function (data) {
+                    updateTree();
+                    $modalInstance.close();
+                });
             });
         }
 
@@ -151,57 +109,21 @@ angular.module("mgis.isogd.classifiers.documents.structure", ["ui.router", "ui.b
                     id: objectId
                 }
             }
-            var modalInstance = $modal.open({
-                scope: modalScope,
-                templateUrl: SUB_OBJECT_EDIT_TEMPLATE_URL,
-                controller: function ($scope, $modalInstance) {
-                    $scope.ok = function () {
-                        ISOGClassifiersDocumentsSubObjectsService.save($scope.documentSubObject).then(function () {
-                            updateTree();
-                            $modalInstance.close();
-                        });
-                    }
-                    $scope.cancel = function () {
-                        $modalInstance.dismiss("cancel");
-                    }
-                }
-            });
+            openEditSubObjectModal(modalScope);
         }
         $scope.editSubObject = function (subObjectId) {
             ISOGClassifiersDocumentsSubObjectsService.get(subObjectId).then(function (data) {
                 var modalScope = $rootScope.$new();
                 modalScope.documentSubObject = data;
-                var modalInstance = $modal.open({
-                    scope: modalScope,
-                    templateUrl: SUB_OBJECT_EDIT_TEMPLATE_URL,
-                    controller: function ($scope, $modalInstance) {
-                        $scope.ok = function () {
-                            ISOGClassifiersDocumentsSubObjectsService.save($scope.documentSubObject).then(function () {
-                                updateTree();
-                                $modalInstance.close();
-                            });
-                        }
-                        $scope.cancel = function () {
-                            $modalInstance.dismiss("cancel");
-                        }
-                    }
-                })
-            })
+                openEditSubObjectModal(modalScope);
+            });
         }
         $scope.removeSubObject = function (subObjectId) {
-            var modalInstance = $modal.open({
-                templateUrl: 'app2/common/confirm-deletion.htm',
-                controller: function ($scope, $modalInstance) {
-                    $scope.ok = function () {
-                        $modalInstance.close();
-                        ISOGClassifiersDocumentsSubObjectsService.remove(subObjectId).then(function (data) {
-                            updateTree();
-                        });
-                    }
-                    $scope.cancel = function () {
-                        $modalInstance.dismiss('cancel');
-                    }
-                }
+            MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
+                ISOGClassifiersDocumentsSubObjectsService.remove(subObjectId).then(function (data) {
+                    updateTree();
+                    $modalInstance.close();
+                });
             });
         }
 

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 22.06.15.
  */
 @RestController
-@RequestMapping("/isogd/classifiers/representation/format")
+@RequestMapping("/isogd/classifiers/documents/representations/formats")
 @Scope("session")
 public class RepresentationFormatRESTController implements Serializable {
     @Autowired
@@ -45,6 +45,7 @@ public class RepresentationFormatRESTController implements Serializable {
             representationFormat2 = representationFormatBean.load(id);
         }
         representationFormat2.setCode(representationFormat.getCode());
+        representationFormat2.setName(representationFormat.getName());
         representationFormatBean.save(representationFormat2);
         return representationFormat2.clone();
     }

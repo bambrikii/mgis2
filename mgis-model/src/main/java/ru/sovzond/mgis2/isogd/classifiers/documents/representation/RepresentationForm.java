@@ -25,6 +25,9 @@ public class RepresentationForm implements Cloneable {
     @Column(unique = true, nullable = false)
     private String code;
 
+    @Column
+    private String name;
+
     @OneToMany(mappedBy = "representationForm", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     private List<RepresentationFormat> representationFormats = new ArrayList<>();
 
@@ -45,6 +48,14 @@ public class RepresentationForm implements Cloneable {
         this.code = code;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public List<RepresentationFormat> getRepresentationFormats() {
         return representationFormats;
     }
@@ -57,6 +68,7 @@ public class RepresentationForm implements Cloneable {
         RepresentationForm representationForm = new RepresentationForm();
         representationForm.setId(id);
         representationForm.setCode(code);
+        representationForm.setName(name);
         representationFormats.stream().forEach(representationFormat -> representationForm.getRepresentationFormats().add((RepresentationFormat) representationFormat.clone()));
         return representationForm;
     }

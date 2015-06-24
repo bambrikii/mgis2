@@ -31,6 +31,9 @@ public class RepresentationFormat implements Cloneable {
     @Column(unique = true, nullable = false)
     private String code;
 
+    @Column
+    private String name;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private RepresentationForm representationForm;
 
@@ -50,6 +53,14 @@ public class RepresentationFormat implements Cloneable {
         this.code = code;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public RepresentationForm getRepresentationForm() {
         return representationForm;
     }
@@ -62,9 +73,11 @@ public class RepresentationFormat implements Cloneable {
         RepresentationFormat representationFormat = new RepresentationFormat();
         representationFormat.setId(id);
         representationFormat.setCode(code);
+        representationFormat.setName(name);
         RepresentationForm representationForm = new RepresentationForm();
         representationForm.setId(representationForm.getId());
         representationFormat.setRepresentationForm(representationForm);
         return representationFormat;
     }
+
 }

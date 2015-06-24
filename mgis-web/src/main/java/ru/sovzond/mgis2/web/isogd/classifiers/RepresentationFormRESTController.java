@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 22.06.15.
  */
 @RestController
-@RequestMapping("/isogd/classifiers/representation/form")
+@RequestMapping("/isogd/classifiers/documents/representations/forms")
 @Scope("session")
 public class RepresentationFormRESTController implements Serializable {
 
@@ -36,7 +36,7 @@ public class RepresentationFormRESTController implements Serializable {
         ).collect(Collectors.toList()), pager.getCount());
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     @Transactional
     public RepresentationForm save(@PathVariable("id") Long id, @RequestBody RepresentationForm representationForm) {
         RepresentationForm representationForm2;
@@ -46,9 +46,14 @@ public class RepresentationFormRESTController implements Serializable {
             representationForm2 = representationFormBean.load(id);
         }
         representationForm2.setCode(representationForm.getCode());
-        representationForm2.setRepresentationFormats(representationFormatBean.load(representationForm.getRepresentationFormats().stream().map(representationFormat ->
-                        representationFormat.getId()
-        ).collect(Collectors.toList())));
+        representationForm2.setName(representationForm.getName());
+        if (representationForm.getRepresentationFormats().size() > 0) {
+            representationForm2.setRepresentationFormats(representationFormatBean.load(representationForm.getRepresentationFormats().stream().map(representationFormat ->
+                            representationFormat.getId()
+            ).collect(Collectors.toList())));
+        } else {
+            representationForm2.getRepresentationFormats().clear();
+        }
         representationFormBean.save(representationForm2);
         return representationForm2.clone();
     }
