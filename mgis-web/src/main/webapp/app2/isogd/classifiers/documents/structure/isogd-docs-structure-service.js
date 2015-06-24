@@ -98,7 +98,19 @@ angular.module("mgis.isogd.classifiers.documents.structure.services", ["ngResour
                     deferred.resolve(result);
                 });
                 return deferred.promise;
-            }
+            },
+            listByVolumeId: (function (volumeId, first, max) {
+                var res = $resource("rest/isogd/classifiers/documents/subobjects/listByVolumeId/:volumeId.json");
+                var deferred = $q.defer();
+                res.get({
+                    volumeId: volumeId,
+                    first: first,
+                    max: max
+                }, function (result) {
+                    deferred.resolve(result);
+                });
+                return deferred.promise;
+            })
         }
     }) //
 ;

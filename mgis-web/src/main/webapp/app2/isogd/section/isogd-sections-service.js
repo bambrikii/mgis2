@@ -1,7 +1,5 @@
 angular.module("mgis.isogd.sections.service", ["ui.router", 'ngResource']) //
     .factory("ISOGDSectionsService", function ($resource, $q) {
-        var factory = {};
-        var sections = [];
         var res = $resource('rest/isogd/sections/:id.json');
         return {
             get: function (id, first, max) {

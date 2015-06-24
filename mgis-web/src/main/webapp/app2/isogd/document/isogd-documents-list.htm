@@ -1,16 +1,16 @@
 <breadcrumb sectionId="{{stateParams.sectionId}}" bookId="{{stateParams.bookId}}" volumeId="{{stateParams.volumeId}}"></breadcrumb>
 
 <div ng-repeat="document in documents">
-	<div class="col-sm-12" style="padding: 5px;">
-		<a href="javascript://" ng-click="editDocument(stateParams.volumeId, document.id)">{{document.name}}</a>
+    <div class="col-sm-12" style="padding: 5px;">
+        <a href="javascript://" ng-click="editDocument(document.id)">{{document.name}}</a>
 
-		<div style="float: right">
-			<button class="btn btn-info btn-sm" ng-click="editDocument(stateParams.volumeId, document.id)" translate>ISOGD.EditTheDocument</button>
-			<button class="btn btn-danger btn-sm" ng-click="removeDocument(document.id)" translate>ISOGD.RemoveTheDocument</button>
-		</div>
-	</div>
+        <div style="float: right">
+            <button class="btn btn-info btn-sm" ng-click="editDocument(document.id)" translate>ISOGD.EditTheDocument</button>
+            <button class="btn btn-danger btn-sm" ng-click="removeDocument(document.id)" translate>ISOGD.RemoveTheDocument</button>
+        </div>
+    </div>
 </div>
 
 <div style="float: left">
-	<button class="btn btn-info btn-sm" ng-click="addDocument(stateParams.volumeId)" translate>ISOGD.AddADocument</button>
+    <button class="btn btn-info btn-sm" ng-click="addDocument(stateParams.volumeId)" translate>ISOGD.AddADocument</button>
 </div>

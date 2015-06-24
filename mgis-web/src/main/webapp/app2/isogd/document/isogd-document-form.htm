@@ -16,14 +16,20 @@
                     </div>
                     <!-- DOCUMENT_CLASS -->
                     <div class="form-group"
-                         ng-class="{ 'has-error' : documentForm.documentSubObject.$invalid && !documentForm.documentSubObject.$pristine }">
-                        <label translate>ISOGD.Classifiers.Documents.SubObject.Name</label> <input type="text" name="documentSubObject"
-                                                                                                   class="form-control"
-                                                                                                   ng-model="document.documentSubObject">
+                         ng-class="{ 'has-error' : documentForm.documentSubObject2.$invalid }">
+                        <label translate>ISOGD.Classifiers.Documents.SubObject.Name</label>
+                        <br/>
+                        <multiselect
+                                ng-model="document.documentSubObject"
+                                options="c.name for c in availableDocumentSubObjects"
+                                data-multiple="false"
+                                data-compare-by="id"
+                                scroll-after-rows="15">
+                        </multiselect>
+                        <input type="hidden" ng-model="document.documentSubObject.id" name="documentSubObject2" required/>
 
-                        <p ng-show="documentForm.documentSubObject.$invalid && !documentForm.documentSubObject.$pristine" class="help-block"
-                           translate>
-                            ISOGD.NameRequired</p>
+                        <p ng-show="!section.documentClass.id" class="help-block" translate>
+                            ISOGD.Classifiers.Documents.SubObject.Required</p>
                     </div>
                 </form>
             </div>
