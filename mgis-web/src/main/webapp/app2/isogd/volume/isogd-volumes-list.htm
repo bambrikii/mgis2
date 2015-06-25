@@ -1,20 +1,21 @@
 <breadcrumb sectionId="{{stateParams.sectionId}}" bookId="{{stateParams.bookId}}"></breadcrumb>
 
 <div ng-repeat="volume in volumes">
-	<div class="col-sm-12" style="padding: 5px;">
-		<a ui-sref="isogd.documents({
+    <div class="col-sm-12" style="padding: 5px;">
+        <a ui-sref="isogd.documents({
 	sectionId:stateParams.sectionId,
 	bookId:stateParams.bookId,
 	volumeId:volume.id
 	})">{{volume.name}}</a>
-		<div style="float: right;">
-			<button class="btn btn-info btn-sm" ng-click="editVolume(stateParams.bookId, volume.id)" translate>ISOGD.EditTheVolume</button>
-			<button class="btn btn-danger btn-sm" ng-click="removeVolume(volume.id)" translate>ISOGD.RemoveTheVolume</button>
-		</div>
-	</div>
+
+        <div style="float: right;">
+            <button class="btn btn-info btn-sm" ng-click="editVolume(volume.id)" translate>ISOGD.EditTheVolume</button>
+            <button class="btn btn-danger btn-sm" ng-click="removeVolume(volume.id)" translate>ISOGD.RemoveTheVolume</button>
+        </div>
+    </div>
 </div>
 <div style="float: left;">
-	<button class="btn btn-info btn-sm" ng-click="addVolume(stateParams.bookId)" translate>ISOGD.AddAVolume</button>
+    <button class="btn btn-info btn-sm" ng-click="addVolume(stateParams.bookId)" translate>ISOGD.AddAVolume</button>
 </div>
 
 
