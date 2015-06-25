@@ -1,5 +1,6 @@
 package ru.sovzond.mgis2.isogd.classifiers.documents;
 
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableCRUDDaoBase;
@@ -11,8 +12,15 @@ import ru.sovzond.mgis2.dataaccess.base.impl.PageableFilter;
 @Repository
 public class DocumentObjectDao extends PageableCRUDDaoBase<DocumentObject> {
     private class DocumentObjectFilterBuilder extends PageableFilter<DocumentObject> {
+        private DocumentClass documentClass;
+
         public DocumentObjectFilterBuilder(DocumentClass documentClass) {
-            addCriterion(Restrictions.eq("documentClass", documentClass));
+            this.documentClass = documentClass;
+        }
+
+        @Override
+        protected void apply(Criteria criteria) {
+            criteria.add(Restrictions.eq("documentClass", documentClass));
         }
     }
 

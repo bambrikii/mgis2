@@ -35,7 +35,7 @@ public abstract class PageableDAOBase<T> extends DAOBase<T> implements IPageable
 
     private void applyFilter(PageableFilter<T> filter, Criteria criteria) {
         if (filter != null) {
-            filter.getFilterItems().forEach(criteria::add);
+            filter.apply(criteria);
         }
     }
 

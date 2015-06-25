@@ -14,69 +14,80 @@ import java.util.stream.Collectors;
 @Table(name = "isogd_book")
 public class Book implements Cloneable {
 
-	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-	@Column
-	private Long id;
+    @Id
+    @SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+    @Column
+    private Long id;
 
-	@Column
-	private String name;
+    @Column
+    private String name;
 
-	@ManyToOne(optional = false)
-	private Section section;
+    @ManyToOne(optional = false)
+    private Section section;
+
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+    private List<Volume> volumes = new ArrayList<>();
 
 
-	@OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
-	private List<Volume> volumes = new ArrayList<>();
+    @ManyToOne
+    private DocumentObject documentObject;
 
+    public Long getId() {
+        return id;
+    }
 
-	@ManyToOne
-	private DocumentObject documentObject;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Section getSection() {
+        return section;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setSection(Section section) {
+        this.section = section;
+    }
 
-	public Section getSection() {
-		return section;
-	}
+    public List<Volume> getVolumes() {
+        return volumes;
+    }
 
-	public void setSection(Section section) {
-		this.section = section;
-	}
+    public void setVolumes(List<Volume> volumes) {
+        this.volumes = volumes;
+    }
 
-	public List<Volume> getVolumes() {
-		return volumes;
-	}
+    public DocumentObject getDocumentObject() {
+        return documentObject;
+    }
 
-	public void setVolumes(List<Volume> volumes) {
-		this.volumes = volumes;
-	}
+    public void setDocumentObject(DocumentObject documentObject) {
+        this.documentObject = documentObject;
+    }
 
-	public Book clone() {
-		Book book2 = new Book();
-		book2.setId(id);
-		book2.setName(name);
-		book2.setSection(section.clone());
-		book2.setVolumes(volumes.stream().map(volume -> {
-			Volume volume2 = new Volume();
-			volume2.setId(volume.getId());
-			volume2.setName(volume.getName());
-			return volume2;
-		}).collect(Collectors.toList()));
-		return book2;
-	}
+    public Book clone() {
+        Book book2 = new Book();
+        book2.setId(id);
+        book2.setName(name);
+        book2.setSection(section.clone());
+        if (documentObject != null) {
+            book2.setDocumentObject(documentObject.clone());
+        }
+        book2.setVolumes(volumes.stream().map(volume -> {
+            Volume volume2 = new Volume();
+            volume2.setId(volume.getId());
+            volume2.setName(volume.getName());
+            return volume2;
+        }).collect(Collectors.toList()));
+        return book2;
+    }
+
 }

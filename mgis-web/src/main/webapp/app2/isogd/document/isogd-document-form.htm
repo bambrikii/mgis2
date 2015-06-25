@@ -14,7 +14,7 @@
 
                         <p ng-show="documentForm.name.$invalid && !documentForm.name.$pristine" class="help-block" translate>ISOGD.NameRequired</p>
                     </div>
-                    <!-- DOCUMENT_CLASS -->
+                    <!-- DOCUMENT_SUB_OBJECT -->
                     <div class="form-group"
                          ng-class="{ 'has-error' : documentForm.documentSubObject2.$invalid }">
                         <label translate>ISOGD.Classifiers.Documents.SubObject.Name</label>
@@ -28,8 +28,7 @@
                         </multiselect>
                         <input type="hidden" ng-model="document.documentSubObject.id" name="documentSubObject2" required/>
 
-                        <p ng-show="!section.documentClass.id" class="help-block" translate>
-                            ISOGD.Classifiers.Documents.SubObject.Required</p>
+                        <p ng-show="!document.documentSubObject.id" class="help-block" translate>ISOGD.Classifiers.Documents.SubObject.Required</p>
                     </div>
                 </form>
             </div>

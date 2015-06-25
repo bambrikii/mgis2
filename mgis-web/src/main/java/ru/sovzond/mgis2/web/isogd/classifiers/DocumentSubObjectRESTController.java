@@ -3,8 +3,6 @@ package ru.sovzond.mgis2.web.isogd.classifiers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.business.PageableContainer;
-import ru.sovzond.mgis2.isogd.Volume;
-import ru.sovzond.mgis2.isogd.business.SectionBean;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentObjectBean;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentSubObjectBean;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
@@ -27,9 +25,6 @@ public class DocumentSubObjectRESTController implements Serializable {
     @Autowired
     private DocumentSubObjectBean documentSubObjectBean;
 
-    @Autowired
-    private SectionBean sectionBean;
-
     @RequestMapping(value = "", method = RequestMethod.GET)
     @Transactional
     public PageableContainer<DocumentSubObject> list(@RequestParam Long objectId, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
@@ -38,15 +33,6 @@ public class DocumentSubObjectRESTController implements Serializable {
         return new PageableContainer<>(pager.getList().stream().map(item ->
                         item.clone()
         ).collect(Collectors.toList()), pager.getCount());
-    }
-
-    @RequestMapping(value = "/listByVolumeId/:volumeId", method = RequestMethod.GET)
-    @Transactional
-    public PageableContainer<DocumentSubObject> listByVolumeId(@PathVariable Long volumeId, @RequestParam int first, @RequestParam int max) {
-        Volume volume = sectionBean.readVolume(volumeId);
-        documentSubObjectBean.listByVolume(volume, first, max);
-        // TODO:
-        throw new UnsupportedOperationException("not yet supported");
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)

@@ -6,10 +6,13 @@ import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.business.SectionBean;
+import ru.sovzond.mgis2.isogd.business.classifiers.DocumentSubObjectBean;
+import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
 import ru.sovzond.mgis2.isogd.document.Document;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/isogd/documents")
@@ -23,6 +26,9 @@ public class DocumentRESTController implements Serializable {
 
     @Autowired
     private SectionBean isogdBean;
+
+    @Autowired
+    private DocumentSubObjectBean documentSubObjectBean;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     @Transactional
@@ -42,6 +48,7 @@ public class DocumentRESTController implements Serializable {
             document2 = isogdBean.readDocument(id);
         }
         document2.setName(document.getName());
+        document2.setDocumentSubObject(documentSubObjectBean.load(document.getDocumentSubObject().getId()));
         isogdBean.save(document2);
         return document2.clone();
     }
@@ -56,5 +63,11 @@ public class DocumentRESTController implements Serializable {
     @Transactional
     public void delete(@PathVariable Long id) {
         isogdBean.delete(isogdBean.readDocument(id));
+    }
+
+    @RequestMapping(value = "/listDocumentSubObjectsByVolumeId/{volumeId}")
+    @Transactional
+    public PageableContainer<DocumentSubObject> listDocumentSubObjectList(@PathVariable Long volumeId) {
+        return new PageableContainer<>(isogdBean.listDocumentSubObjectsByVolume(isogdBean.readVolume(volumeId)).stream().map(documentSubObject -> documentSubObject.clone()).collect(Collectors.toList()));
     }
 }

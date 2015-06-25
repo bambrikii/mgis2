@@ -12,7 +12,7 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap",//
                 },
                 url: "/sections/:sectionId/books/:bookId/volumes/:volumeId/documents/",
                 templateUrl: "app2/isogd/document/isogd-documents-list.htm",
-                controller: function ($scope, $state, $stateParams, ISOGDDocumentsService, $modal, $rootScope, MGISCommonsModalForm, ISOGDClassifiersDocumentsTypesService, ISOGClassifiersDocumentsSubObjectsService) {
+                controller: function ($scope, $state, $stateParams, ISOGDDocumentsService, $modal, $rootScope, MGISCommonsModalForm, ISOGDClassifiersDocumentsTypesService) {
                     $scope.stateParams = $stateParams;
 
                     function updateGrid() {
@@ -22,7 +22,7 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap",//
                     }
 
                     function openEditDocumentForm(modalScope) {
-                        MGISCommonsModalForm.open("app2/isogd/document/isogd-document-form.htm", modalScope,
+                        MGISCommonsModalForm.edit("app2/isogd/document/isogd-document-form.htm", modalScope,
                             function ($scope, $modalInstance) {
                                 ISOGDDocumentsService.save($scope.document).then(function (data) {
                                     $modalInstance.close();
@@ -36,7 +36,7 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap",//
                     // Document
                     $scope.addDocument = function (volumeId) {
                         ISOGDClassifiersDocumentsTypesService.get().then(function (documentTypes) {
-                            ISOGClassifiersDocumentsSubObjectsService.listByVolumeId(volumeId).then(function (subObjects) {
+                            ISOGDDocumentsService.listDocumentSubObjectsByVolumeId(volumeId).then(function (documentSubObjects) {
                                 var modalScope = $rootScope.$new();
                                 modalScope.document = {
                                     id: 0,
@@ -48,7 +48,7 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap",//
                                     }
                                 }
                                 modalScope.availableDocumentTypes = documentTypes.list;
-                                modalScope.availableDocumentSubObjects = subObjects.list;
+                                modalScope.availableDocumentSubObjects = documentSubObjects.list;
                                 openEditDocumentForm(modalScope)
                             });
                         });
@@ -56,21 +56,21 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap",//
 
                     $scope.editDocument = function (id) {
                         ISOGDClassifiersDocumentsTypesService.get().then(function (documentTypes) {
-                            ISOGClassifiersDocumentsSubObjectsService.get().then(function (subObjects) {
-                                ISOGDDocumentsService.get(id).then(function (data) {
+                            ISOGDDocumentsService.get(id).then(function (document) {
+                                ISOGDDocumentsService.listDocumentSubObjectsByVolumeId(document.volume.id).then(function (documentSubObjects) {
                                     var modalScope = $rootScope.$new();
-                                    modalScope.document = data;
+                                    modalScope.document = document;
                                     modalScope.availableDocumentTypes = documentTypes.list;
-                                    modalScope.availableDocumentSubObjects = subObjects.list;
+                                    modalScope.availableDocumentSubObjects = documentSubObjects.list;
                                     openEditDocumentForm(modalScope);
                                 });
                             });
                         });
                     }
 
-                    $scope.removeDocument = function (documentId) {
-                        MGISCommonsModalForm.confirmRemoval("app2/common/confirm-deletion.htm", function ($scope, $modalInstance) {
-                            ISOGDDocumentsService.remove(documentId).then(function (data) {
+                    $scope.removeDocument = function (id) {
+                        MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
+                            ISOGDDocumentsService.remove(id).then(function (document) {
                                 $modalInstance.close();
                                 updateGrid();
                             });

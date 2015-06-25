@@ -7,7 +7,6 @@ import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableFilter;
-import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObjectDao;
@@ -36,8 +35,4 @@ public class DocumentSubObjectBean extends CRUDBeanBase<DocumentSubObject> {
         return new PageableContainer<>(dao.list(first, max, filter), dao.count(filter));
     }
 
-    public PageableContainer<DocumentSubObject> listByVolume(Volume volume, int first, int max) {
-        PageableFilter<DocumentSubObject> filter = dao.createFilter(volume);
-        return new PageableContainer<>(dao.list(first, max, filter), dao.count(filter));
-    }
 }

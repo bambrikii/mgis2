@@ -1,91 +1,73 @@
-angular.module("mgis.isogd.books", [ "ui.router", "ui.bootstrap", //
-"mgis.isogd.books.service" ]) //
-.config(function($stateProvider, $urlRouterProvider) {
-	$stateProvider//
-	.state("isogd.books", {
-		url : "/sections/:sectionId/books/",
-		templateUrl : "app2/isogd/book/isogd-books-list.htm",
-		controller : function($scope, $state, $stateParams, ISOGDBooksService, $modal) {
-			$scope.stateParams = $stateParams;
+angular.module("mgis.isogd.books", ["ui.router", "ui.bootstrap", //
+    "mgis.commons",
+    "mgis.isogd.books.service" //
+]) //
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $stateProvider//
+            .state("isogd.books", {
+                url: "/sections/:sectionId/books/",
+                templateUrl: "app2/isogd/book/isogd-books-list.htm",
+                controller: function ($scope, $state, $stateParams, ISOGDBooksService, $modal, MGISCommonsModalForm, $rootScope) {
+                    $scope.stateParams = $stateParams;
 
-			function updateGrid() {
-				return ISOGDBooksService.list($stateParams.sectionId, 0, 15).then(function(data) {
-					$scope.books = data.list;
-				});
-			}
-			updateGrid();
+                    function updateGrid() {
+                        return ISOGDBooksService.get("", 0, 15, $stateParams.sectionId).then(function (data) {
+                            $scope.books = data.list;
+                        });
+                    }
 
-			// Book
-			$scope.addBook = function(sectionId) {
-				$scope.book = {
-					id : 0,
-					name : "",
-					volume : {
-						id : sectionId
-					}
-				}
-				var modalInstance = $modal.open({
-					animation : true,
-					scope : $scope,
-					templateUrl : 'app2/isogd/book/isogd-book-form.htm',
-					controller : function($scope, $modalInstance) {
-						$scope.ok = function() {
-							$modalInstance.close();
-							ISOGDBooksService.save(sectionId, $scope.book).then(function(data) {
-								updateGrid();
-							});
-						}
-						$scope.cancel = function() {
-							$modalInstance.dismiss('cancel');
-						}
-					}
-				});
-			}
+                    updateGrid();
 
-			$scope.editBook = function(sectionId, bookId) {
-				console.log("edit Book");
-				ISOGDBooksService.get(bookId).then(function(data) {
-					$scope.book = data;
-					var modalInstance = $modal.open({
-						animation : true,
-						scope : $scope,
-						templateUrl : 'app2/isogd/book/isogd-book-form.htm',
-						controller : function($scope, $modalInstance) {
-							$scope.ok = function() {
-								ISOGDBooksService.save(sectionId, $scope.book).then(function(data) {
-									$modalInstance.close(/* $scope.selected.item */);
-									updateGrid();
-								})
-							}, $scope.cancel = function() {
-								$modalInstance.dismiss('cancel');
-							}
-						}
-					});
-				});
-			}
+                    // Book
+                    function openEditBookForm(modalScope) {
+                        MGISCommonsModalForm.edit("app2/isogd/book/isogd-book-form.htm", modalScope, function ($scope, $modalInstance) {
+                            $modalInstance.close();
+                            ISOGDBooksService.save(modalScope.book).then(function (data) {
+                                updateGrid();
+                            });
+                        });
+                    }
 
-			$scope.removeBook = function(bookId) {
-				var modalInstance = $modal.open({
-					templateUrl : 'app2/common/confirm-deletion.htm',
-					controller : function($scope, $modalInstance) {
-						$scope.ok = function() {
-							$modalInstance.close("");
-							console.log("remove Book");
-							ISOGDBooksService.remove(bookId).then(function(data) {
-								updateGrid();
-							})
-						}
-						$scope.cancel = function() {
-							$modalInstance.dismiss('cancel');
-						}
-					}
-				});
-			}
-		}
-	})
+                    $scope.addBook = function (sectionId) {
+                        ISOGDBooksService.listDocumentObjectsBySectionId(sectionId).then(function (documentObjects) {
+                            var modalScope = $rootScope.$new();
+                            modalScope.book = {
+                                id: 0,
+                                name: "",
+                                section: {
+                                    id: sectionId
+                                }
+                            }
+                            modalScope.availableDocumentObjects = documentObjects.list;
+                            openEditBookForm(modalScope);
+                        })
+                    }
 
-}).controller("ISOGDBooksCtrl", function($scope) {
+                    $scope.editBook = function (id) {
+                        ISOGDBooksService.get(id).then(function (book) {
+                            ISOGDBooksService.listDocumentObjectsBySectionId(book.section.id).then(function (documentObjects) {
+                                var modalScope = $rootScope.$new();
+                                modalScope.book = book;
+                                modalScope.availableDocumentObjects = documentObjects.list;
+                                openEditBookForm(modalScope);
+                            });
+                        });
+                    }
 
-}) //
+                    $scope.removeBook = function (id) {
+                        MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
+                                $modalInstance.close();
+                                ISOGDBooksService.remove(id).then(function (data) {
+                                    updateGrid();
+                                })
+                            }
+                        );
+                    }
+                }
+            })
+
+    }).controller("ISOGDBooksCtrl", function ($scope) {
+
+    }) //
 ;
 
