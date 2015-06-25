@@ -31,6 +31,24 @@
                         <p ng-show="!document.documentSubObject.id" class="help-block" translate>ISOGD.Classifiers.Documents.SubObject.Required</p>
                     </div>
                 </form>
+
+                <accordion close-others="oneAtATime">
+                    <accordion-group is-open="commonPartTab.open">
+                        <accordion-heading>
+                            <span translate>ISOGD.Classifiers.Documents.Class.CommonPart</span>
+                            <i class="pull-right glyphicon"
+                               ng-class="{'glyphicon-chevron-down': commonPartTab.open, 'glyphicon-chevron-right': !commonPartTab.open}"></i>
+                        </accordion-heading>
+                    </accordion-group>
+                    <accordion-group is-open="specialPartTab.open">
+                        <accordion-heading>
+                            <span translate>ISOGD.Classifiers.Documents.Class.SpecialPart</span>
+                            <i class="pull-right glyphicon"
+                               ng-class="{'glyphicon-chevron-down': specialPartTab.open, 'glyphicon-chevron-right': !specialPartTab.open}"></i>
+                        </accordion-heading>
+                    </accordion-group>
+                </accordion>
+
             </div>
         </div>
     </div>

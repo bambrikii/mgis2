@@ -53,6 +53,8 @@
   "ISOGD.Classifiers.Documents.Class.Name": "Класс",
   "ISOGD.Classifiers.Documents.Class.HasCommonPart": "Имеется основная часть",
   "ISOGD.Classifiers.Documents.Class.HasSpecialPart": "Имеется специальная часть",
+  "ISOGD.Classifiers.Documents.Class.CommonPart": "Основная часть",
+  "ISOGD.Classifiers.Documents.Class.SpecialPart": "Специальная часть",
   "ISOGD.Classifiers.Documents.Class.Add": "Добавить класс",
   "ISOGD.Classifiers.Documents.Class.Edit": "Редактировать класс",
   "ISOGD.Classifiers.Documents.Class.Remove": "Удалить класс",
