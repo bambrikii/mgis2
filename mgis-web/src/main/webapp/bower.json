@@ -37,8 +37,8 @@
   },
   "resolutions": {
     "jquery": "1.10.2",
-    "bootstrap": "3.3.4",
-    "underscore": "1.7.0",
+    "bootstrap": "3.3.5",
+    "underscore": "1.8.3",
     "angular": "1.4.0",
     "angular-bootstrap": "0.13.0"
   }

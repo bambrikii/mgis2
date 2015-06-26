@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<groupId>ru.sovzond.mgis2</groupId>
 		<artifactId>mgis-parent</artifactId>
@@ -146,15 +147,74 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<webResources>
+						<resource>
+							<directory>${basedir}/target/node-resources/</directory>
+							<includes>
+								<include>bower_components/**/*.js</include>
+								<include>bower_components/**/*.css</include>
+								<include>bower_components/**/*.png</include>
+								<include>bower_components/**/*.gif</include>
+								<include>bower_components/**/*.jpg</include>
+							</includes>
+						</resource>
+					</webResources>
 				</configuration>
+			</plugin>
+			<!--<plugin>-->
+			<!--<artifactId>maven-resources-plugin</artifactId>-->
+			<!--<version>2.7</version>-->
+			<!--<executions>-->
+			<!--<execution>-->
+			<!--<id>copy-resources</id>-->
+			<!--<phase>generate-resources</phase>-->
+			<!--<goals>-->
+			<!--<goal>copy-resources</goal>-->
+			<!--</goals>-->
+			<!--<configuration>-->
+			<!--<outputDirectory>${basedir}/target/${artifactId}-${version}</outputDirectory>-->
+			<!--<resources>-->
+			<!--<resource>-->
+			<!--<directory>${basedir}/src/main/webapp</directory>-->
+			<!--<includes>-->
+			<!--<include>*.json</include>-->
+			<!--</includes>-->
+			<!--</resource>-->
+			<!--</resources>-->
+			<!--</configuration>-->
+			<!--</execution>-->
+			<!--</executions>-->
+			<!--</plugin>-->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/node-resources/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/src/main/webapp</directory>
+									<includes>
+										<include>*.json</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
 				<version>0.0.23</version>
-				<!-- executions go here -->
 				<configuration>
-					<workingDirectory>src/main/frontend</workingDirectory>
+					<workingDirectory>${basedir}/target/node-resources/</workingDirectory>
 				</configuration>
 				<executions>
 					<execution>
@@ -189,6 +249,17 @@
 					<!-- <workingDirectory>${mgis.frontend.dir}</workingDirectory> -->
 					<!-- </configuration> -->
 					<!-- </execution> -->
+					<execution>
+						<id>bower install</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>bower</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+							<workingDirectory>${basedir}/target/node-resources/</workingDirectory>
+						</configuration>
+					</execution>
 				</executions>
 				<dependencies>
 					<dependency>
