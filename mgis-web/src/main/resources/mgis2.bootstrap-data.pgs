@@ -5,9 +5,9 @@ BEGIN
 	truncate table mgis2_user CASCADE;
 	truncate table mgis2_privilege CASCADE;
 
-	insert into mgis2_privilege (id, name) values (nextval('hibernate_sequence'), 'ROLE_USER');
-	insert into mgis2_privilege (id, name) values (nextval('hibernate_sequence'), 'ROLE_ADMIN');
-	insert into mgis2_user (id, active, "password", username) values (nextval('hibernate_sequence'), true, 'asd', 'asd');
+	insert into mgis2_privilege (id, name) values (nextval('mgis2_entity_seq'), 'ROLE_USER');
+	insert into mgis2_privilege (id, name) values (nextval('mgis2_entity_seq'), 'ROLE_ADMIN');
+	insert into mgis2_user (id, active, "password", username) values (nextval('mgis2_entity_seq'), true, 'asd', 'asd');
 
 	set @user_id = select id from mgis2_user where username = 'asd';
 	set @priv_id_user = select id from mgis2_privilege where "name" = 'ROLE_USER';
