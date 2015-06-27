@@ -18,52 +18,50 @@ import java.util.stream.Collectors;
 @RequestMapping("/isogd/classifiers/documents/classes")
 public class DocumentClassRESTController implements Serializable {
 
-    @Autowired
-    private DocumentClassBean documentClassBean;
+	@Autowired
+	private DocumentClassBean documentClassBean;
 
-    @Autowired
-    private DocumentObjectBean documentObjectBean;
+	@Autowired
+	private DocumentObjectBean documentObjectBean;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    @Transactional
-    public PageableContainer<DocumentClass> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-        PageableContainer<DocumentClass> pager = documentClassBean.list(first, max);
-        return new PageableContainer<>(pager.getList().stream().map(item ->
-                        item.clone()
-        ).collect(Collectors.toList()), pager.getCount());
-    }
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	@Transactional
+	public PageableContainer<DocumentClass> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+		PageableContainer<DocumentClass> pager = documentClassBean.list(first, max);
+		return new PageableContainer<>(pager.getList().stream().map(item -> item.clone()).collect(Collectors.toList()), pager.getTotalNumberOfItems(), first, max);
+	}
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    @Transactional
-    public DocumentClass save(@PathVariable("id") Long id, @RequestBody DocumentClass documentClass) {
-        DocumentClass result;
-        if (id == 0) {
-            result = new DocumentClass();
-        } else {
-            result = documentClassBean.load(id);
-        }
-        result.setCode(documentClass.getCode());
-        result.setName(documentClass.getName());
-        result.setHasCommonPart(documentClass.isHasCommonPart());
-        result.setHasSpecialPart(documentClass.isHasSpecialPart());
-        if (documentClass.getDocumentObjects().size() > 0) {
-            result.setDocumentObjects(documentObjectBean.load(documentClass.getDocumentObjects().stream().map(item -> item.getId()).collect(Collectors.toList())));
-        } else {
-            result.getDocumentObjects().clear();
-        }
-        documentClassBean.save(result);
-        return result.clone();
-    }
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	@Transactional
+	public DocumentClass save(@PathVariable("id") Long id, @RequestBody DocumentClass documentClass) {
+		DocumentClass result;
+		if (id == 0) {
+			result = new DocumentClass();
+		} else {
+			result = documentClassBean.load(id);
+		}
+		result.setCode(documentClass.getCode());
+		result.setName(documentClass.getName());
+		result.setHasCommonPart(documentClass.isHasCommonPart());
+		result.setHasSpecialPart(documentClass.isHasSpecialPart());
+		if (documentClass.getDocumentObjects().size() > 0) {
+			result.setDocumentObjects(documentObjectBean.load(documentClass.getDocumentObjects().stream().map(item -> item.getId()).collect(Collectors.toList())));
+		} else {
+			result.getDocumentObjects().clear();
+		}
+		documentClassBean.save(result);
+		return result.clone();
+	}
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @Transactional
-    public DocumentClass read(@PathVariable Long id) {
-        return documentClassBean.load(id).clone();
-    }
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@Transactional
+	public DocumentClass read(@PathVariable Long id) {
+		return documentClassBean.load(id).clone();
+	}
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    @Transactional
-    public void delete(@PathVariable Long id) {
-        documentClassBean.remove(documentClassBean.load(id));
-    }
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@Transactional
+	public void delete(@PathVariable Long id) {
+		documentClassBean.remove(documentClassBean.load(id));
+	}
 }

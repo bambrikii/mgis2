@@ -16,8 +16,8 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap",//
                     $scope.stateParams = $stateParams;
 
                     function updateGrid() {
-                        ISOGDDocumentsService.get("", 0, 0, $stateParams.volumeId).then(function (data) {
-                            $scope.documents = data.list;
+                        ISOGDDocumentsService.get("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage, $stateParams.volumeId).then(function (data) {
+                            $scope.documentsPager = data;
                         });
                     }
 
@@ -29,6 +29,13 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap",//
                                     updateGrid();
                                 });
                             });
+                    }
+
+
+                    $scope.itemsPerPage = 15;
+                    $scope.currentPage = 1;
+                    $scope.pageChanged = function () {
+                        updateGrid();
                     }
 
                     updateGrid();

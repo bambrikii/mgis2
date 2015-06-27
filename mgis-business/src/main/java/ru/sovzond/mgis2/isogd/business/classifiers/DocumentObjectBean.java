@@ -16,21 +16,21 @@ import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObjectDao;
  */
 @Service
 public class DocumentObjectBean extends CRUDBeanBase<DocumentObject> {
-    @Autowired
-    private DocumentObjectDao dao;
+	@Autowired
+	private DocumentObjectDao dao;
 
-    @Override
-    protected IPageableDAOBase<DocumentObject> getPageableDao() {
-        return dao;
-    }
+	@Override
+	protected IPageableDAOBase<DocumentObject> getPageableDao() {
+		return dao;
+	}
 
-    @Override
-    protected IIdentifiableDao<DocumentObject> getIIdentifiableDao() {
-        return dao;
-    }
+	@Override
+	protected IIdentifiableDao<DocumentObject> getIIdentifiableDao() {
+		return dao;
+	}
 
-    public PageableContainer<DocumentObject> list(DocumentClass documentClass, int first, int max) {
-        PageableFilter<DocumentObject> filter = dao.createFilter(documentClass);
-        return new PageableContainer<>(dao.list(first, max, filter), dao.count(filter));
-    }
+	public PageableContainer<DocumentObject> list(DocumentClass documentClass, int first, int max) {
+		PageableFilter<DocumentObject> filter = dao.createFilter(documentClass);
+		return new PageableContainer<>(dao.list(first, max, filter), dao.count(filter), first, max);
+	}
 }

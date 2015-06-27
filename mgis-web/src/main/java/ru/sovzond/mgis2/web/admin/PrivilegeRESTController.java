@@ -28,7 +28,7 @@ public class PrivilegeRESTController implements /*IRESTController<Privilege>,*/ 
 	@Transactional
 	public PageableContainer<Privilege> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
 		PageableContainer<Privilege> pager = privilegeBean.list(first, max);
-		return new PageableContainer<Privilege>(pager.getList().stream().map(CloneManager::clone).collect(Collectors.toList()), pager.getCount());
+		return new PageableContainer<>(pager.getList().stream().map(CloneManager::clone).collect(Collectors.toList()), pager.getTotalNumberOfItems(), first, max);
 	}
 
 	//	@Override

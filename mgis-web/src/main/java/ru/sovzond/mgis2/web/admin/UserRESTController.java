@@ -36,7 +36,7 @@ public class UserRESTController implements /*IRESTController<User>,*/ Serializab
 	@Transactional
 	public PageableContainer<User> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
 		PageableContainer<User> pager = userBean.list(first, max);
-		return new PageableContainer<User>(pager.getList().stream().map(CloneManager::clone).collect(Collectors.toList()), pager.getCount());
+		return new PageableContainer<User>(pager.getList().stream().map(CloneManager::clone).collect(Collectors.toList()), pager.getTotalNumberOfItems(), first, max);
 	}
 
 	//@Override

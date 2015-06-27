@@ -16,7 +16,7 @@ public abstract class CRUDBeanBase<T> {
 
 	public PageableContainer<T> list(int first, int max) {
 		IPageableDAOBase<T> pageableDao = getPageableDao();
-		return new PageableContainer<>(pageableDao.list(first, max), pageableDao.count());
+		return new PageableContainer<>(pageableDao.list(first, max), pageableDao.count(), first, max);
 	}
 
 	public T load(Long id) {

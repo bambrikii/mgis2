@@ -1,6 +1,6 @@
 <breadcrumb sectionId="{{stateParams.sectionId}}" bookId="{{stateParams.bookId}}" volumeId="{{stateParams.volumeId}}"></breadcrumb>
 
-<div ng-repeat="document in documents">
+<div ng-repeat="document in documentsPager.list">
     <div class="col-sm-12" style="padding: 5px;">
         <a href="javascript://" ng-click="editDocument(document.id)">{{document.name}}</a>
 
@@ -11,6 +11,11 @@
     </div>
 </div>
 
-<div style="float: left">
+<pagination total-items="documentsPager.totalNumberOfItems" ng-model="currentPage"
+            items-per-page="itemsPerPage" ng-change="pageChanged()"
+            class="pagination-sm" previous-text="&lsaquo;"
+            next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+
+<div>
     <button class="btn btn-info btn-sm" ng-click="addDocument(stateParams.volumeId)" translate>ISOGD.AddADocument</button>
 </div>
