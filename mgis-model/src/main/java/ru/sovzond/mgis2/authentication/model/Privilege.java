@@ -1,16 +1,10 @@
 package ru.sovzond.mgis2.authentication.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "mgis2_privilege")
-public class Privilege {
+public class Privilege implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_entity_seq", allocationSize = 1)
@@ -37,4 +31,11 @@ public class Privilege {
 		this.name = name;
 	}
 
+	@Override
+	public Privilege clone() {
+		Privilege privilege = new Privilege();
+		privilege.setId(id);
+		privilege.setName(name);
+		return privilege;
+	}
 }

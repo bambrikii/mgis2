@@ -1,19 +1,9 @@
 /**
  * Created by asd on 20/06/15.
  */
-angular.module("mgis.admin.users.service", [ "ngResource" ]) //
+angular.module("mgis.admin.users.service", ["ngResource"]) //
     .factory("AdminUsersService", function ($resource, $q) {
-        var res = $resource("rest/admin/users/:id.json", {}, {
-            get: {
-                method: "GET"
-            },
-            save: {
-                method: "POST"
-            },
-            remove: {
-                method: "DELETE"
-            }
-        });
+        var res = $resource("rest/admin/users/:id.json");
         return {
             get: function (userId, first, max) {
                 var deferred = $q.defer();
@@ -24,7 +14,7 @@ angular.module("mgis.admin.users.service", [ "ngResource" ]) //
             },
             save: function (user) {
                 var deferred = $q.defer();
-                res.save({id: user.id },
+                res.save({id: user.id},
                     {
                         id: user.id,
                         username: user.username,
@@ -36,9 +26,9 @@ angular.module("mgis.admin.users.service", [ "ngResource" ]) //
                     });
                 return deferred.promise;
             },
-            remove: function (userId) {
+            remove: function (id) {
                 var deferred = $q.defer();
-                res.remove({id: userId}, function (user) {
+                res.remove({id: id}, function (user) {
                     deferred.resolve(user);
                 });
                 return deferred.promise;

@@ -3,7 +3,6 @@ package ru.sovzond.mgis2.web.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
-import ru.sovzond.mgis2.admin.CloneManager;
 import ru.sovzond.mgis2.admin.GroupBean;
 import ru.sovzond.mgis2.admin.PrivilegeBean;
 import ru.sovzond.mgis2.admin.UserBean;
@@ -36,7 +35,7 @@ public class UserRESTController implements /*IRESTController<User>,*/ Serializab
 	@Transactional
 	public PageableContainer<User> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
 		PageableContainer<User> pager = userBean.list(first, max);
-		return new PageableContainer<User>(pager.getList().stream().map(CloneManager::clone).collect(Collectors.toList()), pager.getTotalNumberOfItems(), first, max);
+		return new PageableContainer<User>(pager.getList().stream().map(user -> user.clone()).collect(Collectors.toList()), pager.getTotalNumberOfItems(), first, max);
 	}
 
 	//@Override
@@ -66,14 +65,14 @@ public class UserRESTController implements /*IRESTController<User>,*/ Serializab
 			user2.getGroups().clear();
 		}
 		userBean.save(user2);
-		return CloneManager.clone(user2);
+		return user2.clone();
 	}
 
 	//@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@Transactional
 	public User read(@PathVariable Long id) {
-		return CloneManager.clone(userBean.load(id));
+		return userBean.load(id).clone();
 	}
 
 	//	@Override
