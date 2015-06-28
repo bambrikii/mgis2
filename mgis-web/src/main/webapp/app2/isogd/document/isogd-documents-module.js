@@ -24,7 +24,13 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap",//
                     function openEditDocumentForm(modalScope) {
                         ISOGDDocumentsService.loadDocumentClassByVolumeId($stateParams.volumeId).then(function (documentClass) {
                             modalScope.hasCommonPart = documentClass.hasCommonPart;
-                            modalScope.hasSpecialPart = documentClass.hasSpecialPart
+                            modalScope.hasSpecialPart = documentClass.hasSpecialPart;
+                            modalScope.commonPartTab = {
+                                open: documentClass.hasCommonPart
+                            }
+                            modalScope.specialPartTab = {
+                                open: documentClass.hasSpecialPart
+                            }
                             MGISCommonsModalForm.edit("app2/isogd/document/isogd-document-form.htm", modalScope,
                                 function ($scope, $modalInstance) {
                                     ISOGDDocumentsService.save($scope.document).then(function (data) {

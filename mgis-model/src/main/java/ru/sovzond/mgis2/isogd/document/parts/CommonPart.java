@@ -1,8 +1,12 @@
 package ru.sovzond.mgis2.isogd.document.parts;
 
 import ru.sovzond.mgis2.isogd.document.Document;
+import ru.sovzond.mgis2.isogd.document.DocumentContent;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by asd on 22/06/15.
@@ -18,6 +22,9 @@ public class CommonPart implements Cloneable {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	private Document document;
+
+	@OneToMany
+	private List<DocumentContent> documentContents = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -35,12 +42,29 @@ public class CommonPart implements Cloneable {
 		this.document = document;
 	}
 
+	public List<DocumentContent> getDocumentContents() {
+		return documentContents;
+	}
+
+	public void setDocumentContents(List<DocumentContent> documentContents) {
+		this.documentContents = documentContents;
+	}
+
 	public CommonPart clone() {
 		CommonPart commonPart = new CommonPart();
 		commonPart.setId(id);
 		Document document = new Document();
 		document.setId(this.document.getId());
 		commonPart.setDocument(document);
+		commonPart.setDocumentContents(documentContents.stream().map(documentContent -> {
+			DocumentContent documentContent1 = new DocumentContent();
+			documentContent1.setId(documentContent.getId());
+			documentContent1.setFileName(documentContent.getFileName());
+			documentContent1.setBytes(documentContent.getBytes());
+			documentContent1.setRepresentationFormat(documentContent.getRepresentationFormat() != null ? documentContent.getRepresentationFormat().clone() : null);
+			return documentContent1;
+		}).collect(Collectors.toList()));
 		return commonPart;
 	}
+
 }

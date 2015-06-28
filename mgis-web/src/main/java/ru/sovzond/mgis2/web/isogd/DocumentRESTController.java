@@ -5,7 +5,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.Volume;
-import ru.sovzond.mgis2.isogd.business.SectionBean;
+import ru.sovzond.mgis2.isogd.business.DocumentBean;
+import ru.sovzond.mgis2.isogd.business.VolumeBean;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentSubObjectBean;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentClass;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
@@ -28,7 +29,10 @@ public class DocumentRESTController implements Serializable {
 	private static final long serialVersionUID = -440806213097386154L;
 
 	@Autowired
-	private SectionBean isogdBean;
+	private VolumeBean volumeBean;
+
+	@Autowired
+	private DocumentBean documentBean;
 
 	@Autowired
 	private DocumentSubObjectBean documentSubObjectBean;
@@ -36,8 +40,8 @@ public class DocumentRESTController implements Serializable {
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
 	public PageableContainer<Document> list(@RequestParam("volumeId") Long volumeId, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		Volume volume = isogdBean.readVolume(volumeId);
-		return isogdBean.pageDocuments(volume, first, max);
+		Volume volume = volumeBean.readVolume(volumeId);
+		return documentBean.pageDocuments(volume, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -46,9 +50,9 @@ public class DocumentRESTController implements Serializable {
 		Document document2;
 		if (id == 0) {
 			document2 = new Document();
-			document2.setVolume(isogdBean.readVolume(document.getVolume().getId()));
+			document2.setVolume(volumeBean.readVolume(document.getVolume().getId()));
 		} else {
-			document2 = isogdBean.readDocument(id);
+			document2 = documentBean.readDocument(id);
 		}
 		document2.setName(document.getName());
 		document2.setDocNumber(document.getDocNumber());
@@ -68,31 +72,31 @@ public class DocumentRESTController implements Serializable {
 				document.setSpecialPart(specialPart);
 			}
 		}
-		isogdBean.save(document2);
+		documentBean.save(document2);
 		return document2.clone();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@Transactional
 	public Document read(@PathVariable("id") Long id) {
-		return isogdBean.readDocument(id).clone();
+		return documentBean.readDocument(id).clone();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@Transactional
 	public void delete(@PathVariable Long id) {
-		isogdBean.delete(isogdBean.readDocument(id));
+		documentBean.delete(documentBean.readDocument(id));
 	}
 
 	@RequestMapping(value = "/listDocumentSubObjectsByVolumeId/{volumeId}")
 	@Transactional
 	public PageableContainer<DocumentSubObject> listDocumentSubObjectList(@PathVariable Long volumeId) {
-		return new PageableContainer<>(isogdBean.listDocumentSubObjectsByVolume(isogdBean.readVolume(volumeId)).stream().map(documentSubObject -> documentSubObject.clone()).collect(Collectors.toList()));
+		return new PageableContainer<>(documentBean.listDocumentSubObjectsByVolume(volumeBean.readVolume(volumeId)).stream().map(documentSubObject -> documentSubObject.clone()).collect(Collectors.toList()));
 	}
 
 	@RequestMapping(value = "/readDocumentClassByVolumeId/{volumeId}")
 	@Transactional
 	public DocumentClass readDocumentClassByVolumeId(@PathVariable Long volumeId) {
-		return isogdBean.readDocumentClassByVolume(isogdBean.readVolume(volumeId)).clone();
+		return documentBean.readDocumentClassByVolume(volumeBean.readVolume(volumeId)).clone();
 	}
 }
