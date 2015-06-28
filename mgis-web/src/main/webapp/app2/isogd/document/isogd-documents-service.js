@@ -19,6 +19,8 @@ angular.module("mgis.isogd.documents.service", ["ui.router"]) //
                 res.save({id: document.id,}, {
                     id: document.id,
                     name: document.name,
+                    docDate: document.docDate,
+                    docNumber: document.docNumber,
                     volume: {
                         id: document.volume.id
                     },
@@ -39,7 +41,7 @@ angular.module("mgis.isogd.documents.service", ["ui.router"]) //
                 });
                 return deferred.promise;
             },
-            listDocumentSubObjectsByVolumeId: (function (volumeId, first, max) {
+            listDocumentSubObjectsByVolumeId: function (volumeId, first, max) {
                 var res = $resource("rest/isogd/documents/listDocumentSubObjectsByVolumeId/:volumeId.json");
                 var deferred = $q.defer();
                 res.get({
@@ -47,10 +49,19 @@ angular.module("mgis.isogd.documents.service", ["ui.router"]) //
                     first: first,
                     max: max
                 }, function (result) {
-
                     deferred.resolve(result);
                 });
                 return deferred.promise;
-            })
+            },
+            loadDocumentClassByVolumeId: function (volumeId) {
+                var res = $resource("rest/isogd/documents/readDocumentClassByVolumeId/:volumeId.json");
+                var deferred = $q.defer();
+                res.get({
+                    volumeId: volumeId
+                }, function (result) {
+                    deferred.resolve(result);
+                });
+                return deferred.promise;
+            }
         }
     });

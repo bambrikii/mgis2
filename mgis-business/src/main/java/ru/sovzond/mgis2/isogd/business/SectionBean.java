@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableFilter;
 import ru.sovzond.mgis2.isogd.*;
+import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentClass;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
 import ru.sovzond.mgis2.isogd.document.CommonPartDao;
@@ -113,5 +114,9 @@ public class SectionBean {
 
 	public List<DocumentObject> listDocumentObjectsBySection(Section section) {
 		return bookDao.listAvailableDocumentObjects(section);
+	}
+
+	public DocumentClass readDocumentClassByVolume(Volume volume) {
+		return documentDao.readDocumentClassByVolume(volume);
 	}
 }

@@ -22,13 +22,17 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap",//
                     }
 
                     function openEditDocumentForm(modalScope) {
-                        MGISCommonsModalForm.edit("app2/isogd/document/isogd-document-form.htm", modalScope,
-                            function ($scope, $modalInstance) {
-                                ISOGDDocumentsService.save($scope.document).then(function (data) {
-                                    $modalInstance.close();
-                                    updateGrid();
+                        ISOGDDocumentsService.loadDocumentClassByVolumeId($stateParams.volumeId).then(function (documentClass) {
+                            modalScope.hasCommonPart = documentClass.hasCommonPart;
+                            modalScope.hasSpecialPart = documentClass.hasSpecialPart
+                            MGISCommonsModalForm.edit("app2/isogd/document/isogd-document-form.htm", modalScope,
+                                function ($scope, $modalInstance) {
+                                    ISOGDDocumentsService.save($scope.document).then(function (data) {
+                                        $modalInstance.close();
+                                        updateGrid();
+                                    });
                                 });
-                            });
+                        });
                     }
 
 
