@@ -28,6 +28,8 @@
             src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <script type="text/javascript" src="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.js"></script>
     <script type="text/javascript" src="bower_components/angular-bootstrap-multiselect/angular-bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
+    <script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <!-- <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script> -->
     <!-- <script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script> -->
     <!-- <script type="text/javascript" src="bower_components/angular-dialog-service/dist/dialogs-default-translations.js"></script> -->

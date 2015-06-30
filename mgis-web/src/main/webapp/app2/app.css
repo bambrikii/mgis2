@@ -155,3 +155,26 @@
     white-space: nowrap;
 }
 
+/* Upload buttons */
+.drop-box {
+    background: #f8f8f8 none repeat scroll 0 0;
+    border: 5px dashed #ddd;
+    float: left;
+    height: 65px;
+    margin-left: 10px;
+    padding-top: 25px;
+    text-align: center;
+    width: 200px;
+}
+
+.up-buttons {
+    float: left;
+}
+
+.drop-box.dragover {
+    border: 5px dashed blue;
+}
+
+.drop-box.dragover-err {
+    border: 5px dashed red;
+}
