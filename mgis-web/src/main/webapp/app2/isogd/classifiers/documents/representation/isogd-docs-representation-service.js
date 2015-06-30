@@ -41,15 +41,12 @@ angular.module("mgis.isogd.classifiers.documents.representation.service", ["ngRe
     .factory("ISOGDClassfiersDocumentsRepresentationFormatService", function ($resource, $q) {
         var res = $resource("rest/isogd/classifiers/documents/representations/formats/:id.json");
         return {
-            get: function (id, first, max, representationFormId) {
+            get: function (id, first, max) {
                 var deferred = $q.defer();
                 res.get({
                     id: id,
                     first: first,
-                    max: max,
-                    representationForm: {
-                        id: representationFormId
-                    }
+                    max: max
                 }, function (result) {
                     deferred.resolve(result);
                 });
@@ -61,7 +58,8 @@ angular.module("mgis.isogd.classifiers.documents.representation.service", ["ngRe
                     id: item.id,
                     code: item.code,
                     name: item.name,
-                    representationForm: item.representationForm
+                    representationForm: item.representationForm,
+                    formats: item.formats
                 }, function (result) {
                     deferred.resolve(result);
                 });

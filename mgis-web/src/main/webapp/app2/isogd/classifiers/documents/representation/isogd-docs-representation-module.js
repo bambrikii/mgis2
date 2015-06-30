@@ -70,7 +70,8 @@ angular.module("mgis.isogd.classifiers.documents.representation", ["ui.router", 
                 name: "",
                 representationForm: {
                     id: representationFormId
-                }
+                },
+                formats: []
             }
             openEditFormatModal(modalScope);
         }

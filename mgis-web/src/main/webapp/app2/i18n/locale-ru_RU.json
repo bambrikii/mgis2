@@ -77,5 +77,6 @@
   "ISOGD.Classifiers.Documents.Representation.Format.Name": "Формат представления",
   "ISOGD.Classifiers.Documents.Representation.Format.Add": "Добавить формат представления",
   "ISOGD.Classifiers.Documents.Representation.Format.Edit": "Редактировать формат представления",
-  "ISOGD.Classifiers.Documents.Representation.Format.Remove": "Удалить формат представления"
+  "ISOGD.Classifiers.Documents.Representation.Format.Remove": "Удалить формат представления",
+  "ISOGD.Classifiers.Documents.Representation.Format.Format": "Формат"
 }

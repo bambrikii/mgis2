@@ -137,8 +137,8 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                         fields: {'username': $scope.username},
                         file: file
                     }).progress(function (event) {
-                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                        console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                        var progressPercentage = parseInt(100.0 * event.loaded / event.total);
+                        console.log('progress: ' + progressPercentage + '% ' + event.config.file.name);
                         $scope.uploadProgress(event);
                     }).success(function (data, status, headers, config) {
                         console.log('file ' + config.file.name + 'uploaded. Response: ' + data);

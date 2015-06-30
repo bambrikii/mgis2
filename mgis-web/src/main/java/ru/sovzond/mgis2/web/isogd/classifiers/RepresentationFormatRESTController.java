@@ -29,7 +29,7 @@ public class RepresentationFormatRESTController implements Serializable {
 	@Transactional
 	public PageableContainer<RepresentationFormat> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
 		PageableContainer<RepresentationFormat> pager = representationFormatBean.list(first, max);
-		return new PageableContainer<>(pager.getList().stream().map(representationFormat -> representationFormat.clone()).collect(Collectors.toList()), pager.getTotalNumberOfItems(), first, max);
+		return new PageableContainer<>(pager.getList().stream().map(RepresentationFormat::clone).collect(Collectors.toList()), pager.getTotalNumberOfItems(), first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -44,6 +44,8 @@ public class RepresentationFormatRESTController implements Serializable {
 		}
 		representationFormat2.setCode(representationFormat.getCode());
 		representationFormat2.setName(representationFormat.getName());
+		representationFormat2.getFormats().clear();
+		representationFormat2.getFormats().addAll(representationFormat.getFormats());
 		representationFormatBean.save(representationFormat2);
 		return representationFormat2.clone();
 	}

@@ -16,7 +16,7 @@ angular.module("mgis.isogd.documents.service", ["ui.router"]) //
             },
             save: function (document) {
                 var deferred = $q.defer();
-                res.save({id: document.id,}, {
+                res.save({id: document.id}, {
                     id: document.id,
                     name: document.name,
                     docDate: document.docDate,

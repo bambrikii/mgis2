@@ -29,7 +29,7 @@ public class RepresentationFormatBean extends CRUDBeanBase<RepresentationFormat>
         return dao;
     }
 
-    public List<RepresentationFormat> find(String contentType) {
-        return dao.findByName(contentType);
+    public List<RepresentationFormat> findByFormat(String contentType) {
+        return dao.findByFormat(contentType);
     }
 }
