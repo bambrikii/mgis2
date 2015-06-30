@@ -12,7 +12,7 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                 },
                 url: "/sections/:sectionId/books/:bookId/volumes/:volumeId/documents/",
                 templateUrl: "app2/isogd/document/isogd-documents-list.htm",
-                controller: function ($scope, $state, $stateParams, ISOGDDocumentsService, $modal, $rootScope, MGISCommonsModalForm, ISOGDClassifiersDocumentsTypesService, Upload) {
+                controller: function ($scope, $state, $stateParams, ISOGDDocumentsService, $modal, $rootScope, MGISCommonsModalForm, ISOGDClassifiersDocumentsTypesService) {
                     $scope.stateParams = $stateParams;
 
                     function updateGrid() {
@@ -24,39 +24,24 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                     function openEditDocumentForm(modalScope) {
                         ISOGDDocumentsService.loadDocumentClassByVolumeId($stateParams.volumeId).then(function (documentClass) {
                             if (documentClass.hasCommonPart) {
-                                modalScope.hasCommonPart = documentClass.hasCommonPart;
                                 modalScope.commonPartTab = {
-                                    open: documentClass.hasCommonPart
-                                }
-                                modalScope.commonPartUploadProgress = function (event) {
-                                    console.log("common part upload progress");
-                                }
-                                modalScope.commonPartUploadComplete = function () {
-                                    console.log("common part upload complete");
+                                    open: true
                                 }
                             }
                             if (documentClass.hasSpecialPart) {
-                                modalScope.hasSpecialPart = documentClass.hasSpecialPart;
                                 modalScope.specialPartTab = {
-                                    open: documentClass.hasSpecialPart
-                                }
-                                modalScope.specialPartUploadProgress = function (event) {
-                                    console.log("common part upload progress");
-                                }
-                                modalScope.specialPartUploadComplete = function () {
-                                    console.log("common part upload complete");
+                                    open: true
                                 }
                             }
                             MGISCommonsModalForm.edit("app2/isogd/document/isogd-document-form.htm", modalScope,
                                 function ($scope, $modalInstance) {
                                     ISOGDDocumentsService.save($scope.document).then(function (data) {
-                                        $modalInstance.close();
                                         updateGrid();
+                                        $modalInstance.close();
                                     });
                                 });
                         });
                     }
-
 
                     $scope.itemsPerPage = 15;
                     $scope.currentPage = 1;
@@ -112,46 +97,56 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
 
                 }
             })
-    }).controller("ISOGDDocumentsCtrl", function ($scope) {
+    }) //
+    .controller("ISOGDDocumentCommonPart", function ($scope) {
+        $scope.uploadProgress = function (event) {
 
+        }
+        $scope.uploadComplete = function (data) {
+
+        }
+    }) //
+    .controller("ISOGDDocumentSpecialPart", function ($scope) {
+        $scope.uploadProgress = function (event) {
+
+        }
+        $scope.uploadComplete = function (data) {
+
+        }
     }) //
     .controller("MGISUploadFileController", function ($scope, Upload) {
-        console.log("MGISUploadFileController");
-        var uploadUrl1;
-        var uploadFields1;
-        var uploadProgressHandler1;
-        var uploadCompleteHandler1;
-        $scope.files = [];
-        $scope.init = function (uploadUrl, uploadFields, uploadProgressHandler, uploadCompleteHandler) {
-            console.log(arguments);
-            uploadUrl1 = uploadUrl;
-            uploadFields1 = uploadFields;
-            uploadProgressHandler1 = uploadProgressHandler;
-            uploadCompleteHandler1 = uploadCompleteHandler;
+        console.log("MGISUploadFileController...");
+        $scope.init = function (uploadUrl, uploadFields, uploadProgress, uploadComplete) {
+            console.log("init ... " + uploadUrl);
+            $scope.uploadUrl = uploadUrl;
+            $scope.uploadFields = uploadFields;
+            $scope.uploadProgress = uploadProgress;
+            $scope.uploadComplete = uploadComplete;
         }
+
+        $scope.$watch('files', function () {
+            $scope.upload($scope.files);
+        });
 
         $scope.upload = function (files) {
-            for (var i = 0; i < files.length; i++) {
-                Upload.upload({
-                    url: uploadUrl1,
-                    fields: uploadFields1,
-                    file: files[i]
-                }).progress(function (evt) {
-                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-                }).success(function (data, status, headers, config) {
-                    console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-                    uploadCompleteHandler1(data);
-                });
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    Upload.upload({
+                        url: $scope.uploadUrl,
+                        fields: {'username': $scope.username},
+                        file: file
+                    }).progress(function (event) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                        $scope.uploadProgress(event);
+                    }).success(function (data, status, headers, config) {
+                        console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                        $scope.uploadComplete(data);
+                    });
+                }
             }
-        }
-
-        $scope.$watch($scope.files, function () {
-            console.log()
-            $scope.upload($scope.files);
-        })
-    }
-)
-
+        };
+    })
 ;
 

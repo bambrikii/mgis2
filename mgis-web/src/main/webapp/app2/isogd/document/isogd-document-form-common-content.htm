@@ -1,4 +1,5 @@
-<div ng-control="MGISUploadFileController" ng-init="init('/documents/content/upload', {}, commonPartUploadProgress, commonPartUploadComplete)">
+<div ng-controller="MGISUploadFileController"
+     ng-init="init('rest/isogd/documents/uploadDocumentContent', {}, commonPartUploadProgress, commonPartUploadComplete)">
     watching model:
     <div class="button" ngf-select ng-model="files">Upload using model $watch</div>
     <div class="button" ngf-select ngf-change="upload($files)">Upload on file change</div>
@@ -9,5 +10,5 @@
     </div>
     <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
 
-    Image thumbnail: <img ngf-src="files[0]" ngf-default-src="/thumb.jpg" ngf-accept="'image/*'">
+    Image thumbnail: <img ngf-src="files[0]" ngf-default-src="thumb.jpg" ngf-accept="'image/*'">
 </div>

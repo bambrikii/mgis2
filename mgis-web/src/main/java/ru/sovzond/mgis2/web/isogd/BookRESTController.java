@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.Book;
 import ru.sovzond.mgis2.isogd.Section;
+import ru.sovzond.mgis2.isogd.business.BookBean;
 import ru.sovzond.mgis2.isogd.business.SectionBean;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentObjectBean;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
@@ -19,53 +20,56 @@ import java.util.stream.Collectors;
 @Scope("session")
 public class BookRESTController implements Serializable {
 
-    private static final long serialVersionUID = 4539915548911543515L;
+	private static final long serialVersionUID = 4539915548911543515L;
 
-    @Autowired
-    private SectionBean isogdBean;
+	@Autowired
+	private SectionBean sectionBean;
 
-    @Autowired
-    private DocumentObjectBean documentObjectBean;
+	@Autowired
+	private BookBean bookBean;
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
-    @Transactional
-    public PageableContainer<Book> list(@RequestParam("sectionId") Long sectionId, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-        Section section = isogdBean.readSection(sectionId);
-        return isogdBean.pageBooks(section, first, max);
-    }
+	@Autowired
+	private DocumentObjectBean documentObjectBean;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    @Transactional
-    public Book save(@PathVariable Long id, @RequestBody Book book) {
-        Book book2;
-        if (id == 0) {
-            book2 = new Book();
-            book2.setSection(isogdBean.readSection(book.getSection().getId()));
-        } else {
-            book2 = isogdBean.readBook(id);
-        }
-        book2.setDocumentObject(documentObjectBean.load(book.getDocumentObject().getId()));
-        book2.setName(book.getName());
-        isogdBean.save(book2);
-        return book2.clone();
-    }
+	@RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+	@Transactional
+	public PageableContainer<Book> list(@RequestParam("sectionId") Long sectionId, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+		Section section = sectionBean.readSection(sectionId);
+		return bookBean.pageBooks(section, first, max);
+	}
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-    @Transactional
-    public Book read(@PathVariable Long id) {
-        return isogdBean.readBook(id).clone();
-    }
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	@Transactional
+	public Book save(@PathVariable Long id, @RequestBody Book book) {
+		Book book2;
+		if (id == 0) {
+			book2 = new Book();
+			book2.setSection(sectionBean.readSection(book.getSection().getId()));
+		} else {
+			book2 = bookBean.readBook(id);
+		}
+		book2.setDocumentObject(documentObjectBean.load(book.getDocumentObject().getId()));
+		book2.setName(book.getName());
+		bookBean.save(book2);
+		return book2.clone();
+	}
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    @Transactional
-    public void delete(@PathVariable Long id) {
-        isogdBean.delete(isogdBean.readBook(id));
-    }
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
+	@Transactional
+	public Book read(@PathVariable Long id) {
+		return bookBean.readBook(id).clone();
+	}
 
-    @RequestMapping(value = "/listDocumentObjectsBySectionId/{sectionId}")
-    @Transactional
-    public PageableContainer<DocumentObject> listDocumentObjectsBySectionId(@PathVariable Long sectionId) {
-        return new PageableContainer<>(isogdBean.listDocumentObjectsBySection(isogdBean.readSection(sectionId)).stream().map(documentObject -> documentObject.clone()).collect(Collectors.toList()));
-    }
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@Transactional
+	public void delete(@PathVariable Long id) {
+		bookBean.delete(bookBean.readBook(id));
+	}
+
+	@RequestMapping(value = "/listDocumentObjectsBySectionId/{sectionId}")
+	@Transactional
+	public PageableContainer<DocumentObject> listDocumentObjectsBySectionId(@PathVariable Long sectionId) {
+		return new PageableContainer<>(bookBean.listDocumentObjectsBySection(sectionBean.readSection(sectionId)).stream().map(documentObject -> documentObject.clone()).collect(Collectors.toList()));
+	}
 
 }

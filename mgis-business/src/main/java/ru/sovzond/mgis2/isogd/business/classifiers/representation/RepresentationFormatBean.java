@@ -8,6 +8,8 @@ import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.isogd.classifiers.documents.representation.RepresentationFormat;
 import ru.sovzond.mgis2.isogd.classifiers.documents.representation.RepresentationFormatDao;
 
+import java.util.List;
+
 /**
  * Created by Alexander Arakelyan on 22.06.15.
  */
@@ -25,5 +27,9 @@ public class RepresentationFormatBean extends CRUDBeanBase<RepresentationFormat>
     @Override
     protected IIdentifiableDao<RepresentationFormat> getIIdentifiableDao() {
         return dao;
+    }
+
+    public List<RepresentationFormat> find(String contentType) {
+        return dao.findByName(contentType);
     }
 }

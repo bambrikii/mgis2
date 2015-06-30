@@ -10,5 +10,18 @@
   "license": "ISC",
   "dependencies": {
     "bower": ""
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.1",
+    "chai": "^3.0.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.37",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.5",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "mocha": "^2.2.5",
+    "phantomjs": "^1.9.17"
   }
 }
