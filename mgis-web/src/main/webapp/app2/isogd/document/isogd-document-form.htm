@@ -71,9 +71,7 @@
                     <i class="pull-right glyphicon"
                        ng-class="{'glyphicon-chevron-down': commonPartTab.open, 'glyphicon-chevron-right': !commonPartTab.open}"></i>
                 </accordion-heading>
-                <div ng-controller="ISOGDDocumentCommonPart">
-                    <div ng-include="'app2/isogd/document/isogd-document-form-common-content.htm'"></div>
-                </div>
+                <div ng-include="'app2/isogd/document/isogd-document-form-common-content.htm'"></div>
             </accordion-group>
             <accordion-group is-open="specialPartTab.open" ng-if="specialPartTab.open">
                 <accordion-heading>
@@ -81,9 +79,7 @@
                     <i class="pull-right glyphicon"
                        ng-class="{'glyphicon-chevron-down': specialPartTab.open, 'glyphicon-chevron-right': !specialPartTab.open}"></i>
                 </accordion-heading>
-                <div ng-controller="ISOGDDocumentSpecialPart">
-                    <div ng-include="'app2/isogd/document/isogd-document-form-special-content.htm'"></div>
-                </div>
+                <div ng-include="'app2/isogd/document/isogd-document-form-special-content.htm'"></div>
             </accordion-group>
         </accordion>
 

@@ -1,5 +1,5 @@
 <div ng-controller="MGISUploadFileController"
-     ng-init="init('rest/isogd/documents/uploadDocumentContent', {}, commonPartUploadProgress, commonPartUploadComplete)">
+     ng-init="init('rest/isogd/documents/uploadDocumentContent', {}, specialPartUploadProgress, specialPartUploadComplete)">
     watching model:
     <div class="button" ngf-select ng-model="files">Upload using model $watch</div>
     <div class="button" ngf-select ngf-change="upload($files)">Upload on file change</div>

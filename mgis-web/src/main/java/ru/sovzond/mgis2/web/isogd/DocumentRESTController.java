@@ -1,5 +1,7 @@
 package ru.sovzond.mgis2.web.isogd;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
@@ -123,9 +125,8 @@ public class DocumentRESTController implements Serializable {
 
 	@RequestMapping(value = "/uploadDocumentContent", headers = "Accept=*/*", produces = "application/json", method = RequestMethod.POST)
 	@Transactional
-	public
 	@ResponseBody
-	DocumentContent uploadCommonContent(@RequestBody MultipartFile file) {
+	public String uploadCommonContent(@RequestBody MultipartFile file) throws JsonProcessingException {
 		String contentType = file.getContentType();
 		List<RepresentationFormat> list = representationFormatBean.findByFormat(contentType);
 		switch (list.size()) {
@@ -137,7 +138,12 @@ public class DocumentRESTController implements Serializable {
 				documentContent.setRepresentationFormat(representationFormat);
 				documentContent.setFileName(file.getOriginalFilename());
 				documentContentBean.save(documentContent);
-				return documentContent.clone();
+				ObjectMapper mapper = new ObjectMapper();
+				try {
+					return mapper.writeValueAsString(documentContent.clone());
+				} catch (JsonProcessingException ex) {
+					throw ex;
+				}
 			default:
 				throw new IllegalArgumentException("MORE_THAN_ONE_REPRESENTATION_FORMATS_FOUND: " + contentType);
 		}

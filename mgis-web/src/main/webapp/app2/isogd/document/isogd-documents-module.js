@@ -27,10 +27,20 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                                 modalScope.commonPartTab = {
                                     open: true
                                 }
+                                modalScope.commonPartUploadComplete = function (data) {
+                                    modalScope.document.commonPart = modalScope.document.commonPart || {};
+                                    modalScope.document.commonPart.documentContents = modalScope.document.commonPart.documentContents || new Array();
+                                    modalScope.document.commonPart.documentContents.push({id: data.id, fileName: data.fileName});
+                                }
                             }
                             if (documentClass.hasSpecialPart) {
                                 modalScope.specialPartTab = {
                                     open: true
+                                }
+                                modalScope.specialPartUploadComplete = function (data) {
+                                    modalScope.document.specialPart = modalScope.document.specialPart || {};
+                                    modalScope.document.specialPart.documentContents = modalScope.document.specialPart.documentContents || new Array();
+                                    modalScope.document.specialPart.documentContents.push({id: data.id, fileName: data.fileName});
                                 }
                             }
                             MGISCommonsModalForm.edit("app2/isogd/document/isogd-document-form.htm", modalScope,
@@ -98,26 +108,10 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                 }
             })
     }) //
-    .controller("ISOGDDocumentCommonPart", function ($scope) {
-        $scope.uploadProgress = function (event) {
-
-        }
-        $scope.uploadComplete = function (data) {
-
-        }
-    }) //
-    .controller("ISOGDDocumentSpecialPart", function ($scope) {
-        $scope.uploadProgress = function (event) {
-
-        }
-        $scope.uploadComplete = function (data) {
-
-        }
-    }) //
     .controller("MGISUploadFileController", function ($scope, Upload) {
         console.log("MGISUploadFileController...");
         $scope.init = function (uploadUrl, uploadFields, uploadProgress, uploadComplete) {
-            console.log("init ... " + uploadUrl);
+            console.log(arguments);
             $scope.uploadUrl = uploadUrl;
             $scope.uploadFields = uploadFields;
             $scope.uploadProgress = uploadProgress;
@@ -138,11 +132,13 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                         file: file
                     }).progress(function (event) {
                         var progressPercentage = parseInt(100.0 * event.loaded / event.total);
-                        console.log('progress: ' + progressPercentage + '% ' + event.config.file.name);
-                        $scope.uploadProgress(event);
+                        if ($scope.uploadProgress) {
+                            $scope.uploadProgress(event);
+                        }
                     }).success(function (data, status, headers, config) {
-                        console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-                        $scope.uploadComplete(data);
+                        if ($scope.uploadComplete) {
+                            $scope.uploadComplete(data);
+                        }
                     });
                 }
             }

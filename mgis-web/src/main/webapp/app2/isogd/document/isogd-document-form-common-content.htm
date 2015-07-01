@@ -1,8 +1,13 @@
 <div ng-controller="MGISUploadFileController"
      ng-init="init('rest/isogd/documents/uploadDocumentContent', {}, commonPartUploadProgress, commonPartUploadComplete)">
-    watching model:
-    <div class="button" ngf-select ng-model="files">Upload using model $watch</div>
-    <div class="button" ngf-select ngf-change="upload($files)">Upload on file change</div>
+    <div ng-repeat="content in document.commonPart.documentContents">
+        <div class="col-sm-8">
+            <img src="rest/isogd/documents/{{document.id}}/commonPart/documentContentPreview/{{content.id}}"/>{{content.fileName}}
+        </div>
+        <div class="col-sm-4">
+            <button class="btn btn-info btn-sm" ng-click="removeCommonContent(document.id, content.id)" translate>Remove</button>
+        </div>
+    </div>
     Drop File:
     <div ngf-drop ng-model="files" class="drop-box"
          ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
@@ -11,4 +16,5 @@
     <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
 
     Image thumbnail: <img ngf-src="files[0]" ngf-default-src="thumb.jpg" ngf-accept="'image/*'">
+
 </div>
