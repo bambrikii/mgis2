@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * Created by asd on 22/06/15.
  */
 @Entity
-@Table(name = "isogd_document_special_part")
+@Table(name = "isogd_document_common_part")
 public class CommonPart implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
@@ -51,12 +51,12 @@ public class CommonPart implements Cloneable {
 	}
 
 	public CommonPart clone() {
-		CommonPart commonPart = new CommonPart();
-		commonPart.setId(id);
+		CommonPart part = new CommonPart();
+		part.setId(id);
 		Document document = new Document();
 		document.setId(this.document.getId());
-		commonPart.setDocument(document);
-		commonPart.setDocumentContents(documentContents.stream().map(documentContent -> {
+		part.setDocument(document);
+		part.setDocumentContents(documentContents.stream().map(documentContent -> {
 			DocumentContent documentContent1 = new DocumentContent();
 			documentContent1.setId(documentContent.getId());
 			documentContent1.setFileName(documentContent.getFileName());
@@ -64,7 +64,7 @@ public class CommonPart implements Cloneable {
 			documentContent1.setRepresentationFormat(documentContent.getRepresentationFormat() != null ? documentContent.getRepresentationFormat().clone() : null);
 			return documentContent1;
 		}).collect(Collectors.toList()));
-		return commonPart;
+		return part;
 	}
 
 }

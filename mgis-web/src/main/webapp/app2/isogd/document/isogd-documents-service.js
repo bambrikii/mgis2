@@ -26,7 +26,9 @@ angular.module("mgis.isogd.documents.service", ["ui.router"]) //
                     },
                     documentSubObject: {
                         id: document.documentSubObject.id
-                    }
+                    },
+                    commonPart: document.commonPart,
+                    specialPart: document.specialPart
                 }, function (data) {
                     deferred.resolve(data);
                 });

@@ -138,7 +138,7 @@ public class Document implements Cloneable {
         document.setName(name);
         document.setOktmo(oktmo);
         document.setCommonPart(commonPart != null ? commonPart.clone() : null);
-        document.setSpecialPart(specialPart != null ? specialPart : null);
+        document.setSpecialPart(specialPart != null ? specialPart.clone() : null);
         document.setDocumentSubObject(documentSubObject != null ? documentSubObject.clone() : null);
         document.setVolume(volume.clone());
         return document;

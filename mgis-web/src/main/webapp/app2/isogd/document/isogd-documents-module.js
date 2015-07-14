@@ -109,9 +109,7 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
             })
     }) //
     .controller("MGISUploadFileController", function ($scope, Upload) {
-        console.log("MGISUploadFileController...");
         $scope.init = function (uploadUrl, uploadFields, uploadProgress, uploadComplete) {
-            console.log(arguments);
             $scope.uploadUrl = uploadUrl;
             $scope.uploadFields = uploadFields;
             $scope.uploadProgress = uploadProgress;
