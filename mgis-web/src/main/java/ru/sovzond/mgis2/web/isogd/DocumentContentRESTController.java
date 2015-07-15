@@ -66,10 +66,9 @@ public class DocumentContentRESTController {
         }
     }
 
-
     @RequestMapping(value = "/{contentId}/preview")
     @Transactional
-    public ResponseEntity<byte[]> previewDocumentContent(@PathVariable("contentId") Long contentId) {
+    public ResponseEntity<byte[]> preview(@PathVariable("contentId") Long contentId) {
         DocumentContent documentContent = documentContentBean.load(contentId);
         Set<String> formats = documentContent.getRepresentationFormat().getFormats();
         MediaType defaultFormat = MediaType.IMAGE_PNG;
@@ -83,6 +82,42 @@ public class DocumentContentRESTController {
                 break;
             } else if (format2.contains("gif")) {
                 defaultFormat = MediaType.IMAGE_GIF;
+                break;
+            } else if (format2.contains("doc")) {
+                defaultFormat = MediaType.IMAGE_PNG;
+                break;
+            } else if (format2.contains("pdf")) {
+                defaultFormat = MediaType.IMAGE_PNG;
+                break;
+            }
+        }
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(defaultFormat);
+        return new ResponseEntity<>(documentContent.getBytes(), headers, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/{contentId}/download")
+    @Transactional
+    public ResponseEntity<byte[]> download(@PathVariable("contentId") Long contentId) {
+        DocumentContent documentContent = documentContentBean.load(contentId);
+        Set<String> formats = documentContent.getRepresentationFormat().getFormats();
+        MediaType defaultFormat = MediaType.IMAGE_PNG;
+        for (String format : formats) {
+            String format2 = format.toLowerCase();
+            if (format2.contains("jpeg") || format2.contains("jpg")) {
+                defaultFormat = MediaType.IMAGE_JPEG;
+                break;
+            } else if (format2.contains("png")) {
+                defaultFormat = MediaType.IMAGE_PNG;
+                break;
+            } else if (format2.contains("gif")) {
+                defaultFormat = MediaType.IMAGE_GIF;
+                break;
+            } else if (format2.contains("doc")) {
+                defaultFormat = MediaType.APPLICATION_OCTET_STREAM;
+                break;
+            } else if (format2.contains("pdf")) {
+                defaultFormat = MediaType.APPLICATION_OCTET_STREAM;
                 break;
             }
         }
