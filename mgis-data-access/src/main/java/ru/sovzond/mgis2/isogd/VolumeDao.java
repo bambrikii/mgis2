@@ -3,9 +3,8 @@ package ru.sovzond.mgis2.isogd;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-
+import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableDAOBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableFilter;
 
 @Repository
 public class VolumeDao extends PageableDAOBase<Volume> {
@@ -16,19 +15,21 @@ public class VolumeDao extends PageableDAOBase<Volume> {
         return (Volume) filter(Restrictions.eq(ID2, id)).uniqueResult();
     }
 
-    public VolumeFilterBuilder createFilter(Book book) {
-        return new VolumeFilterBuilder(book);
+    public VolumeBaseBuilder createFilter(Book book, int first, int max) {
+        return new VolumeBaseBuilder(book, first, max);
     }
 
-    class VolumeFilterBuilder extends PageableFilter<Volume> {
+    class VolumeBaseBuilder extends PageableBase<Volume> {
         private Book book;
 
-        private VolumeFilterBuilder(Book book) {
+        private VolumeBaseBuilder(Book book, int first, int max) {
             this.book = book;
+            this.first = first;
+            this.max = max;
         }
 
         @Override
-        protected void apply(Criteria criteria) {
+        protected void applyFilter(Criteria criteria) {
             criteria.add(Restrictions.eq(SECTION, book));
         }
     }

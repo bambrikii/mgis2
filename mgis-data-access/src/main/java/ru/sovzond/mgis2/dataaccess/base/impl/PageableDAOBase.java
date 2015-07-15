@@ -17,27 +17,18 @@ public abstract class PageableDAOBase<T> extends DAOBase<T> implements IPageable
     }
 
     public List<T> list(int firstResult, int maxResults) {
-        return list(firstResult, maxResults, null);
+        return list(null);
     }
 
     @SuppressWarnings("unchecked")
-    public List<T> list(int firstResult, int maxResults, PageableFilter<T> filter) {
+    public List<T> list(PageableBase<T> filter) {
         Criteria criteria = createCriteria();
-        applyFilter(filter, criteria);
-        if (firstResult > 0) {
-            criteria.setFirstResult(firstResult);
-        }
-        if (maxResults > 0) {
-            criteria.setMaxResults(maxResults);
+        if (filter != null) {
+            filter.apply(criteria);
         }
         return criteria.list();
     }
 
-    private void applyFilter(PageableFilter<T> filter, Criteria criteria) {
-        if (filter != null) {
-            filter.apply(criteria);
-        }
-    }
 
     protected Criteria filter(Criterion criterion) {
         return createCriteria().add(criterion);
@@ -47,9 +38,11 @@ public abstract class PageableDAOBase<T> extends DAOBase<T> implements IPageable
         return count(null);
     }
 
-    public Number count(PageableFilter<T> filter) {
+    public Number count(PageableBase<T> filter) {
         Criteria criteria = createCriteria();
-        applyFilter(filter, criteria);
+        if (filter != null) {
+            filter.applyFilter(criteria);
+        }
         return (Number) criteria.setProjection(Projections.rowCount()).uniqueResult();
     }
 

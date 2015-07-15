@@ -5,7 +5,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableDAOBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableFilter;
+import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
 
 import java.util.List;
@@ -16,8 +16,8 @@ public class BookDao extends PageableDAOBase<Book> {
         return (Book) filter(Restrictions.eq("id", id)).uniqueResult();
     }
 
-    public BookFilterBuilder createFilter(Section section) {
-        return new BookFilterBuilder(section);
+    public BookBaseBuilder createFilter(Section section, int first, int max) {
+        return new BookBaseBuilder(section, first, max);
     }
 
     public List<DocumentObject> listAvailableDocumentObjects(Section section) {
@@ -26,15 +26,17 @@ public class BookDao extends PageableDAOBase<Book> {
                 .list();
     }
 
-    class BookFilterBuilder extends PageableFilter<Book> {
+    class BookBaseBuilder extends PageableBase<Book> {
         private Section section;
 
-        private BookFilterBuilder(Section section) {
+        private BookBaseBuilder(Section section, int first, int max) {
             this.section = section;
+            this.first = first;
+            this.max = max;
         }
 
         @Override
-        protected void apply(Criteria criteria) {
+        protected void applyFilter(Criteria criteria) {
             criteria.add(Restrictions.eq("section", section));
         }
     }

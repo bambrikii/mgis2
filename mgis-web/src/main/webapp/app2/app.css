@@ -158,13 +158,13 @@
 /* Upload buttons */
 .drop-box {
     background: #f8f8f8 none repeat scroll 0 0;
-    border: 5px dashed #ddd;
+    border: 3px dashed #ddd;
     float: left;
-    height: 65px;
     margin-left: 10px;
-    padding-top: 25px;
+    margin-top: 5px;
+    padding-top: 5px;
     text-align: center;
-    width: 200px;
+    width: 100px;
 }
 
 .up-buttons {
@@ -177,4 +177,34 @@
 
 .drop-box.dragover-err {
     border: 5px dashed red;
+}
+
+/*
+*/
+.mgis-document-content .mgis-content-list-region div div {
+    padding-bottom: 5px;
+}
+
+.mgis-document-content .mgis-content-preview img {
+    max-height: 48px;
+}
+
+.mgis-document-content .mgis-content-buttons {
+    white-space: nowrap;
+}
+
+.mgis-document-content .mgis-content-list-region {
+    float: left;
+}
+
+.mgis-document-content .mgis-content-list-region > div {
+    width: 700px;
+}
+
+.mgis-document-content .mgis-content-upload-region {
+    float: right;
+}
+
+.mgis-document-modal-form .modal-dialog {
+    width: 850px;
 }

@@ -17,8 +17,8 @@ angular.module("mgis.commons", ["ui.bootstrap"])
                     }
                 });
             },
-            edit: function (templateUrl, modalScope, applyMethod) {
-                $modal.open({
+            edit: function (templateUrl, modalScope, applyMethod, params) {
+                var params2 = {
                     scope: modalScope,
                     templateUrl: templateUrl,
                     controller: function ($scope, $modalInstance) {
@@ -29,7 +29,11 @@ angular.module("mgis.commons", ["ui.bootstrap"])
                             $modalInstance.dismiss("cancel");
                         }
                     }
-                });
+                }
+                if (params) {
+                    angular.extend(params2, params);
+                }
+                $modal.open(params2);
             }
         }
     }) //

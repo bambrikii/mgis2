@@ -1,23 +1,18 @@
 package ru.sovzond.mgis2.web.isogd;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import ru.sovzond.mgis2.business.PageableContainer;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.business.DocumentBean;
 import ru.sovzond.mgis2.isogd.business.VolumeBean;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentSubObjectBean;
-import ru.sovzond.mgis2.isogd.business.classifiers.representation.RepresentationFormatBean;
 import ru.sovzond.mgis2.isogd.business.document.parts.CommonPartBean;
 import ru.sovzond.mgis2.isogd.business.document.parts.DocumentContentBean;
 import ru.sovzond.mgis2.isogd.business.document.parts.SpecialPartBean;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentClass;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
-import ru.sovzond.mgis2.isogd.classifiers.documents.representation.RepresentationFormat;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.isogd.document.DocumentContent;
 import ru.sovzond.mgis2.isogd.document.parts.CommonPart;
@@ -53,59 +48,55 @@ public class DocumentRESTController implements Serializable {
     @Autowired
     private DocumentContentBean documentContentBean;
 
-//	@Autowired
-//	private RepresentationFormBean representationFormBean;
-
-    @Autowired
-    private RepresentationFormatBean representationFormatBean;
-
     @RequestMapping(value = "", method = RequestMethod.GET)
     @Transactional
-    public PageableContainer<Document> list(@RequestParam("volumeId") Long volumeId, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+    public PageableContainer<Document> list(@RequestParam("volumeId") Long volumeId, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "id desc") String orderBy) {
         Volume volume = volumeBean.readVolume(volumeId);
-        return documentBean.pageDocuments(volume, first, max);
+        return documentBean.pageDocuments(volume, orderBy, first, max);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     @Transactional
-    public Document save(@PathVariable("id") Long id, @RequestBody Document document) {
-        Document document2;
+    public Document save(@PathVariable("id") Long id, @RequestBody Document sourceDocument) {
+        Document document;
         if (id == 0) {
-            document2 = new Document();
-            document2.setVolume(volumeBean.readVolume(document.getVolume().getId()));
+            document = new Document();
+            document.setVolume(volumeBean.readVolume(sourceDocument.getVolume().getId()));
         } else {
-            document2 = documentBean.readDocument(id);
+            document = documentBean.readDocument(id);
         }
-        document2.setName(document.getName());
-        document2.setDocNumber(document.getDocNumber());
-        document2.setDocDate(document.getDocDate());
-        document2.setDocumentSubObject(documentSubObjectBean.load(document.getDocumentSubObject().getId()));
-        if (document.getCommonPart() != null) {
+        document.setName(sourceDocument.getName());
+        document.setDocNumber(sourceDocument.getDocNumber());
+        document.setDocDate(sourceDocument.getDocDate());
+        document.setDocumentSubObject(documentSubObjectBean.load(sourceDocument.getDocumentSubObject().getId()));
+        if (sourceDocument.getCommonPart() != null) {
             CommonPart commonPart;
-            if (document2.getCommonPart() == null) {
+            if (document.getCommonPart() == null) {
                 commonPart = new CommonPart();
-                commonPart.setDocument(document2);
-                document2.setCommonPart(commonPart);
+                commonPart.setDocument(document);
+                document.setCommonPart(commonPart);
+                documentBean.save(document);
             } else {
-                commonPart = document2.getCommonPart();
+                commonPart = document.getCommonPart();
             }
-            updateDocumentCommonPartContents(document, commonPart);
+            updateDocumentCommonPartContents(sourceDocument, commonPart);
             commonPartBean.save(commonPart);
         }
-        if (document.getSpecialPart() != null) {
+        if (sourceDocument.getSpecialPart() != null) {
             SpecialPart specialPart;
-            if (document2.getSpecialPart() == null) {
+            if (document.getSpecialPart() == null) {
                 specialPart = new SpecialPart();
-                specialPart.setDocument(document2);
-                document2.setSpecialPart(specialPart);
+                specialPart.setDocument(document);
+                document.setSpecialPart(specialPart);
+                documentBean.save(document);
             } else {
-                specialPart = document2.getSpecialPart();
+                specialPart = document.getSpecialPart();
             }
-            updateDocumentSpecialPartContents(document, specialPart);
+            updateDocumentSpecialPartContents(sourceDocument, specialPart);
             specialPartBean.save(specialPart);
         }
-        documentBean.save(document2);
-        return document2.clone();
+        documentBean.save(document);
+        return document.clone();
     }
 
     private void updateDocumentCommonPartContents(Document sourceDocument, CommonPart part) {
@@ -154,29 +145,4 @@ public class DocumentRESTController implements Serializable {
         return documentBean.readDocumentClassByVolume(volumeBean.readVolume(volumeId)).clone();
     }
 
-    @RequestMapping(value = "/uploadDocumentContent", headers = "Accept=*/*", produces = "application/json", method = RequestMethod.POST)
-    @Transactional
-    @ResponseBody
-    public String uploadCommonContent(@RequestBody MultipartFile file) throws JsonProcessingException {
-        String contentType = file.getContentType();
-        List<RepresentationFormat> list = representationFormatBean.findByFormat(contentType);
-        switch (list.size()) {
-            case 0:
-                throw new IllegalArgumentException("NO_REPRESENTATION_FORMAT_FOUND: " + contentType);
-            case 1:
-                RepresentationFormat representationFormat = list.get(0);
-                DocumentContent documentContent = new DocumentContent();
-                documentContent.setRepresentationFormat(representationFormat);
-                documentContent.setFileName(file.getOriginalFilename());
-                documentContentBean.save(documentContent);
-                ObjectMapper mapper = new ObjectMapper();
-                try {
-                    return mapper.writeValueAsString(documentContent.clone());
-                } catch (JsonProcessingException ex) {
-                    throw ex;
-                }
-            default:
-                throw new IllegalArgumentException("MORE_THAN_ONE_REPRESENTATION_FORMATS_FOUND: " + contentType);
-        }
-    }
 }

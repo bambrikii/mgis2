@@ -49,6 +49,8 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                                         updateGrid();
                                         $modalInstance.close();
                                     });
+                                }, {
+                                    windowClass: "mgis-document-modal-form"
                                 });
                         });
                     }
