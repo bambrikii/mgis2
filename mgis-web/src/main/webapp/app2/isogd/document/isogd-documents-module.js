@@ -32,6 +32,14 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                                     modalScope.document.commonPart.documentContents = modalScope.document.commonPart.documentContents || new Array();
                                     modalScope.document.commonPart.documentContents.push({id: data.id, fileName: data.fileName});
                                 }
+                                modalScope.removeCommonContent = function (content) {
+                                    var documentContents = modalScope.document.commonPart.documentContents;
+                                    for (var i = 0; i < documentContents.length; i++) {
+                                        if (documentContents[i] == content) {
+                                            documentContents.splice(i, 1);
+                                        }
+                                    }
+                                }
                             }
                             if (documentClass.hasSpecialPart) {
                                 modalScope.specialPartTab = {
@@ -42,6 +50,17 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                                     modalScope.document.specialPart.documentContents = modalScope.document.specialPart.documentContents || new Array();
                                     modalScope.document.specialPart.documentContents.push({id: data.id, fileName: data.fileName});
                                 }
+                                modalScope.removeSpecialContent = function (content) {
+                                    var documentContents = modalScope.document.specialPart.documentContents;
+                                    for (var i = 0; i < documentContents.length; i++) {
+                                        if (documentContents[i] == content) {
+                                            documentContents.splice(i, 1);
+                                        }
+                                    }
+                                }
+                            }
+                            modalScope.downloadContent = function (contentId) {
+
                             }
                             MGISCommonsModalForm.edit("app2/isogd/document/isogd-document-form.htm", modalScope,
                                 function ($scope, $modalInstance) {

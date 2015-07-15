@@ -9,15 +9,16 @@
                 <a href="">{{content.fileName}}</a>
             </div>
             <div class="col-sm-4 mgis-content-buttons">
-                <button class="btn btn-info btn-sm" ng-click="removeCommonContent(document.id, content.id)" translate>Download</button>
-                <button class="btn btn-info btn-sm" ng-click="removeCommonContent(document.id, content.id)" translate>Remove</button>
+                <button class="btn btn-info btn-sm" ng-click="downloadContent(content.id)" translate>Download</button>
+                <button class="btn btn-info btn-sm" ng-click="removeCommonContent(content)" translate>Remove</button>
             </div>
         </div>
     </div>
     <div class="mgis-content-upload-region">
         <div ngf-drop ng-model="files" class="drop-box"
              ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
-             ngf-accept="'image/*,application/pdf'"><span translate>DropFilesHereToUpload</span>
+             ngf-accept="'image/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'"><span
+                translate>DropFilesHereToUpload</span>
         </div>
         <div ngf-no-file-drop><span translate>YourBrowserDoesNotSupportDragAndDropFeature</span></div>
     </div>

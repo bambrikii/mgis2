@@ -60,7 +60,7 @@ public class CommonPart implements Cloneable {
 			DocumentContent documentContent1 = new DocumentContent();
 			documentContent1.setId(documentContent.getId());
 			documentContent1.setFileName(documentContent.getFileName());
-			documentContent1.setBytes(documentContent.getBytes());
+			//documentContent1.setBytes(documentContent.getBytes());
 			documentContent1.setRepresentationFormat(documentContent.getRepresentationFormat() != null ? documentContent.getRepresentationFormat().clone() : null);
 			return documentContent1;
 		}).collect(Collectors.toList()));
