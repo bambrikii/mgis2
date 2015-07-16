@@ -14,6 +14,7 @@ import ru.sovzond.mgis2.isogd.business.classifiers.representation.Representation
 import ru.sovzond.mgis2.isogd.business.document.parts.DocumentContentBean;
 import ru.sovzond.mgis2.isogd.classifiers.documents.representation.RepresentationFormat;
 import ru.sovzond.mgis2.isogd.document.DocumentContent;
+import ru.sovzond.mgis2.preview.ImageManipulationBean;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
@@ -28,11 +29,21 @@ import java.util.Set;
 @Scope("session")
 public class DocumentContentRESTController {
 
+    public static final String JPEG = "jpeg";
+    public static final String JPG = "jpg";
+    public static final String PNG = "png";
+    public static final String GIF = "gif";
+    public static final String DOC = "doc";
+    public static final String PDF = "pdf";
+
     @Autowired
     private DocumentContentBean documentContentBean;
 
     @Autowired
     private RepresentationFormatBean representationFormatBean;
+
+    @Autowired
+    private ImageManipulationBean imageManipulationBean;
 
 
     @RequestMapping(value = "/upload", headers = "Accept=*/*", produces = "application/json", method = RequestMethod.POST)
@@ -68,33 +79,40 @@ public class DocumentContentRESTController {
 
     @RequestMapping(value = "/{contentId}/preview")
     @Transactional
-    public ResponseEntity<byte[]> preview(@PathVariable("contentId") Long contentId) {
+    public ResponseEntity<byte[]> preview(@PathVariable("contentId") Long contentId) throws IOException {
         DocumentContent documentContent = documentContentBean.load(contentId);
         Set<String> formats = documentContent.getRepresentationFormat().getFormats();
         MediaType defaultFormat = MediaType.IMAGE_PNG;
+        byte[] previewBytes = null;
         for (String format : formats) {
             String format2 = format.toLowerCase();
-            if (format2.contains("jpeg") || format2.contains("jpg")) {
+            if (format2.contains(JPEG) || format2.contains(JPG)) {
                 defaultFormat = MediaType.IMAGE_JPEG;
+                previewBytes = imageManipulationBean.createThumbnail(documentContent.getBytes());
                 break;
-            } else if (format2.contains("png")) {
+            } else if (format2.contains(PNG)) {
                 defaultFormat = MediaType.IMAGE_PNG;
+                previewBytes = imageManipulationBean.createThumbnail(documentContent.getBytes());
                 break;
-            } else if (format2.contains("gif")) {
+            } else if (format2.contains(GIF)) {
                 defaultFormat = MediaType.IMAGE_GIF;
+                previewBytes = imageManipulationBean.createThumbnail(documentContent.getBytes());
                 break;
-            } else if (format2.contains("doc")) {
+            } else if (format2.contains(DOC)) {
                 defaultFormat = MediaType.IMAGE_PNG;
+                previewBytes = null;
                 break;
-            } else if (format2.contains("pdf")) {
+            } else if (format2.contains(PDF)) {
                 defaultFormat = MediaType.IMAGE_PNG;
+                previewBytes = null;
                 break;
             }
         }
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(defaultFormat);
-        return new ResponseEntity<>(documentContent.getBytes(), headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(previewBytes, headers, HttpStatus.CREATED);
     }
+
 
     @RequestMapping(value = "/{contentId}/download")
     @Transactional
