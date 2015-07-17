@@ -42,6 +42,7 @@ public class DocumentContentRESTController {
 	public static final String PNG = "png";
 	public static final String GIF = "gif";
 	public static final String DOC = "doc";
+	public static final String WORD_DOCUMENT = "word";
 	public static final String PDF = "pdf";
 	public static final String UPLOAD_CHARSET = "iso8859-1";
 
@@ -108,7 +109,7 @@ public class DocumentContentRESTController {
 				defaultFormat = MediaType.IMAGE_GIF;
 				previewBytes = imageManipulationBean.createThumbnailFromImage(documentContent.getBytes());
 				break;
-			} else if (format2.contains(DOC)) {
+			} else if (format2.contains(DOC) || format2.contains(WORD_DOCUMENT)) {
 				defaultFormat = MediaType.IMAGE_PNG;
 				// previewBytes = imageManipulationBean.createThumbnailFromDoc(documentContent.getBytes());
 				previewBytes = imageManipulationBean.createDocThumbnail();
@@ -132,19 +133,19 @@ public class DocumentContentRESTController {
 		MediaType defaultFormat = MediaType.IMAGE_PNG;
 		for (String format : formats) {
 			String format2 = format.toLowerCase();
-			if (format2.contains("jpeg") || format2.contains("jpg")) {
+			if (format2.contains(JPEG) || format2.contains(JPG)) {
 				defaultFormat = MediaType.IMAGE_JPEG;
 				break;
-			} else if (format2.contains("png")) {
+			} else if (format2.contains(PNG)) {
 				defaultFormat = MediaType.IMAGE_PNG;
 				break;
-			} else if (format2.contains("gif")) {
+			} else if (format2.contains(GIF)) {
 				defaultFormat = MediaType.IMAGE_GIF;
 				break;
-			} else if (format2.contains("doc")) {
+			} else if (format2.contains(DOC) || format2.contains(WORD_DOCUMENT)) {
 				defaultFormat = MediaType.APPLICATION_OCTET_STREAM;
 				break;
-			} else if (format2.contains("pdf")) {
+			} else if (format2.contains(PDF)) {
 				defaultFormat = MediaType.APPLICATION_OCTET_STREAM;
 				break;
 			}

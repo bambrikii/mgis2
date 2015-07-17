@@ -48,6 +48,8 @@
   "ISOGD.NameRequired": "Поле &lt;Наименование&gt; обязательное",
   "ISOGD.CodeRequired": "Поле &lt;Код&gt; обязательное",
   "ISOGD.Classifiers": "Классификаторы",
+  "ISOGD.Document.DocNumber": "Номер документа",
+  "ISOGD.Document.DocDate": "Дата документа",
   "ISOGD.Classifiers.Documents.Types": "Типы документов",
   "ISOGD.Classifiers.Documents.Types.Name": "Тип документа",
   "ISOGD.Classifiers.Documents.Types.Add": "Добавить тип документа",

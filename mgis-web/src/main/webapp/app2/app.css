@@ -6,30 +6,30 @@
  */
 
 .dropdown-submenu {
-	position: relative;
+    position: relative;
 }
 
 .dropdown-submenu > .dropdown-menu {
-	top: 0;
-	left: 100%;
+    top: 0;
+    left: 100%;
 }
 
 .dropdown-submenu:hover > .dropdown-menu {
-	display: block;
+    display: block;
 }
 
 .dropdown-submenu > a:after {
-	/*display: block;*/
-	content: " ";
-	float: right;
-	/*width: 0;*/
-	/*height: 0;*/
-	border-color: transparent;
-	border-style: solid;
-	border-width: 5px 0 5px 5px;
-	border-left-color: #cccccc;
-	margin-top: 7px;
-	margin-right: -10px;
+    /*display: block;*/
+    content: " ";
+    float: right;
+    /*width: 0;*/
+    /*height: 0;*/
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #cccccc;
+    margin-top: 7px;
+    margin-right: -10px;
 }
 
 .dropdown-submenu:hover > a:after {
@@ -39,96 +39,104 @@
 }
 
 .dropdown-submenu.pull-left > .dropdown-menu {
-	left: -100%;
+    left: -100%;
 }
 
 /*
 */
 
 .treeview .list-group-item {
-	padding-right: 0px;
+    padding-right: 0px;
 }
 
 .treeview .list-group-item table {
-	width: 100%;
-	margin-bottom: 7px;
+    width: 100%;
+    margin-bottom: 7px;
 }
 
 .treeview .list-group-item table td:last-child {
-	text-align: left;
-	width: 450px;
-	padding: 3px;
-	white-space: nowrap;
+    text-align: left;
+    width: 450px;
+    padding: 3px;
+    white-space: nowrap;
 }
 
 .treeview .treeview table td:last-child {
-	text-align: left;
-	width: 450px;
-	padding: 3px;
-	white-space: nowrap;
+    text-align: left;
+    width: 450px;
+    padding: 3px;
+    white-space: nowrap;
 }
 
 .treeview .treeview .treeview table td:last-child {
-	text-align: left;
-	width: 450px;
-	padding: 3px;
-	white-space: nowrap;
+    text-align: left;
+    width: 450px;
+    padding: 3px;
+    white-space: nowrap;
 }
 
 /* Upload buttons */
 .drop-box {
-	background: #f8f8f8 none repeat scroll 0 0;
-	border: 3px dashed #ddd;
-	float: left;
-	margin-left: 10px;
-	margin-top: 5px;
-	padding-top: 5px;
-	text-align: center;
-	width: 100px;
+    background: #f8f8f8 none repeat scroll 0 0;
+    border: 3px dashed #ddd;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+    padding-top: 5px;
+    text-align: center;
+    width: 100px;
 }
 
 .up-buttons {
-	float: left;
+    float: left;
 }
 
 .drop-box.dragover {
-	border: 5px dashed blue;
+    border: 5px dashed blue;
 }
 
 .drop-box.dragover-err {
-	border: 5px dashed red;
+    border: 5px dashed red;
 }
 
 /*
 */
 .mgis-document-content .mgis-content-list-region div div {
-	padding-bottom: 5px;
+    padding-bottom: 5px;
 }
 
 .mgis-document-content .mgis-content-preview img {
-	max-height: 48px;
+    max-height: 48px;
 }
 
 .mgis-document-content .mgis-content-buttons {
-	white-space: nowrap;
+    white-space: nowrap;
 }
 
 .mgis-document-content .mgis-content-list-region {
-	float: left;
+    float: left;
 }
 
 .mgis-document-content .mgis-content-list-region > div {
-	width: 700px;
+    width: 700px;
 }
 
 .mgis-document-content .mgis-content-upload-region {
-	float: right;
+    float: right;
 }
 
 .mgis-document-modal-form .modal-dialog {
-	width: 850px;
+    width: 850px;
 }
 
 .mgis-error-handling-modal .modal-dialog {
-	width: 850px;
+    width: 850px;
+}
+
+span.mgis-input-group-date input {
+    width: 190px !important;
+}
+
+span.mgis-input-group-date button {
+    height: 34px !important;
 }
