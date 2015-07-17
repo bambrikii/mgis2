@@ -147,7 +147,9 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
                     var file = files[i];
                     Upload.upload({
                         url: $scope.uploadUrl,
-                        fields: {'username': $scope.username},
+                        headers: {
+                            'Content-Type': 'multipart/form-data; charset=utf-8'
+                        },
                         file: file
                     }).progress(function (event) {
                         var progressPercentage = parseInt(100.0 * event.loaded / event.total);
