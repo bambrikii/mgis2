@@ -1,26 +1,26 @@
 <div ng-controller="MGISUploadFileController"
-     ng-init="init('rest/isogd/documentContents/upload', {}, commonPartUploadProgress, commonPartUploadComplete)" class="mgis-document-content">
-    <div class="mgis-content-list-region">
-        <div ng-repeat="content in document.commonPart.documentContents" class="row">
-            <div class="col-sm-2 mgis-content-preview">
-                <img src="rest/isogd/documentContents/{{content.id}}/preview"/>
-            </div>
-            <div class="col-sm-6">
-                <a href="rest/isogd/documentContents/{{content.id}}/preview" download="{{content.fileName}}">{{content.fileName}}</a>
-                <a class="glyphicon glyphicon-download" href="rest/isogd/documentContents/{{content.id}}/download"
-                   download="{{content.fileName}}"></a>
-            </div>
-            <div class="col-sm-4 mgis-content-buttons">
-                <button class="btn btn-info btn-sm" ng-click="removeCommonContent(content)" translate>Remove</button>
-            </div>
-        </div>
-    </div>
-    <div class="mgis-content-upload-region">
-        <div ngf-drop ng-model="files" class="drop-box"
-             ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
-             ngf-accept="'image/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'"><span
-                translate>DropFilesHereToUpload</span>
-        </div>
-        <div ngf-no-file-drop><span translate>YourBrowserDoesNotSupportDragAndDropFeature</span></div>
-    </div>
+	 ng-init="init('rest/isogd/documentContents/upload', {}, commonPartUploadProgress, commonPartUploadComplete)" class="mgis-document-content">
+	<div class="mgis-content-list-region">
+		<div ng-repeat="content in document.commonPart.documentContents" class="row">
+			<div class="col-sm-2 mgis-content-preview">
+				<img src="rest/isogd/documentContents/{{content.id}}/preview"/>
+			</div>
+			<div class="col-sm-6">
+				<a href="rest/isogd/documentContents/{{content.id}}/download" download="{{content.fileName}}">{{content.fileName}}</a>
+				<a class="glyphicon glyphicon-download" href="rest/isogd/documentContents/{{content.id}}/download"
+				   download="{{content.fileName}}"></a>
+			</div>
+			<div class="col-sm-4 mgis-content-buttons">
+				<button class="btn btn-info btn-sm" ng-click="removeCommonContent(content)" translate>Remove</button>
+			</div>
+		</div>
+	</div>
+	<div class="mgis-content-upload-region">
+		<div ngf-drop ng-model="files" class="drop-box"
+			 ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+			 ngf-accept="'image/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'"><span
+				translate>DropFilesHereToUpload</span>
+		</div>
+		<div ngf-no-file-drop><span translate>YourBrowserDoesNotSupportDragAndDropFeature</span></div>
+	</div>
 </div>
