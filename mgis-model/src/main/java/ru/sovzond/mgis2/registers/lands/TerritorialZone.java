@@ -3,18 +3,17 @@ package ru.sovzond.mgis2.registers.lands;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "lands_address_pacement_type")
-public class AddressPlacementType {
+@Table(name = "territorial_zone")
+public class TerritorialZone {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "land_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
 
 	@Column(unique = true, nullable = false)
 	private String name;
-
 
 	public Long getId() {
 		return id;

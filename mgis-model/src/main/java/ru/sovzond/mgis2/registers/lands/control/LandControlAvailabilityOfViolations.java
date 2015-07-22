@@ -1,10 +1,10 @@
-package ru.sovzond.mgis2.registers.lands;
+package ru.sovzond.mgis2.registers.lands.control;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "lands_address_pacement_type")
-public class AddressPlacementType {
+@Table(name = "lands_land_control_availability_of_violations")
+public class LandControlAvailabilityOfViolations {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
@@ -14,7 +14,6 @@ public class AddressPlacementType {
 
 	@Column(unique = true, nullable = false)
 	private String name;
-
 
 	public Long getId() {
 		return id;
@@ -31,4 +30,5 @@ public class AddressPlacementType {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 }

@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "oks_natural_person")
-public class NaturalPerson extends Person {
+@Table(name = "oks_individual_entrepreneur")
+public class IndividualEntrepreneur extends Person {
 
 }
