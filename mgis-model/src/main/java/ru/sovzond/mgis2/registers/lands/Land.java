@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "lands_land")
-public class Land {
+public class Land implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
@@ -116,7 +116,6 @@ public class Land {
 		this.addressOfPlacement = addressOfPlacement;
 	}
 
-
 	public Land getPreviousVersion() {
 		return previousVersion;
 	}
@@ -125,4 +124,12 @@ public class Land {
 		this.previousVersion = previousVersion;
 	}
 
+	@Override
+	public Land clone() {
+		Land land = new Land();
+		land.setId(id);
+		land.setCadastralNumber(cadastralNumber);
+		// TODO: complete the clone procedure
+		return land;
+	}
 }

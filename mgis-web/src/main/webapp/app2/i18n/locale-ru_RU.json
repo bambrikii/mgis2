@@ -20,6 +20,9 @@
   "ConfirmDeletion": "Подвердите удаление",
   "Edit": "Редактировать",
   "Remove": "Удалить",
+  "Delete": "Удалить",
+  "Find": "Найти",
+  "Search": "Искать",
   "Add": "Добавить",
   "Close": "Закрыть",
   "DropFilesHereToUpload": "Для загрузки файла перетащите его сюда",
@@ -84,5 +87,10 @@
   "ISOGD.Classifiers.Documents.Representation.Format.Add": "Добавить формат представления",
   "ISOGD.Classifiers.Documents.Representation.Format.Edit": "Редактировать формат представления",
   "ISOGD.Classifiers.Documents.Representation.Format.Remove": "Удалить формат представления",
-  "ISOGD.Classifiers.Documents.Representation.Format.Format": "Формат"
+  "ISOGD.Classifiers.Documents.Representation.Format.Format": "Формат",
+  "Lands": "Земельные участки",
+  "CadastralNumber": "Кадастровый номер",
+  "CadastralNumber.Required": "Кадастровый номер обязателен",
+  "Lands.Land": "Земельный участок",
+  "Lands.Land.DisplayOnTheMap": "Показать на карте"
 }

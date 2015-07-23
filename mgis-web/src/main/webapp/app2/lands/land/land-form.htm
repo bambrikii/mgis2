@@ -1,0 +1,31 @@
+<div class="modal-header">
+	<h3 class="modal-title"><span translate>Lands.Land</span>: {{land.cadastralNumber}}</h3>
+</div>
+<div class="modal-body">
+	<form name="landForm" novalidate>
+		{{landForm.cadastralNumber}}
+		<!-- CadastralNumber -->
+		<div class="form-group"
+			 ng-class="{'has-error': landForm.cadastralNumber.$invalid && (!landForm.cadastralNumber.$pristine || landForm.cadastralNumber.$touched)}">
+			<label translate>CadastralNumber</label>
+			<input type="text" class="form-control" name="cadastralNumber" ng-model="land.cadastralNumber" required/>
+
+			<p ng-show="landForm.cadastralNumber.$invalid && (!landForm.cadastralNumber.$pristine || landForm.cadastralNumber.$touched)"
+			   class="help-block" translate>
+				CadastralNumber.Required</p>
+		</div>
+		<div class="form-group" ng-class="{'has-error': landForm.name.$invalid && (!landForm.name.$pristine || landForm.name.$touched)}">
+			<label translate>Name</label>
+			<input type="text" class="form-control" name="name" ng-model="land.name" required/>
+
+			<p ng-show="landForm.name.$invalid && (!landForm.name.$pristine || landForm.name.$touched)" class="help-block" translate>
+				Name.Required</p>
+		</div>
+	</form>
+
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="landForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

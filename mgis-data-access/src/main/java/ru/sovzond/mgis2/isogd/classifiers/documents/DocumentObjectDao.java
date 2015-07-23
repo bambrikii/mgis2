@@ -3,6 +3,7 @@ package ru.sovzond.mgis2.isogd.classifiers.documents;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableCRUDDaoBase;
 
@@ -12,24 +13,23 @@ import ru.sovzond.mgis2.dataaccess.base.impl.PageableCRUDDaoBase;
 @Repository
 public class DocumentObjectDao extends PageableCRUDDaoBase<DocumentObject> {
 
-    public static final String DOCUMENT_CLASS = "documentClass";
+	public static final String DOCUMENT_CLASS = "documentClass";
 
-    private class DocumentObjectBaseBuilder extends PageableBase<DocumentObject> {
-        private DocumentClass documentClass;
+	private class DocumentObjectBaseBuilder extends PageableBase<DocumentObject> {
+		private DocumentClass documentClass;
 
-        public DocumentObjectBaseBuilder(DocumentClass documentClass, int first, int max) {
-            this.documentClass = documentClass;
-            this.first = first;
-            this.max = max;
-        }
+		public DocumentObjectBaseBuilder(DocumentClass documentClass, int first, int max) {
+			super(first, max);
+			this.documentClass = documentClass;
+		}
 
-        @Override
-        protected void applyFilter(Criteria criteria) {
-            criteria.add(Restrictions.eq(DOCUMENT_CLASS, documentClass));
-        }
-    }
+		@Override
+		protected void applyFilter(Criteria criteria) {
+			criteria.add(Restrictions.eq(DOCUMENT_CLASS, documentClass));
+		}
+	}
 
-    public PageableBase<DocumentObject> createFilter(DocumentClass documentClass, int first, int max) {
-        return new DocumentObjectBaseBuilder(documentClass, first, max);
-    }
+	public PageableBase<DocumentObject> createFilter(DocumentClass documentClass, int first, int max) {
+		return new DocumentObjectBaseBuilder(documentClass, first, max);
+	}
 }

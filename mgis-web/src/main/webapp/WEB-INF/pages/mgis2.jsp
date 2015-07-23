@@ -49,7 +49,6 @@
 	<script type="text/javascript" src="app2/isogd/book/isogd-books-module.js"></script>
 	<script type="text/javascript" src="app2/isogd/document/isogd-documents-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/document/isogd-documents-module.js"></script>
-	<script type="text/javascript" src="app2/isogd/isogd.js"></script>
 	<script type="text/javascript" src="app2/isogd/classifiers/classifiers.js"></script>
 	<script type="text/javascript" src="app2/isogd/classifiers/documents/structure/isogd-docs-structure-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/classifiers/documents/structure/isogd-docs-structure-module.js"></script>
@@ -63,6 +62,9 @@
 	<script type="text/javascript" src="app2/admin/privileges/admin-privileges-service.js"></script>
 	<script type="text/javascript" src="app2/admin/privileges/admin-privileges-module.js"></script>
 	<script type="text/javascript" src="app2/oks/oks.js"></script>
+	<script type="text/javascript" src="app2/lands/lands.js"></script>
+	<script type="text/javascript" src="app2/lands/land/land-service.js"></script>
+	<script type="text/javascript" src="app2/lands/land/land-module.js"></script>
 
 </head>
 <body>

@@ -1,6 +1,11 @@
 var mgisApp = angular.module("mgis", //
 	["ui.router", 'pascalprecht.translate', //
-		"mgis.isogd", "mgis.menu.main", "mgis.oks", "mgis.admin"]);
+		"mgis.isogd",
+		"mgis.menu.main",
+		"mgis.oks",
+		"mgis.admin",
+		"mgis.lands"
+	]);
 
 mgisApp.config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
 	$stateProvider //
@@ -10,6 +15,15 @@ mgisApp.config(function ($stateProvider, $urlRouterProvider, $translateProvider)
 				"": {
 					templateUrl: "app2/isogd/isogd.htm",
 					controller: "ISOGDCtrl"
+				}
+			}
+		}) //
+		.state("lands", {
+			url: "/lands",
+			views: {
+				"": {
+					templateUrl: "app2/lands/lands.htm",
+					controller: "LandsController"
 				}
 			}
 		}) //
