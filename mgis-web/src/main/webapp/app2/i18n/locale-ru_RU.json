@@ -92,5 +92,11 @@
   "CadastralNumber": "Кадастровый номер",
   "CadastralNumber.Required": "Кадастровый номер обязателен",
   "Lands.Land": "Земельный участок",
-  "Lands.Land.DisplayOnTheMap": "Показать на карте"
+  "Lands.Land.DisplayOnTheMap": "Показать на карте",
+  "Lands.Land.GeneralInfo": "Общая",
+  "Lands.Land.Rights": "Права",
+  "Lands.Land.Characteristics": "Характеристики",
+  "Lands.Land.IncludedObjects": "Вложенные объекты",
+  "Lands.Land.Works": "Работы",
+  "Lands.Land.LandControl": "Земельный контроль"
 }

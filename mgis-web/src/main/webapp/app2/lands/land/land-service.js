@@ -4,10 +4,10 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 		return {
 			get: function (id, first, max, cadastralNumber) {
 				var deferred = $q.defer();
-				res.get({id: id}, {
+				res.get({id: id,
+					cadastralNumber: cadastralNumber}, {
 					first: first,
-					max: max,
-					cadastralNumber: cadastralNumber,
+					max: max
 				}, function (data) {
 					deferred.resolve(data);
 				});

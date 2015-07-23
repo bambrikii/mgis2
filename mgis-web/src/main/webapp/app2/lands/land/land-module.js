@@ -27,6 +27,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", //
 					$modalInstance.close();
 					updateGrid();
 				});
+			}, {
+				windowClass: "mgis-land-modal-form"
 			});
 		}
 
