@@ -3,59 +3,44 @@
 </div>
 <div class="modal-body">
 
-	<form name="landForm" novalidate>
+	<form name="landForm" class="" novalidate>
 		<tabset>
-			<tab heading="GeneralInfo">
+
+			<tab>
 				<tab-heading>
 					<span translate>Lands.Land.GeneralInfo</span>
 				</tab-heading>
-				<!-- CadastralNumber -->
-				<div class="form-group"
-					 ng-class="{'has-error': landForm.cadastralNumber.$invalid && (!landForm.cadastralNumber.$pristine || landForm.cadastralNumber.$touched)}">
-					<label translate>CadastralNumber</label>
-					<input type="text" class="form-control" name="cadastralNumber" ng-model="land.cadastralNumber" required/>
-
-					<p ng-show="landForm.cadastralNumber.$invalid && (!landForm.cadastralNumber.$pristine || landForm.cadastralNumber.$touched)"
-					   class="help-block" translate>
-						CadastralNumber.Required</p>
-				</div>
-				<div class="form-group" ng-class="{'has-error': landForm.name.$invalid && (!landForm.name.$pristine || landForm.name.$touched)}">
-					<label translate>Name</label>
-					<input type="text" class="form-control" name="name" ng-model="land.name" required/>
-
-					<p ng-show="landForm.name.$invalid && (!landForm.name.$pristine || landForm.name.$touched)" class="help-block" translate>
-						Name.Required</p>
-				</div>
+				<div ng-include src="'app2/lands/land/land-form-general.htm'"></div>
 			</tab>
 			<tab>
 				<tab-heading>
 					<span translate>Lands.Land.Rights</span>
 				</tab-heading>
-				Rights
+				<div ng-include src="'app2/lands/land/land-form-rights.htm'"></div>
 			</tab>
 			<tab>
 				<tab-heading>
 					<span translate>Lands.Land.Characteristics</span>
 				</tab-heading>
-				Characteristics
+				<div ng-include src="'app2/lands/land/land-form-characteristics.htm'"></div>
 			</tab>
 			<tab>
 				<tab-heading>
 					<span translate>Lands.Land.IncludedObjects</span>
 				</tab-heading>
-				IncludedObjects
+				<div ng-include src="'app2/lands/land/land-form-included-objects.htm'"></div>
 			</tab>
 			<tab>
 				<tab-heading>
 					<span translate>Lands.Land.Works</span>
 				</tab-heading>
-				Works
+				<div ng-include src="'app2/lands/land/land-form-works.htm'"></div>
 			</tab>
 			<tab>
 				<tab-heading>
 					<span translate>Lands.Land.LandControl</span>
 				</tab-heading>
-				LandControl
+				<div ng-include src="'app2/lands/land/land-form-land-control.htm'"></div>
 			</tab>
 		</tabset>
 	</form>

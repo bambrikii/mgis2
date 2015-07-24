@@ -1,0 +1,200 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>Lands.Land.CadastralInformation</h3>
+	</div>
+	<div class="panel-body">
+		<!-- CadastralNumber -->
+		<div class="form-group row"
+			 ng-class="{'has-error': landForm.cadastralNumber.$invalid && (!landForm.cadastralNumber.$pristine || landForm.cadastralNumber.$touched)}">
+			<div class="col-sm-2">
+				<label translate>CadastralNumber</label>
+			</div>
+
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="cadastralNumber" ng-model="land.cadastralNumber" required/>
+
+				<p ng-show="landForm.cadastralNumber.$invalid && (!landForm.cadastralNumber.$pristine || landForm.cadastralNumber.$touched)"
+				   class="help-block" translate>
+					CadastralNumber.Required</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-2">
+				<label translate>Lands.LandCategory</label>
+			</div>
+
+			<div class="col-sm-10">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.landCategory"
+							options="c.name for c in availableLandCategories"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+
+				<!--<p ng-show="!land.landCategory.id" class="help-block" translate>Required</p>-->
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-2">
+				<label translate>Lands.Land.StateRealEstateCadastralStaging</label>
+			</div>
+
+			<div class="col-sm-10">
+				<p class="input-group input-group-sm" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="document.docDate"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							ng-required="true"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							required
+							/>
+                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+					</button>
+                </span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>Lands.Land.Areas</h3>
+	</div>
+	<div class="panel-body">
+		<div class="form-group row">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-10">
+				<div class="row" ng-repeat="area in land.areas">
+					<div class="col-sm-4">{{area.type.name}}</div>
+					<div class="col-sm-4">{{area.value}}</div>
+					<div class="col-sm-4">
+						<button class="btn btn-info btn-sm" translate>Edit</button>
+						<button class="btn btn-info btn-sm" translate>Delete</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-10">
+				<div class="form-group">
+					<button class="btn btn-info btn-sm" translate>Add</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>Lands.Land.AllowedUsage</h3>
+	</div>
+	<div class="panel-body">
+
+		<div class="form-group row">
+			<div class="col-sm-2">
+				<label translate>Lands.Land.AllowedUsage.ByDictionary</label>
+			</div>
+
+			<div class="col-sm-10">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.allowedUsage.byDictionary"
+							options="c.name for c in availableAllowedUsages"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-2">
+				<label translate>Lands.Land.AllowedUsage.ByDocument</label>
+			</div>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="allowedUsageByDocument" ng-model="land.allowedUsage.byDocument"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-2">
+				<label translate>Lands.TerritorialZone</label>
+			</div>
+			<div class="col-sm-10">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.allowedUsage.territorialZone"
+							options="c.name for c in availableTerritorialZones"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>Lands.Land.Address</h3>
+	</div>
+	<div class="panel-body">
+
+		<div class="form-group row">
+			<div class="col-sm-2">
+				<label translate>Lands.Land.MunicipalEntity</label>
+			</div>
+			<div class="col-sm-10">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.address.municipalEntity"
+							options="c.name for c in availableMunicipalEntities"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-2">
+				<label translate>Lands.Land.Placement</label>
+			</div>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="addressPlacement" ng-model="land.address.placement"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-2">
+				<label translate>Lands.Land.Address</label>
+			</div>
+
+			<div class="col-sm-6">
+				<input type="text" class="form-control" name="addressPlacement" ng-model="land.address.address"/>
+			</div>
+			<div class="col-sm-4">
+				<button class="btn btn-info btn-sm" translate>Select</button>
+			</div>
+		</div>
+	</div>
+</div>
