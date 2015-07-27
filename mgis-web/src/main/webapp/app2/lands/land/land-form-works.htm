@@ -4,6 +4,47 @@
 	</div>
 	<div class="panel-body">
 
+		<div class="form-group row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-2" translate>
+						Lands.Land.Works.Work.Type
+					</div>
+					<div class="col-sm-6">
+						<span translate>Lands.Land.Works.Work.ExecutiveOrganization</span><br/>
+						<span translate>Lands.Land.Works.Work.CadastralEngineer</span><br/>
+						<span translate>Lands.Land.Works.Work.BasisDocument</span>
+					</div>
+					<div class="col-sm-2">
+						<span translate>Lands.Land.Works.Work.StartDate</span><br/>
+						<span translate>Lands.Land.Works.Work.EndDate</span>
+					</div>
+					<div class="col-sm-4">
 
+					</div>
+				</div>
+
+				<div class="row" ng-repeat="landWork in land.works.landWorks">
+					<div class="col-sm-2">
+						{{landWorkType.name}}
+					</div>
+					<div class="col-sm-6">
+						{{executiveOrganization.name}}<br/>
+						{{cadastralEngineer.fullName}}<br/>
+						{{basisDocument.name}}
+					</div>
+					<div class="col-sm-2">
+						{{startDate}}<br/>
+						{{endDate}}
+					</div>
+					<div class="col-sm-4">
+						<button class="btn btn-info btn-sm" translate>Change</button>
+						<button class="btn btn-danger btn-sm" translate>Remove</button>
+					</div>
+				</div>
+				<button class="btn btn-info btn-sm" translate>Add</button>
+
+			</div>
+		</div>
 	</div>
 </div>

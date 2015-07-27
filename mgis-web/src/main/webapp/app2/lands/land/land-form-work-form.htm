@@ -1,0 +1,115 @@
+<div class="modal-header">
+	<h3 class="modal-title"><span translate>Lands.Land</span>: {{land.cadastralNumber}}</h3>
+</div>
+
+<div class="modal-body">
+
+	<form name="landWorkForm" class="" novalidate>
+
+		<div class="form-group">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Works.Work.Type</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="landWork.landWorkType"
+							options="c.name for c in availableLandWorkTypes"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Works.Work.ExecutiveOrganization</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" name="executiveOrganization" class="form-control" ng-model="landWork.executiveOrganization">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Works.Work.CadastralEngineer</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" name="cadastralEngineer" class="form-control" ng-model="landWork.cadastralEngineer">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Works.Work.BasisDocument</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" name="basisDocument" class="form-control" ng-model="landWork.basisDocument">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Works.Work.StartDate</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="landWork.startDate"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							ng-required="true"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							required
+							/>
+                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+					</button>
+                </span>
+				</p>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Characteristics.DateOfIntroduction</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="landWork.endDate"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							ng-required="true"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							required
+							/>
+                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+					</button>
+                </span>
+				</p>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="landForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

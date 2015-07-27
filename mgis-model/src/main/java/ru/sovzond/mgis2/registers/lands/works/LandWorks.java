@@ -20,7 +20,7 @@ public class LandWorks {
 	private Land land;
 
 	@OneToMany
-	private List<LandWork> landWork = new ArrayList<LandWork>();
+	private List<LandWork> landWorks = new ArrayList<LandWork>();
 
 	public Long getId() {
 		return id;
@@ -38,11 +38,11 @@ public class LandWorks {
 		this.land = land;
 	}
 
-	public List<LandWork> getLandWork() {
-		return landWork;
+	public List<LandWork> getLandWorks() {
+		return landWorks;
 	}
 
-	public void setLandWork(List<LandWork> landWork) {
-		this.landWork = landWork;
+	public void setLandWorks(List<LandWork> landWorks) {
+		this.landWorks = landWorks;
 	}
 }

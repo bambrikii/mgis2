@@ -154,6 +154,12 @@
   "Lands.Land.IncludedObjects.LandDealDocument": "Земельное дело",
   "Lands.Land.IncludedObjects.InventoryDealDocument": "Инвентарное дело",
   "Lands.Land.IncludedObjects.UrbanPlanningDocuments": "Градостроительные регламенты",
+  "Lands.Land.Works.Work.Type": "Вид работ",
+  "Lands.Land.Works.Work.ExecutiveOrganization": "Организация исполнитель",
+  "Lands.Land.Works.Work.CadastralEngineer": "Кадастровый инженер",
+  "Lands.Land.Works.Work.BasisDocument": "Документ основание",
+  "Lands.Land.Works.Work.StartDate": "Начало выполненных работ",
+  "Lands.Land.Works.Work.EndDate": "Окончание выполненных работ",
   "1": "",
   "2": ""
 }
