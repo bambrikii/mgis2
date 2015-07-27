@@ -4,8 +4,10 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 		return {
 			get: function (id, first, max, cadastralNumber) {
 				var deferred = $q.defer();
-				res.get({id: id,
-					cadastralNumber: cadastralNumber}, {
+				res.get({
+					id: id,
+					cadastralNumber: cadastralNumber
+				}, {
 					first: first,
 					max: max
 				}, function (data) {
@@ -15,10 +17,19 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 			},
 			save: function (item) {
 				var deferred = $q.defer();
-				res.save({id: item.id,}, {
+				var land = {
 					id: item.id,
-					cadastralNumber: item.cadastralNumber
-				}, function (data) {
+					cadastralNumber: item.cadastralNumber,
+					stateRealEstateCadastreaStaging: item.stateRealEstateCadastreaStaging,
+					landAreas: item.landAreas,
+					allowedUsageByDictionary: item.allowedUsageByDictionary ? {id: item.allowedUsageByDictionary.id} : null,
+					allowedUsageByDocument: item.allowedUsageByDocument ? {id: item.allowedUsageByDocument.id} : null,
+					allowedUsageByTerritorialZone: item.allowedUsageByTerritorialZone ? {id: item.allowedUsageByTerritorialZone.id} : null,
+					addressOfMunicipalEntity: item.addressOfMunicipalEntity ? {id: item.addressOfMunicipalEntity.id} : null,
+					addressOfPlacementType: item.addressOfPlacementType ? {id: item.addressOfPlacementType.id} : null,
+					addressOfPlacement: item.addressOfPlacement ? {id: item.addressOfPlacement.id} : null
+				};
+				res.save({id: item.id}, land, function (data) {
 					deferred.resolve(data);
 				});
 				return deferred.promise;

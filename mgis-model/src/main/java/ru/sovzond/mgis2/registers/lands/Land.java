@@ -5,7 +5,9 @@ import ru.sovzond.mgis2.registers.oks.Address;
 import ru.sovzond.mgis2.registers.oks.rights.Person;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "lands_land")
@@ -22,6 +24,9 @@ public class Land implements Cloneable {
 
 	@Column
 	private Date stateRealEstateCadastreaStaging;
+
+	@OneToMany
+	private List<LandArea> landAreas = new ArrayList<LandArea>();
 
 	@ManyToOne
 	private Person allowedUsageByDictionary;
@@ -131,5 +136,13 @@ public class Land implements Cloneable {
 		land.setCadastralNumber(cadastralNumber);
 		// TODO: complete the clone procedure
 		return land;
+	}
+
+	public List<LandArea> getLandAreas() {
+		return landAreas;
+	}
+
+	public void setLandAreas(List<LandArea> landAreas) {
+		this.landAreas = landAreas;
 	}
 }

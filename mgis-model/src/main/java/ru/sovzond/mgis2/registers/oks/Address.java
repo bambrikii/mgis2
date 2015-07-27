@@ -1,12 +1,6 @@
 package ru.sovzond.mgis2.registers.oks;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "rosreg_oks_address")
@@ -23,9 +17,6 @@ public class Address {
 	// private String oktmo;
 	// private String postalCode;
 
-	@Column
-	private String region;
-
 	// private String district;
 	// private RosRegName city;
 	// private UrbanDistrict urbanDistrict;
@@ -38,5 +29,24 @@ public class Address {
 	// private Apartment apartment;
 	// private String other;
 	// private String note;
+
+	@Column
+	private String region;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
 
 }
