@@ -3,7 +3,49 @@
 		<h3 translate>Lands.Land.IncludedObjects.IncludedLands</h3>
 	</div>
 	<div class="panel-body">
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.IncludedObjects.LandDealDocument</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.includedObjects.landDealDocument"
+							options="c.name for c in availableLandDealDocuments"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-2" translate>ID</div>
+					<div class="col-sm-4" translate>CadastralNumber</div>
+					<div class="col-sm-2" translate>Lands.Land.Area</div>
+					<div class="col-sm-4">
+					</div>
+				</div>
+				<div class="row" ng-repeat="includedLand in land.includedObjects.includedLands">
+					<div class="col-sm-2">{{id}}</div>
+					<div class="col-sm-4">{{cadastralNumber}}</div>
+					<div class="col-sm-2">{{area}}</div>
+					<div class="col-sm-4">
+						<button class="btn btn-info btn-sm" translate>Change</button>
+						<button class="btn btn-danger btn-sm" translate>Remove</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
+
+</div>
 </div>
 
 <div class="panel panel-default">
@@ -11,5 +53,67 @@
 		<h3 translate>Lands.Land.IncludedObjects.IncludedConstructs</h3>
 	</div>
 	<div class="panel-body">
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.IncludedObjects.InventoryDealDocument</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.includedObjects.inventoryDealDocument"
+							options="c.name for c in availableInventoryDealDocuments"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+
+		<div class="form-group row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-2" translate>ID</div>
+					<div class="col-sm-4" translate>Name</div>
+					<div class="col-sm-2" translate>CadastralNumber</div>
+					<div class="col-sm-4">
+					</div>
+				</div>
+				<div class="row" ng-repeat="includedLand in land.includedObjects.includedLands">
+					<div class="col-sm-2">{{id}}</div>
+					<div class="col-sm-4">{{name}}</div>
+					<div class="col-sm-2">{{cadastralNumber}}</div>
+					<div class="col-sm-4">
+						<button class="btn btn-info btn-sm" translate>Change</button>
+						<button class="btn btn-danger btn-sm" translate>Remove</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.IncludedObjects.UrbanPlanningDocuments</label>
+			</div>
+			<div class="col-sm-8">
+				<div class="row">
+					<div class="col-sm-8" translate>Name</div>
+					<div class="col-sm-4">
+					</div>
+				</div>
+				<div class="row" ng-repeat="includedLand in land.includedObjects.includedLands">
+					<div class="col-sm-8">{{name}}</div>
+					<div class="col-sm-4">
+						<button class="btn btn-info btn-sm" translate>Change</button>
+						<button class="btn btn-danger btn-sm" translate>Remove</button>
+					</div>
+				</div>
+				<button class="btn btn-info btn-sm" translate>Add</button>
+			</div>
+		</div>
+
 	</div>
 </div>
