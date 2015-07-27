@@ -3,6 +3,189 @@
 		<h3 translate>Lands.Land.Rights.MainInformation</h3>
 	</div>
 	<div class="panel-body">
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.RightsSubject</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="rightsSubject" ng-model="land.rights.rightsSubject"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.RightsType</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.rights.rightsType"
+							options="c.name for c in availableLandRightsTypes"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.RightsKind</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.rights.rightsKind"
+							options="c.name for c in availableLandRightsKinds"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.Share</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="share" ng-model="land.rights.share"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.OwnershipType</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.rights.ownershipType"
+							options="c.name for c in availableLandOwnershipTypes"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.DateOfCreation</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="land.rights.dateOfCreation"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							ng-required="true"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							required
+							/>
+                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+					</button>
+                </span>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.DateOfTermination</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="land.rights.dateOfTermination"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							ng-required="true"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							required
+							/>
+					<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+					</button>
+                </span>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.OwnershipType</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.rights.ownershipType"
+							options="c.name for c in availableLandOwnershipTypes"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.RegistrationDocument</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.rights.registrationDocument"
+							options="c.name for c in availableRegistrationDocuments"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+					<button class="btn btn-info btn-sm" translate>Select</button>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.DocumentCertifyingRights</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.rights.documentCertifyingRights"
+							options="c.name for c in availableDocumentsCertifyingRights"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+					<button class="btn btn-info btn-sm" translate>Select</button>
+				</p>
+			</div>
+		</div>
+
 	</div>
 </div>
 
@@ -11,5 +194,73 @@
 		<h3 translate>Lands.Land.Rights.Payments</h3>
 	</div>
 	<div class="panel-body">
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.TotalArea</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="totalArea" ng-model="land.rights.totalArea"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.AnnualTax</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="annualTax" ng-model="land.rights.annualTax"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.Encumberance</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.rights.encumberance"
+							options="c.name for c in availableEncumberances"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+					<button class="btn btn-info btn-sm" translate>Select</button>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.Obligations</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.rights.encumberance"
+							options="c.name for c in availableObligations"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+					<button class="btn btn-info btn-sm" translate>Select</button>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.Rights.Comment</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="textarea" rows="15" class="form-control" name="comment" ng-model="land.rights.comment"/>
+			</div>
+		</div>
 	</div>
 </div>
