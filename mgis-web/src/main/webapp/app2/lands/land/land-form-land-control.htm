@@ -3,6 +3,136 @@
 		<h3 translate>Lands.Land.LandControl.MainInformation</h3>
 	</div>
 	<div class="panel-body">
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.InspectedPerson</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.landControl.inspectedPerson"
+							options="c.name for c in availableInspectedPersons"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.ResponsiblePerson</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.landControl.responsiblePerson"
+							options="c.name for c in availableResponsiblePersons"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.InspectionDate</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="land.landControl.inspectionDate"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							ng-required="true"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							required
+							/>
+                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+					</button>
+                </span>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.InspectionType</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.landControl.inspectionType"
+							options="c.name for c in availableInspectionTypes"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.InspectionKind</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.landControl.inspectionKind"
+							options="c.name for c in availableInspectionKinds"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.InspectionSubject</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.landControl.inspectionSubject"
+							options="c.name for c in availableInspectionSubject"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.InspectionReasonDescription</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="inspectionReasonDescription" ng-model="land.landControl.inspectionReasonDescription"/>
+			</div>
+		</div>
+
 	</div>
 </div>
 
@@ -11,5 +141,98 @@
 		<h3 translate>Lands.Land.LandControl.CheckResults</h3>
 	</div>
 	<div class="panel-body">
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.PresenceOfViolations</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="land.landControl.presenceOfViolations"
+							options="c.name for c in availablePresenceViolations"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.InspectionResultDescription</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="inspectionResultDescription" ng-model="land.landControl.inspectionResultDescription"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.TilmelineForViolations</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="land.landControl.timelineForViolations"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							ng-required="true"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							required
+							/>
+                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+					</button>
+                </span>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.PenaltyAmount</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="penaltyAmount" ng-model="land.landControl.penaltyAmount"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Lands.Land.LandControl.InspectionResultDocuments</label>
+			</div>
+			<div class="col-sm-8">
+				<div class="row" ng-repeat="doc in land.landControl.inspectionResultDocuments">
+					<div class="col-md-8">
+						Lands.Land.LandControl.InspectionResultDocument
+					</div>
+					<div class="col-md-4">
+					</div>
+				</div>
+				<div class="row" ng-repeat="doc in land.landControl.inspectionResultDocuments">
+					<div class="col-md-8">
+						{{doc.type.name}}
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-info btn-sm" translate>Change</button>
+						<button class="btn btn-danger btn-sm" translate>Remove</button>
+					</div>
+				</div>
+				<button class="btn btn-info btn-sm" translate>Add</button>
+			</div>
+		</div>
+
 	</div>
 </div>

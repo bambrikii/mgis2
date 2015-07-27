@@ -29,25 +29,31 @@ public class LandControl {
 	private Person responsiblePerson;
 
 	@Column
-	private Date checkDate;
+	private Date inspectionDate;
 
 	@ManyToOne
-	private LandControlCheckType checkType;
+	private LandControlInspectionType inspectionType;
 
 	@ManyToOne
-	private LandControlCheckForm checkForm;
+	private LandControlInspectionKind inspectionKind;
 
 	@ManyToOne
 	private LandControlInspectionReason inspectionReason;
 
 	@ManyToOne
-	private LandControlCheckSubject checkSubject;
-
-	@ManyToOne
-	private LandControlAvailabilityOfViolations checkResultAvailabilityOfViolations;
+	private LandControlCheckSubject inspectionSubject;
 
 	@Column
-	private String checkResultDescription;
+	private String inspectionReasonDescription;
+
+	@ManyToOne
+	private LandControlPresenceOfViolations presenceOfViolations;
+
+	@ManyToOne
+	private LandControlAvailabilityOfViolations inspectionResultAvailabilityOfViolations;
+
+	@Column
+	private String inspectionResultDescription;
 
 	@Column
 	private Date timelineForViolations;
@@ -56,7 +62,10 @@ public class LandControl {
 	private float penaltyAmount;
 
 	@OneToMany
-	private List<Document> checkResultDocuments = new ArrayList<Document>();
+	private List<Document> inspectionResultDocuments = new ArrayList<Document>();
+
+	public LandControl() {
+	}
 
 	public Long getId() {
 		return id;
@@ -90,28 +99,28 @@ public class LandControl {
 		this.responsiblePerson = responsiblePerson;
 	}
 
-	public Date getCheckDate() {
-		return checkDate;
+	public Date getInspectionDate() {
+		return inspectionDate;
 	}
 
-	public void setCheckDate(Date checkDate) {
-		this.checkDate = checkDate;
+	public void setInspectionDate(Date inspectionDate) {
+		this.inspectionDate = inspectionDate;
 	}
 
-	public LandControlCheckType getCheckType() {
-		return checkType;
+	public LandControlInspectionType getInspectionType() {
+		return inspectionType;
 	}
 
-	public void setCheckType(LandControlCheckType checkType) {
-		this.checkType = checkType;
+	public void setInspectionType(LandControlInspectionType inspectionType) {
+		this.inspectionType = inspectionType;
 	}
 
-	public LandControlCheckForm getCheckForm() {
-		return checkForm;
+	public LandControlInspectionKind getInspectionKind() {
+		return inspectionKind;
 	}
 
-	public void setCheckForm(LandControlCheckForm checkForm) {
-		this.checkForm = checkForm;
+	public void setInspectionKind(LandControlInspectionKind inspectionKind) {
+		this.inspectionKind = inspectionKind;
 	}
 
 	public LandControlInspectionReason getInspectionReason() {
@@ -122,28 +131,44 @@ public class LandControl {
 		this.inspectionReason = inspectionReason;
 	}
 
-	public LandControlCheckSubject getCheckSubject() {
-		return checkSubject;
+	public LandControlCheckSubject getInspectionSubject() {
+		return inspectionSubject;
 	}
 
-	public void setCheckSubject(LandControlCheckSubject checkSubject) {
-		this.checkSubject = checkSubject;
+	public void setInspectionSubject(LandControlCheckSubject inspectionSubject) {
+		this.inspectionSubject = inspectionSubject;
 	}
 
-	public LandControlAvailabilityOfViolations getCheckResultAvailabilityOfViolations() {
-		return checkResultAvailabilityOfViolations;
+	public LandControlPresenceOfViolations getPresenceOfViolations() {
+		return presenceOfViolations;
 	}
 
-	public void setCheckResultAvailabilityOfViolations(LandControlAvailabilityOfViolations checkResultAvailabilityOfViolations) {
-		this.checkResultAvailabilityOfViolations = checkResultAvailabilityOfViolations;
+	public void setPresenceOfViolations(LandControlPresenceOfViolations presenceOfViolations) {
+		this.presenceOfViolations = presenceOfViolations;
 	}
 
-	public String getCheckResultDescription() {
-		return checkResultDescription;
+	public String getInspectionReasonDescription() {
+		return inspectionReasonDescription;
 	}
 
-	public void setCheckResultDescription(String checkResultDescription) {
-		this.checkResultDescription = checkResultDescription;
+	public void setInspectionReasonDescription(String inspectionReasonDescription) {
+		this.inspectionReasonDescription = inspectionReasonDescription;
+	}
+
+	public LandControlAvailabilityOfViolations getInspectionResultAvailabilityOfViolations() {
+		return inspectionResultAvailabilityOfViolations;
+	}
+
+	public void setInspectionResultAvailabilityOfViolations(LandControlAvailabilityOfViolations inspectionResultAvailabilityOfViolations) {
+		this.inspectionResultAvailabilityOfViolations = inspectionResultAvailabilityOfViolations;
+	}
+
+	public String getInspectionResultDescription() {
+		return inspectionResultDescription;
+	}
+
+	public void setInspectionResultDescription(String inspectionResultDescription) {
+		this.inspectionResultDescription = inspectionResultDescription;
 	}
 
 	public Date getTimelineForViolations() {
@@ -162,11 +187,13 @@ public class LandControl {
 		this.penaltyAmount = penaltyAmount;
 	}
 
-	public List<Document> getCheckResultDocuments() {
-		return checkResultDocuments;
+	public List<Document> getInspectionResultDocuments() {
+		return inspectionResultDocuments;
 	}
 
-	public void setCheckResultDocuments(List<Document> checkResultDocuments) {
-		this.checkResultDocuments = checkResultDocuments;
+	public void setInspectionResultDocuments(List<Document> inspectionResultDocuments) {
+		this.inspectionResultDocuments = inspectionResultDocuments;
 	}
+
+
 }

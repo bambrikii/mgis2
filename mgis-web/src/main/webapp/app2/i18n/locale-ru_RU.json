@@ -160,6 +160,16 @@
   "Lands.Land.Works.Work.BasisDocument": "Документ основание",
   "Lands.Land.Works.Work.StartDate": "Начало выполненных работ",
   "Lands.Land.Works.Work.EndDate": "Окончание выполненных работ",
-  "1": "",
-  "2": ""
+  "Lands.Land.LandControl.InspectedPerson": "Проверяемое лицо",
+  "Lands.Land.LandControl.ResponsiblePerson": "Должностное лицо",
+  "Lands.Land.LandControl.InspectionDate": "Дата проверки",
+  "Lands.Land.LandControl.InspectionType": "Тип проверки",
+  "Lands.Land.LandControl.InspectionKind": "Вид проверки",
+  "Lands.Land.LandControl.InspectionSubject": "Предмет проверки",
+  "Lands.Land.LandControl.InspectionReasonDescription": "Основание проверки",
+  "Lands.Land.LandControl.PresenceOfViolations": "Наличие нарушений",
+  "Lands.Land.LandControl.InspectionResultDescription": "Описание",
+  "Lands.Land.LandControl.TilmelineForViolations": "Срок устранения нарушений",
+  "Lands.Land.LandControl.PenaltyAmount": "Размер штрафа",
+  "Lands.Land.LandControl.InspectionResultDocuments": "Оформленные нарушения"
 }

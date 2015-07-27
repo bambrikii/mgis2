@@ -2,17 +2,21 @@ package ru.sovzond.mgis2.registers.lands.control;
 
 import javax.persistence.*;
 
+/**
+ * Created by Alexander Arakelyan on 27.07.15.
+ */
 @Entity
-@Table(name = "lands_land_control_check_type")
-public class LandControlCheckType {
+@Table(name = "lands_land_control_presence_of_violations")
+public class LandControlPresenceOfViolations {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
 
-	@Column(unique = true, nullable = false)
+	@Column
 	private String name;
+
 
 	public Long getId() {
 		return id;
@@ -29,5 +33,4 @@ public class LandControlCheckType {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 }

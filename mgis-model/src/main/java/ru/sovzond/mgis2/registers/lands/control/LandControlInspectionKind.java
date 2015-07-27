@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "lands_land_control_check_form")
-public class LandControlCheckForm {
+public class LandControlInspectionKind {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
