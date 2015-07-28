@@ -1,6 +1,9 @@
 package ru.sovzond.mgis2.registers.lands;
 
+import ru.sovzond.mgis2.registers.national_classifiers.LandAllowedUsage;
+import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
+import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZone;
 import ru.sovzond.mgis2.registers.oks.Address;
 import ru.sovzond.mgis2.registers.oks.rights.Person;
 
@@ -22,17 +25,20 @@ public class Land implements Cloneable {
 	@Column
 	private String cadastralNumber;
 
+	@ManyToOne
+	private LandCategory landCategory;
+
 	@Column
 	private Date stateRealEstateCadastreaStaging;
 
 	@OneToMany
-	private List<LandArea> landAreas = new ArrayList<LandArea>();
+	private List<LandArea> landAreas = new ArrayList<>();
 
 	@ManyToOne
 	private Person allowedUsageByDictionary;
 
 	@ManyToOne
-	private LandAllowedUsageByDocument allowedUsageByDocument;
+	private LandAllowedUsage allowedUsageByDocument;
 
 	@ManyToOne
 	private TerritorialZone allowedUsageByTerritorialZone;
@@ -81,11 +87,11 @@ public class Land implements Cloneable {
 		this.allowedUsageByDictionary = allowedUsageByDictionary;
 	}
 
-	public LandAllowedUsageByDocument getAllowedUsageByDocument() {
+	public LandAllowedUsage getAllowedUsageByDocument() {
 		return allowedUsageByDocument;
 	}
 
-	public void setAllowedUsageByDocument(LandAllowedUsageByDocument allowedUsageByDocument) {
+	public void setAllowedUsageByDocument(LandAllowedUsage allowedUsageByDocument) {
 		this.allowedUsageByDocument = allowedUsageByDocument;
 	}
 
@@ -144,5 +150,13 @@ public class Land implements Cloneable {
 
 	public void setLandAreas(List<LandArea> landAreas) {
 		this.landAreas = landAreas;
+	}
+
+	public LandCategory getLandCategory() {
+		return landCategory;
+	}
+
+	public void setLandCategory(LandCategory landCategory) {
+		this.landCategory = landCategory;
 	}
 }

@@ -79,7 +79,7 @@ public class LandRESTController implements Serializable {
 			land2.setAddressOfPlacementType(addressPlacementTypeBean.load(land.getAddressOfPlacementType().getId()));
 		}
 		if (land.getAddressOfPlacement() != null) {
-			land2.setAddressOfPlacement(addressBean.load(land.getAddressOfPlacegment().getId()));
+			land2.setAddressOfPlacement(addressBean.load(land.getAddressOfPlacement().getId()));
 		}
 		landBean.save(land2);
 		return land2.clone();

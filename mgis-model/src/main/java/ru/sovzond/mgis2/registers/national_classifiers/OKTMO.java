@@ -1,13 +1,6 @@
 package ru.sovzond.mgis2.registers.national_classifiers;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * ОКТМО
@@ -17,7 +10,7 @@ import javax.persistence.Table;
 public class OKTMO {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_oktmo_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
@@ -31,8 +24,11 @@ public class OKTMO {
 	@ManyToOne
 	private OKTMO parent;
 
-	@Column
+	@Column(name = "control_number")
 	private int controlNumber;
+
+	@Column
+	private String comment;
 
 	public Long getId() {
 		return id;
@@ -72,5 +68,13 @@ public class OKTMO {
 
 	public void setControlNumber(int controlNumber) {
 		this.controlNumber = controlNumber;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 }
