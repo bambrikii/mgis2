@@ -21,7 +21,7 @@ public class TerritorialZoneRESTController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<TerritorialZone> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "code") String orderBy) {
+	public PageableContainer<TerritorialZone> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "name") String orderBy) {
 		return territorialZoneBean.list(orderBy, first, max);
 	}
 

@@ -21,7 +21,7 @@ public class LandAllowedUsageController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<LandAllowedUsage> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "classificationCode") String orderBy) {
+	public PageableContainer<LandAllowedUsage> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "name") String orderBy) {
 		return landAllowedUsageBean.list(orderBy, first, max);
 	}
 
