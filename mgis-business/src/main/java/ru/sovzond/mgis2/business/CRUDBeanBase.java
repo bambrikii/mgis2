@@ -11,30 +11,35 @@ import java.util.List;
  */
 public abstract class CRUDBeanBase<T> {
 
-    protected abstract IPageableDAOBase<T> getPageableDao();
+	protected abstract IPageableDAOBase<T> getPageableDao();
 
-    protected abstract IIdentifiableDao<T> getIIdentifiableDao();
+	protected abstract IIdentifiableDao<T> getIIdentifiableDao();
 
-    public PageableContainer<T> list(int first, int max) {
-        IPageableDAOBase<T> pageableDao = getPageableDao();
-        return new PageableContainer<>(pageableDao.list(PagerFactory.createDefault(first, max)), pageableDao.count(), first, max);
-    }
+	public PageableContainer<T> list(int first, int max) {
+		IPageableDAOBase<T> pageableDao = getPageableDao();
+		return new PageableContainer<>(pageableDao.list(PagerFactory.createDefault(first, max)), pageableDao.count(), first, max);
+	}
 
-    public T load(Long id) {
-        return getIIdentifiableDao().findById(id);
-    }
+	public PageableContainer<T> list(String orderBy, int first, int max) {
+		IPageableDAOBase<T> pageableDao = getPageableDao();
+		return new PageableContainer<>(pageableDao.list(PagerFactory.createDefault(orderBy, first, max)), pageableDao.count(), first, max);
+	}
+
+	public T load(Long id) {
+		return getIIdentifiableDao().findById(id);
+	}
 
 
-    public List<T> load(List<Long> ids) {
-        return getIIdentifiableDao().findByIds(ids);
-    }
+	public List<T> load(List<Long> ids) {
+		return getIIdentifiableDao().findByIds(ids);
+	}
 
-    public T save(T entity) {
-        getPageableDao().save(entity);
-        return entity;
-    }
+	public T save(T entity) {
+		getPageableDao().save(entity);
+		return entity;
+	}
 
-    public void remove(T entity) {
-        getPageableDao().delete(entity);
-    }
+	public void remove(T entity) {
+		getPageableDao().delete(entity);
+	}
 }

@@ -5,7 +5,6 @@ import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZone;
 import ru.sovzond.mgis2.registers.oks.Address;
-import ru.sovzond.mgis2.registers.oks.rights.Person;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -35,10 +34,10 @@ public class Land implements Cloneable {
 	private List<LandArea> landAreas = new ArrayList<>();
 
 	@ManyToOne
-	private Person allowedUsageByDictionary;
+	private LandAllowedUsage allowedUsageByDictionary;
 
-	@ManyToOne
-	private LandAllowedUsage allowedUsageByDocument;
+	@Column
+	private String allowedUsageByDocument;
 
 	@ManyToOne
 	private TerritorialZone allowedUsageByTerritorialZone;
@@ -46,11 +45,11 @@ public class Land implements Cloneable {
 	@ManyToOne
 	private OKTMO addressOfMunicipalEntity;
 
-	@ManyToOne
-	private AddressPlacementType addressOfPlacementType;
+	@Column
+	private String addressPlacement;
 
 	@ManyToOne
-	private Address addressOfPlacement;
+	private Address address;
 
 	@OneToOne
 	private Land previousVersion;
@@ -79,19 +78,19 @@ public class Land implements Cloneable {
 		this.stateRealEstateCadastreaStaging = stateRealEstateCadastreaStaging;
 	}
 
-	public Person getAllowedUsageByDictionary() {
+	public LandAllowedUsage getAllowedUsageByDictionary() {
 		return allowedUsageByDictionary;
 	}
 
-	public void setAllowedUsageByDictionary(Person allowedUsageByDictionary) {
+	public void setAllowedUsageByDictionary(LandAllowedUsage allowedUsageByDictionary) {
 		this.allowedUsageByDictionary = allowedUsageByDictionary;
 	}
 
-	public LandAllowedUsage getAllowedUsageByDocument() {
+	public String getAllowedUsageByDocument() {
 		return allowedUsageByDocument;
 	}
 
-	public void setAllowedUsageByDocument(LandAllowedUsage allowedUsageByDocument) {
+	public void setAllowedUsageByDocument(String allowedUsageByDocument) {
 		this.allowedUsageByDocument = allowedUsageByDocument;
 	}
 
@@ -111,20 +110,20 @@ public class Land implements Cloneable {
 		this.addressOfMunicipalEntity = addressOfMunicipalEntity;
 	}
 
-	public AddressPlacementType getAddressOfPlacementType() {
-		return addressOfPlacementType;
+	public String getAddressPlacement() {
+		return addressPlacement;
 	}
 
-	public void setAddressOfPlacementType(AddressPlacementType addressOfPlacementType) {
-		this.addressOfPlacementType = addressOfPlacementType;
+	public void setAddressPlacement(String addressPlacement) {
+		this.addressPlacement = addressPlacement;
 	}
 
-	public Address getAddressOfPlacement() {
-		return addressOfPlacement;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAddressOfPlacement(Address addressOfPlacement) {
-		this.addressOfPlacement = addressOfPlacement;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public Land getPreviousVersion() {
@@ -140,6 +139,13 @@ public class Land implements Cloneable {
 		Land land = new Land();
 		land.setId(id);
 		land.setCadastralNumber(cadastralNumber);
+		land.setStateRealEstateCadastreaStaging(stateRealEstateCadastreaStaging);
+		land.setAllowedUsageByDictionary(allowedUsageByDictionary != null ? allowedUsageByDictionary.clone() : null);
+		land.setAllowedUsageByDocument(allowedUsageByDocument);
+		land.setAllowedUsageByTerritorialZone(allowedUsageByTerritorialZone != null ? allowedUsageByTerritorialZone.clone() : null);
+		land.setLandCategory(landCategory != null ? landCategory.clone() : null);
+		land.setAddressPlacement(addressPlacement);
+		land.setAddress(address != null ? address.clone() : null);
 		// TODO: complete the clone procedure
 		return land;
 	}

@@ -52,7 +52,7 @@
 							class="form-control"
 							name="docDate"
 							datepicker-popup="{{format}}"
-							ng-model="land.stateRealEstateCadastralStaging"
+							ng-model="land.stateRealEstateCadastreaStaging"
 							is-open="opened"
 							datepicker-options="dateOptions"
 							date-disabled="disabled(date, mode)"
@@ -114,8 +114,8 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.allowedUsage.byDictionary"
-							options="c.name for c in availableAllowedUsages"
+							ng-model="land.allowedUsageByDictionary"
+							options="c.name for c in availableLandsAllowedUsage"
 							data-multiple="false"
 							data-compare-by="id"
 							scroll-after-rows="15">
@@ -128,7 +128,7 @@
 				<label translate>Lands.Land.AllowedUsage.ByDocument</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="allowedUsageByDocument" ng-model="land.allowedUsage.byDocument"/>
+				<input type="text" class="form-control" name="allowedUsageByDocument" ng-model="land.allowedUsageByDocument"/>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -138,7 +138,7 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.allowedUsage.territorialZone"
+							ng-model="land.allowedUsageByTerritorialZone"
 							options="c.name for c in availableTerritorialZones"
 							data-multiple="false"
 							data-compare-by="id"
@@ -179,7 +179,7 @@
 				<label translate>Lands.Land.Placement</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="addressPlacement" ng-model="land.address.placement"/>
+				<input type="text" class="form-control" name="addressPlacement" ng-model="land.addressPlacement"/>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -188,7 +188,7 @@
 			</div>
 
 			<div class="col-sm-6">
-				<input type="text" class="form-control" name="addressPlacement" ng-model="land.address.address"/>
+				<input type="text" class="form-control" name="address" ng-model="land.address"/>
 			</div>
 			<div class="col-sm-2">
 				<button class="btn btn-info btn-sm" translate>Select</button>

@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.lands;
+package ru.sovzond.mgis2.national_classifiers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import ru.sovzond.mgis2.registers.national_classifiers.LandAllowedUsage;
  * Created by Alexander Arakelyan on 27.07.15.
  */
 @Service
-public class LandAllowedUsageByDocumentBean extends CRUDBeanBase<LandAllowedUsage> {
+public class LandAllowedUsageBean extends CRUDBeanBase<LandAllowedUsage> {
 
 	@Autowired
-	private LandAllowedUsageByDocumentDao dao;
+	private LandAllowedUsageDao dao;
 
 	@Override
 	protected IPageableDAOBase<LandAllowedUsage> getPageableDao() {

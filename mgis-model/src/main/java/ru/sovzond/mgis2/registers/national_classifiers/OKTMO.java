@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "nc_oktmo")
-public class OKTMO {
+public class OKTMO implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_oktmo_seq", allocationSize = 1)
@@ -76,5 +76,16 @@ public class OKTMO {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public OKTMO clone() {
+		OKTMO oktmo = new OKTMO();
+		oktmo.setId(id);
+		oktmo.setCode(code);
+		oktmo.setControlNumber(controlNumber);
+		oktmo.setName(name);
+		oktmo.setParent(parent != null ? parent.clone() : null);
+
+		return oktmo;
 	}
 }

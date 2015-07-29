@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "nc_okato")
-public class OKATO {
+public class OKATO implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "national_classifiers_okato_seq", allocationSize = 1)
@@ -113,5 +113,15 @@ public class OKATO {
 
 	public void setNode_count(Integer node_count) {
 		this.node_count = node_count;
+	}
+
+	public OKATO clone() {
+		OKATO okato = new OKATO();
+		okato.setId(id);
+		okato.setCode(code);
+		okato.setName(name);
+		okato.setControlNumber(controlNumber);
+		okato.setParent(okato.parent != null ? okato.parent.clone() : null);
+		return okato;
 	}
 }

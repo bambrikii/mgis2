@@ -1,6 +1,13 @@
 angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", //
 	"mgis.commons", //
-	"mgis.lands.lands.service"
+	"mgis.lands.lands.service",
+
+	"mgis.nc.oktmo.service",
+	"mgis.nc.okato.service",
+	"mgis.nc.territorial_zone.service",
+	"mgis.nc.land_allowed_usage.service",
+	"mgis.nc.land_category.service"
+	//"mgis.nc.cache"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -9,7 +16,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", //
 				templateUrl: "app2/lands/land/land-list.htm"
 			})
 	})
-	.controller("LandsLandController", function ($scope, LandsLandService, $rootScope, MGISCommonsModalForm) {
+	.controller("LandsLandController", function ($scope, LandsLandService, $rootScope, MGISCommonsModalForm, NcOKATOService, NcOKTMOService, NcTerritorialZoneService, NcLandAllowedUsageService, NcLandCategoryService) {
 		$scope.cadastralNumber = "";
 		$scope.first = 0;
 		$scope.max = 15;
@@ -22,13 +29,22 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", //
 		}
 
 		function editItem(modalScope) {
-			MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
-				LandsLandService.save(scope.land).then(function (data) {
-					$modalInstance.close();
-					updateGrid();
+			NcLandCategoryService.get().then(function (availableLandCategories) {
+				modalScope.availableLandCategories = availableLandCategories.list;
+				NcTerritorialZoneService.get().then(function (availableTerritorialZones) {
+					modalScope.availableTerritorialZones = availableTerritorialZones.list;
+					NcLandAllowedUsageService.get().then(function (availableLandsAllowedUsage) {
+						modalScope.availableLandsAllowedUsage = availableLandsAllowedUsage.list;
+						MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
+							LandsLandService.save(scope.land).then(function (data) {
+								$modalInstance.close();
+								updateGrid();
+							});
+						}, {
+							windowClass: "mgis-land-modal-form"
+						});
+					});
 				});
-			}, {
-				windowClass: "mgis-land-modal-form"
 			});
 		}
 
@@ -48,6 +64,15 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", //
 		$scope.editItem = function (id) {
 			LandsLandService.get(id).then(function (data) {
 				var modalScope = $rootScope.$new();
+				if (!data.landCategory) {
+					data.landCategory = {}
+				}
+				if (!data.allowedUsageByDictionary) {
+					data.allowedUsageByDictionary = {}
+				}
+				if (!data.allowedUsageByTerritorialZone) {
+					data.allowedUsageByTerritorialZone = {}
+				}
 				modalScope.land = data;
 				editItem(modalScope);
 			});

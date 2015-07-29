@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "nc_territorial_zone")
-public class TerritorialZone {
+public class TerritorialZone implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_territorial_zone_seq", allocationSize = 1)
@@ -42,4 +42,11 @@ public class TerritorialZone {
 		this.name = name;
 	}
 
+	public TerritorialZone clone() {
+		TerritorialZone zone = new TerritorialZone();
+		zone.setId(id);
+		zone.setCode(code);
+		zone.setName(name);
+		return zone;
+	}
 }

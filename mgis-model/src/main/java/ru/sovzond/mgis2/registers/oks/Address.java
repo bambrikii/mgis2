@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "rosreg_oks_address")
-public class Address {
+public class Address implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "rosreg_entity_seq", allocationSize = 1)
@@ -49,4 +49,11 @@ public class Address {
 		this.region = region;
 	}
 
+	public Address clone() {
+		Address address = new Address();
+		address.setId(id);
+		address.setRegion(region);
+		// TODO:
+		return address;
+	}
 }

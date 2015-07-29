@@ -66,6 +66,9 @@
 	<script type="text/javascript" src="app2/lands/land/land-service.js"></script>
 	<script type="text/javascript" src="app2/lands/land/land-module.js"></script>
 
+	<script type="text/javascript" src="app2/nc/nc-services.js"></script>
+	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
+
 </head>
 <body>
 

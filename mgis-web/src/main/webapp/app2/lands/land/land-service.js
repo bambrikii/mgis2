@@ -22,12 +22,14 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 					cadastralNumber: item.cadastralNumber,
 					stateRealEstateCadastreaStaging: item.stateRealEstateCadastreaStaging,
 					landAreas: item.landAreas,
+					landCategory: item.landCategory ? {id: item.landCategory.id} : null,
 					allowedUsageByDictionary: item.allowedUsageByDictionary ? {id: item.allowedUsageByDictionary.id} : null,
-					allowedUsageByDocument: item.allowedUsageByDocument ? {id: item.allowedUsageByDocument.id} : null,
+					allowedUsageByDocument: item.allowedUsageByDocument,
 					allowedUsageByTerritorialZone: item.allowedUsageByTerritorialZone ? {id: item.allowedUsageByTerritorialZone.id} : null,
 					addressOfMunicipalEntity: item.addressOfMunicipalEntity ? {id: item.addressOfMunicipalEntity.id} : null,
 					addressOfPlacementType: item.addressOfPlacementType ? {id: item.addressOfPlacementType.id} : null,
-					addressOfPlacement: item.addressOfPlacement ? {id: item.addressOfPlacement.id} : null
+					addressPlacement: item.addressPlacement,
+					address: item.address ? {id: item.address.id} : null
 				};
 				res.save({id: item.id}, land, function (data) {
 					deferred.resolve(data);

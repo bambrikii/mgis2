@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "nc_land_category")
-public class LandCategory {
+public class LandCategory implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_land_category_seq", allocationSize = 1)
@@ -44,5 +44,13 @@ public class LandCategory {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public LandCategory clone() {
+		LandCategory category = new LandCategory();
+		category.setId(id);
+		category.setCode(code);
+		category.setName(name);
+		return category;
 	}
 }

@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.business.PageableContainer;
-import ru.sovzond.mgis2.lands.AddressPlacementTypeBean;
-import ru.sovzond.mgis2.lands.LandAllowedUsageByDocumentBean;
-import ru.sovzond.mgis2.lands.LandAllowedUsageByTerritorialZoneBean;
 import ru.sovzond.mgis2.lands.LandBean;
+import ru.sovzond.mgis2.national_classifiers.LandAllowedUsageBean;
+import ru.sovzond.mgis2.national_classifiers.LandCategoryBean;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
+import ru.sovzond.mgis2.national_classifiers.TerritorialZoneBean;
 import ru.sovzond.mgis2.oks.AddressBean;
 import ru.sovzond.mgis2.oks.PersonBean;
 import ru.sovzond.mgis2.registers.lands.Land;
@@ -30,19 +30,19 @@ public class LandRESTController implements Serializable {
 	private PersonBean personBean;
 
 	@Autowired
-	private LandAllowedUsageByDocumentBean allowedUsageByDocumentBean;
+	private LandAllowedUsageBean allowedUsageByDocumentBean;
 
 	@Autowired
 	private OKTMOBean oktmoBean;
 
 	@Autowired
-	private LandAllowedUsageByTerritorialZoneBean allowedUsageByTerritorialZoneBean;
-
-	@Autowired
-	private AddressPlacementTypeBean addressPlacementTypeBean;
+	private TerritorialZoneBean allowedUsageByTerritorialZoneBean;
 
 	@Autowired
 	private AddressBean addressBean;
+
+	@Autowired
+	private LandCategoryBean landCategoryBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -62,25 +62,25 @@ public class LandRESTController implements Serializable {
 		}
 		land2.setCadastralNumber(land.getCadastralNumber());
 		land2.setStateRealEstateCadastreaStaging(land.getStateRealEstateCadastreaStaging());
+		if (land.getLandCategory() != null) {
+			land2.setLandCategory(landCategoryBean.load(land.getLandCategory().getId()));
+		}
 //		land2.setLandAreas();
 		if (land.getAllowedUsageByDictionary() != null) {
-			land2.setAllowedUsageByDictionary(personBean.load(land.getAllowedUsageByDictionary().getId()));
+			land2.setAllowedUsageByDictionary(allowedUsageByDocumentBean.load(land.getAllowedUsageByDictionary().getId()));
 		}
-		if (land.getAllowedUsageByDocument() != null) {
-			land2.setAllowedUsageByDocument(allowedUsageByDocumentBean.load(land.getAllowedUsageByDocument().getId()));
-		}
+		land2.setAllowedUsageByDocument(land.getAllowedUsageByDocument());
 		if (land.getAllowedUsageByTerritorialZone() != null) {
-			land2.setAllowedUsageByTerritorialZone(allowedUsageByTerritorialZoneBean.load(land.getAllowedUsageByDocument().getId()));
+			land2.setAllowedUsageByTerritorialZone(allowedUsageByTerritorialZoneBean.load(land.getAllowedUsageByTerritorialZone().getId()));
 		}
 		if (land.getAddressOfMunicipalEntity() != null) {
 			land2.setAddressOfMunicipalEntity(oktmoBean.load(land.getAddressOfMunicipalEntity().getId()));
 		}
-		if (land.getAddressOfPlacementType() != null) {
-			land2.setAddressOfPlacementType(addressPlacementTypeBean.load(land.getAddressOfPlacementType().getId()));
+		land2.setAddressPlacement(land.getAddressPlacement());
+		if (land.getAddress() != null) {
+			land2.setAddress(addressBean.load(land.getAddress().getId()));
 		}
-		if (land.getAddressOfPlacement() != null) {
-			land2.setAddressOfPlacement(addressBean.load(land.getAddressOfPlacement().getId()));
-		}
+		land2.setAddress(land.getAddress());
 		landBean.save(land2);
 		return land2.clone();
 	}
