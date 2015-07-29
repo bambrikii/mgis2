@@ -164,13 +164,15 @@
 			</div>
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.address.municipalEntity"
-							options="c.name for c in availableMunicipalEntities"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
+
+					<ui-select ng-model="land.addressMunicipalEntity" theme="select2" style="width: 450px;">
+						<ui-select-match placeholder="MunicipalEntity">{{land.addressMunicipalEntity.name}}</ui-select-match>
+						<ui-select-choices repeat="terrZone in availableTerritorialZones | filter: {name: $select.search}">
+							{{terrZone.name}}
+							<div ng-bind-html="terrZone.name"></div>
+						</ui-select-choices>
+					</ui-select>
+
 				</p>
 			</div>
 		</div>

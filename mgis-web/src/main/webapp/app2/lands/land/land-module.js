@@ -1,4 +1,4 @@
-angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", //
+angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.commons", //
 	"mgis.lands.lands.service",
 
@@ -35,6 +35,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", //
 					modalScope.availableTerritorialZones = availableTerritorialZones.list;
 					NcLandAllowedUsageService.get().then(function (availableLandsAllowedUsage) {
 						modalScope.availableLandsAllowedUsage = availableLandsAllowedUsage.list;
+						modalScope.ajaxSearchSettings = {enableSearch: true};
 						MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
 							LandsLandService.save(scope.land).then(function (data) {
 								$modalInstance.close();
