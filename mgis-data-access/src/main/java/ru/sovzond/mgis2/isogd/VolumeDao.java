@@ -3,12 +3,11 @@ package ru.sovzond.mgis2.isogd;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 
 @Repository
-public class VolumeDao extends PageableDAOBase<Volume> {
+public class VolumeDao extends CRUDDaoBase<Volume> {
 	private static final String ID2 = "id";
 	private static final String SECTION = "book";
 

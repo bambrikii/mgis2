@@ -4,11 +4,11 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableCRUDDaoBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.registers.lands.Land;
 
 @Repository
-public class LandDao extends PageableCRUDDaoBase<Land> {
+public class LandDao extends CRUDDaoBase<Land> {
 	public LandFilter createFilter(String cadastralNumber, String orderBy, int first, int max) {
 		LandFilter filter = new LandFilter(cadastralNumber, orderBy, first, max);
 		return filter;

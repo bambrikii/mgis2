@@ -4,12 +4,12 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.authentication.dataaccess.IPrivilegeDAO;
 import ru.sovzond.mgis2.authentication.model.Privilege;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 
 import java.util.List;
 
 @Repository
-public class PrivilegeDAO extends PageableDAOBase<Privilege> implements IPrivilegeDAO {
+public class PrivilegeDAO extends CRUDDaoBase<Privilege> implements IPrivilegeDAO {
 
 	public static final String ID = "id";
 	public static final String NAME = "name";

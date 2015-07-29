@@ -3,15 +3,14 @@ package ru.sovzond.mgis2.isogd.classifiers.documents;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-
+import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableCRUDDaoBase;
 
 /**
  * Created by Alexander Arakelyan on 22.06.15.
  */
 @Repository
-public class DocumentObjectDao extends PageableCRUDDaoBase<DocumentObject> {
+public class DocumentObjectDao extends CRUDDaoBase<DocumentObject> {
 
 	public static final String DOCUMENT_CLASS = "documentClass";
 

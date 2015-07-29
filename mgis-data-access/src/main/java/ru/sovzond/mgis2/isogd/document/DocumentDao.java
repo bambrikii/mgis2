@@ -1,19 +1,18 @@
 package ru.sovzond.mgis2.isogd.document;
 
-import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentClass;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
 
+import java.util.List;
+
 @Repository
-public class DocumentDao extends PageableDAOBase<Document> {
+public class DocumentDao extends CRUDDaoBase<Document> {
 	public Document findById(Long id) {
 		return (Document) filter(Restrictions.eq("id", id)).uniqueResult();
 	}
@@ -23,16 +22,16 @@ public class DocumentDao extends PageableDAOBase<Document> {
 		return getSession() //
 				.createQuery(
 						"SELECT docSubObj FROM Volume vol JOIN vol.book book JOIN book.documentObject docObj JOIN docObj.documentSubObjects docSubObj WHERE vol = :vol ") //
-						.setParameter("vol", volume) //
-						.list();
+				.setParameter("vol", volume) //
+				.list();
 	}
 
 	public DocumentClass readDocumentClassByVolume(Volume volume) {
 		return (DocumentClass) getSession() //
 				.createQuery(
 						"SELECT docClass FROM Volume vol JOIN vol.book book JOIN book.section sect JOIN sect.documentClass docClass WHERE vol = :vol") //
-						.setParameter("vol", volume) //
-						.uniqueResult();
+				.setParameter("vol", volume) //
+				.uniqueResult();
 	}
 
 	class DocumentBaseBuilder extends PageableBase<Document> {

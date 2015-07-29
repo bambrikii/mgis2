@@ -1,10 +1,9 @@
 package ru.sovzond.mgis2.registers.oks.flats;
 
 import org.springframework.stereotype.Repository;
-
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 
 @Repository
-public class AssignationFlatDao extends PageableDAOBase<AssignationFlat> {
+public class AssignationFlatDao extends CRUDDaoBase<AssignationFlat> {
 
 }

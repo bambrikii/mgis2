@@ -4,12 +4,12 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.authentication.dataaccess.IGroupDAO;
 import ru.sovzond.mgis2.authentication.model.Group;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 
 import java.util.List;
 
 @Repository
-public class GroupDAO extends PageableDAOBase<Group> implements IGroupDAO {
+public class GroupDAO extends CRUDDaoBase<Group> implements IGroupDAO {
 
 	public static final String ID = "id";
 	public static final String GROUPNAME = "groupname";
