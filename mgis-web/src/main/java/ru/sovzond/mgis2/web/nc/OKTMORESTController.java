@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.web.nc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
-import ru.sovzond.mgis2.business.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 
@@ -21,8 +21,12 @@ public class OKTMORESTController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<OKTMO> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "name") String orderBy) {
-		return oktmoBean.list(orderBy, first, max);
+	public PageableContainer<OKTMO> list(@RequestParam(defaultValue = "0") int first,
+										 @RequestParam(defaultValue = "15") int max,
+										 @RequestParam(defaultValue = "") String name,
+										 @RequestParam(defaultValue = "name") String orderBy
+	) {
+		return oktmoBean.list(name, orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

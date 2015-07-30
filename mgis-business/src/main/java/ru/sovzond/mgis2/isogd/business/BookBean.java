@@ -2,7 +2,7 @@ package ru.sovzond.mgis2.isogd.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.sovzond.mgis2.business.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
 import ru.sovzond.mgis2.isogd.Book;
 import ru.sovzond.mgis2.isogd.BookDao;

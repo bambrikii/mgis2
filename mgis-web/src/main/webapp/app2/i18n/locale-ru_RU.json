@@ -171,5 +171,6 @@
   "Lands.Land.LandControl.InspectionResultDescription": "Описание",
   "Lands.Land.LandControl.TilmelineForViolations": "Срок устранения нарушений",
   "Lands.Land.LandControl.PenaltyAmount": "Размер штрафа",
-  "Lands.Land.LandControl.InspectionResultDocuments": "Оформленные нарушения"
+  "Lands.Land.LandControl.InspectionResultDocuments": "Оформленные нарушения",
+  "NationalClassifiers.MunicipalEntity": "Муниципальное образование"
 }

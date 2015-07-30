@@ -144,6 +144,7 @@ public class Land implements Cloneable {
 		land.setAllowedUsageByDocument(allowedUsageByDocument);
 		land.setAllowedUsageByTerritorialZone(allowedUsageByTerritorialZone != null ? allowedUsageByTerritorialZone.clone() : null);
 		land.setLandCategory(landCategory != null ? landCategory.clone() : null);
+		land.setAddressOfMunicipalEntity(addressOfMunicipalEntity != null ? addressOfMunicipalEntity.clone() : null);
 		land.setAddressPlacement(addressPlacement);
 		land.setAddress(address != null ? address.clone() : null);
 		// TODO: complete the clone procedure

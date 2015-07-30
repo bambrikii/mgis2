@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 
 /**
@@ -16,7 +17,6 @@ public class OKTMOBean extends CRUDBeanBase<OKTMO> {
 	@Autowired
 	private OKTMODao dao;
 
-
 	@Override
 	protected IPageableDAOBase<OKTMO> getPageableDao() {
 		return dao;
@@ -26,4 +26,9 @@ public class OKTMOBean extends CRUDBeanBase<OKTMO> {
 	protected IIdentifiableDao<OKTMO> getIIdentifiableDao() {
 		return dao;
 	}
+
+	public PageableContainer<OKTMO> list(String name, String orderBy, int first, int max) {
+		return dao.buildPager(dao.createFilter(name, orderBy, first, max));
+	}
+
 }

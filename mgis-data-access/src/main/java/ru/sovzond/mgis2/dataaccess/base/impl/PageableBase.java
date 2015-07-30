@@ -74,4 +74,12 @@ public abstract class PageableBase<T> {
 			criteria.setMaxResults(max);
 		}
 	}
+
+	public int getMax() {
+		return max;
+	}
+
+	public int getFirst() {
+		return first;
+	}
 }

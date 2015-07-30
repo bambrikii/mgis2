@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.web.common.classifiers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
-import ru.sovzond.mgis2.business.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.common.classifiers.oktmo.Territory;
 import ru.sovzond.mgis2.common.territory.TerritoryBean;
 

@@ -1,7 +1,7 @@
 package ru.sovzond.mgis2.web;
 
 import org.springframework.web.bind.annotation.RequestBody;
-import ru.sovzond.mgis2.business.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 
 /**
  * Created by asd on 20/06/15.

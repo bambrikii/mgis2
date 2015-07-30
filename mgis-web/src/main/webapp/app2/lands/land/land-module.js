@@ -36,6 +36,19 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 					NcLandAllowedUsageService.get().then(function (availableLandsAllowedUsage) {
 						modalScope.availableLandsAllowedUsage = availableLandsAllowedUsage.list;
 						modalScope.ajaxSearchSettings = {enableSearch: true};
+						modalScope.availableAddressMunicipalEntities = new Array();
+						modalScope.refreshAvailableMunicipalEntities = function (name) {
+							NcOKTMOService.get("", 0, 15, name).then(function (data) {
+								modalScope.availableAddressMunicipalEntities = data.list;
+							});
+						}
+						if (modalScope.land.addressOfMunicipalEntity) {
+							NcOKTMOService.get(modalScope.land.addressOfMunicipalEntity.id).then(function (data) {
+									console.log(data)
+									modalScope.availableAddressMunicipalEntities.push(data);
+								}
+							);
+						}
 						MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
 							LandsLandService.save(scope.land).then(function (data) {
 								$modalInstance.close();

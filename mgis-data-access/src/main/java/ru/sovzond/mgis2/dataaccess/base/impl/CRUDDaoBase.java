@@ -6,6 +6,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -70,5 +71,9 @@ public class CRUDDaoBase<T> extends DAOBase<T> implements IPageableDAOBase<T>, I
 
 	protected Criteria createCriteria() {
 		return getSession().createCriteria(persistentClass);
+	}
+
+	public PageableContainer<T> buildPager(PageableBase<T> filter) {
+		return new PageableContainer<T>(list(filter), count(filter), filter.getFirst(), filter.getMax());
 	}
 }

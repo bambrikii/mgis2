@@ -2,6 +2,7 @@ package ru.sovzond.mgis2.business;
 
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerFactory;
 
 import java.util.List;

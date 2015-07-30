@@ -7,7 +7,7 @@ import ru.sovzond.mgis2.admin.GroupBean;
 import ru.sovzond.mgis2.admin.PrivilegeBean;
 import ru.sovzond.mgis2.admin.UserBean;
 import ru.sovzond.mgis2.authentication.model.User;
-import ru.sovzond.mgis2.business.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;

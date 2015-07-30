@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.business;
+package ru.sovzond.mgis2.dataaccess.base;
 
 import java.util.List;
 

@@ -165,9 +165,11 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 
-					<ui-select ng-model="land.addressMunicipalEntity" theme="select2" style="width: 450px;">
-						<ui-select-match placeholder="MunicipalEntity">{{land.addressMunicipalEntity.name}}</ui-select-match>
-						<ui-select-choices repeat="terrZone in availableTerritorialZones | filter: {name: $select.search}">
+					<ui-select ng-model="land.addressOfMunicipalEntity" theme="select2" style="width: 450px;">
+						<ui-select-match placeholder="">{{land.addressOfMunicipalEntity.name}}</ui-select-match>
+						<ui-select-choices repeat="terrZone in availableAddressMunicipalEntities | filter: {name: $select.search}"
+										   refresh="refreshAvailableMunicipalEntities($select.search)"
+										   refresh-delay="0">
 							{{terrZone.name}}
 							<div ng-bind-html="terrZone.name"></div>
 						</ui-select-choices>

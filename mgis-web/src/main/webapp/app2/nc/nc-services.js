@@ -5,9 +5,9 @@ angular.module("mgis.nc.oktmo.service", ["ngResource"])
 	.factory("NcOKTMOService", function ($resource, $q) {
 		var res = $resource('rest/nc/oktmo/:id.json');
 		return {
-			get: function (id, first, max) {
+			get: function (id, first, max, name) {
 				var deferred = $q.defer();
-				res.get({id: id}, {
+				res.get({id: id, name: name}, {
 					first: first,
 					max: max
 				}, function (data) {

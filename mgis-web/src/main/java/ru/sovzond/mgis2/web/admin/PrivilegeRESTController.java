@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.admin.PrivilegeBean;
 import ru.sovzond.mgis2.authentication.model.Privilege;
-import ru.sovzond.mgis2.business.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;

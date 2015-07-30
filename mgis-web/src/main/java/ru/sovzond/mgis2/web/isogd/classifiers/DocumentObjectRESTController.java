@@ -2,7 +2,7 @@ package ru.sovzond.mgis2.web.isogd.classifiers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.sovzond.mgis2.business.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentClassBean;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentObjectBean;
 import ru.sovzond.mgis2.isogd.business.classifiers.DocumentSubObjectBean;
