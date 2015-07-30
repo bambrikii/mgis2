@@ -5,13 +5,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.lands.LandBean;
-import ru.sovzond.mgis2.national_classifiers.LandAllowedUsageBean;
-import ru.sovzond.mgis2.national_classifiers.LandCategoryBean;
-import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
-import ru.sovzond.mgis2.national_classifiers.TerritorialZoneBean;
+import ru.sovzond.mgis2.lands.LandRightsBean;
+import ru.sovzond.mgis2.national_classifiers.*;
 import ru.sovzond.mgis2.oks.AddressBean;
 import ru.sovzond.mgis2.oks.PersonBean;
 import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.registers.lands.rights.LandRights;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
@@ -43,6 +42,15 @@ public class LandRESTController implements Serializable {
 
 	@Autowired
 	private LandCategoryBean landCategoryBean;
+
+	@Autowired
+	private LandOwnershipFormBean landOwnershipFormBean;
+
+	@Autowired
+	private LandRightKindBean landRightKindBean;
+
+	@Autowired
+	private LandRightsBean landRightsBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -81,6 +89,27 @@ public class LandRESTController implements Serializable {
 			land2.setAddress(addressBean.load(land.getAddress().getId()));
 		}
 		land2.setAddress(land.getAddress());
+		LandRights rights = land.getRights();
+		if (rights != null) {
+			LandRights rights2 = land2.getRights();
+			if (rights2 == null) {
+				rights2 = new LandRights();
+				rights2.setLand(land2);
+				landRightsBean.save(rights2);
+				land2.setRights(rights2);
+			}
+			rights2.setOwnershipForm(rights.getOwnershipForm() != null ? landOwnershipFormBean.load(rights.getOwnershipForm().getId()) : null);
+			rights2.setRightKind(rights.getRightKind() != null ? landRightKindBean.load(rights.getRightKind().getId()) : null);
+			rights2.setRightOwner(rights.getRightOwner() != null ? personBean.load(rights.getRightOwner().getId()) : null);
+			rights2.setEncumbrance(rights.isEncumbrance());
+			rights2.setObligations(rights.isObligations());
+			rights2.setOwnershipDate(rights.getOwnershipDate());
+			rights2.setTerminationDate(rights.getTerminationDate());
+			rights2.setComment(rights.getComment());
+			rights2.setShare(rights.getShare());
+			rights2.setAnnualTax(rights.getAnnualTax());
+			rights2.setTotalArea(rights.getTotalArea());
+		}
 		landBean.save(land2);
 		return land2.clone();
 	}

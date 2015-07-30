@@ -29,7 +29,21 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 					addressOfMunicipalEntity: item.addressOfMunicipalEntity ? {id: item.addressOfMunicipalEntity.id} : null,
 					addressOfPlacementType: item.addressOfPlacementType ? {id: item.addressOfPlacementType.id} : null,
 					addressPlacement: item.addressPlacement,
-					address: item.address ? {id: item.address.id} : null
+					address: item.address ? {id: item.address.id} : null,
+					rights: {
+						ownershipForm: item.rights.ownershipForm ? {id: item.rights.ownershipForm.id} : null,
+						rightKind: item.rights.rightKind ? {id: item.rights.rightKind.id} : null,
+						rightOwner: item.rights.rightOwner ? {id: item.rights.rightOwner.id} : null,
+						encumbrance: item.rights.encumbrance,
+						obligations: item.rights.obligations,
+						ownershipDate: item.rights.ownershipDate,
+						terminationDate: item.rights.terminationDate,
+						comment: item.rights.comment,
+						share: item.rights.share,
+						annualTax: item.rights.annualTax,
+						totalArea: item.rights.totalArea
+					},
+					characteristics: {}
 				};
 				res.save({id: item.id}, land, function (data) {
 					deferred.resolve(data);

@@ -85,3 +85,37 @@ angular.module("mgis.nc.land_category.service", ["ngResource"])
 			}
 		}
 	});
+
+angular.module("mgis.nc.land_ownership_form.service", ["ngResource"])
+	.factory("NcLandOwnershipFormService", function ($resource, $q) {
+		var res = $resource('rest/nc/land_ownership_forms/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	});
+
+angular.module("mgis.nc.land_right_kind.service", ["ngResource"])
+	.factory("NcLandRightKindService", function ($resource, $q) {
+		var res = $resource('rest/nc/land_right_kinds/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	});

@@ -14,15 +14,16 @@
 			</div>
 		</div>
 
+
 		<div class="form-group row">
 			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.RightsType</label>
+				<label translate>Lands.Land.Rights.OwnershipForm</label>
 			</div>
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.rights.rightsType"
-							options="c.name for c in availableLandRightsTypes"
+							ng-model="land.rights.ownershipForm"
+							options="(c.name + (c.gatheringParent?' ('+c.gatheringParent.name+')' : '')) for c in availableLandOwnershipForms"
 							data-multiple="false"
 							data-compare-by="id"
 							scroll-after-rows="15">
@@ -38,8 +39,8 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.rights.rightsKind"
-							options="c.name for c in availableLandRightsKinds"
+							ng-model="land.rights.rightKind"
+							options="c.name for c in availableLandRightKinds"
 							data-multiple="false"
 							data-compare-by="id"
 							scroll-after-rows="15">
@@ -60,23 +61,6 @@
 
 		<div class="form-group row">
 			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.OwnershipType</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.rights.ownershipType"
-							options="c.name for c in availableLandOwnershipTypes"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
-				</p>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
 				<label translate>Lands.Land.Rights.DateOfCreation</label>
 			</div>
 
@@ -88,7 +72,7 @@
 							class="form-control"
 							name="docDate"
 							datepicker-popup="{{format}}"
-							ng-model="land.rights.dateOfCreation"
+							ng-model="land.rights.ownershipDate"
 							is-open="opened"
 							datepicker-options="dateOptions"
 							date-disabled="disabled(date, mode)"
@@ -115,7 +99,7 @@
 							class="form-control"
 							name="docDate"
 							datepicker-popup="{{format}}"
-							ng-model="land.rights.dateOfTermination"
+							ng-model="land.rights.terminationDate"
 							is-open="opened"
 							datepicker-options="dateOptions"
 							date-disabled="disabled(date, mode)"
@@ -125,23 +109,6 @@
 					<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
 					</button>
                 </span>
-				</p>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.OwnershipType</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.rights.ownershipType"
-							options="c.name for c in availableLandOwnershipTypes"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
 				</p>
 			</div>
 		</div>

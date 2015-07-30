@@ -4,10 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "oks_person")
-public class Person {
+public class Person implements Cloneable {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "oks_person_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
@@ -19,5 +19,11 @@ public class Person {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Person clone() {
+		Person person = new Person();
+		person.setId(id);
+		return person;
 	}
 }

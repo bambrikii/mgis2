@@ -6,7 +6,9 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.nc.okato.service",
 	"mgis.nc.territorial_zone.service",
 	"mgis.nc.land_allowed_usage.service",
-	"mgis.nc.land_category.service"
+	"mgis.nc.land_category.service",
+	"mgis.nc.land_ownership_form.service",
+	"mgis.nc.land_right_kind.service"
 	//"mgis.nc.cache"
 ])
 	.config(function ($stateProvider) {
@@ -16,7 +18,14 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 				templateUrl: "app2/lands/land/land-list.htm"
 			})
 	})
-	.controller("LandsLandController", function ($scope, LandsLandService, $rootScope, MGISCommonsModalForm, NcOKATOService, NcOKTMOService, NcTerritorialZoneService, NcLandAllowedUsageService, NcLandCategoryService) {
+	.controller("LandsLandController", function ($scope, LandsLandService, $rootScope, MGISCommonsModalForm,
+												 NcOKATOService,
+												 NcOKTMOService,
+												 NcTerritorialZoneService,
+												 NcLandAllowedUsageService,
+												 NcLandCategoryService,
+												 NcLandOwnershipFormService,
+												 NcLandRightKindService) {
 		$scope.cadastralNumber = "";
 		$scope.first = 0;
 		$scope.max = 15;
@@ -29,33 +38,38 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		}
 
 		function editItem(modalScope) {
-			NcLandCategoryService.get().then(function (availableLandCategories) {
-				modalScope.availableLandCategories = availableLandCategories.list;
-				NcTerritorialZoneService.get().then(function (availableTerritorialZones) {
-					modalScope.availableTerritorialZones = availableTerritorialZones.list;
-					NcLandAllowedUsageService.get().then(function (availableLandsAllowedUsage) {
-						modalScope.availableLandsAllowedUsage = availableLandsAllowedUsage.list;
-						modalScope.ajaxSearchSettings = {enableSearch: true};
-						modalScope.availableAddressMunicipalEntities = new Array();
-						modalScope.refreshAvailableMunicipalEntities = function (name) {
-							NcOKTMOService.get("", 0, 15, name).then(function (data) {
-								modalScope.availableAddressMunicipalEntities = data.list;
-							});
-						}
-						if (modalScope.land.addressOfMunicipalEntity) {
-							NcOKTMOService.get(modalScope.land.addressOfMunicipalEntity.id).then(function (data) {
-									console.log(data)
-									modalScope.availableAddressMunicipalEntities.push(data);
+			NcLandOwnershipFormService.get().then(function (landOwnershipForms) {
+				modalScope.availableLandOwnershipForms = landOwnershipForms.list;
+				NcLandRightKindService.get().then(function (landRightKinds) {
+					modalScope.availableLandRightKinds = landRightKinds.list;
+					NcLandCategoryService.get().then(function (availableLandCategories) {
+						modalScope.availableLandCategories = availableLandCategories.list;
+						NcTerritorialZoneService.get().then(function (availableTerritorialZones) {
+							modalScope.availableTerritorialZones = availableTerritorialZones.list;
+							NcLandAllowedUsageService.get().then(function (availableLandsAllowedUsage) {
+								modalScope.availableLandsAllowedUsage = availableLandsAllowedUsage.list;
+								modalScope.ajaxSearchSettings = {enableSearch: true};
+								modalScope.availableAddressMunicipalEntities = new Array();
+								modalScope.refreshAvailableMunicipalEntities = function (name) {
+									NcOKTMOService.get("", 0, 15, name).then(function (data) {
+										modalScope.availableAddressMunicipalEntities = data.list;
+									});
 								}
-							);
-						}
-						MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
-							LandsLandService.save(scope.land).then(function (data) {
-								$modalInstance.close();
-								updateGrid();
+								if (modalScope.land.addressOfMunicipalEntity) {
+									NcOKTMOService.get(modalScope.land.addressOfMunicipalEntity.id).then(function (data) {
+											modalScope.availableAddressMunicipalEntities.push(data);
+										}
+									);
+								}
+								MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
+									LandsLandService.save(scope.land).then(function (data) {
+										$modalInstance.close();
+										updateGrid();
+									});
+								}, {
+									windowClass: "mgis-land-modal-form"
+								});
 							});
-						}, {
-							windowClass: "mgis-land-modal-form"
 						});
 					});
 				});

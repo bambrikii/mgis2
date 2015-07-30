@@ -1,5 +1,10 @@
 package ru.sovzond.mgis2.registers.lands;
 
+import ru.sovzond.mgis2.registers.lands.characteristics.LandCharacteristics;
+import ru.sovzond.mgis2.registers.lands.control.LandControl;
+import ru.sovzond.mgis2.registers.lands.includes.LandIncludedObjects;
+import ru.sovzond.mgis2.registers.lands.rights.LandRights;
+import ru.sovzond.mgis2.registers.lands.works.LandWorks;
 import ru.sovzond.mgis2.registers.national_classifiers.LandAllowedUsage;
 import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
@@ -50,6 +55,21 @@ public class Land implements Cloneable {
 
 	@ManyToOne
 	private Address address;
+
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private LandRights rights;
+
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private LandCharacteristics characteristics;
+
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private LandIncludedObjects includedObjects;
+
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private LandWorks works;
+
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private LandControl control;
 
 	@OneToOne
 	private Land previousVersion;
@@ -147,6 +167,8 @@ public class Land implements Cloneable {
 		land.setAddressOfMunicipalEntity(addressOfMunicipalEntity != null ? addressOfMunicipalEntity.clone() : null);
 		land.setAddressPlacement(addressPlacement);
 		land.setAddress(address != null ? address.clone() : null);
+		land.setRights(rights != null ? rights.clone() : null);
+		land.setCharacteristics(characteristics != null ? characteristics.clone() : null);
 		// TODO: complete the clone procedure
 		return land;
 	}
@@ -165,5 +187,45 @@ public class Land implements Cloneable {
 
 	public void setLandCategory(LandCategory landCategory) {
 		this.landCategory = landCategory;
+	}
+
+	public LandRights getRights() {
+		return rights;
+	}
+
+	public void setRights(LandRights rights) {
+		this.rights = rights;
+	}
+
+	public LandCharacteristics getCharacteristics() {
+		return characteristics;
+	}
+
+	public void setCharacteristics(LandCharacteristics characteristics) {
+		this.characteristics = characteristics;
+	}
+
+	public LandIncludedObjects getIncludedObjects() {
+		return includedObjects;
+	}
+
+	public void setIncludedObjects(LandIncludedObjects includedObjects) {
+		this.includedObjects = includedObjects;
+	}
+
+	public LandWorks getWorks() {
+		return works;
+	}
+
+	public void setWorks(LandWorks works) {
+		this.works = works;
+	}
+
+	public LandControl getControl() {
+		return control;
+	}
+
+	public void setControl(LandControl control) {
+		this.control = control;
 	}
 }

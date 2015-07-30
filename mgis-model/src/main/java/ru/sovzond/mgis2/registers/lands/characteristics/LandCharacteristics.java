@@ -1,7 +1,7 @@
 package ru.sovzond.mgis2.registers.lands.characteristics;
 
-import ru.sovzond.mgis2.registers.national_classifiers.OKATO;
 import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.registers.national_classifiers.OKATO;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 
 import javax.persistence.*;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "lands_land_characteristics")
-public class LandCharacteristics {
+public class LandCharacteristics implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
@@ -188,5 +188,12 @@ public class LandCharacteristics {
 
 	public void setDistanceToTheCountrySubjectCenter(float distanceToTheCountrySubjectCenter) {
 		this.distanceToTheCountrySubjectCenter = distanceToTheCountrySubjectCenter;
+	}
+
+	public LandCharacteristics clone() {
+		LandCharacteristics characteristics = new LandCharacteristics();
+		characteristics.setId(id);
+		// TODO:
+		return characteristics;
 	}
 }

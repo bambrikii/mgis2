@@ -2,6 +2,8 @@ package ru.sovzond.mgis2.registers.lands.rights;
 
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.registers.national_classifiers.LandOwnershipForm;
+import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
 import ru.sovzond.mgis2.registers.oks.rights.Person;
 
 import javax.persistence.*;
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "lands_land_right")
-public class LandRights {
+public class LandRights implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
@@ -23,10 +25,10 @@ public class LandRights {
 	private Land land;
 
 	@ManyToOne
-	private Person rightOwner;
+	private LandRightKind rightKind;
 
 	@ManyToOne
-	private LandRightType rightType;
+	private Person rightOwner;
 
 	@ManyToOne
 	private LandOwnershipForm ownershipForm;
@@ -35,22 +37,25 @@ public class LandRights {
 	private Date ownershipDate;
 
 	@Column
+	private Date terminationDate;
+
+	@Column
 	private float share;
 
 	@OneToMany
-	private List<Document> registrationDocuments = new ArrayList<Document>();
+	private List<Document> registrationDocuments = new ArrayList<>();
 
 	@OneToMany
-	private List<Document> documentsCertifyingRights = new ArrayList<Document>();
+	private List<Document> documentsCertifyingRights = new ArrayList<>();
 
 	@Column
 	private float totalArea;
 
 	@Column
-	private float taxPerYear;
+	private float annualTax;
 
 	@Column
-	private boolean encumberance;
+	private boolean encumbrance;
 
 	@Column
 	private boolean obligations;
@@ -74,20 +79,20 @@ public class LandRights {
 		this.land = land;
 	}
 
+	public LandRightKind getRightKind() {
+		return rightKind;
+	}
+
+	public void setRightKind(LandRightKind rightKind) {
+		this.rightKind = rightKind;
+	}
+
 	public Person getRightOwner() {
 		return rightOwner;
 	}
 
 	public void setRightOwner(Person rightOwner) {
 		this.rightOwner = rightOwner;
-	}
-
-	public LandRightType getRightType() {
-		return rightType;
-	}
-
-	public void setRightType(LandRightType rightType) {
-		this.rightType = rightType;
 	}
 
 	public LandOwnershipForm getOwnershipForm() {
@@ -104,6 +109,14 @@ public class LandRights {
 
 	public void setOwnershipDate(Date ownershipDate) {
 		this.ownershipDate = ownershipDate;
+	}
+
+	public Date getTerminationDate() {
+		return terminationDate;
+	}
+
+	public void setTerminationDate(Date terminationDate) {
+		this.terminationDate = terminationDate;
 	}
 
 	public float getShare() {
@@ -138,20 +151,20 @@ public class LandRights {
 		this.totalArea = totalArea;
 	}
 
-	public float getTaxPerYear() {
-		return taxPerYear;
+	public float getAnnualTax() {
+		return annualTax;
 	}
 
-	public void setTaxPerYear(float taxPerYear) {
-		this.taxPerYear = taxPerYear;
+	public void setAnnualTax(float annualTax) {
+		this.annualTax = annualTax;
 	}
 
-	public boolean isEncumberance() {
-		return encumberance;
+	public boolean isEncumbrance() {
+		return encumbrance;
 	}
 
-	public void setEncumberance(boolean encumberance) {
-		this.encumberance = encumberance;
+	public void setEncumbrance(boolean encumbrance) {
+		this.encumbrance = encumbrance;
 	}
 
 	public boolean isObligations() {
@@ -169,4 +182,22 @@ public class LandRights {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
+	public LandRights clone() {
+		LandRights rights = new LandRights();
+		rights.setId(id);
+		rights.setComment(comment);
+		rights.setOwnershipDate(ownershipDate);
+		rights.setTerminationDate(terminationDate);
+		rights.setRightOwner(rightOwner != null ? rightOwner.clone() : null);
+		rights.setRightKind(rightKind != null ? rightKind.clone() : null);
+		rights.setOwnershipForm(ownershipForm != null ? ownershipForm.clone() : null);
+		rights.setEncumbrance(encumbrance);
+		rights.setObligations(obligations);
+		rights.setShare(share);
+		rights.setAnnualTax(annualTax);
+		rights.setTotalArea(totalArea);
+		return rights;
+	}
+
 }
