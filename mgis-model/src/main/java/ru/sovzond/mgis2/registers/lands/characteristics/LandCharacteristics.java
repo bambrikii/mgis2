@@ -21,13 +21,13 @@ public class LandCharacteristics implements Cloneable {
 	private Land land;
 
 	@Column
-	private float cadastralPrice;
+	private float cadastralCost;
 
 	@Column
-	private float specificIndexOfCadastralPrice;
+	private float specificIndexOfCadastralCost;
 
 	@Column
-	private float marketPrice;
+	private float marketCost;
 
 	@Column
 	private float mortgageValue;
@@ -81,28 +81,28 @@ public class LandCharacteristics implements Cloneable {
 		this.land = land;
 	}
 
-	public float getCadastralPrice() {
-		return cadastralPrice;
+	public float getCadastralCost() {
+		return cadastralCost;
 	}
 
-	public void setCadastralPrice(float cadastralPrice) {
-		this.cadastralPrice = cadastralPrice;
+	public void setCadastralCost(float cadastralCost) {
+		this.cadastralCost = cadastralCost;
 	}
 
-	public float getSpecificIndexOfCadastralPrice() {
-		return specificIndexOfCadastralPrice;
+	public float getSpecificIndexOfCadastralCost() {
+		return specificIndexOfCadastralCost;
 	}
 
-	public void setSpecificIndexOfCadastralPrice(float specificIndexOfCadastralPrice) {
-		this.specificIndexOfCadastralPrice = specificIndexOfCadastralPrice;
+	public void setSpecificIndexOfCadastralCost(float specificIndexOfCadastralCost) {
+		this.specificIndexOfCadastralCost = specificIndexOfCadastralCost;
 	}
 
-	public float getMarketPrice() {
-		return marketPrice;
+	public float getMarketCost() {
+		return marketCost;
 	}
 
-	public void setMarketPrice(float marketPrice) {
-		this.marketPrice = marketPrice;
+	public void setMarketCost(float marketCost) {
+		this.marketCost = marketCost;
 	}
 
 	public float getMortgageValue() {
@@ -204,9 +204,9 @@ public class LandCharacteristics implements Cloneable {
 	public LandCharacteristics clone() {
 		LandCharacteristics ch = new LandCharacteristics();
 		ch.setId(id);
-		ch.setCadastralPrice(cadastralPrice);
-		ch.setSpecificIndexOfCadastralPrice(specificIndexOfCadastralPrice);
-		ch.setMarketPrice(marketPrice);
+		ch.setCadastralCost(cadastralCost);
+		ch.setSpecificIndexOfCadastralCost(specificIndexOfCadastralCost);
+		ch.setMarketCost(marketCost);
 		ch.setMortgageValue(mortgageValue);
 		ch.setImplementationDate(implementationDate);
 		ch.setTerminationDate(terminationDate);

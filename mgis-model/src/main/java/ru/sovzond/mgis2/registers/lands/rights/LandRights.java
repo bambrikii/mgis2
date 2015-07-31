@@ -2,6 +2,7 @@ package ru.sovzond.mgis2.registers.lands.rights;
 
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.registers.national_classifiers.LandEncumbrance;
 import ru.sovzond.mgis2.registers.national_classifiers.LandOwnershipForm;
 import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
 import ru.sovzond.mgis2.registers.oks.rights.Person;
@@ -54,8 +55,8 @@ public class LandRights implements Cloneable {
 	@Column
 	private float annualTax;
 
-	@Column
-	private boolean encumbrance;
+	@ManyToOne
+	private LandEncumbrance encumbrance;
 
 	@Column
 	private boolean obligations;
@@ -159,11 +160,11 @@ public class LandRights implements Cloneable {
 		this.annualTax = annualTax;
 	}
 
-	public boolean isEncumbrance() {
+	public LandEncumbrance getEncumbrance() {
 		return encumbrance;
 	}
 
-	public void setEncumbrance(boolean encumbrance) {
+	public void setEncumbrance(LandEncumbrance encumbrance) {
 		this.encumbrance = encumbrance;
 	}
 
@@ -192,7 +193,7 @@ public class LandRights implements Cloneable {
 		rights.setRightOwner(rightOwner != null ? rightOwner.clone() : null);
 		rights.setRightKind(rightKind != null ? rightKind.clone() : null);
 		rights.setOwnershipForm(ownershipForm != null ? ownershipForm.clone() : null);
-		rights.setEncumbrance(encumbrance);
+		rights.setEncumbrance(encumbrance != null ? encumbrance.clone() : null);
 		rights.setObligations(obligations);
 		rights.setShare(share);
 		rights.setAnnualTax(annualTax);

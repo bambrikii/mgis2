@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class OKATO implements Cloneable {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "national_classifiers_okato_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_okato_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;

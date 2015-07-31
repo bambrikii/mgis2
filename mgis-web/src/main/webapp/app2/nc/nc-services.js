@@ -119,3 +119,20 @@ angular.module("mgis.nc.land_right_kind.service", ["ngResource"])
 			}
 		}
 	});
+
+angular.module("mgis.nc.land_encumbrance.service", ["ngResource"])
+	.factory("NcLandEncumbranceService", function ($resource, $q) {
+		var res = $resource('rest/nc/land_encumbrances/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	});

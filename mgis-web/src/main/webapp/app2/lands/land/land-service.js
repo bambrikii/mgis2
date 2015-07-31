@@ -44,9 +44,9 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 						totalArea: item.rights.totalArea
 					},
 					characteristics: {
-						cadastralPrice: item.characteristics.cadastralPrice,
-						specificIndexOfCadastralPrice: item.characteristics.specificIndexOfCadastralPrice,
-						marketPrice: item.characteristics.marketPrice,
+						cadastralCost: item.characteristics.cadastralCost,
+						specificIndexOfCadastralCost: item.characteristics.specificIndexOfCadastralCost,
+						marketCost: item.characteristics.marketCost,
 						mortgageValue: item.characteristics.mortgageValue,
 						implementationDate: item.characteristics.implementationDate,
 						terminationDate: item.characteristics.terminationDate,

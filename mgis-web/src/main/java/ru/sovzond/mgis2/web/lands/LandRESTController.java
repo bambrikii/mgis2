@@ -64,6 +64,9 @@ public class LandRESTController implements Serializable {
 	@Autowired
 	private LandTypeOfEngineeringSupportAreaBean typeOfEngineeringSupportAreaBean;
 
+	@Autowired
+	private LandEncumbranceBean landEncumbranceBean;
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
 	public PageableContainer<Land> list(@RequestParam(value = "cadastralNumber", defaultValue = "") String cadastralNumber, @RequestParam(value = "orderBy", defaultValue = "") String orderBy,
@@ -114,7 +117,7 @@ public class LandRESTController implements Serializable {
 			rights2.setOwnershipForm(rights.getOwnershipForm() != null ? landOwnershipFormBean.load(rights.getOwnershipForm().getId()) : null);
 			rights2.setRightKind(rights.getRightKind() != null ? landRightKindBean.load(rights.getRightKind().getId()) : null);
 			rights2.setRightOwner(rights.getRightOwner() != null ? personBean.load(rights.getRightOwner().getId()) : null);
-			rights2.setEncumbrance(rights.isEncumbrance());
+			rights2.setEncumbrance(rights.getEncumbrance() != null ? landEncumbranceBean.load(rights.getEncumbrance().getId()) : null);
 			rights2.setObligations(rights.isObligations());
 			rights2.setOwnershipDate(rights.getOwnershipDate());
 			rights2.setTerminationDate(rights.getTerminationDate());
@@ -132,9 +135,9 @@ public class LandRESTController implements Serializable {
 				land2.setCharacteristics(chars2);
 				landCharacteristicsBean.save(chars2);
 			}
-			chars2.setCadastralPrice(chars.getCadastralPrice());
-			chars2.setSpecificIndexOfCadastralPrice(chars.getSpecificIndexOfCadastralPrice());
-			chars2.setMarketPrice(chars.getMarketPrice());
+			chars2.setCadastralCost(chars.getCadastralCost());
+			chars2.setSpecificIndexOfCadastralCost(chars.getSpecificIndexOfCadastralCost());
+			chars2.setMarketCost(chars.getMarketCost());
 			chars2.setMortgageValue(chars.getMortgageValue());
 			chars2.setImplementationDate(chars.getImplementationDate());
 			chars2.setTerminationDate(chars.getTerminationDate());
