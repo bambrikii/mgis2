@@ -43,7 +43,23 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 						annualTax: item.rights.annualTax,
 						totalArea: item.rights.totalArea
 					},
-					characteristics: {}
+					characteristics: {
+						cadastralPrice: item.characteristics.cadastralPrice,
+						specificIndexOfCadastralPrice: item.characteristics.specificIndexOfCadastralPrice,
+						marketPrice: item.characteristics.marketPrice,
+						mortgageValue: item.characteristics.mortgageValue,
+						implementationDate: item.characteristics.implementationDate,
+						terminationDate: item.characteristics.terminationDate,
+						standardCost: item.characteristics.standardCost,
+						typeOfEngineeringSupportArea: item.characteristics.typeOfEngineeringSupportArea ? {id: item.characteristics.typeOfEngineeringSupportArea.id} : null,
+						distanceToTheConnectionPoint: item.characteristics.distanceToTheConnectionPoint,
+						distanceToTheConnectionPointLength: item.characteristics.distanceToTheConnectionPointLength,
+						distanceToTheObjectsOfTransportInfrastructure: item.characteristics.distanceToTheObjectsOfTransportInfrastructure,
+						nearestMunicipalEntity: item.characteristics.nearestMunicipalEntity ? {id: item.characteristics.nearestMunicipalEntity.id} : null,
+						distanceToTheNearestMunicipalEntity: item.characteristics.distanceToTheNearestMunicipalEntity,
+						countrySubject: item.characteristics.countrySubject ? {id: item.characteristics.countrySubject.id} : null,
+						distanceToTheCountrySubjectCenter: item.characteristics.distanceToTheCountrySubjectCenter
+					}
 				};
 				res.save({id: item.id}, land, function (data) {
 					deferred.resolve(data);

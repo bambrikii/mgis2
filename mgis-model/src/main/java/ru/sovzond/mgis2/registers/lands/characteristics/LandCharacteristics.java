@@ -24,7 +24,7 @@ public class LandCharacteristics implements Cloneable {
 	private float cadastralPrice;
 
 	@Column
-	private float upOfCadastralPrice;
+	private float specificIndexOfCadastralPrice;
 
 	@Column
 	private float marketPrice;
@@ -34,6 +34,9 @@ public class LandCharacteristics implements Cloneable {
 
 	@Column
 	private Date implementationDate;
+
+	@Column
+	private Date terminationDate;
 
 	@Column
 	private float standardCost;
@@ -86,12 +89,12 @@ public class LandCharacteristics implements Cloneable {
 		this.cadastralPrice = cadastralPrice;
 	}
 
-	public float getUpOfCadastralPrice() {
-		return upOfCadastralPrice;
+	public float getSpecificIndexOfCadastralPrice() {
+		return specificIndexOfCadastralPrice;
 	}
 
-	public void setUpOfCadastralPrice(float upOfCadastralPrice) {
-		this.upOfCadastralPrice = upOfCadastralPrice;
+	public void setSpecificIndexOfCadastralPrice(float specificIndexOfCadastralPrice) {
+		this.specificIndexOfCadastralPrice = specificIndexOfCadastralPrice;
 	}
 
 	public float getMarketPrice() {
@@ -190,10 +193,33 @@ public class LandCharacteristics implements Cloneable {
 		this.distanceToTheCountrySubjectCenter = distanceToTheCountrySubjectCenter;
 	}
 
-	public LandCharacteristics clone() {
-		LandCharacteristics characteristics = new LandCharacteristics();
-		characteristics.setId(id);
-		// TODO:
-		return characteristics;
+	public Date getTerminationDate() {
+		return terminationDate;
 	}
+
+	public void setTerminationDate(Date terminationDate) {
+		this.terminationDate = terminationDate;
+	}
+
+	public LandCharacteristics clone() {
+		LandCharacteristics ch = new LandCharacteristics();
+		ch.setId(id);
+		ch.setCadastralPrice(cadastralPrice);
+		ch.setSpecificIndexOfCadastralPrice(specificIndexOfCadastralPrice);
+		ch.setMarketPrice(marketPrice);
+		ch.setMortgageValue(mortgageValue);
+		ch.setImplementationDate(implementationDate);
+		ch.setTerminationDate(terminationDate);
+		ch.setStandardCost(standardCost);
+		ch.setTypeOfEngineeringSupportArea(typeOfEngineeringSupportArea != null ? typeOfEngineeringSupportArea.clone() : null);
+		ch.setDistanceToTheConnectionPoint(distanceToTheConnectionPoint);
+		ch.setDistanceToTheConnectionPointLength(distanceToTheConnectionPointLength);
+		ch.setDistanceToTheObjectsOfTransportInfrastructure(distanceToTheObjectsOfTransportInfrastructure);
+		ch.setNearestMunicipalEntity(nearestMunicipalEntity != null ? nearestMunicipalEntity.clone() : null);
+		ch.setDistanceToTheNearestMunicipalEntity(distanceToTheNearestMunicipalEntity);
+		ch.setCountrySubject(countrySubject != null ? countrySubject.clone() : null);
+		ch.setDistanceToTheCountrySubjectCenter(distanceToTheCountrySubjectCenter);
+		return ch;
+	}
+
 }

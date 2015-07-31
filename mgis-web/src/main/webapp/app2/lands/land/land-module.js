@@ -84,7 +84,9 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 			var modalScope = $rootScope.$new();
 			modalScope.land = {
 				id: 0,
-				cadastralNumber: ""
+				cadastralNumber: "",
+				rights: {},
+				characteristics: {}
 			}
 			editItem(modalScope);
 		}
