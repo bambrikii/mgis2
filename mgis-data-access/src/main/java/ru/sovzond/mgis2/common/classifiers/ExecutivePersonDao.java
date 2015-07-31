@@ -7,5 +7,5 @@ import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
  * Created by Alexander Arakelyan on 31.07.15.
  */
 @Repository
-public class ExecutiveDao extends CRUDDaoBase<ExecutivePerson> {
+public class ExecutivePersonDao extends CRUDDaoBase<ExecutivePerson> {
 }

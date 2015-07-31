@@ -17,6 +17,9 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 			},
 			save: function (item) {
 				var deferred = $q.defer();
+				var rights = item.rights;
+				var characteristics = item.characteristics;
+				var control = item.control;
 				var land = {
 					id: item.id,
 					cadastralNumber: item.cadastralNumber,
@@ -31,34 +34,48 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 					addressPlacement: item.addressPlacement,
 					address: item.address ? {id: item.address.id} : null,
 					rights: {
-						ownershipForm: item.rights.ownershipForm ? {id: item.rights.ownershipForm.id} : null,
-						rightKind: item.rights.rightKind ? {id: item.rights.rightKind.id} : null,
-						rightOwner: item.rights.rightOwner ? {id: item.rights.rightOwner.id} : null,
-						encumbrance: item.rights.encumbrance,
-						obligations: item.rights.obligations,
-						ownershipDate: item.rights.ownershipDate,
-						terminationDate: item.rights.terminationDate,
-						comment: item.rights.comment,
-						share: item.rights.share,
-						annualTax: item.rights.annualTax,
-						totalArea: item.rights.totalArea
+						ownershipForm: rights.ownershipForm ? {id: rights.ownershipForm.id} : null,
+						rightKind: rights.rightKind ? {id: rights.rightKind.id} : null,
+						rightOwner: rights.rightOwner ? {id: rights.rightOwner.id} : null,
+						encumbrance: rights.encumbrance,
+						obligations: rights.obligations,
+						ownershipDate: rights.ownershipDate,
+						terminationDate: rights.terminationDate,
+						comment: rights.comment,
+						share: rights.share,
+						annualTax: rights.annualTax,
+						totalArea: rights.totalArea
 					},
 					characteristics: {
-						cadastralCost: item.characteristics.cadastralCost,
-						specificIndexOfCadastralCost: item.characteristics.specificIndexOfCadastralCost,
-						marketCost: item.characteristics.marketCost,
-						mortgageValue: item.characteristics.mortgageValue,
-						implementationDate: item.characteristics.implementationDate,
-						terminationDate: item.characteristics.terminationDate,
-						standardCost: item.characteristics.standardCost,
-						typeOfEngineeringSupportArea: item.characteristics.typeOfEngineeringSupportArea ? {id: item.characteristics.typeOfEngineeringSupportArea.id} : null,
-						distanceToTheConnectionPoint: item.characteristics.distanceToTheConnectionPoint,
-						distanceToTheConnectionPointLength: item.characteristics.distanceToTheConnectionPointLength,
-						distanceToTheObjectsOfTransportInfrastructure: item.characteristics.distanceToTheObjectsOfTransportInfrastructure,
-						nearestMunicipalEntity: item.characteristics.nearestMunicipalEntity ? {id: item.characteristics.nearestMunicipalEntity.id} : null,
-						distanceToTheNearestMunicipalEntity: item.characteristics.distanceToTheNearestMunicipalEntity,
-						countrySubject: item.characteristics.countrySubject ? {id: item.characteristics.countrySubject.id} : null,
-						distanceToTheCountrySubjectCenter: item.characteristics.distanceToTheCountrySubjectCenter
+						cadastralCost: characteristics.cadastralCost,
+						specificIndexOfCadastralCost: characteristics.specificIndexOfCadastralCost,
+						marketCost: characteristics.marketCost,
+						mortgageValue: characteristics.mortgageValue,
+						implementationDate: characteristics.implementationDate,
+						terminationDate: characteristics.terminationDate,
+						standardCost: characteristics.standardCost,
+						typeOfEngineeringSupportArea: characteristics.typeOfEngineeringSupportArea ? {id: characteristics.typeOfEngineeringSupportArea.id} : null,
+						distanceToTheConnectionPoint: characteristics.distanceToTheConnectionPoint,
+						distanceToTheConnectionPointLength: characteristics.distanceToTheConnectionPointLength,
+						distanceToTheObjectsOfTransportInfrastructure: characteristics.distanceToTheObjectsOfTransportInfrastructure,
+						nearestMunicipalEntity: characteristics.nearestMunicipalEntity ? {id: characteristics.nearestMunicipalEntity.id} : null,
+						distanceToTheNearestMunicipalEntity: characteristics.distanceToTheNearestMunicipalEntity,
+						countrySubject: characteristics.countrySubject ? {id: characteristics.countrySubject.id} : null,
+						distanceToTheCountrySubjectCenter: characteristics.distanceToTheCountrySubjectCenter
+					},
+					control: {
+						executivePerson: control.executivePerson ? {id: control.executivePerson.id} : null,
+						inspectedPerson: control.inspectedPerson ? {id: control.inspectedPerson.id} : null,
+						inspectionDate: control.inspectionDate,
+						inspectionKind: control.inspectionKind ? {id: control.inspectionKind.id} : null,
+						inspectionReason: control.inspectionReason ? {id: control.inspectionReason.id} : null,
+						inspectionReasonDescription: control.inspectionReasonDescription,
+						inspectionResultAvailabilityOfViolations: control.inspectionResultAvailabilityOfViolations ? {id: control.inspectionResultAvailabilityOfViolations.id} : null,
+						inspectionResultDescription: control.inspectionResultDescription,
+						inspectionSubject: control.inspectionSubject ? {id: control.inspectionSubject.id} : null,
+						inspectionType: control.inspectionType ? {id: control.inspectionType.id} : null,
+						penaltyAmount: control.penaltyAmount,
+						timelineForViolations: control.timelineForViolations
 					}
 				};
 				res.save({id: item.id}, land, function (data) {

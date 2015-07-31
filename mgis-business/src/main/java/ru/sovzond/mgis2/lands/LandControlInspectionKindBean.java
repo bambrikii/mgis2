@@ -5,24 +5,25 @@ import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
-import ru.sovzond.mgis2.registers.lands.control.LandControlPresenceOfViolations;
+import ru.sovzond.mgis2.lands.LandControlInspectionKindDao;
+import ru.sovzond.mgis2.registers.lands.control.LandControlInspectionKind;
 
 /**
  * Created by Alexander Arakelyan on 31.07.15.
  */
 @Service
-public class LandControlPresenceOfViolationsBean extends CRUDBeanBase<LandControlPresenceOfViolations> {
+public class LandControlInspectionKindBean extends CRUDBeanBase<LandControlInspectionKind> {
 
 	@Autowired
-	private LandControlPresenceOfViolationsDao dao;
+	private LandControlInspectionKindDao dao;
 
 	@Override
-	protected IPageableDAOBase<LandControlPresenceOfViolations> getPageableDao() {
+	protected IPageableDAOBase<LandControlInspectionKind> getPageableDao() {
 		return dao;
 	}
 
 	@Override
-	protected IIdentifiableDao<LandControlPresenceOfViolations> getIIdentifiableDao() {
+	protected IIdentifiableDao<LandControlInspectionKind> getIIdentifiableDao() {
 		return dao;
 	}
 }

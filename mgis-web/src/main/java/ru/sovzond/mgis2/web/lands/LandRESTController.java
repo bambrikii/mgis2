@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.web.lands;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
-import ru.sovzond.mgis2.business.lands.*;
+import ru.sovzond.mgis2.common.classifiers.ExecutivePersonBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.national_classifiers.*;
@@ -85,7 +85,7 @@ public class LandRESTController implements Serializable {
 	private LandControlInspectionTypeBean landControlInspectionTypeBean;
 
 	@Autowired
-	private LandControlPresenceOfViolationsBean landControlPresenceOfViolations;
+	private ExecutivePersonBean executivePersonBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -181,6 +181,7 @@ public class LandRESTController implements Serializable {
 				land2.setControl(control2);
 				landControlBean.save(control2);
 			}
+			control2.setExecutivePerson(control.getExecutivePerson() != null ? executivePersonBean.load(control.getExecutivePerson().getId()) : null);
 			control2.setInspectedPerson(control.getInspectedPerson() != null ? personBean.load(control.getInspectedPerson().getId()) : null);
 			control2.setInspectionDate(control.getInspectionDate());
 			control2.setInspectionKind(control.getInspectionKind() != null ? landControlInspectionKindBean.load(control.getInspectionKind().getId()) : null);
@@ -191,8 +192,6 @@ public class LandRESTController implements Serializable {
 			control2.setInspectionSubject(control.getInspectionSubject() != null ? landControlInspectionSubjectBean.load(control.getInspectionSubject().getId()) : null);
 			control2.setInspectionType(control.getInspectionType() != null ? landControlInspectionTypeBean.load(control.getInspectionType().getId()) : null);
 			control2.setPenaltyAmount(control.getPenaltyAmount());
-			control2.setPresenceOfViolations(control.getPresenceOfViolations() != null ? landControlPresenceOfViolations.load(control.getPresenceOfViolations().getId()) : null);
-			control2.setExecutivePerson(control.getExecutivePerson() != null ? personBean.load(control.getExecutivePerson().getId()) : null);
 			control2.setTimelineForViolations(control.getTimelineForViolations());
 		}
 

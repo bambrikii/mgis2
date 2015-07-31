@@ -154,25 +154,6 @@ public class Land implements Cloneable {
 		this.previousVersion = previousVersion;
 	}
 
-	@Override
-	public Land clone() {
-		Land land = new Land();
-		land.setId(id);
-		land.setCadastralNumber(cadastralNumber);
-		land.setStateRealEstateCadastreaStaging(stateRealEstateCadastreaStaging);
-		land.setAllowedUsageByDictionary(allowedUsageByDictionary != null ? allowedUsageByDictionary.clone() : null);
-		land.setAllowedUsageByDocument(allowedUsageByDocument);
-		land.setAllowedUsageByTerritorialZone(allowedUsageByTerritorialZone != null ? allowedUsageByTerritorialZone.clone() : null);
-		land.setLandCategory(landCategory != null ? landCategory.clone() : null);
-		land.setAddressOfMunicipalEntity(addressOfMunicipalEntity != null ? addressOfMunicipalEntity.clone() : null);
-		land.setAddressPlacement(addressPlacement);
-		land.setAddress(address != null ? address.clone() : null);
-		land.setRights(rights != null ? rights.clone() : null);
-		land.setCharacteristics(characteristics != null ? characteristics.clone() : null);
-		// TODO: complete the clone procedure
-		return land;
-	}
-
 	public List<LandArea> getLandAreas() {
 		return landAreas;
 	}
@@ -227,5 +208,26 @@ public class Land implements Cloneable {
 
 	public void setControl(LandControl control) {
 		this.control = control;
+	}
+
+
+	@Override
+	public Land clone() {
+		Land land = new Land();
+		land.setId(id);
+		land.setCadastralNumber(cadastralNumber);
+		land.setStateRealEstateCadastreaStaging(stateRealEstateCadastreaStaging);
+		land.setAllowedUsageByDictionary(allowedUsageByDictionary != null ? allowedUsageByDictionary.clone() : null);
+		land.setAllowedUsageByDocument(allowedUsageByDocument);
+		land.setAllowedUsageByTerritorialZone(allowedUsageByTerritorialZone != null ? allowedUsageByTerritorialZone.clone() : null);
+		land.setLandCategory(landCategory != null ? landCategory.clone() : null);
+		land.setAddressOfMunicipalEntity(addressOfMunicipalEntity != null ? addressOfMunicipalEntity.clone() : null);
+		land.setAddressPlacement(addressPlacement);
+		land.setAddress(address != null ? address.clone() : null);
+		land.setRights(rights != null ? rights.clone() : null);
+		land.setCharacteristics(characteristics != null ? characteristics.clone() : null);
+		land.setControl(control != null ? control.clone() : null);
+		// TODO: complete the clone procedure
+		return land;
 	}
 }

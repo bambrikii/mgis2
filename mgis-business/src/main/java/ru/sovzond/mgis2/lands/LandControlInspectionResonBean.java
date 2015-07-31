@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.business.lands;
+package ru.sovzond.mgis2.lands;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

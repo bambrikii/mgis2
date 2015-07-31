@@ -1,5 +1,6 @@
 package ru.sovzond.mgis2.registers.lands.control;
 
+import ru.sovzond.mgis2.common.classifiers.ExecutivePerson;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.registers.lands.Land;
 import ru.sovzond.mgis2.registers.oks.rights.Person;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "lands_land_control")
-public class LandControl {
+public class LandControl implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
@@ -26,7 +27,7 @@ public class LandControl {
 	private Person inspectedPerson;
 
 	@ManyToOne
-	private Person executivePerson;
+	private ExecutivePerson executivePerson;
 
 	@Column
 	private Date inspectionDate;
@@ -45,9 +46,6 @@ public class LandControl {
 
 	@Column
 	private String inspectionReasonDescription;
-
-	@ManyToOne
-	private LandControlPresenceOfViolations presenceOfViolations;
 
 	@ManyToOne
 	private LandControlAvailabilityOfViolations inspectionResultAvailabilityOfViolations;
@@ -91,11 +89,11 @@ public class LandControl {
 		this.inspectedPerson = inspectedPerson;
 	}
 
-	public Person getExecutivePerson() {
+	public ExecutivePerson getExecutivePerson() {
 		return executivePerson;
 	}
 
-	public void setExecutivePerson(Person executivePerson) {
+	public void setExecutivePerson(ExecutivePerson executivePerson) {
 		this.executivePerson = executivePerson;
 	}
 
@@ -137,14 +135,6 @@ public class LandControl {
 
 	public void setInspectionSubject(LandControlInspectionSubject inspectionSubject) {
 		this.inspectionSubject = inspectionSubject;
-	}
-
-	public LandControlPresenceOfViolations getPresenceOfViolations() {
-		return presenceOfViolations;
-	}
-
-	public void setPresenceOfViolations(LandControlPresenceOfViolations presenceOfViolations) {
-		this.presenceOfViolations = presenceOfViolations;
 	}
 
 	public String getInspectionReasonDescription() {
@@ -195,5 +185,22 @@ public class LandControl {
 		this.inspectionResultDocuments = inspectionResultDocuments;
 	}
 
+	public LandControl clone() {
+		LandControl control = new LandControl();
+		control.setId(id);
+		control.setExecutivePerson(executivePerson != null ? executivePerson.clone() : null);
+		control.setInspectedPerson(inspectedPerson != null ? inspectedPerson.clone() : null);
+		control.setInspectionDate(inspectionDate);
+		control.setInspectionKind(inspectionKind != null ? inspectionKind.clone() : null);
+		control.setInspectionReason(inspectionReason != null ? inspectionReason.clone() : null);
+		control.setInspectionReasonDescription(inspectionReasonDescription);
+		control.setInspectionResultAvailabilityOfViolations(inspectionResultAvailabilityOfViolations != null ? inspectionResultAvailabilityOfViolations.clone() : null);
+		control.setInspectionResultDescription(inspectionResultDescription);
+		control.setInspectionSubject(inspectionSubject != null ? inspectionSubject.clone() : null);
+		control.setInspectionType(inspectionType != null ? inspectionType.clone() : null);
+		control.setPenaltyAmount(penaltyAmount);
+		control.setTimelineForViolations(timelineForViolations);
+		return control;
+	}
 
 }

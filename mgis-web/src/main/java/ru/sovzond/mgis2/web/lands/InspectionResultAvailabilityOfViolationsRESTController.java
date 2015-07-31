@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.web.lands;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
-import ru.sovzond.mgis2.business.lands.LandControlInspectionResultAvailabilityOfViolationsBean;
+import ru.sovzond.mgis2.lands.LandControlInspectionResultAvailabilityOfViolationsBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.registers.lands.control.LandControlAvailabilityOfViolations;
 

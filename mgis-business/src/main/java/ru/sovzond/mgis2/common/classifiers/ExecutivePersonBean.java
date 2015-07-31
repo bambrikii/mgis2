@@ -10,11 +10,10 @@ import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
  * Created by Alexander Arakelyan on 31.07.15.
  */
 @Service
-public class ExecutivePositionBean extends CRUDBeanBase<ExecutivePerson> {
+public class ExecutivePersonBean extends CRUDBeanBase<ExecutivePerson> {
 
 	@Autowired
-	private ExecutiveDao dao;
-
+	private ExecutivePersonDao dao;
 
 	@Override
 	protected IPageableDAOBase<ExecutivePerson> getPageableDao() {
