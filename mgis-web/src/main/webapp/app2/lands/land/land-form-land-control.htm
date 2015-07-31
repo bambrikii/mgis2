@@ -12,7 +12,7 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.landControl.inspectedPerson"
+							ng-model="land.control.inspectedPerson"
 							options="c.name for c in availableInspectedPersons"
 							data-multiple="false"
 							data-compare-by="id"
@@ -30,8 +30,8 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.landControl.responsiblePerson"
-							options="c.name for c in availableResponsiblePersons"
+							ng-model="land.control.executivePerson"
+							options="(c.fullName+' ('+c.position+')') for c in availableExecutivePersons"
 							data-multiple="false"
 							data-compare-by="id"
 							scroll-after-rows="15">
@@ -53,7 +53,7 @@
 							class="form-control"
 							name="docDate"
 							datepicker-popup="{{format}}"
-							ng-model="land.landControl.inspectionDate"
+							ng-model="land.control.inspectionDate"
 							is-open="opened"
 							datepicker-options="dateOptions"
 							date-disabled="disabled(date, mode)"
@@ -75,7 +75,7 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.landControl.inspectionType"
+							ng-model="land.control.inspectionType"
 							options="c.name for c in availableInspectionTypes"
 							data-multiple="false"
 							data-compare-by="id"
@@ -93,7 +93,7 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.landControl.inspectionKind"
+							ng-model="land.control.inspectionKind"
 							options="c.name for c in availableInspectionKinds"
 							data-multiple="false"
 							data-compare-by="id"
@@ -111,8 +111,8 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.landControl.inspectionSubject"
-							options="c.name for c in availableInspectionSubject"
+							ng-model="land.control.inspectionSubject"
+							options="c.name for c in availableInspectionSubjects"
 							data-multiple="false"
 							data-compare-by="id"
 							scroll-after-rows="15">
@@ -127,7 +127,7 @@
 			</div>
 
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="inspectionReasonDescription" ng-model="land.landControl.inspectionReasonDescription"/>
+				<input type="text" class="form-control" name="inspectionReasonDescription" ng-model="land.control.inspectionReasonDescription"/>
 			</div>
 		</div>
 
@@ -148,8 +148,8 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
-							ng-model="land.landControl.presenceOfViolations"
-							options="c.name for c in availablePresenceViolations"
+							ng-model="land.control.availableAvailabilityOfViolations"
+							options="c.name for c in availableAvailabilityOfViolations"
 							data-multiple="false"
 							data-compare-by="id"
 							scroll-after-rows="15">
@@ -164,7 +164,7 @@
 			</div>
 
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="inspectionResultDescription" ng-model="land.landControl.inspectionResultDescription"/>
+				<input type="text" class="form-control" name="inspectionResultDescription" ng-model="land.control.inspectionResultDescription"/>
 			</div>
 		</div>
 
@@ -181,7 +181,7 @@
 							class="form-control"
 							name="docDate"
 							datepicker-popup="{{format}}"
-							ng-model="land.landControl.timelineForViolations"
+							ng-model="land.control.timelineForViolations"
 							is-open="opened"
 							datepicker-options="dateOptions"
 							date-disabled="disabled(date, mode)"
@@ -201,7 +201,7 @@
 			</div>
 
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="penaltyAmount" ng-model="land.landControl.penaltyAmount"/>
+				<input type="text" class="form-control" name="penaltyAmount" ng-model="land.control.penaltyAmount"/>
 			</div>
 		</div>
 
@@ -210,14 +210,14 @@
 				<label translate>Lands.Land.LandControl.InspectionResultDocuments</label>
 			</div>
 			<div class="col-sm-8">
-				<div class="row" ng-repeat="doc in land.landControl.inspectionResultDocuments">
+				<div class="row" ng-repeat="doc in land.control.inspectionResultDocuments">
 					<div class="col-md-8">
 						Lands.Land.LandControl.InspectionResultDocument
 					</div>
 					<div class="col-md-4">
 					</div>
 				</div>
-				<div class="row" ng-repeat="doc in land.landControl.inspectionResultDocuments">
+				<div class="row" ng-repeat="doc in land.control.inspectionResultDocuments">
 					<div class="col-md-8">
 						{{doc.type.name}}
 					</div>

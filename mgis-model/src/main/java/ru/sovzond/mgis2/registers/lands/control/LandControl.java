@@ -26,7 +26,7 @@ public class LandControl {
 	private Person inspectedPerson;
 
 	@ManyToOne
-	private Person responsiblePerson;
+	private Person executivePerson;
 
 	@Column
 	private Date inspectionDate;
@@ -41,7 +41,7 @@ public class LandControl {
 	private LandControlInspectionReason inspectionReason;
 
 	@ManyToOne
-	private LandControlCheckSubject inspectionSubject;
+	private LandControlInspectionSubject inspectionSubject;
 
 	@Column
 	private String inspectionReasonDescription;
@@ -91,12 +91,12 @@ public class LandControl {
 		this.inspectedPerson = inspectedPerson;
 	}
 
-	public Person getResponsiblePerson() {
-		return responsiblePerson;
+	public Person getExecutivePerson() {
+		return executivePerson;
 	}
 
-	public void setResponsiblePerson(Person responsiblePerson) {
-		this.responsiblePerson = responsiblePerson;
+	public void setExecutivePerson(Person executivePerson) {
+		this.executivePerson = executivePerson;
 	}
 
 	public Date getInspectionDate() {
@@ -131,11 +131,11 @@ public class LandControl {
 		this.inspectionReason = inspectionReason;
 	}
 
-	public LandControlCheckSubject getInspectionSubject() {
+	public LandControlInspectionSubject getInspectionSubject() {
 		return inspectionSubject;
 	}
 
-	public void setInspectionSubject(LandControlCheckSubject inspectionSubject) {
+	public void setInspectionSubject(LandControlInspectionSubject inspectionSubject) {
 		this.inspectionSubject = inspectionSubject;
 	}
 

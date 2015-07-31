@@ -3,16 +3,15 @@ package ru.sovzond.mgis2.web.lands;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
+import ru.sovzond.mgis2.business.lands.*;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
-import ru.sovzond.mgis2.lands.LandBean;
-import ru.sovzond.mgis2.lands.LandCharacteristicsBean;
-import ru.sovzond.mgis2.lands.LandRightsBean;
-import ru.sovzond.mgis2.lands.LandTypeOfEngineeringSupportAreaBean;
+import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.national_classifiers.*;
 import ru.sovzond.mgis2.oks.AddressBean;
 import ru.sovzond.mgis2.oks.PersonBean;
 import ru.sovzond.mgis2.registers.lands.Land;
 import ru.sovzond.mgis2.registers.lands.characteristics.LandCharacteristics;
+import ru.sovzond.mgis2.registers.lands.control.LandControl;
 import ru.sovzond.mgis2.registers.lands.rights.LandRights;
 
 import javax.transaction.Transactional;
@@ -66,6 +65,27 @@ public class LandRESTController implements Serializable {
 
 	@Autowired
 	private LandEncumbranceBean landEncumbranceBean;
+
+	@Autowired
+	private LandControlBean landControlBean;
+
+	@Autowired
+	private LandControlInspectionKindBean landControlInspectionKindBean;
+
+	@Autowired
+	private LandControlInspectionResonBean landControlInspectionReasonBean;
+
+	@Autowired
+	private LandControlInspectionResultAvailabilityOfViolationsBean landControlInspectionResultAvailabilityOfViolationsBean;
+
+	@Autowired
+	private LandControlInspectionSubjectBean landControlInspectionSubjectBean;
+
+	@Autowired
+	private LandControlInspectionTypeBean landControlInspectionTypeBean;
+
+	@Autowired
+	private LandControlPresenceOfViolationsBean landControlPresenceOfViolations;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -151,6 +171,31 @@ public class LandRESTController implements Serializable {
 			chars2.setCountrySubject(chars.getCountrySubject() != null ? okatoBean.load(chars.getCountrySubject().getId()) : null);
 			chars2.setDistanceToTheCountrySubjectCenter(chars.getDistanceToTheCountrySubjectCenter());
 		}
+
+		LandControl control = land.getControl();
+		if (control != null) {
+			LandControl control2 = land2.getControl();
+			if (control2 == null) {
+				control2 = new LandControl();
+				control2.setLand(land2);
+				land2.setControl(control2);
+				landControlBean.save(control2);
+			}
+			control2.setInspectedPerson(control.getInspectedPerson() != null ? personBean.load(control.getInspectedPerson().getId()) : null);
+			control2.setInspectionDate(control.getInspectionDate());
+			control2.setInspectionKind(control.getInspectionKind() != null ? landControlInspectionKindBean.load(control.getInspectionKind().getId()) : null);
+			control2.setInspectionReason(control.getInspectionReason() != null ? landControlInspectionReasonBean.load(control.getInspectionReason().getId()) : null);
+			control2.setInspectionReasonDescription(control.getInspectionReasonDescription());
+			control2.setInspectionResultAvailabilityOfViolations(control.getInspectionResultAvailabilityOfViolations() != null ? landControlInspectionResultAvailabilityOfViolationsBean.load(control.getInspectionResultAvailabilityOfViolations().getId()) : null);
+			control2.setInspectionResultDescription(control.getInspectionResultDescription());
+			control2.setInspectionSubject(control.getInspectionSubject() != null ? landControlInspectionSubjectBean.load(control.getInspectionSubject().getId()) : null);
+			control2.setInspectionType(control.getInspectionType() != null ? landControlInspectionTypeBean.load(control.getInspectionType().getId()) : null);
+			control2.setPenaltyAmount(control.getPenaltyAmount());
+			control2.setPresenceOfViolations(control.getPresenceOfViolations() != null ? landControlPresenceOfViolations.load(control.getPresenceOfViolations().getId()) : null);
+			control2.setExecutivePerson(control.getExecutivePerson() != null ? personBean.load(control.getExecutivePerson().getId()) : null);
+			control2.setTimelineForViolations(control.getTimelineForViolations());
+		}
+
 		landBean.save(land2);
 		return land2.clone();
 	}

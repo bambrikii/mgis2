@@ -75,6 +75,7 @@
 
 	<script type="text/javascript" src="app2/nc/nc-services.js"></script>
 	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
+	<script type="text/javascript" src="app2/commons/common-services.js"></script>
 
 </head>
 <body>

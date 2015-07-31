@@ -77,5 +77,90 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 			}
 		}
 
-	})
-;
+	});
+
+angular.module("mgis.lands.inspection_kind.service", ["ngResource"])
+	.factory("LandsInspectionKindService", function ($resource, $q) {
+		var res = $resource('rest/lands/inspection_kinds/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	});
+
+angular.module("mgis.lands.inspection_type.service", ["ngResource"])
+	.factory("LandsInspectionTypeService", function ($resource, $q) {
+		var res = $resource('rest/lands/inspection_types/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	});
+
+
+angular.module("mgis.lands.inspection_reason.service", ["ngResource"])
+	.factory("LandsInspectionReasonService", function ($resource, $q) {
+		var res = $resource('rest/lands/inspection_reasons/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	});
+
+angular.module("mgis.lands.inspection_subject.service", ["ngResource"])
+	.factory("LandsInspectionSubjectService", function ($resource, $q) {
+		var res = $resource('rest/lands/inspection_subjects/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	});
+
+angular.module("mgis.lands.availability_of_violations.service", ["ngResource"])
+	.factory("LandsAvailabilityOfViolationsService", function ($resource, $q) {
+		var res = $resource('rest/lands/availability_of_violations/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	});
