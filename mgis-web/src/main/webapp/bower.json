@@ -36,7 +36,7 @@
     "bootstrap-treeview": "~1.2.0",
     "ng-file-upload": "~5.0.9",
     "angular-ui-select": "~0.12.1",
-    "select2": "~4.0.0"
+    "select2": "~3.5.2"
   },
   "resolutions": {
     "jquery": "1.10.2",

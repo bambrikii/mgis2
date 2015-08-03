@@ -16,7 +16,7 @@
 	<link type="text/css" rel="stylesheet" href="bower_components/backgrid/lib/backgrid.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
 
-	<link type="text/css" rel="stylesheet" href="bower_components/select2/dist/css/select2.css">
+	<link type="text/css" rel="stylesheet" href="bower_components/select2/select2.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css">
 
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -37,7 +37,7 @@
 	<!-- <script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script> -->
 	<!-- <script type="text/javascript" src="bower_components/angular-dialog-service/dist/dialogs-default-translations.js"></script> -->
 	<!-- <script type="text/javascript" src="bower_components/angular-dialog-service/dist/dialogs.js"></script> -->
-	<script type="text/javascript" src="bower_components/select2/dist/js/select2.js"></script>
+	<script type="text/javascript" src="bower_components/select2/select2.js"></script>
 	<script type="text/javascript" src="bower_components/angular-ui-select/dist/select.js"></script>
 	<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
 	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
