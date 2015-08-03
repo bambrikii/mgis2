@@ -1,6 +1,6 @@
 angular.module("mgis.lands", ["ui.router", "ui.bootstrap", //
 	"mgis.common", //
-	"mgis.lands.lands", "mgis.lands.lands.service" //
+	"mgis.lands.lands", "mgis.lands.services" //
 
 ])
 	.config(function ($stateProvider, $urlRouterProvider) {

@@ -1,22 +1,8 @@
 angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.commons", //
-	"mgis.lands.lands.service",
-
-	"mgis.nc.oktmo.service",
-	"mgis.nc.okato.service",
-	"mgis.nc.territorial_zone.service",
-	"mgis.nc.land_allowed_usage.service",
-	"mgis.nc.land_category.service",
-	"mgis.nc.land_ownership_form.service",
-	"mgis.nc.land_right_kind.service",
-	"mgis.nc.land_encumbrance.service",
-
-	"mgis.common.executive_person.service",
-	"mgis.lands.inspection_kind.service",
-	"mgis.lands.inspection_type.service",
-	"mgis.lands.inspection_reason.service",
-	"mgis.lands.inspection_subject.service",
-	"mgis.lands.availability_of_violations.service"
+	"mgis.lands.services",
+	"mgis.nc.services",
+	"mgis.common.executive_person.service"
 	//"mgis.nc.cache"
 ])
 	.config(function ($stateProvider) {
@@ -154,14 +140,20 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 					data.allowedUsageByTerritorialZone = {}
 				}
 				modalScope.land = data;
+				if (modalScope.land.landAreas == undefined) {
+					modalScope.land.landAreas = [];
+				}
+				modalScope.areas = modalScope.land.landAreas;
 				editItem(modalScope);
 			});
 		}
 
 		$scope.deleteItem = function (id) {
-			LandsLandService.remove(id).then(function () {
-				updateGrid();
-			})
+			MGISCommonsModalForm.confirmRemoval(function () {
+				LandsLandService.remove(id).then(function () {
+					updateGrid();
+				});
+			});
 		}
 
 		updateGrid();
@@ -169,6 +161,44 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		$scope.displayOnTheMap = function () {
 			// TODO: display on the map
 		}
-	}
-)
+	})
+	.controller("LandsLandAreaController", function ($scope, $rootScope, MGISCommonsModalForm, LandsLandAreaTypeService) {
+
+		var controllerScope = $scope;
+		var areas = controllerScope.areas;
+
+		function editItem(area, addFlag) {
+			var modalScope = $rootScope.$new();
+			modalScope.area = {id: area.id, value: area.value, landAreaType: area.landAreaType};
+			LandsLandAreaTypeService.get("", 0, 0).then(function (data) {
+				modalScope.availableLandAreaTypes = data.list;
+				MGISCommonsModalForm.edit('app2/lands/land/land-area-form.htm', modalScope, function ($scope, $modalInstance) {
+					var area2 = $scope.area;
+					if (addFlag) {
+						areas.push(area2);
+					} else {
+						area.value = area2.value;
+						area.landAreaType = area2.landAreaType;
+					}
+					$modalInstance.close();
+				});
+			});
+		}
+
+		$scope.addLandArea = function () {
+			editItem({id: 0}, true);
+		}
+		$scope.editLandArea = function (area) {
+			editItem(area);
+		}
+		$scope.removeLandArea = function (area) {
+			if (MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
+					var i = areas.indexOf(area);
+					if (i > -1) {
+						areas.splice(i, 1);
+					}
+					$modalInstance.close();
+				}));
+		}
+	})
 ;

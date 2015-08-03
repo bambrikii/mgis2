@@ -1,7 +1,7 @@
 /**
  * Created by asd on 29.07.15.
  */
-angular.module("mgis.nc.oktmo.service", ["ngResource"])
+angular.module("mgis.nc.services", ["ngResource"])
 	.factory("NcOKTMOService", function ($resource, $q) {
 		var res = $resource('rest/nc/oktmo/:id.json');
 		return {
@@ -16,9 +16,7 @@ angular.module("mgis.nc.oktmo.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.nc.okato.service", ["ngResource"])
+	})
 	.factory("NcOKATOService", function ($resource, $q) {
 		var res = $resource('rest/nc/okato/:id.json');
 		return {
@@ -33,9 +31,7 @@ angular.module("mgis.nc.okato.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.nc.territorial_zone.service", ["ngResource"])
+	})
 	.factory("NcTerritorialZoneService", function ($resource, $q) {
 		var res = $resource('rest/nc/territorial_zones/:id.json');
 		return {
@@ -50,9 +46,7 @@ angular.module("mgis.nc.territorial_zone.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.nc.land_allowed_usage.service", ["ngResource"])
+	})
 	.factory("NcLandAllowedUsageService", function ($resource, $q) {
 		var res = $resource('rest/nc/lands_allowed_usage/:id.json');
 		return {
@@ -67,9 +61,7 @@ angular.module("mgis.nc.land_allowed_usage.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.nc.land_category.service", ["ngResource"])
+	})
 	.factory("NcLandCategoryService", function ($resource, $q) {
 		var res = $resource('rest/nc/land_categories/:id.json');
 		return {
@@ -84,9 +76,7 @@ angular.module("mgis.nc.land_category.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.nc.land_ownership_form.service", ["ngResource"])
+	})
 	.factory("NcLandOwnershipFormService", function ($resource, $q) {
 		var res = $resource('rest/nc/land_ownership_forms/:id.json');
 		return {
@@ -101,9 +91,7 @@ angular.module("mgis.nc.land_ownership_form.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.nc.land_right_kind.service", ["ngResource"])
+	})
 	.factory("NcLandRightKindService", function ($resource, $q) {
 		var res = $resource('rest/nc/land_right_kinds/:id.json');
 		return {
@@ -118,9 +106,7 @@ angular.module("mgis.nc.land_right_kind.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.nc.land_encumbrance.service", ["ngResource"])
+	})
 	.factory("NcLandEncumbranceService", function ($resource, $q) {
 		var res = $resource('rest/nc/land_encumbrances/:id.json');
 		return {

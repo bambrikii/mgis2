@@ -148,3 +148,6 @@ span.mgis-input-group-date button {
 	width: 850px;
 }
 
+.modal-backdrop {
+	opacity: 0.2;
+}

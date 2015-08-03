@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 27.07.15.
  */
 @Entity
-@Table(name = "lands_land_area_type")
+@Table(name = "lands_land_area")
 public class LandArea implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)

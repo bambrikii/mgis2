@@ -15,6 +15,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "lands_land")
@@ -35,7 +36,7 @@ public class Land implements Cloneable {
 	@Column
 	private Date stateRealEstateCadastreaStaging;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<LandArea> landAreas = new ArrayList<>();
 
 	@ManyToOne
@@ -227,6 +228,7 @@ public class Land implements Cloneable {
 		land.setRights(rights != null ? rights.clone() : null);
 		land.setCharacteristics(characteristics != null ? characteristics.clone() : null);
 		land.setControl(control != null ? control.clone() : null);
+		land.getLandAreas().addAll(landAreas.stream().map(landArea1 -> landArea1.clone()).collect(Collectors.toList()));
 		// TODO: complete the clone procedure
 		return land;
 	}

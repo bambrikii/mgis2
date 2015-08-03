@@ -1,6 +1,16 @@
-angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
+angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 	.factory("LandsLandService", function ($resource, $q) {
 		var res = $resource('rest/lands/land/:id.json');
+
+		function buildLandAreas(landAreas) {
+			var landAreas2 = [];
+			for (var i in landAreas) {
+				var area = landAreas[i];
+				landAreas2.push({id: area.id, value: area.value, landAreaType: {id: area.landAreaType.id}});
+			}
+			return landAreas2;
+		}
+
 		return {
 			get: function (id, first, max, cadastralNumber) {
 				var deferred = $q.defer();
@@ -20,11 +30,13 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 				var rights = item.rights;
 				var characteristics = item.characteristics;
 				var control = item.control;
+				var landAreas = item.landAreas;
+				var landAreas2 = buildLandAreas(landAreas);
 				var land = {
 					id: item.id,
 					cadastralNumber: item.cadastralNumber,
 					stateRealEstateCadastreaStaging: item.stateRealEstateCadastreaStaging,
-					landAreas: item.landAreas,
+					landAreas: landAreas2,
 					landCategory: item.landCategory ? {id: item.landCategory.id} : null,
 					allowedUsageByDictionary: item.allowedUsageByDictionary ? {id: item.allowedUsageByDictionary.id} : null,
 					allowedUsageByDocument: item.allowedUsageByDocument,
@@ -94,9 +106,7 @@ angular.module("mgis.lands.lands.service", ["ui.router", 'ngResource'])
 			}
 		}
 
-	});
-
-angular.module("mgis.lands.inspection_kind.service", ["ngResource"])
+	})
 	.factory("LandsInspectionKindService", function ($resource, $q) {
 		var res = $resource('rest/lands/inspection_kinds/:id.json');
 		return {
@@ -111,9 +121,7 @@ angular.module("mgis.lands.inspection_kind.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.lands.inspection_type.service", ["ngResource"])
+	})
 	.factory("LandsInspectionTypeService", function ($resource, $q) {
 		var res = $resource('rest/lands/inspection_types/:id.json');
 		return {
@@ -128,10 +136,7 @@ angular.module("mgis.lands.inspection_type.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-
-angular.module("mgis.lands.inspection_reason.service", ["ngResource"])
+	})
 	.factory("LandsInspectionReasonService", function ($resource, $q) {
 		var res = $resource('rest/lands/inspection_reasons/:id.json');
 		return {
@@ -146,9 +151,7 @@ angular.module("mgis.lands.inspection_reason.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.lands.inspection_subject.service", ["ngResource"])
+	})
 	.factory("LandsInspectionSubjectService", function ($resource, $q) {
 		var res = $resource('rest/lands/inspection_subjects/:id.json');
 		return {
@@ -163,11 +166,24 @@ angular.module("mgis.lands.inspection_subject.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
-
-angular.module("mgis.lands.availability_of_violations.service", ["ngResource"])
+	})
 	.factory("LandsAvailabilityOfViolationsService", function ($resource, $q) {
 		var res = $resource('rest/lands/availability_of_violations/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	})
+	.factory("LandsLandAreaTypeService", function ($resource, $q) {
+		var res = $resource('rest/lands/area_types/:id.json');
 		return {
 			get: function (id, first, max) {
 				var deferred = $q.defer();

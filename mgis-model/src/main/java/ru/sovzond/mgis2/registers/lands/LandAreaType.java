@@ -7,9 +7,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "lands_land_area_type")
-public class LandAreaType {
+public class LandAreaType implements Cloneable {
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_land_area_type_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;

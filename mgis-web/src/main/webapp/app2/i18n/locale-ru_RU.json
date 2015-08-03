@@ -32,6 +32,7 @@
   "Preview": "Просмотреть",
   "ID": "ID",
   "Name": "Наименование",
+  "Value": "Значение",
   "ISOGD.AddASection": "Добавить Раздел",
   "ISOGD.EditTheSection": "Редактировать Раздел",
   "ISOGD.RemoveTheSection": "Удалить Раздел",
@@ -172,5 +173,7 @@
   "Lands.Land.LandControl.TilmelineForViolations": "Срок устранения нарушений",
   "Lands.Land.LandControl.PenaltyAmount": "Размер штрафа",
   "Lands.Land.LandControl.InspectionResultDocuments": "Оформленные нарушения",
+  "Lands.Land.Area.Type": "Тип земельного участка",
+  "Lands.Land.Area.Type.Required": "Поле 'Тип земельного участка' обязательно для заполнения",
   "NationalClassifiers.MunicipalEntity": "Муниципальное образование"
 }

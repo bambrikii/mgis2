@@ -10,6 +10,7 @@ import ru.sovzond.mgis2.national_classifiers.*;
 import ru.sovzond.mgis2.oks.AddressBean;
 import ru.sovzond.mgis2.oks.PersonBean;
 import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.registers.lands.LandArea;
 import ru.sovzond.mgis2.registers.lands.characteristics.LandCharacteristics;
 import ru.sovzond.mgis2.registers.lands.control.LandControl;
 import ru.sovzond.mgis2.registers.lands.rights.LandRights;
@@ -87,6 +88,12 @@ public class LandRESTController implements Serializable {
 	@Autowired
 	private ExecutivePersonBean executivePersonBean;
 
+	@Autowired
+	private LandAreaBean landAreaBean;
+
+	@Autowired
+	private LandAreaTypeBean landAreaTypeBean;
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
 	public PageableContainer<Land> list(@RequestParam(value = "cadastralNumber", defaultValue = "") String cadastralNumber, @RequestParam(value = "orderBy", defaultValue = "") String orderBy,
@@ -125,6 +132,24 @@ public class LandRESTController implements Serializable {
 			land2.setAddress(addressBean.load(land.getAddress().getId()));
 		}
 		land2.setAddress(land.getAddress());
+
+		// Land area
+		land2.getLandAreas().clear();
+		for (LandArea landArea : land.getLandAreas()) {
+			LandArea landArea2 = null;
+			if (landArea.getId() == 0) {
+				landArea2 = new LandArea();
+			} else {
+				landArea2 = landAreaBean.load(landArea.getId());
+				landAreaBean.save(landArea2);
+			}
+			landArea2.setValue(landArea.getValue());
+			landArea2.setLandAreaType(landAreaTypeBean.load(landArea.getLandAreaType().getId()));
+			landAreaBean.save(landArea2);
+			land2.getLandAreas().add(landArea2);
+		}
+
+
 		LandRights rights = land.getRights();
 		if (rights != null) {
 			LandRights rights2 = land2.getRights();
