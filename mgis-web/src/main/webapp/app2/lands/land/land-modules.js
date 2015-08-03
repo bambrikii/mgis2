@@ -90,6 +90,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 																});
 															}
 
+															modalScope.areas = modalScope.land.landAreas;
+
 															MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
 																LandsLandService.save(scope.land).then(function (data) {
 																	$modalInstance.close();
@@ -121,6 +123,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 			modalScope.land = {
 				id: 0,
 				cadastralNumber: "",
+				landAreas: [],
 				rights: {},
 				characteristics: {}
 			}
@@ -140,10 +143,9 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 					data.allowedUsageByTerritorialZone = {}
 				}
 				modalScope.land = data;
-				if (modalScope.land.landAreas == undefined) {
+				if (!modalScope.land.landAreas) {
 					modalScope.land.landAreas = [];
 				}
-				modalScope.areas = modalScope.land.landAreas;
 				editItem(modalScope);
 			});
 		}
@@ -164,8 +166,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	})
 	.controller("LandsLandAreaController", function ($scope, $rootScope, MGISCommonsModalForm, LandsLandAreaTypeService) {
 
-		var controllerScope = $scope;
-		var areas = controllerScope.areas;
+		var areas = $scope.areas;
 
 		function editItem(area, addFlag) {
 			var modalScope = $rootScope.$new();
