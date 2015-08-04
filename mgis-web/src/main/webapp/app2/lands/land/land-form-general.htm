@@ -134,13 +134,17 @@
 			</div>
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.allowedUsageByTerritorialZone"
-							options="c.name for c in availableTerritorialZones"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
+
+					<ui-select ng-model="land.allowedUsageByTerritorialZone" theme="select2" style="width: 450px;">
+						<ui-select-match placeholder="">{{land.allowedUsageByTerritorialZone.name}}</ui-select-match>
+						<ui-select-choices repeat="terrZone in availableAllowedUsageByTerritorialZones | filter: {name: $select.search}"
+										   refresh="refreshAvailableAllowedUsageByTerritorialZones($select.search)"
+										   refresh-delay="0">
+							{{terrZone.name}}
+							<div ng-bind-html="terrZone.name"></div>
+						</ui-select-choices>
+					</ui-select>
+
 				</p>
 			</div>
 		</div>

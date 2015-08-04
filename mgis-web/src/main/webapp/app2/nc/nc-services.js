@@ -32,8 +32,8 @@ angular.module("mgis.nc.services", ["ngResource"])
 			}
 		}
 	})
-	.factory("NcTerritorialZoneService", function ($resource, $q) {
-		var res = $resource('rest/nc/territorial_zones/:id.json');
+	.factory("NcTerritorialZoneTypeService", function ($resource, $q) {
+		var res = $resource('rest/nc/territorial_zone_types/:id.json');
 		return {
 			get: function (id, first, max) {
 				var deferred = $q.defer();

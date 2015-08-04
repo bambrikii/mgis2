@@ -2,7 +2,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.commons", //
 	"mgis.lands.services",
 	"mgis.nc.services",
-	"mgis.common.executive_person.service"
+	"mgis.common.executive_person.service",
+	"mgis.lands.terr-zone.services"
 	//"mgis.nc.cache"
 ])
 	.config(function ($stateProvider) {
@@ -15,7 +16,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	.controller("LandsLandController", function ($scope, LandsLandService, $rootScope, MGISCommonsModalForm,
 												 NcOKATOService,
 												 NcOKTMOService,
-												 NcTerritorialZoneService,
+												 //NcTerritorialZoneService,
 												 NcLandAllowedUsageService,
 												 NcLandCategoryService,
 												 NcLandOwnershipFormService,
@@ -26,7 +27,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 												 LandsInspectionTypeService,
 												 LandsAvailabilityOfViolationsService,
 												 LandsInspectionReasonService,
-												 LandsInspectionSubjectService) {
+												 LandsInspectionSubjectService,
+												 LandTerrZonesTerrZoneService) {
 		$scope.cadastralNumber = "";
 		$scope.first = 0;
 		$scope.max = 15;
@@ -59,47 +61,58 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 												modalScope.availableLandRightKinds = landRightKinds.list;
 												NcLandCategoryService.get().then(function (availableLandCategories) {
 													modalScope.availableLandCategories = availableLandCategories.list;
-													NcTerritorialZoneService.get().then(function (availableTerritorialZones) {
-														modalScope.availableTerritorialZones = availableTerritorialZones.list;
-														NcLandAllowedUsageService.get().then(function (availableLandsAllowedUsage) {
-															modalScope.availableLandsAllowedUsage = availableLandsAllowedUsage.list;
+													NcLandAllowedUsageService.get().then(function (availableLandsAllowedUsage) {
+														modalScope.availableLandsAllowedUsage = availableLandsAllowedUsage.list;
 
-															//
-															modalScope.availableAddressMunicipalEntities = new Array();
-															modalScope.refreshAvailableMunicipalEntities = function (name) {
-																NcOKTMOService.get("", 0, 15, name).then(function (data) {
-																	modalScope.availableAddressMunicipalEntities = data.list;
-																});
-															}
-															if (modalScope.land.addressOfMunicipalEntity) {
-																NcOKTMOService.get(modalScope.land.addressOfMunicipalEntity.id).then(function (data) {
-																	modalScope.availableAddressMunicipalEntities.push(data);
-																});
-															}
-
-															//
-															modalScope.availableNearestMunicipalEntities = new Array();
-															modalScope.refreshAvailableNearestMunicipalEntities = function (name) {
-																NcOKTMOService.get("", 0, 15, name).then(function (data) {
-																	modalScope.availableNearestMunicipalEntities = data.list;
-																});
-															}
-															if (modalScope.land.characteristics && modalScope.land.characteristics.nearestMunicipalEntity) {
-																NcOKTMOService.get(modalScope.land.characteristics.nearestMunicipalEntity.id).then(function (data) {
-																	modalScope.availableNearestMunicipalEntities.push(data);
-																});
-															}
-
-															modalScope.areas = modalScope.land.landAreas;
-
-															MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
-																LandsLandService.save(scope.land).then(function (data) {
-																	$modalInstance.close();
-																	updateGrid();
-																});
-															}, {
-																windowClass: "mgis-land-modal-form"
+														// AddressMunicipalEntities
+														modalScope.availableAddressMunicipalEntities = new Array();
+														modalScope.refreshAvailableMunicipalEntities = function (name) {
+															NcOKTMOService.get("", 0, 15, name).then(function (data) {
+																modalScope.availableAddressMunicipalEntities = data.list;
 															});
+														}
+														if (modalScope.land.addressOfMunicipalEntity) {
+															NcOKTMOService.get(modalScope.land.addressOfMunicipalEntity.id).then(function (data) {
+																modalScope.availableAddressMunicipalEntities.push(data);
+															});
+														}
+
+														// NearestMunicipalEntities
+														modalScope.availableNearestMunicipalEntities = new Array();
+														modalScope.refreshAvailableNearestMunicipalEntities = function (name) {
+															NcOKTMOService.get("", 0, 15, name).then(function (data) {
+																modalScope.availableNearestMunicipalEntities = data.list;
+															});
+														}
+														if (modalScope.land.characteristics && modalScope.land.characteristics.nearestMunicipalEntity) {
+															NcOKTMOService.get(modalScope.land.characteristics.nearestMunicipalEntity.id).then(function (data) {
+																modalScope.availableNearestMunicipalEntities.push(data);
+															});
+														}
+
+														// TerritorialZones
+														modalScope.availableAllowedUsageByTerritorialZones = new Array();
+														modalScope.refreshAvailableAllowedUsageByTerritorialZones = function (name) {
+															LandTerrZonesTerrZoneService.get("", 0, 15, name).then(function (availableTerritorialZones) {
+																modalScope.availableAllowedUsageByTerritorialZones = availableTerritorialZones.list;
+															});
+														}
+														if (modalScope.allowedUsageByTerritorialZone && modalScope.allowedUsageByTerritorialZone.id) {
+															LandTerrZonesTerrZoneService.get(id).then(function (data) {
+																modalScope.availableAllowedUsageByTerritorialZones.push(data);
+															});
+														}
+
+
+														modalScope.areas = modalScope.land.landAreas;
+
+														MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
+															LandsLandService.save(scope.land).then(function (data) {
+																$modalInstance.close();
+																updateGrid();
+															});
+														}, {
+															windowClass: "mgis-land-modal-form"
 														});
 													});
 												});

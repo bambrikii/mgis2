@@ -175,5 +175,11 @@
   "Lands.Land.LandControl.InspectionResultDocuments": "Оформленные нарушения",
   "Lands.Land.Area.Type": "Тип земельного участка",
   "Lands.Land.Area.Type.Required": "Поле 'Тип земельного участка' обязательно для заполнения",
+  "Lands.Land.TownPlanningRegulations": "Градостроительный регламент",
+  "Lands.TerritorialZone": "Территориальная зона",
+  "Lands.TerritorialZone.Required": "Поле 'Территориальная зона' обязательно для заполнения",
+  "Lands.TerritorialZone.Characteristics": "Характеристики территориальной зоны",
+  "Lands.Land.Regulations.WaySide": "Полоса отчуждения",
+  "Lands.Land.Regulations.ProtectionZones": "Охранные зоны",
   "NationalClassifiers.MunicipalEntity": "Муниципальное образование"
 }

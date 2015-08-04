@@ -8,7 +8,6 @@ import ru.sovzond.mgis2.registers.lands.works.LandWorks;
 import ru.sovzond.mgis2.registers.national_classifiers.LandAllowedUsage;
 import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
-import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZone;
 import ru.sovzond.mgis2.registers.oks.Address;
 
 import javax.persistence.*;

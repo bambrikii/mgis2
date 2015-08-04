@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 @RestController
 @RequestMapping("/nc/lands_allowed_usage")
 @Scope("session")
-public class LandAllowedUsageController {
+public class LandAllowedUsageRESTController {
 	@Autowired
 	private LandAllowedUsageBean landAllowedUsageBean;
 
