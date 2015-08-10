@@ -4,7 +4,8 @@ var mgisApp = angular.module("mgis", //
 		"mgis.menu.main",
 		"mgis.oks",
 		"mgis.admin",
-		"mgis.lands"
+		"mgis.lands",
+		"mgis.terr-zones"
 	]);
 
 mgisApp.config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
@@ -26,6 +27,16 @@ mgisApp.config(function ($stateProvider, $urlRouterProvider, $translateProvider)
 					controller: "LandsController"
 				}
 			}
+		}) //
+		.state("terr-zones", {
+			url: "/terr-zones",
+			views: {
+				"": {
+					templateUrl: "app2/terr-zones/terr-zones.htm",
+					controller: "TerrZonesController"
+				}
+			}
+
 		}) //
 		.state("oks", {
 			url: "/oks",

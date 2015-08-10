@@ -3,7 +3,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.lands.services",
 	"mgis.nc.services",
 	"mgis.common.executive_person.service",
-	"mgis.lands.terr-zone.services"
+	"mgis.terr-zones.zone.service"
 	//"mgis.nc.cache"
 ])
 	.config(function ($stateProvider) {
@@ -28,7 +28,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 												 LandsAvailabilityOfViolationsService,
 												 LandsInspectionReasonService,
 												 LandsInspectionSubjectService,
-												 LandTerrZonesTerrZoneService) {
+												 TerrZonesZoneService) {
 		$scope.cadastralNumber = "";
 		$scope.first = 0;
 		$scope.max = 15;
@@ -93,12 +93,12 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 														// TerritorialZones
 														modalScope.availableAllowedUsageByTerritorialZones = new Array();
 														modalScope.refreshAvailableAllowedUsageByTerritorialZones = function (name) {
-															LandTerrZonesTerrZoneService.get("", 0, 15, name).then(function (availableTerritorialZones) {
+															TerrZonesZoneService.get("", 0, 15, name).then(function (availableTerritorialZones) {
 																modalScope.availableAllowedUsageByTerritorialZones = availableTerritorialZones.list;
 															});
 														}
 														if (modalScope.allowedUsageByTerritorialZone && modalScope.allowedUsageByTerritorialZone.id) {
-															LandTerrZonesTerrZoneService.get(id).then(function (data) {
+															TerrZonesZoneService.get(id).then(function (data) {
 																modalScope.availableAllowedUsageByTerritorialZones.push(data);
 															});
 														}

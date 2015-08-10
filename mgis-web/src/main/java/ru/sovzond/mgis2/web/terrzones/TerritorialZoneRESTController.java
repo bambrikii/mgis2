@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.web.lands;
+package ru.sovzond.mgis2.web.terrzones;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
  * Created by Alexander Arakelyan on 29.07.15.
  */
 @RestController
-@RequestMapping("/lands/terr_zones")
+@RequestMapping("/terr-zones")
 @Scope("session")
 public class TerritorialZoneRESTController {
 	@Autowired

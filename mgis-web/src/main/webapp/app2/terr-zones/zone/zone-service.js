@@ -1,6 +1,6 @@
-angular.module("mgis.lands.terr-zone.services", [])
-	.factory("LandTerrZonesTerrZoneService", function ($resource, $q) {
-		var res = $resource('rest/lands/terr_zones/:id.json');
+angular.module("mgis.terr-zones.zone.service", [])
+	.factory("TerrZonesZoneService", function ($resource, $q) {
+		var res = $resource('rest/terr-zones/:id.json');
 		return {
 			get: function (id, first, max, name) {
 				var deferred = $q.defer();
@@ -13,5 +13,5 @@ angular.module("mgis.lands.terr-zone.services", [])
 				return deferred.promise;
 			}
 		}
-	})
+	}) //
 ;

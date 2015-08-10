@@ -72,7 +72,9 @@
 	<script type="text/javascript" src="app2/lands/lands.js"></script>
 	<script type="text/javascript" src="app2/lands/land/land-services.js"></script>
 	<script type="text/javascript" src="app2/lands/land/land-modules.js"></script>
-	<script type="text/javascript" src="app2/lands/terr-zone/terr-zone-services.js"></script>
+	<script type="text/javascript" src="app2/terr-zones/terr-zones.js"></script>
+	<script type="text/javascript" src="app2/terr-zones/zone/zone-service.js"></script>
+	<script type="text/javascript" src="app2/terr-zones/zone/zone-module.js"></script>
 
 	<script type="text/javascript" src="app2/nc/nc-services.js"></script>
 	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
