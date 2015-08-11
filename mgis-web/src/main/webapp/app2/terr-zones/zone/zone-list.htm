@@ -3,8 +3,8 @@
 	<div>
 		<div class="row" ng-repeat="item in list" style="padding: 5px;">
 			<div class="col-md-1">{{item.id}}</div>
-			<div class="col-md-1">{{item.name}}</div>
-			<div class="col-md-1">{{item.zoneType.name}}</div>
+			<div class="col-md-3">{{item.name}}</div>
+			<div class="col-md-4">{{item.zoneType.name}}</div>
 			<div class="col-md-4">
 				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
 				<button class="btn btn-danger btn-sm" ng-click="deleteItem(item.id)" translate>Delete</button>

@@ -9,4 +9,10 @@ import javax.persistence.Table;
 @Table(name = "oks_legal_person")
 public class LegalPerson extends Person {
 
+	public LegalPerson clone() {
+		LegalPerson person = new LegalPerson();
+		person.setId(getId());
+		person.setName(getName());
+		return person;
+	}
 }

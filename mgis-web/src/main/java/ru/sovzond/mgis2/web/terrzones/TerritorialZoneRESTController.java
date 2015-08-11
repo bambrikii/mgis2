@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.lands.TerritorialZoneBean;
 import ru.sovzond.mgis2.lands.TerritorialZoneTypeBean;
+import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
 import ru.sovzond.mgis2.registers.lands.TerritorialZone;
 
 import javax.transaction.Transactional;
@@ -14,7 +15,7 @@ import javax.transaction.Transactional;
  * Created by Alexander Arakelyan on 29.07.15.
  */
 @RestController
-@RequestMapping("/terr-zones")
+@RequestMapping("/terr-zones/zones")
 @Scope("session")
 public class TerritorialZoneRESTController {
 	@Autowired
@@ -22,6 +23,9 @@ public class TerritorialZoneRESTController {
 
 	@Autowired
 	private TerritorialZoneTypeBean territorialZoneTypeBean;
+
+	@Autowired
+	private OKTMOBean oktmoBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -45,8 +49,17 @@ public class TerritorialZoneRESTController {
 		} else {
 			zone2 = territorialZoneBean.load(id);
 		}
-		zone2.setZoneType(zone != null ? territorialZoneTypeBean.load(zone.getId()) : null);
+		zone2.setAdditionalDescription(zone.getAdditionalDescription());
+		zone2.setAdministrativeTerritorialEntity(zone.getAdministrativeTerritorialEntity() != null ? oktmoBean.load(zone.getAdministrativeTerritorialEntity().getId()) : null);
+		zone2.setCorrectionDate(zone.getCorrectionDate());
+		zone2.setCreationDate(zone.getCreationDate());
+		zone2.setIndex(zone.getIndex());
+		zone2.setLiquidationDate(zone.getLiquidationDate());
 		zone2.setName(zone.getName());
+		zone2.setNumber(zone.getNumber());
+		zone2.setPlacement(zone.getPlacement());
+		zone2.setZoneType(zone != null ? territorialZoneTypeBean.load(zone.getId()) : null);
+		territorialZoneBean.save(zone2);
 		return zone2.clone();
 	}
 

@@ -1,0 +1,225 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>TerritorialZones.Zone</h3>
+	</div>
+	<div class="panel-body">
+
+		<div class="form-group row"
+			 ng-class="{'has-error': zoneForm.name.$invalid && (!zoneForm.name.$pristine || zoneForm.name.$touched)}">
+			<div class="col-sm-4">
+				<label translate>Name</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="name" ng-model="zone.name" required/>
+
+				<p ng-show="zoneForm.name.$invalid && (!zoneForm.name.$pristine || zoneForm.name.$touched)" class="help-block" translate>
+					Name.Required</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.CreationDate</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="zone.creationDate"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							/>
+                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.CorrectionDate</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="zone.correctionDate"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							/>
+                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.LiquidationDate</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+                <span class="input-group-btn mgis-input-group-date">
+                    <input
+							type="text"
+							class="form-control"
+							name="docDate"
+							datepicker-popup="{{format}}"
+							ng-model="zone.liquidationDate"
+							is-open="opened"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date, mode)"
+							close-text="{{Close|translate}}"
+							ng-click="open($event)"
+							/>
+                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.AdministrativeTerritorialEntity</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+
+					<ui-select ng-model="zone.administrativeTerritorialEntity" theme="select2" style="width: 450px;">
+						<ui-select-match placeholder="">{{zone.administrativeTerritorialEntity.name}}</ui-select-match>
+						<ui-select-choices repeat="admTerrEntity in availableAdministrativeTerritorialEntities | filter: {name: $select.search}"
+										   refresh="refreshAvailableAdministrativeTerritorialEntities($select.search)"
+										   refresh-delay="0">
+							{{admTerrEntity.name}}
+							<div ng-bind-html="admTerrEntity.name"></div>
+						</ui-select-choices>
+					</ui-select>
+
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.ZoneType</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="zone.zoneType"
+							options="c.name for c in availableZoneTypes"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<div class="form-group row"
+			 ng-class="{'has-error': zoneForm.number.$invalid && (!zoneForm.number.$pristine || zoneForm.number.$touched)}">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.Number</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="number" ng-model="zone.number" required/>
+
+				<p ng-show="zoneForm.number.$invalid && (!zoneForm.number.$pristine || zoneForm.number.$touched)" class="help-block" translate>
+					TerritorialZones.Zone.Number.Required</p>
+			</div>
+		</div>
+
+		<div class="form-group row"
+			 ng-class="{'has-error': zoneForm.index.$invalid && (!zoneForm.index.$pristine || zoneForm.index.$touched)}">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.Index</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="index" ng-model="zone.index" required/>
+
+				<p ng-show="zoneForm.index.$invalid && (!zoneForm.index.$pristine || zoneForm.index.$touched)" class="help-block" translate>
+					TerritorialZones.Zone.Index.Required</p>
+			</div>
+		</div>
+
+		<div class="form-group row"
+			 ng-class="{'has-error': zoneForm.placement.$invalid && (!zoneForm.placement.$pristine || zoneForm.placement.$touched)}">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.Placement</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="placement" ng-model="zone.placement" required/>
+
+				<p ng-show="zoneForm.placement.$invalid && (!zoneForm.placement.$pristine || zoneForm.placement.$touched)" class="help-block"
+				   translate>
+					TerritorialZones.Zone.Placement.Required</p>
+			</div>
+		</div>
+
+		<div class="form-group row"
+			 ng-class="{'has-error': zoneForm.additionalDescription.$invalid && (!zoneForm.additionalDescription.$pristine || zoneForm.additionalDescription.$touched)}">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.AdditionalDescription</label>
+			</div>
+
+			<div class="col-sm-8">
+				<textarea class="form-control" name="additionalDescription" ng-model="zone.additionalDescription" rows="3" required/>
+
+				<p ng-show="zoneForm.additionalDescription.$invalid && (!zoneForm.additionalDescription.$pristine || zoneForm.additionalDescription.$touched)"
+				   class="help-block"
+				   translate>
+					TerritorialZones.Zone.AdditionalDescription.Required</p>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.Parameters</label>
+			</div>
+
+			<div class="col-sm-8">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.SubZones</label>
+			</div>
+
+			<div class="col-sm-8">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>TerritorialZones.Zone.ApprovedDepartment</label>
+			</div>
+
+			<div class="col-sm-8">
+			</div>
+		</div>
+
+
+	</div>
+</div>

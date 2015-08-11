@@ -151,3 +151,10 @@ span.mgis-input-group-date button {
 .modal-backdrop {
 	opacity: 0.2;
 }
+
+/*
+ * TerrZones
+ */
+.mgis-terr-zones-modal-form .modal-dialog {
+	width: 995px;
+}

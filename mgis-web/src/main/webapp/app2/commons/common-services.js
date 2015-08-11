@@ -16,4 +16,26 @@ angular.module("mgis.common.executive_person.service", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
+	})
+	.factory("CommonLegalPersonService", function ($resource, $q) {
+		var res = $resource('rest/common/legal_persons/:id.json');
+		return {
+			get: function (id, first, max, name) {
+				var deferred = $q.defer();
+				res.get({id: id}, {
+					first: first,
+					max: max
+				}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			},
+			save: function (data) {
+
+			},
+			remove: function (id) {
+
+			}
+		}
+	})
+;
