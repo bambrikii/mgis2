@@ -177,7 +177,7 @@
   "Lands.Land.Area.Type": "Тип земельного участка",
   "Lands.Land.Area.Type.Required": "Поле 'Тип земельного участка' обязательно для заполнения",
   "Lands.Land.TownPlanningRegulations": "Градостроительный регламент",
-  "TerritorialZone": "Территориальная зона",
+  "TerritorialZones.Zone": "Территориальная зона",
   "Lands.TerritorialZone.Required": "Поле 'Территориальная зона' обязательно для заполнения",
   "Lands.TerritorialZone.Characteristics": "Характеристики территориальной зоны",
   "Lands.Land.Regulations.WaySide": "Полоса отчуждения",

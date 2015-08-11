@@ -12,7 +12,7 @@ angular.module("mgis.terr-zones.zone", ["ui.router", "ui.bootstrap", "ui.select"
 	.controller("TerrZonesZoneController", function ($scope, $rootScope, MGISCommonsModalForm, TerrZonesZoneService) {
 
 		function modifyItem(modalScope) {
-			MGISCommonsModalForm.edit(function (modalScope) {
+			MGISCommonsModalForm.edit("app2/terr-zones/zone/zone-form.htm", modalScope, function (modalScope) {
 
 			});
 		}
