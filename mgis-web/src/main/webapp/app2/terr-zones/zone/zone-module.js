@@ -71,8 +71,9 @@ angular.module("mgis.terr-zones.zone", ["ui.router", "ui.bootstrap", "ui.select"
 			});
 		}
 		$scope.deleteItem = function (id) {
-			MGISCommonsModalForm.confirmRemoval(function () {
+			MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
 				TerrZonesZoneService.remove(id).then(function () {
+					$modalInstance.close();
 					updateGrid();
 				});
 			});
