@@ -97,8 +97,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 																modalScope.availableAllowedUsageByTerritorialZones = availableTerritorialZones.list;
 															});
 														}
-														if (modalScope.allowedUsageByTerritorialZone && modalScope.allowedUsageByTerritorialZone.id) {
-															TerrZonesZoneService.get(id).then(function (data) {
+														if (modalScope.land.allowedUsageByTerritorialZone && modalScope.land.allowedUsageByTerritorialZone.id) {
+															TerrZonesZoneService.get(modalScope.land.allowedUsageByTerritorialZone.id).then(function (data) {
 																modalScope.availableAllowedUsageByTerritorialZones.push(data);
 															});
 														}

@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+import ru.sovzond.mgis2.isogd.business.DocumentBean;
 import ru.sovzond.mgis2.lands.TerritorialZoneBean;
 import ru.sovzond.mgis2.lands.TerritorialZoneTypeBean;
+import ru.sovzond.mgis2.national_classifiers.LandAllowedUsageBean;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
 import ru.sovzond.mgis2.registers.lands.TerritorialZone;
 
@@ -26,6 +28,12 @@ public class TerritorialZoneRESTController {
 
 	@Autowired
 	private OKTMOBean oktmoBean;
+
+	@Autowired
+	private LandAllowedUsageBean landAllowedUsageBean;
+
+	@Autowired
+	private DocumentBean documentBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -59,6 +67,12 @@ public class TerritorialZoneRESTController {
 		zone2.setNumber(zone.getNumber());
 		zone2.setPlacement(zone.getPlacement());
 		zone2.setZoneType(zone != null ? territorialZoneTypeBean.load(zone.getId()) : null);
+		zone2.setAccountNumber(zone.getAccountNumber());
+		zone2.setAllowedUsageKind(zone.getAllowedUsageKind() != null ? landAllowedUsageBean.load(zone.getAllowedUsageKind().getId()) : null);
+		zone2.setAllowedUsageKindAsText(zone.getAllowedUsageKindAsText());
+		zone2.setAllowedUsageByDocument(zone.getAllowedUsageByDocument());
+		zone2.setBasisDocument(zone.getBasisDocument() != null ? documentBean.load(zone.getBasisDocument().getId()) : null);
+		zone2.setStateOnTheDate(zone.getStateOnTheDate());
 		territorialZoneBean.save(zone2);
 		return zone2.clone();
 	}

@@ -14,7 +14,8 @@ angular.module("mgis.terr-zones.zone", ["ui.router", "ui.bootstrap", "ui.select"
 													 MGISCommonsModalForm,
 													 TerrZonesZoneService,
 													 NcOKTMOService,
-													 NcTerritorialZoneTypeService) {
+													 NcTerritorialZoneTypeService,
+													 NcLandAllowedUsageService) {
 		$scope.first = 0;
 		$scope.max = 15;
 		function updateGrid() {
@@ -27,20 +28,27 @@ angular.module("mgis.terr-zones.zone", ["ui.router", "ui.bootstrap", "ui.select"
 
 		function editItem(modalScope) {
 			NcOKTMOService.get("", 0, 15, name).then(function (admTerrEntities) {
-				modalScope.availableAdministrativeTerritorialEntities = admTerrEntities.list
+				modalScope.availableAdministrativeTerritorialEntities = admTerrEntities.list;
 				NcTerritorialZoneTypeService.get("", 0, 15).then(function (zoneTypes) {
 					modalScope.availableZoneTypes = zoneTypes.list;
+					NcLandAllowedUsageService.get("", 0, 15, name).then(function (availableAllowedUsageKinds) {
+						modalScope.availableAllowedUsageKinds = availableAllowedUsageKinds.list;
 
-					modalScope.refreshAvailableAdministrativeTerritorialEntities = function (name) {
-					}
+						// AdministrativeTerritorialEntities
+						modalScope.refreshAvailableAdministrativeTerritorialEntities = function (name) {
+							NcOKTMOService.get("", 0, 15, name).then(function (admTerrEntities) {
+								modalScope.availableAdministrativeTerritorialEntities = admTerrEntities.list;
+							});
+						}
 
-					MGISCommonsModalForm.edit("app2/terr-zones/zone/zone-form.htm", modalScope, function (scope, $modalInstance) {
-						TerrZonesZoneService.save(scope.zone).then(function (data) {
-							$modalInstance.close();
-							updateGrid();
-						})
-					}, {
-						windowClass: "mgis-terr-zone-modal-form"
+						MGISCommonsModalForm.edit("app2/terr-zones/zone/zone-form.htm", modalScope, function (scope, $modalInstance) {
+							TerrZonesZoneService.save(scope.zone).then(function (data) {
+								$modalInstance.close();
+								updateGrid();
+							})
+						}, {
+							windowClass: "mgis-terr-zone-modal-form"
+						});
 					});
 				});
 			});

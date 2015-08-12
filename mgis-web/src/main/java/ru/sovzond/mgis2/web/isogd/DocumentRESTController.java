@@ -63,7 +63,7 @@ public class DocumentRESTController implements Serializable {
 			document = new Document();
 			document.setVolume(volumeBean.readVolume(sourceDocument.getVolume().getId()));
 		} else {
-			document = documentBean.readDocument(id);
+			document = documentBean.load(id);
 		}
 		document.setName(sourceDocument.getName());
 		document.setDocNumber(sourceDocument.getDocNumber());
@@ -124,13 +124,13 @@ public class DocumentRESTController implements Serializable {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@Transactional
 	public Document read(@PathVariable("id") Long id) {
-		return documentBean.readDocument(id).clone();
+		return documentBean.load(id).clone();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@Transactional
 	public void delete(@PathVariable Long id) {
-		documentBean.delete(documentBean.readDocument(id));
+		documentBean.delete(documentBean.load(id));
 	}
 
 	@RequestMapping(value = "/listDocumentSubObjectsByVolumeId/{volumeId}")
