@@ -1,5 +1,24 @@
 package ru.sovzond.mgis2.registers.lands;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
 import ru.sovzond.mgis2.registers.lands.characteristics.LandCharacteristics;
 import ru.sovzond.mgis2.registers.lands.control.LandControl;
 import ru.sovzond.mgis2.registers.lands.includes.LandIncludedObjects;
@@ -10,11 +29,7 @@ import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 import ru.sovzond.mgis2.registers.oks.Address;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.vividsolutions.jts.geom.MultiPolygon;
 
 @Entity
 @Table(name = "lands_land")
@@ -56,23 +71,27 @@ public class Land implements Cloneable {
 	@ManyToOne
 	private Address address;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private LandRights rights;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private LandCharacteristics characteristics;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private LandIncludedObjects includedObjects;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private LandWorks works;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private LandControl control;
 
 	@OneToOne
 	private Land previousVersion;
+
+	@Type(type = "org.hibernate.spatial.GeometryType")
+	@Column(name = "geometry")
+	private MultiPolygon geometry;
 
 	public Long getId() {
 		return id;
@@ -210,7 +229,6 @@ public class Land implements Cloneable {
 		this.control = control;
 	}
 
-
 	@Override
 	public Land clone() {
 		Land land = new Land();
@@ -230,5 +248,13 @@ public class Land implements Cloneable {
 		land.getLandAreas().addAll(landAreas.stream().map(landArea1 -> landArea1.clone()).collect(Collectors.toList()));
 		// TODO: complete the clone procedure
 		return land;
+	}
+
+	public MultiPolygon getGeometry() {
+		return geometry;
+	}
+
+	public void setGeometry(MultiPolygon geometry) {
+		this.geometry = geometry;
 	}
 }

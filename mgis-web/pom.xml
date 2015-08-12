@@ -15,7 +15,6 @@
 
 	<dependencies>
 
-
 		<!-- Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>

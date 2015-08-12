@@ -1,12 +1,24 @@
 package ru.sovzond.mgis2.registers.lands;
 
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.registers.national_classifiers.LandAllowedUsage;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZoneType;
 
-import javax.persistence.*;
-import java.util.Date;
+import com.vividsolutions.jts.geom.MultiPolygon;
 
 @Entity
 @Table(name = "lands_territorial_zone")
@@ -69,6 +81,10 @@ public class TerritorialZone implements Cloneable {
 	@Column
 	private Date stateOnTheDate;
 
+	@Type(type = "org.hibernate.spatial.GeometryType")
+	@Column(name = "geometry")
+	private MultiPolygon geometry;
+
 	public Long getId() {
 		return id;
 	}
@@ -84,7 +100,6 @@ public class TerritorialZone implements Cloneable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public TerritorialZoneType getZoneType() {
 		return zoneType;
@@ -206,6 +221,7 @@ public class TerritorialZone implements Cloneable {
 		this.stateOnTheDate = stateOnTheDate;
 	}
 
+	@Override
 	public TerritorialZone clone() {
 		TerritorialZone zone = new TerritorialZone();
 		zone.setAdditionalDescription(additionalDescription);
@@ -226,6 +242,14 @@ public class TerritorialZone implements Cloneable {
 		zone.setBasisDocument(basisDocument != null ? basisDocument.clone() : null);
 		zone.setStateOnTheDate(stateOnTheDate);
 		return zone;
+	}
+
+	public MultiPolygon getGeometry() {
+		return geometry;
+	}
+
+	public void setGeometry(MultiPolygon geometry) {
+		this.geometry = geometry;
 	}
 
 }

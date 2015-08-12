@@ -1,75 +1,86 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>ru.sovzond.mgis2</groupId>
-        <artifactId>mgis-parent</artifactId>
-        <version>0.0.1</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>mgis-data-access</artifactId>
-    <packaging>jar</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>ru.sovzond.mgis2</groupId>
+		<artifactId>mgis-parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>mgis-data-access</artifactId>
+	<packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>ru.sovzond.mgis2</groupId>
-            <artifactId>mgis-model</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>ru.sovzond.mgis2</groupId>
+			<artifactId>mgis-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
-        <!-- Spring dependencies -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+		<!-- Spring dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-        <!-- Hibernate depeldencies -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>4.3.9.Final</version>
-        </dependency>
+		<!-- Hibernate depeldencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<scope>compile</scope>
+		</dependency>
 
-        <!-- Postgresql dependency -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.4-1201-jdbc41</version>
-        </dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-spatial</artifactId>
+			<scope>compile</scope>
+		</dependency>
 
-        <!-- JUnit depeldency -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.hibernatespatial</groupId>
+			<artifactId>hibernate-spatial-postgis</artifactId>
+			<version>1.1</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>2.0.21-beta</version>
-            <scope>test</scope>
-        </dependency>
+		<!-- Postgresql dependency -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1201-jdbc41</version>
+		</dependency>
 
-    </dependencies>
+		<!-- JUnit depeldency -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.0.21-beta</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
 
 </project>
