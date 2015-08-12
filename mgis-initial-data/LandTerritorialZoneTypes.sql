@@ -1,0 +1,20 @@
+﻿INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'601','Зона застройки индивидуальными жилыми домами (Ж1)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'602','Зона застройки малоэтажными жилыми домами (Ж2)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'603','Зона застройки среднеэтажными жилыми домами (Ж3)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'604','Зона застройки многоэтажными жилыми домами (Ж4)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'605','Зона жилой застройки специального вида (Ж5)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'606','Зона делового, общественного и коммерческого назначения (О1)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'607','Зона размещения объектов социального и коммунально-бытового назначения (О2)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'608','Зона обслуживания объектов, необходимых для осуществления производственной и предпринимательской деятельности (О3)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'609','Общественно-деловая зона специального вида (О4)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'610','Производственная зона (П1)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'611','Коммунально-складская зона (П2)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'612','Зона инженерной инфраструктуры (И)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'613','Зона транспортной инфраструктуры (Т)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'614','Зона сельскохозяйственных угодий (Сх1)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'615','Зона, занятая объектами сельскохозяйственного назначения (Сх2)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'616','Зона рекреационного назначения (Р)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'617','Зона специального назначения, связанная с захоронениями (Сп1)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'618','Зона специального назначения, связанная с государственными объектами (Сп2)');
+INSERT INTO nc_territorial_zone_type (id, code, name) VALUES (nextval('nc_territorial_zone_type_seq'),'619','Зона иного назначения, в соответствии с местными условиями (территория общего пользования)');
+
