@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "lands_land_control_inspection_reason")
 public class LandControlInspectionReason {
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_land_control_inspection_reason_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
