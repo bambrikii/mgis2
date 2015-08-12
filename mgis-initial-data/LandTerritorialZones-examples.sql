@@ -1,3 +1,3 @@
 ﻿INSERT INTO lands_territorial_zone (id, name, zonetype_id) VALUES (nextval('lands_territorial_zone_seq'), 'Территориальная зона 1', 1);
 INSERT INTO lands_territorial_zone (id, name, zonetype_id) VALUES (nextval('lands_territorial_zone_seq'), 'Территориальная зона 2', 2);
-INSERT INTO lands_territorial_zone (id, name, zonetype_id) VALUES (nextval('lands_territorial_zone_seq'), 'Территориальная зона 3', 3)
+INSERT INTO lands_territorial_zone (id, name, zonetype_id) VALUES (nextval('lands_territorial_zone_seq'), 'Территориальная зона 3', 3);
