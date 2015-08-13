@@ -18,6 +18,10 @@
 
 	<link type="text/css" rel="stylesheet" href="bower_components/select2/select2.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css">
+	<link type="text/css" rel="stylesheet" href="bower_components/openlayers3/build/ol.css">
+	<link type="text/css" rel="stylesheet" href="bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.css">
+	<link type="text/css" rel="stylesheet" href="bower_components/angular-openlayers-directive/css/markers.css">
+	<link type="text/css" rel="stylesheet" href="bower_components/angular-openlayers-directive/css/openlayers.css">
 
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
@@ -41,6 +45,9 @@
 	<script type="text/javascript" src="bower_components/angular-ui-select/dist/select.js"></script>
 	<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
 	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
+	<script type="text/javascript" src="bower_components/openlayers3/build/ol.js"></script>
+	<script type="text/javascript" src="bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
+	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>

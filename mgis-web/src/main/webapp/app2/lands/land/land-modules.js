@@ -1,4 +1,4 @@
-angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
+angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", "openlayers-directive", //
 	"mgis.commons", //
 	"mgis.lands.services",
 	"mgis.nc.services",
@@ -12,6 +12,11 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 				url: "/lands/:landId",
 				templateUrl: "app2/lands/land/land-list.htm"
 			})
+			.state("lands.map",
+			{
+				url: "map/",
+				templateUrl: "app2/lands/land/land-map.htm"
+			});
 	})
 	.controller("LandsLandController", function ($scope, LandsLandService, $rootScope, MGISCommonsModalForm,
 												 NcOKATOService,
@@ -214,5 +219,61 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 					$modalInstance.close();
 				}));
 		}
+	}) //
+	.controller("LandsMapController", function ($scope) {
+		angular.extend($scope, {
+			london: {
+				lat: 51.505,
+				lon: -0.09,
+				zoom: 3
+			},
+			layers: [
+				{
+					name: 'OpenStreetMap',
+					active: true,
+					source: {
+						type: 'OSM'
+					}
+				},
+				{
+					name: 'OpenCycleMap',
+					active: false,
+					source: {
+						type: 'OSM',
+						url: 'http://{a-c}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+						attribution: 'All maps &copy; <a href="http://www.opencyclemap.org/">OpenCycleMap</a>'
+					}
+				},
+				{
+					name: 'MapBox Night',
+					active: false,
+					source: {
+						type: 'TileJSON',
+						url: 'https://api.tiles.mapbox.com/v3/examples.map-0l53fhk2.jsonp'
+					}
+				},
+				{
+					name: 'MapBox Terrain',
+					active: false,
+					source: {
+						type: 'TileJSON',
+						url: 'https://api.tiles.mapbox.com/v3/examples.map-i86nkdio.jsonp'
+					}
+				},
+				{
+					name: 'Mapbox Geography Class',
+					active: false,
+					source: {
+						type: 'TileJSON',
+						url: 'http://api.tiles.mapbox.com/v3/mapbox.geography-class.jsonp'
+					}
+				}
+			],
+			changeLayer: function (layer) {
+				$scope.layers.map(function (l) {
+					l.active = (l === layer);
+				});
+			}
+		});
 	})
 ;
