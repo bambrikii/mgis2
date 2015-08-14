@@ -22,6 +22,7 @@
 	<link type="text/css" rel="stylesheet" href="bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/angular-openlayers-directive/css/markers.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/angular-openlayers-directive/css/openlayers.css">
+	<link type="text/css" rel="stylesheet" href="bower_components/ol3-layerswitcher/src/ol3-layerswitcher.css">
 
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
@@ -48,6 +49,7 @@
 	<script type="text/javascript" src="bower_components/openlayers3/build/ol.js"></script>
 	<script type="text/javascript" src="bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
 	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script type="text/javascript" src="bower_components/ol3-layerswitcher/src/ol3-layerswitcher.js"></script>
 
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>

@@ -1,5 +1,12 @@
 <div ng-controller="LandsMapsController">
-
+	<style>
+		.rotate-north {
+			text-align: right;
+			bottom: .5em;
+			left: .5em;
+			max-width: calc(100% - 1.3em);
+		}
+	</style>
 	<form name="landSearchForm" class="form-horizontal pull-right" style="position: relative; top: -60px; height: 0px;">
 		<div class="control-group">
 			<label for="cadastralNumber" translate>CadastralNumber</label>
@@ -13,8 +20,14 @@
 	</form>
 
 	<div>
-		<openlayers ol-center="london" custom-layers="true" style="height: 70%;">
-			<ol-layer name="{{layer.name}}" ol-layer-properties="layer" ng-repeat="layer in layers|filter:{active:true}"></ol-layer>
+		<openlayers ol-center="center" custom-layers="true" style="height: 70%;"
+					ol-controls="zoom,navigation,layerSwitcher,attribution,mousePosition">
+			<!--<ol-layer name="{{layer.name}}" ol-layer-properties="layer" ng-repeat="layer in layers|filter:{active:true}">-->
+			<!--</ol-layer>-->
+			<ol-layer name="{{layer.name}}" ol-layer-properties="layer" ng-repeat="layer in layers">
+				<ol-control ol-control-properties="rotateNorth"></ol-control>
+				<!--<ol-control ol-control-properties="layerSwitcher"></ol-control>-->
+			</ol-layer>
 		</openlayers>
 	</div>
 </div>

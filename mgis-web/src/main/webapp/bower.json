@@ -38,7 +38,8 @@
     "angular-ui-select": "~0.12.1",
     "select2": "~3.5.2",
     "angular-openlayers-directive": "~0.0.9",
-    "angular-sanitize": "~1.4.3"
+    "angular-sanitize": "~1.4.3",
+    "ol3-layerswitcher": "~1.0.2"
   },
   "resolutions": {
     "jquery": "1.10.2",
