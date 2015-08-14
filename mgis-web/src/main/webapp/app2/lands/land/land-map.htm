@@ -1,7 +1,0 @@
-<div ng-controller="LandsMapController">
-	<div class="container">
-		<openlayers ol-center="london" custom-layers="true" height="100%" width="100%">
-			<ol-layer name="{{ layer.name }}" ol-layer-properties="layer" ng-repeat="layer in layers|filter: { active: true}"></ol-layer>
-		</openlayers>
-	</div>
-</div>
