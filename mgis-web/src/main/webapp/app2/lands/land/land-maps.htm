@@ -19,14 +19,16 @@
 		</div>
 	</form>
 
+    <div id="map"></div>
+
 	<div>
 		<openlayers ol-center="center" custom-layers="true" style="height: 70%;"
 					ol-controls="zoom,navigation,layerSwitcher,attribution,mousePosition">
 			<!--<ol-layer name="{{layer.name}}" ol-layer-properties="layer" ng-repeat="layer in layers|filter:{active:true}">-->
 			<!--</ol-layer>-->
 			<ol-layer name="{{layer.name}}" ol-layer-properties="layer" ng-repeat="layer in layers">
+                <ol-control ol-control-properties="layerSwitcher"></ol-control>
 				<ol-control ol-control-properties="rotateNorth"></ol-control>
-				<!--<ol-control ol-control-properties="layerSwitcher"></ol-control>-->
 			</ol-layer>
 		</openlayers>
 	</div>
