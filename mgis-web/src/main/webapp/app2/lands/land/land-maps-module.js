@@ -24,7 +24,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
         var landsVectorSource = new ol.source.ServerVector({
             format: new ol.format.GeoJSON(),
             loader: function (extent, resolution, projection) {
-                var url = 'proxy?' + ('http://localhost:8081/geoserver/mgis2/wfs?service=WFS&version=1.1.0&layers=mgis2:lands_land&request=GetFeature&typeNames=lands_land&srsName=EPSG:3576&bbox=' + extent.join(','));
+                var url = 'proxy?' + ('http://localhost:8081/geoserver/mgis2/wfs?service=WFS&version=1.1.0&layers=mgis2:lands_land&request=GetFeature&typeNames=lands_land&srsName=EPSG:3857&bbox=' + extent.join(','));
                 $.ajax({
                     url: url,
                     success: function (data) {
@@ -35,7 +35,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
                     }
                 });
             },
-            projection: 'EPSG:3576',
+            projection: 'EPSG:3857',
             strategy: ol.loadingstrategy.createTile(new ol.tilegrid.XYZ({
                 maxZoom: 19
             }))
