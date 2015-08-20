@@ -95,6 +95,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
                             })
                         }),
                         new ol.layer.Vector({
+                            title: 'Lands Vector',
                             source: landsVectorSource,
                             style: new ol.style.Style({
                                 image: new ol.style.Circle({
