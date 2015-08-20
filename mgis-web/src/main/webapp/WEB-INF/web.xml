@@ -15,7 +15,7 @@
 	</servlet>
 	<servlet>
 		<servlet-name>ProxyServlet</servlet-name>
-		<jsp-file>/WEB-INF/pages/proxy.jsp</jsp-file>
+		<servlet-class>ru.sovzond.mgis2.web.proxy.ProxyServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
