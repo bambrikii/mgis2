@@ -21,123 +21,6 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
             $state.go("^.lands");
         }
 
-        var landsVectorSource = new ol.source.ServerVector({
-            format: new ol.format.GeoJSON(),
-            loader: function (extent, resolution, projection) {
-                console.log(extent);
-                console.log(JSON.stringify(projection));
-                var url = 'proxy?' + ('http://localhost:8081/geoserver/mgis2/wfs?service=WFS&version=1.1.0&layers=mgis2:lands_land&request=GetFeature&typeNames=lands_land&bbox=' + extent.join(',') + ',' + projection.a + '&outputFormat=application/json&srsName=' + /*projection.a*/ "EPSG:3857"/* "EPSG:41001"*/);
-                $.ajax({
-                    url: url,
-                    success: function (data) {
-                        var features = landsVectorSource.readFeatures(data);
-                        console.log(features.length);
-                        landsVectorSource.addFeatures(landsVectorSource.readFeatures(data));
-                    },
-                    error: function (data) {
-                        console.log("error: " + JSON.stringify(data));
-                    }
-                });
-            },
-            strategy: ol.loadingstrategy.createTile(new ol.tilegrid.XYZ({
-                maxZoom: 19
-            }))
-        });
-
-        var mousePositionControl = new ol.control.MousePosition({
-            coordinateFormat: ol.coordinate.createStringXY(4),
-            className: 'custom-mouse-position',
-            target: document.getElementById('mouse-position'),
-            undefinedHTML: '&nbsp;'
-        });
-
-        var map = new ol.Map({
-            target: 'map',
-            numZoomLevels: 20,
-            layers: [
-                new ol.layer.Group({
-                    'title': 'Base maps',
-                    layers: [
-                        new ol.layer.Tile({
-                            title: 'Water color',
-                            type: 'base',
-                            visible: false,
-                            source: new ol.source.Stamen({
-                                layer: 'watercolor'
-                            })
-                        }),
-                        new ol.layer.Tile({
-                            title: 'OSM',
-                            type: 'base',
-                            visible: true,
-                            source: new ol.source.OSM()
-                        })
-                        ,
-                        new ol.layer.Tile({
-                            title: 'Satellite',
-                            type: 'base',
-                            visible: false,
-                            source: new ol.source.MapQuest({layer: 'sat'})
-                        })
-                    ]
-                }),
-                new ol.layer.Group({
-                    title: 'Overlays',
-                    layers: [
-                        new ol.layer.Tile({
-                            title: 'Countries',
-                            source: new ol.source.TileWMS({
-                                url: 'http://demo.opengeo.org/geoserver/wms',
-                                params: {'LAYERS': 'ne:ne_10m_admin_1_states_provinces_lines_shp'},
-                                serverType: 'geoserver'
-                            })
-                        })
-                    ]
-                }),
-                new ol.layer.Group({
-                    title: 'MGIS2',
-                    layers: [
-                        new ol.layer.Tile({
-                            title: 'Lands',
-                            source: new ol.source.TileWMS({
-                                url: 'http://demo.opengeo.org/geoserver/wms',
-                                params: {'LAYERS': 'ne:ne_10m_admin_1_states_provinces_lines_shp'},
-                                serverType: 'geoserver'
-                            })
-                        }),
-                        new ol.layer.Vector({
-                            title: 'Lands Vector',
-                            source: landsVectorSource,
-                            style: new ol.style.Style({
-                                stroke: new ol.style.Stroke({
-                                    color: 'blue',
-                                    width: 3
-                                }),
-                                fill: new ol.style.Fill({
-                                    color: 'rgba(0, 0, 255, 0.1)'
-                                })
-                            })
-                        })
-                    ]
-                })
-            ],
-            view: new ol.View({
-                center: ol.proj.transform([0, 0], 'EPSG:4326', 'EPSG:3857'),
-                zoom: 1
-            }),
-            controls: ol.control.defaults({
-                attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
-                    collapsible: true
-                })
-            }).extend([new ol.control.ScaleLine({
-                units: 'metric'
-            }), mousePositionControl]),
-        });
-        console.log(map);
-
-        var layerSwitcher = new ol.control.LayerSwitcher({});
-        map.addControl(layerSwitcher);
-
         $scope.find = function () {
             LandsLandService.get("", $scope.first, $scope.max, $scope.cadastralNumber).then(function (data) {
                 $scope.list = data.list;
@@ -146,5 +29,81 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
             });
         }
 
+        var map = L.map('map');
+        var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+            maxZoom: 18,
+            zoomControl: true
+        }).addTo(map);
+
+        map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text. Attribution overload
+
+        var landsLayer = new L.GeoJSON();
+
+        var reloadLands = function () {
+            var geoJsonUrl = "proxy?http://localhost:8081/geoserver/mgis2/wfs";
+            var defaultParameters = {
+                service: 'WFS',
+                version: '1.0.0',
+                request: 'getFeature',
+                typeName: 'mgis2:lands_land',
+                maxFeatures: 3000,
+                outputFormat: 'application/json'
+            }
+
+
+            var customParams = {
+                bbox: map.getBounds().toBBoxString(),
+            }
+            var parameters = L.Util.extend(defaultParameters, customParams);
+            console.log(geoJsonUrl + L.Util.getParamString(parameters));
+
+            $.ajax({
+                url: geoJsonUrl + L.Util.getParamString(parameters),
+                datatype: 'json',
+                jsonCallback: 'getJson',
+                success: function (data) {
+                    landsLayer.clearLayers();
+                    console.log("data: " + JSON.stringify(data));
+                    landsLayer.addData(data);
+                    landsLayer.eachLayer(function (layer) {
+                        var content = '<h2>Land:<\/h2>' +
+                                    //'<p><pre>' + JSON.stringify(layer.feature) + '</pre></p>'
+                                'Cadastral Number: ' + layer.feature.properties.cadastralnumber + '<br />' +
+                                'State Real Estate Cadastre Staging: ' + layer.feature.properties.staterealestatecadastreastaging + '<br />'
+                            ;
+                        layer.bindPopup(content);
+                    });
+                    map.addLayer(landsLayer);
+                }
+            });
+        };
+        map.on("moveend", reloadLands);
+        map.on("load", reloadLands);
+        map.setView(new L.LatLng(0, 0), 3);
+
+        //var baseLayers = {
+        //    'Mapnik': osmLayer
+        //}
+        //var overlayLayers = {
+        //    'Clouds': landsLayer
+        //}
+        //var control = L.control.activeLayers(baseLayers, overlayLayers)
+        //control.addTo(map)
+
+        var baseLayers = {
+            "Base Layers": {
+                "OpenStreetMap": osmLayer
+            }
+        }
+        var groupedOverlays = {
+            "Lands": {
+                "Restaurants": landsLayer
+            }
+        };
+
+        var options = {exclusiveGroups: ["Landmarks"]};
+
+        L.control.groupedLayers(baseLayers, groupedOverlays, options).addTo(map);
     })
 ;

@@ -40,7 +40,8 @@
     "angular-openlayers-directive": "~0.0.9",
     "angular-sanitize": "~1.4.3",
     "ol3-layerswitcher": "~1.0.2",
-    "leaflet": "~0.7.3"
+    "leaflet": "~0.7.3",
+    "leaflet-groupedlayercontrol": "~0.3.1"
   },
   "resolutions": {
     "jquery": "1.10.2",

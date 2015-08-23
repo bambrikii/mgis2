@@ -1,37 +1,32 @@
 <div ng-controller="LandsMapsController">
-	<style>
-		.rotate-north {
-			text-align: right;
-			bottom: .5em;
-			left: .5em;
-			max-width: calc(100% - 1.3em);
-		}
-	</style>
-	<form name="landSearchForm" class="form-horizontal pull-right" style="position: relative; top: -60px; height: 0px;">
-		<div class="control-group">
-			<label for="cadastralNumber" translate>CadastralNumber</label>
+    <style>
+        .rotate-north {
+            text-align: right;
+            bottom: .5em;
+            left: .5em;
+            max-width: calc(100% - 1.3em);
+        }
 
-			<div class="controls form-inline">
-				<input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber" class="form-control"/>
-				<button class="btn btn-primary btn-sm" ng-click="find()" translate>Find</button>
-				<button class="btn btn-primary btn-sm" ng-click="displayOnTheMap()" translate>Lands.Land.DisplayOnTheMap</button>
-			</div>
-		</div>
-	</form>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <form name="landSearchForm" class="form-horizontal pull-right" style="position: relative; top: -60px; height: 0px;">
+        <div class="control-group">
+            <label for="cadastralNumber" translate>CadastralNumber</label>
+
+            <div class="controls form-inline">
+                <input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber" class="form-control"/>
+                <button class="btn btn-primary btn-sm" ng-click="find()" translate>Find</button>
+                <button class="btn btn-primary btn-sm" ng-click="displayOnTheMap()" translate>Lands.Land.DisplayOnTheMap</button>
+            </div>
+        </div>
+    </form>
 
 
-	<div style="height: 70%;">
-		<div id="map"></div>
-		<!--<openlayers ol-center="center" custom-layers="true" style="height: 70%;"-->
-		<!--ol-controls="zoom,navigation,layerSwitcher,attribution,mousePosition">-->
-		<!--&lt;!&ndash;<ol-layer name="{{layer.name}}" ol-layer-properties="layer" ng-repeat="layer in layers|filter:{active:true}">&ndash;&gt;-->
-		<!--&lt;!&ndash;</ol-layer>&ndash;&gt;-->
-		<!--<ol-layer name="{{layer.name}}" ol-layer-properties="layer" ng-repeat="layer in layers">-->
-		<!--<ol-control ol-control-properties="layerSwitcher"></ol-control>-->
-		<!--<ol-control ol-control-properties="rotateNorth"></ol-control>-->
-		<!--</ol-layer>-->
-		<!--</openlayers>-->
-		<div id="mouse-position"></div>
-	</div>
+    <div style="height: 70%;">
+        <div id="map"></div>
+    </div>
 
 </div>
