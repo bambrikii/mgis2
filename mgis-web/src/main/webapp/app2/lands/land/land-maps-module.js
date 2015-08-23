@@ -40,7 +40,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 
         var landsLayer = new L.GeoJSON();
 
-        var reloadLands = function () {
+        var reloadLands = function (loadComplete) {
             var geoJsonUrl = "proxy?http://localhost:8081/geoserver/mgis2/wfs";
             var defaultParameters = {
                 service: 'WFS',
@@ -66,6 +66,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
                     landsLayer.clearLayers();
                     console.log("data: " + JSON.stringify(data));
                     landsLayer.addData(data);
+//                    var markers = new Array();
                     landsLayer.eachLayer(function (layer) {
                         var content = '<h2>Land:<\/h2>' +
                                     //'<p><pre>' + JSON.stringify(layer.feature) + '</pre></p>'
@@ -73,14 +74,25 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
                                 'State Real Estate Cadastre Staging: ' + layer.feature.properties.staterealestatecadastreastaging + '<br />'
                             ;
                         layer.bindPopup(content);
+//                        markers.push(layer.getBounds());
                     });
                     map.addLayer(landsLayer);
+                    if(loadComplete){
+                    	loadComplete();
+                    }
                 }
             });
         };
-        map.on("moveend", reloadLands);
-        map.on("load", reloadLands);
-        map.setView(new L.LatLng(0, 0), 3);
+        map.on("moveend", function() {
+        	reloadLands();
+        });
+        map.on("load", function(){
+        	reloadLands(function() {
+        		console.log("bounds: " + JSON.stringify(landsLayer.getBounds()));
+                map.fitBounds(landsLayer.getBounds());
+        	});
+        });
+        map.setView(new L.LatLng(0, 0), 1);
 
         //var baseLayers = {
         //    'Mapnik': osmLayer
