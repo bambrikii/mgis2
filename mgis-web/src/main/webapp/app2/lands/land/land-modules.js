@@ -13,39 +13,26 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 				templateUrl: "app2/lands/land/land-list.htm"
 			})
 		;
-	})
-	.controller("LandsLandController", function ($scope,
-												 $state,
-												 $rootScope,
-												 LandsLandService,
-												 MGISCommonsModalForm,
-												 NcOKATOService,
-												 NcOKTMOService,
-												 //NcTerritorialZoneService,
-												 NcLandAllowedUsageService,
-												 NcLandCategoryService,
-												 NcLandOwnershipFormService,
-												 NcLandRightKindService,
-												 NcLandEncumbranceService,
-												 CommonExecutivePersonService,
-												 LandsInspectionKindService,
-												 LandsInspectionTypeService,
-												 LandsAvailabilityOfViolationsService,
-												 LandsInspectionReasonService,
-												 LandsInspectionSubjectService,
-												 TerrZonesZoneService) {
-		$scope.cadastralNumber = "";
-		$scope.first = 0;
-		$scope.max = 15;
-		function updateGrid() {
-			LandsLandService.get("", $scope.first, $scope.max, $scope.cadastralNumber).then(function (data) {
-				$scope.list = data.list;
-				$scope.first = data.first;
-				$scope.max = data.max;
-			});
-		}
-
-		function editItem(modalScope) {
+	}) //
+	.factory("LandsLandCRUDService", function ($rootScope, LandsLandService,
+											   MGISCommonsModalForm,
+											   NcOKATOService,
+											   NcOKTMOService,
+											   //NcTerritorialZoneService,
+											   NcLandAllowedUsageService,
+											   NcLandCategoryService,
+											   NcLandOwnershipFormService,
+											   NcLandRightKindService,
+											   NcLandEncumbranceService,
+											   CommonExecutivePersonService,
+											   LandsInspectionKindService,
+											   LandsInspectionTypeService,
+											   LandsAvailabilityOfViolationsService,
+											   LandsInspectionReasonService,
+											   LandsInspectionSubjectService,
+											   TerrZonesZoneService) {
+		function editItem0(modalScope, updateGrid) {
+			//LandsLandCRUDService.editItem(modalScope, updateGrid);
 			LandsInspectionKindService.get().then(function (inspectionKinds) {
 				modalScope.availableInspectionKinds = inspectionKinds.list;
 				LandsInspectionTypeService.get().then(function (inspectionTypes) {
@@ -132,23 +119,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 			});
 		}
 
-		$scope.find = function () {
-			updateGrid();
-		}
-
-		$scope.addItem = function () {
-			var modalScope = $rootScope.$new();
-			modalScope.land = {
-				id: 0,
-				cadastralNumber: "",
-				landAreas: [],
-				rights: {},
-				characteristics: {}
-			}
-			editItem(modalScope);
-		}
-
-		$scope.editItem = function (id) {
+		function editItem(id, updateGrid) {
 			LandsLandService.get(id).then(function (data) {
 				var modalScope = $rootScope.$new();
 				if (!data.landCategory) {
@@ -164,16 +135,69 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 				if (!modalScope.land.landAreas) {
 					modalScope.land.landAreas = [];
 				}
-				editItem(modalScope);
+				editItem0(modalScope, updateGrid);
 			});
 		}
 
-		$scope.deleteItem = function (id) {
+		function addItem(updateGrid) {
+			var modalScope = $rootScope.$new();
+			modalScope.land = {
+				id: 0,
+				cadastralNumber: "",
+				landAreas: [],
+				rights: {},
+				characteristics: {}
+			}
+			editItem0(modalScope, updateGrid);
+		}
+
+		function deleteItem(id, updateGrid) {
 			MGISCommonsModalForm.confirmRemoval(function () {
 				LandsLandService.remove(id).then(function () {
 					updateGrid();
 				});
 			});
+		}
+
+		return {
+			addItem: addItem,
+			editItem: editItem,
+			deleteItem: deleteItem
+		}
+
+	}) //
+	.controller("LandsLandController", function ($scope,
+												 $state,
+												 $rootScope,
+												 LandsLandService,
+												 LandsLandCRUDService) {
+		$scope.cadastralNumber = "";
+		$scope.first = 0;
+		$scope.max = 15;
+		function updateGrid() {
+			LandsLandService.get("", $scope.first, $scope.max, $scope.cadastralNumber).then(function (data) {
+				$scope.list = data.list;
+				$scope.first = data.first;
+				$scope.max = data.max;
+			});
+		}
+
+		// editItem
+
+		$scope.find = function () {
+			updateGrid();
+		}
+
+		$scope.addItem = function () {
+			LandsLandCRUDService.addItem(updateGrid);
+		}
+
+		$scope.editItem = function (id) {
+			LandsLandCRUDService.editItem(id, updateGrid);
+		}
+
+		$scope.deleteItem = function (id) {
+			LandsLandCRUDService.deleteItem(id, updateGrid);
 		}
 
 		updateGrid();
