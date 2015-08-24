@@ -5,13 +5,6 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 	},
 	initialize: function (options) {
 		L.Util.setOptions(this, options);
-		this._lands = new Array();
-		//this._lands.push({
-		//	cadastralnumber: "000123"
-		//});
-		//this._lands.push({
-		//	cadastralnumber: "000124"
-		//});
 	},
 	onAdd: function (map) {
 		this._map = map;
@@ -64,12 +57,7 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 		if (!this._container) {
 			return;
 		}
-		//this._container.innerHTML = "";
-		this._landsList.innerHTML = "";
-		for (var i in this._lands) {
-			var land = this._lands[i];
-			this.addLand(land);
-		}
+		// TODO:
 	},
 	addLand: function (land) {
 		var label = document.createElement('span');
@@ -79,40 +67,29 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 		removeButton.landId = land.id;
 		removeButton.landCadastralNumber = land.cadastralnumber;
 		L.DomEvent.on(removeButton, 'click', this._onRemoveButtonClick, this);
-		this._lands.push(land);
 		var container = document.createElement("div");
 		container.appendChild(label);
 		container.appendChild(removeButton);
 		this._landsList.appendChild(container);
 	},
 	removeLand: function (land) {
-		console.log(JSON.stringify(land));
-		for (var i in this._lands) {
-			var land2 = this._lands[i];
-			if ((land.id && land.id == land2.id) ||
-				(land.cadastralnumber && land.cadastralnumber == land2.cadastralnumber)) {
-				console.log(JSON.stringify(land));
-				this._lands.splice(i, 1);
+		for (var land2 in this._landsList.getElementsByTagName("button")) {
+			if ((land.id && land.id == land2.lanId) ||
+				(land.cadastralnumber && land.cadastralnumber == land2.landCadastralNumber)) {
+				this._removeLand(land2)
 				return true;
 			}
 		}
 	},
 	clearLands: function () {
-		this._lands.splice(0, this._lands.length)
-	},
-	getLands: function () {
-		return this._lands;
+		this._landsList.innerHTML = "";
 	},
 	_onRemoveButtonClick: function (event) {
-		if (
-			this.removeLand({
-				id: event.currentTarget.landId,
-				cadastralnumber: event.currentTarget.landCadastralNumber
-			})
-		) {
-			var parent = event.currentTarget.parentNode;
-			parent.parentNode.removeChild(parent);
-		}
+		this._removeLand(event.currentTarget);
+	},
+	_removeLand: function (button) {
+		var parent = button.parentNode;
+		parent.parentNode.removeChild(parent);
 	},
 	_toggleExpandCollapse: function (collapsed) {
 		if (collapsed) {
