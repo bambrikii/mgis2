@@ -13,7 +13,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
             });
     })
 //
-    .controller("LandsMapsController", function ($scope, $state, LandsLandService) {
+    .controller("LandsMapsController", function ($scope, $state, LandsLandService, $compile, $rootScope) {
 
         ol.ProxyHost = "/proxy.jsp?url=";
 
@@ -68,29 +68,43 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
                     landsLayer.addData(data);
 //                    var markers = new Array();
                     landsLayer.eachLayer(function (layer) {
-                        var content = '<h2>Land:<\/h2>' +
-                                    //'<p><pre>' + JSON.stringify(layer.feature) + '</pre></p>'
-                                'Cadastral Number: ' + layer.feature.properties.cadastralnumber + '<br />' +
-                                'State Real Estate Cadastre Staging: ' + layer.feature.properties.staterealestatecadastreastaging + '<br />'
+                        var popupScope = $rootScope.$new();
+                        popupScope.edit = function (id) {
+                            alert("edit.id: " + id);
+                        }
+                        popupScope.addToSelected = function (id) {
+                            alert("addToSelected.id: " + id);
+                        }
+                        popupScope.remove = function (id) {
+                            alert("remove.id: " + id);
+                        }
+                        var content = '<div><h2 translate>Lands.Land</h2>' +
+                                '<span translate>CadastralNumber</span>: ' + layer.feature.properties.cadastralnumber + '<br />' +
+                                '<span translate>Lands.Land.StateRealEstateCadastralStaging</span>: ' + layer.feature.properties.staterealestatecadastreastaging + '<br />'
+                                + '<button ng-click="edit(' + layer.feature.properties.id + ')" translate>Edit</button>' //
+                                + '<button ng-click="addToSelected(' + layer.feature.properties.id + ')" translate>Add</button>' //
+                                + '<button ng-click="remove(' + layer.feature.properties.id + ')" translate>Remove</button>' //
+                                + '</div>'
                             ;
-                        layer.bindPopup(content);
+                        var linkFunction = $compile(angular.element(content));
+                        layer.bindPopup(linkFunction(popupScope)[0]);
 //                        markers.push(layer.getBounds());
                     });
                     map.addLayer(landsLayer);
-                    if(loadComplete){
-                    	loadComplete();
+                    if (loadComplete) {
+                        loadComplete();
                     }
                 }
             });
         };
-        map.on("moveend", function() {
-        	reloadLands();
+        map.on("moveend", function () {
+            reloadLands();
         });
-        map.on("load", function(){
-        	reloadLands(function() {
-        		console.log("bounds: " + JSON.stringify(landsLayer.getBounds()));
+        map.on("load", function () {
+            reloadLands(function () {
+                console.log("bounds: " + JSON.stringify(landsLayer.getBounds()));
                 map.fitBounds(landsLayer.getBounds());
-        	});
+            });
         });
         map.setView(new L.LatLng(0, 0), 1);
 
