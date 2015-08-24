@@ -127,5 +127,8 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 		var options = {exclusiveGroups: ["Landmarks"]};
 
 		L.control.groupedLayers(baseLayers, groupedOverlays, options).addTo(map);
+		var landsSelectorControl = new L.Control.MGIS2LandsSelector();
+		map.addControl(landsSelectorControl);
+
 	})
 ;
