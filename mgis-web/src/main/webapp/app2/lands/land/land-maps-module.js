@@ -40,6 +40,12 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 		map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text. Attribution overload
 
 		var landsSelectorControl = new L.Control.MGIS2LandsSelector();
+		landsSelectorControl.subscribeToAddLand(function (land) {
+			return LandsLandSelectorService.add(land);
+		});
+		landsSelectorControl.subscribeToRemoveLand(function (land) {
+			return LandsLandSelectorService.remove(land);
+		});
 
 		var landsLayer = new L.GeoJSON();
 
@@ -81,9 +87,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 							LandsLandCRUDService.editItem(popupScope.land.id, reloadLands);
 						}
 						popupScope.addToSelected = function () {
-							if (LandsLandSelectorService.add(popupScope.land)) {
-								landsSelectorControl.addLand(popupScope.land);
-							}
+							landsSelectorControl.addLand(popupScope.land);
 						}
 						popupScope.removeItem = function () {
 							LandsLandCRUDService.deleteItem(popupScope.land.id, reloadLands);

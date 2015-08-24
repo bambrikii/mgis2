@@ -1,14 +1,17 @@
 L.Control.MGIS2LandsSelector = L.Control.extend({
 	options: {
 		position: 'topright',
-		collapsed: false,
+		expand: false,
+		className: 'leaflet-control-mgis-lands',
 	},
 	initialize: function (options) {
 		L.Util.setOptions(this, options);
+		this._addListeners = new Array();
+		this._removeListeners = new Array();
 	},
 	onAdd: function (map) {
 		this._map = map;
-		var className = 'leaflet-control-mgis-lands';
+		var className = this.options.className;
 		var container = this._container = L.DomUtil.create('div', className + ' leaflet-control-layers leaflet-control');
 		//if (!L.Browser.touch) {
 		L.DomEvent.disableClickPropagation(container);
@@ -16,11 +19,9 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 		//} else {
 		//L.DomEvent.on(container, 'click', L.DomEvent.stopPropagation);
 		//}
-		container.setAttribute("aria-haspopup", true);
 
-		L.DomEvent
-			.on(container, 'mouseover', this._expand, this)
-			.on(container, 'mouseout', this._collapse, this);
+		container.setAttribute("aria-haspopup", true);
+		var landsList = this._landsList = L.DomUtil.create("div", className + "-list", container);
 
 		var toggleLink = this._toggleLink = L.DomUtil.create('a', className + '-toggle', container);
 		toggleLink.href = "#/lands/maps/";
@@ -29,29 +30,26 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 
 		var me = this;
 		L.DomEvent
-			.on(toggleLink, 'click', function () {
-				me._toggleExpandCollapse(L.DomUtil.addClass(this._container, 'leaflet-control-mgis-lands-collapsed'));
-			});
+			.on(container, 'mouseover', function (event) {
+				this._toggleExpand(event, true && me._landsList.innerHTML != "");
+			}, this)
+			.on(container, 'mouseout', function (event) {
+				this._toggleExpand(event, false);
+			}, this)
+			.on(toggleLink, 'click', function (event) {
+				this._toggleExpand(event, me._landsList.innerHTML != "");
+			}, this)
+		;
 
-		var landsList = this._landsList = L.DomUtil.create("div", className + "-list", container);
-
-		map.on("mgislandadd", this._onLandAdd, this);
-		map.on("mgislandremove", this._onLandRemove, this);
 
 		this._update();
-		this._toggleExpandCollapse(this.options.collapsed);
+		this._toggleExpand({}, this.options.expand);
 
 		return container;
 	},
 	onRemove: function (map) {
-		map.off("mgislandadd", this._onLandAdd);
-		map.off("mgislandremove", this._onLandRemove);
-	},
-	_onLandAdd: function (e) {
-
-	},
-	_onLandRemove: function (e) {
-
+		this._addListeners.splice(0, this._addListeners.length);
+		this._removeListeners.splice(0, this._removeListeners.length);
 	},
 	_update: function () {
 		if (!this._container) {
@@ -59,52 +57,74 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 		}
 		// TODO:
 	},
+	subscribeToAddLand: function (listener) {
+		this._addListeners.push(listener);
+	},
+	subscribeToRemoveLand: function (listener) {
+		this._removeListeners.push(listener);
+	},
 	addLand: function (land) {
-		var label = document.createElement('span');
-		label.innerHTML = land.cadastralnumber;
-		var removeButton = document.createElement('button');
-		removeButton.innerHTML = "---";
-		removeButton.landId = land.id;
-		removeButton.landCadastralNumber = land.cadastralnumber;
-		L.DomEvent.on(removeButton, 'click', this._onRemoveButtonClick, this);
-		var container = document.createElement("div");
-		container.appendChild(label);
-		container.appendChild(removeButton);
-		this._landsList.appendChild(container);
+		var addResult = true;
+		for (var i in this._addListeners) {
+			addResult &= this._addListeners[i](land);
+		}
+		if (addResult) {
+			var label = document.createElement('span');
+			label.innerHTML = land.cadastralnumber;
+			var removeButton = document.createElement('button');
+			removeButton.innerHTML = "---";
+			removeButton.landId = land.id;
+			removeButton.landCadastralNumber = land.cadastralnumber;
+			L.DomEvent.on(removeButton, 'click', this._onRemoveButtonClick, this);
+			var container = document.createElement("div");
+			container.appendChild(label);
+			container.appendChild(removeButton);
+			this._landsList.appendChild(container);
+			this._toggleExpand({}, true);
+		}
 	},
 	removeLand: function (land) {
-		for (var land2 in this._landsList.getElementsByTagName("button")) {
-			if ((land.id && land.id == land2.lanId) ||
-				(land.cadastralnumber && land.cadastralnumber == land2.landCadastralNumber)) {
-				this._removeLand(land2)
-				return true;
+		var removeResult = true;
+		for (var i in this._removeListeners) {
+			removeResult &= this._removeListeners[i](land);
+		}
+		if (removeResult) {
+			var buttons = this._landsList.getElementsByTagName("button");
+			for (var i in  buttons) {
+				var button = buttons[i];
+				if ((land.id && land.id == button.landId) ||
+					(land.cadastralnumber && land.cadastralnumber == button.landCadastralNumber)) {
+					var parent = button.parentNode;
+					parent.parentNode.removeChild(parent);
+					if (this._landsList.innerHTML == "") {
+						this._toggleExpand({}, false);
+					}
+					return true;
+				}
 			}
 		}
+		return false;
 	},
 	clearLands: function () {
-		this._landsList.innerHTML = "";
-	},
-	_onRemoveButtonClick: function (event) {
-		this._removeLand(event.currentTarget);
-	},
-	_removeLand: function (button) {
-		var parent = button.parentNode;
-		parent.parentNode.removeChild(parent);
-	},
-	_toggleExpandCollapse: function (collapsed) {
-		if (collapsed) {
-			this._collapse();
-		} else {
-			this._expand();
+		for (var land2 in this._landsList.getElementsByTagName("button")) {
+			this.removeLand({id: land2.landId, cadastralnumber: land2.cadastralnumber});
 		}
 	},
-	_expand: function () {
-		L.DomUtil.addClass(this._container, 'leaflet-control-mgis-lands-expanded');
-		L.DomUtil.removeClass(this._container, 'leaflet-control-mgis-lands-collapsed');
+	_onRemoveButtonClick: function (event) {
+		var target = event.currentTarget;
+		this.removeLand({id: target.landId, cadastralnumber: target.landCadastralNumber});
 	},
-	_collapse: function () {
-		L.DomUtil.addClass(this._container, 'leaflet-control-mgis-lands-collapsed');
-		L.DomUtil.removeClass(this._container, 'leaflet-control-mgis-lands-expanded');
+	_toggleExpand: function (event, expand) {
+		if (
+			(expand != undefined && expand) ||
+			(expand == undefined && L.DomUtil.hasClass(this._container, 'leaflet-control-mgis-lands-collapsed'))
+		) {
+			L.DomUtil.addClass(this._container, 'leaflet-control-mgis-lands-expanded');
+			L.DomUtil.removeClass(this._container, 'leaflet-control-mgis-lands-collapsed');
+		} else {
+			L.DomUtil.addClass(this._container, 'leaflet-control-mgis-lands-collapsed');
+			L.DomUtil.removeClass(this._container, 'leaflet-control-mgis-lands-expanded');
+		}
 	}
 })
 ;
