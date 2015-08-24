@@ -14,9 +14,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 			});
 	})
 //
-	.controller("LandsMapsController", function ($scope, $state, LandsLandService, $compile, $rootScope, LandsLandCRUDService) {
-
-		ol.ProxyHost = "/proxy.jsp?url=";
+	.controller("LandsMapsController", function ($scope, $state, LandsLandService, $compile, $rootScope, LandsLandCRUDService, $templateRequest) {
 
 		$scope.displayOnTheMap = function () {
 			$state.go("^.lands");
@@ -29,6 +27,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 				$scope.max = data.max;
 			});
 		}
+
 
 		var map = L.map('map');
 		var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -67,29 +66,25 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 					landsLayer.clearLayers();
 					console.log("data: " + JSON.stringify(data));
 					landsLayer.addData(data);
-//                    var markers = new Array();
 					landsLayer.eachLayer(function (layer) {
+						var linkFunction = null;
 						var popupScope = $rootScope.$new();
-						popupScope.edit = function (id) {
-							alert("edit.id: " + id);
+						popupScope.id = layer.feature.properties.id;
+						popupScope.cadastralnumber = layer.feature.properties.cadastralnumber;
+						popupScope.staterealestatecadastreastaging = layer.feature.properties.staterealestatecadastreastaging;
+						popupScope.editItem = function (id) {
+							LandsLandCRUDService.editItem(popupScope.id, reloadLands);
 						}
-						popupScope.addToSelected = function (id) {
-							alert("addToSelected.id: " + id);
+						popupScope.addToSelected = function () {
+							LandsLandCRUDService.editItem(popupScope.id, reloadLands);
 						}
-						popupScope.remove = function (id) {
-							alert("remove.id: " + id);
+						popupScope.removeItem = function () {
+							LandsLandCRUDService.deleteItem(popupScope.id, reloadLands);
 						}
-						var content = '<div><h2 translate>Lands.Land</h2>' +
-								'<span translate>CadastralNumber</span>: ' + layer.feature.properties.cadastralnumber + '<br />' +
-								'<span translate>Lands.Land.StateRealEstateCadastralStaging</span>: ' + layer.feature.properties.staterealestatecadastreastaging + '<br />'
-								+ '<button ng-click="LandsLandCRUDService.editItem(' + layer.feature.properties.id + ')" translate>Edit</button>' //
-								+ '<button ng-click="addToSelected(' + layer.feature.properties.id + ')" translate>Add</button>' //
-								+ '<button ng-click="remove(' + layer.feature.properties.id + ')" translate>Remove</button>' //
-								+ '</div>'
-							;
-						var linkFunction = $compile(angular.element(content));
-						layer.bindPopup(linkFunction(popupScope)[0]);
-//                        markers.push(layer.getBounds());
+						$templateRequest("app2/lands/land/land-maps-popup.htm").then(function (content) {
+							linkFunction = $compile(angular.element(content));
+							layer.bindPopup(linkFunction(popupScope)[0]);
+						});
 					});
 					map.addLayer(landsLayer);
 					if (loadComplete) {
