@@ -14,6 +14,46 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 			})
 		;
 	}) //
+	.factory("LandsLandSelectorService", function () {
+		var _lands = new Array();
+		return {
+			add: function (land) {
+				var found = false;
+				for (var i in _lands) {
+					var land2 = _lands[i];
+					if ((land.id && land.id == land2.id) ||
+						(land.cadastralnumber && land.cadastralnumber == land2.cadastralnumber)) {
+						var land2 = _lands[i];
+						found = true;
+					}
+				}
+				if (!found) {
+					_lands.push(land);
+					return true;
+				}
+				return false;
+			},
+			remove: function (land) {
+				for (var i in _lands) {
+					var land2 = _lands[i];
+					if ((land.id && land.id == land2.id) ||
+						(land.cadastralnumber && land.cadastralnumber == land2.cadastralnumber)) {
+						console.log(JSON.stringify(land));
+						_lands.splice(i, 1);
+						return true;
+					}
+				}
+				return false;
+			},
+			list: function () {
+				var result = new Array();
+				for (var i in _lands) {
+					result.push(_lands[i]);
+				}
+				return result;
+			}
+		}
+	})
 	.factory("LandsLandCRUDService", function ($rootScope, LandsLandService,
 											   MGISCommonsModalForm,
 											   NcOKATOService,

@@ -42,9 +42,6 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 
 		var landsList = this._landsList = L.DomUtil.create("div", className + "-list", container);
 
-		//container.appendChild(toggleLink);
-		//container.appendChild(landsList);
-
 		map.on("mgislandadd", this._onLandAdd, this);
 		map.on("mgislandremove", this._onLandRemove, this);
 
@@ -69,7 +66,7 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 		}
 		//this._container.innerHTML = "";
 		this._landsList.innerHTML = "";
-		for (i in this._lands) {
+		for (var i in this._lands) {
 			var land = this._lands[i];
 			this.addLand(land);
 		}

@@ -14,7 +14,8 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 			});
 	})
 //
-	.controller("LandsMapsController", function ($scope, $state, LandsLandService, $compile, $rootScope, LandsLandCRUDService, $templateRequest) {
+	.controller("LandsMapsController", function ($scope, $state, LandsLandService, $compile, $rootScope, LandsLandCRUDService, $templateRequest,
+												 LandsLandSelectorService) {
 
 		$scope.displayOnTheMap = function () {
 			$state.go("^.lands");
@@ -80,7 +81,9 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 							LandsLandCRUDService.editItem(popupScope.land.id, reloadLands);
 						}
 						popupScope.addToSelected = function () {
-							landsSelectorControl.addLand(popupScope.land);
+							if (LandsLandSelectorService.add(popupScope.land)) {
+								landsSelectorControl.addLand(popupScope.land);
+							}
 						}
 						popupScope.removeItem = function () {
 							LandsLandCRUDService.deleteItem(popupScope.land.id, reloadLands);
