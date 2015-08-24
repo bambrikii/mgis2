@@ -38,6 +38,8 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 
 		map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text. Attribution overload
 
+		var landsSelectorControl = new L.Control.MGIS2LandsSelector();
+
 		var landsLayer = new L.GeoJSON();
 
 		var reloadLands = function (loadComplete) {
@@ -69,17 +71,19 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 					landsLayer.eachLayer(function (layer) {
 						var linkFunction = null;
 						var popupScope = $rootScope.$new();
-						popupScope.id = layer.feature.properties.id;
-						popupScope.cadastralnumber = layer.feature.properties.cadastralnumber;
-						popupScope.staterealestatecadastreastaging = layer.feature.properties.staterealestatecadastreastaging;
-						popupScope.editItem = function (id) {
-							LandsLandCRUDService.editItem(popupScope.id, reloadLands);
+						popupScope.land = {
+							id: layer.feature.properties.id,
+							cadastralnumber: layer.feature.properties.cadastralnumber,
+							staterealestatecadastreastaging: layer.feature.properties.staterealestatecadastreastaging
+						}
+						popupScope.editItem = function () {
+							LandsLandCRUDService.editItem(popupScope.land.id, reloadLands);
 						}
 						popupScope.addToSelected = function () {
-							LandsLandCRUDService.editItem(popupScope.id, reloadLands);
+							landsSelectorControl.addLand(popupScope.land);
 						}
 						popupScope.removeItem = function () {
-							LandsLandCRUDService.deleteItem(popupScope.id, reloadLands);
+							LandsLandCRUDService.deleteItem(popupScope.land.id, reloadLands);
 						}
 						$templateRequest("app2/lands/land/land-maps-popup.htm").then(function (content) {
 							linkFunction = $compile(angular.element(content));
@@ -127,7 +131,6 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 		var options = {exclusiveGroups: ["Landmarks"]};
 
 		L.control.groupedLayers(baseLayers, groupedOverlays, options).addTo(map);
-		var landsSelectorControl = new L.Control.MGIS2LandsSelector();
 		map.addControl(landsSelectorControl);
 
 	})

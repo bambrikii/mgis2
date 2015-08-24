@@ -1,0 +1,43 @@
+.leaflet-control-mgis-lands-expanded {
+	padding: 6px 10px 6px 6px;
+	color: #333;
+	background: #fff;
+}
+
+.leaflet-control-mgis-lands-expanded .leaflet-control-mgis-lands-toggle {
+	display: none;
+}
+
+.leaflet-control-mgis-lands-collapsed .leaflet-control-mgis-lands-toggle {
+	display: block;
+}
+
+.leaflet-control-mgis-lands-expanded .leaflet-control-mgis-lands-list {
+	display: block;
+}
+
+.leaflet-control-mgis-lands-collapsed .leaflet-control-mgis-lands-list {
+	display: none;
+}
+
+.leaflet-control-mgis-lands-toggle {
+	background-image: url('../../../bower_components/leaflet/dist/images/layers.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 36px;
+	height: 36px;
+}
+
+.leaflet-control-mgis-lands-collapsed a {
+	border-bottom-width: 0px;
+}
+
+.leaflet-control-mgis-lands-list span {
+	margin: 1px 15px 10px 10px;
+	float: left;
+}
+
+.leaflet-control-mgis-lands-list button {
+	margin: 2px 3px 1px 1px;
+	float: right;
+}
