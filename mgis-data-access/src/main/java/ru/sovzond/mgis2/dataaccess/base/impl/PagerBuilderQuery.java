@@ -28,22 +28,21 @@ public abstract class PagerBuilderQuery<T> extends PagerBuilderBase<T> {
 		return new Pageable() {
 			@Override
 			public List<T> list() {
-				StringBuilder queryBuilder = new StringBuilder()
-						.append("SELECT ").append(TABLE_ALIAS).append(" FROM ").append(persistentClass.getCanonicalName()).append(" ").append(TABLE_ALIAS);
+				StringBuilder queryBuilder = new StringBuilder().append("SELECT ").append(TABLE_ALIAS).append(" FROM ").append(persistentClass.getCanonicalName()).append(" ").append(TABLE_ALIAS);
 				applyFilter(queryBuilder);
 				applyOrder(queryBuilder);
 				Query query = session.createQuery(queryBuilder.toString());
 				applyLimit(query);
+				applyParameters(query);
 				return query.list();
 			}
 
 			@Override
 			public Number count() {
-				StringBuilder queryBuilder = new StringBuilder()
-						.append("SELECT count(").append(TABLE_ALIAS).append(") FROM ").append(persistentClass.getCanonicalName()).append(" ").append(TABLE_ALIAS);
+				StringBuilder queryBuilder = new StringBuilder().append("SELECT count(").append(TABLE_ALIAS).append(") FROM ").append(persistentClass.getCanonicalName()).append(" ").append(TABLE_ALIAS);
 				applyFilter(queryBuilder);
 				Query query = session.createQuery(queryBuilder.toString());
-				applyFilterParams(query);
+				applyParameters(query);
 				return (Number) query.uniqueResult();
 			}
 		};
@@ -51,7 +50,7 @@ public abstract class PagerBuilderQuery<T> extends PagerBuilderBase<T> {
 
 	protected abstract void applyFilter(StringBuilder queryBuilder);
 
-	protected abstract void applyFilterParams(Query query);
+	protected abstract void applyParameters(Query query);
 
 	protected void addFilter(StringBuilder queryBuilder, String filter) {
 		addFilter("WHERE", queryBuilder, filter);

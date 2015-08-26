@@ -8,15 +8,15 @@ import ru.sovzond.mgis2.registers.lands.Land;
 
 @Repository
 public class LandDao extends CRUDDaoBase<Land> {
-	public LandsFilter createFilter(String cadastralNumber, Integer[] ids, String orderBy, int first, int max) {
+	public LandsFilter createFilter(String cadastralNumber, Long[] ids, String orderBy, int first, int max) {
 		return new LandsFilter(cadastralNumber, ids, orderBy, first, max);
 	}
 
 	class LandsFilter extends PagerBuilderQuery<Land> {
 		private String cadastralNumber;
-		private Integer[] ids;
+		private Long[] ids;
 
-		LandsFilter(String cadastralNumber, Integer[] ids, String orderBy, int first, int max) {
+		LandsFilter(String cadastralNumber, Long[] ids, String orderBy, int first, int max) {
 			super(orderBy, first, max);
 			this.cadastralNumber = cadastralNumber;
 			this.ids = ids;
@@ -25,7 +25,7 @@ public class LandDao extends CRUDDaoBase<Land> {
 		@Override
 		protected void applyFilter(StringBuilder queryBuilder) {
 			if (cadastralNumber != null && cadastralNumber.length() > 0) {
-				addFilter(queryBuilder, "cadastralNumber LIKE '%" + cadastralNumber + "%'");
+				addFilter(queryBuilder, "cadastralNumber LIKE :cadastralNumber");
 			}
 		}
 
@@ -44,8 +44,10 @@ public class LandDao extends CRUDDaoBase<Land> {
 		}
 
 		@Override
-		protected void applyFilterParams(Query query) {
-
+		protected void applyParameters(Query query) {
+			if (cadastralNumber != null && cadastralNumber.length() > 0) {
+				query.setParameter("cadastralNumber", "%" + cadastralNumber + "%");
+			}
 		}
 	}
 }

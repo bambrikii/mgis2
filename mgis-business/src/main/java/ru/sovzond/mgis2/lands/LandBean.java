@@ -27,7 +27,7 @@ public class LandBean extends CRUDBeanBase<Land> {
 		return dao;
 	}
 
-	public PageableContainer<Land> list(String cadastralNumber, Integer[] ids, String orderBy, int first, int max) {
+	public PageableContainer<Land> list(String cadastralNumber, Long[] ids, String orderBy, int first, int max) {
 		Pageable<Land> lands = dao.pager(dao.createFilter(cadastralNumber, ids, orderBy, first, max));
 		return new PageableContainer<>(lands.list().stream().map(Land::clone).collect(Collectors.toList()), lands.count(), first, max);
 	}

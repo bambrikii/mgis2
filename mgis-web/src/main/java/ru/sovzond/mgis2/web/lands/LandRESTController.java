@@ -96,19 +96,19 @@ public class LandRESTController implements Serializable {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<Land> list(@RequestParam(value = "cadastralNumber", defaultValue = "") String cadastralNumber, @RequestParam(value = "orderBy", defaultValue = "") String orderBy,
-										@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max,
-										@RequestParam(defaultValue = "") String ids
-	) {
-		String[] idsAsString = ids.split(",");
-		Integer[] idsAsInteger = new Integer[idsAsString.length];
-		for (int i = 0; i < idsAsString.length; i++) {
-			String idAsString = idsAsString[i];
-			if (idAsString != null && !"".equals(idAsString)) {
-				idsAsInteger[i] = Integer.parseInt(idAsString);
+	public PageableContainer<Land> list(@RequestParam(value = "cadastralNumber", defaultValue = "") String cadastralNumber, @RequestParam(value = "orderBy", defaultValue = "") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "") String ids) {
+		Long[] idsAsLong = null;
+		if (ids != null && ids.length() > 0) {
+			String[] idsAsString = ids.split(",");
+			idsAsLong = new Long[idsAsString.length];
+			for (int i = 0; i < idsAsString.length; i++) {
+				String idAsString = idsAsString[i];
+				if (idAsString != null && !"".equals(idAsString)) {
+					idsAsLong[i] = Long.parseLong(idAsString);
+				}
 			}
 		}
-		PageableContainer<Land> pager = landBean.list(cadastralNumber, idsAsInteger, orderBy, first, max);
+		PageableContainer<Land> pager = landBean.list(cadastralNumber, idsAsLong, orderBy, first, max);
 		return pager;
 	}
 
@@ -127,7 +127,7 @@ public class LandRESTController implements Serializable {
 		if (land.getLandCategory() != null) {
 			land2.setLandCategory(landCategoryBean.load(land.getLandCategory().getId()));
 		}
-//		land2.setLandAreas();
+		//		land2.setLandAreas();
 		if (land.getAllowedUsageByDictionary() != null) {
 			land2.setAllowedUsageByDictionary(allowedUsageByDocumentBean.load(land.getAllowedUsageByDictionary().getId()));
 		}
