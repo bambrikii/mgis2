@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.isogd;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 
 @Repository
@@ -19,7 +19,7 @@ public class VolumeDao extends CRUDDaoBase<Volume> {
 		return new VolumeBaseBuilder(book, first, max);
 	}
 
-	class VolumeBaseBuilder extends PageableBase<Volume> {
+	class VolumeBaseBuilder extends PagerBuilderCriteria<Volume> {
 		private Book book;
 
 		private VolumeBaseBuilder(Book book, int first, int max) {

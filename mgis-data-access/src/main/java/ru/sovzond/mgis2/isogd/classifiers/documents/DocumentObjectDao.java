@@ -4,7 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 
 /**
  * Created by Alexander Arakelyan on 22.06.15.
@@ -14,7 +14,7 @@ public class DocumentObjectDao extends CRUDDaoBase<DocumentObject> {
 
 	public static final String DOCUMENT_CLASS = "documentClass";
 
-	private class DocumentObjectBaseBuilder extends PageableBase<DocumentObject> {
+	private class DocumentObjectBaseBuilder extends PagerBuilderCriteria<DocumentObject> {
 		private DocumentClass documentClass;
 
 		public DocumentObjectBaseBuilder(DocumentClass documentClass, int first, int max) {
@@ -28,7 +28,7 @@ public class DocumentObjectDao extends CRUDDaoBase<DocumentObject> {
 		}
 	}
 
-	public PageableBase<DocumentObject> createFilter(DocumentClass documentClass, int first, int max) {
+	public PagerBuilderCriteria<DocumentObject> createFilter(DocumentClass documentClass, int first, int max) {
 		return new DocumentObjectBaseBuilder(documentClass, first, max);
 	}
 }

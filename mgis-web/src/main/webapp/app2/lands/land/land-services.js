@@ -12,11 +12,13 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 		}
 
 		return {
-			get: function (id, first, max, cadastralNumber) {
+			get: function (id, first, max, cadastralNumber, ids) {
 				var deferred = $q.defer();
+				console.log(JSON.stringify(ids))
 				res.get({
 					id: id,
-					cadastralNumber: cadastralNumber
+					cadastralNumber: cadastralNumber,
+					ids: ids ? ids.join() : new Array()
 				}, {
 					first: first,
 					max: max
@@ -233,6 +235,20 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 				var result = new Array();
 				for (var i in _lands) {
 					result.push(_lands[i]);
+				}
+				return result;
+			},
+			ids: function () {
+				var result = new Array();
+				for (var i in _lands) {
+					result.push(_lands[i].id);
+				}
+				return result;
+			},
+			cadastralNumbers: function () {
+				var result = new Array();
+				for (var i in _lands) {
+					result.push(_lands[i].cadastralnumber);
 				}
 				return result;
 			}

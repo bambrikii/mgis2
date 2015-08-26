@@ -4,7 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 import ru.sovzond.mgis2.registers.persons.LegalPerson;
 
 /**
@@ -13,7 +13,7 @@ import ru.sovzond.mgis2.registers.persons.LegalPerson;
 @Repository
 public class LegalPersonDao extends CRUDDaoBase<LegalPerson> {
 
-	private class LegalPersonFilter extends PageableBase<LegalPerson> {
+	private class LegalPersonFilter extends PagerBuilderCriteria<LegalPerson> {
 		private String name;
 
 		public LegalPersonFilter(String name, String orderBy, int first, int max) {
@@ -29,7 +29,7 @@ public class LegalPersonDao extends CRUDDaoBase<LegalPerson> {
 		}
 	}
 
-	public PageableBase<LegalPerson> createFilter(String name, String orderBy, int first, int max) {
+	public PagerBuilderCriteria<LegalPerson> newPagerBuilder(String name, String orderBy, int first, int max) {
 		return new LegalPersonFilter(name, orderBy, first, max);
 	}
 }

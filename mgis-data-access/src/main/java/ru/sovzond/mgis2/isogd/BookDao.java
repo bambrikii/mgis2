@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.isogd;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
 
@@ -26,7 +26,7 @@ public class BookDao extends CRUDDaoBase<Book> {
 				.list();
 	}
 
-	class BookBaseBuilder extends PageableBase<Book> {
+	class BookBaseBuilder extends PagerBuilderCriteria<Book> {
 		private Section section;
 
 		private BookBaseBuilder(Section section, int first, int max) {

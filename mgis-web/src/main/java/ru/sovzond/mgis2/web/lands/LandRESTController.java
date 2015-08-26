@@ -97,8 +97,19 @@ public class LandRESTController implements Serializable {
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
 	public PageableContainer<Land> list(@RequestParam(value = "cadastralNumber", defaultValue = "") String cadastralNumber, @RequestParam(value = "orderBy", defaultValue = "") String orderBy,
-										@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		return landBean.list(cadastralNumber, orderBy, first, max);
+										@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max,
+										@RequestParam(defaultValue = "") String ids
+	) {
+		String[] idsAsString = ids.split(",");
+		Integer[] idsAsInteger = new Integer[idsAsString.length];
+		for (int i = 0; i < idsAsString.length; i++) {
+			String idAsString = idsAsString[i];
+			if (idAsString != null && !"".equals(idAsString)) {
+				idsAsInteger[i] = Integer.parseInt(idAsString);
+			}
+		}
+		PageableContainer<Land> pager = landBean.list(cadastralNumber, idsAsInteger, orderBy, first, max);
+		return pager;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")

@@ -1,32 +1,32 @@
 <div ng-controller="LandsMapsController">
-    <style>
-        .rotate-north {
-            text-align: right;
-            bottom: .5em;
-            left: .5em;
-            max-width: calc(100% - 1.3em);
-        }
+	<style>
+		.rotate-north {
+			text-align: right;
+			bottom: .5em;
+			left: .5em;
+			max-width: calc(100% - 1.3em);
+		}
 
-        #map {
-            height: 100%;
-            width: 100%;
-        }
-    </style>
-    <form name="landSearchForm" class="form-horizontal pull-right" style="position: relative; top: -60px; height: 0px;">
-        <div class="control-group">
-            <label for="cadastralNumber" translate>CadastralNumber</label>
+		#map {
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+	<form name="landSearchForm" class="form-horizontal pull-right" style="position: relative; top: -60px; height: 0px;">
+		<div class="control-group">
+			<label for="cadastralNumber" translate>CadastralNumber</label>
 
-            <div class="controls form-inline">
-                <input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber" class="form-control"/>
-                <button class="btn btn-primary btn-sm" ng-click="find()" translate>Find</button>
-                <button class="btn btn-primary btn-sm" ng-click="displayOnTheMap()" translate>Lands.Land.DisplayOnTheMap</button>
-            </div>
-        </div>
-    </form>
+			<div class="controls form-inline">
+				<input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber" class="form-control"/>
+				<button class="btn btn-primary btn-sm" ng-click="find()" translate>Find</button>
+				<button class="btn btn-primary btn-sm" ng-click="displayAsAList()" translate>Lands.Land.DisplayAsAList</button>
+			</div>
+		</div>
+	</form>
 
 
-    <div style="height: 70%;">
-        <div id="map"></div>
-    </div>
+	<div style="height: 70%;">
+		<div id="map"></div>
+	</div>
 
 </div>

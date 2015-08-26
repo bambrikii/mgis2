@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.isogd.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentClass;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
@@ -20,31 +20,31 @@ import java.util.stream.Collectors;
 public class DocumentBean {
 
 	@Autowired
-	private DocumentDao documentDao;
+	private DocumentDao dao;
 
 	public Document load(Long id) {
-		return documentDao.findById(id);
+		return dao.findById(id);
 	}
 
 	public void save(Document document) {
-		documentDao.save(document);
+		dao.save(document);
 	}
 
 	public void delete(Document document) {
-		documentDao.delete(document);
+		dao.delete(document);
 	}
 
 	public PageableContainer<Document> pageDocuments(Volume volume, String orderBy, int first, int max) {
-		PageableBase<Document> filter = documentDao.createFilter(volume, orderBy, first, max);
-		List<Document> documents = documentDao.list(filter).stream().map(document -> document.clone()).collect(Collectors.toList());
-		return new PageableContainer<>(documents, documentDao.count(filter), first, max);
+		Pageable<Document> pager = dao.pager(dao.createFilter(volume, orderBy, first, max));
+		List<Document> documents = pager.list().stream().map(document -> document.clone()).collect(Collectors.toList());
+		return new PageableContainer<>(documents, pager.count(), first, max);
 	}
 
 	public List<DocumentSubObject> listDocumentSubObjectsByVolume(Volume volume) {
-		return documentDao.listAvailableDocumentSubObjects(volume);
+		return dao.listAvailableDocumentSubObjects(volume);
 	}
 
 	public DocumentClass readDocumentClassByVolume(Volume volume) {
-		return documentDao.readDocumentClassByVolume(volume);
+		return dao.readDocumentClassByVolume(volume);
 	}
 }

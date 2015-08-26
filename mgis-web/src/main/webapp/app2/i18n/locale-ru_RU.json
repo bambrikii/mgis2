@@ -183,6 +183,7 @@
   "Lands.TerritorialZone.Characteristics": "Характеристики территориальной зоны",
   "Lands.Land.Regulations.WaySide": "Полоса отчуждения",
   "Lands.Land.Regulations.ProtectionZones": "Охранные зоны",
+  "Lands.Land.DisplayAsAList": "Отобразить списком",
   "NationalClassifiers.MunicipalEntity": "Муниципальное образование",
   "TerritorialZones.Zone": "Территориальная зона",
   "TerritorialZones.Zone.StateRealtyCadasterInfo": "Сведения из ГКН",

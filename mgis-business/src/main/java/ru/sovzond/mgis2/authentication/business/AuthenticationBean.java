@@ -17,41 +17,41 @@ import java.util.Set;
 @Service
 public class AuthenticationBean {
 
-    @Autowired
-    private IUserDAO userDAO;
+	@Autowired
+	private IUserDAO userDAO;
 
-    @Autowired
-    private IPrivilegeDAO privilegeDAO;
+	@Autowired
+	private IPrivilegeDAO privilegeDAO;
 
-    public void authenticate(String username, String password) {
+	public void authenticate(String username, String password) {
 
-    }
+	}
 
-    public User findUserByName(String username) {
-        return userDAO.findByName(username);
-    }
+	public User findUserByName(String username) {
+		return userDAO.findByName(username);
+	}
 
-    public List<User> findUsers() {
-        return userDAO.list(PagerFactory.createDefault(-1, -1));
-    }
+	public List<User> findUsers() {
+		return userDAO.pager(PagerFactory.createDefault(User.class, -1, -1)).list();
+	}
 
-    public List<Privilege> loadPrivileges(String username) {
-        return loadPrivileges(findUserByName(username));
-    }
+	public List<Privilege> loadPrivileges(String username) {
+		return loadPrivileges(findUserByName(username));
+	}
 
-    public List<Privilege> loadPrivileges(User user) {
-        Set<Privilege> privileges = new HashSet<>();
-        privileges.addAll(user.getPrivileges());
-        for (Group group : user.getGroups()) {
-            loadPrivileges(privileges, group);
-        }
-        List<Privilege> result = new ArrayList<>();
-        result.addAll(privileges);
-        return result;
-    }
+	public List<Privilege> loadPrivileges(User user) {
+		Set<Privilege> privileges = new HashSet<>();
+		privileges.addAll(user.getPrivileges());
+		for (Group group : user.getGroups()) {
+			loadPrivileges(privileges, group);
+		}
+		List<Privilege> result = new ArrayList<>();
+		result.addAll(privileges);
+		return result;
+	}
 
-    private void loadPrivileges(Set<Privilege> privileges, Group group) {
-        privileges.addAll(group.getPrivileges());
-        group.getChildGroups().stream().forEach(childGroup -> loadPrivileges(privileges, childGroup));
-    }
+	private void loadPrivileges(Set<Privilege> privileges, Group group) {
+		privileges.addAll(group.getPrivileges());
+		group.getChildGroups().stream().forEach(childGroup -> loadPrivileges(privileges, childGroup));
+	}
 }

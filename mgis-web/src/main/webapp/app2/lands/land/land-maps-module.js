@@ -17,7 +17,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 	.controller("LandsMapsController", function ($scope, $state, LandsLandService, $compile, $rootScope, LandsLandCRUDService, $templateRequest,
 												 LandsLandSelectorService) {
 
-		$scope.displayOnTheMap = function () {
+		$scope.displayAsAList = function () {
 			$state.go("^.lands");
 		}
 

@@ -6,6 +6,7 @@ import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 import ru.sovzond.mgis2.registers.lands.TerritorialZone;
 
 /**
@@ -28,6 +29,7 @@ public class TerritorialZoneBean extends CRUDBeanBase<TerritorialZone> {
 	}
 
 	public PageableContainer<TerritorialZone> list(String orderBy, int first, int max, String name) {
-		return dao.buildPager(dao.createFilter(name, orderBy, first, max));
+		Pageable<TerritorialZone> pager = dao.pager(dao.createFilter(name, orderBy, first, max));
+		return new PageableContainer<>(pager.list(), pager.count(), first, max);
 	}
 }

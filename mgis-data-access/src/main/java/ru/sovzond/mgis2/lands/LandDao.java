@@ -1,33 +1,51 @@
 package ru.sovzond.mgis2.lands;
 
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderQuery;
 import ru.sovzond.mgis2.registers.lands.Land;
 
 @Repository
 public class LandDao extends CRUDDaoBase<Land> {
-	public LandFilter createFilter(String cadastralNumber, String orderBy, int first, int max) {
-		LandFilter filter = new LandFilter(cadastralNumber, orderBy, first, max);
-		return filter;
+	public LandsFilter createFilter(String cadastralNumber, Integer[] ids, String orderBy, int first, int max) {
+		return new LandsFilter(cadastralNumber, ids, orderBy, first, max);
 	}
 
-	class LandFilter extends PageableBase<Land> {
+	class LandsFilter extends PagerBuilderQuery<Land> {
 		private String cadastralNumber;
+		private Integer[] ids;
 
-		LandFilter(String cadastralNumber, String orderBy, int first, int max) {
+		LandsFilter(String cadastralNumber, Integer[] ids, String orderBy, int first, int max) {
 			super(orderBy, first, max);
 			this.cadastralNumber = cadastralNumber;
+			this.ids = ids;
 		}
 
 		@Override
-		protected void applyFilter(Criteria criteria) {
+		protected void applyFilter(StringBuilder queryBuilder) {
 			if (cadastralNumber != null && cadastralNumber.length() > 0) {
-				criteria.add(Restrictions.like("cadastralNumber", cadastralNumber));
+				addFilter(queryBuilder, "cadastralNumber LIKE '%" + cadastralNumber + "%'");
 			}
 		}
 
+		@Override
+		protected void applyOrder(StringBuilder queryBuilder) {
+			if (ids != null && ids.length > 0) {
+				StringBuilder sb = new StringBuilder();
+				sb.append(ids[0]);
+				for (int i = 1; i < ids.length; i++) {
+					sb.append(",").append(ids[i]);
+				}
+				queryBuilder.append(" ORDER BY CASE WHEN id IN (").append(sb.toString()).append(") THEN 0 ELSE 1 END ");
+			} else {
+				super.applyOrder(queryBuilder);
+			}
+		}
+
+		@Override
+		protected void applyFilterParams(Query query) {
+
+		}
 	}
 }

@@ -4,16 +4,16 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 
 @Repository
 public class OKTMODao extends CRUDDaoBase<OKTMO> {
-	public PageableBase<OKTMO> createFilter(String name, String orderBy, int first, int max) {
+	public PagerBuilderCriteria<OKTMO> createFilter(String name, String orderBy, int first, int max) {
 		return new OKTMOFilter(name, orderBy, first, max);
 	}
 
-	private class OKTMOFilter extends PageableBase<OKTMO> {
+	private class OKTMOFilter extends PagerBuilderCriteria<OKTMO> {
 
 		private String name;
 

@@ -170,16 +170,21 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 												 $state,
 												 $rootScope,
 												 LandsLandService,
-												 LandsLandCRUDService) {
+												 LandsLandCRUDService,
+												 LandsLandSelectorService) {
 		$scope.cadastralNumber = "";
 		$scope.first = 0;
 		$scope.max = 15;
 		function updateGrid() {
-			LandsLandService.get("", $scope.first, $scope.max, $scope.cadastralNumber).then(function (data) {
-				$scope.list = data.list;
-				$scope.first = data.first;
-				$scope.max = data.max;
-			});
+			LandsLandService.get("", $scope.first, $scope.max,
+				$scope.cadastralNumber,
+				LandsLandSelectorService.ids(),
+				LandsLandSelectorService.cadastralNumbers()
+			).then(function (data) {
+					$scope.list = data.list;
+					$scope.first = data.first;
+					$scope.max = data.max;
+				});
 		}
 
 		// editItem
@@ -203,7 +208,6 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		updateGrid();
 
 		$scope.displayOnTheMap = function () {
-			// TODO: display on the map
 			$state.go("^.maps");
 		}
 	})

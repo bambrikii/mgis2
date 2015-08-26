@@ -6,6 +6,7 @@ import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 import ru.sovzond.mgis2.registers.persons.LegalPerson;
 
 /**
@@ -28,6 +29,7 @@ public class LegalPersonBean extends CRUDBeanBase<LegalPerson> {
 	}
 
 	public PageableContainer<LegalPerson> list(String name, String orderBy, int first, int max) {
-		return dao.buildPager(dao.createFilter(name, orderBy, first, max));
+		Pageable<LegalPerson> pager = dao.pager(dao.newPagerBuilder(name, orderBy, first, max));
+		return new PageableContainer<>(pager.list(), pager.count(), first, max);
 	}
 }

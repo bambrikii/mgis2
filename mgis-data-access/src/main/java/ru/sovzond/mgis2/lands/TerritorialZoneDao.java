@@ -4,7 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
-import ru.sovzond.mgis2.dataaccess.base.impl.PageableBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 import ru.sovzond.mgis2.registers.lands.TerritorialZone;
 
 /**
@@ -12,11 +12,11 @@ import ru.sovzond.mgis2.registers.lands.TerritorialZone;
  */
 @Repository
 public class TerritorialZoneDao extends CRUDDaoBase<TerritorialZone> {
-	public PageableBase<TerritorialZone> createFilter(String name, String orderBy, int first, int max) {
+	public PagerBuilderCriteria<TerritorialZone> createFilter(String name, String orderBy, int first, int max) {
 		return new TerritorialZoneFilter(name, orderBy, first, max);
 	}
 
-	private class TerritorialZoneFilter extends PageableBase<TerritorialZone> {
+	private class TerritorialZoneFilter extends PagerBuilderCriteria<TerritorialZone> {
 		private String name;
 
 		private TerritorialZoneFilter(String name, String orderBy, int first, int max) {
