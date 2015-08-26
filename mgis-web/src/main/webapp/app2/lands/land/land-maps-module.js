@@ -40,11 +40,31 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 		map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text. Attribution overload
 
 		var landsSelectorControl = new L.Control.MGIS2LandsSelector();
-		landsSelectorControl.subscribeToAddLand(function (land) {
-			return LandsLandSelectorService.add(land);
-		});
-		landsSelectorControl.subscribeToRemoveLand(function (land) {
-			return LandsLandSelectorService.remove(land);
+
+		var addLandToSelectorControlHandler = function (land) {
+			landsSelectorControl.addLand(land);
+		}
+
+		var removeLandFromSelectorControlHandler = function (land) {
+			landsSelectorControl.removeLand(land);
+		}
+
+		function unselectLandHandler(event, land) {
+			LandsLandSelectorService.remove(land);
+		}
+
+
+		function unsubscribeLandSelectorControl() {
+			LandsLandSelectorService.unsubscribeFromSelectLand(addLandToSelectorControlHandler);
+			LandsLandSelectorService.unsubscribeFromUnselectLand(removeLandFromSelectorControlHandler);
+			landsSelectorControl.unsubscribeFromRemoveLand(unselectLandHandler);
+		}
+
+		LandsLandSelectorService.subscribeToSelectLand(addLandToSelectorControlHandler);
+		LandsLandSelectorService.subscribeToUnselectLand(removeLandFromSelectorControlHandler);
+		landsSelectorControl.subscribeToRemoveLand(unselectLandHandler);
+		landsSelectorControl.subscribeToRemove(function () {
+			unsubscribeLandSelectorControl();
 		});
 
 		var landsLayer = new L.GeoJSON();
@@ -87,7 +107,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 							LandsLandCRUDService.editItem(popupScope.land.id, reloadLands);
 						}
 						popupScope.addToSelected = function () {
-							landsSelectorControl.addLand(popupScope.land);
+							LandsLandSelectorService.add(popupScope.land);
 						}
 						popupScope.removeItem = function () {
 							LandsLandCRUDService.deleteItem(popupScope.land.id, reloadLands);
@@ -112,6 +132,9 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 				console.log("bounds: " + JSON.stringify(landsLayer.getBounds()));
 				map.fitBounds(landsLayer.getBounds());
 			});
+		});
+		map.on("unload", function () {
+			unsubscribeLandSelectorControl();
 		});
 		map.setView(new L.LatLng(0, 0), 1);
 
@@ -139,6 +162,6 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 
 		L.control.groupedLayers(baseLayers, groupedOverlays, options).addTo(map);
 		map.addControl(landsSelectorControl);
-
+		landsSelectorControl.reloadLands(LandsLandSelectorService.list());
 	})
 ;

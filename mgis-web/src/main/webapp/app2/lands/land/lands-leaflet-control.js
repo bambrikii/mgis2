@@ -6,7 +6,7 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 	},
 	initialize: function (options) {
 		L.Util.setOptions(this, options);
-		this._addListeners = new Array();
+		this._removeLandListeners = new Array();
 		this._removeListeners = new Array();
 	},
 	onAdd: function (map) {
@@ -48,8 +48,14 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 		return container;
 	},
 	onRemove: function (map) {
-		this._addListeners.splice(0, this._addListeners.length);
+		this._removeLandListeners.splice(0, this._removeLandListeners.length);
+		for (var i in this._removeListeners) {
+			this._removeListeners[i]();
+		}
 		this._removeListeners.splice(0, this._removeListeners.length);
+	},
+	subscribeToRemove: function (listener) {
+		this._removeListeners.push(listener);
 	},
 	_update: function () {
 		if (!this._container) {
@@ -57,50 +63,38 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 		}
 		// TODO:
 	},
-	subscribeToAddLand: function (listener) {
-		this._addListeners.push(listener);
-	},
-	subscribeToRemoveLand: function (listener) {
-		this._removeListeners.push(listener);
+	reloadLands: function (lands) {
+		this.clearLands();
+		for (var i in lands) {
+			this.addLand(lands[i]);
+		}
 	},
 	addLand: function (land) {
-		var addResult = true;
-		for (var i in this._addListeners) {
-			addResult &= this._addListeners[i](land);
-		}
-		if (addResult) {
-			var label = document.createElement('span');
-			label.innerHTML = land.cadastralnumber;
-			var removeButton = document.createElement('button');
-			removeButton.innerHTML = "---";
-			removeButton.landId = land.id;
-			removeButton.landCadastralNumber = land.cadastralnumber;
-			L.DomEvent.on(removeButton, 'click', this._onRemoveButtonClick, this);
-			var container = document.createElement("div");
-			container.appendChild(label);
-			container.appendChild(removeButton);
-			this._landsList.appendChild(container);
-			this._toggleExpand({}, true);
-		}
+		var label = document.createElement('span');
+		label.innerHTML = land.cadastralnumber;
+		var removeButton = document.createElement('button');
+		removeButton.innerHTML = "---";
+		removeButton.landId = land.id;
+		removeButton.landCadastralNumber = land.cadastralnumber;
+		L.DomEvent.on(removeButton, 'click', this._onRemoveButtonClick, this);
+		var container = document.createElement("div");
+		container.appendChild(label);
+		container.appendChild(removeButton);
+		this._landsList.appendChild(container);
+		this._toggleExpand({}, true);
 	},
 	removeLand: function (land) {
-		var removeResult = true;
-		for (var i in this._removeListeners) {
-			removeResult &= this._removeListeners[i](land);
-		}
-		if (removeResult) {
-			var buttons = this._landsList.getElementsByTagName("button");
-			for (var i in  buttons) {
-				var button = buttons[i];
-				if ((land.id && land.id == button.landId) ||
-					(land.cadastralnumber && land.cadastralnumber == button.landCadastralNumber)) {
-					var parent = button.parentNode;
-					parent.parentNode.removeChild(parent);
-					if (this._landsList.innerHTML == "") {
-						this._toggleExpand({}, false);
-					}
-					return true;
+		var buttons = this._landsList.getElementsByTagName("button");
+		for (var i in  buttons) {
+			var button = buttons[i];
+			if ((land.id && land.id == button.landId) ||
+				(land.cadastralnumber && land.cadastralnumber == button.landCadastralNumber)) {
+				var parent = button.parentNode;
+				parent.parentNode.removeChild(parent);
+				if (this._landsList.innerHTML == "") {
+					this._toggleExpand({}, false);
 				}
+				return true;
 			}
 		}
 		return false;
@@ -110,9 +104,22 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 			this.removeLand({id: land2.landId, cadastralnumber: land2.cadastralnumber});
 		}
 	},
+	subscribeToRemoveLand: function (listener) {
+		this._removeLandListeners.push(listener);
+	},
+	unsubscribeFromRemoveLand: function (listener) {
+		for (var i in this._removeLandListeners) {
+			if (this._removeLandListeners[i] == listener) {
+				this._removeLandListeners.splice(i, 1);
+			}
+		}
+	},
 	_onRemoveButtonClick: function (event) {
 		var target = event.currentTarget;
-		this.removeLand({id: target.landId, cadastralnumber: target.landCadastralNumber});
+		var land = {id: target.landId, cadastralnumber: target.landCadastralNumber};
+		for (var i in this._removeLandListeners) {
+			this._removeLandListeners[i](event, land);
+		}
 	},
 	_toggleExpand: function (event, expand) {
 		if (

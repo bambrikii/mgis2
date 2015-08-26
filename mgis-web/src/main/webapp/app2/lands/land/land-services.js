@@ -14,7 +14,6 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 		return {
 			get: function (id, first, max, cadastralNumber, ids) {
 				var deferred = $q.defer();
-				console.log(JSON.stringify(ids))
 				res.get({
 					id: id,
 					cadastralNumber: cadastralNumber,
@@ -202,6 +201,8 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 	// Selected Lands Service
 	.factory("LandsLandSelectorService", function () {
 		var _lands = new Array();
+		var _addListeners = new Array();
+		var _removeListeners = new Array();
 		return {
 			add: function (land) {
 				var found = false;
@@ -215,17 +216,22 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 				}
 				if (!found) {
 					_lands.push(land);
+					for (var i in _addListeners) {
+						_addListeners[i](land);
+					}
 					return true;
 				}
 				return false;
 			},
 			remove: function (land) {
-				console.log(JSON.stringify(land));
 				for (var i in _lands) {
 					var land2 = _lands[i];
 					if ((land.id && land.id == land2.id) ||
 						(land.cadastralnumber && land.cadastralnumber == land2.cadastralnumber)) {
 						_lands.splice(i, 1);
+						for (var i in _removeListeners) {
+							_removeListeners[i](land);
+						}
 						return true;
 					}
 				}
@@ -245,12 +251,25 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 				}
 				return result;
 			},
-			cadastralNumbers: function () {
-				var result = new Array();
-				for (var i in _lands) {
-					result.push(_lands[i].cadastralnumber);
+			subscribeToSelectLand: function (listener) {
+				_addListeners.push(listener);
+			},
+			unsubscribeFromSelectLand: function (listener) {
+				for (var i in _addListeners) {
+					if (_addListeners[i] == listener) {
+						_addListeners.splice(i, 1);
+					}
 				}
-				return result;
+			},
+			subscribeToUnselectLand: function (listener) {
+				_removeListeners.push(listener);
+			},
+			unsubscribeFromUnselectLand: function (listener) {
+				for (var i in _removeListeners) {
+					if (_removeListeners[i] == listener) {
+						_removeListeners.splice(i, 1);
+					}
+				}
 			}
 		}
 	})

@@ -178,8 +178,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		function updateGrid() {
 			LandsLandService.get("", $scope.first, $scope.max,
 				$scope.cadastralNumber,
-				LandsLandSelectorService.ids(),
-				LandsLandSelectorService.cadastralNumbers()
+				LandsLandSelectorService.ids()
 			).then(function (data) {
 					$scope.list = data.list;
 					$scope.first = data.first;
