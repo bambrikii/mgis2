@@ -96,7 +96,6 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 					console.log("data: " + JSON.stringify(data));
 					landsLayer.addData(data);
 					landsLayer.eachLayer(function (layer) {
-						var linkFunction = null;
 						var popupScope = $rootScope.$new();
 						popupScope.land = {
 							id: layer.feature.properties.id,
@@ -113,7 +112,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 							LandsLandCRUDService.deleteItem(popupScope.land.id, reloadLands);
 						}
 						$templateRequest("app2/lands/land/land-maps-popup.htm").then(function (content) {
-							linkFunction = $compile(angular.element(content));
+							var linkFunction = $compile(angular.element(content));
 							layer.bindPopup(linkFunction(popupScope)[0]);
 						});
 					});
