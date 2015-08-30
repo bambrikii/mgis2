@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "oks_person")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Person implements Cloneable {
 
 	@Id

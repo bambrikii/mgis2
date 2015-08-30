@@ -35,8 +35,11 @@ angular.module("mgis.oks.person.natural", ["ui.router", "ui.bootstrap", //
 			editItem(modalScope);
 		}
 		$scope.remove = function (id) {
-			MGISCommonsModalForm.confirmRemoval(function () {
-				NaturalPersonService.remove(id);
+			MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
+				NaturalPersonService.remove(id).then(function () {
+					$modalInstance.close();
+					$scope.find($scope.name);
+				});
 			});
 		}
 		$scope.select = function (id) {
