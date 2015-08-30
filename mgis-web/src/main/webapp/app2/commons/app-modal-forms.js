@@ -36,7 +36,7 @@ angular.module("mgis.commons", ["ui.bootstrap"])
 				if (params) {
 					angular.extend(params2, params);
 				}
-				$modal.open(params2);
+				return $modal.open(params2);
 			}
 		}
 	}) //

@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div ng-controller="LegalPersonSelectorController" class="">
+			<div style="display: table-row">
+				<form name="searchForm" class="form-horizontal pull-right">
+					<div class="control-group">
+						<label for="name" translate>Name</label>
+
+						<div class="controls form-inline">
+							<input type="text" id="name" name="name" ng-model="name" class="form-control"/>
+							<button class="btn btn-sm btn-primary" ng-click="find(name)" translate>Find</button>
+							<button class="btn btn-sm btn-info" ng-click="add()" translate>Add</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div>
+				<div ng-repeat="listItem in list" class="row" style="padding-bottom: 7px;">
+					<div class="col-sm-1">{{listItem.id}}</div>
+					<div class="col-sm-4">{{listItem.name}}</div>
+					<div class="col-sm-7">
+						<button class="btn btn-sm btn-primary" ng-click="select(listItem.id)" translate>Select</button>
+						<button class="btn btn-sm btn-info" ng-click="edit(listItem.id)" translate>Edit</button>
+						<button class="btn btn-sm btn-danger" ng-click="remove(listItem.id)" translate>Remove</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

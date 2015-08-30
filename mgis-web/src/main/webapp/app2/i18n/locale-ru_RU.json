@@ -205,5 +205,8 @@
   "TerritorialZones.Zone.AllowedUsageByClassifier": "Разрешённое использование (по классификатору)",
   "TerritorialZones.Zone.AllowedUsageByDocument": "Разрешённое использование (по документу)",
   "TerritorialZones.Zone.BasisDocument": "Документ-основание",
-  "TerritorialZones.Zone.StateOnTheDate": "Состояние на дату"
+  "TerritorialZones.Zone.StateOnTheDate": "Состояние на дату",
+  "NaturalPerson": "Физ. лицо",
+  "LegalPerson": "Юр. лицо",
+  "Persons.Selector": "Выбрать физ./юр. лицо"
 }

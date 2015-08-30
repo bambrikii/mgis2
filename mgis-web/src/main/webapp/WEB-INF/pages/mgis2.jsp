@@ -100,6 +100,12 @@
 	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
 	<script type="text/javascript" src="app2/commons/common-services.js"></script>
 
+	<script type="text/javascript" src="app2/oks/natural-person/natural-person-service.js"></script>
+	<script type="text/javascript" src="app2/oks/natural-person/natural-person-module.js"></script>
+	<script type="text/javascript" src="app2/oks/legal-person/legal-person-service.js"></script>
+	<script type="text/javascript" src="app2/oks/legal-person/legal-person-module.js"></script>
+	<script type="text/javascript" src="app2/oks/person-selector/person-selector-module.js"></script>
+
 </head>
 <body>
 

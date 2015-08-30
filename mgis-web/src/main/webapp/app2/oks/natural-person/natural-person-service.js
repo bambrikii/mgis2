@@ -1,13 +1,15 @@
-angular.module("mgis.oks.person.natural", [])
-	.factory("NaturalPersonService", function () {
-		var res = $resource('rest/oks/natural-person/:id.json');
+angular.module("mgis.oks.person.natural.service", ["ngResource"])
+	.factory("NaturalPersonService", function ($resource, $q) {
+		var res = $resource('rest/oks/natural-persons/:id.json');
 		return {
 			get: function (id, first, max, name) {
 				var deferred = $q.defer();
-				res.get({id: id}, {
-					first: first,
-					max: max,
+				res.get({
+					id: id,
 					name: name
+				}, {
+					first: first,
+					max: max
 				}, function (data) {
 					deferred.resolve(data);
 				});
@@ -15,9 +17,12 @@ angular.module("mgis.oks.person.natural", [])
 			},
 			save: function (item) {
 				var deferred = $q.defer();
-				res.save({id: item.id,}, {
+				res.save({id: item.id}, {
 					id: item.id,
-					name: item.name
+					name: item.name,
+					firstName: item.firstName,
+					surname: item.surname,
+					patronymic: item.patronymic
 				}, function (data) {
 					deferred.resolve(data);
 				});

@@ -3,7 +3,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.lands.services",
 	"mgis.nc.services",
 	"mgis.common.executive_person.service",
-	"mgis.terr-zones.zone.service"
+	"mgis.terr-zones.zone.service",
+	"mgis.oks.person"
 	//"mgis.nc.cache"
 ])
 	.config(function ($stateProvider) {
@@ -95,8 +96,13 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 															});
 														}
 
-
 														modalScope.areas = modalScope.land.landAreas;
+
+														modalScope.rightsSubjectSelected = function (id, name, type) {
+															if (id) {
+																modalScope.land.rights.rightsSubject = {id: id, name: name};
+															}
+														}
 
 														MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
 															LandsLandService.save(scope.land).then(function (data) {

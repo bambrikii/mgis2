@@ -1,8 +1,8 @@
 angular.module("mgis.oks.person.legal.service", function () {
 
 })
-	.factory("LegalPersonService", function () {
-		var res = $resource('rest/oks/legal-person/:id.json');
+	.factory("LegalPersonService", function ($resource, $q) {
+		var res = $resource('rest/oks/legal-persons/:id.json');
 		return {
 			get: function (id, first, max, name) {
 				var deferred = $q.defer();

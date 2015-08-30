@@ -18,13 +18,14 @@ angular.module("mgis.common.executive_person.service", ["ngResource"])
 		}
 	})
 	.factory("CommonLegalPersonService", function ($resource, $q) {
-		var res = $resource('rest/common/legal_persons/:id.json');
+		var res = $resource('rest/oks/legal-persons/:id.json');
 		return {
 			get: function (id, first, max, name) {
 				var deferred = $q.defer();
 				res.get({id: id}, {
 					first: first,
-					max: max
+					max: max,
+					name: name
 				}, function (data) {
 					deferred.resolve(data);
 				});
