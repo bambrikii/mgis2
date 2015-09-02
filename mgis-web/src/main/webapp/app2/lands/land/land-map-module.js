@@ -1,4 +1,22 @@
 angular.module("mgis.lands.land.map", [])
+	.factory("LandsLandMapService", function () {
+		var mapContainer = {
+			map: undefined,
+			mapElement: undefined
+		}
+		return {
+			checkMap: function () {
+				return mapContainer.map == undefined ? undefined : {
+					map: mapContainer.map,
+					mapElement: mapContainer.mapElement
+				};
+			},
+			setMap: function (map, mapElement) {
+				mapContainer.map = map;
+				mapContainer.mapElement = mapElement;
+			}
+		}
+	})
 	.directive("landMap", function ($rootScope) {
 		return {
 			restrict: "E",
@@ -6,29 +24,22 @@ angular.module("mgis.lands.land.map", [])
 				landId: "@"
 			},
 			templateUrl: "app2/lands/land/land-map-control.htm",
-			controller: function ($scope, $element) {
-				///*
+			controller: function ($scope, $element, LandsLandMapService) {
 				var mapContainer = $element[0].getElementsByClassName("land-map-container")[0];
-
-				function removeChildren(node) {
-					while (node.firstChild) {
-						removeChildren(node.firstChild);
-						node.removeChild(node.firstChild);
-					}
+				console.log(mapContainer.childNodes[1]);
+				var mapIsJustCreated = false;
+				var map;
+				var mapCheck = LandsLandMapService.checkMap();
+				if (mapCheck == undefined) {
+					var mapElement = document.createElement("div");
+					map = L.map(mapElement);
+					LandsLandMapService.setMap(map, mapElement);
+					mapContainer.appendChild(mapElement);
+					mapIsJustCreated = true;
+				} else {
+					map = mapCheck.map;
+					mapContainer.appendChild(mapCheck.mapElement);
 				}
-
-				//$(mapContainer).empty();
-				removeChildren(mapContainer);
-
-				console.log(mapContainer.children);
-				mapContainer.innerHTML = "";
-				console.log(mapContainer);
-				var mapElement = document.createElement("div");
-				mapElement.setAttribute("id", "land-map");
-				mapContainer.appendChild(mapElement);
-				var map = L.map(mapElement);
-				//*/
-				//var map = L.map('land-map');
 				var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 					attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
 					maxZoom: 18,
@@ -37,7 +48,7 @@ angular.module("mgis.lands.land.map", [])
 				map.attributionControl.setPrefix('');
 				var landsLayer = new L.GeoJSON();
 
-				var reloadLands = function (loadComplete) {
+				var reloadLands0 = function (loadComplete) {
 					var geoJsonUrl = "proxy?http://localhost:8081/geoserver/mgis2/wfs";
 					var defaultParameters = {
 						service: 'WFS',
@@ -66,18 +77,20 @@ angular.module("mgis.lands.land.map", [])
 						}
 					});
 				}
-				//map.on("moveend", function () {
-				//	reloadLands();
-				//});
-//				map.on("load", function () {
-//					reloadLands(function () {
-////						console.log("reloadLands" + JSON.stringify(landsLayer.getBounds()));
-//						//map.setView(new L.LatLng(0, 0), 1);
-//						map.fitBounds(landsLayer.getBounds());
-//					});
-//				});
-				map.setView(new L.LatLng(0, 0), 1);
-				map.fitWorld();
+				var reloadLands = function () {
+					reloadLands0(function () {
+						map.fitBounds(landsLayer.getBounds());
+					});
+				}
+				if (mapIsJustCreated) {
+					map.on("load", function () {
+						reloadLands();
+					});
+					map.setView(new L.LatLng(0, 0), 1);
+				} else {
+					map.setView(new L.LatLng(0, 0), 1);
+					reloadLands();
+				}
 			}
 		}
 	})
