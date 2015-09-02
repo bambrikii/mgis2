@@ -42,6 +42,12 @@
 				</tab-heading>
 				<div ng-include src="'app2/lands/land/land-form-land-control.htm'"></div>
 			</tab>
+			<tab select="landMapSelected=true" deselect="landMapSelected=false">
+				<tab-heading>
+					<span translate>Lands.Land.Map</span>
+				</tab-heading>
+				<div ng-if="landMapSelected" ng-include src="'app2/lands/land/land-form-map.htm'"></div>
+			</tab>
 		</tabset>
 	</form>
 

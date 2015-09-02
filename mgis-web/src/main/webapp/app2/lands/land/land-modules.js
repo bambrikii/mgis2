@@ -4,7 +4,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.nc.services",
 	"mgis.common.executive_person.service",
 	"mgis.terr-zones.zone.service",
-	"mgis.oks.person"
+	"mgis.oks.person",
+	"mgis.lands.land.map"
 	//"mgis.nc.cache"
 ])
 	.config(function ($stateProvider) {

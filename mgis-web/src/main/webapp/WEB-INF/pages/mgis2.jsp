@@ -90,6 +90,7 @@
 	<script type="text/javascript" src="app2/lands/land/lands-leaflet-control.js"></script>
 	<script type="text/javascript" src="app2/lands/lands.js"></script>
 	<script type="text/javascript" src="app2/lands/land/land-services.js"></script>
+	<script type="text/javascript" src="app2/lands/land/land-map-module.js"></script>
 	<script type="text/javascript" src="app2/lands/land/land-modules.js"></script>
 	<script type="text/javascript" src="app2/lands/land/land-maps-module.js"></script>
 	<script type="text/javascript" src="app2/terr-zones/terr-zones.js"></script>

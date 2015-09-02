@@ -30,7 +30,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "op
 		}
 
 
-		var map = L.map('map');
+		var map = L.map('lands-map');
 		var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
 			maxZoom: 18,
