@@ -10,5 +10,8 @@
 
 	<context:component-scan base-package="ru.sovzond.mgis2"/>
 	<mvc:annotation-driven/>
+	<mvc:resources mapping="/app2/**" location="/app2/"/>
+	<mvc:resources mapping="/template/**" location="/template/"/>
+	<mvc:resources mapping="/bower_components/**" location="/bower_components/"/>
 
 </beans>
