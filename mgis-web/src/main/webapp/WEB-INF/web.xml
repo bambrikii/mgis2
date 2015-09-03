@@ -49,23 +49,15 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
-		<url-pattern>*.htm*</url-pattern>
+		<url-pattern>/app2</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>/app/*</url-pattern>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<url-pattern>/template</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>/app2/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>/template/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>/bower_components/*</url-pattern>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<url-pattern>/bower_components</url-pattern>
 	</servlet-mapping>
 
 	<listener>
