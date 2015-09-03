@@ -1,6 +1,4 @@
-angular.module("mgis.oks.person.legal.service", function () {
-
-})
+angular.module("mgis.oks.person.legal.service", ["ngResource"])
 	.factory("LegalPersonService", function ($resource, $q) {
 		var res = $resource('rest/oks/legal-persons/:id.json');
 		return {
