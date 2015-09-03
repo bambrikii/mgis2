@@ -65,7 +65,6 @@ angular.module("mgis.lands.land.map", [])
 					var map = L.map(mapElement);
 					container.map = map;
 					container.mapElement = mapElement;
-					//this.setMap(map, mapElement);
 					mapContainer.appendChild(container.mapElement);
 					createMap(landId);
 					map.setView(new L.LatLng(0, 0), 1);
