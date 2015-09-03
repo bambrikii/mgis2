@@ -6,10 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 
-<link type="text/css" rel="stylesheet" href="app/app.css"></link>
-<link type="text/css" rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css"></link>
-<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"></link>
-<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"></link>
+<link type="text/css" rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
 
 </head>
 <body>
@@ -20,7 +19,7 @@
 				<h2>MGIS</h2>
 				<hr>
 				<div class="clearfix">
-					<form id="form" action="<c:url value='/login'/>" method="POST" class="form-horizontal">
+					<form id="form" action="<c:url value='login'/>" method="POST" class="form-horizontal">
 						<fieldset>
 							<legend>Login</legend>
 							<c:if test="${not empty param.out}">
