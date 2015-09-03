@@ -59,16 +59,6 @@ angular.module("mgis.lands.land.map", [])
 		}
 
 		return {
-			checkMap: function () {
-				return container.map == undefined ? undefined : {
-					map: container.map,
-					mapElement: container.mapElement
-				};
-			},
-			setMap: function (map, mapElement) {
-				container.map = map;
-				container.mapElement = mapElement;
-			},
 			checkMap2: function (mapContainer, landId) {
 				if (container.map == undefined) {
 					var mapElement = document.createElement("div");
