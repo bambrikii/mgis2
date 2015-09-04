@@ -39,8 +39,7 @@ angular.module("mgis.commons", ["ui.bootstrap"])
 				return $modal.open(params2);
 			}
 		}
-	}) //
-//
+	})
 	.controller("MGISDateTimeController", function ($scope) {
 
 		$scope.showWeeks = true;
@@ -71,6 +70,41 @@ angular.module("mgis.commons", ["ui.bootstrap"])
 		};
 
 		$scope.format = "dd.MM.yyyy";
-	});
+	})
+	.controller("MGISUploadFileController", function ($scope, Upload) {
+		$scope.init = function (uploadUrl, uploadFields, uploadProgress, uploadComplete) {
+			$scope.uploadUrl = uploadUrl;
+			$scope.uploadFields = uploadFields;
+			$scope.uploadProgress = uploadProgress;
+			$scope.uploadComplete = uploadComplete;
+		}
 
+		$scope.$watch('files', function () {
+			$scope.upload($scope.files);
+		});
+
+		$scope.upload = function (files) {
+			if (files && files.length) {
+				for (var i = 0; i < files.length; i++) {
+					var file = files[i];
+					Upload.upload({
+						url: $scope.uploadUrl,
+						headers: {
+							'Content-Type': 'multipart/form-data; charset=utf-8'
+						},
+						file: file
+					}).progress(function (event) {
+						var progressPercentage = parseInt(100.0 * event.loaded / event.total);
+						if ($scope.uploadProgress) {
+							$scope.uploadProgress(event);
+						}
+					}).success(function (data, status, headers, config) {
+						if ($scope.uploadComplete) {
+							$scope.uploadComplete(data);
+						}
+					});
+				}
+			}
+		};
+	})
 ;

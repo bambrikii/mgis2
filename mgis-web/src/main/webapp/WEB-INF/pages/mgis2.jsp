@@ -61,7 +61,7 @@
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>
 	<script type="text/javascript" src="app2/commons/app-confirmation.js"></script>
-	<script type="text/javascript" src="app2/commons/app-modal-forms.js"></script>
+	<script type="text/javascript" src="app2/commons/common-modules.js"></script>
 	<script type="text/javascript" src="app2/commons/app-error-handling-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/isogd.js"></script>
 	<script type="text/javascript" src="app2/isogd/section/isogd-sections-service.js"></script>
