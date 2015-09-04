@@ -1,0 +1,75 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title"><span translate>ISOGD.Document.Select</span>: {{document.name}}</h3>
+	</div>
+	<div class="modal-body">
+		<form name="personSelectorForm" ng-controller="ISOGDDocumentSelectorController" novalidate>
+
+			<ul>
+				<li ng-repeat="section in sections">
+					<div>
+						<div>{{section.name}}</div>
+						<div>
+							<button ng-click="openSection(section)" class="btn btn-info btn-sm" ng-if="!section.books.length" translate>Open</button>
+							<button ng-click="closeSection(section)" class="btn btn-info btn-sm" ng-if="section.books.length" translate>Close</button>
+						</div>
+					</div>
+					<div>
+						<ul>
+							<li ng-repeat="book in section.books">
+								<div>
+									<div>{{book.name}}</div>
+									<div>
+										<button ng-click="openBook(book)" class="btn btn-info btn-sm" ng-if="!book.volumes.length" translate>Open
+										</button>
+										<button ng-click="closeBook(book)" class="btn btn-info btn-sm" ng-if="book.volumes.length" translate>Close
+										</button>
+									</div>
+								</div>
+								<div>
+									<ul>
+										<li ng-repeat="volume in book.volumes">
+											<div>
+												<div>{{volume.name}}</div>
+												<div>
+													<button ng-click="openVolume(volume)" class="btn btn-info btn-sm" ng-if="!volume.documents.length"
+															translate>
+														Open
+													</button>
+													<button ng-click="closeVolume(volume)" class="btn btn-info btn-sm" ng-if="volume.documents.length"
+															translate>
+														Close
+													</button>
+												</div>
+											</div>
+											<div>
+												<ul>
+													<li ng-repeat="document in volume.documents">
+														<div>
+															<div>{{document.name}}</div>
+															<div>
+																<!--<button ng-click="openDocument(document)" class="btn btn-info btn-sm" translate>Edit</button>-->
+																<button class="btn btn-warning btn-sm"
+																		ng-click="documentSelectClicked(document.id, document.name)" translate>Select
+																</button>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+
+		</form>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

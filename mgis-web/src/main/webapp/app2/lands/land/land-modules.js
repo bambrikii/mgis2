@@ -5,7 +5,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.common.executive_person.service",
 	"mgis.terr-zones.zone.service",
 	"mgis.oks.person",
-	"mgis.lands.land.map"
+	"mgis.lands.land.map",
+	"mgis.isogd.document.selector"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -99,9 +100,13 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 														modalScope.areas = modalScope.land.landAreas;
 
 														modalScope.rightsSubjectSelected = function (id, name, type) {
-															if (id) {
-																modalScope.land.rights.rightsSubject = {id: id, name: name};
-															}
+															modalScope.land.rights.rightsSubject = {id: id, name: name};
+														}
+														modalScope.rightsRegistrationDocumentSelected = function (id, name) {
+															modalScope.land.rights.registrationDocument = {id: id, name: name}
+														}
+														modalScope.rightsDocumentCertifyingRightsSelected = function (id, name) {
+															modalScope.land.rights.documentCertifyingRights = {id: id, name: name}
 														}
 
 														MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {

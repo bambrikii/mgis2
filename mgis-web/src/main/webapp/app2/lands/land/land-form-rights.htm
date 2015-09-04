@@ -126,7 +126,7 @@
 							data-compare-by="id"
 							scroll-after-rows="15">
 					</multiselect>
-					<button class="btn btn-info btn-sm" translate>Select</button>
+					<isogd-document-selector person="land.rights.registrationDocument" select-clicked="rightsRegistrationDocumentSelected(id,name)"/>
 				</p>
 			</div>
 		</div>
@@ -144,7 +144,8 @@
 							data-compare-by="id"
 							scroll-after-rows="15">
 					</multiselect>
-					<button class="btn btn-info btn-sm" translate>Select</button>
+					<isogd-document-selector person="land.rights.documentCertifyingRights"
+											 select-clicked="rightsDocumentCertifyingRightsSelected(id,name)"/>
 				</p>
 			</div>
 		</div>

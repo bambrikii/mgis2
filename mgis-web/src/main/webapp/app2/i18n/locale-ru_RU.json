@@ -27,6 +27,7 @@
   "Find": "Найти",
   "Search": "Искать",
   "Add": "Добавить",
+  "Open": "Открыть",
   "Close": "Закрыть",
   "Select": "Выбрать",
   "DropFilesHereToUpload": "Для загрузки файла перетащите его сюда",
@@ -95,6 +96,7 @@
   "ISOGD.Classifiers.Documents.Representation.Format.Edit": "Редактировать формат представления",
   "ISOGD.Classifiers.Documents.Representation.Format.Remove": "Удалить формат представления",
   "ISOGD.Classifiers.Documents.Representation.Format.Format": "Формат",
+  "ISOGD.Document.Select": "Выбрать документ",
   "Lands": "Земельные участки",
   "CadastralNumber": "Кадастровый номер",
   "CadastralNumber.Required": "Кадастровый номер обязателен",
@@ -207,7 +209,12 @@
   "TerritorialZones.Zone.AllowedUsageByDocument": "Разрешённое использование (по документу)",
   "TerritorialZones.Zone.BasisDocument": "Документ-основание",
   "TerritorialZones.Zone.StateOnTheDate": "Состояние на дату",
-  "NaturalPerson": "Физ. лицо",
+  "Persons.Selector": "Выбрать физ./юр. лицо",
   "LegalPerson": "Юр. лицо",
-  "Persons.Selector": "Выбрать физ./юр. лицо"
+  "LegalPerson.Name": "Наименование организации",
+  "NaturalPerson": "Физ. лицо",
+  "NaturalPerson.Name": "Полное имя",
+  "NaturalPerson.FirstName": "Имя",
+  "NaturalPerson.Surname": "Фамилия",
+  "NaturalPerson.Patronymic": "Отчество"
 }

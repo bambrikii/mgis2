@@ -79,6 +79,7 @@
 	<script type="text/javascript" src="app2/isogd/classifiers/documents/types/isogd-docs-types-module.js"></script>
 	<script type="text/javascript" src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-module.js"></script>
+	<script type="text/javascript" src="app2/isogd/document-selector/document-selector-component.js"></script>
 	<script type="text/javascript" src="app2/admin/admin.js"></script>
 	<script type="text/javascript" src="app2/admin/users/admin-users-service.js"></script>
 	<script type="text/javascript" src="app2/admin/users/admin-users-module.js"></script>
@@ -104,7 +105,7 @@
 	<script type="text/javascript" src="app2/oks/natural-person/natural-person-module.js"></script>
 	<script type="text/javascript" src="app2/oks/legal-person/legal-person-service.js"></script>
 	<script type="text/javascript" src="app2/oks/legal-person/legal-person-module.js"></script>
-	<script type="text/javascript" src="app2/oks/person-selector/person-selector-module.js"></script>
+	<script type="text/javascript" src="app2/oks/person-selector/person-selector-component.js"></script>
 
 </head>
 <body>
