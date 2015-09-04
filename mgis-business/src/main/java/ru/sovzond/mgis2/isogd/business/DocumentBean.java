@@ -2,6 +2,9 @@ package ru.sovzond.mgis2.isogd.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.sovzond.mgis2.business.CRUDBeanBase;
+import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
+import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 import ru.sovzond.mgis2.isogd.Volume;
@@ -17,17 +20,28 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 28/06/15.
  */
 @Service
-public class DocumentBean {
+public class DocumentBean extends CRUDBeanBase<Document> {
 
 	@Autowired
 	private DocumentDao dao;
+
+	@Override
+	protected IPageableDAOBase<Document> getPageableDao() {
+		return dao;
+	}
+
+	@Override
+	protected IIdentifiableDao<Document> getIIdentifiableDao() {
+		return dao;
+	}
 
 	public Document load(Long id) {
 		return dao.findById(id);
 	}
 
-	public void save(Document document) {
+	public Document save(Document document) {
 		dao.save(document);
+		return document;
 	}
 
 	public void delete(Document document) {

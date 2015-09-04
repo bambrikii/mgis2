@@ -11,6 +11,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "lands_land_right")
@@ -43,10 +44,12 @@ public class LandRights implements Cloneable {
 	@Column
 	private float share;
 
-	@OneToMany
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JoinTable(name = "lands_land_right_reg_docs", joinColumns = @JoinColumn(name = "land_land_right_id"), inverseJoinColumns = @JoinColumn(name = "registration_doc_id"))
 	private List<Document> registrationDocuments = new ArrayList<>();
 
-	@OneToMany
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JoinTable(name = "lands_land_right_cert_docs", joinColumns = @JoinColumn(name = "land_land_right_id"), inverseJoinColumns = @JoinColumn(name = "cert_doc_id"))
 	private List<Document> documentsCertifyingRights = new ArrayList<>();
 
 	@Column
@@ -198,6 +201,18 @@ public class LandRights implements Cloneable {
 		rights.setShare(share);
 		rights.setAnnualTax(annualTax);
 		rights.setTotalArea(totalArea);
+		rights.setRegistrationDocuments(registrationDocuments != null ? registrationDocuments.stream().map(document -> {
+			Document doc2 = new Document();
+			doc2.setId(document.getId());
+			doc2.setName(document.getName());
+			return doc2;
+		}).collect(Collectors.toList()) : null);
+		rights.setDocumentsCertifyingRights(documentsCertifyingRights != null ? documentsCertifyingRights.stream().map(document -> {
+			Document doc2 = new Document();
+			doc2.setId(document.getId());
+			doc2.setName(document.getName());
+			return doc2;
+		}).collect(Collectors.toList()) : null);
 		return rights;
 	}
 

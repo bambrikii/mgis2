@@ -119,14 +119,10 @@
 			</div>
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.rights.registrationDocument"
-							options="c.name for c in availableRegistrationDocuments"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
-					<isogd-document-selector person="land.rights.registrationDocument" select-clicked="rightsRegistrationDocumentSelected(id,name)"/>
+					<isogd-document-selector documents="land.rights.registrationDocuments"
+											 multiple-documents="true"
+											 select-clicked="rightsRegistrationDocumentsSelected(documents)"
+							/>
 				</p>
 			</div>
 		</div>
@@ -137,15 +133,10 @@
 			</div>
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.rights.documentCertifyingRights"
-							options="c.name for c in availableDocumentsCertifyingRights"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
-					<isogd-document-selector person="land.rights.documentCertifyingRights"
-											 select-clicked="rightsDocumentCertifyingRightsSelected(id,name)"/>
+					<isogd-document-selector documents="land.rights.documentsCertifyingRights"
+											 multiple-documents="true"
+											 select-clicked="rightsDocumentsCertifyingRightsSelected(documents)"
+							/>
 				</p>
 			</div>
 		</div>

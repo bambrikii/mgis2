@@ -11,6 +11,20 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 			return landAreas2;
 		}
 
+		function buildRegistrationDocuments(rights) {
+			if (rights.registrationDocuments && rights.registrationDocuments.length) {
+				return new Array().concat(rights.registrationDocuments);
+			}
+			return null;
+		}
+
+		function buildDocumentsCertifyingRights(rights) {
+			if (rights.documentsCertifyingRights && rights.documentsCertifyingRights.length) {
+				return new Array().concat(rights.documentsCertifyingRights);
+			}
+			return null;
+		}
+
 		return {
 			get: function (id, first, max, cadastralNumber, ids) {
 				var deferred = $q.defer();
@@ -33,6 +47,10 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 				var control = item.control;
 				var landAreas = item.landAreas;
 				var landAreas2 = buildLandAreas(landAreas);
+				//var registrationDocuments2 = buildRegistrationDocuments(rights);
+				//var documentsCertifyingRights2 = buildDocumentsCertifyingRights(rights);
+				//console.log("registrationDocuments" + JSON.stringify(registrationDocuments2));
+				//console.log("documentsCertifyingRights" + JSON.stringify(documentsCertifyingRights2));
 				var land = {
 					id: item.id,
 					cadastralNumber: item.cadastralNumber,
@@ -57,7 +75,9 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 						comment: rights.comment,
 						share: rights.share,
 						annualTax: rights.annualTax,
-						totalArea: rights.totalArea
+						totalArea: rights.totalArea,
+						registrationDocuments: buildRegistrationDocuments(rights),
+						documentsCertifyingRights: buildDocumentsCertifyingRights(rights)
 					},
 					characteristics: {
 						cadastralCost: characteristics.cadastralCost,

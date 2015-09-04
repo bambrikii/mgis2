@@ -162,3 +162,14 @@ span.mgis-input-group-date button {
 .mgis-document-selector-modal-form .modal-dialog {
 	width: 995px;
 }
+
+.mgis-document-selector-list {
+	list-style-type: none;
+	padding-bottom: 3px;
+	padding-top: 3px;
+}
+
+.mgis-document-selector-list-item {
+	padding-bottom: 3px;
+	padding-top: 3px;
+}

@@ -3,73 +3,92 @@
 		<h3 class="modal-title"><span translate>ISOGD.Document.Select</span>: {{document.name}}</h3>
 	</div>
 	<div class="modal-body">
-		<form name="personSelectorForm" ng-controller="ISOGDDocumentSelectorController" novalidate>
-
-			<ul>
-				<li ng-repeat="section in sections">
-					<div>
-						<div>{{section.name}}</div>
-						<div>
-							<button ng-click="openSection(section)" class="btn btn-info btn-sm" ng-if="!section.books.length" translate>Open</button>
-							<button ng-click="closeSection(section)" class="btn btn-info btn-sm" ng-if="section.books.length" translate>Close</button>
+		<form name="documentSelectorForm" ng-controller="ISOGDDocumentSelectorController" novalidate>
+			<div>
+				<ul class="list-group">
+					<li ng-repeat="selectedDocument in selectedDocuments" class="list-group-item mgis-document-selector-list-item">
+						<div class="row">
+							<div class="col-sm-8">{{selectedDocument.id}} {{selectedDocument.name}}</div>
+							<div class="col-sm-4 pull-right">
+								<button ng-click="removeSelectedDocument(selectedDocument)" class="btn btn-danger btn-sm" translate>Remove</button>
+							</div>
 						</div>
-					</div>
-					<div>
-						<ul>
-							<li ng-repeat="book in section.books">
-								<div>
-									<div>{{book.name}}</div>
-									<div>
-										<button ng-click="openBook(book)" class="btn btn-info btn-sm" ng-if="!book.volumes.length" translate>Open
-										</button>
-										<button ng-click="closeBook(book)" class="btn btn-info btn-sm" ng-if="book.volumes.length" translate>Close
-										</button>
-									</div>
-								</div>
-								<div>
-									<ul>
-										<li ng-repeat="volume in book.volumes">
-											<div>
-												<div>{{volume.name}}</div>
-												<div>
-													<button ng-click="openVolume(volume)" class="btn btn-info btn-sm" ng-if="!volume.documents.length"
-															translate>
-														Open
-													</button>
-													<button ng-click="closeVolume(volume)" class="btn btn-info btn-sm" ng-if="volume.documents.length"
-															translate>
-														Close
-													</button>
-												</div>
-											</div>
-											<div>
-												<ul>
-													<li ng-repeat="document in volume.documents">
-														<div>
-															<div>{{document.name}}</div>
-															<div>
-																<!--<button ng-click="openDocument(document)" class="btn btn-info btn-sm" translate>Edit</button>-->
-																<button class="btn btn-warning btn-sm"
-																		ng-click="documentSelectClicked(document.id, document.name)" translate>Select
-																</button>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</li>
-			</ul>
+					</li>
+				</ul>
 
+				<ul class="list-group">
+					<li ng-repeat="section in sections" class="list-group-item mgis-document-selector-list-item">
+						<div class="row">
+							<div class="col-sm-2">
+								<button ng-click="openSection(section)" class="btn btn-info btn-sm" ng-if="!section.books.length" translate>Open
+								</button>
+								<button ng-click="closeSection(section)" class="btn btn-info btn-sm" ng-if="section.books.length" translate>Close
+								</button>
+							</div>
+							<div class="col-sm-10">{{section.name}}</div>
+						</div>
+						<div>
+							<ul class="mgis-document-selector-list">
+								<li ng-repeat="book in section.books" class="mgis-document-selector-list-item">
+									<div class="row">
+										<div class="col-sm-2">
+											<button ng-click="openBook(book)" class="btn btn-info btn-sm" ng-if="!book.volumes.length" translate>Open
+											</button>
+											<button ng-click="closeBook(book)" class="btn btn-info btn-sm" ng-if="book.volumes.length" translate>Close
+											</button>
+										</div>
+										<div class="col-sm-10">{{book.name}}</div>
+									</div>
+									<div>
+										<ul class="mgis-document-selector-list">
+											<li ng-repeat="volume in book.volumes" class="mgis-document-selector-list-item">
+												<div class="row">
+													<div class="col-sm-2">
+														<button ng-click="openVolume(volume)" class="btn btn-info btn-sm"
+																ng-if="!volume.documents.length"
+																translate>
+															Open
+														</button>
+														<button ng-click="closeVolume(volume)" class="btn btn-info btn-sm"
+																ng-if="volume.documents.length"
+																translate>
+															Close
+														</button>
+													</div>
+													<div class="col-sm-10">{{volume.name}}</div>
+												</div>
+												<div>
+													<ul class="mgis-document-selector-list">
+														<li ng-repeat="document in volume.documents" class="mgis-document-selector-list-item">
+															<div class="row">
+																<div class="col-sm-2">
+																	<!--<button ng-click="openDocument(document)" class="btn btn-info btn-sm" translate>Edit</button>-->
+																	<button class="btn btn-warning btn-sm"
+																			ng-click="documentSelectClicked(document.id, document.name)" translate>
+																		Select
+																	</button>
+																</div>
+																<div class="col-sm-10">{{document.name}}</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</form>
 	</div>
 </div>
 
 <div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="documentSelectorForm.$invalid" ng-click="ok()" ng-if="multipleDocuments" translate>
+		Submit
+	</button>
 	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
 </div>

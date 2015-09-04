@@ -10,39 +10,94 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 			restrict: "E",
 			scope: {
 				document: "=",
+				documents: "=",
+				multipleDocuments: "@",
 				selectClicked: "&"
 			},
 			templateUrl: "app2/isogd/document-selector/document-selector-component.htm",
 			controller: function ($scope) {
-				$scope.openSelector = function (document) {
+				$scope.openSelector = function () {
 					var modalScope = $rootScope.$new();
-					modalScope.document = angular.extend({}, document);
+					modalScope.selectedDocuments = new Array();
+					modalScope.multipleDocuments = $scope.multipleDocuments;
+					if ($scope.multipleDocuments) {
+						if ($scope.documents) {
+							modalScope.selectedDocuments = new Array().concat($scope.documents);
+						}
+					} else {
+						if ($scope.document) {
+							modalScope.selectedDocuments = new Array().concat($scope.document);
+						}
+					}
+
+					function selectionCompleteHandler(selectedDocuments) {
+						if ($scope.selectClicked) {
+							var result = {};
+							if ($scope.multipleDocuments) {
+								$scope.documents = result.documents = new Array().concat(selectedDocuments);
+							} else if (selectedDocuments.length > 0) {
+								$scope.document = result.document = selectedDocuments[0];
+							}
+							$scope.selectClicked(result);
+						}
+					};
 					var modal = MGISCommonsModalForm.edit("app2/isogd/document-selector/document-selector-form.htm", modalScope, function (scope, $modalInstance) {
+						selectionCompleteHandler(scope.selectedDocuments);
 						$modalInstance.close();
 					}, {windowClass: "mgis-document-selector-modal-form"});
-					modalScope.documentSelectClicked = function (id, name) {
-						var document = {id: id, name: name};
-						$scope.document = document;
-						if ($scope.selectClicked) {
-							$scope.selectClicked(document);
-						}
+
+					modalScope.selectionCompleteHandler = function (selectedDocuments) {
+						selectionCompleteHandler(selectedDocuments);
 						modal.close();
 					}
+
 				}
 			}
 		}
 	})
 	.controller("ISOGDDocumentSelectorController", function ($scope, ISOGDSectionsService, ISOGDBooksService, ISOGDVolumesService, ISOGDDocumentsService) {
-		function emptyList(list, propertyName) {
+		function emptyListAttribute(list, attributeName) {
 			for (var i in list) {
-				list[i][propertyName].splice(0, list[i][propertyName].length);
+				list[i][attributeName].splice(0, list[i][attributeName].length);
 			}
 			return list;
 		}
 
+		$scope.selectedDocuments = $scope.selectedDocuments || new Array();
+
+		$scope.documentSelectClicked = function (id, name) {
+			var item = {id: id, name: name};
+			if ($scope.multipleDocuments) {
+				var found = false;
+				for (var i = 0; i < $scope.selectedDocuments.length; i++) {
+					if ($scope.selectedDocuments[i].id == id) {
+						found = true;
+						break;
+					}
+				}
+				if (!found) {
+					$scope.selectedDocuments.push(item);
+				}
+			} else {
+				$scope.selectedDocuments.splice(0, $scope.selectedDocuments.length);
+				$scope.selectedDocuments.push(item);
+				if ($scope.selectionCompleteHandler) {
+					$scope.selectionCompleteHandler($scope.selectedDocuments);
+				}
+			}
+		}
+
+		$scope.removeSelectedDocument = function (item) {
+			for (var i = 0; i < $scope.selectedDocuments.length; i++) {
+				if ($scope.selectedDocuments[i].id == item.id) {
+					$scope.selectedDocuments.splice(i, 1);
+				}
+			}
+		}
+
 		$scope.openSection = function (section) {
 			ISOGDBooksService.get("", 0, 0, section.id).then(function (data) {
-				section.books = emptyList(data.list, "volumes");
+				section.books = emptyListAttribute(data.list, "volumes");
 			});
 		}
 		$scope.closeSection = function (section) {
@@ -50,7 +105,7 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 		}
 		$scope.openBook = function (book) {
 			ISOGDVolumesService.get("", 0, 0, book.id).then(function (data) {
-				book.volumes = emptyList(data.list, "documents");
+				book.volumes = emptyListAttribute(data.list, "documents");
 			});
 		}
 		$scope.closeBook = function (book) {
@@ -66,7 +121,7 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 		}
 
 		ISOGDSectionsService.get().then(function (data) {
-			$scope.sections = emptyList(data.list, "books");
+			$scope.sections = emptyListAttribute(data.list, "books");
 		});
 	})
 ;

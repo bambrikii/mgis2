@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.common.classifiers.ExecutivePersonBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+import ru.sovzond.mgis2.isogd.business.DocumentBean;
+import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.national_classifiers.*;
 import ru.sovzond.mgis2.oks.AddressBean;
@@ -17,6 +19,8 @@ import ru.sovzond.mgis2.registers.lands.rights.LandRights;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/lands/land")
@@ -93,6 +97,9 @@ public class LandRESTController implements Serializable {
 
 	@Autowired
 	private LandAreaTypeBean landAreaTypeBean;
+
+	@Autowired
+	private DocumentBean documentBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -181,6 +188,18 @@ public class LandRESTController implements Serializable {
 			rights2.setShare(rights.getShare());
 			rights2.setAnnualTax(rights.getAnnualTax());
 			rights2.setTotalArea(rights.getTotalArea());
+			// Registration documents
+			rights2.getRegistrationDocuments().clear();
+			if (rights.getRegistrationDocuments() != null && rights.getRegistrationDocuments().size() > 0) {
+				List<Document> load = documentBean.load(rights.getRegistrationDocuments().stream().map(document -> document.getId()).collect(Collectors.toList()));
+				rights2.getRegistrationDocuments().addAll(load);
+			}
+			// Documents Certifying Rights
+			rights2.getDocumentsCertifyingRights().clear();
+			if (rights.getDocumentsCertifyingRights() != null && rights.getDocumentsCertifyingRights().size() > 0) {
+				List<Document> load = documentBean.load(rights.getDocumentsCertifyingRights().stream().map(document -> document.getId()).collect(Collectors.toList()));
+				rights2.getDocumentsCertifyingRights().addAll(load);
+			}
 		}
 		LandCharacteristics chars = land.getCharacteristics();
 		if (chars != null) {

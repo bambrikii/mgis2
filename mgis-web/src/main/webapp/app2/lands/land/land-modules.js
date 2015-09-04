@@ -99,14 +99,30 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 
 														modalScope.areas = modalScope.land.landAreas;
 
+														// Rights Subject
 														modalScope.rightsSubjectSelected = function (id, name, type) {
 															modalScope.land.rights.rightsSubject = {id: id, name: name};
 														}
-														modalScope.rightsRegistrationDocumentSelected = function (id, name) {
-															modalScope.land.rights.registrationDocument = {id: id, name: name}
+
+														// RegistrationDocuments
+														modalScope.rightsRegistrationDocumentsSelected = function (documents) {
+															if (modalScope.land.rights.registrationDocuments) {
+																modalScope.land.rights.registrationDocuments.splice(0, modalScope.land.rights.registrationDocuments.length);
+															} else {
+																modalScope.land.rights.registrationDocuments = new Array();
+															}
+															modalScope.land.rights.registrationDocuments = modalScope.land.rights.registrationDocuments || new Array();
+															modalScope.land.rights.registrationDocuments = modalScope.land.rights.registrationDocuments.concat(documents);
 														}
-														modalScope.rightsDocumentCertifyingRightsSelected = function (id, name) {
-															modalScope.land.rights.documentCertifyingRights = {id: id, name: name}
+
+														// DocumentsCertifyingRights
+														modalScope.rightsDocumentsCertifyingRightsSelected = function (documents) {
+															if (modalScope.land.rights.documentsCertifyingRights) {
+																modalScope.land.rights.documentsCertifyingRights.splice(0, modalScope.land.rights.documentsCertifyingRights.length);
+															} else {
+																modalScope.land.rights.documentsCertifyingRights = new Array();
+															}
+															modalScope.land.rights.documentsCertifyingRights = modalScope.land.rights.documentsCertifyingRights.concat(documents);
 														}
 
 														MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
@@ -114,9 +130,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 																$modalInstance.close();
 																updateGrid();
 															});
-														}, {
-															windowClass: "mgis-land-modal-form"
-														});
+														}, {windowClass: "mgis-land-modal-form"});
 													});
 												});
 											});
