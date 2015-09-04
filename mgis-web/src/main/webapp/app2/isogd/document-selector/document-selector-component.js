@@ -1,5 +1,6 @@
 angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 	"mgis.commons",
+	"mgis.isogd.documents",
 	"mgis.isogd.sections.service",
 	"mgis.isogd.books.service",
 	"mgis.isogd.volumes.service",
@@ -55,7 +56,7 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 			}
 		}
 	})
-	.controller("ISOGDDocumentSelectorController", function ($scope, ISOGDSectionsService, ISOGDBooksService, ISOGDVolumesService, ISOGDDocumentsService) {
+	.controller("ISOGDDocumentSelectorController", function ($scope, ISOGDSectionsService, ISOGDBooksService, ISOGDVolumesService, ISOGDDocumentsService, ISOGDDocumentCRUDService) {
 		function emptyListAttribute(list, attributeName) {
 			for (var i in list) {
 				list[i][attributeName].splice(0, list[i][attributeName].length);
@@ -118,6 +119,17 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 		}
 		$scope.closeVolume = function (volume) {
 			volume.documents = new Array();
+		}
+
+		$scope.addDocument = function (volume) {
+			ISOGDDocumentCRUDService.addItem(volume.id, function () {
+				$scope.openVolume(volume);
+			});
+		}
+		$scope.editDocument = function (id, volume) {
+			ISOGDDocumentCRUDService.editItem(id, function () {
+				$scope.openVolume(volume);
+			});
 		}
 
 		ISOGDSectionsService.get().then(function (data) {
