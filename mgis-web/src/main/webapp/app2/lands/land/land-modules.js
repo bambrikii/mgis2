@@ -99,11 +99,6 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 
 														modalScope.areas = modalScope.land.landAreas;
 
-														// Rights Subject
-														modalScope.rightsSubjectSelected = function (id, name, type) {
-															modalScope.land.rights.rightsSubject = {id: id, name: name};
-														}
-
 														MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {
 															LandsLandService.save(scope.land).then(function (data) {
 																$modalInstance.close();
