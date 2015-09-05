@@ -1,0 +1,18 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title"><span translate>Address</span>: {{address.name}}</h3>
+	</div>
+	<div class="modal-body">
+		<form name="addressForm" novalidate>
+
+		</form>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="addressForm.$invalid" ng-click="ok()" translate>
+		Submit
+	</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>
+

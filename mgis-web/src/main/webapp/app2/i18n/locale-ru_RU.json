@@ -216,5 +216,7 @@
   "NaturalPerson.Name": "Полное имя",
   "NaturalPerson.FirstName": "Имя",
   "NaturalPerson.Surname": "Фамилия",
-  "NaturalPerson.Patronymic": "Отчество"
+  "NaturalPerson.Patronymic": "Отчество",
+  "Address.Selector": "Выбрать адрес",
+  "Address": "Адрес"
 }

@@ -107,6 +107,10 @@
 	<script type="text/javascript" src="app2/oks/legal-person/legal-person-module.js"></script>
 	<script type="text/javascript" src="app2/oks/person-selector/person-selector-component.js"></script>
 
+	<script type="text/javascript" src="app2/oks/address/address-service.js"></script>
+	<script type="text/javascript" src="app2/oks/address/address-module.js"></script>
+	<script type="text/javascript" src="app2/oks/address-selector/address-selector-component.js"></script>
+
 </head>
 <body>
 

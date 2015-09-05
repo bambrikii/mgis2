@@ -6,7 +6,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.terr-zones.zone.service",
 	"mgis.oks.person",
 	"mgis.lands.land.map",
-	"mgis.isogd.document.selector"
+	"mgis.isogd.document.selector",
+	"mgis.oks.address.selector"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
