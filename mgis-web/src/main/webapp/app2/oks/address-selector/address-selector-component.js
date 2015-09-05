@@ -12,9 +12,6 @@ angular.module("mgis.oks.address.selector", ["ui.bootstrap",
 			},
 			templateUrl: "app2/oks/address-selector/address-selector-component.htm",
 			controller: function ($scope, $rootScope, MGISCommonsModalForm, OKSAddressService) {
-				$scope.saveAddress = function () {
-
-				}
 				$scope.open = function () {
 					var modalScope = $rootScope.$new();
 					var address = $scope.address;
@@ -27,7 +24,6 @@ angular.module("mgis.oks.address.selector", ["ui.bootstrap",
 					}
 					modalScope.address = angular.extend({}, address);
 					function selectionCompleteHandler(selectedAddress) {
-						console.log(selectedAddress);
 						$scope.address = angular.extend({}, selectedAddress);
 						if ($scope.selectClicked) {
 							$scope.selectClicked({address: selectedAddress});
