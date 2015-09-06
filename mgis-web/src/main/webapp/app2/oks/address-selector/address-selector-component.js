@@ -68,7 +68,7 @@ angular.module("mgis.oks.address.selector", ["ui.bootstrap",
 			});
 		}
 		$scope.remove = function (id) {
-			OKSAddressService.remove(id).then(function () {
+			OKSAddressModule.remove(id, function () {
 				updateList();
 			});
 		}

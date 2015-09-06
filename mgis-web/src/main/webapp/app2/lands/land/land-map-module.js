@@ -56,6 +56,50 @@ angular.module("mgis.lands.land.map", [])
 			map.on("load", function () {
 				reloadLand(landId);
 			});
+			var drawnItems = new L.FeatureGroup();
+			map.addLayer(drawnItems);
+			var drawControl = new L.Control.Draw({
+				edit: {
+					featureGroup: drawnItems
+				}, draw: {
+					polyline: false,
+					rectangle: false,
+					circle: false,
+					marker: false
+				}
+			});
+			map.addControl(drawControl);
+			map.on("draw:created", function (e) {
+				console.log("created");
+				if (e.layerType == "polygon") {
+					console.log(e.layerType);
+					console.log(e.layer._latlngs);
+				}
+			});
+			//map.on("draw:edited", function (e) {
+			//	console.log("edited");
+			//	console.log(e);
+			//});
+			//map.on("draw:deleted", function (e) {
+			//	console.log("deleted");
+			//	console.log(e);
+			//});
+			//map.on("draw:drawstart", function (e) {
+			//	console.log("drawstart");
+			//	console.log(e);
+			//});
+			//map.on("draw:drawstop", function (e) {
+			//	console.log("drawstop");
+			//	console.log(e);
+			//});
+			//map.on("draw:editstart", function (e) {
+			//	console.log("editstart");
+			//	console.log(e);
+			//});
+			//map.on("draw:editstop", function (e) {
+			//	console.log("editstop");
+			//	console.log(e);
+			//});
 		}
 
 		return {

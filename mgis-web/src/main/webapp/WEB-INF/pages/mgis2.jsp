@@ -17,13 +17,6 @@
 
 	<link type="text/css" rel="stylesheet" href="bower_components/select2/select2.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css">
-	<link type="text/css" rel="stylesheet" href="bower_components/openlayers3/build/ol.css">
-	<link type="text/css" rel="stylesheet" href="bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.css">
-	<link type="text/css" rel="stylesheet" href="bower_components/angular-openlayers-directive/css/markers.css">
-	<link type="text/css" rel="stylesheet" href="bower_components/angular-openlayers-directive/css/openlayers.css">
-	<link type="text/css" rel="stylesheet" href="bower_components/ol3-layerswitcher/src/ol3-layerswitcher.css">
-	<link type="text/css" rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
-	<link type="text/css" rel="stylesheet" href="bower_components/leaflet-groupedlayercontrol/src/leaflet.groupedlayercontrol.css">
 
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
@@ -47,16 +40,18 @@
 	<script type="text/javascript" src="bower_components/angular-ui-select/dist/select.js"></script>
 	<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
 	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
-	<script type="text/javascript" src="bower_components/openlayers3/build/ol.js"></script>
-	<script type="text/javascript" src="bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
 	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-	<script type="text/javascript" src="bower_components/ol3-layerswitcher/src/ol3-layerswitcher.js"></script>
+
+	<link type="text/css" rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
 	<script type="text/javascript" src="bower_components/leaflet/dist/leaflet-src.js"></script>
 	<%--<script type="text/javascript" src="bower_components/leaflet.activelayers/src/ActiveLayers.js"></script>--%>
+	<link type="text/css" rel="stylesheet" href="bower_components/leaflet-groupedlayercontrol/src/leaflet.groupedlayercontrol.css">
 	<script type="text/javascript" src="bower_components/leaflet-groupedlayercontrol/src/leaflet.groupedlayercontrol.js"></script>
 	<%--<script type="text/javascript" src="bower_components/leaflet-plugins/layer/tile/Google.js"></script>--%>
 	<%--<script type="text/javascript" src="bower_components/leaflet-plugins/layer/tile/Bing.js"></script>--%>
 	<%--<script type="text/javascript" src="bower_components/leaflet-plugins/layer/tile/Yandex.js"></script>--%>
+	<link type="text/css" rel="stylesheet" href="bower_components/leaflet.draw/dist/leaflet.draw.css">
+	<script type="text/javascript" src="bower_components/leaflet.draw/dist/leaflet.draw-src.js"></script>
 
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>

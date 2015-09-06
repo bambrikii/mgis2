@@ -1,10 +1,6 @@
-angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", "openlayers-directive", //
-//	"mgis.commons", //
+angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.lands.lands",
-	"mgis.lands.services",
-//	"mgis.nc.services",
-//	"mgis.common.executive_person.service",
-//	"mgis.terr-zones.zone.service"
+	"mgis.lands.services"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
