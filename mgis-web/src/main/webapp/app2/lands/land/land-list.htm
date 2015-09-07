@@ -1,32 +1,37 @@
 <div ng-controller="LandsLandController">
-    <div class="container">
-        <form name="landSearchForm" class="form-horizontal pull-right">
-            <div class="control-group">
-                <label for="cadastralNumber" translate>CadastralNumber</label>
+	<div class="container">
+		<form name="landSearchForm" class="form-horizontal pull-right">
+			<div class="control-group">
+				<label for="cadastralNumber" translate>CadastralNumber</label>
 
-                <div class="controls form-inline">
-                    <input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber" class="form-control"/>
-                    <button class="btn btn-primary btn-sm" ng-click="find()" translate>Find</button>
-                    <button class="btn btn-primary btn-sm" ng-click="displayOnTheMap()" translate>Lands.Land.DisplayOnTheMap</button>
-                </div>
-            </div>
-        </form>
-    </div>
+				<div class="controls form-inline">
+					<input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber" class="form-control"/>
+					<button class="btn btn-primary btn-sm" ng-click="find()" translate>Find</button>
+					<button class="btn btn-primary btn-sm" ng-click="displayOnTheMap()" translate>Lands.Land.DisplayOnTheMap</button>
+				</div>
+			</div>
+		</form>
+	</div>
 
-    <div>
-        <div class="row" ng-repeat="item in list" style="padding: 5px;">
-            <div class="col-md-1">{{item.id}}</div>
-            <div class="col-md-2">{{item.cadastralNumber}}</div>
-            <div class="col-md-1">{{item.stateRealEstateCadastreaStaging|date:'yyyy-MM-dd'}}</div>
-            <div class="col-md-4">{{item.landCategory.name|limitTo:35:0}}...</div>
-            <div class="col-md-4">
-                <button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
-                <button class="btn btn-danger btn-sm" ng-click="deleteItem(item.id)" translate>Delete</button>
-            </div>
-        </div>
-    </div>
+	<div>
+		<div class="row" ng-repeat="item in landsPager.list" style="padding: 5px;">
+			<div class="col-md-1">{{item.id}}</div>
+			<div class="col-md-2">{{item.cadastralNumber}}</div>
+			<div class="col-md-1">{{item.stateRealEstateCadastreaStaging|date:'yyyy-MM-dd'}}</div>
+			<div class="col-md-4">{{item.landCategory.name|limitTo:35:0}}...</div>
+			<div class="col-md-4">
+				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
+				<button class="btn btn-danger btn-sm" ng-click="deleteItem(item.id)" translate>Delete</button>
+			</div>
+		</div>
+	</div>
 
-    <div class="pull-left">
-        <button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
-    </div>
+	<pagination total-items="landsPager.totalNumberOfItems" ng-model="currentPage"
+				items-per-page="itemsPerPage" ng-change="pageChanged()"
+				class="pagination-sm" previous-text="&lsaquo;"
+				next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+
+	<div>
+		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
+	</div>
 </div>

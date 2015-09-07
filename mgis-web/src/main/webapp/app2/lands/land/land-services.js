@@ -31,11 +31,10 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 				res.get({
 					id: id,
 					cadastralNumber: cadastralNumber,
-					ids: ids ? ids.join() : new Array()
-				}, {
+					ids: ids ? ids.join() : new Array(),
 					first: first,
 					max: max
-				}, function (data) {
+				}, {}, function (data) {
 					deferred.resolve(data);
 				});
 				return deferred.promise;
