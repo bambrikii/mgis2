@@ -52,6 +52,8 @@
 	<%--<script type="text/javascript" src="bower_components/leaflet-plugins/layer/tile/Yandex.js"></script>--%>
 	<link type="text/css" rel="stylesheet" href="bower_components/leaflet.draw/dist/leaflet.draw.css">
 	<script type="text/javascript" src="bower_components/leaflet.draw/dist/leaflet.draw-src.js"></script>
+	<script type="text/javascript" src="bower_components/terraformer/terraformer.js"></script>
+	<script type="text/javascript" src="bower_components/terraformer-wkt-parser/terraformer-wkt-parser.js"></script>
 
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>

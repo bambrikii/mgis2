@@ -293,4 +293,16 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 			}
 		}
 	})
+	.factory("LandsLandGeoService", function ($resource, $q) {
+		var res = $resource('rest/lands/land/:id/spatial-attribute.json');
+		return {
+			save: function (idAttribute, geoAttribute) {
+				var deferred = $q.defer();
+				res.save({id: idAttribute}, geoAttribute, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	})
 ;

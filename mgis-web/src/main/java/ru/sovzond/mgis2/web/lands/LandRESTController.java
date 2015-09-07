@@ -266,4 +266,9 @@ public class LandRESTController implements Serializable {
 		landBean.remove(landBean.load(id));
 	}
 
+	@RequestMapping(value = "/{id}/spatial-attribute", method = RequestMethod.POST)
+	@Transactional
+	public boolean saveGeospatialAttribute(@PathVariable("id") Long id, @RequestBody(required = true) String wktString) {
+		return landBean.saveGeospatialAttribute(id, wktString);
+	}
 }

@@ -3,7 +3,8 @@ angular.module("mgis.lands.land.map", [])
 		var container = {
 			map: undefined,
 			mapElement: undefined,
-			landsLayer: undefined
+			landsLayer: undefined,
+			drawCreatedEvent: undefined
 		}
 
 		var reloadLand0 = function (landId, loadComplete) {
@@ -38,13 +39,13 @@ angular.module("mgis.lands.land.map", [])
 			});
 		}
 
-		var reloadLand = function (landId) {
-			reloadLand0(landId, function () {
+		var reloadLand = function () {
+			reloadLand0(container.landId, function () {
 				container.map.fitBounds(container.landsLayer.getBounds());
 			});
 		}
 
-		function createMap(landId) {
+		function createMap() {
 			var map = container.map;
 			var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -54,7 +55,7 @@ angular.module("mgis.lands.land.map", [])
 			map.attributionControl.setPrefix('');
 			container.landsLayer = new L.GeoJSON();
 			map.on("load", function () {
-				reloadLand(landId);
+				reloadLand();
 			});
 			var drawnItems = new L.FeatureGroup();
 			map.addLayer(drawnItems);
@@ -70,48 +71,28 @@ angular.module("mgis.lands.land.map", [])
 			});
 			map.addControl(drawControl);
 			map.on("draw:created", function (e) {
-				console.log("created");
 				if (e.layerType == "polygon") {
-					console.log(e.layerType);
-					console.log(e.layer._latlngs);
+					if (container.drawCreatedEvent) {
+						var geoJSONValue = JSON.stringify(e.layer.toGeoJSON());
+						var wkt = Terraformer.WKT.convert(JSON.parse(geoJSONValue).geometry);
+						container.drawCreatedEvent(container.landId, wkt);
+					}
 				}
 			});
-			//map.on("draw:edited", function (e) {
-			//	console.log("edited");
-			//	console.log(e);
-			//});
-			//map.on("draw:deleted", function (e) {
-			//	console.log("deleted");
-			//	console.log(e);
-			//});
-			//map.on("draw:drawstart", function (e) {
-			//	console.log("drawstart");
-			//	console.log(e);
-			//});
-			//map.on("draw:drawstop", function (e) {
-			//	console.log("drawstop");
-			//	console.log(e);
-			//});
-			//map.on("draw:editstart", function (e) {
-			//	console.log("editstart");
-			//	console.log(e);
-			//});
-			//map.on("draw:editstop", function (e) {
-			//	console.log("editstop");
-			//	console.log(e);
-			//});
 		}
 
 		return {
-			checkMap2: function (mapContainer, landId) {
+			checkMap2: function (mapContainer, landId, drawCreatedEvent) {
+				container.landId = landId;
 				if (container.map == undefined) {
 					var mapElement = document.createElement("div");
 					var map = L.map(mapElement);
 					container.map = map;
 					container.mapElement = mapElement;
 					mapContainer.appendChild(container.mapElement);
-					createMap(landId);
+					createMap();
 					map.setView(new L.LatLng(0, 0), 1);
+					container.drawCreatedEvent = drawCreatedEvent;
 					return {
 						map: container.map,
 						mapElement: container.mapElement,
@@ -121,7 +102,8 @@ angular.module("mgis.lands.land.map", [])
 					var map = container.map;
 					mapContainer.appendChild(container.mapElement);
 					map.setView(new L.LatLng(0, 0), 1);
-					reloadLand(landId);
+					reloadLand();
+					container.drawCreatedEvent = drawCreatedEvent;
 					return {
 						map: container.map,
 						mapElement: container.mapElement,
@@ -138,9 +120,21 @@ angular.module("mgis.lands.land.map", [])
 				landId: "@"
 			},
 			templateUrl: "app2/lands/land/land-map-control.htm",
-			controller: function ($scope, $element, LandsLandMapService) {
+			controller: function ($scope, $element, LandsLandMapService, LandsLandGeoService) {
 				var mapContainer = $element[0].getElementsByClassName("land-map-container")[0];
-				var checkResult = LandsLandMapService.checkMap2(mapContainer, $scope.landId);
+
+				function createMap(landId) {
+					console.log(landId);
+					var checkResult = LandsLandMapService.checkMap2(mapContainer, landId, function (landId2, wktString) {
+						if (landId) {
+							LandsLandGeoService.save(landId2, wktString).then(function () {
+								createMap(landId2);
+							});
+						}
+					});
+				}
+
+				createMap($scope.landId);
 			}
 		}
 	})
