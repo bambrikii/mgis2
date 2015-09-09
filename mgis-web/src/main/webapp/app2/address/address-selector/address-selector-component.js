@@ -1,7 +1,7 @@
-angular.module("mgis.oks.address.selector", ["ui.bootstrap",
+angular.module("mgis.address.selector", ["ui.bootstrap",
 	"mgis.commons",
-	"mgis.oks.address",
-	"mgis.oks.address.service"
+	"mgis.address",
+	"mgis.address.service"
 ])
 	.directive("addressSelector", function () {
 		return {
@@ -10,13 +10,13 @@ angular.module("mgis.oks.address.selector", ["ui.bootstrap",
 				address: "=",
 				selectClicked: "&"
 			},
-			templateUrl: "app2/oks/address-selector/address-selector-component.htm",
-			controller: function ($scope, $rootScope, MGISCommonsModalForm, OKSAddressService) {
+			templateUrl: "app2/address/address-selector/address-selector-component.htm",
+			controller: function ($scope, $rootScope, MGISCommonsModalForm, AddressService) {
 				$scope.open = function () {
 					var modalScope = $rootScope.$new();
 					var address = $scope.address;
 					if (address && address.id) {
-						OKSAddressService.get(address.id).then(function (data) {
+						AddressService.get(address.id).then(function (data) {
 							address = data;
 						});
 					} else {
@@ -30,7 +30,7 @@ angular.module("mgis.oks.address.selector", ["ui.bootstrap",
 						}
 					}
 
-					var modal = MGISCommonsModalForm.edit("app2/oks/address-selector/address-selector-form.htm", modalScope, function (scope, $modalInstance) {
+					var modal = MGISCommonsModalForm.edit("app2/address/address-selector/address-selector-form.htm", modalScope, function (scope, $modalInstance) {
 						selectionCompleteHandler(scope.address);
 						$modalInstance.close();
 					});
@@ -43,11 +43,11 @@ angular.module("mgis.oks.address.selector", ["ui.bootstrap",
 			}
 		}
 	})
-	.controller("OKSAddressSelectController", function ($scope, OKSAddressService, OKSAddressModule) {
+	.controller("AddressSelectController", function ($scope, AddressService, AddressModule) {
 		$scope.first = 0;
 		$scope.max = 15;
 		function updateList() {
-			OKSAddressService.get("", $scope.first, $scope.max).then(function (data) {
+			AddressService.get("", $scope.first, $scope.max).then(function (data) {
 				$scope.list = data.list;
 			});
 		}
@@ -58,17 +58,17 @@ angular.module("mgis.oks.address.selector", ["ui.bootstrap",
 			updateList();
 		}
 		$scope.add = function () {
-			OKSAddressModule.add(function () {
+			AddressModule.add(function () {
 				updateList();
 			});
 		}
 		$scope.edit = function (id) {
-			OKSAddressModule.edit(id, function () {
+			AddressModule.edit(id, function () {
 				updateList();
 			});
 		}
 		$scope.remove = function (id) {
-			OKSAddressModule.remove(id, function () {
+			AddressModule.remove(id, function () {
 				updateList();
 			});
 		}

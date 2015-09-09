@@ -3,9 +3,10 @@ package ru.sovzond.mgis2.web.oks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
+import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.oks.AddressBean;
-import ru.sovzond.mgis2.registers.oks.Address;
+import ru.sovzond.mgis2.registers.oks.OKSAddress;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
@@ -14,7 +15,7 @@ import java.io.Serializable;
  * Created by Alexander Arakelyan on 30/08/15.
  */
 @RestController
-@RequestMapping("/oks/addresses")
+@RequestMapping("/addresses")
 @Scope("session")
 public class AddressRESTService implements Serializable {
 	@Autowired
@@ -28,7 +29,7 @@ public class AddressRESTService implements Serializable {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@Transactional
-	public Address save(@PathVariable("id") Long id, @RequestBody Address address) {
+	public Address save(@PathVariable("id") Long id, @RequestBody OKSAddress address) {
 		Address address1;
 		if (id == 0) {
 			address1 = new Address();

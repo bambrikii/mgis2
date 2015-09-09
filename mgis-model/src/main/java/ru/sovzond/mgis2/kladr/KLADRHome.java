@@ -4,12 +4,10 @@ import javax.persistence.*;
 
 /**
  * Created by Alexander Arakelyan on 08.09.15.
- * <p/>
- * http://www.ksoft.ru/opis_kladr.htm
  */
 @Entity
-@Table(name = "kladr_kladr")
-public class Kladr {
+@Table(name = "kladr_doma")
+public class KLADRHome {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "kladr_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
@@ -17,10 +15,16 @@ public class Kladr {
 	private Long id;
 
 	/**
-	 * Наименование объекта
+	 * Номер дома, владения
 	 */
 	@Column(name = "name")
 	private String name;
+
+	/**
+	 * Корпус дома
+	 */
+	@Column(name = "korp")
+	private String korp;
 
 	/**
 	 * Сокращенное наименование типа объекта
@@ -31,14 +35,15 @@ public class Kladr {
 	/**
 	 * Код
 	 * <p/>
-	 * СС РРР ГГГ ППП АА, где
+	 * СС РРР ГГГ ППП УУУУ ДДДД, где
 	 * СС – код субъекта Российской Федерации (региона), коды регионов представлены в Приложении 2 к Описанию классификатора адресов Российской Федерации (КЛАДР);
 	 * РРР – код района;
 	 * ГГГ – код города;
-	 * ППП – код населенного пункта,
-	 * АА – признак актуальности наименования адресного объекта.
+	 * ППП – код населенного пункта;
+	 * УУУУ – код улицы (если адрес не содержит наименования улицы, т.е. дома привязаны непосредственно к городу или населенному пункту, то код улицы будет содержать нули – 0000);
+	 * ДДДД – порядковый номер позиции классификатора с обозначениями домов.
 	 */
-	@Column(name = "code")
+	@Column(name = "code", unique = true)
 	private String code;
 
 	/**
@@ -65,11 +70,13 @@ public class Kladr {
 	@Column(name = "ocatd")
 	private String ocatd;
 
-	/**
-	 * Статус объекта" (признак центра)
-	 */
-	@Column(name = "status")
-	private String status;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -77,6 +84,14 @@ public class Kladr {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getKorp() {
+		return korp;
+	}
+
+	public void setKorp(String korp) {
+		this.korp = korp;
 	}
 
 	public String getSocr() {
@@ -87,12 +102,12 @@ public class Kladr {
 		this.socr = socr;
 	}
 
-	public String getGninmb() {
-		return gninmb;
+	public String getCode() {
+		return code;
 	}
 
-	public void setGninmb(String gninmb) {
-		this.gninmb = gninmb;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getIndex() {
@@ -103,12 +118,12 @@ public class Kladr {
 		this.index = index;
 	}
 
-	public String getCode() {
-		return code;
+	public String getGninmb() {
+		return gninmb;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setGninmb(String gninmb) {
+		this.gninmb = gninmb;
 	}
 
 	public String getUno() {
@@ -119,11 +134,11 @@ public class Kladr {
 		this.uno = uno;
 	}
 
-	public Long getId() {
-		return id;
+	public String getOcatd() {
+		return ocatd;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setOcatd(String ocatd) {
+		this.ocatd = ocatd;
 	}
 }

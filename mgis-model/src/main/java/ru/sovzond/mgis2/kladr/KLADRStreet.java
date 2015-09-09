@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 08.09.15.
  */
 @Entity
-@Table(name = "kladr_doma")
-public class Doma {
+@Table(name = "kladr_street")
+public class KLADRStreet {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "kladr_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
@@ -15,16 +15,10 @@ public class Doma {
 	private Long id;
 
 	/**
-	 * Номер дома, владения
+	 * Наименование объекта
 	 */
 	@Column(name = "name")
 	private String name;
-
-	/**
-	 * Корпус дома
-	 */
-	@Column(name = "korp")
-	private String korp;
 
 	/**
 	 * Сокращенное наименование типа объекта
@@ -35,15 +29,15 @@ public class Doma {
 	/**
 	 * Код
 	 * <p/>
-	 * СС РРР ГГГ ППП УУУУ ДДДД, где
+	 * СС РРР ГГГ ППП УУУУ АА, где
 	 * СС – код субъекта Российской Федерации (региона), коды регионов представлены в Приложении 2 к Описанию классификатора адресов Российской Федерации (КЛАДР);
 	 * РРР – код района;
 	 * ГГГ – код города;
 	 * ППП – код населенного пункта;
-	 * УУУУ – код улицы (если адрес не содержит наименования улицы, т.е. дома привязаны непосредственно к городу или населенному пункту, то код улицы будет содержать нули – 0000);
-	 * ДДДД – порядковый номер позиции классификатора с обозначениями домов.
+	 * УУУУ – код улицы;
+	 * АА – признак актуальности наименования адресного объекта.
 	 */
-	@Column(name = "code")
+	@Column(name = "code", unique = true)
 	private String code;
 
 	/**
@@ -84,14 +78,6 @@ public class Doma {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getKorp() {
-		return korp;
-	}
-
-	public void setKorp(String korp) {
-		this.korp = korp;
 	}
 
 	public String getSocr() {

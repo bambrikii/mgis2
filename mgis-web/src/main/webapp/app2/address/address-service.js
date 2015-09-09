@@ -1,6 +1,6 @@
-angular.module("mgis.oks.address.service", ["ngResource"])
-	.factory("OKSAddressService", function ($resource, $q) {
-		var res = $resource('rest/oks/addresses/:id.json');
+angular.module("mgis.address.service", ["ngResource"])
+	.factory("AddressService", function ($resource, $q) {
+		var res = $resource('rest/addresses/:id.json');
 		return {
 			get: function (id, first, max) {
 				var deferred = $q.defer();

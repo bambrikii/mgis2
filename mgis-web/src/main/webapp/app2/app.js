@@ -5,7 +5,8 @@ var mgisApp = angular.module("mgis", //
 		"mgis.oks",
 		"mgis.admin",
 		"mgis.lands",
-		"mgis.terr-zones"
+		"mgis.terr-zones",
+		"mgis.address"
 	]);
 
 mgisApp.config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
@@ -37,15 +38,6 @@ mgisApp.config(function ($stateProvider, $urlRouterProvider, $translateProvider)
 				}
 			}
 
-		}) //
-		.state("oks", {
-			url: "/oks",
-			views: {
-				"": {
-					templateUrl: "app2/oks/oks.htm",
-					controller: "OKSCtrl"
-				}
-			}
 		}) //
 	;
 

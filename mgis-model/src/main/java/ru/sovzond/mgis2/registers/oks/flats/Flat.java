@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ru.sovzond.mgis2.registers.oks.Address;
+import ru.sovzond.mgis2.registers.oks.OKSAddress;
 
 /**
  * @author Alexander Arakelyan
@@ -44,7 +44,7 @@ public class Flat {
 	private BigDecimal area;
 
 	@ManyToOne
-	private Address address;
+	private OKSAddress address;
 
 	@Column
 	private String cadastralNumber;

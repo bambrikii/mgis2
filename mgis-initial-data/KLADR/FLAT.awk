@@ -7,5 +7,5 @@ BEGIN { RS = "" ; FS = "\n" }
 	name = extract_value($4)
 	indx = extract_value($5)
 	uno = extract_value($6)
-	print "INSERT INTO kladr_flat (id, code, np, gninmb, name, index, uno) VALUES (nextval('kladr_seq'), '" code "','"np"',\t'"gninmb"',\t'"name"',\t'"indx"',\t'"uno"')";
+	print "INSERT INTO kladr_flat (id, code, np, gninmb, name, index, uno) VALUES (nextval('kladr_seq'),\t'"code"','"np"',\t'"gninmb"',\t'"name"',\t'"indx"',\t'"uno"');";
 }

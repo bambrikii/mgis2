@@ -1,0 +1,287 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title"><span translate>Address</span>: {{address.name}}</h3>
+	</div>
+	<div class="modal-body">
+		<form name="addressForm" novalidate>
+			<!-- OKATO -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>OKATO</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.okato" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.okato.name}}</ui-select-match>
+							<ui-select-choices repeat="okato in availableOKATOs | filter: {name: $select.search}"
+											   refresh="refreshAvailableOKATOs($select.search)"
+											   refresh-delay="0">
+								{{okato.name}}
+								<div ng-bind-html="okato.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- KLADR -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>KLADR</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.kladr" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.kladr.name}}</ui-select-match>
+							<ui-select-choices repeat="kladr in availableKLADRs | filter: {name: $select.search}"
+											   refresh="refreshAvailableKLADRs($select.search)"
+											   refresh-delay="0">
+								{{kladr.name}}
+								<div ng-bind-html="kladr.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- OKTMO -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>OKTMO</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.oktmo" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.oktmo.name}}</ui-select-match>
+							<ui-select-choices repeat="oktmo in availableOKTMOs | filter: {name: $select.search}"
+											   refresh="refreshAvailableOKTMOs($select.search)"
+											   refresh-delay="0">
+								{{oktmo.name}}
+								<div ng-bind-html="oktmo.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- Postal Index -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.postalIndex</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" name="address.postalIndex" ng-model="address.postalIndex"/>
+				</div>
+			</div>
+
+			<!-- Subject -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.Subject</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.subject" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.subject.name}}</ui-select-match>
+							<ui-select-choices repeat="subject in availableSubjects | filter: {name: $select.search}"
+											   refresh="refreshAvailableSubjects($select.search)"
+											   refresh-delay="0">
+								{{subject.name}}
+								<div ng-bind-html="subject.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- Region -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.Region</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.region" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.region.name}}</ui-select-match>
+							<ui-select-choices repeat="region in availableRegions | filter: {name: $select.search}"
+											   refresh="refreshAvailableRegions($select.search)"
+											   refresh-delay="0">
+								{{region.name}}
+								<div ng-bind-html="region.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- City, locality -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.City</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.city" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.city.name}}</ui-select-match>
+							<ui-select-choices repeat="city in availableCities | filter: {name: $select.search}"
+											   refresh="refreshAvailableCities($select.search)"
+											   refresh-delay="0">
+								{{terrZone.name}}
+								<div ng-bind-html="city.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- Urban District -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.UrbanDistrict</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.okato" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.city.name}}</ui-select-match>
+							<ui-select-choices repeat="city in availableOKATOs | filter: {name: $select.search}"
+											   refresh="refreshAvailableOKATOs($select.search)"
+											   refresh-delay="0">
+								{{terrZone.name}}
+								<div ng-bind-html="city.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- Soviet Village -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.SovietVillage</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.sovietVillage" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.sovietVillage.name}}</ui-select-match>
+							<ui-select-choices repeat="sovietVillage in availableSovietVillages | filter: {name: $select.search}"
+											   refresh="refreshAvailableSovietVillages($select.search)"
+											   refresh-delay="0">
+								{{terrZone.name}}
+								<div ng-bind-html="sovietVillage.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- Locality -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.Locality</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.locality" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.locality.name}}</ui-select-match>
+							<ui-select-choices repeat="locality in availableLocalities | filter: {name: $select.search}"
+											   refresh="refreshAvailableLocalities($select.search)"
+											   refresh-delay="0">
+								{{terrZone.name}}
+								<div ng-bind-html="locality.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- Street -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.Street</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+
+						<ui-select ng-model="address.street" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{address.street.name}}</ui-select-match>
+							<ui-select-choices repeat="street in availableStreets | filter: {name: $select.search}"
+											   refresh="refreshAvailableStreets($select.search)"
+											   refresh-delay="0">
+								{{terrZone.name}}
+								<div ng-bind-html="street.name"></div>
+							</ui-select-choices>
+						</ui-select>
+
+					</p>
+				</div>
+			</div>
+
+			<!-- Level1: Home -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.Home</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" name="addressHome" ng-model="address.home"/>
+				</div>
+			</div>
+
+			<!-- Level2: Building -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.Building</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" name="addressBuilding" ng-model="address.building"/>
+				</div>
+			</div>
+
+			<!-- Level3: Flat -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.Flat</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" name="addressFlat" ng-model="address.flat"/>
+				</div>
+			</div>
+
+			<!-- Apartment -->
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Address.Apartment</label>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" name="addressApartment" ng-model="address.apartment"/>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="addressForm.$invalid" ng-click="ok()" translate>
+		Submit
+	</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>
+

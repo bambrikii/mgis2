@@ -2,6 +2,7 @@ package ru.sovzond.mgis2.registers.lands;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 import org.hibernate.annotations.Type;
+import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.registers.lands.characteristics.LandCharacteristics;
 import ru.sovzond.mgis2.registers.lands.control.LandControl;
 import ru.sovzond.mgis2.registers.lands.includes.LandIncludedObjects;
@@ -10,7 +11,6 @@ import ru.sovzond.mgis2.registers.lands.works.LandWorks;
 import ru.sovzond.mgis2.registers.national_classifiers.LandAllowedUsage;
 import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
-import ru.sovzond.mgis2.registers.oks.Address;
 
 import javax.persistence.*;
 import java.util.ArrayList;
