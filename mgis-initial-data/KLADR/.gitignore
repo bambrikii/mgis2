@@ -1,4 +1,6 @@
 *.7z
+*.DBF
 *.struct
 *.struct.2
+*.sql
 
