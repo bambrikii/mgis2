@@ -1,7 +1,7 @@
-angular.module("mgis.oks.person", ["ui.router", "ui.bootstrap", "ui.select", //
+angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.commons",
-	"mgis.oks.person.natural",
-	"mgis.oks.person.legal"
+	"mgis.persons.person.natural",
+	"mgis.persons.person.legal"
 ])
 	.constant("NATURAL_PERSON_TYPE", "NaturalPerson")
 	.constant("LEGAL_PERSON_TYPE", "LegalPerson")
@@ -13,7 +13,7 @@ angular.module("mgis.oks.person", ["ui.router", "ui.bootstrap", "ui.select", //
 				person: "=",
 				selectClicked: "&",
 			},
-			templateUrl: "app2/oks/person-selector/person-selector-component.htm",
+			templateUrl: "app2/persons/person-selector/person-selector-component.htm",
 			controller: function ($scope, NATURAL_PERSON_TYPE, LEGAL_PERSON_TYPE) {
 				if ($scope.person) {
 					$scope.personType = $scope.person.surname ? NATURAL_PERSON_TYPE : LEGAL_PERSON_TYPE;
@@ -26,7 +26,7 @@ angular.module("mgis.oks.person", ["ui.router", "ui.bootstrap", "ui.select", //
 					modalScope.personType = personType;
 					modalScope.naturalPersonTabActive = !personType || personType == NATURAL_PERSON_TYPE;
 					modalScope.legalPersonTabActive = personType == LEGAL_PERSON_TYPE;
-					var modal = MGISCommonsModalForm.edit("app2/oks/person-selector/person-selector-form.htm", modalScope, function (scope, $modalInstance) {
+					var modal = MGISCommonsModalForm.edit("app2/persons/person-selector/person-selector-form.htm", modalScope, function (scope, $modalInstance) {
 						$scope.person = scope.person;
 						$scope.personType = scope.personType;
 						$modalInstance.close();

@@ -1,8 +1,7 @@
-package ru.sovzond.mgis2.oks;
+package ru.sovzond.mgis2.address;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
@@ -14,7 +13,7 @@ import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 public class AddressBean extends CRUDBeanBase<Address> {
 
 	@Autowired
-	private ru.sovzond.mgis2.registers.oks.AddressDao dao;
+	private AddressDao dao;
 
 
 	@Override

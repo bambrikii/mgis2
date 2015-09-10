@@ -1,14 +1,14 @@
-package ru.sovzond.mgis2.registers.oks.rights;
+package ru.sovzond.mgis2.registers.persons;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "oks_person")
+@Table(name = "mgis2_person")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Person implements Cloneable {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "oks_person_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_person_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;

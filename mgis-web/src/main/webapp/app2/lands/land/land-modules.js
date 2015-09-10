@@ -4,7 +4,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.nc.services",
 	"mgis.common.executive_person.service",
 	"mgis.terr-zones.zone.service",
-	"mgis.oks.person",
+	"mgis.persons.person",
 	"mgis.lands.land.map",
 	"mgis.isogd.document.selector",
 	"mgis.address.selector"

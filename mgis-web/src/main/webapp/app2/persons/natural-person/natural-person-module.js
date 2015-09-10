@@ -1,5 +1,5 @@
-angular.module("mgis.oks.person.natural", ["ui.router", "ui.bootstrap", //
-	"mgis.oks.person.natural.service",
+angular.module("mgis.persons.person.natural", ["ui.router", "ui.bootstrap", //
+	"mgis.persons.person.natural.service",
 	"mgis.commons"
 ])
 	.controller("NaturalPersonSelectorController", function ($scope, $rootScope, NaturalPersonService, MGISCommonsModalForm) {
@@ -13,7 +13,7 @@ angular.module("mgis.oks.person.natural", ["ui.router", "ui.bootstrap", //
 			});
 		}
 		function editItem(modalScope) {
-			MGISCommonsModalForm.edit("app2/oks/natural-person/natural-person-form.htm", modalScope, function (scope, $modalInstance) {
+			MGISCommonsModalForm.edit("app2/persons/natural-person/natural-person-form.htm", modalScope, function (scope, $modalInstance) {
 				NaturalPersonService.save(scope.item).then(function (data) {
 					$modalInstance.close();
 					$scope.name = scope.item.name;
@@ -59,7 +59,7 @@ angular.module("mgis.oks.person.natural", ["ui.router", "ui.bootstrap", //
 				person: "=",
 				selectClicked: "&"
 			},
-			templateUrl: "app2/oks/natural-person/natural-person-selector.htm"
+			templateUrl: "app2/persons/natural-person/natural-person-selector.htm"
 		}
 	})
 ;

@@ -8,8 +8,8 @@ import javax.persistence.*;
  * http://www.ksoft.ru/opis_kladr.htm
  */
 @Entity
-@Table(name = "kladr_kladr")
-public class KLADRLocality {
+@Table(name = "kladr_kladr", indexes = {@Index(columnList = "name", name = "kladr_kladr_name_index")})
+public class KLADRLocality implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "kladr_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
@@ -125,5 +125,17 @@ public class KLADRLocality {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public KLADRLocality clone() {
+		KLADRLocality locality = new KLADRLocality();
+		locality.setId(id);
+		locality.setCode(code);
+		locality.setGninmb(gninmb);
+		locality.setIndex(index);
+		locality.setName(name);
+		locality.setSocr(socr);
+		locality.setUno(uno);
+		return locality;
 	}
 }

@@ -1,6 +1,6 @@
-angular.module("mgis.oks.person.natural.service", ["ngResource"])
+angular.module("mgis.persons.person.natural.service", ["ngResource"])
 	.factory("NaturalPersonService", function ($resource, $q) {
-		var res = $resource('rest/oks/natural-persons/:id.json');
+		var res = $resource('rest/persons/natural-persons/:id.json');
 		return {
 			get: function (id, first, max, name) {
 				var deferred = $q.defer();

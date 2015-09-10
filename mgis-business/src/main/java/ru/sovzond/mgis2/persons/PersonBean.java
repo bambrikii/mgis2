@@ -1,12 +1,12 @@
-package ru.sovzond.mgis2.oks;
+package ru.sovzond.mgis2.persons;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
-import ru.sovzond.mgis2.registers.oks.PersonDao;
-import ru.sovzond.mgis2.registers.oks.rights.Person;
+import ru.sovzond.mgis2.persons.PersonDao;
+import ru.sovzond.mgis2.registers.persons.Person;
 
 /**
  * Created by Alexander Arakelyan on 27.07.15.

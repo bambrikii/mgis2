@@ -5,7 +5,7 @@ import ru.sovzond.mgis2.registers.lands.Land;
 import ru.sovzond.mgis2.registers.national_classifiers.LandEncumbrance;
 import ru.sovzond.mgis2.registers.national_classifiers.LandOwnershipForm;
 import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
-import ru.sovzond.mgis2.registers.oks.rights.Person;
+import ru.sovzond.mgis2.registers.persons.Person;
 
 import javax.persistence.*;
 import java.util.ArrayList;

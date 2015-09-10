@@ -173,3 +173,7 @@ span.mgis-input-group-date button {
 	padding-bottom: 3px;
 	padding-top: 3px;
 }
+
+.mgis-address-modal-form .modal-dialog {
+	width: 895px;
+}

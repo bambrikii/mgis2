@@ -1,7 +1,7 @@
 package ru.sovzond.mgis2.registers.lands.works;
 
 import ru.sovzond.mgis2.isogd.document.Document;
-import ru.sovzond.mgis2.registers.oks.rights.Person;
+import ru.sovzond.mgis2.registers.persons.Person;
 import ru.sovzond.mgis2.registers.persons.LegalPerson;
 
 import javax.persistence.*;

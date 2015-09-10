@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.oks;
+package ru.sovzond.mgis2.persons;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

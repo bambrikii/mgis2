@@ -1,5 +1,5 @@
-angular.module("mgis.oks.person.legal", ["ui.router", "ui.bootstrap", //
-	"mgis.oks.person.legal.service",
+angular.module("mgis.persons.person.legal", ["ui.router", "ui.bootstrap", //
+	"mgis.persons.person.legal.service",
 	"mgis.commons"
 ])
 	.controller("LegalPersonSelectorController", function ($scope, $rootScope, LegalPersonService, MGISCommonsModalForm) {
@@ -13,7 +13,7 @@ angular.module("mgis.oks.person.legal", ["ui.router", "ui.bootstrap", //
 			});
 		}
 		function editItem(modalScope) {
-			MGISCommonsModalForm.edit("app2/oks/legal-person/legal-person-form.htm", modalScope, function (scope, $modalInstance) {
+			MGISCommonsModalForm.edit("app2/persons/legal-person/legal-person-form.htm", modalScope, function (scope, $modalInstance) {
 				LegalPersonService.save(scope.item).then(function (data) {
 					$modalInstance.close();
 					$scope.name = scope.item.name;
@@ -58,7 +58,7 @@ angular.module("mgis.oks.person.legal", ["ui.router", "ui.bootstrap", //
 				person: "=",
 				selectClicked: "&"
 			},
-			templateUrl: "app2/oks/legal-person/legal-person-selector.htm"
+			templateUrl: "app2/persons/legal-person/legal-person-selector.htm"
 		}
 	})
 ;

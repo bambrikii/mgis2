@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.registers.lands.control;
 import ru.sovzond.mgis2.common.classifiers.ExecutivePerson;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.registers.lands.Land;
-import ru.sovzond.mgis2.registers.oks.rights.Person;
+import ru.sovzond.mgis2.registers.persons.Person;
 
 import javax.persistence.*;
 import java.util.ArrayList;

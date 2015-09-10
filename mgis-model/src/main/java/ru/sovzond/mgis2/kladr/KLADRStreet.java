@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 08.09.15.
  */
 @Entity
-@Table(name = "kladr_street")
-public class KLADRStreet {
+@Table(name = "kladr_street", indexes = {@Index(columnList = "name", name = "kladr_street_name_index")})
+public class KLADRStreet implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "kladr_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
@@ -126,5 +126,18 @@ public class KLADRStreet {
 
 	public void setOcatd(String ocatd) {
 		this.ocatd = ocatd;
+	}
+
+	public KLADRStreet clone() {
+		KLADRStreet street = new KLADRStreet();
+		street.setCode(code);
+		street.setGninmb(gninmb);
+		street.setId(id);
+		street.setIndex(index);
+		street.setName(name);
+		street.setOcatd(ocatd);
+		street.setSocr(socr);
+		street.setUno(uno);
+		return street;
 	}
 }

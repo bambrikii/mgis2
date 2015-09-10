@@ -6,7 +6,7 @@ import javax.persistence.*;
  * ОКТМО
  */
 @Entity
-@Table(name = "nc_oktmo")
+@Table(name = "nc_oktmo", indexes = {@Index(columnList = "name", name = "nc_oktmo_name_index")})
 public class OKTMO implements Cloneable {
 
 	@Id

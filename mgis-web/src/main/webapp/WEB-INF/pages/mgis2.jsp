@@ -98,11 +98,11 @@
 	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
 	<script type="text/javascript" src="app2/commons/common-services.js"></script>
 
-	<script type="text/javascript" src="app2/oks/natural-person/natural-person-service.js"></script>
-	<script type="text/javascript" src="app2/oks/natural-person/natural-person-module.js"></script>
-	<script type="text/javascript" src="app2/oks/legal-person/legal-person-service.js"></script>
-	<script type="text/javascript" src="app2/oks/legal-person/legal-person-module.js"></script>
-	<script type="text/javascript" src="app2/oks/person-selector/person-selector-component.js"></script>
+	<script type="text/javascript" src="app2/persons/natural-person/natural-person-service.js"></script>
+	<script type="text/javascript" src="app2/persons/natural-person/natural-person-module.js"></script>
+	<script type="text/javascript" src="app2/persons/legal-person/legal-person-service.js"></script>
+	<script type="text/javascript" src="app2/persons/legal-person/legal-person-module.js"></script>
+	<script type="text/javascript" src="app2/persons/person-selector/person-selector-component.js"></script>
 
 	<script type="text/javascript" src="app2/address/address-service.js"></script>
 	<script type="text/javascript" src="app2/address/address-module.js"></script>

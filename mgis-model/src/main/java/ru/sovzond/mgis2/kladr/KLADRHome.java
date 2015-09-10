@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 08.09.15.
  */
 @Entity
-@Table(name = "kladr_doma")
-public class KLADRHome {
+@Table(name = "kladr_doma", indexes = {@Index(columnList = "name", name = "kladr_doma_name_index")})
+public class KLADRHome implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "kladr_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
@@ -140,5 +140,19 @@ public class KLADRHome {
 
 	public void setOcatd(String ocatd) {
 		this.ocatd = ocatd;
+	}
+
+	public KLADRHome clone() {
+		KLADRHome home = new KLADRHome();
+		home.setCode(code);
+		home.setGninmb(gninmb);
+		home.setId(id);
+		home.setIndex(index);
+		home.setKorp(korp);
+		home.setName(name);
+		home.setOcatd(ocatd);
+		home.setSocr(socr);
+		home.setUno(uno);
+		return home;
 	}
 }

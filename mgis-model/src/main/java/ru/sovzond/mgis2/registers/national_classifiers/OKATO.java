@@ -10,7 +10,7 @@ import javax.persistence.*;
  * Субъект РФ
  */
 @Entity
-@Table(name = "nc_okato")
+@Table(name = "nc_okato", indexes = {@Index(columnList = "name", name = "nc_okato_name_index")})
 public class OKATO implements Cloneable {
 
 	@Id

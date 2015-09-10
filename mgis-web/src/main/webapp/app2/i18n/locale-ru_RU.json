@@ -217,6 +217,20 @@
   "NaturalPerson.FirstName": "Имя",
   "NaturalPerson.Surname": "Фамилия",
   "NaturalPerson.Patronymic": "Отчество",
+  "OKATO": "ОКАТО",
+  "KLADR": "КЛАДР",
   "Address.Selector": "Выбрать адрес",
-  "Address": "Адрес"
+  "Address": "Адрес",
+  "Address.postalIndex": "Почтовый индекс",
+  "Address.Subject": "Субъект РФ",
+  "Address.Region": "Регион",
+  "Address.City": "Муниципальное образование",
+  "Address.UrbanDistrict": "Городской район",
+  "Address.SovietVillage": "Сельсовет",
+  "Address.Locality": "Населённый пункт",
+  "Address.Street": "Улица",
+  "Address.Home": "Дом",
+  "Address.Housing": "Корпус",
+  "Address.Building": "Строение",
+  "Address.Apartment": "Квартира"
 }

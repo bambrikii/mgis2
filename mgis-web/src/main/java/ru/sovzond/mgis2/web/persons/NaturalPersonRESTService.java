@@ -1,10 +1,10 @@
-package ru.sovzond.mgis2.web.oks;
+package ru.sovzond.mgis2.web.persons;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
-import ru.sovzond.mgis2.oks.NaturalPersonBean;
+import ru.sovzond.mgis2.persons.NaturalPersonBean;
 import ru.sovzond.mgis2.registers.persons.NaturalPerson;
 
 import javax.transaction.Transactional;
@@ -14,7 +14,7 @@ import java.io.Serializable;
  * Created by Alexander Arakelyan on 30/08/15.
  */
 @RestController
-@RequestMapping("/oks/natural-persons")
+@RequestMapping("/persons/natural-persons")
 @Scope("session")
 public class NaturalPersonRESTService implements Serializable {
 	@Autowired
