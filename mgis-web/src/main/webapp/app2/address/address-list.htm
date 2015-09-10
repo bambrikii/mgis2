@@ -2,11 +2,9 @@
 	<h3 translate>Addresses</h3>
 
 	<div ng-repeat="item in addressPager.list" class="row" style="padding-bottom: 7px;">
-		<div class="col-sm-1">{{item.id}}</div>
-		<div class="col-sm-2">{{item.subject.name}}</div>
-		<div class="col-sm-2">{{item.locality.name}}</div>
-		<div class="col-sm-2">{{item.home}} {{item.housing}} {{item.building}} {{item.apartment}}</div>
-		<div class="col-sm-1"></div>
+		<div class="col-sm-8">
+			<address-as-string address="{{item}}"></address-as-string>
+		</div>
 		<div class="col-sm-4">
 			<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
 			<button class="btn btn-danger btn-sm" ng-click="deleteItem(item.id)" translate>Delete</button>

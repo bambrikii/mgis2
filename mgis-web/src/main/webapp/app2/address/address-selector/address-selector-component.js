@@ -33,7 +33,7 @@ angular.module("mgis.address.selector", ["ui.bootstrap",
 					var modal = MGISCommonsModalForm.edit("app2/address/address-selector/address-selector-form.htm", modalScope, function (scope, $modalInstance) {
 						selectionCompleteHandler(scope.address);
 						$modalInstance.close();
-					});
+					}, {windowClass: "mgis-address-modal-form"});
 
 					modalScope.selectClicked = function (address) {
 						selectionCompleteHandler(address);
@@ -47,7 +47,7 @@ angular.module("mgis.address.selector", ["ui.bootstrap",
 		$scope.first = 0;
 		$scope.max = 15;
 		function updateList() {
-			AddressService.get("", $scope.first, $scope.max).then(function (data) {
+			AddressService.get("", $scope.first, $scope.max, $scope.name).then(function (data) {
 				$scope.list = data.list;
 			});
 		}

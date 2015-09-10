@@ -2,14 +2,14 @@ angular.module("mgis.address.service", ["ngResource"])
 	.factory("AddressService", function ($resource, $q) {
 		var res = $resource('rest/addresses/:id.json');
 		return {
-			get: function (id, first, max) {
+			get: function (id, first, max, name) {
 				var deferred = $q.defer();
 				res.get({
-					id: id
-				}, {
+					id: id,
 					first: first,
-					max: max
-				}, function (data) {
+					max: max,
+					name: name
+				}, {}, function (data) {
 					deferred.resolve(data);
 				});
 				return deferred.promise;
@@ -26,7 +26,7 @@ angular.module("mgis.address.service", ["ngResource"])
 					region: item.region ? {id: item.region.id} : null,
 					locality: item.locality ? {id: item.locality.id} : null,
 					street: item.street ? {id: item.street.id} : null,
-					house: item.house,
+					home: item.home,
 					housing: item.housing,
 					building: item.building,
 					apartment: item.apartment

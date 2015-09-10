@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
+
+import java.util.stream.Collectors;
 
 /**
  * Created by Alexander Arakelyan on 27.07.15.
@@ -24,5 +28,10 @@ public class AddressBean extends CRUDBeanBase<Address> {
 	@Override
 	protected IIdentifiableDao<Address> getIIdentifiableDao() {
 		return dao;
+	}
+
+	public PageableContainer<Address> list(String orderBy, int first, int max, String name) {
+		Pageable<Address> pager = dao.pager(dao.createFilter(name, orderBy, first, max));
+		return new PageableContainer<>(pager.list().stream().map(Address::clone).collect(Collectors.toList()), pager.count(), first, max);
 	}
 }

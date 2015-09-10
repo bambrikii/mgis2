@@ -129,11 +129,12 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 		}
 
 		function removeItem(id, updateFunction) {
-			MGISCommonsModalForm.confirmRemoval(function () {
+			MGISCommonsModalForm.confirmRemoval(function (scope, modalInstance) {
 				AddressService.remove(id).then(function () {
 					if (updateFunction) {
 						updateFunction();
 					}
+					modalInstance.close();
 				});
 			});
 		}
@@ -142,6 +143,15 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 			add: addItem,
 			edit: editItem,
 			remove: removeItem
+		}
+	})
+	.directive("addressAsString", function () {
+		return {
+			restrict: "E",
+			scope: {
+				address: "="
+			},
+			templateUrl: "app2/address/address-as-string.htm"
 		}
 	})
 	.controller("AddressController", function ($scope, AddressModule, AddressService) {
@@ -163,12 +173,12 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 			AddressModule.add(updateGrid);
 		}
 
-		$scope.editItem = function (id, updateFunction) {
-			AddressModule.edit(id, updateFunction);
+		$scope.editItem = function (id) {
+			AddressModule.edit(id, updateGrid);
 		}
 
-		$scope.removeItem = function (id, updateFunction) {
-			AddressModule.remove(id, updateFunction);
+		$scope.deleteItem = function (id) {
+			AddressModule.remove(id, updateGrid);
 		}
 
 		updateGrid();
