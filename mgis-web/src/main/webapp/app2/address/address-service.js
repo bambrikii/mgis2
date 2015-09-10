@@ -16,9 +16,22 @@ angular.module("mgis.address.service", ["ngResource"])
 			},
 			save: function (item) {
 				var deferred = $q.defer();
-				res.save({id: item.id,}, {
-					id: item.id
-				}, function (data) {
+				var address = {
+					id: item.id,
+					okato: item.okato ? {id: item.okato.id} : null,
+					kladr: item.kladr ? {id: item.kladr.id} : null,
+					oktmo: item.oktmo ? {id: item.oktmo.id} : null,
+					postalCode: item.postalCode,
+					subject: item.subject ? {id: item.subject.id} : null,
+					region: item.region ? {id: item.region.id} : null,
+					locality: item.locality ? {id: item.locality.id} : null,
+					street: item.street ? {id: item.street.id} : null,
+					house: item.house,
+					housing: item.housing,
+					building: item.building,
+					apartment: item.apartment
+				};
+				res.save({id: item.id}, address, function (data) {
 					deferred.resolve(data);
 				});
 				return deferred.promise;

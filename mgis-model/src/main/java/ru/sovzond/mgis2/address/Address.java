@@ -71,106 +71,41 @@ public class Address implements Cloneable {
 	@JoinColumn(name = "oktmo")
 	private OKTMO oktmo;
 
-	/**
-	 * Почтовый индекс
-	 * Ограничение на тип строка PostalCodeRFType.
-	 */
 	@Column(name = "postal_code")
 	private String postalCode;
 
-	/**
-	 * Код региона
-	 * По справочнику dRegionsRF «Субъекты РФ»
-	 */
+
+	@ManyToOne
+	@JoinColumn(name = "subject")
+	private KLADRLocality subject;
+
 	@ManyToOne
 	@JoinColumn(name = "region")
 	private KLADRLocality region;
 
-	/**
-	 * Район
-	 * Тип tName. См. описание типа ниже в данной таблице.
-	 */
-	@ManyToOne
-	@JoinColumn(name = "district")
-	private KLADRLocality district;
-
-	/**
-	 * Муниципальное образование
-	 * Тип tName. См. описание типа ниже в данной таблице.
-	 */
-	@ManyToOne
-	@JoinColumn(name = "city")
-	private KLADRLocality city;
-
-	/**
-	 * Городской район
-	 * Тип tUrbanDistrict. См. описание типа ниже в данной таблице.
-	 */
-	@ManyToOne
-	@JoinColumn(name = "urban_district")
-	private KLADRLocality urbanDistrict;
-
-	/**
-	 * Сельсовет
-	 * Тип tSovietVillage. См. описание типа ниже в данной таблице.
-	 */
-	@ManyToOne
-	@JoinColumn(name = "soviet_village")
-	private KLADRLocality sovietVillage;
-
-	/**
-	 * Населённый пункт
-	 * Тип tName. См. описание типа ниже в данной таблице.
-	 */
 	@ManyToOne
 	@JoinColumn(name = "locality")
 	private KLADRLocality locality;
 
-	/**
-	 * Улица
-	 * Тип tName. См. описание типа ниже в данной таблице.
-	 */
 	@ManyToOne
 	@JoinColumn(name = "street")
 	private KLADRStreet street;
 
-	/**
-	 * Дом
-	 * Тип tLevel1. См. описание типа ниже в данной таблице.
-	 */
-	@Column(name = "level1")
-	private String level1;
+	@Column(name = "home")
+	private String home;
 
-	/**
-	 * Корпус
-	 * Тип tLevel2. См. описание типа ниже в данной таблице.
-	 */
-	@Column(name = "level2")
-	private String level2;
+	@Column(name = "housing")
+	private String housing;
 
-	/**
-	 * Строение
-	 * Тип tLevel3. См. описание типа ниже в данной таблице.
-	 */
-	@Column(name = "level3")
-	private String level3;
+	@Column(name = "building")
+	private String building;
 
-	/**
-	 * Квартира
-	 * Тип tApartment. См. описание типа ниже в данной таблице.
-	 */
 	@Column(name = "apartment")
 	private String apartment;
 
-	/**
-	 * Иное
-	 */
 	@Column(name = "other")
 	private String other;
 
-	/**
-	 * Неформализованное описание
-	 */
 	@Column(name = "note")
 	private String note;
 
@@ -193,8 +128,20 @@ public class Address implements Cloneable {
 	public Address clone() {
 		Address address = new Address();
 		address.setId(id);
-		address.setRegion(region);
-		// TODO:
+		address.setOkato(okato != null ? okato.clone() : null);
+		address.setKladr(kladr != null ? kladr.clone() : null);
+		address.setOktmo(oktmo != null ? oktmo.clone() : null);
+		address.setPostalCode(postalCode);
+		address.setSubject(subject != null ? subject.clone() : null);
+		address.setRegion(region != null ? region.clone() : null);
+		address.setLocality(locality != null ? locality.clone() : null);
+		address.setStreet(street != null ? street.clone() : null);
+		address.setHome(home);
+		address.setHousing(housing);
+		address.setBuilding(building);
+		address.setApartment(apartment);
+		address.setNote(note);
+		address.setOther(other);
 		return address;
 	}
 
@@ -228,38 +175,6 @@ public class Address implements Cloneable {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
-	}
-
-	public KLADRLocality getDistrict() {
-		return district;
-	}
-
-	public void setDistrict(KLADRLocality district) {
-		this.district = district;
-	}
-
-	public KLADRLocality getCity() {
-		return city;
-	}
-
-	public void setCity(KLADRLocality city) {
-		this.city = city;
-	}
-
-	public KLADRLocality getUrbanDistrict() {
-		return urbanDistrict;
-	}
-
-	public void setUrbanDistrict(KLADRLocality urbanDistrict) {
-		this.urbanDistrict = urbanDistrict;
-	}
-
-	public KLADRLocality getSovietVillage() {
-		return sovietVillage;
-	}
-
-	public void setSovietVillage(KLADRLocality sovietVillage) {
-		this.sovietVillage = sovietVillage;
 	}
 
 	public KLADRLocality getLocality() {
@@ -302,27 +217,35 @@ public class Address implements Cloneable {
 		this.note = note;
 	}
 
-	public String getLevel1() {
-		return level1;
+	public String getHousing() {
+		return housing;
 	}
 
-	public void setLevel1(String level1) {
-		this.level1 = level1;
+	public void setHousing(String housing) {
+		this.housing = housing;
 	}
 
-	public String getLevel2() {
-		return level2;
+	public String getBuilding() {
+		return building;
 	}
 
-	public void setLevel2(String level2) {
-		this.level2 = level2;
+	public void setBuilding(String building) {
+		this.building = building;
 	}
 
-	public String getLevel3() {
-		return level3;
+	public String getHome() {
+		return home;
 	}
 
-	public void setLevel3(String level3) {
-		this.level3 = level3;
+	public void setHome(String home) {
+		this.home = home;
+	}
+
+	public KLADRLocality getSubject() {
+		return subject;
+	}
+
+	public void setSubject(KLADRLocality subject) {
+		this.subject = subject;
 	}
 }

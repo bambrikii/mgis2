@@ -76,7 +76,7 @@
 					<label translate>Address.postalIndex</label>
 				</div>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="address.postalIndex" ng-model="address.postalIndex"/>
+					<input type="text" class="form-control" name="address.postalCode" ng-model="address.postalCode"/>
 				</div>
 			</div>
 
@@ -114,72 +114,6 @@
 							<ui-select-match placeholder="">{{address.region.name}}</ui-select-match>
 							<ui-select-choices repeat="item in availableRegions | filter: {name: $select.search}"
 											   refresh="refreshAvailableRegions($select.search)"
-											   refresh-delay="0">
-								{{item.socr}} {{item.name}} ({{item.code}})
-								<div ng-bind-html="item.name"></div>
-							</ui-select-choices>
-						</ui-select>
-
-					</p>
-				</div>
-			</div>
-
-			<!-- City, locality -->
-			<div class="form-group row">
-				<div class="col-sm-4">
-					<label translate>Address.City</label>
-				</div>
-				<div class="col-sm-8">
-					<p class="input-group input-group-sm">
-
-						<ui-select ng-model="address.city" theme="select2" style="width: 450px;">
-							<ui-select-match placeholder="">{{address.city.name}}</ui-select-match>
-							<ui-select-choices repeat="item in availableCities | filter: {name: $select.search}"
-											   refresh="refreshAvailableCities($select.search)"
-											   refresh-delay="0">
-								{{item.socr}} {{item.name}} ({{item.code}})
-								<div ng-bind-html="item.name"></div>
-							</ui-select-choices>
-						</ui-select>
-
-					</p>
-				</div>
-			</div>
-
-			<!-- Urban District -->
-			<div class="form-group row">
-				<div class="col-sm-4">
-					<label translate>Address.UrbanDistrict</label>
-				</div>
-				<div class="col-sm-8">
-					<p class="input-group input-group-sm">
-
-						<ui-select ng-model="address.urbanDistrict" theme="select2" style="width: 450px;">
-							<ui-select-match placeholder="">{{address.urbanDistrict.name}}</ui-select-match>
-							<ui-select-choices repeat="item in availableUrbanDistricts | filter: {name: $select.search}"
-											   refresh="refreshAvailableUrbanDistricts($select.search)"
-											   refresh-delay="0">
-								{{item.socr}} {{item.name}} ({{item.code}})
-								<div ng-bind-html="item.name"></div>
-							</ui-select-choices>
-						</ui-select>
-
-					</p>
-				</div>
-			</div>
-
-			<!-- Soviet Village -->
-			<div class="form-group row">
-				<div class="col-sm-4">
-					<label translate>Address.SovietVillage</label>
-				</div>
-				<div class="col-sm-8">
-					<p class="input-group input-group-sm">
-
-						<ui-select ng-model="address.sovietVillage" theme="select2" style="width: 450px;">
-							<ui-select-match placeholder="">{{address.sovietVillage.name}}</ui-select-match>
-							<ui-select-choices repeat="item in availableSovietVillages | filter: {name: $select.search}"
-											   refresh="refreshAvailableSovietVillages($select.search)"
 											   refresh-delay="0">
 								{{item.socr}} {{item.name}} ({{item.code}})
 								<div ng-bind-html="item.name"></div>
@@ -240,7 +174,8 @@
 					<label translate>Address.Home</label>
 				</div>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="addressHome" ng-model="address.home"/>
+					<input type="text" class="form-control" name="addressHome" ng-model="address.home"
+						   typeahead="availableHome for availableHome in refreshAvailableHomes()"/>
 				</div>
 			</div>
 
@@ -250,7 +185,8 @@
 					<label translate>Address.Housing</label>
 				</div>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="addressHousing" ng-model="address.level2"/>
+					<input type="text" class="form-control" name="addressHousing" ng-model="address.building"
+						   typeahead="availableHousing for availableHousing in refreshAvailableHousings()"/>
 				</div>
 			</div>
 
@@ -260,7 +196,8 @@
 					<label translate>Address.Building</label>
 				</div>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="addressBuilding" ng-model="address.building"/>
+					<input type="text" class="form-control" name="addressBuilding" ng-model="address.building"
+						   typeahead="availableBuilding for availableBuilding in refreshAvailableBuildings()"/>
 				</div>
 			</div>
 
@@ -270,7 +207,8 @@
 					<label translate>Address.Apartment</label>
 				</div>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="addressApartment" ng-model="address.apartment"/>
+					<input type="text" class="form-control" name="addressApartment" ng-model="address.apartment"
+						   typeahead="availableApartment for availableApartment in refreshAvailableApartments()"/>
 				</div>
 			</div>
 

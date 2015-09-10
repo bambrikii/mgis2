@@ -8,7 +8,7 @@ import javax.persistence.*;
  * http://www.ksoft.ru/opis_kladr.htm
  */
 @Entity
-@Table(name = "kladr_kladr", indexes = {@Index(columnList = "name", name = "kladr_kladr_name_index")})
+@Table(name = "kladr_kladr", indexes = {@Index(columnList = "code", name = "kladr_kladr_code_index"), @Index(columnList = "name", name = "kladr_kladr_name_index")})
 public class KLADRLocality implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "kladr_seq", allocationSize = 1)

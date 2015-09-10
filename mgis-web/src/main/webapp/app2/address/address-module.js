@@ -21,6 +21,34 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 				});
 			}
 
+			function retrieveSubject() {
+				if (modalScope.address && modalScope.address.subject && modalScope.address.subject.id) {
+					return modalScope.address && modalScope.address.subject && modalScope.address.subject.code;
+				}
+				return null;
+			}
+
+			function retrieveRegion() {
+				if (modalScope.address && modalScope.address.region && modalScope.address.region.id) {
+					return modalScope.address && modalScope.address.region && modalScope.address.region.code;
+				}
+				return null;
+			}
+
+			function retrieveLocality() {
+				if (modalScope.address && modalScope.address.locality && modalScope.address.locality.id) {
+					return modalScope.address && modalScope.address.locality && modalScope.address.locality.code;
+				}
+				return null;
+			}
+
+			function retrieveStreet() {
+				if (modalScope.address && modalScope.address.street && modalScope.address.street.id) {
+					return modalScope.address && modalScope.address.street && modalScope.address.street.code;
+				}
+				return null;
+			}
+
 			modalScope.refreshAvailableOKATOs = function (name) {
 				refreshAvailableProperty("OKATO", {type: "okato", okato: name});
 			}
@@ -34,34 +62,46 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 				refreshAvailableProperty("Subject", {type: "subject", subject: name});
 			}
 			modalScope.refreshAvailableRegions = function (name) {
-				refreshAvailableProperty("Region", {type: "region", region: name});
-			}
-			modalScope.refreshAvailableCities = function (name) {
-				refreshAvailableProperty("Citie", {type: "city", city: name});
-			}
-			modalScope.refreshAvailableUrbanDistricts = function (name) {
-				refreshAvailableProperty("UrbanDistrict", {type: "district", district: name});
-			}
-			modalScope.refreshAvailableSovietVillages = function (name) {
-				refreshAvailableProperty("SovietVillage", {type: "soviet-village", sovietVillage: name});
+				var subj = retrieveSubject();
+				refreshAvailableProperty("Region", {type: "region", subject: subj, region: name});
 			}
 			modalScope.refreshAvailableLocalities = function (name) {
-				refreshAvailableProperty("Localitie", {type: "locality", locality: name});
+				var subj = retrieveSubject();
+				var regio = retrieveRegion();
+				refreshAvailableProperty("Localitie", {
+					type: "locality",
+					subject: subj,
+					region: regio,
+					locality: name
+				});
 			}
 			modalScope.refreshAvailableStreets = function (name) {
-				refreshAvailableProperty("Street", {type: "street", street: name});
+				var subjec = retrieveSubject();
+				var regio = retrieveRegion();
+				var localit = retrieveLocality();
+				refreshAvailableProperty("Street", {
+					type: "street",
+					subject: subjec,
+					region: regio,
+					locality: localit,
+					street: name
+				});
 			}
 			modalScope.refreshAvailableHomes = function (name) {
-				refreshAvailableProperty("Home", {type: "street", home: name});
+				refreshAvailableProperty("Home", {type: "home", home: name});
+				return modalScope.availableHomes;
 			}
 			modalScope.refreshAvailableHousings = function (name) {
 				refreshAvailableProperty("Housing", {type: "housing", housing: name});
+				return modalScope.availableHousings;
 			}
 			modalScope.refreshAvailableBuildings = function (name) {
 				refreshAvailableProperty("Building", {type: "building", building: name});
+				return modalScope.availableBuildings;
 			}
 			modalScope.refreshAvailableApartments = function (name) {
 				refreshAvailableProperty("Apartment", {type: "apartment", apartment: name});
+				return modalScope.availableApartments;
 			}
 
 			MGISCommonsModalForm.edit("app2/address/address-form.htm", modalScope, function (scope, $modalInstance) {
@@ -110,8 +150,8 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 		$scope.itemsPerPage = 15;
 
 		function updateGrid() {
-			AddressService.list("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage).then(function (data) {
-
+			AddressService.get("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage).then(function (data) {
+				$scope.addressPager = data;
 			});
 		}
 
@@ -130,5 +170,7 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 		$scope.removeItem = function (id, updateFunction) {
 			AddressModule.remove(id, updateFunction);
 		}
+
+		updateGrid();
 	})
 ;

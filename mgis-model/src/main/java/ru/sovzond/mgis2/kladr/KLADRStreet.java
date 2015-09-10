@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 08.09.15.
  */
 @Entity
-@Table(name = "kladr_street", indexes = {@Index(columnList = "name", name = "kladr_street_name_index")})
+@Table(name = "kladr_street", indexes = {@Index(columnList = "code", name = "kladr_street_code_index"), @Index(columnList = "name", name = "kladr_street_name_index")})
 public class KLADRStreet implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "kladr_seq", allocationSize = 1)

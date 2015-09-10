@@ -67,35 +67,9 @@ public class AddressElementsRESTService implements Serializable {
 	public PageableContainer<KLADRLocality> region(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
 												   @RequestParam(defaultValue = "0") int first,
 												   @RequestParam(defaultValue = "0") int max,
+												   @RequestParam(defaultValue = "") String subject,
 												   @RequestParam(defaultValue = "") String region) {
-		return addressElemsBean.region(orderBy, first, max, region);
-	}
-
-	@RequestMapping(value = "/city", method = RequestMethod.GET)
-	@Transactional
-	public PageableContainer<KLADRLocality> city(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
-												 @RequestParam(defaultValue = "0") int first,
-												 @RequestParam(defaultValue = "0") int max,
-												 @RequestParam(defaultValue = "") String city) {
-		return addressElemsBean.city(orderBy, first, max, city);
-	}
-
-	@RequestMapping(value = "/district", method = RequestMethod.GET)
-	@Transactional
-	public PageableContainer<KLADRLocality> district(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
-													 @RequestParam(defaultValue = "0") int first,
-													 @RequestParam(defaultValue = "0") int max,
-													 @RequestParam(defaultValue = "") String district) {
-		return addressElemsBean.district(orderBy, first, max, district);
-	}
-
-	@RequestMapping(value = "/soviet-village", method = RequestMethod.GET)
-	@Transactional
-	public PageableContainer<KLADRLocality> sovietVillage(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
-														  @RequestParam(defaultValue = "0") int first,
-														  @RequestParam(defaultValue = "0") int max,
-														  @RequestParam(defaultValue = "") String sovietVillage) {
-		return addressElemsBean.sovietVillage(orderBy, first, max, sovietVillage);
+		return addressElemsBean.region(orderBy, first, max, subject, region);
 	}
 
 	@RequestMapping(value = "/locality", method = RequestMethod.GET)
@@ -103,8 +77,10 @@ public class AddressElementsRESTService implements Serializable {
 	public PageableContainer<KLADRLocality> locality(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
 													 @RequestParam(defaultValue = "0") int first,
 													 @RequestParam(defaultValue = "0") int max,
+													 @RequestParam(defaultValue = "") String subject,
+													 @RequestParam(defaultValue = "") String region,
 													 @RequestParam(defaultValue = "") String locality) {
-		return addressElemsBean.locality(orderBy, first, max, locality);
+		return addressElemsBean.locality(orderBy, first, max, subject, region, locality);
 	}
 
 	@RequestMapping(value = "/street", method = RequestMethod.GET)
@@ -112,8 +88,11 @@ public class AddressElementsRESTService implements Serializable {
 	public PageableContainer<KLADRStreet> street(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
 												 @RequestParam(defaultValue = "0") int first,
 												 @RequestParam(defaultValue = "0") int max,
+												 @RequestParam(defaultValue = "") String subject,
+												 @RequestParam(defaultValue = "") String region,
+												 @RequestParam(defaultValue = "") String locality,
 												 @RequestParam(defaultValue = "") String street) {
-		return addressElemsBean.street(orderBy, first, max, street);
+		return addressElemsBean.street(orderBy, first, max, subject, region, locality, street);
 	}
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -121,8 +100,12 @@ public class AddressElementsRESTService implements Serializable {
 	public PageableContainer<String> home(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
 										  @RequestParam(defaultValue = "0") int first,
 										  @RequestParam(defaultValue = "0") int max,
+										  @RequestParam(defaultValue = "") String subject,
+										  @RequestParam(defaultValue = "") String region,
+										  @RequestParam(defaultValue = "") String locality,
+										  @RequestParam(defaultValue = "") String street,
 										  @RequestParam(defaultValue = "") String home) {
-		return addressElemsBean.home(orderBy, first, max, home);
+		return addressElemsBean.home(orderBy, first, max, subject, region, locality, street, home);
 	}
 
 	@RequestMapping(value = "/housing", method = RequestMethod.GET)
@@ -130,8 +113,13 @@ public class AddressElementsRESTService implements Serializable {
 	public PageableContainer<String> housing(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
 											 @RequestParam(defaultValue = "0") int first,
 											 @RequestParam(defaultValue = "0") int max,
+											 @RequestParam(defaultValue = "") String subject,
+											 @RequestParam(defaultValue = "") String region,
+											 @RequestParam(defaultValue = "") String locality,
+											 @RequestParam(defaultValue = "") String street,
+											 @RequestParam(defaultValue = "") String home,
 											 @RequestParam(defaultValue = "") String housing) {
-		return addressElemsBean.housing(orderBy, first, max, housing);
+		return addressElemsBean.housing(orderBy, first, max, subject, region, locality, street, home, housing);
 	}
 
 	@RequestMapping(value = "/building", method = RequestMethod.GET)
@@ -139,8 +127,14 @@ public class AddressElementsRESTService implements Serializable {
 	public PageableContainer<String> building(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
 											  @RequestParam(defaultValue = "0") int first,
 											  @RequestParam(defaultValue = "0") int max,
+											  @RequestParam(defaultValue = "") String subject,
+											  @RequestParam(defaultValue = "") String region,
+											  @RequestParam(defaultValue = "") String locality,
+											  @RequestParam(defaultValue = "") String street,
+											  @RequestParam(defaultValue = "") String home,
+											  @RequestParam(defaultValue = "") String housing,
 											  @RequestParam(defaultValue = "") String building) {
-		return addressElemsBean.building(orderBy, first, max, building);
+		return addressElemsBean.building(orderBy, first, max, subject, region, locality, street, home, housing, building);
 	}
 
 	@RequestMapping(value = "/apartment", method = RequestMethod.GET)
@@ -148,7 +142,14 @@ public class AddressElementsRESTService implements Serializable {
 	public PageableContainer<String> apartment(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
 											   @RequestParam(defaultValue = "0") int first,
 											   @RequestParam(defaultValue = "0") int max,
+											   @RequestParam(defaultValue = "") String subject,
+											   @RequestParam(defaultValue = "") String region,
+											   @RequestParam(defaultValue = "") String locality,
+											   @RequestParam(defaultValue = "") String street,
+											   @RequestParam(defaultValue = "") String home,
+											   @RequestParam(defaultValue = "") String housing,
+											   @RequestParam(defaultValue = "") String building,
 											   @RequestParam(defaultValue = "") String apartment) {
-		return addressElemsBean.apartment(orderBy, first, max, apartment);
+		return addressElemsBean.apartment(orderBy, first, max, subject, region, locality, street, home, housing, building, apartment);
 	}
 }
