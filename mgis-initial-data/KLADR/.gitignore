@@ -1,4 +1,4 @@
-*.7z
+*.7z*
 *.DBF
 *.struct
 *.struct.2
