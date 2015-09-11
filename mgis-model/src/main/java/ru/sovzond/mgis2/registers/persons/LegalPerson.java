@@ -1,15 +1,14 @@
 package ru.sovzond.mgis2.registers.persons;
 
 import ru.sovzond.mgis2.address.Address;
-import ru.sovzond.mgis2.registers.national_classifiers.OKATO;
-import ru.sovzond.mgis2.registers.national_classifiers.OKFS;
-import ru.sovzond.mgis2.registers.national_classifiers.OKOPF;
-import ru.sovzond.mgis2.registers.national_classifiers.OKVED;
+import ru.sovzond.mgis2.registers.national_classifiers.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -69,20 +68,21 @@ public class LegalPerson extends Person {
 	@ManyToOne
 	private OKVED activityType;
 
-//	/**
-//	 * ОКПО
-//	 */
-//	private OKPO okpo;
-//
-//	/**
-//	 * ОГРН
-//	 */
-//	private OGRN ogrn;
-//
-//	/**
-//	 * ОКОГУ
-//	 */
-//	private OKOGU okogu;
+	/**
+	 * ОКПО
+	 */
+	private String okpo;
+
+	/**
+	 * ОГРН
+	 */
+	private String ogrn;
+
+	/**
+	 * ОКОГУ
+	 */
+	@ManyToOne
+	private OKOGU okogu;
 
 	/**
 	 * КПП организации
@@ -218,11 +218,304 @@ public class LegalPerson extends Person {
 	@Column
 	private String directorEmail;
 
+	public String getShortName() {
+		return shortName;
+	}
+
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
+	}
+
+	public String getNameInAForeignLanguage() {
+		return nameInAForeignLanguage;
+	}
+
+	public void setNameInAForeignLanguage(String nameInAForeignLanguage) {
+		this.nameInAForeignLanguage = nameInAForeignLanguage;
+	}
+
+	public String getPreviousCompanyName() {
+		return previousCompanyName;
+	}
+
+	public void setPreviousCompanyName(String previousCompanyName) {
+		this.previousCompanyName = previousCompanyName;
+	}
+
+	public OKFS getOwnershipForm() {
+		return ownershipForm;
+	}
+
+	public void setOwnershipForm(OKFS ownershipForm) {
+		this.ownershipForm = ownershipForm;
+	}
+
+	public Boolean getResident() {
+		return resident;
+	}
+
+	public void setResident(Boolean resident) {
+		this.resident = resident;
+	}
+
+	public List<Person> getFounders() {
+		return founders;
+	}
+
+	public void setFounders(List<Person> founders) {
+		this.founders = founders;
+	}
+
+	public List<String> getRepresentatives() {
+		return representatives;
+	}
+
+	public void setRepresentatives(List<String> representatives) {
+		this.representatives = representatives;
+	}
+
+	public OKVED getActivityType() {
+		return activityType;
+	}
+
+	public void setActivityType(OKVED activityType) {
+		this.activityType = activityType;
+	}
+
+	public String getOkpo() {
+		return okpo;
+	}
+
+	public void setOkpo(String okpo) {
+		this.okpo = okpo;
+	}
+
+	public String getOgrn() {
+		return ogrn;
+	}
+
+	public void setOgrn(String ogrn) {
+		this.ogrn = ogrn;
+	}
+
+	public OKOGU getOkogu() {
+		return okogu;
+	}
+
+	public void setOkogu(OKOGU okogu) {
+		this.okogu = okogu;
+	}
+
+	public String getKpp() {
+		return kpp;
+	}
+
+	public void setKpp(String kpp) {
+		this.kpp = kpp;
+	}
+
+	public String getInn() {
+		return inn;
+	}
+
+	public void setInn(String inn) {
+		this.inn = inn;
+	}
+
+	public String getBik() {
+		return bik;
+	}
+
+	public void setBik(String bik) {
+		this.bik = bik;
+	}
+
+	public OKOPF getOrganizationalForm() {
+		return organizationalForm;
+	}
+
+	public void setOrganizationalForm(OKOPF organizationalForm) {
+		this.organizationalForm = organizationalForm;
+	}
+
+	public Date getStatusStartDate() {
+		return statusStartDate;
+	}
+
+	public void setStatusStartDate(Date statusStartDate) {
+		this.statusStartDate = statusStartDate;
+	}
+
+	public Date getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+	public String getRegistrationCertificate() {
+		return registrationCertificate;
+	}
+
+	public void setRegistrationCertificate(String registrationCertificate) {
+		this.registrationCertificate = registrationCertificate;
+	}
+
+	public Date getEgrulInitialDate() {
+		return egrulInitialDate;
+	}
+
+	public void setEgrulInitialDate(Date egrulInitialDate) {
+		this.egrulInitialDate = egrulInitialDate;
+	}
+
+	public OKATO getActualAddressTerritoryOkatoCode() {
+		return actualAddressTerritoryOkatoCode;
+	}
+
+	public void setActualAddressTerritoryOkatoCode(OKATO actualAddressTerritoryOkatoCode) {
+		this.actualAddressTerritoryOkatoCode = actualAddressTerritoryOkatoCode;
+	}
+
+	public Address getActualAddress() {
+		return actualAddress;
+	}
+
+	public void setActualAddress(Address actualAddress) {
+		this.actualAddress = actualAddress;
+	}
+
+	public OKATO getLegalAddressTerritoryOkatoCode() {
+		return legalAddressTerritoryOkatoCode;
+	}
+
+	public void setLegalAddressTerritoryOkatoCode(OKATO legalAddressTerritoryOkatoCode) {
+		this.legalAddressTerritoryOkatoCode = legalAddressTerritoryOkatoCode;
+	}
+
+	public Address getLegalAddress() {
+		return legalAddress;
+	}
+
+	public void setLegalAddress(Address legalAddress) {
+		this.legalAddress = legalAddress;
+	}
+
+	public String getContactCityCode() {
+		return contactCityCode;
+	}
+
+	public void setContactCityCode(String contactCityCode) {
+		this.contactCityCode = contactCityCode;
+	}
+
+	public String getContactPhone() {
+		return contactPhone;
+	}
+
+	public void setContactPhone(String contactPhone) {
+		this.contactPhone = contactPhone;
+	}
+
+	public String getContactFax() {
+		return contactFax;
+	}
+
+	public void setContactFax(String contactFax) {
+		this.contactFax = contactFax;
+	}
+
+	public String getContactWebsite() {
+		return contactWebsite;
+	}
+
+	public void setContactWebsite(String contactWebsite) {
+		this.contactWebsite = contactWebsite;
+	}
+
+	public String getContactEmail() {
+		return contactEmail;
+	}
+
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
+	}
+
+	public String getDirectorFullName() {
+		return directorFullName;
+	}
+
+	public void setDirectorFullName(String directorFullName) {
+		this.directorFullName = directorFullName;
+	}
+
+	public String getDirectorPosition() {
+		return directorPosition;
+	}
+
+	public void setDirectorPosition(String directorPosition) {
+		this.directorPosition = directorPosition;
+	}
+
+	public String getDirectorPhone() {
+		return directorPhone;
+	}
+
+	public void setDirectorPhone(String directorPhone) {
+		this.directorPhone = directorPhone;
+	}
+
+	public String getDirectorEmail() {
+		return directorEmail;
+	}
+
+	public void setDirectorEmail(String directorEmail) {
+		this.directorEmail = directorEmail;
+	}
+
 
 	public LegalPerson clone() {
 		LegalPerson person = new LegalPerson();
 		person.setId(getId());
 		person.setName(getName());
+		person.setActivityType(activityType != null ? activityType.clone() : null);
+		person.setActualAddress(actualAddress != null ? actualAddress.clone() : null);
+		person.setActualAddressTerritoryOkatoCode(actualAddressTerritoryOkatoCode != null ? actualAddressTerritoryOkatoCode.clone() : null);
+		person.setBik(bik);
+		person.setContactCityCode(contactCityCode);
+		person.setContactEmail(contactEmail);
+		person.setContactFax(contactFax);
+		person.setContactPhone(contactPhone);
+		person.setContactWebsite(contactWebsite);
+		person.setDirectorEmail(directorEmail);
+		person.setDirectorPhone(directorPhone);
+		person.setDirectorPosition(directorPosition);
+		person.setEgrulInitialDate(egrulInitialDate);
+		person.setFounders(founders.stream().map(p -> {
+			if (p instanceof LegalPerson) {
+				LegalPerson lp = new LegalPerson();
+				lp.setId(p.getId());
+				lp.setName(p.getName());
+			}
+			return p.clone();
+		}).collect(Collectors.toList()));
+		person.setInn(inn);
+		person.setKpp(kpp);
+		person.setLegalAddress(legalAddress != null ? legalAddress.clone() : null);
+		person.setLegalAddressTerritoryOkatoCode(legalAddressTerritoryOkatoCode != null ? legalAddressTerritoryOkatoCode.clone() : null);
+		person.setOgrn(ogrn);
+		person.setOkogu(okogu != null ? okogu.clone() : null);
+		person.setOkpo(okpo);
+		person.setOrganizationalForm(organizationalForm != null ? organizationalForm.clone() : null);
+		person.setOwnershipForm(ownershipForm != null ? ownershipForm.clone() : null);
+		person.setPreviousCompanyName(previousCompanyName);
+		person.setRegistrationCertificate(registrationCertificate);
+		person.setRegistrationDate(registrationDate);
+		Collections.copy(representatives, person.getRepresentatives());
+		person.setResident(person.resident);
+		person.setShortName(shortName);
+		person.setStatusStartDate(statusStartDate);
 		return person;
 	}
 }

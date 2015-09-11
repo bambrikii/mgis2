@@ -6,24 +6,22 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 11.09.15.
  */
 @Entity
-@Table(name = "nc_okved", indexes = {@Index(columnList = "code", name = "nc_okved_code_index")})
-public class OKVED implements Cloneable {
-
+@Table(name = "nc_okogu", indexes = {@Index(columnList = "code", name = "nc_okogu_code_index"), @Index(columnList = "name", name = "nc_okogu_name_index")})
+public class OKOGU implements Cloneable {
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_okved_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_okogu_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
 
-	@Column
-	private String section;
-
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
 	private String code;
 
 	@Column(length = 1000)
 	private String name;
 
+	@Column
+	private String comment;
 
 	public Long getId() {
 		return id;
@@ -31,14 +29,6 @@ public class OKVED implements Cloneable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getSection() {
-		return section;
-	}
-
-	public void setSection(String section) {
-		this.section = section;
 	}
 
 	public String getCode() {
@@ -57,12 +47,20 @@ public class OKVED implements Cloneable {
 		this.name = name;
 	}
 
-	public OKVED clone() {
-		OKVED okved = new OKVED();
-		okved.setId(id);
-		okved.setCode(code);
-		okved.setName(name);
-		okved.setSection(section);
-		return okved;
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public OKOGU clone() {
+		OKOGU okogu = new OKOGU();
+		okogu.setId(id);
+		setCode(code);
+		setName(name);
+		setComment(comment);
+		return okogu;
 	}
 }

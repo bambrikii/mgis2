@@ -53,4 +53,12 @@ public class OKOPF implements Cloneable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public OKOPF clone() {
+		OKOPF okopf = new OKOPF();
+		okopf.setId(id);
+		okopf.setCode(code);
+		okopf.setName(name);
+		return okopf;
+	}
 }
