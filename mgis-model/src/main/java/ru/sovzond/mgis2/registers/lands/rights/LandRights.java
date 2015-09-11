@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.registers.lands.rights;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.registers.lands.Land;
 import ru.sovzond.mgis2.registers.national_classifiers.LandEncumbrance;
-import ru.sovzond.mgis2.registers.national_classifiers.LandOwnershipForm;
+import ru.sovzond.mgis2.registers.national_classifiers.OKFS;
 import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
 import ru.sovzond.mgis2.registers.persons.Person;
 
@@ -33,7 +33,7 @@ public class LandRights implements Cloneable {
 	private Person rightOwner;
 
 	@ManyToOne
-	private LandOwnershipForm ownershipForm;
+	private OKFS ownershipForm;
 
 	@Column
 	private Date ownershipDate;
@@ -99,11 +99,11 @@ public class LandRights implements Cloneable {
 		this.rightOwner = rightOwner;
 	}
 
-	public LandOwnershipForm getOwnershipForm() {
+	public OKFS getOwnershipForm() {
 		return ownershipForm;
 	}
 
-	public void setOwnershipForm(LandOwnershipForm ownershipForm) {
+	public void setOwnershipForm(OKFS ownershipForm) {
 		this.ownershipForm = ownershipForm;
 	}
 

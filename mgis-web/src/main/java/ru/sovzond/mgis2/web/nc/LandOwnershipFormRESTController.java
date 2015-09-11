@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.national_classifiers.LandOwnershipFormBean;
-import ru.sovzond.mgis2.registers.national_classifiers.LandOwnershipForm;
+import ru.sovzond.mgis2.registers.national_classifiers.OKFS;
 
 import javax.transaction.Transactional;
 
@@ -22,13 +22,13 @@ public class LandOwnershipFormRESTController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<LandOwnershipForm> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "name") String orderBy) {
+	public PageableContainer<OKFS> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "name") String orderBy) {
 		return landOwnershipFormBean.list(orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@Transactional
-	public LandOwnershipForm read(@PathVariable Long id) {
+	public OKFS read(@PathVariable Long id) {
 		return landOwnershipFormBean.load(id).clone();
 	}
 

@@ -2,12 +2,15 @@ package ru.sovzond.mgis2.registers.national_classifiers;
 
 import javax.persistence.*;
 
+/**
+ * Форма собственности (ОКФС)
+ */
 @Entity
-@Table(name = "nc_land_ownership_form")
-public class LandOwnershipForm implements Cloneable {
+@Table(name = "nc_okfs")
+public class OKFS implements Cloneable {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_land_ownership_form_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "nc_okfs_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
@@ -24,7 +27,7 @@ public class LandOwnershipForm implements Cloneable {
 
 	@ManyToOne
 	@JoinColumn(name = "gathering_parent_id")
-	private LandOwnershipForm gatheringParent;
+	private OKFS gatheringParent;
 
 	public Long getId() {
 		return id;
@@ -58,16 +61,16 @@ public class LandOwnershipForm implements Cloneable {
 		this.gatheringAlgo = gatheringAlgo;
 	}
 
-	public LandOwnershipForm getGatheringParent() {
+	public OKFS getGatheringParent() {
 		return gatheringParent;
 	}
 
-	public void setGatheringParent(LandOwnershipForm gatheringParent) {
+	public void setGatheringParent(OKFS gatheringParent) {
 		this.gatheringParent = gatheringParent;
 	}
 
-	public LandOwnershipForm clone() {
-		LandOwnershipForm form = new LandOwnershipForm();
+	public OKFS clone() {
+		OKFS form = new OKFS();
 		form.setId(id);
 		form.setCode(code);
 		form.setName(name);
