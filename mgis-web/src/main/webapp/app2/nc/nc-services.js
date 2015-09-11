@@ -5,12 +5,9 @@ angular.module("mgis.nc.services", ["ngResource"])
 	.factory("NcOKTMOService", function ($resource, $q) {
 		var res = $resource('rest/nc/oktmo/:id.json');
 		return {
-			get: function (id, first, max, name) {
+			get: function (id, first, max, code, name) {
 				var deferred = $q.defer();
-				res.get({id: id, name: name}, {
-					first: first,
-					max: max
-				}, function (data) {
+				res.get({id: id, first: first, max: max, code: code, name: name}, {}, function (data) {
 					deferred.resolve(data);
 				});
 				return deferred.promise;
@@ -20,12 +17,9 @@ angular.module("mgis.nc.services", ["ngResource"])
 	.factory("NcOKATOService", function ($resource, $q) {
 		var res = $resource('rest/nc/okato/:id.json');
 		return {
-			get: function (id, first, max) {
+			get: function (id, first, max, code, name) {
 				var deferred = $q.defer();
-				res.get({id: id}, {
-					first: first,
-					max: max
-				}, function (data) {
+				res.get({id: id, first: first, max: max, code: code, name: name}, {}, function (data) {
 					deferred.resolve(data);
 				});
 				return deferred.promise;

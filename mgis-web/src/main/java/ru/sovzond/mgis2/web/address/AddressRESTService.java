@@ -52,7 +52,6 @@ public class AddressRESTService implements Serializable {
 			address1 = addressBean.load(id);
 		}
 		address1.setOktmo(address.getOktmo() != null ? oktmoBean.load(address.getOktmo().getId()) : null);
-		address1.setKladr(address.getKladr() != null ? kladrLocalityBean.load(address.getKladr().getId()) : null);
 		address1.setOkato(address.getOkato() != null ? okatoBean.load(address.getOkato().getId()) : null);
 		address1.setPostalCode(address.getPostalCode());
 		address1.setSubject(address.getSubject() != null ? kladrLocalityBean.load(address.getSubject().getId()) : null);

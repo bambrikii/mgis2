@@ -13,21 +13,26 @@ import ru.sovzond.mgis2.registers.national_classifiers.OKATO;
  */
 @Repository
 public class OKATODao extends CRUDDaoBase<OKATO> {
-	public PagerBuilderBase<OKATO> createFilter(String name, String orderBy, int first, int max) {
-		return new OKATOPagerBuilder(name, orderBy, first, max);
+	public PagerBuilderBase<OKATO> createFilter(String code, String name, String orderBy, int first, int max) {
+		return new OKATOPagerBuilder(code, name, orderBy, first, max);
 	}
 
 	private class OKATOPagerBuilder extends PagerBuilderCriteria<OKATO> {
+		private String code;
 		private String name;
 
-		public OKATOPagerBuilder(String name, String orderBy, int first, int max) {
+		public OKATOPagerBuilder(String code, String name, String orderBy, int first, int max) {
 			super(orderBy, first, max);
+			this.code = code;
 			this.name = name;
 		}
 
 		@Override
 		protected void applyFilter(Criteria criteria) {
-			if (name != null && !"".equals(name)) {
+			if (code != null && code.length() > 0) {
+				criteria.add(Restrictions.like("code", code + "%"));
+			}
+			if (name != null && name.length() > 0) {
 				criteria.add(Restrictions.like("name", "%" + name + "%"));
 			}
 		}

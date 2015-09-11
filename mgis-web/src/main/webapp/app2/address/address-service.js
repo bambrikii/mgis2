@@ -19,7 +19,6 @@ angular.module("mgis.address.service", ["ngResource"])
 				var address = {
 					id: item.id,
 					okato: item.okato ? {id: item.okato.id} : null,
-					kladr: item.kladr ? {id: item.kladr.id} : null,
 					oktmo: item.oktmo ? {id: item.oktmo.id} : null,
 					postalCode: item.postalCode,
 					subject: item.subject ? {id: item.subject.id} : null,

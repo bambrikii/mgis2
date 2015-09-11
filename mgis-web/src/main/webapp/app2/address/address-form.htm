@@ -26,28 +26,6 @@
 				</div>
 			</div>
 
-			<!-- KLADR -->
-			<div class="form-group row">
-				<div class="col-sm-4">
-					<label translate>KLADR</label>
-				</div>
-				<div class="col-sm-8">
-					<p class="input-group input-group-sm">
-
-						<ui-select ng-model="address.kladr" theme="select2" style="width: 450px;">
-							<ui-select-match placeholder="">{{address.kladr.name}}</ui-select-match>
-							<ui-select-choices repeat="kladr in availableKLADRs | filter: {name: $select.search}"
-											   refresh="refreshAvailableKLADRs($select.search)"
-											   refresh-delay="0">
-								{{kladr.name}} ({{kladr.code}})
-								<div ng-bind-html="kladr.name"></div>
-							</ui-select-choices>
-						</ui-select>
-
-					</p>
-				</div>
-			</div>
-
 			<!-- OKTMO -->
 			<div class="form-group row">
 				<div class="col-sm-4">
@@ -88,7 +66,9 @@
 				<div class="col-sm-8">
 					<p class="input-group input-group-sm">
 
-						<ui-select ng-model="address.subject" theme="select2" style="width: 450px;">
+						<ui-select ng-model="address.subject" theme="select2" style="width: 450px;"
+								   on-select="subjectSelected()"
+								>
 							<ui-select-match placeholder="">{{address.subject.name}}</ui-select-match>
 							<ui-select-choices repeat="item in availableSubjects | filter: {name: $select.search}"
 											   refresh="refreshAvailableSubjects($select.search)"
@@ -110,7 +90,9 @@
 				<div class="col-sm-8">
 					<p class="input-group input-group-sm">
 
-						<ui-select ng-model="address.region" theme="select2" style="width: 450px;">
+						<ui-select ng-model="address.region" theme="select2" style="width: 450px;"
+								   on-select="regionSelected()"
+								>
 							<ui-select-match placeholder="">{{address.region.name}}</ui-select-match>
 							<ui-select-choices repeat="item in availableRegions | filter: {name: $select.search}"
 											   refresh="refreshAvailableRegions($select.search)"
@@ -132,7 +114,9 @@
 				<div class="col-sm-8">
 					<p class="input-group input-group-sm">
 
-						<ui-select ng-model="address.locality" theme="select2" style="width: 450px;">
+						<ui-select ng-model="address.locality" theme="select2" style="width: 450px;"
+								   on-select="localitySelected()"
+								>
 							<ui-select-match placeholder="">{{address.locality.name}}</ui-select-match>
 							<ui-select-choices repeat="item in availableLocalities | filter: {name: $select.search}"
 											   refresh="refreshAvailableLocalities($select.search)"
@@ -154,7 +138,9 @@
 				<div class="col-sm-8">
 					<p class="input-group input-group-sm">
 
-						<ui-select ng-model="address.street" theme="select2" style="width: 450px;">
+						<ui-select ng-model="address.street" theme="select2" style="width: 450px;"
+								   on-select="streetSelected()"
+								>
 							<ui-select-match placeholder="">{{address.street.name}}</ui-select-match>
 							<ui-select-choices repeat="item in availableStreets | filter: {name: $select.search}"
 											   refresh="refreshAvailableStreets($select.search)"

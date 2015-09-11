@@ -24,9 +24,10 @@ public class OKTMORESTController {
 	public PageableContainer<OKTMO> list(@RequestParam(defaultValue = "0") int first,
 										 @RequestParam(defaultValue = "15") int max,
 										 @RequestParam(defaultValue = "") String name,
+										 @RequestParam(defaultValue = "") String code,
 										 @RequestParam(defaultValue = "name") String orderBy
 	) {
-		return oktmoBean.list(name, orderBy, first, max);
+		return oktmoBean.list(code, name, orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

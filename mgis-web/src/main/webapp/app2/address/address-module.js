@@ -1,6 +1,7 @@
 angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 	"mgis.commons",
-	"mgis.address.service"
+	"mgis.address.service",
+	"mgis.nc.services"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -9,7 +10,8 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 				templateUrl: "app2/address/address-list.htm"
 			})
 	})
-	.factory("AddressModule", function ($rootScope, MGISCommonsModalForm, AddressService, AddressElementSearchService) {
+	.factory("AddressModule", function ($rootScope, MGISCommonsModalForm, AddressService, AddressElementSearchService,
+										NcOKATOService, NcOKTMOService) {
 
 		function editItem0(modalScope, updateFunction) {
 			var min = 0;
@@ -50,13 +52,14 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 			}
 
 			modalScope.refreshAvailableOKATOs = function (name) {
-				refreshAvailableProperty("OKATO", {type: "okato", okato: name});
-			}
-			modalScope.refreshAvailableKLADRs = function (name) {
-				refreshAvailableProperty("KLADR", {type: "kladr", kladr: name});
+				NcOKATOService.get("", min, max, "", name).then(function (data) {
+					modalScope.availableOKATOs = data.list;
+				});
 			}
 			modalScope.refreshAvailableOKTMOs = function (name) {
-				refreshAvailableProperty("OKTMO", {type: "oktmo", oktmo: name});
+				NcOKTMOService.get("", min, max, "", name).then(function (data) {
+					modalScope.availableOKTMOs = data.list;
+				});
 			}
 			modalScope.refreshAvailableSubjects = function (name) {
 				refreshAvailableProperty("Subject", {type: "subject", subject: name});
@@ -88,20 +91,127 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 				});
 			}
 			modalScope.refreshAvailableHomes = function (name) {
-				refreshAvailableProperty("Home", {type: "home", home: name});
-				return modalScope.availableHomes;
+				return new Array();
+				//var stree = retrieveStreet();
+				//refreshAvailableProperty("Home", {
+				//	type: "home",
+				//	street: stree,
+				//	home: name
+				//});
+				//return modalScope.availableHomes;
 			}
 			modalScope.refreshAvailableHousings = function (name) {
-				refreshAvailableProperty("Housing", {type: "housing", housing: name});
-				return modalScope.availableHousings;
+				return new Array();
+				//var stree = retrieveStreet();
+				//var hom = modalScope.address.home;
+				//refreshAvailableProperty("Housing", {
+				//	type: "housing",
+				//	street: stree,
+				//	home: hom,
+				//	housing: name
+				//});
+				//return modalScope.availableHousings;
 			}
 			modalScope.refreshAvailableBuildings = function (name) {
-				refreshAvailableProperty("Building", {type: "building", building: name});
-				return modalScope.availableBuildings;
+				return new Array();
+				//var stree = retrieveStreet();
+				//var hom = modalScope.address.home;
+				//var housin = modalScope.address.housing;
+				//modalScope.availableBuildings = refreshAvailableProperty("Building", {
+				//	type: "building",
+				//	street: stree,
+				//	home: hom,
+				//	housing: housin,
+				//	building: name
+				//});
+				//return modalScope.availableBuildings;
 			}
 			modalScope.refreshAvailableApartments = function (name) {
-				refreshAvailableProperty("Apartment", {type: "apartment", apartment: name});
-				return modalScope.availableApartments;
+				return new Array();
+				//var stree = retrieveStreet();
+				//var hom = modalScope.address.home;
+				//var housin = modalScope.address.housing;
+				//var buildin = modalScope.address.building;
+				//refreshAvailableProperty("Apartment", {
+				//	type: "apartment",
+				//	street: stree,
+				//	home: hom,
+				//	housing: housin,
+				//	building: buildin,
+				//	apartment: name
+				//});
+				//return modalScope.availableApartments;
+			}
+
+			function emptyRegion() {
+				modalScope.address.region = {};
+				emptyLocality();
+			}
+
+			function emptyLocality() {
+				modalScope.address.locality = {};
+				modalScope.address.okato = {};
+				modalScope.address.oktmo = {};
+				modalScope.address.postalCode = "";
+				emptyStreet();
+			}
+
+			function emptyStreet() {
+				modalScope.address.street = {}
+				emptyHome();
+			}
+
+			function emptyHome() {
+				modalScope.address.home = "";
+				emptyHousing();
+			}
+
+			function emptyHousing() {
+				modalScope.address.housing = "";
+				emptyBuilding();
+			}
+
+			function emptyBuilding() {
+				modalScope.address.building = "";
+				emptyApartment();
+			}
+
+			function emptyApartment() {
+				modalScope.address.apartment = "";
+			}
+
+			modalScope.subjectSelected = function () {
+				modalScope.refreshAvailableRegions("");
+				emptyRegion();
+			}
+			modalScope.regionSelected = function () {
+				modalScope.refreshAvailableLocalities("");
+				emptyLocality();
+			}
+			modalScope.localitySelected = function () {
+				modalScope.refreshAvailableStreets("");
+				modalScope.refreshAvailableOKATOs(modalScope.address.locality.name);
+				modalScope.refreshAvailableOKTMOs(modalScope.address.locality.name);
+				emptyStreet();
+			}
+			modalScope.streetSelected = function () {
+				if (modalScope.address && modalScope.address.street && modalScope.address.street.index) {
+					modalScope.address.postalCode = modalScope.address.street.index;
+				}
+				modalScope.refreshAvailableHomes("");
+				emptyHome();
+			}
+			modalScope.homeSelected = function () {
+				modalScope.refreshAvailableHousings("");
+				emptyHousing();
+			}
+			modalScope.housingSelected = function () {
+				modalScope.refreshAvailableBuildings("");
+				emptyBuilding();
+			}
+			modalScope.buildingSelected = function () {
+				modalScope.refreshAvailableApartments("");
+				emptyApartment();
 			}
 
 			MGISCommonsModalForm.edit("app2/address/address-form.htm", modalScope, function (scope, $modalInstance) {

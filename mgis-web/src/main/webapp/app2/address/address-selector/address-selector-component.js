@@ -44,15 +44,19 @@ angular.module("mgis.address.selector", ["ui.bootstrap",
 		}
 	})
 	.controller("AddressSelectController", function ($scope, AddressService, AddressModule) {
-		$scope.first = 0;
-		$scope.max = 15;
+		$scope.currentPage = 1;
+		$scope.itemsPerPage = 15;
 		function updateList() {
-			AddressService.get("", $scope.first, $scope.max, $scope.name).then(function (data) {
-				$scope.list = data.list;
+			AddressService.get("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage, $scope.name).then(function (data) {
+				$scope.addressPager = data;
 			});
 		}
 
 		updateList();
+
+		$scope.pageChanged = function () {
+			updateList();
+		}
 
 		$scope.find = function () {
 			updateList();

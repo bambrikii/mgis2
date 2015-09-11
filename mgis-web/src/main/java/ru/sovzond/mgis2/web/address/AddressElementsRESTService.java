@@ -10,8 +10,6 @@ import ru.sovzond.mgis2.address.AddressElementsBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.kladr.KLADRLocality;
 import ru.sovzond.mgis2.kladr.KLADRStreet;
-import ru.sovzond.mgis2.registers.national_classifiers.OKATO;
-import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
@@ -25,33 +23,6 @@ import java.io.Serializable;
 public class AddressElementsRESTService implements Serializable {
 	@Autowired
 	private AddressElementsBean addressElemsBean;
-
-	@RequestMapping(value = "/okato", method = RequestMethod.GET)
-	@Transactional
-	public PageableContainer<OKATO> okato(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
-										  @RequestParam(defaultValue = "0") int first,
-										  @RequestParam(defaultValue = "0") int max,
-										  @RequestParam(defaultValue = "") String okato) {
-		return addressElemsBean.okato(orderBy, first, max, okato);
-	}
-
-	@RequestMapping(value = "/kladr", method = RequestMethod.GET)
-	@Transactional
-	public PageableContainer<String> kladr(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
-										   @RequestParam(defaultValue = "0") int first,
-										   @RequestParam(defaultValue = "0") int max,
-										   @RequestParam(defaultValue = "") String kladr) {
-		return addressElemsBean.kladr(orderBy, first, max, kladr);
-	}
-
-	@RequestMapping(value = "/oktmo", method = RequestMethod.GET)
-	@Transactional
-	public PageableContainer<OKTMO> oktmo(@RequestParam(value = "orderBy", defaultValue = "") String orderBy,
-										  @RequestParam(defaultValue = "0") int first,
-										  @RequestParam(defaultValue = "0") int max,
-										  @RequestParam(defaultValue = "") String oktmo) {
-		return addressElemsBean.oktmo(orderBy, first, max, oktmo);
-	}
 
 	@RequestMapping(value = "/subject", method = RequestMethod.GET)
 	@Transactional
@@ -105,7 +76,7 @@ public class AddressElementsRESTService implements Serializable {
 										  @RequestParam(defaultValue = "") String locality,
 										  @RequestParam(defaultValue = "") String street,
 										  @RequestParam(defaultValue = "") String home) {
-		return addressElemsBean.home(orderBy, first, max, subject, region, locality, street, home);
+		return addressElemsBean.home(orderBy, first, max, street, home);
 	}
 
 	@RequestMapping(value = "/housing", method = RequestMethod.GET)
@@ -119,7 +90,7 @@ public class AddressElementsRESTService implements Serializable {
 											 @RequestParam(defaultValue = "") String street,
 											 @RequestParam(defaultValue = "") String home,
 											 @RequestParam(defaultValue = "") String housing) {
-		return addressElemsBean.housing(orderBy, first, max, subject, region, locality, street, home, housing);
+		return addressElemsBean.housing(orderBy, first, max, street, home, housing);
 	}
 
 	@RequestMapping(value = "/building", method = RequestMethod.GET)

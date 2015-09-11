@@ -27,7 +27,7 @@ angular.module("mgis.terr-zones.zone", ["ui.router", "ui.bootstrap", "ui.select"
 		}
 
 		function editItem(modalScope) {
-			NcOKTMOService.get("", 0, 15, name).then(function (admTerrEntities) {
+			NcOKTMOService.get("", 0, 15, null, name).then(function (admTerrEntities) {
 				modalScope.availableAdministrativeTerritorialEntities = admTerrEntities.list;
 				NcTerritorialZoneTypeService.get("", 0, 15).then(function (zoneTypes) {
 					modalScope.availableZoneTypes = zoneTypes.list;
@@ -36,7 +36,7 @@ angular.module("mgis.terr-zones.zone", ["ui.router", "ui.bootstrap", "ui.select"
 
 						// AdministrativeTerritorialEntities
 						modalScope.refreshAvailableAdministrativeTerritorialEntities = function (name) {
-							NcOKTMOService.get("", 0, 15, name).then(function (admTerrEntities) {
+							NcOKTMOService.get("", 0, 15, null, name).then(function (admTerrEntities) {
 								modalScope.availableAdministrativeTerritorialEntities = admTerrEntities.list;
 							});
 						}

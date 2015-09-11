@@ -57,13 +57,6 @@ public class Address implements Cloneable {
 	private OKATO okato;
 
 	/**
-	 *
-	 */
-	@ManyToOne
-	@JoinColumn(name = "kladr")
-	private KLADRLocality kladr;
-
-	/**
 	 * ОКТМО
 	 * Ограничение на тип строка OKTMOType.
 	 */
@@ -129,7 +122,6 @@ public class Address implements Cloneable {
 		Address address = new Address();
 		address.setId(id);
 		address.setOkato(okato != null ? okato.clone() : null);
-		address.setKladr(kladr != null ? kladr.clone() : null);
 		address.setOktmo(oktmo != null ? oktmo.clone() : null);
 		address.setPostalCode(postalCode);
 		address.setSubject(subject != null ? subject.clone() : null);
@@ -151,14 +143,6 @@ public class Address implements Cloneable {
 
 	public void setOkato(OKATO okato) {
 		this.okato = okato;
-	}
-
-	public KLADRLocality getKladr() {
-		return kladr;
-	}
-
-	public void setKladr(KLADRLocality kladr) {
-		this.kladr = kladr;
 	}
 
 	public OKTMO getOktmo() {

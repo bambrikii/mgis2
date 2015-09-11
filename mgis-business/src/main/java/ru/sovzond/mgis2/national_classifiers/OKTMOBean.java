@@ -28,8 +28,8 @@ public class OKTMOBean extends CRUDBeanBase<OKTMO> {
 		return dao;
 	}
 
-	public PageableContainer<OKTMO> list(String name, String orderBy, int first, int max) {
-		Pageable<OKTMO> pager = dao.pager(dao.createFilter(name, orderBy, first, max));
+	public PageableContainer<OKTMO> list(String code, String name, String orderBy, int first, int max) {
+		Pageable<OKTMO> pager = dao.pager(dao.createFilter(code, name, orderBy, first, max));
 		return new PageableContainer<>(pager.list(), pager.count(), first, max);
 	}
 
