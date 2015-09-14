@@ -1,0 +1,85 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>LegalPerson.ActualAddress</h3>
+	</div>
+	<div class="panel-body">
+
+
+		<!-- ActualAddressTerritoryOkatoCode -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.ActualAddressTerritoryOkatoCode</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+
+					<ui-select ng-model="item.actualAddressTerritoryOkatoCode" theme="select2" style="width: 450px;">
+						<ui-select-match placeholder="">{{item.actualAddressTerritoryOkatoCode.name}}</ui-select-match>
+						<ui-select-choices repeat="okato in availableActualAddressTerritoryOkatoCodes | filter: {name: $select.search}"
+										   refresh="refreshAvailableActualAddressTerritoryOkatoCodes($select.search)"
+										   refresh-delay="0">
+							{{okato.name}} ({{okato.code}})
+							<div ng-bind-html="okato.name"></div>
+						</ui-select-choices>
+					</ui-select>
+
+				</p>
+			</div>
+		</div>
+
+		<!-- ActualAddress -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.ActualAddress</label>
+			</div>
+
+			<div class="col-sm-8">
+				<address-selector address="item.actualAddress"></address-selector>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>LegalPerson.LegalAddress</h3>
+	</div>
+	<div class="panel-body">
+
+
+		<!-- LegalAddressTerritoryOkatoCode -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.LegalAddressTerritoryOkatoCode</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+
+					<ui-select ng-model="item.legalAddressTerritoryOkatoCode" theme="select2" style="width: 450px;">
+						<ui-select-match placeholder="">{{item.legalAddressTerritoryOkatoCode.name}}</ui-select-match>
+						<ui-select-choices repeat="okato in availableLegalAddressTerritoryOkatoCodes | filter: {name: $select.search}"
+										   refresh="refreshAvailableLegalAddressTerritoryOkatoCodes($select.search)"
+										   refresh-delay="0">
+							{{okato.name}} ({{okato.code}})
+							<div ng-bind-html="okato.name"></div>
+						</ui-select-choices>
+					</ui-select>
+
+				</p>
+			</div>
+		</div>
+
+		<!-- LegalAddress -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.LegalAddress</label>
+			</div>
+
+			<div class="col-sm-8">
+				<address-selector address="item.legalAddress"></address-selector>
+			</div>
+		</div>
+
+	</div>
+</div>

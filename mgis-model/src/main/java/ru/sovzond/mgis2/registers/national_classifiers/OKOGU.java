@@ -58,9 +58,9 @@ public class OKOGU implements Cloneable {
 	public OKOGU clone() {
 		OKOGU okogu = new OKOGU();
 		okogu.setId(id);
-		setCode(code);
-		setName(name);
-		setComment(comment);
+		okogu.setCode(code);
+		okogu.setName(name);
+		okogu.setComment(comment);
 		return okogu;
 	}
 }

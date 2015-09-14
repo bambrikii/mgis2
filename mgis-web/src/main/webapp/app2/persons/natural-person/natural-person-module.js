@@ -2,6 +2,13 @@ angular.module("mgis.persons.person.natural", ["ui.router", "ui.bootstrap", //
 	"mgis.persons.person.natural.service",
 	"mgis.commons"
 ])
+	.config(function ($stateProvider) {
+		$stateProvider
+			.state("persons/natural-persons", {
+				url: "/persons/natural-persons",
+				templateUrl: "app2/persons/natural-person/natural-persons-list.htm"
+			})
+	})
 	.controller("NaturalPersonSelectorController", function ($scope, $rootScope, NaturalPersonService, MGISCommonsModalForm) {
 		$scope.list = new Array();
 		$scope.first = 0;
@@ -18,6 +25,8 @@ angular.module("mgis.persons.person.natural", ["ui.router", "ui.bootstrap", //
 					$modalInstance.close();
 					$scope.name = scope.item.name;
 					$scope.find(scope.item.name);
+				}, {
+					
 				});
 			});
 		}

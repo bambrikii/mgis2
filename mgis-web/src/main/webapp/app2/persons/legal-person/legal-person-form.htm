@@ -4,20 +4,29 @@
 	</div>
 	<div class="modal-body">
 		<form name="legalPersonForm">
-			<div class="form-group row"
-				 ng-class="{'has-error': legalPersonForm.name.$invalid && (!legalPersonForm.name.$pristine || legalPersonForm.name.$touched)}">
-				<div class="col-sm-4">
-					<label translate>LegalPerson.Name</label>
-				</div>
 
-				<div class="col-sm-8">
-					<input type="text" class="form-control" name="name" ng-model="item.name" required/>
+			<tabset>
 
-					<p ng-show="legalPersonForm.name.$invalid && (!legalPersonForm.name.$pristine || legalPersonForm.name.$touched)"
-					   class="help-block" translate>
-						LegalPerson.Name</p>
-				</div>
-			</div>
+				<tab>
+					<tab-heading>
+						<span translate>GeneralInfo</span>
+					</tab-heading>
+					<div ng-include src="'app2/persons/legal-person/legal-person-general-info.htm'"></div>
+				</tab>
+				<tab>
+					<tab-heading>
+						<span translate>Addresses</span>
+					</tab-heading>
+					<div ng-include src="'app2/persons/legal-person/legal-person-address.htm'"></div>
+				</tab>
+				<tab>
+					<tab-heading>
+						<span translate>Contacts</span>
+					</tab-heading>
+					<div ng-include src="'app2/persons/legal-person/legal-person-contacts.htm'"></div>
+				</tab>
+			</tabset>
+
 		</form>
 	</div>
 </div>

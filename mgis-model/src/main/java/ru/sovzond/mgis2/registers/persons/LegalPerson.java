@@ -488,6 +488,7 @@ public class LegalPerson extends Person {
 		person.setContactFax(contactFax);
 		person.setContactPhone(contactPhone);
 		person.setContactWebsite(contactWebsite);
+		person.setDirectorFullName(directorFullName);
 		person.setDirectorEmail(directorEmail);
 		person.setDirectorPhone(directorPhone);
 		person.setDirectorPosition(directorPosition);
@@ -497,6 +498,7 @@ public class LegalPerson extends Person {
 				LegalPerson lp = new LegalPerson();
 				lp.setId(p.getId());
 				lp.setName(p.getName());
+				return lp;
 			}
 			return p.clone();
 		}).collect(Collectors.toList()));
@@ -513,7 +515,8 @@ public class LegalPerson extends Person {
 		person.setRegistrationCertificate(registrationCertificate);
 		person.setRegistrationDate(registrationDate);
 		Collections.copy(representatives, person.getRepresentatives());
-		person.setResident(person.resident);
+		person.setResident(resident);
+		person.setNameInAForeignLanguage(nameInAForeignLanguage);
 		person.setShortName(shortName);
 		person.setStatusStartDate(statusStartDate);
 		return person;

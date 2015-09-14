@@ -24,7 +24,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 											   //NcTerritorialZoneService,
 											   NcLandAllowedUsageService,
 											   NcLandCategoryService,
-											   NcLandOwnershipFormService,
+											   NcOKFSService,
 											   NcLandRightKindService,
 											   NcLandEncumbranceService,
 											   CommonExecutivePersonService,
@@ -50,7 +50,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 									modalScope.availableExecutivePersons = executivePersons.list;
 									NcLandEncumbranceService.get().then(function (landEncumbrances) {
 										modalScope.availableLandEncumbrances = landEncumbrances.list;
-										NcLandOwnershipFormService.get().then(function (landOwnershipForms) {
+										NcOKFSService.get().then(function (landOwnershipForms) {
 											modalScope.availableLandOwnershipForms = landOwnershipForms.list;
 											NcLandRightKindService.get().then(function (landRightKinds) {
 												modalScope.availableLandRightKinds = landRightKinds.list;

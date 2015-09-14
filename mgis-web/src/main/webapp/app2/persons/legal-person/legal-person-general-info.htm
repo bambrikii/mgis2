@@ -1,0 +1,307 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>GeneralInfo</h3>
+	</div>
+	<div class="panel-body">
+
+		<!-- Name -->
+		<div class="form-group row"
+			 ng-class="{'has-error': legalPersonForm.name.$invalid && (!legalPersonForm.name.$pristine || legalPersonForm.name.$touched)}">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.Name</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="name" ng-model="item.name" required/>
+
+				<p ng-show="legalPersonForm.name.$invalid && (!legalPersonForm.name.$pristine || legalPersonForm.name.$touched)"
+				   class="help-block" translate>
+					LegalPerson.Name</p>
+			</div>
+		</div>
+
+		<!-- ShortName -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.ShortName</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.shortName" required/>
+			</div>
+		</div>
+
+		<!-- NameInAForeignLanguage -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.NameInAForeignLanguage</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.nameInAForeignLanguage"/>
+			</div>
+		</div>
+
+		<!-- PreviousCompanyName -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.PreviousCompanyName</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.previousCompanyName"/>
+			</div>
+		</div>
+
+		<!-- OwnershipForm -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.OwnershipForm</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="item.ownershipForm"
+							options="(c.name + (c.gatheringParent?' ('+c.gatheringParent.name+')' : '')) for c in availableOKFSs"
+							data-multiple="false"
+							data-compare-by="id"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+
+		<!-- PreviousCompanyName -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.Resident</label>
+			</div>
+			<div class="col-sm-8">
+				<button type="button" class="btn btn-info" ng-model="item.resident" btn-checkbox btn-checkbox-true="true"
+						btn-checkbox-false="">
+					<span ng-if="item.resident" translate>true</span>
+					<span ng-if="!item.resident" translate>false</span>
+				</button>
+			</div>
+		</div>
+
+		<!-- Founders -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.Founders</label>
+			</div>
+			<div class="col-sm-8">
+				<persons-selector persons="item.founders" multiple="true"/>
+			</div>
+		</div>
+
+		<!-- Representatives -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.Representatives</label>
+			</div>
+			<div class="col-sm-8">
+			</div>
+		</div>
+
+		<!-- ActivityType -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.ActivityType</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<ui-select ng-model="item.activityType" theme="select2" style="width: 450px;">
+						<ui-select-match placeholder="">{{item.activityType.name}}</ui-select-match>
+						<ui-select-choices repeat="okved in availableActivityTypes | filter: {name: $select.search}"
+										   refresh="refreshAvailableActivityTypes($select.search)"
+										   refresh-delay="0">
+							{{okved.name}} ({{okved.code}})
+							<div ng-bind-html="okved.name"></div>
+						</ui-select-choices>
+					</ui-select>
+				</p>
+			</div>
+		</div>
+
+		<!-- OKPO -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>OKPO</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.okpo"/>
+			</div>
+		</div>
+
+		<!-- OGRN -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>OGRN</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.ogrn"/>
+			</div>
+		</div>
+
+		<!-- OKOGU -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>OKOGU</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+
+					<ui-select ng-model="item.okogu" theme="select2" style="width: 450px;">
+						<ui-select-match placeholder="">{{item.okogu.name}}</ui-select-match>
+						<ui-select-choices repeat="okogu in availableOKOGUs | filter: {name: $select.search}"
+										   refresh="refreshAvailableOKOGUs($select.search)"
+										   refresh-delay="0">
+							{{okogu.name}} ({{okogu.code}})
+							<div ng-bind-html="okogu.name"></div>
+						</ui-select-choices>
+					</ui-select>
+				</p>
+			</div>
+		</div>
+
+		<!-- KPP -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>KPP</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.kpp"/>
+			</div>
+		</div>
+
+		<!-- inn -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>INN</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.inn"/>
+			</div>
+		</div>
+
+		<!-- bik -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>BIK</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.bik"/>
+			</div>
+		</div>
+
+		<!-- OKOPF -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>OKOPF</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<ui-select ng-model="item.organizationalForm" theme="select2" style="width: 450px;">
+						<ui-select-match placeholder="">{{item.organizationalForm.name}}</ui-select-match>
+						<ui-select-choices repeat="okogu in availableOKOPFs | filter: {name: $select.search}"
+										   refresh="refreshAvailableOKOPFs($select.search)"
+										   refresh-delay="0">
+							{{okogu.name}} ({{okogu.code}})
+							<div ng-bind-html="okopf.name"></div>
+						</ui-select-choices>
+					</ui-select>
+				</p>
+			</div>
+		</div>
+
+		<!-- StatusStartDate -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.StatusStartDate</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+								<span class="input-group-btn mgis-input-group-date">
+									<input
+											type="text"
+											class="form-control"
+											name="docDate"
+											datepicker-popup="{{format}}"
+											ng-model="item.statusStartDate"
+											is-open="opened"
+											datepicker-options="dateOptions"
+											date-disabled="disabled(date, mode)"
+											close-text="{{Close|translate}}"
+											ng-click="open($event)"
+											/>
+									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+									</button>
+								</span>
+				</p>
+			</div>
+		</div>
+
+		<!-- RegistrationDate -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.RegistrationDate</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+								<span class="input-group-btn mgis-input-group-date">
+									<input
+											type="text"
+											class="form-control"
+											name="docDate"
+											datepicker-popup="{{format}}"
+											ng-model="item.registrationDate"
+											is-open="opened"
+											datepicker-options="dateOptions"
+											date-disabled="disabled(date, mode)"
+											close-text="{{Close|translate}}"
+											ng-click="open($event)"
+											/>
+									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+									</button>
+								</span>
+				</p>
+			</div>
+		</div>
+
+		<!-- RegistrationCertificate -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.RegistrationCertificate</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.registrationCertificate"/>
+			</div>
+		</div>
+
+		<!-- EGRULInitialDate -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>LegalPerson.EGRULInitialDate</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+								<span class="input-group-btn mgis-input-group-date">
+									<input
+											type="text"
+											class="form-control"
+											name="docDate"
+											datepicker-popup="{{format}}"
+											ng-model="item.egrulInitialDate"
+											is-open="opened"
+											datepicker-options="dateOptions"
+											date-disabled="disabled(date, mode)"
+											close-text="{{Close|translate}}"
+											ng-click="open($event)"
+											/>
+									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+									</button>
+								</span>
+				</p>
+			</div>
+		</div>
+
+	</div>
+</div>

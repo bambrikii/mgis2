@@ -8,5 +8,5 @@ import ru.sovzond.mgis2.registers.national_classifiers.OKFS;
  * Created by Alexander Arakelyan on 30.07.15.
  */
 @Repository
-public class LandOwnershipFormDao extends CRUDDaoBase<OKFS> {
+public class OKFSDao extends CRUDDaoBase<OKFS> {
 }

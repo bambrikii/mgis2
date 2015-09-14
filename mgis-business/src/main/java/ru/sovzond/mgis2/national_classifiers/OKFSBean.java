@@ -11,10 +11,10 @@ import ru.sovzond.mgis2.registers.national_classifiers.OKFS;
  * Created by Alexander Arakelyan on 30.07.15.
  */
 @Service
-public class LandOwnershipFormBean extends CRUDBeanBase<OKFS> {
+public class OKFSBean extends CRUDBeanBase<OKFS> {
 
 	@Autowired
-	private LandOwnershipFormDao dao;
+	private OKFSDao dao;
 
 	@Override
 	protected IPageableDAOBase<OKFS> getPageableDao() {

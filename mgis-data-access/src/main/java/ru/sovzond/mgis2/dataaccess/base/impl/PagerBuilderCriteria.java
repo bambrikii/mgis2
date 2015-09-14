@@ -2,6 +2,7 @@ package ru.sovzond.mgis2.dataaccess.base.impl;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 
@@ -41,6 +42,7 @@ public abstract class PagerBuilderCriteria<T> extends PagerBuilderBase<T> {
 				applyFilter(criteria);
 				applyOrder(criteria);
 				applyLimit(criteria);
+				criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
 				return criteria.list();
 			}
 

@@ -1,0 +1,22 @@
+<div ng-controller="LegalPersonsController">
+	<h3 translate>LegalPersons</h3>
+
+	<div ng-repeat="item in legalPersonsPager.list" class="row" style="padding-bottom: 7px;">
+		<div class="col-sm-8">
+			{{item.id}} {{item.name}}
+		</div>
+		<div class="col-sm-4">
+			<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
+			<button class="btn btn-danger btn-sm" ng-click="deleteItem(item.id)" translate>Delete</button>
+		</div>
+	</div>
+
+	<pagination total-items="legalPersonsPager.totalNumberOfItems" ng-model="currentPage"
+				items-per-page="itemsPerPage" ng-change="pageChanged()"
+				class="pagination-sm" previous-text="&lsaquo;"
+				next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+
+	<div>
+		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
+	</div>
+</div>

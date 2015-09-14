@@ -1,0 +1,40 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title"><span translate>Persons.Selector</span>: {{person.name}}</h3>
+	</div>
+	<div class="modal-body" ng-controller="PersonsSelectorController">
+		<div>
+			<ul class="list-group">
+				<li ng-repeat="p in persons" class="list-group-item mgis-document-selector-list-item">
+					<div class="row">
+						<div class="col-sm-8">{{p.id}} {{p.name}}</div>
+						<div class="col-sm-4 pull-right">
+							<button ng-click="removePerson(p.id)" class="btn btn-danger btn-sm" translate>Remove</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<form name="personSelectorForm" novalidate>
+			<tabset>
+				<tab active="naturalPersonTabActive">
+					<tab-heading>
+						<span translate>NaturalPerson</span>
+					</tab-heading>
+					<natural-person-selector person="person" select-clicked="naturalPersonSelectClicked(id, name)"></natural-person-selector>
+				</tab>
+				<tab active="legalPersonTabActive">
+					<tab-heading>
+						<span translate>LegalPerson</span>
+					</tab-heading>
+					<legal-person-selector person="person" select-clicked="legalPersonSelectClicked(id, name)"></legal-person-selector>
+				</tab>
+			</tabset>
+		</form>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

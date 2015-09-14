@@ -1,6 +1,7 @@
 package ru.sovzond.mgis2.dataaccess.base.impl;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
@@ -27,7 +28,7 @@ public class CRUDDaoBase<T> extends DAOBase<T> implements IPageableDAOBase<T>, I
 		if (ids.size() == 0) {
 			throw new IllegalArgumentException(NO_IDENTIFIERS_PROVIDED);
 		}
-		return createCriteria().add(Restrictions.in(ID, ids)).list();
+		return createCriteria().add(Restrictions.in(ID, ids)).setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY).list();
 	}
 
 	protected Class<T> persistentClass;

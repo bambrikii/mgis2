@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
-import ru.sovzond.mgis2.national_classifiers.LandOwnershipFormBean;
+import ru.sovzond.mgis2.national_classifiers.OKFSBean;
 import ru.sovzond.mgis2.registers.national_classifiers.OKFS;
 
 import javax.transaction.Transactional;
@@ -13,12 +13,12 @@ import javax.transaction.Transactional;
  * Created by Alexander Arakelyan on 30.07.15.
  */
 @RestController
-@RequestMapping("/nc/land_ownership_forms")
+@RequestMapping("/nc/okfs")
 @Scope("session")
-public class LandOwnershipFormRESTController {
+public class OKFSRESTController {
 
 	@Autowired
-	private LandOwnershipFormBean landOwnershipFormBean;
+	private OKFSBean landOwnershipFormBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional

@@ -71,8 +71,8 @@ angular.module("mgis.nc.services", ["ngResource"])
 			}
 		}
 	})
-	.factory("NcLandOwnershipFormService", function ($resource, $q) {
-		var res = $resource('rest/nc/land_ownership_forms/:id.json');
+	.factory("NcOKFSService", function ($resource, $q) {
+		var res = $resource('rest/nc/okfs/:id.json');
 		return {
 			get: function (id, first, max) {
 				var deferred = $q.defer();
@@ -115,4 +115,41 @@ angular.module("mgis.nc.services", ["ngResource"])
 				return deferred.promise;
 			}
 		}
-	});
+	})
+	.factory("NcOKVEDService", function ($resource, $q) {
+		var res = $resource('rest/nc/okved/:id.json');
+		return {
+			get: function (id, first, max, name) {
+				var deferred = $q.defer();
+				res.get({id: id, first: first, max: max, name: name}, {}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	})
+	.factory("NcOKOGUService", function ($resource, $q) {
+		var res = $resource('rest/nc/okogu/:id.json');
+		return {
+			get: function (id, first, max, name) {
+				var deferred = $q.defer();
+				res.get({id: id, first: first, max: max, name: name}, {}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	})
+	.factory("NcOKOPFService", function ($resource, $q) {
+		var res = $resource('rest/nc/okopf/:id.json');
+		return {
+			get: function (id, first, max, name) {
+				var deferred = $q.defer();
+				res.get({id: id, first: first, max: max, name: name}, {}, function (data) {
+					deferred.resolve(data);
+				});
+				return deferred.promise;
+			}
+		}
+	})
+;

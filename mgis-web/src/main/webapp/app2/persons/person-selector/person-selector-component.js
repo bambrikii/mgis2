@@ -51,4 +51,82 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 			}
 		}
 	})
+	.directive("personsSelector", function (MGISCommonsModalForm, $rootScope) {
+		return {
+			restrict: "E",
+			scope: {
+				person: "=",
+				persons: "=",
+				multiple: "="
+			},
+			templateUrl: "app2/persons/person-selector/persons-selector-component.htm",
+			controller: function ($scope) {
+				$scope.openSelector = function () {
+					var modalScope = $rootScope.$new();
+					modalScope.multiple = $scope.multiple;
+					var persons = new Array();
+					if (modalScope.multiple) {
+						if (!$scope.persons) {
+							$scope.persons = new Array();
+						}
+						angular.copy($scope.persons, persons);
+					} else {
+						var person = {};
+						angular.copy($scope.person, person);
+						persons.push(person);
+					}
+					modalScope.persons = persons;
+					var modal = MGISCommonsModalForm.edit("app2/persons/person-selector/persons-selector-form.htm", modalScope, function (scope, $modalInstance) {
+						if (modalScope.multiple) {
+							angular.copy(scope.persons, $scope.persons);
+						} else {
+							if (!$scope.person) {
+								$scope.person = {};
+							}
+							if ($scope.persons.length > 0) {
+								angular.copy(scope.person, $scope.person);
+							}
+						}
+						$modalInstance.close();
+					});
+				}
+			}
+		}
+	})
+	.controller("PersonsSelectorController", function ($scope, NATURAL_PERSON_TYPE, LEGAL_PERSON_TYPE) {
+		function personExists(id) {
+			var persons = $scope.persons;
+			for (var i in persons) {
+				if (persons[i].id == id) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		$scope.naturalPersonSelectClicked = function (id, name) {
+			if (!$scope.multiple) {
+				$scope.persons.slice(0, $scope.persons.length);
+			}
+			if (!personExists(id)) {
+				$scope.persons.push({id: id, name: name, personType: NATURAL_PERSON_TYPE});
+			}
+		}
+		$scope.legalPersonSelectClicked = function (id, name) {
+			if (!$scope.multiple) {
+				$scope.persons.slice(0, $scope.persons.length);
+			}
+			if (!personExists(id)) {
+				$scope.persons.push({id: id, name: name, personType: LEGAL_PERSON_TYPE});
+			}
+		}
+		$scope.removePerson = function (id) {
+			for (var i in $scope.persons) {
+				var p = $scope.persons[i];
+				if (p.id == id) {
+					$scope.persons.splice(i, 1);
+				}
+			}
+		}
+	})
 ;

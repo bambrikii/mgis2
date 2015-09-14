@@ -51,7 +51,7 @@ public class LandRESTController implements Serializable {
 	private LandCategoryBean landCategoryBean;
 
 	@Autowired
-	private LandOwnershipFormBean landOwnershipFormBean;
+	private OKFSBean landOwnershipFormBean;
 
 	@Autowired
 	private LandRightKindBean landRightKindBean;
