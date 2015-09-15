@@ -63,7 +63,7 @@ public class LegalPersonRESTService implements Serializable {
 		} else {
 			legalPerson1 = legalPersonBean.load(id);
 		}
-		BeanUtils.copyProperties(legalPerson, legalPerson1, new String[]{"id", "ownershipForm", "founders", "representatives", "activityType", "okogu",
+		BeanUtils.copyProperties(legalPerson, legalPerson1, new String[]{"id", "ownershipForm", "founders", "activityType", "okogu",
 				"organizationalForm", "actualAddressTerritoryOkatoCode", "actualAddress",
 				"legalAddressTerritoryOkatoCode", "legalAddress",
 		});
@@ -73,9 +73,6 @@ public class LegalPersonRESTService implements Serializable {
 			List<Long> founderIds = legalPerson.getFounders().stream().map(person -> person.getId())
 					.collect(Collectors.toList());
 			legalPerson1.getFounders().addAll(legalPersonBean.load(founderIds));
-		}
-		if (legalPerson.getRepresentatives() != null && legalPerson.getRepresentatives().size() > 0) {
-			legalPerson1.getRepresentatives().addAll(legalPerson.getRepresentatives());
 		}
 
 		OKVED activityType = legalPerson.getActivityType();

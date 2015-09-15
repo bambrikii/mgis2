@@ -1,0 +1,6 @@
+<div ng-controller="MGISCommonsStringCollectionController">
+	<ul class="list-group">
+		<li ng-repeat="str in strings track by $index" class="list-group-item">{{str}}</li>
+	</ul>
+	<button ng-click="openSelector()" class="btn btn-info btn-sm" translate>Select</button>
+</div>

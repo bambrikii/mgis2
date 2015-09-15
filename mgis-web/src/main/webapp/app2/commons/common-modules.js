@@ -107,4 +107,53 @@ angular.module("mgis.commons", ["ui.bootstrap"])
 			}
 		};
 	})
+// String module
+	.directive("stringsCollectionDirective", function () {
+		return {
+			scope: {
+				strings: "="
+			},
+			templateUrl: "app2/commons/strings/string-collection-component.htm"
+		}
+	})
+	.controller("MGISCommonsStringCollectionController", function ($scope, $rootScope, MGISCommonsModalForm) {
+		if (!$scope.strings) {
+			$scope.strings = new Array();
+		}
+		$scope.openSelector = function () {
+			var modalScope = $rootScope.$new();
+			modalScope.strings = new Array();
+			angular.copy($scope.strings, modalScope.strings);
+			modalScope.str = "";
+			modalScope.addStr = function (str) {
+				if (str) {
+					var found = false;
+					for (var i in modalScope.strings) {
+						var item1 = modalScope.strings[i];
+						if (item1 == str) {
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						modalScope.strings.push(str);
+					}
+				}
+			}
+			modalScope.removeStr = function (str) {
+				var indexes = new Array();
+				for (var i in modalScope.strings) {
+					var item1 = modalScope.strings[i];
+					if (item1 == str) {
+						modalScope.strings.splice(i, 1);
+					}
+				}
+			}
+			MGISCommonsModalForm.edit("app2/commons/strings/string-collection-form.htm", modalScope, function (scope, modalInstance) {
+				angular.copy(modalScope.strings, $scope.strings);
+				modalInstance.close();
+			});
+		}
+	})
+
 ;

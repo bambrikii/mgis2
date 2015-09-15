@@ -1,0 +1,36 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title"><span translate>List</span></h3>
+	</div>
+	<div class="modal-body">
+
+		<form name="stringForm">
+			<div class="control-group">
+				<label for="str" translate>Name</label>
+
+				<div class="controls form-inline">
+					<input type="text" id="str" name="str" ng-model="str" class="form-control"/>
+					<button class="btn btn-sm btn-info" ng-click="addStr(str)" translate>Add</button>
+				</div>
+			</div>
+		</form>
+
+		<ul class="list-group">
+			<li ng-repeat="str in strings track by $index" class="list-group-item mgis-document-selector-list-item">
+				<div class="row">
+					<div class="col-sm-8">{{str}}</div>
+					<div class="col-sm-4 pull-right">
+						<button ng-click="removeStr(str)" class="btn btn-danger btn-sm" translate>Remove</button>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+</div>
+
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

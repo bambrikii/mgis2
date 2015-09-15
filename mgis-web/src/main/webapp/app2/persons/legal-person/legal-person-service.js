@@ -23,7 +23,7 @@ angular.module("mgis.persons.person.legal.service", ["ngResource"])
 				if (item.representatives) {
 					p.representatives = new Array();
 					for (var i in item.representatives) {
-						p.representatives.push({id: item.representatives[i].id});
+						p.representatives.push(item.representatives[i]);
 					}
 				}
 				p.activityType = item.activityType && item.activityType.id ? {id: item.activityType.id} : null;

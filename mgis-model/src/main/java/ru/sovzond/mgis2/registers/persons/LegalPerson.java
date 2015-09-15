@@ -5,7 +5,6 @@ import ru.sovzond.mgis2.registers.national_classifiers.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -514,7 +513,9 @@ public class LegalPerson extends Person {
 		person.setPreviousCompanyName(previousCompanyName);
 		person.setRegistrationCertificate(registrationCertificate);
 		person.setRegistrationDate(registrationDate);
-		Collections.copy(representatives, person.getRepresentatives());
+		for (String representative : representatives) {
+			person.getRepresentatives().add(person.getRepresentatives().size(), representative);
+		}
 		person.setResident(resident);
 		person.setNameInAForeignLanguage(nameInAForeignLanguage);
 		person.setShortName(shortName);

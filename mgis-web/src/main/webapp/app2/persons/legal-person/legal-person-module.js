@@ -29,7 +29,7 @@ angular.module("mgis.persons.person.legal", ["ui.router", "ui.bootstrap", //
 				}
 
 				modalScope.refreshAvailableLegalAddressTerritoryOkatoCodes = function (name) {
-					NcOKATOService.get("", 0, 15, name).then(function (okatos) {
+					NcOKATOService.get("", 0, 15, null, name).then(function (okatos) {
 						modalScope.availableLegalAddressTerritoryOkatoCodes = okatos.list;
 					});
 				}
