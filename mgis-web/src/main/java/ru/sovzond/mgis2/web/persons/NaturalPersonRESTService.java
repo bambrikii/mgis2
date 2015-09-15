@@ -53,7 +53,7 @@ public class NaturalPersonRESTService implements Serializable {
 		if (actualAddressId != null && actualAddressId != 0) {
 			naturalPerson1.setActualAddress(addressBean.load(actualAddressId));
 		}
-		Long legalAddressId = naturalPerson.getActualAddress() != null ? naturalPerson.getActualAddress().getId() : null;
+		Long legalAddressId = naturalPerson.getLegalAddress() != null ? naturalPerson.getLegalAddress().getId() : null;
 		if (legalAddressId != null && legalAddressId != 0) {
 			naturalPerson1.setLegalAddress(addressBean.load(legalAddressId));
 		}
