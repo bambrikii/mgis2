@@ -1,0 +1,134 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>GeneralInfo</h3>
+	</div>
+	<div class="panel-body">
+
+		<div class="form-group row"
+			 ng-class="{'has-error': naturalPersonForm.name.$invalid && (!naturalPersonForm.name.$pristine || naturalPersonForm.name.$touched)}">
+			<div class="col-sm-4">
+				<label translate>NaturalPerson.Name</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="name" ng-model="item.name"
+					   value="{item.firstName + ' ' + item.surName + item.patronymic?(' ' + item.patronymic):''}" required/>
+
+				<p ng-show="naturalPersonForm.name.$invalid && (!naturalPersonForm.name.$pristine || naturalPersonForm.name.$touched)"
+				   class="help-block" translate>
+					NaturalPerson.Name</p>
+			</div>
+		</div>
+
+		<div class="form-group row"
+			 ng-class="{'has-error': naturalPersonForm.firstName.$invalid && (!naturalPersonForm.firstName.$pristine || naturalPersonForm.firstName.$touched)}">
+			<div class="col-sm-4">
+				<label translate>NaturalPerson.FirstName</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="name" ng-model="item.firstName" required/>
+
+				<p ng-show="naturalPersonForm.firstName.$invalid && (!naturalPersonForm.firstName.$pristine || naturalPersonForm.firstName.$touched)"
+				   class="help-block" translate>
+					NaturalPerson.FirstName</p>
+			</div>
+		</div>
+
+		<div class="form-group row"
+			 ng-class="{'has-error': naturalPersonForm.surname.$invalid && (!naturalPersonForm.surname.$pristine || naturalPersonForm.surname.$touched)}">
+			<div class="col-sm-4">
+				<label translate>NaturalPerson.Surname</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="surname" ng-model="item.surname" required/>
+
+				<p ng-show="naturalPersonForm.surname.$invalid && (!naturalPersonForm.surname.$pristine || naturalPersonForm.surname.$touched)"
+				   class="help-block" translate>NaturalPerson.Surname</p>
+			</div>
+		</div>
+		<div class="form-group row"
+			 ng-class="{'has-error': naturalPersonForm.patronymic.$invalid && (!naturalPersonForm.patronymic.$pristine || naturalPersonForm.patronymic.$touched)}">
+			<div class="col-sm-4">
+				<label translate>NaturalPerson.Patronymic</label>
+			</div>
+
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="patronymic" ng-model="item.patronymic" required/>
+
+				<p ng-show="naturalPersonForm.patronymic.$invalid && (!naturalPersonForm.patronymic.$pristine || naturalPersonForm.patronymic.$touched)"
+				   class="help-block" translate>NaturalPerson.Patronymic</p>
+			</div>
+		</div>
+
+		<!-- StatusStartDate -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>DateOfBirth</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group" ng-controller="MGISDateTimeController">
+								<span class="input-group-btn mgis-input-group-date">
+									<input
+											type="text"
+											class="form-control"
+											name="docDate"
+											datepicker-popup="{{format}}"
+											ng-model="item.dateOfBirth"
+											is-open="opened"
+											datepicker-options="dateOptions"
+											date-disabled="disabled(date, mode)"
+											close-text="{{Close|translate}}"
+											ng-click="open($event)"
+											/>
+									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+									</button>
+								</span>
+				</p>
+			</div>
+		</div>
+
+		<!-- INN -->
+		<div class="form-group row">
+			<div class="col-sm-4"><label translate>INN</label></div>
+			<div class="col-sm-8"><input type="text" class="form-control" ng-model="item.inn"/></div>
+		</div>
+
+		<!-- SNILS -->
+		<div class="form-group row">
+			<div class="col-sm-4"><label translate>SNILS</label></div>
+			<div class="col-sm-8"><input type="text" class="form-control" ng-model="item.snils"/></div>
+		</div>
+
+		<!-- PHONE -->
+		<div class="form-group row">
+			<div class="col-sm-4"><label translate>PHONE</label></div>
+			<div class="col-sm-8"><input type="text" class="form-control" ng-model="item.phone"/></div>
+		</div>
+
+		<!-- EMAIL -->
+		<div class="form-group row">
+			<div class="col-sm-4"><label translate>Email</label></div>
+			<div class="col-sm-8"><input type="text" class="form-control" ng-model="item.email"/></div>
+		</div>
+
+
+		<!-- ActualAddress -->
+		<div class="form-group row">
+			<div class="col-sm-4"><label translate>ActualAddress</label></div>
+			<div class="col-sm-8">
+				<address-selector address="item.actualAddress"></address-selector>
+			</div>
+		</div>
+
+		<!-- LegalAddress -->
+		<div class="form-group row">
+			<div class="col-sm-4"><label translate>LegalAddress</label></div>
+			<div class="col-sm-8">
+				<address-selector address="item.legalAddress"></address-selector>
+			</div>
+		</div>
+
+	</div>
+</div>

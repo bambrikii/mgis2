@@ -143,6 +143,7 @@ public class LegalPerson extends Person {
 	 * Фактический адрес
 	 */
 	@ManyToOne
+	@JoinColumn(name = "actual_address_id")
 	private Address actualAddress;
 
 	// Юридический адрес
@@ -157,6 +158,7 @@ public class LegalPerson extends Person {
 	 * Юридический адрес
 	 */
 	@ManyToOne
+	@JoinColumn(name = "legal_address_id")
 	private Address legalAddress;
 
 	// Контактная информация
