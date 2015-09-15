@@ -58,19 +58,19 @@ public class Land implements Cloneable {
 	@ManyToOne
 	private Address address;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private LandRights rights;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private LandCharacteristics characteristics;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private LandIncludedObjects includedObjects;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private LandWorks works;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private LandControl control;
 
 	@OneToOne
