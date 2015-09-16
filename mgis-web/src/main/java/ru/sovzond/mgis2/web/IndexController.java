@@ -10,21 +10,14 @@ import org.springframework.web.servlet.ModelAndView;
 @PreAuthorize("hasRole('ROLE_USER')")
 public class IndexController {
 
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
 	public ModelAndView indexPage() {
 		ModelAndView model = new ModelAndView();
-		model.setViewName("index");
+		model.setViewName("mgis2");
 		return model;
 	}
 
-	@RequestMapping(value = { "/mgis" }, method = RequestMethod.GET)
-	public ModelAndView mgisPage() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("mgis");
-		return model;
-	}
-
-	@RequestMapping(value = { "/mgis2" }, method = RequestMethod.GET)
+	@RequestMapping(value = {"/mgis2"}, method = RequestMethod.GET)
 	public ModelAndView mgis2Page() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("mgis2");

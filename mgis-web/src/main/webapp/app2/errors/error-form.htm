@@ -1,19 +1,19 @@
 <div class="modal-header">
-	<h3 class="modal-title" translate>Error</h3>
+	<h3 class="modal-title" translate>Errors.Details</h3>
 </div>
 <div class="modal-body">
-	<div class="container">
+	<div>
 		<div class="row">
-			<div class="col-sm-6"><h3>{{title}}</h3></div>
+			<div class="col-sm-12"><h3>{{title}}</h3></div>
 		</div>
 		<div class="row">
-			<div class="col-sm-8">
-				<h4>{{statusText}}, {{status}}</h4>
+			<div class="col-sm-12">
+				<h4>{{status}} {{statusText}}</h4>
 			</div>
 		</div>
-		<div class="row" style="max-height: 150px;">
-			<div class="col-sm-8">
-				<pre>{{data}}</pre>
+		<div class="row">
+			<div class="col-sm-12">
+				<pre style="height: 350px; overflow-y: scroll;">{{data}}</pre>
 			</div>
 		</div>
 	</div>

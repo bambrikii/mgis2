@@ -1,8 +1,10 @@
 /**
  * Created by asd on 31.07.15.
  */
-angular.module("mgis.common.executive_person.service", ["ngResource"])
-	.factory("CommonExecutivePersonService", function ($resource, $q) {
+angular.module("mgis.commons.executive_person.service", ["ngResource",
+"mgis.error.service"
+])
+	.factory("CommonExecutivePersonService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/common/executive_persons/:id.json');
 		return {
 			get: function (id, first, max) {
@@ -12,12 +14,14 @@ angular.module("mgis.common.executive_person.service", ["ngResource"])
 					max: max
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}
 		}
 	})
-	.factory("CommonLegalPersonService", function ($resource, $q) {
+	.factory("CommonLegalPersonService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/oks/legal-persons/:id.json');
 		return {
 			get: function (id, first, max, name) {
@@ -28,6 +32,8 @@ angular.module("mgis.common.executive_person.service", ["ngResource"])
 					name: name
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},

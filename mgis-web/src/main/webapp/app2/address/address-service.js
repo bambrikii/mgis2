@@ -1,5 +1,7 @@
-angular.module("mgis.address.service", ["ngResource"])
-	.factory("AddressService", function ($resource, $q) {
+angular.module("mgis.address.service", ["ngResource",
+	"mgis.error.service"
+])
+	.factory("AddressService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/addresses/:id.json');
 		return {
 			get: function (id, first, max, name) {
@@ -11,6 +13,8 @@ angular.module("mgis.address.service", ["ngResource"])
 					name: name
 				}, {}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -32,6 +36,8 @@ angular.module("mgis.address.service", ["ngResource"])
 				};
 				res.save({id: item.id}, address, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -46,7 +52,7 @@ angular.module("mgis.address.service", ["ngResource"])
 			},
 		}
 	})
-	.factory("AddressElementSearchService", function ($resource, $q) {
+	.factory("AddressElementSearchService", function ($resource, $q, MGISErrorService) {
 		var res = $resource("rest/addresses/elements/:type/:id.json");
 		return {
 			get: function (id, first, max, filter) {
@@ -54,6 +60,8 @@ angular.module("mgis.address.service", ["ngResource"])
 				var params = angular.extend({id: id, first: first, max: max}, filter);
 				res.get(params, {}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}

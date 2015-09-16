@@ -1,6 +1,6 @@
 angular.module("mgis.isogd.documents.service", ["ui.router"
-	, "mgis.commons.ErrorHandling.Service"]) //
-	.factory("ISOGDDocumentsService", function ($resource, $q, MGISErrorHandlingService) {
+	, "mgis.error.service"]) //
+	.factory("ISOGDDocumentsService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/isogd/documents/:id.json');
 		return {
 			get: function (id, first, max, volumeId) {
@@ -13,7 +13,7 @@ angular.module("mgis.isogd.documents.service", ["ui.router"
 				}, function (data) {
 					deferred.resolve(data);
 				}, function (error) {
-					MGISErrorHandlingService.handleError(error);
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -35,7 +35,7 @@ angular.module("mgis.isogd.documents.service", ["ui.router"
 				}, function (data) {
 					deferred.resolve(data);
 				}, function (error) {
-					MGISErrorHandlingService.handleError(error);
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -60,7 +60,7 @@ angular.module("mgis.isogd.documents.service", ["ui.router"
 				}, function (result) {
 					deferred.resolve(result);
 				}, function (error) {
-					MGISErrorHandlingService.handleError(error);
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -72,7 +72,7 @@ angular.module("mgis.isogd.documents.service", ["ui.router"
 				}, function (result) {
 					deferred.resolve(result);
 				}, function (error) {
-					MGISErrorHandlingService.handleError(error);
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}

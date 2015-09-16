@@ -56,9 +56,10 @@
 
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>
-	<script type="text/javascript" src="app2/commons/app-confirmation.js"></script>
 	<script type="text/javascript" src="app2/commons/common-modules.js"></script>
-	<script type="text/javascript" src="app2/commons/app-error-handling-service.js"></script>
+	<script type="text/javascript" src="app2/commons/common-services.js"></script>
+	<script type="text/javascript" src="app2/errors/error-module.js"></script>
+	<script type="text/javascript" src="app2/errors/error-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/isogd.js"></script>
 	<script type="text/javascript" src="app2/isogd/section/isogd-sections-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/section/isogd-sections-module.js"></script>
@@ -95,7 +96,6 @@
 
 	<script type="text/javascript" src="app2/nc/nc-services.js"></script>
 	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
-	<script type="text/javascript" src="app2/commons/common-services.js"></script>
 
 	<script type="text/javascript" src="app2/persons/natural-person/natural-person-service.js"></script>
 	<script type="text/javascript" src="app2/persons/natural-person/natural-person-module.js"></script>
@@ -113,6 +113,7 @@
 <div class="main-container" ng-app="mgis">
 
 	<div ng-include="'app2/menu/menu.htm'"></div>
+	<div ng-include="'app2/errors/error-panel.htm'"></div>
 	<div class="container-fluid" ui-view></div>
 
 </div>

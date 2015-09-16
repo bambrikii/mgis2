@@ -2,9 +2,9 @@
  * Created by Alexander Arakelyan on 22.06.15.
  */
 angular.module("mgis.isogd.classifiers.documents.types.service", ["ngResource", //
-	"mgis.commons.ErrorHandling.Service" //
+	"mgis.error.service" //
 ]) //
-	.factory("ISOGDClassifiersDocumentsTypesService", function ($resource, $q, MGISErrorHandlingService) {
+	.factory("ISOGDClassifiersDocumentsTypesService", function ($resource, $q, MGISErrorService) {
 		var res = $resource("rest/isogd/classifiers/documents/types/:id.json");
 		return {
 			get: function (id, first, max) {
@@ -12,7 +12,7 @@ angular.module("mgis.isogd.classifiers.documents.types.service", ["ngResource", 
 				res.get({id: id, first: first, max: max}, function (result) {
 					deferred.resolve(result);
 				}, function (error) {
-					MGISErrorHandlingService.handleError(error);
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -26,7 +26,7 @@ angular.module("mgis.isogd.classifiers.documents.types.service", ["ngResource", 
 				}, function (result) {
 					deferred.resolve(result);
 				}, function (error) {
-					MGISErrorHandlingService.handleError(error);
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -35,7 +35,7 @@ angular.module("mgis.isogd.classifiers.documents.types.service", ["ngResource", 
 				res.remove({id: id}, function (result) {
 					deferred.resolve(result);
 				}, function (error) {
-					MGISErrorHandlingService.handleError(error);
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}

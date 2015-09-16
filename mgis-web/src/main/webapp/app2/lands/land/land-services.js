@@ -1,5 +1,7 @@
-angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
-	.factory("LandsLandService", function ($resource, $q) {
+angular.module("mgis.lands.services", ["ui.router", 'ngResource',
+	"mgis.error.service"
+])
+	.factory("LandsLandService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/land/:id.json');
 
 		function buildLandAreas(landAreas) {
@@ -36,6 +38,8 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 					max: max
 				}, {}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -112,6 +116,8 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 				};
 				res.save({id: item.id}, land, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -121,13 +127,15 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 					id: id
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}
 		}
 
 	})
-	.factory("LandsInspectionKindService", function ($resource, $q) {
+	.factory("LandsInspectionKindService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/inspection_kinds/:id.json');
 		return {
 			get: function (id, first, max) {
@@ -137,12 +145,14 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 					max: max
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}
 		}
 	})
-	.factory("LandsInspectionTypeService", function ($resource, $q) {
+	.factory("LandsInspectionTypeService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/inspection_types/:id.json');
 		return {
 			get: function (id, first, max) {
@@ -152,12 +162,14 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 					max: max
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}
 		}
 	})
-	.factory("LandsInspectionReasonService", function ($resource, $q) {
+	.factory("LandsInspectionReasonService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/inspection_reasons/:id.json');
 		return {
 			get: function (id, first, max) {
@@ -167,12 +179,14 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 					max: max
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}
 		}
 	})
-	.factory("LandsInspectionSubjectService", function ($resource, $q) {
+	.factory("LandsInspectionSubjectService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/inspection_subjects/:id.json');
 		return {
 			get: function (id, first, max) {
@@ -182,12 +196,14 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 					max: max
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}
 		}
 	})
-	.factory("LandsAvailabilityOfViolationsService", function ($resource, $q) {
+	.factory("LandsAvailabilityOfViolationsService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/availability_of_violations/:id.json');
 		return {
 			get: function (id, first, max) {
@@ -197,12 +213,14 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 					max: max
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}
 		}
 	})
-	.factory("LandsLandAreaTypeService", function ($resource, $q) {
+	.factory("LandsLandAreaTypeService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/area_types/:id.json');
 		return {
 			get: function (id, first, max) {
@@ -212,6 +230,8 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 					max: max
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}
@@ -292,13 +312,15 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource'])
 			}
 		}
 	})
-	.factory("LandsLandGeoService", function ($resource, $q) {
+	.factory("LandsLandGeoService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/land/:id/spatial-attribute.json');
 		return {
 			save: function (idAttribute, geoAttribute) {
 				var deferred = $q.defer();
 				res.save({id: idAttribute}, geoAttribute, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}

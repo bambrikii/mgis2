@@ -294,5 +294,13 @@
   "Password.Required": "Необходим пароль",
   "Login": "Войти",
   "ApplicationName": "МГИС",
-  "LoginAttemptFailedDueTo": "Не удалось войти в систему:"
+  "LoginAttemptFailedDueTo": "Не удалось войти в систему:",
+  "Errors.CleanAndClose": "Очистить и закрыть",
+  "Errors.Show": "Показать ошибки",
+  "Errors.Total": "Всего ошибок:",
+  "Errors.Last": "Ошибки:",
+  "Errors.Details": "Подробности ошибки:",
+  "Errors.List": "Ошибки:",
+  "Details": "Подробнее",
+  "Clean": "Очистить"
 }

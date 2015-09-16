@@ -1,5 +1,5 @@
 angular.module("mgis.isogd.classifiers", ["ui.router", //
-    "mgis.common", //
+    "mgis.commons", //
     "mgis.isogd.classifiers.documents.structure", //
     "mgis.isogd.classifiers.documents.types", //
     "mgis.isogd.classifiers.documents.representation" //

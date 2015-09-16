@@ -2,7 +2,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.commons", //
 	"mgis.lands.services",
 	"mgis.nc.services",
-	"mgis.common.executive_person.service",
+	"mgis.commons.executive_person.service",
 	"mgis.terr-zones.zone.service",
 	"mgis.persons.person",
 	"mgis.lands.land.map",

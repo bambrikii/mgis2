@@ -1,0 +1,23 @@
+<div class="modal-header">
+	<h3 class="modal-title" translate>Errors.List</h3>
+</div>
+<div class="modal-body">
+	<div ng-controller="MGISErrorListController">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="form-group row small" ng-repeat="err in errors">
+					<div class="col-sm-4">{{err.date}}</div>
+					<div class="col-sm-3">{{err.status}} {{err.statusText}}</div>
+					<div class="col-sm-5">
+						<button class="btn btn-sm btn-info" ng-click="viewErrorDetails(err)" translate>Details</button>
+						<button class="btn btn-sm btn-info" ng-click="removeError(err)" translate>Clean</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-primary" ng-click="ok()" translate>Errors.CleanAndClose</button>
+	<button type="submit" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

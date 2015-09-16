@@ -1,5 +1,5 @@
 angular.module("mgis.terr-zones", ["ui.router", "ui.bootstrap", //
-	"mgis.common", //
+	"mgis.commons", //
 	"mgis.terr-zones.zone", //
 	"mgis.terr-zones.zone.service" //
 ]) //

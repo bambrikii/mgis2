@@ -1,55 +1,65 @@
-angular.module("mgis.isogd.books.service", ["ui.router", "ngResource"]) //
-    .factory("ISOGDBooksService", function ($resource, $q) {
+angular.module("mgis.isogd.books.service", ["ui.router", "ngResource",
+	"mgis.error.service"
+]) //
+	.factory("ISOGDBooksService", function ($resource, $q, MGISErrorService) {
 
-        var res = $resource("rest/isogd/books/:id.json");
-        return {
-            get: function (id, first, max, sectionId) {
-                var deferred = $q.defer();
-                res.get({
-                    id: id,
-                    first: first,
-                    max: max,
-                    sectionId: sectionId
-                }, function (data) {
-                    deferred.resolve(data);
-                });
-                return deferred.promise;
-            },
-            save: function (item) {
-                var deferred = $q.defer();
-                res.save({id: item.id}, {
-                    id: item.id,
-                    name: item.name,
-                    section: {
-                        id: item.section.id
-                    },
-                    documentObject: {
-                        id: item.documentObject.id
-                    }
-                }, function (data) {
-                    deferred.resolve(data);
-                });
-                return deferred.promise;
-            },
-            remove: function (id) {
-                var deferred = $q.defer();
-                res.remove({
-                    id: id
-                }, function (data) {
-                    deferred.resolve(data);
-                });
-                return deferred.promise;
-            },
-            listDocumentObjectsBySectionId: function (sectionId) {
-                var deferred = $q.defer();
-                var res = $resource("rest/isogd/books/listDocumentObjectsBySectionId/:sectionId.json");
-                res.get({
-                    sectionId: sectionId
-                }, function (data) {
-                    deferred.resolve(data);
-                });
-                return deferred.promise;
-            }
-        }
+		var res = $resource("rest/isogd/books/:id.json");
+		return {
+			get: function (id, first, max, sectionId) {
+				var deferred = $q.defer();
+				res.get({
+					id: id,
+					first: first,
+					max: max,
+					sectionId: sectionId
+				}, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+				return deferred.promise;
+			},
+			save: function (item) {
+				var deferred = $q.defer();
+				res.save({id: item.id}, {
+					id: item.id,
+					name: item.name,
+					section: {
+						id: item.section.id
+					},
+					documentObject: {
+						id: item.documentObject.id
+					}
+				}, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+				return deferred.promise;
+			},
+			remove: function (id) {
+				var deferred = $q.defer();
+				res.remove({
+					id: id
+				}, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+				return deferred.promise;
+			},
+			listDocumentObjectsBySectionId: function (sectionId) {
+				var deferred = $q.defer();
+				var res = $resource("rest/isogd/books/listDocumentObjectsBySectionId/:sectionId.json");
+				res.get({
+					sectionId: sectionId
+				}, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+				return deferred.promise;
+			}
+		}
 
-    });
+	});

@@ -1,5 +1,5 @@
 angular.module("mgis.lands", ["ui.router", "ui.bootstrap", //
-	"mgis.common", //
+	"mgis.commons", //
 	"mgis.lands.lands", //
 	"mgis.lands.maps", //
 	"mgis.lands.services" //

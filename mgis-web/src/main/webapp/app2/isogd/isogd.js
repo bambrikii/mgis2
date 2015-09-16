@@ -1,5 +1,5 @@
 angular.module("mgis.isogd", [ "ui.router", "ui.bootstrap", "angularUtils.directives.uiBreadcrumbs", //
-    "mgis.common", //
+    "mgis.commons", //
     "mgis.isogd.sections", "mgis.isogd.sections.service", //
     "mgis.isogd.volumes", "mgis.isogd.volumes.service", //
     "mgis.isogd.books", "mgis.isogd.books.service",//

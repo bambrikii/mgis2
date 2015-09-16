@@ -1,11 +1,15 @@
-angular.module("mgis.persons.person.legal.service", ["ngResource"])
-	.factory("LegalPersonService", function ($resource, $q) {
+angular.module("mgis.persons.person.legal.service", ["ngResource",
+	"mgis.error.service"
+])
+	.factory("LegalPersonService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/persons/legal-persons/:id.json');
 		return {
 			get: function (id, first, max, name) {
 				var deferred = $q.defer();
 				res.get({id: id, first: first, max: max, name: name}, {}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -37,6 +41,8 @@ angular.module("mgis.persons.person.legal.service", ["ngResource"])
 
 				res.save({id: item.id,}, p, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -46,6 +52,8 @@ angular.module("mgis.persons.person.legal.service", ["ngResource"])
 					id: id
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}

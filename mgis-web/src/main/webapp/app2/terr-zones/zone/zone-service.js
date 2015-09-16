@@ -1,5 +1,7 @@
-angular.module("mgis.terr-zones.zone.service", [])
-	.factory("TerrZonesZoneService", function ($resource, $q) {
+angular.module("mgis.terr-zones.zone.service", [
+	"mgis.error.service"
+])
+	.factory("TerrZonesZoneService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/terr-zones/zones/:id.json');
 		return {
 			get: function (id, first, max, name) {
@@ -9,6 +11,8 @@ angular.module("mgis.terr-zones.zone.service", [])
 					max: max
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -16,6 +20,8 @@ angular.module("mgis.terr-zones.zone.service", [])
 				var deferred = $q.defer();
 				res.save({id: item.id}, item, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			},
@@ -25,6 +31,8 @@ angular.module("mgis.terr-zones.zone.service", [])
 					id: id
 				}, function (data) {
 					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
 			}
