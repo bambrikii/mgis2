@@ -44,11 +44,7 @@ public class NaturalPersonRESTService implements Serializable {
 		} else {
 			naturalPerson1 = naturalPersonBean.load(id);
 		}
-		BeanUtils.copyProperties(naturalPerson, naturalPerson1, new String[]{
-				"actualAddress",
-				"legalAddress",
-				"activityType"
-		});
+		BeanUtils.copyProperties(naturalPerson, naturalPerson1, new String[]{"id", "actualAddress", "legalAddress", "activityType"});
 		Long actualAddressId = naturalPerson.getActualAddress() != null ? naturalPerson.getActualAddress().getId() : null;
 		if (actualAddressId != null && actualAddressId != 0) {
 			naturalPerson1.setActualAddress(addressBean.load(actualAddressId));
