@@ -23,6 +23,7 @@
 	<!-- <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script> -->
 	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
 	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script>
@@ -38,8 +39,6 @@
 	<!-- <script type="text/javascript" src="bower_components/angular-dialog-service/dist/dialogs.js"></script> -->
 	<script type="text/javascript" src="bower_components/select2/select2.js"></script>
 	<script type="text/javascript" src="bower_components/angular-ui-select/dist/select.js"></script>
-	<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
-	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
 	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 
 	<link type="text/css" rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">

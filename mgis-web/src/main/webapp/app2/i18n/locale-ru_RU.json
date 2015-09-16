@@ -287,5 +287,12 @@
   "IndividualEntrepreneur.RegistrationNumber": "Регистрационный номер",
   "IndividualEntrepreneur.EGRIPInitialDate": "Дата внесения в ЕГРИП записи",
   "IndividualEntrepreneur.RegistrationDate": "Дата регистрации",
-  "IndividualEntrepreneur.IssueDate": "Дата внесения записи"
+  "IndividualEntrepreneur.IssueDate": "Дата внесения записи",
+  "Username": "Имя пользователя",
+  "Username.Required": "Необходимо имя пользователя",
+  "Password": "Пароль",
+  "Password.Required": "Необходим пароль",
+  "Login": "Войти",
+  "ApplicationName": "МГИС",
+  "LoginAttemptFailedDueTo": "Не удалось войти в систему:"
 }

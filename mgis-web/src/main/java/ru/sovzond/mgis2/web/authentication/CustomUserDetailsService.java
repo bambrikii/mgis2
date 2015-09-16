@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -24,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			UserDetails details = new User(user.getUsername(), user.getPassword(), true, true, true, true, loginService.buildGrantedAuthorities(user));
 			return details;
 		}
-		return null;
+		return new User(paramString, "", new ArrayList<>());
 	}
 
 }
