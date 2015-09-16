@@ -1,7 +1,9 @@
 /**
  * Created by Alexander Arakelyan on 24.06.15.
  */
-angular.module("mgis.commons", ["ui.bootstrap"])
+angular.module("mgis.commons", ["ui.bootstrap",
+	"mgis.error"
+])
 	.factory("MGISCommonsModalForm", function ($modal) {
 		return {
 			confirmRemoval: function (acceptMethod) {

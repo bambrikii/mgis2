@@ -113,7 +113,9 @@
 <div class="main-container" ng-app="mgis">
 
 	<div ng-include="'app2/menu/menu.htm'"></div>
-	<div ng-include="'app2/errors/error-panel.htm'"></div>
+	<div class="container">
+		<mgis-error-panel></mgis-error-panel>
+	</div>
 	<div class="container-fluid" ui-view></div>
 
 </div>

@@ -66,4 +66,11 @@ angular.module("mgis.error", [
 		}
 		$scope.errors = MGISErrorService.errors;
 	})
+	.directive("mgisErrorPanel", function () {
+		return {
+			restrict: "E",
+			scope: {},
+			templateUrl: "app2/errors/error-panel.htm"
+		}
+	})
 ;
