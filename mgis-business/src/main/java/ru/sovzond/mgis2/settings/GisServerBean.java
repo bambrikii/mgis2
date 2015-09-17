@@ -14,22 +14,22 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 16.09.15.
  */
 @Service
-public class LayerBean extends CRUDBeanBase<Layer> {
+public class GisServerBean extends CRUDBeanBase<GisServer> {
 	@Autowired
-	private LayerDao dao;
+	private GisServerDao dao;
 
 	@Override
-	protected IPageableDAOBase<Layer> getPageableDao() {
+	protected IPageableDAOBase<GisServer> getPageableDao() {
 		return dao;
 	}
 
 	@Override
-	protected IIdentifiableDao<Layer> getIIdentifiableDao() {
+	protected IIdentifiableDao<GisServer> getIIdentifiableDao() {
 		return dao;
 	}
 
-	public PageableContainer<Layer> list(String code, String orderBy, int first, int max) {
-		Pageable<Layer> pager = dao.pager(dao.createFilter(orderBy, first, max, code));
-		return new PageableContainer<Layer>(pager.list().stream().map(Layer::clone).collect(Collectors.toList()), pager.count(), first, max);
+	public PageableContainer<GisServer> list(String code, String orderBy, int first, int max) {
+		Pageable<GisServer> pager = dao.pager(dao.createFilter(orderBy, first, max, code));
+		return new PageableContainer<GisServer>(pager.list().stream().map(GisServer::clone).collect(Collectors.toList()), pager.count(), first, max);
 	}
 }

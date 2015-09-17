@@ -1,0 +1,15 @@
+GIS Servers panel
+<div ng-controller="MGISSettingsGisServerController">
+	<mgis-commons-crud-panel
+
+			list-item-template-url="'app2/settings/gis/gis-server-list-item.htm'"
+			edit-form-template-url="'app2/settings/gis/gis-server-edit-form.htm'"
+			search-form-template-url="'app2/settings/gis/gis-server-search-form.htm'"
+
+			create-handler="createHandler(scope, onPrepare)"
+			read-handler="readHandler(id, scope, onPrepare)"
+			update-handler="updateHandler(id, onComplete)"
+			list-handler="listHandler(filter, first, max, onComplete)"
+
+			></mgis-commons-crud-panel>
+</div>

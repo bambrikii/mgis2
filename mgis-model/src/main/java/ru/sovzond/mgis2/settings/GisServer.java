@@ -7,8 +7,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "mgis2_layer")
-public class Layer implements Cloneable {
+@Table(name = "mgis2_gis_server")
+public class GisServer implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_layer_seq", allocationSize = 1)
@@ -46,12 +46,12 @@ public class Layer implements Cloneable {
 		this.url = url;
 	}
 
-	public Layer clone() {
-		Layer layer = new Layer();
-		layer.setCode(code);
-		layer.setId(id);
-		layer.setUrl(url);
-		return layer;
+	public GisServer clone() {
+		GisServer gisServer = new GisServer();
+		gisServer.setCode(code);
+		gisServer.setId(id);
+		gisServer.setUrl(url);
+		return gisServer;
 	}
 
 }

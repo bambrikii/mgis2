@@ -7,7 +7,8 @@ var mgisApp = angular.module("mgis", //
 		"mgis.lands",
 		"mgis.terr-zones",
 		"mgis.address",
-		"mgis.error"
+		"mgis.error",
+		"mgis.settings"
 	]);
 
 mgisApp.config(function ($stateProvider, $urlRouterProvider, $translateProvider) {

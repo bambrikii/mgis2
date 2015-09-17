@@ -1,0 +1,25 @@
+<div>
+	<div class="container">
+		<!-- Search form -->
+		<div ng-include src="searchFormTemplateUrl"></div>
+	</div>
+
+	<div>
+		<div class="row" ng-repeat="item in crudPager.list" style="padding: 5px;">
+			<div ng-include src="listItemTemplateUrl"></div>
+			<div class="col-md-4">
+				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
+				<button class="btn btn-danger btn-sm" ng-click="removeItem(item.id)" translate>Delete</button>
+			</div>
+		</div>
+	</div>
+
+	<pagination total-items="crudPager.totalNumberOfItems" ng-model="currentPage"
+				items-per-page="itemsPerPage" ng-change="pageChanged()"
+				class="pagination-sm" previous-text="&lsaquo;"
+				next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+
+	<div>
+		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
+	</div>
+</div>

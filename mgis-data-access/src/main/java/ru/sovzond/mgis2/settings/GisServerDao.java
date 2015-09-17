@@ -11,16 +11,16 @@ import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
  * Created by Alexander Arakelyan on 16.09.15.
  */
 @Repository
-public class LayerDao extends CRUDDaoBase<Layer> {
-	public PagerBuilderBase<Layer> createFilter(String orderBy, int first, int max, String code) {
-		return null;
+public class GisServerDao extends CRUDDaoBase<GisServer> {
+	public PagerBuilderBase<GisServer> createFilter(String orderBy, int first, int max, String code) {
+		return new GisServerFilter(orderBy, first, max, code);
 	}
 
-	private class LayerFilter extends PagerBuilderCriteria<Layer> {
+	private class GisServerFilter extends PagerBuilderCriteria<GisServer> {
 
 		private String code;
 
-		public LayerFilter(String orderBy, int first, int max, String code) {
+		public GisServerFilter(String orderBy, int first, int max, String code) {
 			super(orderBy, first, max);
 			this.code = code;
 		}

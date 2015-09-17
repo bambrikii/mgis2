@@ -107,6 +107,13 @@
 	<script type="text/javascript" src="app2/address/address-module.js"></script>
 	<script type="text/javascript" src="app2/address/address-selector/address-selector-component.js"></script>
 
+	<script type="text/javascript" src="app2/settings/gis/gis-server-module.js"></script>
+	<script type="text/javascript" src="app2/settings/gis/gis-server-service.js"></script>
+
+	<script type="text/javascript" src="app2/settings/settings.js"></script>
+
+	<script type="text/javascript" src="app2/commons/crud/common-crud-module.js"></script>
+
 </head>
 <body>
 

@@ -1,6 +1,6 @@
-angular.module("mgis.settings.layer.service", ["ngResource"])
-	.factory("MGISSettingsLayerService", function ($resource, $q, MGISErrorService) {
-		var res = $resource('rest/settings/layers/:id.json');
+angular.module("mgis.settings.gis.server.service", ["ngResource"])
+	.factory("MGISSettingsGisServerService", function ($resource, $q, MGISErrorService) {
+		var res = $resource('rest/settings/gis/servers/:id.json');
 		return {
 			get: function (id, first, max, code) {
 				var deferred = $q.defer();
