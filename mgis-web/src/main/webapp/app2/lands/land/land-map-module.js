@@ -1,16 +1,20 @@
-angular.module("mgis.lands.land.map", [])
-	.factory("LandsLandMapService", function () {
+angular.module("mgis.lands.land.map", [
+	"mgis.settings.gis.server.service",
+	"mgis.error.service"
+])
+	.factory("LandsLandMapService", function (MGISSettingsGisServerService, MGISErrorService) {
 		var container = {
 			map: undefined,
 			mapElement: undefined,
 			landsLayer: undefined,
-			drawCreatedEvent: undefined
+			drawCreatedEvent: undefined,
+			localWfsUrl: undefined
 		}
 
 		var reloadLand0 = function (landId, loadComplete) {
 			var map = container.map;
 			var landsLayer = container.landsLayer;
-			var geoJsonUrl = "proxy?http://localhost:8081/geoserver/mgis2/wfs";
+			var geoJsonUrl = container.localWfsUrl;
 			var defaultParameters = {
 				service: 'WFS',
 				version: '1.0.0',
@@ -42,6 +46,19 @@ angular.module("mgis.lands.land.map", [])
 		var reloadLand = function () {
 			reloadLand0(container.landId, function () {
 				container.map.fitBounds(container.landsLayer.getBounds());
+			});
+		}
+
+		function loadSettings() {
+			MGISSettingsGisServerService.get("", 0, 0, "local-wfs").then(function (data) {
+				if (data.totalNumberOfItems == 1) {
+					container.localWfsUrl = data.list[0].url;
+				} else {
+					MGISErrorService.handleError({
+						status: "GIS_SERVER_CONFIGURATION_REQUIRED",
+						statusText: "GIS Server <local-wfs> should be configured."
+					});
+				}
 			});
 		}
 
@@ -82,33 +99,33 @@ angular.module("mgis.lands.land.map", [])
 		}
 
 		return {
-			checkMap2: function (mapContainer, landId, drawCreatedEvent) {
+			checkMap: function (mapContainer, landId, drawCreatedEvent) {
 				container.landId = landId;
 				if (container.map == undefined) {
-					var mapElement = document.createElement("div");
-					var map = L.map(mapElement);
-					container.map = map;
-					container.mapElement = mapElement;
-					mapContainer.appendChild(container.mapElement);
-					createMap();
-					map.setView(new L.LatLng(0, 0), 1);
-					container.drawCreatedEvent = drawCreatedEvent;
-					return {
-						map: container.map,
-						mapElement: container.mapElement,
-						mapIsJustCreated: true
-					}
+					MGISSettingsGisServerService.get("", 0, 0, "local-wfs").then(function (data) {
+						if (data.totalNumberOfItems == 1) {
+							container.localWfsUrl = data.list[0].url;
+							var mapElement = document.createElement("div");
+							var map = L.map(mapElement);
+							container.map = map;
+							container.mapElement = mapElement;
+							mapContainer.appendChild(container.mapElement);
+							createMap();
+							map.setView(new L.LatLng(0, 0), 1);
+							container.drawCreatedEvent = drawCreatedEvent;
+						} else {
+							MGISErrorService.handleError({
+								status: "GIS_SERVER_CONFIGURATION_REQUIRED",
+								statusText: "GIS Server <local-wfs> should be configured."
+							});
+						}
+					});
 				} else {
 					var map = container.map;
 					mapContainer.appendChild(container.mapElement);
 					map.setView(new L.LatLng(0, 0), 1);
 					reloadLand();
 					container.drawCreatedEvent = drawCreatedEvent;
-					return {
-						map: container.map,
-						mapElement: container.mapElement,
-						mapIsJustCreated: false
-					}
 				}
 			}
 		}
@@ -124,8 +141,7 @@ angular.module("mgis.lands.land.map", [])
 				var mapContainer = $element[0].getElementsByClassName("land-map-container")[0];
 
 				function createMap(landId) {
-					console.log(landId);
-					var checkResult = LandsLandMapService.checkMap2(mapContainer, landId, function (landId2, wktString) {
+					LandsLandMapService.checkMap(mapContainer, landId, function (landId2, wktString) {
 						if (landId) {
 							LandsLandGeoService.save(landId2, wktString).then(function () {
 								createMap(landId2);
