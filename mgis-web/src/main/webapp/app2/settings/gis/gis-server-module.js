@@ -9,32 +9,6 @@ angular.module("mgis.settings.gis.server", ["ui.router",
 				templateUrl: "app2/settings/gis/gis-server-panel.htm"
 			});
 	})
-	.factory("MGISSettingsGisServerModule", function ($rootScope, MGISCommonsModalForm, MGISSettingsGisServerService) {
-		function edit0() {
-		}
-
-		function add() {
-
-		}
-
-		function edit() {
-			MGISSettingsGisServerService.get(id).then(function () {
-
-			});
-		}
-
-		function remove() {
-			MGISCommonsModalForm.confirmRemoval(function () {
-
-			});
-		}
-
-		return {
-			add: add,
-			edit: edit,
-			remove: remove
-		}
-	})
 	.controller("MGISSettingsGisServerController", function ($scope, MGISSettingsGisServerService) {
 
 		$scope.createHandler = function (scope, onPrepare) {
