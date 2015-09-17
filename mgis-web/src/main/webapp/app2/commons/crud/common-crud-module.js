@@ -26,7 +26,7 @@ angular.module("mgis.commons.crud", [
 					MGISCommonsModalForm.edit($scope.editFormTemplateUrl, modalScope, function (scope, $modalInstance) {
 						$scope.updateHandler({
 							item: scope.item,
-							completeHandler: function () {
+							onComplete: function () {
 								$modalInstance.close();
 								$scope.list();
 							}
@@ -70,6 +70,7 @@ angular.module("mgis.commons.crud", [
 				}
 
 				$scope.list = function () {
+					console.log($scope.filter);
 					$scope.listHandler({
 						filter: $scope.filter,
 						first: ($scope.currentPage - 1) * $scope.itemsPerPage,
@@ -79,6 +80,12 @@ angular.module("mgis.commons.crud", [
 						}
 					});
 				}
+
+				$scope.pageChanged = function () {
+					$scope.list();
+				}
+
+				$scope.list();
 
 			}
 		}

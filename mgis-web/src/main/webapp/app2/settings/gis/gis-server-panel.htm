@@ -1,4 +1,4 @@
-GIS Servers panel
+<h4 translate>Settings.GIS.Servers</h4>
 <div ng-controller="MGISSettingsGisServerController">
 	<mgis-commons-crud-panel
 
@@ -8,7 +8,8 @@ GIS Servers panel
 
 			create-handler="createHandler(scope, onPrepare)"
 			read-handler="readHandler(id, scope, onPrepare)"
-			update-handler="updateHandler(id, onComplete)"
+			update-handler="updateHandler(item, onComplete)"
+			delete-handler="deleteHandler(id, onComplete)"
 			list-handler="listHandler(filter, first, max, onComplete)"
 
 			></mgis-commons-crud-panel>

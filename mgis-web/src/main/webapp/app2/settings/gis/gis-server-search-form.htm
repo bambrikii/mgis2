@@ -1,3 +1,10 @@
-Search Form
-<input type="text"/>
-<button class="btn btn-sm btn-primary" ng-click="list()" translate>Search</button>
+<form name="searchForm" class="form-horizontal pull-right mgis-top-right-search-form">
+	<div class="control-group">
+		<label for="code" translate>Code</label>
+
+		<div class="controls form-inline">
+			<input type="text" id="code" ng-model="filter.code" class="form-control"/>
+			<button class="btn btn-primary btn-sm" ng-click="list()" translate>Find</button>
+		</div>
+	</div>
+</form>

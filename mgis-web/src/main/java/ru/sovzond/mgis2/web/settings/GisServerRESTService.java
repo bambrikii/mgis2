@@ -23,21 +23,22 @@ public class GisServerRESTService {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<GisServer> list(@RequestParam(value = "name", defaultValue = "") String code, @RequestParam(value = "orderBy", defaultValue = "code") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+	public PageableContainer<GisServer> list(@RequestParam(defaultValue = "") String code, @RequestParam(value = "orderBy", defaultValue = "code") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
 		return layerBean.list(code, orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@Transactional
-	public GisServer save(@PathVariable Long id, @RequestBody GisServer book) {
-		GisServer layer2;
+	public GisServer save(@PathVariable Long id, @RequestBody GisServer gisServer) {
+		GisServer gisServer2;
 		if (id == 0) {
-			layer2 = new GisServer();
+			gisServer2 = new GisServer();
 		} else {
-			layer2 = layerBean.load(id);
+			gisServer2 = layerBean.load(id);
 		}
-		BeanUtils.copyProperties(book, layer2, new String[]{"id"});
-		return layer2.clone();
+		BeanUtils.copyProperties(gisServer, gisServer2, new String[]{"id"});
+		layerBean.save(gisServer2);
+		return gisServer2.clone();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")

@@ -7,6 +7,7 @@ angular.module("mgis.menu.main", ["ui.router", "ui.bootstrap"]) //
 			$scope.oksMenuActive = false;
 			$scope.administrationMenuActive = false;
 			$scope.terrZonesMenuActive = false;
+			$scope.personsMenuActive = false;
 		}
 
 		$scope.isogdMenuClicked = function () {
@@ -28,6 +29,10 @@ angular.module("mgis.menu.main", ["ui.router", "ui.bootstrap"]) //
 		$scope.administrationMenuClicked = function () {
 			resetMenus();
 			$scope.administrationMenuActive = true;
+		}
+		$scope.personsMenuClicked = function () {
+			resetMenus();
+			$scope.personsMenuActive = true;
 		}
 
 		$scope.toggleNavCollapsed = function () {

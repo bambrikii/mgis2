@@ -37,28 +37,29 @@ angular.module("mgis.settings.gis.server", ["ui.router",
 	})
 	.controller("MGISSettingsGisServerController", function ($scope, MGISSettingsGisServerService) {
 
-		$scope.createHandler = function (scope, prepareHandler) {
-			prepareHandler({id: 0});
+		$scope.createHandler = function (scope, onPrepare) {
+			onPrepare({id: 0});
 		};
-		$scope.readHandler = function (id, scope, completeHandler) {
+		$scope.readHandler = function (id, scope, onPrepare) {
 			MGISSettingsGisServerService.get(id).then(function (item) {
-				completeHandler(item);
+				onPrepare(item);
 			});
 		};
-		$scope.updateHandler = function (item, completeHandler) {
+		$scope.updateHandler = function (item, onComplete) {
 			MGISSettingsGisServerService.save(item).then(function () {
-				completeHandler();
+				onComplete();
 			});
 		}
-		$scope.deleteHandler = function (id, completeHandler) {
+		$scope.deleteHandler = function (id, onComplete) {
+			console.log("deleteHandler");
 			MGISSettingsGisServerService.remove(id).then(function () {
-				completeHandler();
+				console.log(".remove");
+				onComplete();
 			});
 		};
-		$scope.listHandler = function (filter, first, max, completeHandler) {
-			MGISSettingsGisServerService.get("", first, max).then(function (data) {
-				$scope.list = data.list;
-				completeHandler();
+		$scope.listHandler = function (filter, first, max, onComplete) {
+			MGISSettingsGisServerService.get("", first, max, filter.code).then(function (data) {
+				onComplete(data);
 			});
 		};
 	})
