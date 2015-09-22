@@ -1,0 +1,19 @@
+<div class="form-group row">
+	<div class="col-sm-4">
+		<label translate>{{title}}</label>
+	</div>
+	<div class="col-sm-8">
+		<p class="input-group input-group-sm">
+			<ui-select ng-model="item.value" theme="select2" style="width: 450px;" on-select="elementSelected($item)">
+				<ui-select-match placeholder="">{{item.value.name}}</ui-select-match>
+				<ui-select-choices repeat="elem in availableElements | filter: {name: $select.search}"
+								   refresh="refreshAvailableElements($select.search)"
+
+								   refresh-delay="0">
+					{{elem.name}}
+					<div ng-bind-html="elem.name"></div>
+				</ui-select-choices>
+			</ui-select>
+		</p>
+	</div>
+</div>

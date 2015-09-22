@@ -114,6 +114,11 @@
 
 	<script type="text/javascript" src="app2/commons/crud/common-crud-module.js"></script>
 
+	<!-- test pages -->
+
+	<script type="text/javascript" src="app2/commons/forms/commons-forms-module.js"></script>
+	<script type="text/javascript" src="app2/test/test-module.js"></script>
+
 </head>
 <body>
 

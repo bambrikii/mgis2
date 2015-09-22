@@ -1,0 +1,16 @@
+<div class="form-group row">
+	<div class="col-sm-4">
+		<label translate>{{title}}</label>
+	</div>
+	<div class="col-sm-8">
+		<p class="input-group input-group-sm">
+			<multiselect
+					ng-model="property"
+					options="c.name for c in availableElements"
+					data-multiple="false"
+					data-compare-by="id"
+					scroll-after-rows="15">
+			</multiselect>
+		</p>
+	</div>
+</div>

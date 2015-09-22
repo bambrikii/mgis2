@@ -1,0 +1,28 @@
+<div ng-controller="TestController">
+	<commons-forms-form title="Code">
+		<tabset>
+			<tab>
+				<tab-heading><span translate>Code</span></tab-heading>
+				<commons-forms-panel title="Code">
+					<commons-forms-text title="Code" property="item.text"></commons-forms-text>
+					<commons-forms-drop-down title="Code" property="item.dropDown"
+											 available-elements="availableDropDownElements"></commons-forms-drop-down>
+					<commons-forms-drop-down-ajax title="Code" property="item.dropDownAjax"
+												  available-elements="availableDropDownAjaxElements"
+												  refresh="refreshAvailableDropDownAjaxElements(name)"></commons-forms-drop-down-ajax>
+					<commons-forms-date title="Code" property="item.date"></commons-forms-date>
+					<commons-forms-choose-one title="Code" property="item.chooseOne"></commons-forms-choose-one>
+					<commons-forms-choose-many title="Code" property="item.chooseMany"></commons-forms-choose-many>
+				</commons-forms-panel>
+			</tab>
+			<tab>
+				<tab-heading><span translate>Code</span></tab-heading>
+				<commons-forms-panel title="Code">
+					<commons-forms-text title="Name" property="item.text2"></commons-forms-text>
+				</commons-forms-panel>
+			</tab>
+		</tabset>
+	</commons-forms-form>
+
+	<pre>{{item}}</pre>
+</div>
