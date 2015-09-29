@@ -1,5 +1,5 @@
 <div ng-controller="TestController">
-	<commons-forms-form title="Code">
+	<commons-forms-form title="Code" name="form1">
 		<tabset>
 			<tab>
 				<tab-heading><span translate>Code</span></tab-heading>
@@ -25,4 +25,11 @@
 	</commons-forms-form>
 
 	<pre>{{item}}</pre>
+
+	<commons-forms-form title="Code" name="form1">
+		<commons-forms-text-required title="Name" property="item.text2"></commons-forms-text-required>
+		<button type="submit" class="btn btn-primary" ng-disabled="form1.$invalid" ng-click="ok()" translate>Submit</button>
+		<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+	</commons-forms-form>
+
 </div>

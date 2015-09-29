@@ -309,5 +309,6 @@
   "Settings": "Настройки",
   "Settings.GIS.Servers": "Серверы ГИС",
   "Code": "Код",
-  "Settings.GIS.Server": "ГИС Сервер"
+  "Settings.GIS.Server": "ГИС Сервер",
+  "ValueRequired": "Поле обязательно"
 }

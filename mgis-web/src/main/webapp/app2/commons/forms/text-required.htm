@@ -4,8 +4,8 @@
 	</div>
 
 	<div class="col-sm-8">
-		<input type="text" class="form-control" ng-model="property"/>
+		<input type="text" name="elem" class="form-control" ng-model="property" required/>
 
-		<p ng-show="elem.$invalid && (!elem.$pristine || elem.$touched)" class="help-block" translate>FieldInvalid</p>
+		<p ng-show="elem.$invalid && (!elem.$pristine || elem.$touched)" class="help-block" translate>ValueRequired</p>
 	</div>
 </div>
