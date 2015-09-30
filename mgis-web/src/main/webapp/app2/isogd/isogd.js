@@ -4,7 +4,8 @@ angular.module("mgis.isogd", ["ui.router", "ui.bootstrap", "angularUtils.directi
 	"mgis.isogd.volumes", "mgis.isogd.volumes.service", //
 	"mgis.isogd.books", "mgis.isogd.books.service",//
 	"mgis.isogd.documents", "mgis.isogd.documents.service", //
-	"mgis.isogd.classifiers" //
+	"mgis.isogd.classifiers", //
+	"mgis.isogd.documents.search"
 ]) //
 	.config(function ($stateProvider, $urlRouterProvider) {
 

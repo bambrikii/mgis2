@@ -27,6 +27,7 @@ angular.module("mgis.isogd.documents.service", ["ui.router"
 					volume: {
 						id: document.volume.id
 					},
+					author: document.author && document.author.id ? {id: document.author.id} : null,
 					documentSubObject: {
 						id: document.documentSubObject.id
 					},

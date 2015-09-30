@@ -6,6 +6,8 @@ import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
 import ru.sovzond.mgis2.isogd.classifiers.documents.representation.RepresentationFormat;
 import ru.sovzond.mgis2.isogd.document.parts.CommonPart;
 import ru.sovzond.mgis2.isogd.document.parts.SpecialPart;
+import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
+import ru.sovzond.mgis2.registers.persons.Person;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -47,8 +49,13 @@ public class Document implements Cloneable {
 	@ManyToOne
 	private RepresentationFormat representationFormat;
 
-	@ManyToOne
+	@ManyToOne(targetEntity = OKTMO.class)
+	@JoinColumn(name = "oktmo_id")
 	private Territory oktmo;
+
+	@ManyToOne(targetEntity = Person.class)
+	@JoinColumn(name = "author_id")
+	private Person author;
 
 	public Long getId() {
 		return id;
@@ -130,6 +137,14 @@ public class Document implements Cloneable {
 		this.specialPart = specialPart;
 	}
 
+	public Person getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Person author) {
+		this.author = author;
+	}
+
 	public Document clone() {
 		Document document = new Document();
 		document.setId(id);
@@ -141,6 +156,7 @@ public class Document implements Cloneable {
 		document.setSpecialPart(specialPart != null ? specialPart.clone() : null);
 		document.setDocumentSubObject(documentSubObject != null ? documentSubObject.clone() : null);
 		document.setVolume(volume.clone());
+		document.setAuthor(author != null ? author.clone() : null);
 		return document;
 	}
 }

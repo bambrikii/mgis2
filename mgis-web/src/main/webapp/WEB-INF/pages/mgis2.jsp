@@ -77,6 +77,7 @@
 	<script type="text/javascript" src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-module.js"></script>
 	<script type="text/javascript" src="app2/isogd/document-selector/document-selector-component.js"></script>
+	<script type="text/javascript" src="app2/isogd/document-search/document-search-module.js"></script>
 	<script type="text/javascript" src="app2/admin/admin.js"></script>
 	<script type="text/javascript" src="app2/admin/users/admin-users-service.js"></script>
 	<script type="text/javascript" src="app2/admin/users/admin-users-module.js"></script>

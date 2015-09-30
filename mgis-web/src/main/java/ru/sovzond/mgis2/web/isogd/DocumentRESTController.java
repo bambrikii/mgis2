@@ -17,6 +17,7 @@ import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.isogd.document.DocumentContent;
 import ru.sovzond.mgis2.isogd.document.parts.CommonPart;
 import ru.sovzond.mgis2.isogd.document.parts.SpecialPart;
+import ru.sovzond.mgis2.persons.PersonBean;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
@@ -47,6 +48,9 @@ public class DocumentRESTController implements Serializable {
 
 	@Autowired
 	private DocumentContentBean documentContentBean;
+
+	@Autowired
+	private PersonBean personBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -94,6 +98,11 @@ public class DocumentRESTController implements Serializable {
 			}
 			updateDocumentSpecialPartContents(sourceDocument, specialPart);
 			specialPartBean.save(specialPart);
+		}
+		if (sourceDocument.getAuthor() != null && sourceDocument.getAuthor().getId() != 0) {
+			document.setAuthor(personBean.load(sourceDocument.getAuthor().getId()));
+		} else {
+			document.setAuthor(null);
 		}
 		documentBean.save(document);
 		return document.clone();
