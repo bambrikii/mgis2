@@ -66,25 +66,11 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 
 		$scope.selectedDocuments = $scope.selectedDocuments || new Array();
 
-		$scope.selectSearchItemClick = function (item) {
-			console.log(item);
-		}
-
-		$scope.documentSearchSelectClicked = function (item, action) {
-			console.log(arguments);
-			switch (action) {
-				case 'select':
-					$scope.documentSelectClicked(item.id, item.name);
-					break;
-				case 'edit':
-					break;
-				case 'remove':
-					break;
-			}
+		$scope.selectSearchItemClick = function (item, updateAction) {
+			$scope.documentSelectClicked(item.id, item.name);
 		}
 
 		$scope.documentSelectClicked = function (id, name) {
-			console.log(arguments);
 			var item = {id: id, name: name};
 			if ($scope.multipleDocuments) {
 				var found = false;
@@ -144,10 +130,25 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 				$scope.openVolume(volume);
 			});
 		}
-		$scope.editDocument = function (id, volume) {
-			console.log('aaa');
+		$scope.editDocument = function (id, volume, updateAction) {
 			ISOGDDocumentCRUDService.editItem(id, function () {
-				$scope.openVolume(volume);
+				if (volume) {
+					$scope.openVolume(volume);
+				}
+				// TODO: updateAction is not being invoked now. Should be fixed.
+				if (updateAction) {
+					updateAction({});
+				}
+			});
+		}
+		$scope.removeDocument = function (id, volume, updateAction) {
+			ISOGDDocumentCRUDService.removeItem(id, function () {
+				if (volume) {
+					$scope.openVolume(volume);
+				}
+				if (updateAction) {
+					updateAction({});
+				}
 			});
 		}
 

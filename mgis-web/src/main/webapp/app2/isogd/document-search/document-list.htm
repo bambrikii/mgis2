@@ -1,7 +1,11 @@
 <h3><span translate>ISOGD.Document.Search</span></h3>
 
 
-<isogd-document-search
-		buttons-template-url="app2/isogd/document-search/document-list-item-buttons.htm"
-		item-click="documentItemClicked(item, action)">
-</isogd-document-search>
+<div ng-controller="ISOGDDocumentSearchListController">
+	<isogd-document-search>
+		<isgod-document-search-button label="ISOGD.EditTheDocument" class="info"
+									  document-item-click="editDocument(item.id, updateAction)"></isgod-document-search-button>
+		<isgod-document-search-button label="ISOGD.RemoveTheDocument" class="danger"
+									  document-item-click="removeDocument(item.id, updateAction)"></isgod-document-search-button>
+	</isogd-document-search>
+</div>

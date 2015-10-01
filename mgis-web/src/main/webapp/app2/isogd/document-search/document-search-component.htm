@@ -25,8 +25,9 @@
 			<div class="col-sm-2">{{item.docDate | date:'yyyy/MM/dd'}}</div>
 			<div class="col-sm-4">{{item.name}}</div>
 			<div class="col-sm-4">
-				<!--<ng-include src="buttonsTemplateUrl"/>-->
-				<ng-transclude></ng-transclude>
+				<isgod-document-search-button-container item="item" updateAction="list()">
+					<ng-transclude></ng-transclude>
+				</isgod-document-search-button-container>
 			</div>
 		</div>
 	</div>

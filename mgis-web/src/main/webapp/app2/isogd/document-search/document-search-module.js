@@ -11,11 +11,23 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 				templateUrl: "app2/isogd/document-search/document-list.htm"
 			});
 	})
+	.controller("ISOGDDocumentSearchListController", function ($scope, ISOGDDocumentCRUDService) {
+		$scope.editDocument = function (id, updateAction) {
+			ISOGDDocumentCRUDService.editItem(id, function () {
+				updateAction({});
+			});
+		}
+		$scope.removeDocument = function (id, updateAction) {
+			ISOGDDocumentCRUDService.removeItem(id, function () {
+				updateAction({});
+			});
+		}
+
+	})
 	.controller("ISOGDDocumentSearchController", function ($scope, $rootScope, MGISCommonsModalForm,
 														   ISOGDSectionsService,
 														   ISOGDDocumentSearchService,
-														   ISOGDDocumentSearchConverterService,
-														   ISOGDDocumentCRUDService) {
+														   ISOGDDocumentSearchConverterService) {
 		$scope.searchText = "";
 		$scope.searchFilter = {
 			section: {}
@@ -47,7 +59,7 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 			updateGrid();
 		}
 		$scope.extendedSearchClick = function () {
-			var sectionId = $scope.searchFilter.section != null && $scope.searchFilter.section.id ? $scope.searchFilter.section.id : null
+			var sectionId = $scope.searchFilter.section != null && $scope.searchFilter.section.id ? $scope.searchFilter.section.id : null;
 
 			function openExtendedSearchForm(modalScope) {
 				MGISCommonsModalForm.edit("app2/isogd/document-search/document-search-form.htm", modalScope, function (scope, modalInstance) {
@@ -69,53 +81,45 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 			updateGrid();
 		}
 		updateGrid();
-
-
-		$scope.editDocument = function (id) {
-			ISOGDDocumentCRUDService.editItem(id, updateGrid);
-		}
-		$scope.removeDocument = function (id) {
-			ISOGDDocumentCRUDService.removeItem(id, updateGrid);
-		}
-
-		$scope.documentItemClicked = function (item, action) {
-			switch (action) {
-				case 'edit':
-					ISOGDDocumentCRUDService.editItem(item.id, updateGrid);
-					break;
-				case 'remove':
-					ISOGDDocumentCRUDService.removeItem(item.id, updateGrid);
-					break;
-			}
-		}
 	})
 	.directive("isogdDocumentSearch", function () {
 		return {
 			restrict: "E",
 			transclude: true,
-			//scope: {
-			//	buttonsTemplateUrl: "@",
-			//	itemClick: "&"
-			//},
-			templateUrl: "app2/isogd/document-search/document-search-component.htm"//,
-			//controller: function ($scope) {
-			//}
+			templateUrl: "app2/isogd/document-search/document-search-component.htm"
+		}
+	}).
+	directive("isgodDocumentSearchButtonContainer", function () {
+		return {
+			restrict: "AE",
+			scope: {
+				item: "=",
+				updateAction: "&"
+			},
+			controller: function ($scope) {
+				this.item = $scope.item;
+				this.updateAction = $scope.updateAction;
+			}
 		}
 	})
 	.directive("isgodDocumentSearchButton", function () {
 		return {
 			restrict: "E",
-			require: '^parent',
+			require: '^isgodDocumentSearchButtonContainer',
 			scope: {
 				label: "@",
-				action: "@",
-				item: "=item",
-				documentItemClick: "&"
+				documentItemClick: "&",
+				class: "@"
 			},
-			template: '<button class="btn btn-warning btn-sm" item="item" ng-click="buttonClicked(item,action)" translate>{{label}}</button>',
+			template: '<button class="btn btn-{{class}} btn-sm" ng-click="buttonClicked(item, updateAction)" translate>{{label}}</button>',
+			link: function (scope, elem, attrs, isgodDocumentSearchButtonContainerController) {
+				scope.item = isgodDocumentSearchButtonContainerController.item;
+				scope.updateAction = isgodDocumentSearchButtonContainerController.updateAction;
+			},
 			controller: function ($scope) {
-				$scope.buttonClicked = function (item, action) {
-					$scope.documentItemClick({item: item, action: action});
+				$scope.buttonClicked = function (item, updateAction) {
+					// TODO: updateAction should be invoked from the click handler, does not work now...
+					$scope.documentItemClick({item: item, updateAction: updateAction});
 				}
 			}
 		}
