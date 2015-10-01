@@ -70,12 +70,54 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 		}
 		updateGrid();
 
-		//
+
 		$scope.editDocument = function (id) {
 			ISOGDDocumentCRUDService.editItem(id, updateGrid);
 		}
 		$scope.removeDocument = function (id) {
 			ISOGDDocumentCRUDService.removeItem(id, updateGrid);
+		}
+
+		$scope.documentItemClicked = function (item, action) {
+			switch (action) {
+				case 'edit':
+					ISOGDDocumentCRUDService.editItem(item.id, updateGrid);
+					break;
+				case 'remove':
+					ISOGDDocumentCRUDService.removeItem(item.id, updateGrid);
+					break;
+			}
+		}
+	})
+	.directive("isogdDocumentSearch", function () {
+		return {
+			restrict: "E",
+			transclude: true,
+			//scope: {
+			//	buttonsTemplateUrl: "@",
+			//	itemClick: "&"
+			//},
+			templateUrl: "app2/isogd/document-search/document-search-component.htm"//,
+			//controller: function ($scope) {
+			//}
+		}
+	})
+	.directive("isgodDocumentSearchButton", function () {
+		return {
+			restrict: "E",
+			require: '^parent',
+			scope: {
+				label: "@",
+				action: "@",
+				item: "=item",
+				documentItemClick: "&"
+			},
+			template: '<button class="btn btn-warning btn-sm" item="item" ng-click="buttonClicked(item,action)" translate>{{label}}</button>',
+			controller: function ($scope) {
+				$scope.buttonClicked = function (item, action) {
+					$scope.documentItemClick({item: item, action: action});
+				}
+			}
 		}
 	})
 ;

@@ -1,42 +1,7 @@
 <h3><span translate>ISOGD.Document.Search</span></h3>
 
 
-<div class="container" ng-controller="ISOGDDocumentSearchController">
-	<form>
-		<div class="control-group">
-			<div class="controls form-inline row">
-				<div class="col-sm-8">
-					<input type="text" class="form-control pull-right" style="width:100%" ng-model="searchText" ng-change="searchClick()"/>
-				</div>
-				<div class="col-sm-4">
-					<button class="btn btn-sm btn-info" ng-click="extendedSearchClick()" translate>ExtendedSearch</button>
-				</div>
-			</div>
-		</div>
-	</form>
-
-	<div>
-		<div ng-repeat="doc in documents" class="row">
-			<div></div>
-		</div>
-	</div>
-
-	<div>
-		<div class="row" ng-repeat="item in pager.list" style="padding: 5px;">
-			<div class="col-sm-1">{{item.id}}</div>
-			<div class="col-sm-1">{{item.docNumber}}</div>
-			<div class="col-sm-2">{{item.docDate | date:'yyyy/MM/dd'}}</div>
-			<div class="col-sm-4">{{item.name}}</div>
-			<div class="col-sm-4">
-				<button class="btn btn-info btn-sm" ng-click="editDocument(item.id)" translate>ISOGD.EditTheDocument</button>
-				<button class="btn btn-danger btn-sm" ng-click="removeDocument(item.id)" translate>ISOGD.RemoveTheDocument</button>
-			</div>
-		</div>
-	</div>
-
-	<pagination ng-show="pager.totalNumberOfItems>itemsPerPage" total-items="pager.totalNumberOfItems" ng-model="currentPage"
-				items-per-page="itemsPerPage" ng-change="pageChanged()"
-				class="pagination-sm" previous-text="&lsaquo;"
-				next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
-
-</div>
+<isogd-document-search
+		buttons-template-url="app2/isogd/document-search/document-list-item-buttons.htm"
+		item-click="documentItemClicked(item, action)">
+</isogd-document-search>

@@ -16,6 +16,19 @@
 					</li>
 				</ul>
 
+				<isogd-document-search buttons-template-url="app2/isogd/document-selector/document-selector-list-item-buttons.htm"
+									   item-click="documentSearchSelectClicked(item, action)">
+					<isgod-document-search-button label="Select" action="select"
+												  document-item-click="selectSearchItemClick()"
+												  ng-attr-item="item"></isgod-document-search-button>
+					<!--<button class="btn btn-warning btn-sm" ng-click="selectSearchItemClick(item)" item="item" translate>Select</button>-->
+					<!--<button class="btn btn-warning btn-sm" ng-click="itemClick(item,'select')" translate>Select</button>-->
+
+					<!--<br/>-->
+					<!--<button class="btn btn-info btn-sm" ng-click="editDocument(item.id)" translate>ISOGD.EditTheDocument</button>-->
+					<!--<button class="btn btn-danger btn-sm" ng-click="removeDocument(item.id)" translate>ISOGD.RemoveTheDocument</button>-->
+				</isogd-document-search>
+
 				<ul class="list-group">
 					<li ng-repeat="section in sections" class="list-group-item mgis-document-selector-list-item">
 						<div class="row">

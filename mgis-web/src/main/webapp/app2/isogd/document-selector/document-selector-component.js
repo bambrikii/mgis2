@@ -66,7 +66,25 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 
 		$scope.selectedDocuments = $scope.selectedDocuments || new Array();
 
+		$scope.selectSearchItemClick = function (item) {
+			console.log(item);
+		}
+
+		$scope.documentSearchSelectClicked = function (item, action) {
+			console.log(arguments);
+			switch (action) {
+				case 'select':
+					$scope.documentSelectClicked(item.id, item.name);
+					break;
+				case 'edit':
+					break;
+				case 'remove':
+					break;
+			}
+		}
+
 		$scope.documentSelectClicked = function (id, name) {
+			console.log(arguments);
 			var item = {id: id, name: name};
 			if ($scope.multipleDocuments) {
 				var found = false;
@@ -127,6 +145,7 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 			});
 		}
 		$scope.editDocument = function (id, volume) {
+			console.log('aaa');
 			ISOGDDocumentCRUDService.editItem(id, function () {
 				$scope.openVolume(volume);
 			});
