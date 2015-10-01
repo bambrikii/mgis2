@@ -3,12 +3,14 @@ package ru.sovzond.mgis2.isogd.document;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
+import ru.sovzond.mgis2.isogd.Section;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentClass;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -50,5 +52,43 @@ public class DocumentDao extends CRUDDaoBase<Document> {
 
 	public PagerBuilderCriteria<Document> createFilter(Volume volume, String order, int first, int max) {
 		return new DocumentBaseBuilder(volume, order, first, max);
+	}
+
+	public PagerBuilderCriteria<Document> createSearchDocumentFilter(Section section, String documentName, Date documentDate, String documentNumber, String orderBy, int first, int max) {
+		return new SearchDocumentFilter(section, documentName, documentDate, documentNumber, orderBy, first, max);
+	}
+
+	private class SearchDocumentFilter extends PagerBuilderCriteria<Document> {
+		private Section section;
+		private String documentName;
+		private Date documentDate;
+		private String documentNumber;
+
+		private SearchDocumentFilter(Section section, String documentName, Date documentDate, String documentNumber, String orderBy, int first, int max) {
+			super(orderBy, first, max);
+			this.section = section;
+			this.documentName = documentName;
+			this.documentDate = documentDate;
+			this.documentNumber = documentNumber;
+		}
+
+		@Override
+		protected void applyFilter(Criteria criteria) {
+			criteria.createAlias("volume", "vol");
+			criteria.createAlias("vol.book", "bk");
+			criteria.createAlias("bk.section", "section");
+			if (section != null) {
+				criteria.add(Restrictions.eq("bk.section", section));
+			}
+			if (documentName != null && documentName.length() > 0) {
+				criteria.add(Restrictions.like("name", "%" + documentName + "%"));
+			}
+			if (documentDate != null) {
+				criteria.add(Restrictions.eq("docDate", documentDate));
+			}
+			if (documentNumber != null && documentNumber.length() > 0) {
+				criteria.add(Restrictions.like("docNumber", "%" + documentNumber + "%"));
+			}
+		}
 	}
 }

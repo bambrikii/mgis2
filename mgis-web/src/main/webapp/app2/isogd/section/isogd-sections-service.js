@@ -4,12 +4,14 @@ angular.module("mgis.isogd.sections.service", ["ui.router", 'ngResource',
 	.factory("ISOGDSectionsService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/isogd/sections/:id.json');
 		return {
-			get: function (id, first, max) {
+			get: function (id, first, max, name) {
 				var deferred = $q.defer();
-				res.get({id: id}, {
+				res.get({
+					id: id,
 					first: first,
-					max: max
-				}, function (data) {
+					max: max,
+					name: name
+				}, {}, function (data) {
 					deferred.resolve(data);
 				}, function (error) {
 					MGISErrorService.handleError(error);

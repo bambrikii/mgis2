@@ -7,12 +7,15 @@ import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
+import ru.sovzond.mgis2.isogd.Section;
 import ru.sovzond.mgis2.isogd.Volume;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentClass;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentSubObject;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.isogd.document.DocumentDao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,5 +63,11 @@ public class DocumentBean extends CRUDBeanBase<Document> {
 
 	public DocumentClass readDocumentClassByVolume(Volume volume) {
 		return dao.readDocumentClassByVolume(volume);
+	}
+
+	public PageableContainer<Document> find(Section section, String documentName, Date documentDate, String documentNumber, String orderBy, int first, int max) {
+		PagerBuilderCriteria<Document> filter = dao.createSearchDocumentFilter(section, documentName, documentDate, documentNumber, orderBy, first, max);
+		Pageable<Document> pager = dao.pager(filter);
+		return new PageableContainer<>(pager.list().stream().map(Document::clone).collect(Collectors.toList()), pager.count(), first, max);
 	}
 }

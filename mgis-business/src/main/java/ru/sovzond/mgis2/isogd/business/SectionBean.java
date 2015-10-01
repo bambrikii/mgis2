@@ -7,7 +7,6 @@ import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
-import ru.sovzond.mgis2.dataaccess.base.impl.PagerFactory;
 import ru.sovzond.mgis2.isogd.Section;
 import ru.sovzond.mgis2.isogd.SectionDao;
 
@@ -43,8 +42,8 @@ public class SectionBean extends CRUDBeanBase<Section> {
 		sectionDao.delete(section);
 	}
 
-	public PageableContainer<Section> pageSections(String orderBy, int first, int max) {
-		Pageable<Section> pager = sectionDao.pager(PagerFactory.createDefault(persistentClass, orderBy, first, max));
+	public PageableContainer<Section> pageSections(String orderBy, int first, int max, String name) {
+		Pageable<Section> pager = sectionDao.pager(sectionDao.createFilter(name, orderBy, first, max));
 		List<Section> sections = pager.list().stream().map(section -> section.clone()).collect(Collectors.toList());
 		return new PageableContainer<>(sections, pager.count(), first, max);
 	}

@@ -195,3 +195,7 @@ span.mgis-input-group-date button {
 	top: -60px;
 	height: 0px;
 }
+
+.mgis-document-search-modal-form .modal-dialog {
+	width: 730px;
+}

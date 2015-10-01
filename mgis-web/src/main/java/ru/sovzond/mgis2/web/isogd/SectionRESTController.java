@@ -30,8 +30,8 @@ public class SectionRESTController implements Serializable {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     @Transactional
-    public PageableContainer<Section> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "name") String orderBy) {
-        return isogdBean.pageSections(orderBy, first, max);
+    public PageableContainer<Section> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "name") String orderBy, @RequestParam(defaultValue = "") String name) {
+        return isogdBean.pageSections(orderBy, first, max, name);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")

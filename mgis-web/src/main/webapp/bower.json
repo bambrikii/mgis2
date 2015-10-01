@@ -36,6 +36,7 @@
     "leaflet-groupedlayercontrol": "~0.3.1",
     "leaflet.draw": "~0.2.4",
     "marionette": "~2.4.1",
+    "moment": "momentjs#~2.10.6",
     "ng-file-upload": "~5.0.9",
     "require": "*",
     "requirejs": "~2.1.17",
