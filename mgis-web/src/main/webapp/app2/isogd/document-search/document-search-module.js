@@ -1,7 +1,8 @@
 angular.module("mgis.isogd.documents.search", ["ui.router",
 	"mgis.commons",
 	"mgis.isogd.sections.service",
-	"mgis.isogd.search.service"
+	"mgis.isogd.search.service",
+	"mgis.isogd.documents"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -13,7 +14,8 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 	.controller("ISOGDDocumentSearchController", function ($scope, $rootScope, MGISCommonsModalForm,
 														   ISOGDSectionsService,
 														   ISOGDDocumentSearchService,
-														   ISOGDDocumentSearchConverterService) {
+														   ISOGDDocumentSearchConverterService,
+														   ISOGDDocumentCRUDService) {
 		$scope.searchText = "";
 		$scope.searchFilter = {
 			section: {}
@@ -26,19 +28,23 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 				$scope.availableSections = data.list;
 			});
 		}
-		$scope.list = function () {
+		function updateGrid() {
 			var filter = $scope.searchFilter;
 			ISOGDDocumentSearchService.get(null, ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage, filter.section, filter.docName, filter.docDate, filter.docNumber).then(function (data) {
 				$scope.pager = data;
 			});
 		}
+
+		$scope.list = function () {
+			updateGrid();
+		}
 		$scope.searchClick = function () {
 			$scope.searchFilter = ISOGDDocumentSearchConverterService.toObject($scope.searchText);
-			$scope.list();
+			updateGrid();
 		}
 		$scope.searchFilterChanged = function () {
 			$scope.searchText = ISOGDDocumentSearchConverterService.toString($scope.searchFilter);
-			$scope.list();
+			updateGrid();
 		}
 		$scope.extendedSearchClick = function () {
 			var sectionId = $scope.searchFilter.section != null && $scope.searchFilter.section.id ? $scope.searchFilter.section.id : null
@@ -60,8 +66,16 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 			}
 		}
 		$scope.pageChanged = function () {
-			$scope.list();
+			updateGrid();
 		}
-		$scope.list();
+		updateGrid();
+
+		//
+		$scope.editDocument = function (id) {
+			ISOGDDocumentCRUDService.editItem(id, updateGrid);
+		}
+		$scope.removeDocument = function (id) {
+			ISOGDDocumentCRUDService.removeItem(id, updateGrid);
+		}
 	})
 ;

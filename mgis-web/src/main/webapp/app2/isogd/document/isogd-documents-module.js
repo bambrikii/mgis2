@@ -132,7 +132,7 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
 			});
 		}
 
-		function deleteItem(id, updateGrid) {
+		function removeItem(id, updateGrid) {
 			MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
 				ISOGDDocumentsService.remove(id).then(function (document) {
 					if (updateGrid) {
@@ -146,7 +146,7 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
 		return {
 			addItem: addItem,
 			editItem: editItem,
-			deleteItem: deleteItem
+			removeItem: removeItem
 		}
 	})
 ;
