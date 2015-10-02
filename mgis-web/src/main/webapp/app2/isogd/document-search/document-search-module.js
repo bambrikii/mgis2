@@ -40,7 +40,8 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 								  ISOGDDocumentSearchConstants) {
 				$scope.searchText = "";
 				$scope.searchFilter = {
-					section: {}
+					section: {},
+					searchExactDateChecked: "n"
 				}
 				$scope.currentPage = 1;
 				$scope.itemsPerPage = 15;
@@ -59,6 +60,7 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 						ISOGDDocumentSearchService.get(null, ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage,
 							filter.section,
 							filter.docName,
+							filter.docDate,
 							filter.docDateFrom,
 							filter.docDateTill,
 							filter.docNumber
@@ -103,6 +105,15 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 				$scope.resetSearchClick = function () {
 					$scope.searchText = "";
 					$scope.searchClick();
+				}
+				$scope.searchExactDateChanged = function () {
+					if ($scope.searchFilter.searchExactDateChecked == "y") {
+						$scope.searchFilter.docDateFrom = null;
+						$scope.searchFilter.docDateTill = null;
+					} else {
+						$scope.searchFilter.docDate = null;
+					}
+					$scope.searchFilterChanged();
 				}
 				$scope.pageChanged = function () {
 					updateGrid();

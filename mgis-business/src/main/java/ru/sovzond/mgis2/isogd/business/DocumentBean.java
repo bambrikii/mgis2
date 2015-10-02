@@ -65,8 +65,8 @@ public class DocumentBean extends CRUDBeanBase<Document> {
 		return dao.readDocumentClassByVolume(volume);
 	}
 
-	public PageableContainer<Document> find(Section section, String documentName, Date documentDateFrom, Date documentDateTill, String documentNumber, String orderBy, int first, int max) {
-		PagerBuilderCriteria<Document> filter = dao.createSearchDocumentFilter(section, documentName, documentDateFrom, documentDateTill, documentNumber, orderBy, first, max);
+	public PageableContainer<Document> find(Section section, String documentName, Date documentDate, Date documentDateFrom, Date documentDateTill, String documentNumber, String orderBy, int first, int max) {
+		PagerBuilderCriteria<Document> filter = dao.createSearchDocumentFilter(section, documentName, documentDate, documentDateFrom, documentDateTill, documentNumber, orderBy, first, max);
 		Pageable<Document> pager = dao.pager(filter);
 		return new PageableContainer<>(pager.list().stream().map(Document::clone).collect(Collectors.toList()), pager.count(), first, max);
 	}

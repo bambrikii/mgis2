@@ -34,6 +34,7 @@ public class DocumentSearchRESTController implements Serializable {
 	@Transactional
 	public PageableContainer<Document> list(@RequestParam(value = "sectionId", required = false) Long sectionId,
 											@RequestParam(value = "docName", required = false) String documentName,
+											@RequestParam(value = "docDate", required = false) Date documentDate,
 											@RequestParam(value = "docDateFrom", required = false) Date documentDateFrom,
 											@RequestParam(value = "docDateTill", required = false) Date documentDateTill,
 											@RequestParam(value = "docNumber", required = false) String documentNumber,
@@ -46,6 +47,6 @@ public class DocumentSearchRESTController implements Serializable {
 				throw new IllegalArgumentException("NO_SECTION_FOUND");
 			}
 		}
-		return documentBean.find(section, documentName, documentDateFrom, documentDateTill, documentNumber, orderBy, first, max);
+		return documentBean.find(section, documentName, documentDate, documentDateFrom, documentDateTill, documentNumber, orderBy, first, max);
 	}
 }

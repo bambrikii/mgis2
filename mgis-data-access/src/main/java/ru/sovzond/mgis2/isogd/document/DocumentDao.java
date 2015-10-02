@@ -54,21 +54,23 @@ public class DocumentDao extends CRUDDaoBase<Document> {
 		return new DocumentBaseBuilder(volume, order, first, max);
 	}
 
-	public PagerBuilderCriteria<Document> createSearchDocumentFilter(Section section, String documentName, Date documentDateFrom, Date documentDateTill, String documentNumber, String orderBy, int first, int max) {
-		return new SearchDocumentFilter(section, documentName, documentDateFrom, documentDateTill, documentNumber, orderBy, first, max);
+	public PagerBuilderCriteria<Document> createSearchDocumentFilter(Section section, String documentName, Date documentDate, Date documentDateFrom, Date documentDateTill, String documentNumber, String orderBy, int first, int max) {
+		return new SearchDocumentFilter(section, documentName, documentDate, documentDateFrom, documentDateTill, documentNumber, orderBy, first, max);
 	}
 
 	private class SearchDocumentFilter extends PagerBuilderCriteria<Document> {
 		private Section section;
 		private String documentName;
+		private Date documentDate;
 		private Date documentDateFrom;
 		private Date documentDateTill;
 		private String documentNumber;
 
-		private SearchDocumentFilter(Section section, String documentName, Date documentDateFrom, Date documentDateTill, String documentNumber, String orderBy, int first, int max) {
+		private SearchDocumentFilter(Section section, String documentName, Date documentDate, Date documentDateFrom, Date documentDateTill, String documentNumber, String orderBy, int first, int max) {
 			super(orderBy, first, max);
 			this.section = section;
 			this.documentName = documentName;
+			this.documentDate = documentDate;
 			this.documentDateFrom = documentDateFrom;
 			this.documentDateTill = documentDateTill;
 			this.documentNumber = documentNumber;
@@ -84,6 +86,9 @@ public class DocumentDao extends CRUDDaoBase<Document> {
 			}
 			if (documentName != null && documentName.length() > 0) {
 				criteria.add(Restrictions.like("name", "%" + documentName + "%"));
+			}
+			if (documentDate != null) {
+				criteria.add(Restrictions.eq("docDate", documentDate));
 			}
 			if (documentDateFrom != null) {
 				criteria.add(Restrictions.ge("docDate", documentDateFrom));

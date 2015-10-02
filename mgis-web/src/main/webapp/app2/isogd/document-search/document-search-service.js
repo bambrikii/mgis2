@@ -9,12 +9,13 @@ angular.module("mgis.isogd.search.service", ["ngResource",
 	.factory("ISOGDDocumentSearchService", function ($resource, $q, MGISErrorService, ISOGDDocumentSearchConstants) {
 		var res = $resource('rest/isogd/search/list.json');
 		return {
-			get: function (id, first, max, section, docName, docDateFrom, docDateTill, docNumber) {
+			get: function (id, first, max, section, docName, docDate, docDateFrom, docDateTill, docNumber) {
 				var deferred = $q.defer();
 				res.get({
 					id: id,
 					sectionId: section && section.id ? section.id : null,
 					docName: docName,
+					docDate: docDate ? moment(docDate).format(ISOGDDocumentSearchConstants.DATE_FORMAT) : null,
 					docDateFrom: docDateFrom ? moment(docDateFrom).format(ISOGDDocumentSearchConstants.DATE_FORMAT) : null,
 					docDateTill: docDateTill ? moment(docDateTill).format(ISOGDDocumentSearchConstants.DATE_FORMAT) : null,
 					docNumber: docNumber,
@@ -42,6 +43,9 @@ angular.module("mgis.isogd.search.service", ["ngResource",
 				if (obj.docNumber) {
 					arr.push("number:" + obj.docNumber);
 				}
+				if (obj.docDate) {
+					arr.push("date:" + moment(obj.docDate).format(ISOGDDocumentSearchConstants.DATE_FORMAT));
+				}
 				if (obj.docDateFrom) {
 					arr.push("from:" + moment(obj.docDateFrom).format(ISOGDDocumentSearchConstants.DATE_FORMAT));
 				}
@@ -56,13 +60,17 @@ angular.module("mgis.isogd.search.service", ["ngResource",
 			toObject: function (str) {
 				var obj = new Object();
 				var matchFound = false;
-				var pattern = /((name:((['"][^'"]+['"])|([^\s]+)))|(from:\d{4}\/\d{2}\/\d{2})|(till:\d{4}\/\d{2}\/\d{2})|(number:[\w\d\.\-_]+)|(section:[\d]+))+/gi;
+				var pattern = /((name:((['"][^'"]+['"])|([^\s]+)))|((date|from|till):\d{4}\/\d{2}\/\d{2})|(number:[\w\d\.\-_]+)|(section:[\d]+))+/gi;
 				var match = pattern.exec(str);
 				while (match != null) {
 					var matchItem = match[1];
 					if (matchItem) {
 						if (matchItem.indexOf("name:") == 0) {
 							obj.docName = matchItem.substring(5).replace(/^'(.*)'$/gi, "$1").replace(/^"(.*)"$/gi, "$1");
+							matchFound = true;
+						} else if (matchItem.indexOf("date:") == 0) {
+							var docDate = matchItem.substring(5);
+							obj.docDate = docDateFrom ? moment(docDate).toDate() : "";
 							matchFound = true;
 						} else if (matchItem.indexOf("from:") == 0) {
 							var docDateFrom = matchItem.substring(5);
@@ -83,6 +91,7 @@ angular.module("mgis.isogd.search.service", ["ngResource",
 					match = pattern.exec(str);
 				}
 				if (!matchFound) {
+					obj.docDate = null;
 					obj.docDateFrom = null;
 					obj.docDateTill = null;
 					obj.docName = str;
@@ -93,6 +102,7 @@ angular.module("mgis.isogd.search.service", ["ngResource",
 				return (
 					(filter.section != undefined && filter.section.id > 0) ||
 					filter.docNumber > "" ||
+					filter.docDate > 0 ||
 					filter.docDateFrom > 0 ||
 					filter.docDateTill > 0 ||
 					filter.docName > ""

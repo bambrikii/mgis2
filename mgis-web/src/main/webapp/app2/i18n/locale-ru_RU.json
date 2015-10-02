@@ -74,6 +74,7 @@
   "ISOGD.Document.Search.UsingFilter": "Найти по фильтру",
   "ISOGD.Document.Search.UsingHierarchy": "Найти в реестрах и книгах",
   "ISOGD.Document.Search.DateFromAndTill": "Дата документа (от и по)",
+  "ISOGD.Document.Search.SetExactDate": "Укажите точную дату",
   "ISOGD.Classifiers.Documents.Types": "Типы документов",
   "ISOGD.Classifiers.Documents.Types.Name": "Тип документа",
   "ISOGD.Classifiers.Documents.Types.Add": "Добавить тип документа",

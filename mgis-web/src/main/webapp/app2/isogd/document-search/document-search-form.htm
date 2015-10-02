@@ -27,11 +27,38 @@
 
 			<div class="form-group row">
 				<div class="col-sm-4">
-					<label translate>ISOGD.Document.Search.DateFromAndTill</label>
+					<label ng-if="searchFilter.searchExactDateChecked=='y'" translate>ISOGD.Document.Date</label>
+					<label ng-if="searchFilter.searchExactDateChecked!='y'" translate>ISOGD.Document.Search.DateFromAndTill</label>
+					<br/>
+					<input type="checkbox" ng-model="searchFilter.searchExactDateChecked"
+						   ng-change="searchExactDateChanged()" ng-true-value="'y'"
+						   ng-false-value="'n'"/>
+					<small translate>ISOGD.Document.Search.SetExactDate</small>
 				</div>
-
-				<div class="col-sm-4">
+				<div class="col-sm-8" ng-if="searchFilter.searchExactDateChecked=='y'">
 					<p class="input-group" ng-controller="MGISDateTimeController">
+					<span class="input-group-btn mgis-input-group-date">
+						<input
+								type="text"
+								class="form-control"
+								datepicker-popup="{{format}}"
+								ng-model="searchFilter.docDate"
+								is-open="opened"
+								datepicker-options="dateOptions"
+								date-disabled="disabled(date, mode)"
+								close-text="{{Close|translate}}"
+								ng-click="open($event)"
+								ng-change="searchFilterChanged()"
+								ng-disabled="searchFilter.searchExactDateChecked=='n'"
+								/>
+						<button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+
+					</span>
+					</p>
+				</div>
+				<div class="col-sm-8 row" ng-if="searchFilter.searchExactDateChecked!='y'">
+					<div class="col-sm-6">
+						<p class="input-group" ng-controller="MGISDateTimeController">
 					<span class="input-group-btn mgis-input-group-date">
 						<input
 								type="text"
@@ -47,10 +74,10 @@
 								/>
 						<button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 					</span>
-					</p>
-				</div>
-				<div class="col-sm-4">
-					<p class="input-group" ng-controller="MGISDateTimeController">
+						</p>
+					</div>
+					<div class="col-sm-6">
+						<p class="input-group" ng-controller="MGISDateTimeController">
 					<span class="input-group-btn mgis-input-group-date">
 						<input
 								type="text"
@@ -66,7 +93,8 @@
 								/>
 						<button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 					</span>
-					</p>
+						</p>
+					</div>
 				</div>
 			</div>
 
