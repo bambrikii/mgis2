@@ -108,8 +108,8 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 			require: '^isgodDocumentSearchButtonContainer',
 			scope: {
 				label: "@",
-				documentItemClick: "&",
-				class: "@"
+				class: "@",
+				documentItemClick: "&"
 			},
 			template: '<button class="btn btn-{{class}} btn-sm" ng-click="buttonClicked(item, updateAction)" translate>{{label}}</button>',
 			link: function (scope, elem, attrs, isgodDocumentSearchButtonContainerController) {
@@ -118,7 +118,6 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 			},
 			controller: function ($scope) {
 				$scope.buttonClicked = function (item, updateAction) {
-					// TODO: updateAction should be invoked from the click handler, does not work now...
 					$scope.documentItemClick({item: item, updateAction: updateAction});
 				}
 			}

@@ -135,7 +135,6 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 				if (volume) {
 					$scope.openVolume(volume);
 				}
-				// TODO: updateAction is not being invoked now. Should be fixed.
 				if (updateAction) {
 					updateAction({});
 				}
