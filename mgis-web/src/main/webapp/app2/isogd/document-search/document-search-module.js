@@ -88,8 +88,15 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 			transclude: true,
 			templateUrl: "app2/isogd/document-search/document-search-component.htm"
 		}
-	}).
-	directive("isgodDocumentSearchButtonContainer", function () {
+	})
+	.directive("isogdDocumentSearchFilter", function () {
+		return {
+			restrict: "E",
+			scope: false,
+			templateUrl: "app2/isogd/document-search/document-search-component-filter.htm"
+		}
+	})
+	.directive("isgodDocumentSearchButtonContainer", function () {
 		return {
 			restrict: "AE",
 			scope: {
