@@ -56,9 +56,15 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 					if ($scope.hideGridWhenFilterEmpty && filterState == ISOGDDocumentSearchConstants.FILTER_EMPTY) {
 						$scope.pager = {};
 					} else {
-						ISOGDDocumentSearchService.get(null, ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage, filter.section, filter.docName, filter.docDate, filter.docNumber).then(function (data) {
-							$scope.pager = data;
-						});
+						ISOGDDocumentSearchService.get(null, ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage,
+							filter.section,
+							filter.docName,
+							filter.docDateFrom,
+							filter.docDateTill,
+							filter.docNumber
+						).then(function (data) {
+								$scope.pager = data;
+							});
 					}
 					$scope.filterStateChanged({state: filterState});
 				}

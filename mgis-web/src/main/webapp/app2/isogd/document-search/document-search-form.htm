@@ -27,17 +27,17 @@
 
 			<div class="form-group row">
 				<div class="col-sm-4">
-					<label translate>ISOGD.Document.Date</label>
+					<label translate>ISOGD.Document.Search.DateFromAndTill</label>
 				</div>
 
-				<div class="col-sm-8">
+				<div class="col-sm-4">
 					<p class="input-group" ng-controller="MGISDateTimeController">
 					<span class="input-group-btn mgis-input-group-date">
 						<input
 								type="text"
 								class="form-control"
 								datepicker-popup="{{format}}"
-								ng-model="searchFilter.docDate"
+								ng-model="searchFilter.docDateFrom"
 								is-open="opened"
 								datepicker-options="dateOptions"
 								date-disabled="disabled(date, mode)"
@@ -45,7 +45,26 @@
 								ng-click="open($event)"
 								ng-change="searchFilterChanged()"
 								/>
-						<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+						<button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+					</span>
+					</p>
+				</div>
+				<div class="col-sm-4">
+					<p class="input-group" ng-controller="MGISDateTimeController">
+					<span class="input-group-btn mgis-input-group-date">
+						<input
+								type="text"
+								class="form-control"
+								datepicker-popup="{{format}}"
+								ng-model="searchFilter.docDateTill"
+								is-open="opened"
+								datepicker-options="dateOptions"
+								date-disabled="disabled(date, mode)"
+								close-text="{{Close|translate}}"
+								ng-click="open($event)"
+								ng-change="searchFilterChanged()"
+								/>
+						<button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 					</span>
 					</p>
 				</div>

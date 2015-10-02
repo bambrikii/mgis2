@@ -1,29 +1,18 @@
-<div ng-controller="ISOGDSectionsController">
-	<div ng-controller="ISOGDDocumentSearchListController">
-		<isogd-document-search hide-grid-when-filter-empty="true" filter-state-changed="searchFilterChanged(state)">
-			<isgod-document-search-button label="ISOGD.EditTheDocument" class="info"
-										  document-item-click="editDocument(item.id, updateAction)"></isgod-document-search-button>
-			<isgod-document-search-button label="ISOGD.RemoveTheDocument" class="danger"
-										  document-item-click="removeDocument(item.id, updateAction)"></isgod-document-search-button>
-		</isogd-document-search>
-	</div>
+<div>
+	<breadcrumb></breadcrumb>
+	<div ng-repeat="section in sections">
+		<div class="col-sm-12" style="padding: 5px;">
+			<a ui-sref="isogd.books({sectionId:section.id})">{{section.name}}</a>
 
-	<div ng-if="showSections">
-		<breadcrumb></breadcrumb>
-		<div ng-repeat="section in sections">
-			<div class="col-sm-12" style="padding: 5px;">
-				<a ui-sref="isogd.books({sectionId:section.id})">{{section.name}}</a>
-
-				<div style="float: right;">
-					<button class="btn btn-info btn-sm" ng-click="editSection(section.id)" translate>ISOGD.EditTheSection</button>
-					<button class="btn btn-danger btn-sm" ng-click="removeSection(section.id)" translate>ISOGD.RemoveTheSection</button>
-				</div>
+			<div style="float: right;">
+				<button class="btn btn-info btn-sm" ng-click="editSection(section.id)" translate>ISOGD.EditTheSection</button>
+				<button class="btn btn-danger btn-sm" ng-click="removeSection(section.id)" translate>ISOGD.RemoveTheSection</button>
 			</div>
 		</div>
-		<div style="float: left;">
-			<button class="btn btn-info btn-sm" ng-click="addSection()" translate>ISOGD.AddASection</button>
-		</div>
-
-		<div ui-view></div>
 	</div>
+	<div style="float: left;">
+		<button class="btn btn-info btn-sm" ng-click="addSection()" translate>ISOGD.AddASection</button>
+	</div>
+
+	<div ui-view></div>
 </div>
