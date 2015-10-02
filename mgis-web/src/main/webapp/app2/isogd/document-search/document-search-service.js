@@ -2,7 +2,9 @@ angular.module("mgis.isogd.search.service", ["ngResource",
 	"mgis.error.service"
 ])
 	.constant("ISOGDDocumentSearchConstants", {
-		DATE_FORMAT: "YYYY/MM/DD"
+		DATE_FORMAT: "YYYY/MM/DD",
+		FILTER_EMPTY: "empty",
+		FILTER_FILLED: "filled"
 	})
 	.factory("ISOGDDocumentSearchService", function ($resource, $q, MGISErrorService, ISOGDDocumentSearchConstants) {
 		var res = $resource('rest/isogd/search/list.json');
@@ -77,6 +79,10 @@ angular.module("mgis.isogd.search.service", ["ngResource",
 					obj.docName = str;
 				}
 				return obj;
+			},
+			filterState: function (filter) {
+				return ((filter.section != undefined && filter.section.id > 0) || filter.docNumber > "" || filter.docDate > 0 || filter.docName > "")
+					? ISOGDDocumentSearchConstants.FILTER_FILLED : ISOGDDocumentSearchConstants.FILTER_EMPTY;
 			}
 		}
 	})

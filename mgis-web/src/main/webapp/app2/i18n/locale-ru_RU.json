@@ -38,6 +38,7 @@
   "ID": "ID",
   "Name": "Наименование",
   "Value": "Значение",
+  "ResetSearch": "Сбросить",
   "ExtendedSearch": "Расширенный поиск",
   "ISOGD.AddASection": "Добавить Раздел",
   "ISOGD.EditTheSection": "Редактировать Раздел",

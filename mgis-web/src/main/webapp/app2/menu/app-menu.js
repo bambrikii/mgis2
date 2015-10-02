@@ -8,6 +8,7 @@ angular.module("mgis.menu.main", ["ui.router", "ui.bootstrap"]) //
 			$scope.administrationMenuActive = false;
 			$scope.terrZonesMenuActive = false;
 			$scope.personsMenuActive = false;
+			$scope.addressesMenuActive = false;
 		}
 
 		$scope.isogdMenuClicked = function () {
@@ -34,8 +35,12 @@ angular.module("mgis.menu.main", ["ui.router", "ui.bootstrap"]) //
 			resetMenus();
 			$scope.personsMenuActive = true;
 		}
+		$scope.addressesMenuClicked = function () {
+			resetMenus();
+			$scope.addressesMenuActive = true;
+		}
 
 		$scope.toggleNavCollapsed = function () {
-			$scope.navCollapsed = !$scope.navCollapsed;
+			//$scope.navCollapsed = !$scope.navCollapsed;
 		}
 	});
