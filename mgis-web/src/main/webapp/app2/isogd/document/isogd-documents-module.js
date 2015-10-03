@@ -6,7 +6,7 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
 ]) //
 	.config(function ($stateProvider, $urlRouterProvider) {
 		$stateProvider //
-			.state("isogd.documents", {
+			.state("isogd.structure.documents", {
 				data: {
 					displayName: "Documents"
 				},

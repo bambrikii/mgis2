@@ -6,12 +6,12 @@
 			<div collapse="navCollapsed" class="nav-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': isogdMenuActive}">
-						<a href="#isogd" data-toggle="dropdown" role="button" aria-expanded="false" ng-click="isogdMenuClicked()">
+						<a href="#/isogd" data-toggle="dropdown" role="button" aria-expanded="false" ng-click="isogdMenuClicked()">
 							<span translate>ISOGD</span>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#/isogd" translate>ISOGD.Sections</a></li>
+							<li><a href="#/isogd/structure/" translate>ISOGD.Sections</a></li>
 							<li class="menu-item dropdown dropdown-submenu"><a href="#/isogd/classifiers"><span translate>ISOGD.Classifiers</span></a>
 								<ul class="dropdown-menu">
 									<li class="menu-item"><a ui-sref="isogd.classifiers.doctypes()" translate>ISOGD.Classifiers.Documents.Types</a>
@@ -38,7 +38,7 @@
 							<li><a href="#/persons/legal-persons" translate>Persons.Legal</a></li>
 						</ul>
 					</li>
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': addressMenuActive}">
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': addressesMenuActive}">
 						<a href="#/addresses" ng-click="addressesMenuClicked()"><span translate>Addresses</span></a>
 					</li>
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': oksMenuActive}">

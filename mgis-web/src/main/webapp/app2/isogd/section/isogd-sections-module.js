@@ -6,7 +6,7 @@ angular.module("mgis.isogd.sections", ["ui.router", "ui.bootstrap",//
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
-			.state("isogd.sections", {
+			.state("isogd.structure.sections", {
 				url: "/sections/:sectionId",
 				templateUrl: "app2/isogd/section/isogd-sections-list.htm",
 				controller: function ($scope, $rootScope, $state, $stateParams, ISOGDSectionsService, $modal, $q, MGISCommonsModalForm, ISOGClassifiersDocumentsClassesService) {

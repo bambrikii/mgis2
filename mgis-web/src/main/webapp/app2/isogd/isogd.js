@@ -9,7 +9,7 @@ angular.module("mgis.isogd", ["ui.router", "ui.bootstrap", "angularUtils.directi
 ]) //
 	.config(function ($stateProvider, $urlRouterProvider) {
 
-		$urlRouterProvider.when("/isogd/sections", "/isogd/sections/").when("/isogd", "/isogd/sections/");
+		$urlRouterProvider.when("/isogd", "/isogd/structure/sections/");
 
 		$stateProvider
 			.state("isogd", {
@@ -18,6 +18,14 @@ angular.module("mgis.isogd", ["ui.router", "ui.bootstrap", "angularUtils.directi
 					"": {
 						templateUrl: "app2/isogd/isogd.htm",
 						controller: "ISOGDCtrl"
+					}
+				}
+			})
+			.state("isogd.structure", {
+				url: "/structure",
+				views: {
+					"": {
+						templateUrl: "app2/isogd/structure.htm"
 					}
 				}
 			});
@@ -36,7 +44,7 @@ angular.module("mgis.isogd", ["ui.router", "ui.bootstrap", "angularUtils.directi
 
 				links.push({
 					text: 'ISOGD.Sections',
-					sref: 'isogd.sections()',
+					sref: 'isogd.structure.sections()',
 					active: true
 				});
 
@@ -44,20 +52,20 @@ angular.module("mgis.isogd", ["ui.router", "ui.bootstrap", "angularUtils.directi
 					ISOGDSectionsService.get(sectionId).then(function (section) {
 						links.push({
 							text: section.name,
-							sref: 'isogd.books({sectionId:' + sectionId + '})',
+							sref: 'isogd.structure.books({sectionId:' + sectionId + '})',
 							active: true
 						});
 						if (bookId) {
 							ISOGDBooksService.get(bookId).then(function (book) {
 								links.push({
 									text: book.name,
-									sref: 'isogd.volumes({sectionId:' + sectionId + ',bookId:' + bookId + '})'
+									sref: 'isogd.structure.volumes({sectionId:' + sectionId + ',bookId:' + bookId + '})'
 								});
 								if (volumeId) {
 									ISOGDVolumesService.get(volumeId).then(function (volume) {
 										links.push({
 											text: volume.name,
-											sref: 'isogd.documents({sectionId:' + sectionId + ',bookId:' + bookId + ',volumeId:' + volumeId + '})'
+											sref: 'isogd.structure.documents({sectionId:' + sectionId + ',bookId:' + bookId + ',volumeId:' + volumeId + '})'
 										});
 									})
 								}

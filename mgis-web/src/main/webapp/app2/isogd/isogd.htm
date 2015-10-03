@@ -1,16 +1,2 @@
 <h3><span translate>ISOGD</span></h3>
-<div ng-controller="ISOGDSectionsController">
-	<div ng-controller="ISOGDDocumentSearchListController">
-		<isogd-document-search hide-grid-when-filter-empty="true" filter-state-changed="searchFilterChanged(state)">
-			<isgod-document-search-button label="ISOGD.EditTheDocument" class="info"
-										  document-item-click="editDocument(item.id, updateAction)"></isgod-document-search-button>
-			<isgod-document-search-button label="ISOGD.RemoveTheDocument" class="danger"
-										  document-item-click="removeDocument(item.id, updateAction)"></isgod-document-search-button>
-		</isogd-document-search>
-	</div>
-
-	<div ng-if="showSections">
-		<div ui-view></div>
-	</div>
-
-</div>
+<div ui-view></div>

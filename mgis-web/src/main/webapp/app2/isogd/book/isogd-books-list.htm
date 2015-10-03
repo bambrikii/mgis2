@@ -2,7 +2,7 @@
 
 <div ng-repeat="book in books">
     <div class="col-sm-12" style="padding: 5px;">
-        <a ui-sref="isogd.volumes({sectionId: stateParams.sectionId, bookId:book.id})">{{book.name}}</a>
+        <a ui-sref="isogd.structure.volumes({sectionId: stateParams.sectionId, bookId:book.id})">{{book.name}}</a>
 
         <div style="float: right">
             <button class="btn btn-info btn-sm" ng-click="editBook(book.id)" translate>ISOGD.EditTheBook</button>
