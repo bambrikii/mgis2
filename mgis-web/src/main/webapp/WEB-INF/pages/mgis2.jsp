@@ -110,8 +110,13 @@
 	<script type="text/javascript" src="app2/address/address-module.js"></script>
 	<script type="text/javascript" src="app2/address/address-selector/address-selector-component.js"></script>
 
-	<script type="text/javascript" src="app2/settings/gis/gis-server-module.js"></script>
-	<script type="text/javascript" src="app2/settings/gis/gis-server-service.js"></script>
+	<!-- GEO Modules -->
+	<script type="text/javascript" src="app2/geo/geo.js"></script>
+	<script type="text/javascript" src="app2/geo/geo-server/geo-server-module.js"></script>
+	<script type="text/javascript" src="app2/geo/geo-server/geo-server-service.js"></script>
+	<script type="text/javascript" src="app2/geo/coordinate-system/coordinate-system-module.js"></script>
+	<script type="text/javascript" src="app2/geo/coordinate-system/coordinate-system-service.js"></script>
+	<script type="text/javascript" src="app2/geo/spatial/spatial-data-module.js"></script>
 
 	<script type="text/javascript" src="app2/settings/settings.js"></script>
 

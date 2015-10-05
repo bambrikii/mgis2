@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.web.settings;
+package ru.sovzond.mgis2.web.geo;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,9 @@ import javax.transaction.Transactional;
  * Created by Alexander Arakelyan on 16.09.15.
  */
 @RestController
-@RequestMapping("/settings/gis/servers")
+@RequestMapping("/geo/geo-servers")
 @Scope("session")
-public class GisServerRESTService {
+public class GeoServerRESTService {
 
 	@Autowired
 	private GisServerBean layerBean;

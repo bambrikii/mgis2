@@ -1,0 +1,27 @@
+<div>
+	Spatial Data Component:
+	{{spatialGroups}}
+	<div>
+		<ul>
+			<li ng-repeat="group in spatialGroups">
+				{{group.id}} {{group.coordinateSystem.code}}
+				<ul>
+					<li ng-repeat="element in group.spatialElements">
+						{{element.position}}:
+						<ul>
+							<li ng-repeat="coordinate in element.coordinates">
+								{{coordinate.position}}: {{coordinate.x}} {{coordinate.y}}
+								<button class="btn btn-info" ng-click="editCoordinate(coordinate)" translate>GEO.Spatial.Coordinate.Edit</button>
+							</li>
+						</ul>
+						<button class="btn btn-info" ng-click="addCoordinate(element)" translate>GEO.Spatial.Coordinate.Add</button>
+						<button class="btn btn-info" ng-click="editElement(element)" translate>GEO.Spatial.Element.Edit</button>
+					</li>
+				</ul>
+				<button class="btn btn-info" ng-click="addElement(group)" translate>GEO.Spatial.Element.Add</button>
+				<button class="btn btn-info" ng-click="editGroup(group)" translate>GEO.Spatial.Group.Edit</button>
+			</li>
+			<button class="btn btn-info" ng-click="addGroup({})" translate>GEO.Spatial.Group.Add</button>
+		</ul>
+	</div>
+</div>

@@ -70,7 +70,6 @@ angular.module("mgis.commons.crud", [
 				}
 
 				$scope.list = function () {
-					console.log($scope.filter);
 					$scope.listHandler({
 						filter: $scope.filter,
 						first: ($scope.currentPage - 1) * $scope.itemsPerPage,

@@ -1,8 +1,8 @@
 angular.module("mgis.lands.land.map", [
-	"mgis.settings.gis.server.service",
+	"mgis.geo.geo-server.service",
 	"mgis.error.service"
 ])
-	.factory("LandsLandMapService", function (MGISSettingsGisServerService, MGISErrorService) {
+	.factory("LandsLandMapService", function (GEOGeoServerService, MGISErrorService) {
 		var container = {
 			map: undefined,
 			mapElement: undefined,
@@ -50,7 +50,7 @@ angular.module("mgis.lands.land.map", [
 		}
 
 		function loadSettings() {
-			MGISSettingsGisServerService.get("", 0, 0, "local-wfs").then(function (data) {
+			GEOGeoServerService.get("", 0, 0, "local-wfs").then(function (data) {
 				if (data.totalNumberOfItems == 1) {
 					container.localWfsUrl = data.list[0].url;
 				} else {
@@ -102,7 +102,7 @@ angular.module("mgis.lands.land.map", [
 			checkMap: function (mapContainer, landId, drawCreatedEvent) {
 				container.landId = landId;
 				if (container.map == undefined) {
-					MGISSettingsGisServerService.get("", 0, 0, "local-wfs").then(function (data) {
+					GEOGeoServerService.get("", 0, 0, "local-wfs").then(function (data) {
 						if (data.totalNumberOfItems == 1) {
 							container.localWfsUrl = data.list[0].url;
 							var mapElement = document.createElement("div");

@@ -3,13 +3,15 @@ package ru.sovzond.mgis2.web.lands;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
+import ru.sovzond.mgis2.address.AddressBean;
 import ru.sovzond.mgis2.common.classifiers.ExecutivePersonBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+import ru.sovzond.mgis2.geo.SpatialDataBean;
+import ru.sovzond.mgis2.geo.SpatialGroup;
 import ru.sovzond.mgis2.isogd.business.DocumentBean;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.national_classifiers.*;
-import ru.sovzond.mgis2.address.AddressBean;
 import ru.sovzond.mgis2.persons.PersonBean;
 import ru.sovzond.mgis2.registers.lands.Land;
 import ru.sovzond.mgis2.registers.lands.LandArea;
@@ -100,6 +102,9 @@ public class LandRESTController implements Serializable {
 
 	@Autowired
 	private DocumentBean documentBean;
+
+	@Autowired
+	private SpatialDataBean spatialDataBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -248,6 +253,16 @@ public class LandRESTController implements Serializable {
 			control2.setInspectionType(control.getInspectionType() != null ? landControlInspectionTypeBean.load(control.getInspectionType().getId()) : null);
 			control2.setPenaltyAmount(control.getPenaltyAmount());
 			control2.setTimelineForViolations(control.getTimelineForViolations());
+		}
+
+		SpatialGroup spatialGroup = land.getSpatialData();
+		if (spatialGroup != null) {
+			SpatialGroup spatialGroup2 = land2.getSpatialData();
+			if (spatialGroup2 == null) {
+				spatialGroup2 = new SpatialGroup();
+			}
+			spatialGroup2 = spatialDataBean.save(spatialGroup, spatialGroup2);
+			land2.setSpatialData(spatialGroup2);
 		}
 
 		landBean.save(land2);

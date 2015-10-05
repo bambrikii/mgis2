@@ -1,0 +1,28 @@
+<div class="modal-header">
+	<h3 class="modal-title"><span translate>GEO.SpatialData.Element</span>: {{item.code}}</h3>
+</div>
+
+<div class="modal-body">
+
+	<form name="editForm" class="" novalidate>
+		<div class="form-group row"
+			 ng-class="{'has-error': editForm.position.$invalid && (!editForm.position.$pristine || editForm.position.$touched)}">
+			<div class="col-sm-4">
+				<label translate>Code</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.position" required/>
+
+				<p ng-show="editForm.position.$invalid && (!editForm.position.$pristine || editForm.position.$touched)" class="help-block"
+				   translate>Position.Required</p>
+			</div>
+		</div>
+
+	</form>
+
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

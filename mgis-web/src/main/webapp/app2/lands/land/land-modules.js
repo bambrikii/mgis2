@@ -7,7 +7,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.persons.person",
 	"mgis.lands.land.map",
 	"mgis.isogd.document.selector",
-	"mgis.address.selector"
+	"mgis.address.selector",
+	"mgis.geo.spatial.data"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -66,11 +67,6 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 																modalScope.availableAddressMunicipalEntities = data.list;
 															});
 														}
-														if (modalScope.land.addressOfMunicipalEntity) {
-															NcOKTMOService.get(modalScope.land.addressOfMunicipalEntity.id).then(function (data) {
-																modalScope.availableAddressMunicipalEntities.push(data);
-															});
-														}
 
 														// NearestMunicipalEntities
 														modalScope.availableNearestMunicipalEntities = new Array();
@@ -79,22 +75,12 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 																modalScope.availableNearestMunicipalEntities = data.list;
 															});
 														}
-														if (modalScope.land.characteristics && modalScope.land.characteristics.nearestMunicipalEntity) {
-															NcOKTMOService.get(modalScope.land.characteristics.nearestMunicipalEntity.id).then(function (data) {
-																modalScope.availableNearestMunicipalEntities.push(data);
-															});
-														}
 
 														// TerritorialZones
 														modalScope.availableAllowedUsageByTerritorialZones = new Array();
 														modalScope.refreshAvailableAllowedUsageByTerritorialZones = function (name) {
 															TerrZonesZoneService.get("", 0, 15, name).then(function (availableTerritorialZones) {
 																modalScope.availableAllowedUsageByTerritorialZones = availableTerritorialZones.list;
-															});
-														}
-														if (modalScope.land.allowedUsageByTerritorialZone && modalScope.land.allowedUsageByTerritorialZone.id) {
-															TerrZonesZoneService.get(modalScope.land.allowedUsageByTerritorialZone.id).then(function (data) {
-																modalScope.availableAllowedUsageByTerritorialZones.push(data);
 															});
 														}
 

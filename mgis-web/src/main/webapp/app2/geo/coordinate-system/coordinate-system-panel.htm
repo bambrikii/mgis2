@@ -1,0 +1,16 @@
+<h4 translate>GEO.CoordinateSystems</h4>
+<div ng-controller="GEOCoordinateSystemsController">
+	<mgis-commons-crud-panel
+
+			list-item-template-url="'app2/geo/coordinate-system/coordinate-system-list-item.htm'"
+			edit-form-template-url="'app2/geo/coordinate-system/coordinate-system-edit-form.htm'"
+			search-form-template-url="'app2/geo/coordinate-system/coordinate-system-search.htm'"
+
+			create-handler="createHandler(scope, onPrepare)"
+			read-handler="readHandler(id, scope, onPrepare)"
+			update-handler="updateHandler(item, onComplete)"
+			delete-handler="deleteHandler(id, onComplete)"
+			list-handler="listHandler(filter, first, max, onComplete)"
+
+			></mgis-commons-crud-panel>
+</div>

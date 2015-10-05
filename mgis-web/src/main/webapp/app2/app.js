@@ -9,7 +9,8 @@ angular.module("mgis", //
 		"mgis.address",
 		"mgis.error",
 		"mgis.settings",
-		"mgis.test"
+		"mgis.test",
+		"mgis.geo"
 	])
 	.config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
 		$translateProvider.preferredLanguage('ru_RU');

@@ -3,6 +3,7 @@ package ru.sovzond.mgis2.registers.lands;
 import com.vividsolutions.jts.geom.MultiPolygon;
 import org.hibernate.annotations.Type;
 import ru.sovzond.mgis2.address.Address;
+import ru.sovzond.mgis2.geo.SpatialGroup;
 import ru.sovzond.mgis2.registers.lands.characteristics.LandCharacteristics;
 import ru.sovzond.mgis2.registers.lands.control.LandControl;
 import ru.sovzond.mgis2.registers.lands.includes.LandIncludedObjects;
@@ -79,6 +80,10 @@ public class Land implements Cloneable {
 	@Type(type = "org.hibernate.spatial.GeometryType")
 	@Column(name = "geometry")
 	private MultiPolygon geometry;
+
+	@ManyToOne
+	@JoinColumn(name = "spatial_data_id")
+	private SpatialGroup spatialData;
 
 	public Long getId() {
 		return id;
@@ -216,6 +221,22 @@ public class Land implements Cloneable {
 		this.control = control;
 	}
 
+	public MultiPolygon getGeometry() {
+		return geometry;
+	}
+
+	public void setGeometry(MultiPolygon geometry) {
+		this.geometry = geometry;
+	}
+
+	public SpatialGroup getSpatialData() {
+		return spatialData;
+	}
+
+	public void setSpatialData(SpatialGroup spatialData) {
+		this.spatialData = spatialData;
+	}
+
 	@Override
 	public Land clone() {
 		Land land = new Land();
@@ -233,15 +254,8 @@ public class Land implements Cloneable {
 		land.setCharacteristics(characteristics != null ? characteristics.clone() : null);
 		land.setControl(control != null ? control.clone() : null);
 		land.getLandAreas().addAll(landAreas.stream().map(landArea1 -> landArea1.clone()).collect(Collectors.toList()));
-		// TODO: complete the clone procedure
+		land.setSpatialData(spatialData != null ? spatialData.clone() : null);
 		return land;
 	}
 
-	public MultiPolygon getGeometry() {
-		return geometry;
-	}
-
-	public void setGeometry(MultiPolygon geometry) {
-		this.geometry = geometry;
-	}
 }
