@@ -13,16 +13,16 @@ public class SpatialDataBean {
 	private CoordinateSystemBean coordinateSystemBean;
 
 	@Autowired
-	private SpatialGroupBean coordinateBean;
+	private CoordinateBean coordinateBean;
 
 	@Autowired
-	private SpatialGroupBean spatialElementBean;
+	private SpatialElementBean spatialElementBean;
 
 	@Autowired
 	private SpatialGroupBean spatialGroupBean;
 
 	public SpatialGroup save(SpatialGroup source, SpatialGroup persistent) {
-		if (persistent == null || persistent.getId() == null && persistent.getId() == 0) {
+		if (persistent == null || persistent.getId() == null || persistent.getId() == 0) {
 			persistent = new SpatialGroup();
 		}
 		CoordinateSystem sourceCoordinateSystem = source.getCoordinateSystem();
@@ -42,11 +42,13 @@ public class SpatialDataBean {
 				coordinate2.setX(coordinate.getX());
 				coordinate2.setY(coordinate.getY());
 				spatialElement2.getCoordinates().add(coordinate2);
+				coordinate2.setSpatialElement(spatialElement2);
 			}
 			persistent.getSpatialElements().add(spatialElement2);
+			spatialElement2.setSpatialGroup(persistent);
 		}
 		spatialGroupBean.save(persistent);
-		throw new IllegalArgumentException();
+		return persistent;
 	}
 
 }

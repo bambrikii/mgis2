@@ -22,7 +22,6 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 											   MGISCommonsModalForm,
 											   NcOKATOService,
 											   NcOKTMOService,
-											   //NcTerritorialZoneService,
 											   NcLandAllowedUsageService,
 											   NcLandCategoryService,
 											   NcOKFSService,
@@ -36,7 +35,6 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 											   LandsInspectionSubjectService,
 											   TerrZonesZoneService) {
 		function editItem0(modalScope, updateGrid) {
-			//LandsLandCRUDService.editItem(modalScope, updateGrid);
 			LandsInspectionKindService.get().then(function (inspectionKinds) {
 				modalScope.availableInspectionKinds = inspectionKinds.list;
 				LandsInspectionTypeService.get().then(function (inspectionTypes) {

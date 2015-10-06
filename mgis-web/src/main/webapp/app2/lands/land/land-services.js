@@ -112,7 +112,8 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 						inspectionType: control.inspectionType ? {id: control.inspectionType.id} : null,
 						penaltyAmount: control.penaltyAmount,
 						timelineForViolations: control.timelineForViolations
-					}
+					},
+					spatialData: item.spatialData
 				};
 				res.save({id: item.id}, land, function (data) {
 					deferred.resolve(data);
