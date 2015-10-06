@@ -61,4 +61,44 @@ public class SectionRESTController implements Serializable {
 	public void delete(@PathVariable Long id) {
 		isogdBean.delete(isogdBean.readSection(id));
 	}
+
+	@RequestMapping(value = "/swap-orders", method = RequestMethod.POST)
+	@Transactional
+	public void swapOrders(@RequestBody IdPair pair) {
+		Long sourceId = pair.getSourceId();
+		Long targetId = pair.getTargetId();
+		Section source = isogdBean.load(sourceId);
+		Section target = isogdBean.load(targetId);
+		Long sourceOrder = (source.getSortOrder() == null || source.getSortOrder() == 0) ? sourceId : source.getSortOrder();
+		Long targetOrder = (target.getSortOrder() == null || target.getSortOrder() == 0) ? targetId : target.getSortOrder();
+
+		source.setSortOrder(targetOrder);
+		target.setSortOrder(sourceOrder);
+		isogdBean.save(source);
+		isogdBean.save(target);
+	}
+
+	/**
+	 * Created by Alexander Arakelyan on 06.10.15.
+	 */
+	public static class IdPair {
+		private Long sourceId;
+		private Long targetId;
+
+		public void setSourceId(Long sourceId) {
+			this.sourceId = sourceId;
+		}
+
+		public Long getSourceId() {
+			return sourceId;
+		}
+
+		public void setTargetId(Long targetId) {
+			this.targetId = targetId;
+		}
+
+		public Long getTargetId() {
+			return targetId;
+		}
+	}
 }

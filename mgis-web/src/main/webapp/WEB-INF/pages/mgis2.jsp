@@ -54,6 +54,7 @@
 	<script type="text/javascript" src="bower_components/terraformer/terraformer.js"></script>
 	<script type="text/javascript" src="bower_components/terraformer-wkt-parser/terraformer-wkt-parser.js"></script>
 	<script type="text/javascript" src="bower_components/moment/min/moment-with-locales.js"></script>
+	<script type="text/javascript" src="bower_components/ngDraggable/ngDraggable.js"></script>
 
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>
