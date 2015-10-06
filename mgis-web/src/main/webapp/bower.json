@@ -38,6 +38,7 @@
     "marionette": "~2.4.1",
     "moment": "momentjs#~2.10.6",
     "ng-file-upload": "~5.0.9",
+    "ngDraggable": "~0.1.8",
     "require": "*",
     "requirejs": "~2.1.17",
     "requirejs-text": "~2.0.14",
