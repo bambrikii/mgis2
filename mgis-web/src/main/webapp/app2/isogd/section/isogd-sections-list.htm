@@ -1,7 +1,8 @@
 <div>
 	<breadcrumb></breadcrumb>
 	<div ng-repeat="section in sections">
-		<div class="col-sm-12" style="padding: 5px;">
+		<div class="col-sm-12" style="padding: 5px;" ng-drag="true" ng-drop="true" ng-drag-data="section"
+			 ng-drop-success="onSectionDropComplete($data,$event, section)">
 			<a ui-sref="isogd.structure.books({sectionId:section.id})">{{section.name}}</a>
 
 			<div style="float: right;">

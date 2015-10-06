@@ -1,4 +1,4 @@
-angular.module("mgis.isogd.sections", ["ui.router", "ui.bootstrap",//
+angular.module("mgis.isogd.sections", ["ui.router", "ui.bootstrap", "ngDraggable", //
 	"mgis.commons",
 	"mgis.isogd.sections.service",
 	"mgis.isogd.classifiers.documents.structure.services",
@@ -24,7 +24,7 @@ angular.module("mgis.isogd.sections", ["ui.router", "ui.bootstrap",//
 								$modalInstance.close();
 								updateGrid();
 							});
-						});
+						}, {windowClass: "mgis-crud-modal-form"});
 					}
 
 					updateGrid();
@@ -61,6 +61,13 @@ angular.module("mgis.isogd.sections", ["ui.router", "ui.bootstrap",//
 								});
 							}
 						);
+					}
+					$scope.onSectionDropComplete = function ($data, $event, section) {
+						var sourceSection = $data;
+						var targetSection = section;
+						ISOGDSectionsService.swapOrders(sourceSection.id, targetSection.id).then(function () {
+							updateGrid();
+						});
 					}
 				}
 			});

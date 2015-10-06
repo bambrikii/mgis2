@@ -11,68 +11,80 @@ import java.util.stream.Collectors;
  * @author Alexander Arakelyan
  */
 @Entity
-@Table(name = "isogd_section")
+@Table(name = "isogd_section", indexes = {@Index(name = "isogd_section_sortorder_ix", columnList = "sort_order")})
 public class Section implements Cloneable {
 
-    @Id
-    @SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-    @Column
-    private Long id;
+	@Id
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+	@Column
+	private Long id;
 
-    @Column
-    private String name;
+	@Column
+	private String name;
 
-    @OneToMany(mappedBy = "section", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
-    private List<Book> books = new ArrayList<>();
+	@Column(name = "sort_order")
+	private Long sortOrder;
 
-    @ManyToOne
-    private DocumentClass documentClass;
+	@OneToMany(mappedBy = "section", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+	private List<Book> books = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
+	@ManyToOne
+	private DocumentClass documentClass;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public List<Book> getBooks() {
-        return books;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
+	public List<Book> getBooks() {
+		return books;
+	}
 
-    public DocumentClass getDocumentClass() {
-        return documentClass;
-    }
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
 
-    public void setDocumentClass(DocumentClass documentClass) {
-        this.documentClass = documentClass;
-    }
+	public DocumentClass getDocumentClass() {
+		return documentClass;
+	}
 
-    public Section clone() {
-        Section section = new Section();
-        section.setId(id);
-        section.setName(name);
-        section.setDocumentClass(documentClass == null ? null : documentClass.clone());
-        section.setBooks(books.stream().map(book -> {
-            Book book2 = new Book();
-            book2.setId(book.getId());
-            book2.setName(book.getName());
-            return book2;
-        }).collect(Collectors.toList()));
-        return section;
-    }
+	public void setDocumentClass(DocumentClass documentClass) {
+		this.documentClass = documentClass;
+	}
+
+	public Long getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(Long sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+
+	public Section clone() {
+		Section section = new Section();
+		section.setId(id);
+		section.setName(name);
+		section.setDocumentClass(documentClass == null ? null : documentClass.clone());
+		section.setSortOrder(sortOrder);
+		section.setBooks(books.stream().map(book -> {
+			Book book2 = new Book();
+			book2.setId(book.getId());
+			book2.setName(book.getName());
+			return book2;
+		}).collect(Collectors.toList()));
+		return section;
+	}
 
 }
