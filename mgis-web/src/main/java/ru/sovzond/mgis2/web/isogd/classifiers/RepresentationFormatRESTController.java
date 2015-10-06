@@ -27,8 +27,8 @@ public class RepresentationFormatRESTController implements Serializable {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<RepresentationFormat> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		PageableContainer<RepresentationFormat> pager = representationFormatBean.list(first, max);
+	public PageableContainer<RepresentationFormat> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "code") String orderBy) {
+		PageableContainer<RepresentationFormat> pager = representationFormatBean.list(orderBy, first, max);
 		return new PageableContainer<>(pager.getList().stream().map(RepresentationFormat::clone).collect(Collectors.toList()), pager.getTotalNumberOfItems(), first, max);
 	}
 

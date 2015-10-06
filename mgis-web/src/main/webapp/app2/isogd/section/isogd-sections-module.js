@@ -24,7 +24,7 @@ angular.module("mgis.isogd.sections", ["ui.router", "ui.bootstrap",//
 								$modalInstance.close();
 								updateGrid();
 							});
-						});
+						}, {windowClass: "mgis-crud-modal-form"});
 					}
 
 					updateGrid();

@@ -29,8 +29,8 @@ public class RepresentationFormRESTController implements Serializable {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<RepresentationForm> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		PageableContainer<RepresentationForm> pager = representationFormBean.list(first, max);
+	public PageableContainer<RepresentationForm> list(@RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max, @RequestParam(defaultValue = "code") String orderBy) {
+		PageableContainer<RepresentationForm> pager = representationFormBean.list(orderBy, first, max);
 		return new PageableContainer<>(pager.getList().stream().map(representationForm -> representationForm.clone()).collect(Collectors.toList()), pager.getTotalNumberOfItems(), first, max);
 	}
 

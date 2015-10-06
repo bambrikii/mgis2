@@ -20,9 +20,10 @@ angular.module("mgis.isogd.sections.service", ["ui.router", 'ngResource',
 			},
 			save: function (section) {
 				var deferred = $q.defer();
-				res.save({id: section.id,}, {
+				res.save({id: section.id}, {
 					id: section.id,
 					name: section.name,
+					sortOrder: section.sortOrder,
 					documentClass: section.documentClass ? {id: section.documentClass.id} : null
 				}, function (data) {
 					deferred.resolve(data);
