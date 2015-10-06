@@ -68,8 +68,6 @@ angular.module("mgis.isogd.sections", ["ui.router", "ui.bootstrap", "ngDraggable
 						ISOGDSectionsService.swapOrders(sourceSection.id, targetSection.id).then(function () {
 							updateGrid();
 						});
-						console.log(arguments);
-
 					}
 				}
 			});
