@@ -32,6 +32,7 @@ public class DocumentClass implements Cloneable {
 	private String name;
 
 	@OneToMany(mappedBy = "documentClass", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
+	@OrderBy("code")
 	private List<DocumentObject> documentObjects = new ArrayList<>();
 
 	@Column
