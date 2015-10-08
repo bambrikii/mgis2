@@ -18,7 +18,7 @@ public class SpatialGroup implements Cloneable {
 	@Column
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "coord_system_id")
 	private CoordinateSystem coordinateSystem;
 

@@ -5,17 +5,17 @@ angular.module("mgis.geo.spatial.data", [
 		return {
 			restrict: "E",
 			scope: {
-				spatialGroups: "="
+				spatialGroup: "="
 			},
 			templateUrl: "app2/geo/spatial/spatial-data-component.htm",
 			controller: function ($scope, $rootScope, MGISCommonsModalForm) {
-				if (!$scope.spatialGroups) {
-					$scope.spatialGroups = new Array();
+				if (!$scope.spatialGroup) {
+					$scope.spatialGroup = {};
 				}
 				var editCoordinateFunction = function (item, postAction) {
 					var modalScope = $rootScope.$new();
-					modalScope.item = {}
-					angular.copy(item, modalScope.coordinate);
+					modalScope.item = {};
+					angular.copy(item, modalScope.item);
 					MGISCommonsModalForm.edit("app2/geo/spatial/coordinate-form.htm", modalScope, function (scope, modalInstance) {
 						modalInstance.close();
 						postAction(scope.item, item);
@@ -23,20 +23,10 @@ angular.module("mgis.geo.spatial.data", [
 				};
 				var editElementFunction = function (item, postAction) {
 					var modalScope = $rootScope.$new();
-					modalScope.item = {}
+					modalScope.item = {};
 					angular.copy(item, modalScope.item);
 					modalScope.editCoordinate = editCoordinateFunction;
 					MGISCommonsModalForm.edit("app2/geo/spatial/spatial-element-form.htm", modalScope, function (scope, modalInstance) {
-						modalInstance.close();
-						postAction(scope.item, item);
-					});
-				};
-				var editGroupFunction = function (item, postAction) {
-					var modalScope = $rootScope.$new();
-					modalScope.item = {}
-					angular.copy(item, modalScope.item);
-					modalScope.editElement = editElementFunction;
-					MGISCommonsModalForm.edit("app2/geo/spatial/spatial-group-form.htm", modalScope, function (scope, modalInstance) {
 						modalInstance.close();
 						postAction(scope.item, item);
 					});
@@ -53,30 +43,34 @@ angular.module("mgis.geo.spatial.data", [
 						item.coordinates.push(item2);
 					})
 				}
+				$scope.removeCoordinate = function (element, coordinate) {
+					for (var i in element.coordinates) {
+						if (coordinate == element.coordinates[i]) {
+							element.coordinates.splice(i, 1);
+						}
+					}
+				}
 
 				$scope.editElement = function (item) {
 					editElementFunction(item, function (scopeItem, item2) {
 						angular.copy(scopeItem, item2);
 					});
 				}
-				$scope.addElement = function (group) {
+				$scope.addElement = function () {
 					editElementFunction({coordinates: new Array()}, function (scopeItem, item2) {
 						angular.copy(scopeItem, item2);
-						group.spatialElements.push(item2);
+						if (!$scope.spatialGroup.spatialElements) {
+							$scope.spatialGroup.spatialElements = new Array();
+						}
+						$scope.spatialGroup.spatialElements.push(item2);
 					});
 				}
-
-				// Group
-				$scope.editGroup = function (item) {
-					editGroupFunction(item, function (scopeItem, item2) {
-						angular.copy(scopeItem, item2);
-					});
-				}
-				$scope.addGroup = function () {
-					editGroupFunction({spatialElements: new Array()}, function (scopeItem, item2) {
-						angular.copy(scopeItem, item2);
-						$scope.spatialGroups.push(item2)
-					});
+				$scope.removeElement = function (element) {
+					for (var i in $scope.spatialGroup.spatialElements) {
+						if (element == $scope.spatialGroup.spatialElements[i]) {
+							$scope.spatialGroup.spatialElements.splice(i, 1);
+						}
+					}
 				}
 			}
 		}
