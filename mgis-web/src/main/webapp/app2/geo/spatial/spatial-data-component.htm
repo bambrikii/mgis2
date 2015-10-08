@@ -1,23 +1,36 @@
 <div>
-	Spatial Data Component:
 	<h3>{{spatialGroup.coortinateSystem.code}}</h3>
 
-	<div ng-repeat="element in spatialGroup.spatialElements">
-		<div><h4><span translate>SortOrder</span>: {{element.position}}</h4></div>
-		<div ng-repeat="coordinate in element.coordinates">
-			<div class="row">
-				<div class="col-sm-6">{{coordinate.position}}: {{coordinate.x}} {{coordinate.y}}</div>
-				<div class="col-sm-6">
-					<button class="btn btn-warning" ng-click="editCoordinate(coordinate)" translate>GEO.Spatial.Coordinate.Edit</button>
-					<button class="btn btn-danger" ng-click="removeCoordinate(element, coordinate)" translate>GEO.Spatial.Coordinate.Remove</button>
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label translate>GEO.CoordinateSystem</label>
+		</div>
+
+		<div class="col-sm-8">
+			<p class="input-group input-group-sm">
+				<multiselect ng-model="spatialGroup.coordinateSystem"
+							 options="c.code for c in availableCoordinateSystems"
+							 data-multiple="false"
+							 data-compare-by="id"
+							 scroll-after-rows="15">
+				</multiselect>
+			</p>
+		</div>
+	</div>
+
+	<div ng-repeat="element in spatialGroup.spatialElements" class="row" style="vertical-align: top;">
+		<div class="col-sm-2"><h4><span translate>SortOrder</span>: {{element.position}}</h4></div>
+		<div class="col-sm-6">
+			<div ng-repeat="coordinate in element.coordinates">
+				<div class="row">
+					<div class="col-sm-12">{{coordinate.position}}: {{coordinate.x}} {{coordinate.y}}</div>
 				</div>
 			</div>
 		</div>
-		<div>
-			<button class="btn btn-info" ng-click="addCoordinate(element)" translate>GEO.Spatial.Coordinate.Add</button>
-			<button class="btn btn-warning" ng-click="editElement(element)" translate>GEO.Spatial.Element.Edit</button>
-			<button class="btn btn-danger" ng-click="removeElement(element)" translate>GEO.Spatial.Element.Remove</button>
+		<div class="col-sm-4">
+			<button class="btn btn-sm btn-warning" ng-click="editElement(element)" translate>GEO.Spatial.Element.Edit</button>
+			<button class="btn btn-sm btn-danger" ng-click="removeElement(element)" translate>GEO.Spatial.Element.Remove</button>
 		</div>
 	</div>
-	<button class="btn btn-info" ng-click="addElement()" translate>GEO.Spatial.Element.Add</button>
+	<button class="btn btn-sm btn-info" ng-click="addElement()" translate>GEO.Spatial.Element.Add</button>
 </div>

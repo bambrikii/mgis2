@@ -26,12 +26,10 @@ public class SpatialDataBean {
 			persistent = new SpatialGroup();
 		}
 		CoordinateSystem sourceCoordinateSystem = source.getCoordinateSystem();
-		if (sourceCoordinateSystem == null) {
+		if (sourceCoordinateSystem == null || sourceCoordinateSystem.getId() == null || sourceCoordinateSystem.getId() == 0) {
 			throw new IllegalArgumentException("GEO_COORDINATE_SYSTEM_PROPERTY_REQUIRED");
 		}
-		if (sourceCoordinateSystem.getId() == null || sourceCoordinateSystem.getId() == 0) {
-			persistent.setCoordinateSystem(coordinateSystemBean.load(sourceCoordinateSystem.getId()));
-		}
+		persistent.setCoordinateSystem(coordinateSystemBean.load(sourceCoordinateSystem.getId()));
 		persistent.getSpatialElements().clear();
 		for (SpatialElement spatialElement : source.getSpatialElements()) {
 			SpatialElement spatialElement2 = new SpatialElement();

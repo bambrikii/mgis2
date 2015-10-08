@@ -1,20 +1,37 @@
 <div class="modal-header">
-	<h3 class="modal-title"><span translate>GEO.SpatialData.Element</span>: {{item.code}}</h3>
+	<h3 class="modal-title"><span translate>GEO.Spatial.Element</span>: {{item.code}}</h3>
 </div>
 
 <div class="modal-body">
 
-	<form name="editForm" class="" novalidate>
+	<form name="editForm" class="" novalidate ng-controller="GEOSpatialCoordinateController">
 		<div class="form-group row"
 			 ng-class="{'has-error': editForm.position.$invalid && (!editForm.position.$pristine || editForm.position.$touched)}">
 			<div class="col-sm-4">
-				<label translate>Code</label>
+				<label translate>SortOrder</label>
 			</div>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" ng-model="item.position" required/>
 
 				<p ng-show="editForm.position.$invalid && (!editForm.position.$pristine || editForm.position.$touched)" class="help-block"
-				   translate>Position.Required</p>
+				   translate>SortOrder.Required</p>
+			</div>
+		</div>
+
+		<div>
+			<div ng-repeat="coordinate in item.coordinates">
+				<div class="row mgis-document-selector-list-item ">
+					<div class="col-sm-5">{{coordinate.position}}: {{coordinate.x}} {{coordinate.y}}</div>
+					<div class="col-sm-7">
+						<button class="btn btn-sm btn-warning" ng-click="editCoordinate(coordinate)" translate>GEO.Spatial.Coordinate.Edit</button>
+						<button class="btn btn-sm btn-danger" ng-click="removeCoordinate(coordinate)" translate>
+							GEO.Spatial.Coordinate.Remove
+						</button>
+					</div>
+				</div>
+			</div>
+			<div ng-if="item.id || !editForm.$invalid">
+				<button class="btn btn-sm btn-info" ng-click="addCoordinate(item)" translate>GEO.Spatial.Coordinate.Add</button>
 			</div>
 		</div>
 
