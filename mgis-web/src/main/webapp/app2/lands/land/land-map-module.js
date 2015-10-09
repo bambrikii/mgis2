@@ -49,19 +49,6 @@ angular.module("mgis.lands.land.map", [
 			});
 		}
 
-		function loadSettings() {
-			GEOGeoServerService.get("", 0, 0, "local-wfs").then(function (data) {
-				if (data.totalNumberOfItems == 1) {
-					container.localWfsUrl = data.list[0].url;
-				} else {
-					MGISErrorService.handleError({
-						status: "GIS_SERVER_CONFIGURATION_REQUIRED",
-						statusText: "GIS Server <local-wfs> should be configured."
-					});
-				}
-			});
-		}
-
 		function createMap() {
 			var map = container.map;
 			var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

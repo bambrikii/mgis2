@@ -1,6 +1,7 @@
 angular.module("mgis.geo", ["ui.router",
 	"mgis.geo.geo-server",
-	"mgis.geo.coordinate-system"
+	"mgis.geo.coordinate-system",
+	"mgis.geo.map"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
