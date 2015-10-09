@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page session="true" %>
+<%@page session="true" pageEncoding="UTF-8" %>
 <html>
 <head>
 
@@ -55,6 +55,12 @@
 	<script type="text/javascript" src="bower_components/terraformer-wkt-parser/terraformer-wkt-parser.js"></script>
 	<script type="text/javascript" src="bower_components/moment/min/moment-with-locales.js"></script>
 	<script type="text/javascript" src="bower_components/ngDraggable/ngDraggable.js"></script>
+
+	<!-- leaflet-plugins -->
+	<%--<script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>--%>
+	<script src="app2/geo/google-maps-api.js"></script>
+	<script src="bower_components/leaflet-plugins/layer/tile/Google.js"></script>
+	<script src="bower_components/leaflet-plugins/layer/tile/Bing.js"></script>
 
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>
@@ -118,8 +124,8 @@
 	<script type="text/javascript" src="app2/geo/coordinate-system/coordinate-system-module.js"></script>
 	<script type="text/javascript" src="app2/geo/coordinate-system/coordinate-system-service.js"></script>
 	<script type="text/javascript" src="app2/geo/spatial/spatial-data-module.js"></script>
-	<link type="text/css" rel="stylesheet" href="app2/geo/map/leaflet-nested-layers-control.js">
-	<script type="text/javascript" src="app2/geo/map/leaflet-nested-layers-control.js"></script>
+	<link type="text/css" rel="stylesheet" href="app2/geo/map/leaflet-layers-tree-control.js">
+	<script type="text/javascript" src="app2/geo/map/leaflet-layers-tree-control.js"></script>
 	<script type="text/javascript" src="app2/geo/map/map.js"></script>
 
 	<script type="text/javascript" src="app2/settings/settings.js"></script>
