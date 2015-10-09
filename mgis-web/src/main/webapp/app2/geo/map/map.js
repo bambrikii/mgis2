@@ -14,6 +14,7 @@ angular.module("mgis.geo.map", ["ui.router"])
 					type: "tile",
 					code: "osm",
 					name: "OpenStreetMap (открытый WMS-сервис)",
+					active: true,
 					params: {
 						url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 					}
@@ -266,23 +267,24 @@ angular.module("mgis.geo.map", ["ui.router"])
 			id: -1,
 			code: "root-group",
 			name: "Root Group",
+			select: "none",
 			childLayers: [
 				{
-					base: {
-						id: -1,
-						code: "base-layers",
-						name: "Base Layers",
-						childLayers: layers.base
-					},
-					overlays: {
-						id: -1,
-						code: "overlays",
-						name: "Overlays",
-						childLayers: layers.overlays
-					}
+					id: -1,
+					code: "base-layers",
+					name: "Base Layers",
+					select: "single",
+					childLayers: layers.base
+				},
+				{
+					id: -1,
+					code: "overlays",
+					name: "Overlays",
+					select: "multiple",
+					childLayers: layers.overlays
 				}
 			]
 		}
-		L.control.LayersTreeControl(layersTree).addTo(map);
+		new L.Control.LayersTreeControl({layersTree: layersTree}).addTo(map);
 	})
 ;

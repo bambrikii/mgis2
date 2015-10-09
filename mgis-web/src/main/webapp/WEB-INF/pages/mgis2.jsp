@@ -124,7 +124,7 @@
 	<script type="text/javascript" src="app2/geo/coordinate-system/coordinate-system-module.js"></script>
 	<script type="text/javascript" src="app2/geo/coordinate-system/coordinate-system-service.js"></script>
 	<script type="text/javascript" src="app2/geo/spatial/spatial-data-module.js"></script>
-	<link type="text/css" rel="stylesheet" href="app2/geo/map/leaflet-layers-tree-control.js">
+	<link type="text/css" rel="stylesheet" href="app2/geo/map/leaflet-layers-tree-control.css">
 	<script type="text/javascript" src="app2/geo/map/leaflet-layers-tree-control.js"></script>
 	<script type="text/javascript" src="app2/geo/map/map.js"></script>
 

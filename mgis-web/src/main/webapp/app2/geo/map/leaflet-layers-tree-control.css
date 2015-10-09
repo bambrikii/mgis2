@@ -1,3 +1,22 @@
-.layers-tree-control {
+.leaflet-layers-tree-control {
+	padding: 3px 9px 5px 9px;
+}
 
+.leaflet-layers-tree-control-leaf-header,
+.leaflet-layers-tree-control-leaf-header input,
+.leaflet-layers-tree-control-leaf-header label {
+	display: inline-flex;
+}
+
+.leaflet-layers-tree-control-leaf-header label {
+	cursor: hand;
+	margin: 0px 0px 1px 0px;
+}
+
+.leaflet-layers-tree-control-leaf-header input {
+	margin-right: 5px;
+}
+
+.leaflet-layers-tree-control-leaf-content {
+	padding-left: 10px;
 }

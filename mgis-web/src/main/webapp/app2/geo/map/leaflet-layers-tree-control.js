@@ -2,11 +2,12 @@ L.Control.LayersTreeControl = L.Control.extend({
 	options: {
 		position: "topright",
 		expand: false,
-		className: "leaflet-nested-layers-switcher",
+		className: "leaflet-layers-tree-control",
 		layersTree: {}
 	},
 	initialize: function (options) {
 		L.Util.setOptions(this, options);
+		this._layers = {};
 	},
 	onAdd: function (map) {
 		this._map = map;
@@ -22,42 +23,153 @@ L.Control.LayersTreeControl = L.Control.extend({
 		}, this);
 
 		//
-		function traverseLeaf(parentLeaf, parentContainer, leaf) {
-			var parentLeafCode = parentLeaf.code;
+		var me = this;
+
+		function traverseLeaf(parentLeaf, parentContainer, leaf, parentId, order) {
 			var type = '';
 			var leafContainer = L.DomUtil.create("div", className + "-leaf", parentContainer);
 			var leafHeader = L.DomUtil.create("div", className + "-leaf-header", leafContainer);
-			if (leaf.singleSelect) { // radio-group
-				leafHeader.innerHTML = "<input type='checkbox' name='" + parentLeafCode + "'><label>" + leaf.name + "</label>"
-				L.DomEvent.on(leafHeader, "click", function (event) {
-					// select a single layer
-					// remove current group layers
-					// add selected layer
-				});
-			} else { // checkboxes
-				leafHeader.innerHTML = "<input type='radio' name='" + leaf.code + "'><label>" + leaf.name + "</label>"
-				L.DomEvent.on(leafHeader, "click", function (event) {
-					// add or remove currently selected layer
-				});
+			var layerId = parentLeaf.code + "_" + leaf.code + "_" + order;
+			switch (parentLeaf.select) {
+				case "none":	//
+					leafHeader.innerHTML = "<label>" + leaf.name + "</label>"
+					break;
+				case "single":	// radio-group
+					var parentLeafCode = parentLeaf.code;
+					leafHeader.innerHTML = "<label><input type='radio' name='" + parentLeafCode + "' id='" + layerId + "' parentId='" + parentId + "'>" + leaf.name + "</label>"
+					L.DomEvent.on(leafHeader, "click", function (event) {
+						// select a single layer
+						// remove current group layers
+						// add selected layer
+						var sourceElementId = event.srcElement.id;
+						if (sourceElementId) {
+							var parentElementId = event.srcElement.attributes[3].value;
+							var checked = event.srcElement.checked;
+							console.log(sourceElementId + ", " + parentElementId + "," + checked);
+							console.log(event);
+							if (checked) {
+								me.removeLayers(parentLeaf, parentElementId);
+								me.addLayer(leaf, sourceElementId);
+							}
+						}
+					});
+					break;
+				case "multiple":
+				default:	// checkboxes
+					leafHeader.innerHTML = "<label><input type='checkbox' name='" + leaf.code + "' id='" + layerId + "'>" + leaf.name + "</label>"
+					L.DomEvent.on(leafHeader, "click", function (event) {
+						//event.sourceElement.checked
+						var sourceElementId = event.srcElement.id;
+						if (sourceElementId) {
+							var checked = event.srcElement.checked;
+							console.log(sourceElementId + ", " + checked);
+							console.log(event);
+							// add or remove currently selected layer
+							if (checked) {
+								me.addLayer(leaf, sourceElementId);
+							} else {
+								me.removeLayer(sourceElementId);
+							}
+						}
+					});
+					break;
 			}
-			var leafContent = L.DomUtil.create("div", className + "leaf-content", leafContainer);
-			for (var i in leaf) {
-				var child = leaf[i];
-				// create a container
-
-				if (child.childLayers && child.childLayers.length > 0) {
-					traverseLeaf(leaf, leafContent, child);
+			var leafContent = L.DomUtil.create("div", className + "-leaf-content", leafContainer);
+			if (leaf.childLayers && leaf.childLayers.length > 0) {
+				for (var i in leaf.childLayers) {
+					var child = leaf.childLayers[i];
+					// create a container
+					console.log(child);
+					if (child) {
+						traverseLeaf(leaf, leafContent, child, parentId + leaf.code, i);
+					}
 				}
 			}
 		}
 
 		var layersTree = this.options.layersTree;
-		traverseLeaf(layersTree, container, layersTree);
+		traverseLeaf(layersTree, container, layersTree, "", 0);
 
 		return container;
 	},
 	onRemove: function (map) {
 
+	},
+	addLayer: function (layerSettings, layerId) {
+		var map = this._map;
+		var layer;
+		console.log(layerSettings);
+		switch (layerSettings.type) {
+			case "tile":
+				layer = L.tileLayer(layerSettings.params.url, {}).addTo(map);
+				break;
+			case "bing":
+				layer = new L.BingLayer(layerSettings.params.url).addTo(map);
+				break;
+			case "google":
+				layer = new L.Google();
+				break;
+			case "google-terrain":
+				layer = new L.Google("TERRAIN");
+				break;
+			case "wms":
+			{
+				layer = L.tileLayer.wms(layerSettings.params.url, {
+					layers: layerSettings.params.layers,
+					format: layerSettings.params.format,
+					transparent: layerSettings.params.transparent,
+					attribution: layerSettings.params.attribution
+				});
+			}
+				break;
+			case "wfs":
+			{
+				var wfsLayer = new L.GeoJSON().addTo(map);
+				var defaultParameters = {
+					service: 'WFS',
+					version: '1.0.0',
+					request: 'getFeature',
+					typeName: layerSettings.params.typeName,
+					maxFeatures: 3000,
+					outputFormat: 'application/json'
+				};
+
+				var customParams = {
+					bbox: map.getBounds().toBBoxString(),
+				};
+				var parameters = L.Util.extend(defaultParameters, customParams);
+				var wfsUrl = layerSettings.params.url + L.Util.getParamString(parameters);
+				$.ajax({
+					url: wfsUrl,
+					dataType: 'jsonp',
+					success: function (data) {
+						wfsLayer.addData(data);
+					}
+				});
+				layer = wfsLayer;
+			}
+				break;
+			default:
+				break;
+		}
+		if (layer) {
+			this._layers[layerId] = layer;
+			map.addLayer(layer);
+		}
+	},
+	removeLayers: function (layer, parentId) {
+		this.removeLayer(layer);
+		if (layer.childLayers && layer.childLayers.length > 0) {
+			for (var i in layer.childLayers) {
+				var child = layer.childLayers[i];
+				this.removeLayer(child);
+			}
+		}
+	},
+	removeLayer: function (layerId) {
+		var map = this._map;
+		var layer = this._layers[layerId];
+		map.removeLayer(layer);
 	}
 })
 ;
