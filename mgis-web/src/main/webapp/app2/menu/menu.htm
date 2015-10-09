@@ -1,12 +1,15 @@
 <div class="navbar navbar-default" ng-controller="MainMenuCtrl">
 	<div class="navbar-inner">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#" ng-click="toggleNavCollapsed()" class="btn btn-navbar" translate>MGIS</a>
-
-			<div collapse="navCollapsed" class="nav-collapse collapse navbar-responsive-collapse">
+			<div class="navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': isogdMenuActive}">
-						<a href="#/isogd" data-toggle="dropdown" role="button" aria-expanded="false" ng-click="isogdMenuClicked()">
+					<li>
+						<a class="navbar-brand" href="#" ng-click="toggleNavCollapsed()" class="btn btn-navbar" translate>MGIS</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.isogd}">
+						<a href="#/isogd" data-toggle="dropdown" role="button" aria-expanded="false" ng-click="updateMenu('isogd')">
 							<span translate>ISOGD</span>
 							<span class="caret"></span>
 						</a>
@@ -24,46 +27,43 @@
 							</li>
 						</ul>
 					</li>
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': landsMenuActive}">
-						<a href="#/lands" ng-click="landsMenuClicked()"><span translate>LANDS</span></a>
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.land}">
+						<a href="#/lands" ng-click="updateMenu('land')"><span translate>LANDS</span></a>
 					</li>
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': terrZonesMenuActive}">
-						<a href="#/terr-zones" ng-click="terrZonesMenuClicked()"><span translate>TERRITORIAL_ZONES</span></a>
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.terrZone}">
+						<a href="#/terr-zones" ng-click="updateMenu('terrZone')"><span translate>TERRITORIAL_ZONES</span></a>
 					</li>
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': personsMenuActive}">
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.persons}">
 						<a href="#/persons" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-						   ng-click="personsMenuClicked()"><span translate>Persons</span> <span class="caret"></span></a>
+						   ng-click="updateMenu('persons')"><span translate>Persons</span> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#/persons/natural-persons" translate>Persons.Natural</a></li>
 							<li><a href="#/persons/legal-persons" translate>Persons.Legal</a></li>
 						</ul>
 					</li>
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': addressesMenuActive}">
-						<a href="#/addresses" ng-click="addressesMenuClicked()"><span translate>Addresses</span></a>
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.address}">
+						<a href="#/addresses" ng-click="updateMenu('address')"><span translate>Addresses</span></a>
 					</li>
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': oksMenuActive}">
-						<a href="#/oks" ng-click="oksMenuClicked()"><span translate>OKS</span> <span class="caret"></span></a>
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.oks}">
+						<a href="#/oks" ng-click="updateMenu('oks')"><span translate>OKS</span> <span class="caret"></span></a>
 					</li>
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': geoMenuActive}">
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.geo}">
 						<a href="#/geo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-						   ng-click="geoMenuClicked()"><span translate>GEO</span> <span class="caret"></span></a>
+						   ng-click="updateMenu('geo')"><span translate>GEO</span> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#/geo/map" translate>GEO.Map</a></li>
 							<li><a href="#/geo/geo-servers" translate>GEO.GeoServers</a></li>
 							<li><a href="#/geo/coordinate-systems" translate>GEO.CoordinateSystems</a></li>
 						</ul>
 					</li>
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': administrationMenuActive}">
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.admin}">
 						<a href="#/admin" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-						   ng-click="administrationMenuClicked()"><span translate>ADMINISTRATION</span> <span class="caret"></span></a>
+						   ng-click="updateMenu('admin')"><span translate>ADMINISTRATION</span> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#/admin/users" translate>ADMINISTRATION.Users</a></li>
 							<li><a href="#/admin/groups" translate>ADMINISTRATION.Groups</a></li>
 							<li class="divider"></li>
 							<li><a href="#/admin/privileges" translate>ADMINISTRATION.Privileges</a></li>
-							<li class="divider"></li>
-							<li><a href="#/geo/geo-servers" translate>GEO.GeoServers</a></li>
-							<li><a href="#/geo/coordinate-systems" translate>GEO.CoordinateSystems</a></li>
 						</ul>
 					</li>
 				</ul>
