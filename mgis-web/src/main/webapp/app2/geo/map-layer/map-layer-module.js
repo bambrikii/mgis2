@@ -1,4 +1,4 @@
-angular.module("mgis.geo.map.layer", ["ui.router",
+angular.module("mgis.geo.map.layer", ["ui.router", "ngDraggable",
 	"mgis.commons",
 	"mgis.commons.forms",
 	"mgis.geo.map.layer.service"
@@ -114,6 +114,16 @@ angular.module("mgis.geo.map.layer", ["ui.router",
 
 		$scope.closeChildren = function (parent) {
 			parent.childLayers = null;
+		}
+
+		$scope.onLayerDragStart = function ($data, $event, item) {
+			//console.log("onLayerDragStart: ");
+			//console.log(arguments);
+		}
+
+		$scope.onLayerDropComplete = function ($data, $event, item) {
+			//console.log("onLayerDropSuccess: ");
+			//console.log(arguments);
 		}
 
 	})

@@ -1,7 +1,8 @@
 <div class="" ng-controller="GEOMapLayerTreeLeafController">
 	<ul class="geo-map-layer-group" ng-if="item!=undefined">
 		<li class="geo-map-layer-item">
-			<div class="row panel panel-default">
+			<div class="row panel panel-default" ng-drag="true" ng-drop="true" ng-drag-data="item"
+				 ng-drag-start="onLayerDragStart($data,$event,item)" ng-drop-success="onLayerDropComplete($data,$event,item)">
 				<div class="col-sm-6 row panel-body">
 					<div class="col-sm-2">
 						<button class="btn btn-sm btn-info" ng-click="listChildren(item)" ng-if="!item.childLayers" translate>Open</button>
