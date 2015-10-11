@@ -7,6 +7,9 @@ L.Control.LayersTreeControl = L.Control.extend({
 	},
 	initialize: function (options) {
 		L.Util.setOptions(this, options);
+		if (options.layersTree == undefined) {
+			throw Error("Layer tree required to display");
+		}
 		this._layers = {};
 	},
 	onAdd: function (map) {
@@ -30,11 +33,11 @@ L.Control.LayersTreeControl = L.Control.extend({
 			var leafContainer = L.DomUtil.create("div", className + "-leaf", parentContainer);
 			var leafHeader = L.DomUtil.create("div", className + "-leaf-header", leafContainer);
 			var layerId = parentLeaf.code + "_" + leaf.code + "_" + order;
-			switch (parentLeaf.select) {
-				case "none":	//
+			switch (parentLeaf.selectType) {
+				case "NONE":	//
 					leafHeader.innerHTML = "<label>" + leaf.name + "</label>"
 					break;
-				case "single":	// radio-group
+				case "SINGLE":	// radio-group
 					var parentLeafCode = parentLeaf.code;
 					leafHeader.innerHTML = "<label><input type='radio' name='" + parentLeafCode + "' id='" + layerId + "' parentId='" + parentId + "'>" + leaf.name + "</label>"
 					L.DomEvent.on(leafHeader, "click", function (event) {
@@ -54,7 +57,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 						}
 					});
 					break;
-				case "multiple":
+				case "MULTIPLE":
 				default:	// checkboxes
 					leafHeader.innerHTML = "<label><input type='checkbox' name='" + leaf.code + "' id='" + layerId + "'>" + leaf.name + "</label>"
 					L.DomEvent.on(leafHeader, "click", function (event) {
@@ -79,16 +82,23 @@ L.Control.LayersTreeControl = L.Control.extend({
 				for (var i in leaf.childLayers) {
 					var child = leaf.childLayers[i];
 					// create a container
-					console.log(child);
 					if (child) {
-						traverseLeaf(leaf, leafContent, child, parentId + leaf.code, i);
+						traverseLeaf(leaf, leafContent, child, parentId + "_" + leaf.code, i);
 					}
 				}
 			}
 		}
 
+		console.log("array");
 		var layersTree = this.options.layersTree;
-		traverseLeaf(layersTree, container, layersTree, "", 0);
+		if (Object.prototype.toString.call(layersTree) === '[object Array]') {
+			for (var i in layersTree) {
+				var layerTree = layersTree[i];
+				traverseLeaf(layerTree, container, layerTree, "", 0);
+			}
+		} else {
+			traverseLeaf(layersTree, container, layersTree, "", 0);
+		}
 
 		return container;
 	},
@@ -98,7 +108,6 @@ L.Control.LayersTreeControl = L.Control.extend({
 	addLayer: function (layerSettings, layerId) {
 		var map = this._map;
 		var layer;
-		console.log(layerSettings);
 		switch (layerSettings.type) {
 			case "tile":
 				layer = L.tileLayer(layerSettings.params.url, {}).addTo(map);

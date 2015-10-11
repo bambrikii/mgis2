@@ -116,7 +116,8 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 			transclude: true,
 			scope: {
 				title: "@",
-				property: "="
+				property: "=",
+				availableItems: "&"
 			},
 			templateUrl: "app2/commons/forms/choose-one.htm"
 		}
@@ -130,6 +131,17 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				property: "="
 			},
 			templateUrl: "app2/commons/forms/choose-many.htm"
+		}
+	})
+	.directive("commonsFormsCheck", function () {
+		return {
+			restrict: "E",
+			transclude: true,
+			scope: {
+				title: "@",
+				property: "="
+			},
+			templateUrl: "app2/commons/forms/check.htm"
 		}
 	})
 ;

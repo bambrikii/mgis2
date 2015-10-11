@@ -199,3 +199,23 @@ span.mgis-input-group-date button {
 .mgis-document-search-modal-form .modal-dialog {
 	width: 780px;
 }
+
+.geo-map-layer-group {
+	border-radius: 4px;
+	padding-left: 0;
+}
+
+.geo-map-layer-item {
+	position: relative;
+	display: block;
+	padding: 10px 0px 0px 15px;
+	margin-bottom: -1px;
+}
+
+.geo-map-layer-item .panel {
+	margin-bottom: 0px;
+}
+
+.geo-map-layer-item .panel-body {
+	padding: 5px 5px 5px 15px;
+}

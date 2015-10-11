@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 05.10.15.
  */
 @Entity
-@Table(name = "mgis_geo_spatial_group")
+@Table(name = "mgis2_geo_spatial_group")
 public class SpatialGroup implements Cloneable {
 
 	@Id

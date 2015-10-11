@@ -1,4 +1,5 @@
-angular.module("mgis.geo.coordinate-system.service", ["ngResource"])
+angular.module("mgis.geo.coordinate-system.service", ["ngResource",
+	"mgis.error.service"])
 	.factory("GEOCoordinateSystemService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/geo/coordinate-systems/:id.json');
 		return {

@@ -126,7 +126,9 @@
 	<script type="text/javascript" src="app2/geo/spatial/spatial-data-module.js"></script>
 	<link type="text/css" rel="stylesheet" href="app2/geo/map/leaflet-layers-tree-control.css">
 	<script type="text/javascript" src="app2/geo/map/leaflet-layers-tree-control.js"></script>
-	<script type="text/javascript" src="app2/geo/map/map.js"></script>
+	<script type="text/javascript" src="app2/geo/map/map-module.js"></script>
+	<script type="text/javascript" src="app2/geo/map-layer/map-layer-module.js"></script>
+	<script type="text/javascript" src="app2/geo/map-layer/map-layer-service.js"></script>
 
 	<script type="text/javascript" src="app2/settings/settings.js"></script>
 

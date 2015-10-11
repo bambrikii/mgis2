@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 05.10.15.
  */
 @Entity
-@Table(name = "mgis_geo_coord_system")
+@Table(name = "mgis2_geo_coord_system")
 public class CoordinateSystem implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_geo_seq", allocationSize = 1)

@@ -4,5 +4,12 @@
 	</div>
 	<div class="col-sm-8">
 		TODO: choose one
+		<multiselect
+				ng-model="property"
+				options="c.name for c in availableItems"
+				data-multiple="false"
+				data-compare-by="id"
+				scroll-after-rows="15">
+		</multiselect>
 	</div>
 </div>

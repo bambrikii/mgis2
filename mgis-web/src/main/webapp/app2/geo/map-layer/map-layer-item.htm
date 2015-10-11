@@ -1,0 +1,28 @@
+<div class="" ng-controller="GEOMapLayerController">
+	<ul class="geo-map-layer-group" ng-if="item!=undefined">
+		<li class="geo-map-layer-item">
+			<div class="row panel panel-default">
+				<div class="col-sm-6 row panel-body">
+					<div class="col-sm-2">
+						<button class="btn btn-sm btn-info" ng-click="listChildren(item)" ng-if="!item.childLayers" translate>Open</button>
+						<button class="btn btn-sm btn-info" ng-click="closeChildren(item)" ng-if="item.childLayers" translate>Close</button>
+					</div>
+					<div class="col-sm-4">
+						{{item.id}}, {{item.code}}, {{item.name}}, {{item.selectType}}, {{item.serviceType}}
+					</div>
+					<div class="col-sm-2" translate>{{item.active}}</div>
+					<div class="col-sm-2">{{item.type}}</div>
+					<div class="col-sm-2">{{item.select}}</div>
+				</div>
+				<div class="col-sm-6 panel-body">
+					<div class="pull-right">
+						<button class="btn btn-sm btn-info" ng-click="addItem(item)" translate>Add</button>
+						<button class="btn btn-sm btn-warning" ng-click="editItem(item)" translate>Edit</button>
+						<button class="btn btn-sm btn-danger" ng-click="deleteItem(item)" translate>Delete</button>
+					</div>
+				</div>
+			</div>
+			<ng-include ng-repeat="item in item.childLayers" src="'app2/geo/map-layer/map-layer-item.htm'"></ng-include>
+		</li>
+	</ul>
+</div>

@@ -1,4 +1,5 @@
-angular.module("mgis.geo.geo-server.service", ["ngResource"])
+angular.module("mgis.geo.geo-server.service", ["ngResource",
+	"mgis.error.service"])
 	.factory("GEOGeoServerService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/geo/geo-servers/:id.json');
 		return {

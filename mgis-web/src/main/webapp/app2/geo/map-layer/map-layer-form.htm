@@ -1,0 +1,98 @@
+<div class="modal-header">
+	<h3 class="modal-title"><span translate>GEO.Map.Layer</span>: {{item.code}}</h3>
+</div>
+
+<div class="modal-body">
+
+	<!-- Code -->
+	<form name="editForm" class="" ng-controller="GEOMapLayerController" novalidate>
+		<div class="form-group row"
+			 ng-class="{'has-error': editForm.code.$invalid && (!editForm.code.$pristine || editForm.code.$touched)}">
+			<div class="col-sm-4">
+				<label translate>Code</label>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" ng-model="item.code" required/>
+
+				<p ng-show="editForm.code.$invalid && (!editForm.code.$pristine || editForm.code.$touched)" class="help-block"
+				   translate>Code.Required</p>
+			</div>
+		</div>
+
+		<!-- Name -->
+		<commons-forms-text title="Name" property="item.name"></commons-forms-text>
+
+		<!-- Active -->
+		<commons-forms-check title="Active" property="item.active"></commons-forms-check>
+
+		<!-- Name -->
+		<commons-forms-text title="SortOrder" property="item.sortOrder"></commons-forms-text>
+
+		<!-- Select -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>GEO.Map.Layer.SelectType</label>
+			</div>
+			<div class="col-sm-8">
+				<multiselect
+						ng-model="item.selectType"
+						options="c for c in availableSelectTypes"
+						data-multiple="false"
+						scroll-after-rows="15">
+				</multiselect>
+			</div>
+		</div>
+
+		<!-- Type -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>GEO.Map.Layer.ServiceType</label>
+			</div>
+			<div class="col-sm-8">
+				<multiselect
+						ng-model="item.serviceType"
+						options="c for c in availableServiceTypes"
+						data-multiple="false"
+						scroll-after-rows="15">
+				</multiselect>
+			</div>
+		</div>
+
+		<!-- Params -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Parameters</label>
+			</div>
+			<div class="col-sm-8">
+				<!-- TODO: -->
+			</div>
+		</div>
+
+		<!-- ChildLayers -->
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>GEO.Map.Layer.ChildLayers</label>
+			</div>
+			<div class="col-sm-8">
+				<!-- TODO: -->
+				<div ng-repeat="child in item.childLayers" class="row mgis-document-selector-list-item">
+					<div class="col-sm-1">{{child.code}}</div>
+					<div class="col-sm-3">{{child.name}}</div>
+					<div class="col-sm-1" translate>{{child.active}}</div>
+					<div class="col-sm-7">
+						<button class="btn btn-sm btn-warning" ng-click="editItem(child)" translate>Edit</button>
+						<button class="btn btn-sm btn-danger" ng-click="deleteItem(item, child)" translate>Delete</button>
+					</div>
+				</div>
+				<button class="btn btn-sm btn-info" ng-if="item.id" ng-click="addItem(item)" translate>Add</button>
+			</div>
+		</div>
+
+	</form>
+
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

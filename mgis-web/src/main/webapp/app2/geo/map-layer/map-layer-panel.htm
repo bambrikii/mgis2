@@ -1,0 +1,6 @@
+<h3 translate>GEO.Map.Layers</h3>
+
+<div ng-controller="GEOMapLayersController">
+	<div ng-repeat="item in layers" ng-include src="'app2/geo/map-layer/map-layer-item.htm'"></div>
+	<button class="btn btn-sm btn-info" ng-click="addItem({id:0})" translate>Add</button>
+</div>

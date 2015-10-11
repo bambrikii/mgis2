@@ -51,6 +51,9 @@
   "Password": "Пароль",
   "Password.Required": "Необходим пароль",
   "LoginAttemptFailedDueTo": "Не удалось войти в систему:",
+  "ValueRequired": "Поле обязательно",
+  "Parameters": "Параметры",
+  "Active": "Действует",
   "ISOGD.AddASection": "Добавить Раздел",
   "ISOGD.EditTheSection": "Редактировать Раздел",
   "ISOGD.RemoveTheSection": "Удалить Раздел",
@@ -342,5 +345,9 @@
   "GEO.Spatial.Coordinate.Y.Required": "Поле Y обязательно",
   "GEO.Server": "ГИС Сервер",
   "GEO.Servers": "ГИС Серверы",
-  "ValueRequired": "Поле обязательно"
+  "GEO.Map.Layer": "Слой",
+  "GEO.Map.Layer.ChildLayers": "Вложенные слои",
+  "GEO.Map.Layer.SelectType": "Выбор",
+  "GEO.Map.Layer.ServiceType": "Тип слоя",
+  "GEO.Map.Layers": "Слои"
 }
