@@ -54,6 +54,7 @@
   "ValueRequired": "Поле обязательно",
   "Parameters": "Параметры",
   "Active": "Действует",
+  "Key": "Ключ",
   "ISOGD.AddASection": "Добавить Раздел",
   "ISOGD.EditTheSection": "Редактировать Раздел",
   "ISOGD.RemoveTheSection": "Удалить Раздел",
@@ -349,5 +350,6 @@
   "GEO.Map.Layer.ChildLayers": "Вложенные слои",
   "GEO.Map.Layer.SelectType": "Выбор",
   "GEO.Map.Layer.ServiceType": "Тип слоя",
-  "GEO.Map.Layers": "Слои"
+  "GEO.Map.Layers": "Слои",
+  "GEO.Map.Layer.Param": "Параметр"
 }

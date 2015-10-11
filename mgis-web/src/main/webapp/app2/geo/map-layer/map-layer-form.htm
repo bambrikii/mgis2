@@ -5,7 +5,7 @@
 <div class="modal-body">
 
 	<!-- Code -->
-	<form name="editForm" class="" ng-controller="GEOMapLayerController" novalidate>
+	<form name="editForm" class="" ng-controller="GEOMapLayerFormController" novalidate>
 		<div class="form-group row"
 			 ng-class="{'has-error': editForm.code.$invalid && (!editForm.code.$pristine || editForm.code.$touched)}">
 			<div class="col-sm-4">
@@ -64,7 +64,16 @@
 				<label translate>Parameters</label>
 			</div>
 			<div class="col-sm-8">
-				<!-- TODO: -->
+				<div ng-repeat="(paramKey, paramValue)  in item.params" class="row mgis-document-selector-list-item">
+					<div class="col-sm-5">
+						{{paramKey}}: {{paramValue}}
+					</div>
+					<div class="col-sm-7">
+						<button class="btn btn-sm btn-warning" ng-click="editParam(item, paramKey)" translate>Edit</button>
+						<button class="btn btn-sm btn-danger" ng-click="deleteParam(item, paramKey)" translate>Remove</button>
+					</div>
+				</div>
+				<button class="btn btn-sm btn-info" ng-click="addParam(item)" translate>Add</button>
 			</div>
 		</div>
 
@@ -74,14 +83,13 @@
 				<label translate>GEO.Map.Layer.ChildLayers</label>
 			</div>
 			<div class="col-sm-8">
-				<!-- TODO: -->
 				<div ng-repeat="child in item.childLayers" class="row mgis-document-selector-list-item">
 					<div class="col-sm-1">{{child.code}}</div>
 					<div class="col-sm-3">{{child.name}}</div>
 					<div class="col-sm-1" translate>{{child.active}}</div>
 					<div class="col-sm-7">
 						<button class="btn btn-sm btn-warning" ng-click="editItem(child)" translate>Edit</button>
-						<button class="btn btn-sm btn-danger" ng-click="deleteItem(item, child)" translate>Delete</button>
+						<button class="btn btn-sm btn-danger" ng-click="deleteItem(child)" translate>Delete</button>
 					</div>
 				</div>
 				<button class="btn btn-sm btn-info" ng-if="item.id" ng-click="addItem(item)" translate>Add</button>

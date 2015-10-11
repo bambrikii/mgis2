@@ -21,7 +21,7 @@ angular.module("mgis.geo.map.layer", ["ui.router",
 					modalInstance.close();
 					updateFunction();
 				});
-			});
+			}, {windowClass: "mgis-crud-modal-form"});
 		}
 
 		return {
@@ -39,12 +39,21 @@ angular.module("mgis.geo.map.layer", ["ui.router",
 						updateFunction();
 					});
 				})
+			},
+			removeChildren: function (sourceList) {
+				var list = new Array();
+				angular.copy(sourceList, list);
+				for (var i in list) {
+					list[i].childLayers = undefined;
+				}
+				return list;
 			}
 		}
 	})
 	.controller("GEOMapLayersController", function ($scope, $rootScope, GEOMapLayerService, MGISCommonsModalForm, GEOMapLayerCRUDService) {
 		function updateTree() {
 			GEOMapLayerService.get(null, 0, 0, null, null).then(function (data) {
+				//$scope.layers = GEOMapLayerCRUDService.removeChildren(data.list);
 				$scope.layers = data.list;
 			});
 		}
@@ -68,7 +77,47 @@ angular.module("mgis.geo.map.layer", ["ui.router",
 		};
 		updateTree();
 	})
-	.controller("GEOMapLayerController", function ($scope, GEOMapLayerService, GEOMapLayerCRUDService) {
+	.controller("GEOMapLayerTreeLeafController", function ($scope, GEOMapLayerService, GEOMapLayerCRUDService) {
+		function updateTree() {
+			GEOMapLayerService.get($scope.item.id, 0, 0, null).then(function (data) {
+				var item = data;
+				//item.childLayers = undefined;
+				$scope.item = item;
+			});
+		}
+
+		$scope.editItem = function (item) {
+			GEOMapLayerService.get(item.id).then(function (data) {
+				GEOMapLayerCRUDService.edit(data, function () {
+					updateTree();
+				});
+			});
+		};
+		$scope.addItem = function (parent) {
+			GEOMapLayerCRUDService.add(parent, function () {
+				updateTree();
+			});
+		};
+		$scope.deleteItem = function (item) {
+			var parent = item.parent;
+			GEOMapLayerCRUDService.remove(item, function () {
+				$scope.item = undefined;
+			});
+		};
+
+		$scope.listChildren = function (parent) {
+			GEOMapLayerService.get(null, 0, 0, null, parent.id).then(function (data) {
+				parent.childLayers = data.list;
+				//parent.childLayers = GEOMapLayerCRUDService.removeChildren(data.list);
+			});
+		}
+
+		$scope.closeChildren = function (parent) {
+			parent.childLayers = null;
+		}
+
+	})
+	.controller("GEOMapLayerFormController", function ($scope, $rootScope, GEOMapLayerService, GEOMapLayerCRUDService, MGISCommonsModalForm) {
 		function updateTree() {
 			GEOMapLayerService.get($scope.item.id, 0, 0, null).then(function (data) {
 				$scope.item = data;
@@ -90,21 +139,47 @@ angular.module("mgis.geo.map.layer", ["ui.router",
 		$scope.deleteItem = function (item) {
 			var parent = item.parent;
 			GEOMapLayerCRUDService.remove(item, function () {
-				//updateTree();
-				//$scope.$parent.listChildren(parent);
-				$scope.item = undefined;
+				updateTree();
 			});
 		};
 
-		$scope.listChildren = function (parent) {
-			GEOMapLayerService.get(null, 0, 0, null, parent.id).then(function (data) {
-				parent.childLayers = data.list;
+		function editParam(item, paramKey) {
+			var modalScope = $rootScope.$new();
+			var newKey = "" + paramKey;
+			if (item.params == undefined) {
+				item.params = {};
+			}
+			var param = {key: newKey, value: item.params[newKey]};
+			modalScope.item = param;
+			modalScope.keyExists = false;
+			modalScope.keyChange = function (event) {
+				var alteredKey = event.srcElement.value;
+
+				modalScope.keyExists = (alteredKey != paramKey && item.params.hasOwnProperty(alteredKey));
+			}
+			MGISCommonsModalForm.edit("app2/geo/map-layer/map-layer-param-form.htm", modalScope, function (scope, modalInstance) {
+				modalInstance.close();
+				if (paramKey != scope.item.key) {
+					delete item.params[paramKey];
+				}
+				item.params[scope.item.key] = scope.item.value;
 			});
 		}
 
-		$scope.closeChildren = function (parent) {
-			parent.childLayers = null;
+		$scope.editParam = function (item, paramKey) {
+			editParam(item, paramKey);
 		}
-
+		$scope.deleteParam = function (item, paramKey) {
+			MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
+				if (item.params && item.params.hasOwnProperty(paramKey)) {
+					delete item.params[paramKey];
+					$modalInstance.close();
+				}
+			});
+		}
+		$scope.addParam = function (item) {
+			editParam(item, "");
+		}
 	})
+
 ;
