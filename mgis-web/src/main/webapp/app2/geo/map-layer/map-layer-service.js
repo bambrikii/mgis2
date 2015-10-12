@@ -2,7 +2,7 @@ angular.module("mgis.geo.map.layer.service", ["ngResource",
 	"mgis.error.service"
 ])
 	.constant("GEO_LAYER_SELECT_TYPES", ["NONE", "SINGLE", "MULTIPLE"])
-	.constant("GEO_LAYER_SERVICE_TYPES", ["OSM", "TILE", "WFS", "WMS"])
+	.constant("GEO_LAYER_SERVICE_TYPES", ["OSM", "TILE", "WFS", "WMS", "GOOGLE", "GOOGLE_TERRAIN"])
 	.factory("GEOMapLayerService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/geo/layers/:id.json');
 		return {

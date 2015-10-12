@@ -32,7 +32,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 			var type = '';
 			var leafContainer = L.DomUtil.create("div", className + "-leaf", parentContainer);
 			var leafHeader = L.DomUtil.create("div", className + "-leaf-header", leafContainer);
-			var layerId = parentLeaf.code + "_" + leaf.code + "_" + order;
+			var layerId = parentId + "_" + leaf.code + "_" + order;
 			switch (parentLeaf.selectType) {
 				case "NONE":	//
 					leafHeader.innerHTML = "<label>" + leaf.name + "</label>"
@@ -83,13 +83,12 @@ L.Control.LayersTreeControl = L.Control.extend({
 					var child = leaf.childLayers[i];
 					// create a container
 					if (child) {
-						traverseLeaf(leaf, leafContent, child, parentId + "_" + leaf.code, i);
+						traverseLeaf(leaf, leafContent, child, layerId, i);
 					}
 				}
 			}
 		}
 
-		console.log("array");
 		var layersTree = this.options.layersTree;
 		if (Object.prototype.toString.call(layersTree) === '[object Array]') {
 			for (var i in layersTree) {
@@ -105,33 +104,40 @@ L.Control.LayersTreeControl = L.Control.extend({
 	onRemove: function (map) {
 
 	},
-	addLayer: function (layerSettings, layerId) {
+	copyParams: function (layerSettings, exceptions) {
+		var params = {};
+		for (var paramKey in layerSettings.params) {
+			if (!exceptions || !exceptions.test(paramKey)) {
+				params[paramKey] = layerSettings.params[paramKey];
+			}
+		}
+		return params;
+	}, addLayer: function (layerSettings, layerId) {
 		var map = this._map;
 		var layer;
-		switch (layerSettings.type) {
-			case "tile":
+		switch (layerSettings.serviceType) {
+			case "OSM":
 				layer = L.tileLayer(layerSettings.params.url, {}).addTo(map);
 				break;
-			case "bing":
+			case "TILE":
+				layer = L.tileLayer(layerSettings.params.url, {}).addTo(map);
+				break;
+			case "BING":
 				layer = new L.BingLayer(layerSettings.params.url).addTo(map);
 				break;
-			case "google":
+			case "GOOGLE":
 				layer = new L.Google();
 				break;
-			case "google-terrain":
+			case "GOOGLE_TERRAIN":
 				layer = new L.Google("TERRAIN");
 				break;
-			case "wms":
+			case "WMS":
 			{
-				layer = L.tileLayer.wms(layerSettings.params.url, {
-					layers: layerSettings.params.layers,
-					format: layerSettings.params.format,
-					transparent: layerSettings.params.transparent,
-					attribution: layerSettings.params.attribution
-				});
+				var params = this.copyParams(layerSettings, /\burl\b/gi);
+				layer = L.tileLayer.wms(layerSettings.params.url, params);
 			}
 				break;
-			case "wfs":
+			case "WFS":
 			{
 				var wfsLayer = new L.GeoJSON().addTo(map);
 				var defaultParameters = {
@@ -171,14 +177,16 @@ L.Control.LayersTreeControl = L.Control.extend({
 		if (layer.childLayers && layer.childLayers.length > 0) {
 			for (var i in layer.childLayers) {
 				var child = layer.childLayers[i];
-				this.removeLayer(child);
+				this.removeLayer(parentId + "_" + child.code + "_" + i);
 			}
 		}
 	},
 	removeLayer: function (layerId) {
 		var map = this._map;
-		var layer = this._layers[layerId];
-		map.removeLayer(layer);
+		if (this._layers.hasOwnProperty(layerId)) {
+			var layer = this._layers[layerId];
+			map.removeLayer(layer);
+		}
 	}
 })
 ;
