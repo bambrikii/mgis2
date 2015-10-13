@@ -11,6 +11,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 			throw Error("Layer tree required to display");
 		}
 		this._layers = {};
+		this._reloadHandlers = {}
 	},
 	onAdd: function (map) {
 		this._map = map;
@@ -112,64 +113,80 @@ L.Control.LayersTreeControl = L.Control.extend({
 			}
 		}
 		return params;
-	}, addLayer: function (layerSettings, layerId) {
+	},
+	addLayer: function (layerSettings, layerId) {
 		var map = this._map;
-		var layer;
 		switch (layerSettings.serviceType) {
 			case "OSM":
-				layer = L.tileLayer(layerSettings.params.url, {}).addTo(map);
+				var layer = L.tileLayer(layerSettings.params.url, {});
+				this._addLayer(layer, layerId);
 				break;
 			case "TILE":
-				layer = L.tileLayer(layerSettings.params.url, {}).addTo(map);
+				var layer = L.tileLayer(layerSettings.params.url, {});
+				this._addLayer(layer, layerId);
 				break;
 			case "BING":
-				layer = new L.BingLayer(layerSettings.params.url).addTo(map);
+				var layer = new L.BingLayer(layerSettings.params.url);
+				this._addLayer(layer, layerId);
 				break;
 			case "GOOGLE":
 				layer = new L.Google();
+				this.addLayer(layer, layerId);
 				break;
 			case "GOOGLE_TERRAIN":
-				layer = new L.Google("TERRAIN");
+				var layer = new L.Google("TERRAIN");
+				this._addLayer(layer, layerId);
 				break;
 			case "WMS":
 			{
 				var params = this.copyParams(layerSettings, /\burl\b/gi);
-				layer = L.tileLayer.wms(layerSettings.params.url, params);
+				var layer = L.tileLayer.wms(layerSettings.params.url, params).addTo(map);
+				this._addLayer(layer, layerId);
 			}
 				break;
 			case "WFS":
 			{
-				var wfsLayer = new L.GeoJSON().addTo(map);
-				var defaultParameters = {
-					service: 'WFS',
-					version: '1.0.0',
-					request: 'getFeature',
-					typeName: layerSettings.params.typeName,
-					maxFeatures: 3000,
-					outputFormat: 'application/json'
-				};
+				var layer = new L.GeoJSON().addTo(map);
+				var params = this.copyParams(layerSettings, /\b(url|style)\b/gi);
 
-				var customParams = {
-					bbox: map.getBounds().toBBoxString(),
-				};
-				var parameters = L.Util.extend(defaultParameters, customParams);
-				var wfsUrl = layerSettings.params.url + L.Util.getParamString(parameters);
-				$.ajax({
-					url: wfsUrl,
-					dataType: 'jsonp',
-					success: function (data) {
-						wfsLayer.addData(data);
-					}
-				});
-				layer = wfsLayer;
+				this._addLayer(layer, layerId);
+				var wfsHandler = function () {
+					var customParams = {
+						bbox: map.getBounds().toBBoxString(),
+					};
+					var params2 = L.Util.extend(params, customParams);
+					var wfsUrl = layerSettings.params.url + L.Util.getParamString(params2);
+					$.ajax({
+						url: wfsUrl,
+						dataType: 'json',
+						success: function (data) {
+							layer.clearLayers();
+							layer.addData(data);
+							if (layerSettings.params.style) {
+								var style = JSON.parse(layerSettings.params.style);
+								layer.eachLayer(function (layer) {
+									layer.setStyle(style);
+								});
+							}
+						},
+						error: function () {
+							console.error(arguments);
+						}
+					});
+				}
+				wfsHandler();
+				this._reloadHandlers[layerId + "__moveend"] = wfsHandler;
+				map.on("moveend", wfsHandler);
 			}
 				break;
 			default:
 				break;
 		}
+	},
+	_addLayer: function (layer, layerId) {
 		if (layer) {
 			this._layers[layerId] = layer;
-			map.addLayer(layer);
+			this._map.addLayer(layer);
 		}
 	},
 	removeLayers: function (layer, parentId) {
@@ -186,6 +203,12 @@ L.Control.LayersTreeControl = L.Control.extend({
 		if (this._layers.hasOwnProperty(layerId)) {
 			var layer = this._layers[layerId];
 			map.removeLayer(layer);
+			delete layer;
+		}
+		if (this._reloadHandlers.hasOwnProperty(layerId + "__moveend")) {
+			map.off("moveend", this._reloadHandlers[layerId + "__moveend"]);
+			delete this._reloadHandlers[layerId + "__moveend"];
+
 		}
 	}
 })
