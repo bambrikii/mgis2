@@ -351,5 +351,7 @@
   "GEO.Map.Layer.SelectType": "Выбор",
   "GEO.Map.Layer.ServiceType": "Тип слоя",
   "GEO.Map.Layers": "Слои",
-  "GEO.Map.Layer.Param": "Параметр"
+  "GEO.Map.Layer.Param": "Параметр",
+  "GEO.Map.Layer.SelectedByDefault": "Выбран по умолчанию",
+  "GEO.Map.Layer.OpenByDefault": "Открыт по умолчанию"
 }

@@ -25,8 +25,14 @@ public class Layer implements Cloneable {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "active")
-	private boolean active;
+	@Column(name = "active", nullable = false)
+	private boolean active = true;
+
+	@Column(name = "selected_by_default", nullable = false, columnDefinition = "boolean default false")
+	private boolean selectedByDefault;
+
+	@Column(name = "open_by_default", nullable = false, columnDefinition = "boolean default true")
+	private boolean openByDefault = true;
 
 	@Column(name = "sort_order")
 	private Long sortOrder;
@@ -133,6 +139,22 @@ public class Layer implements Cloneable {
 		this.sortOrder = sortOrder;
 	}
 
+	public boolean isSelectedByDefault() {
+		return selectedByDefault;
+	}
+
+	public void setSelectedByDefault(boolean selectedByDefault) {
+		this.selectedByDefault = selectedByDefault;
+	}
+
+	public boolean isOpenByDefault() {
+		return openByDefault;
+	}
+
+	public void setOpenByDefault(boolean openByDefault) {
+		this.openByDefault = openByDefault;
+	}
+
 	public Layer clone() {
 		Layer layer = new Layer();
 		layer.setId(id);
@@ -152,6 +174,8 @@ public class Layer implements Cloneable {
 		layer.setSelectType(selectType);
 		layer.setServiceType(serviceType);
 		layer.setSortOrder(sortOrder);
+		layer.setSelectedByDefault(selectedByDefault);
+		layer.setOpenByDefault(openByDefault);
 		return layer;
 	}
 }

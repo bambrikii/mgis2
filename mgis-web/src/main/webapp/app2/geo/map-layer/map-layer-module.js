@@ -21,7 +21,7 @@ angular.module("mgis.geo.map.layer", ["ui.router", "ngDraggable",
 					modalInstance.close();
 					updateFunction();
 				});
-			}, {windowClass: "mgis-crud-modal-form"});
+			}, {windowClass: "mgis-geo-map-layer-modal-form"});
 		}
 
 		return {

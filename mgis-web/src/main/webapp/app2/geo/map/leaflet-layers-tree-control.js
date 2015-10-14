@@ -29,64 +29,101 @@ L.Control.LayersTreeControl = L.Control.extend({
 		//
 		var me = this;
 
+		function toggleLayerVisibility(elem, open) {
+			if (
+				(elem.childNodes.length >= 2 && (elem.childNodes[0].className == className + "-leaf-header")) &&
+				(elem.childNodes.length >= 2 && (elem.childNodes[1].className == className + "-leaf-content"))
+			) {
+				var header = elem.childNodes[0];
+				var content = elem.childNodes[1];
+				var switcherRow = header.getElementsByClassName(className + "-leaf-switcher-row");
+				if (switcherRow.length == 1) {
+					var toggleButtons = switcherRow[0].getElementsByClassName(className + "-leaf-switcher");
+					if (toggleButtons.length == 1) {
+						var toggleButton = toggleButtons[0];
+						console.log(open);
+						open = open || content.style.display == "none";
+						if (open) {
+							content.style.display = "";
+							toggleButton.className = className + "-leaf-switcher " + className + "-leaf-switcher-closed";
+						} else {
+							content.style.display = "none";
+							toggleButton.className = className + "-leaf-switcher " + className + "-leaf-switcher-open";
+						}
+					}
+				}
+			}
+		}
+
 		function traverseLeaf(parentLeaf, parentContainer, leaf, parentId, order) {
 			var type = '';
 			var leafContainer = L.DomUtil.create("div", className + "-leaf", parentContainer);
 			var leafHeader = L.DomUtil.create("div", className + "-leaf-header", leafContainer);
-			var layerId = parentId + "_" + leaf.code + "_" + order;
-			switch (parentLeaf.selectType) {
-				case "NONE":	//
-					leafHeader.innerHTML = "<label>" + leaf.name + "</label>"
-					break;
-				case "SINGLE":	// radio-group
-					var parentLeafCode = parentLeaf.code;
-					leafHeader.innerHTML = "<label><input type='radio' name='" + parentLeafCode + "' id='" + layerId + "' parentId='" + parentId + "'>" + leaf.name + "</label>"
-					L.DomEvent.on(leafHeader, "click", function (event) {
-						// select a single layer
-						// remove current group layers
-						// add selected layer
-						var sourceElementId = event.srcElement.id;
-						if (sourceElementId) {
-							var parentElementId = event.srcElement.attributes[3].value;
-							var checked = event.srcElement.checked;
-							console.log(sourceElementId + ", " + parentElementId + "," + checked);
-							console.log(event);
-							if (checked) {
-								me.removeLayers(parentLeaf, parentElementId);
-								me.addLayer(leaf, sourceElementId);
-							}
-						}
-					});
-					break;
-				case "MULTIPLE":
-				default:	// checkboxes
-					leafHeader.innerHTML = "<label><input type='checkbox' name='" + leaf.code + "' id='" + layerId + "'>" + leaf.name + "</label>"
-					L.DomEvent.on(leafHeader, "click", function (event) {
-						//event.sourceElement.checked
-						var sourceElementId = event.srcElement.id;
-						if (sourceElementId) {
-							var checked = event.srcElement.checked;
-							console.log(sourceElementId + ", " + checked);
-							console.log(event);
-							// add or remove currently selected layer
-							if (checked) {
-								me.addLayer(leaf, sourceElementId);
-							} else {
-								me.removeLayer(sourceElementId);
-							}
-						}
-					});
-					break;
+			var leafTitle = L.DomUtil.create("span", className + "-leaf-title", leafHeader);
+			if (leaf.childLayers != undefined && leaf.childLayers.length > 0) {
+				var leafSwitcherRow = L.DomUtil.create("span", className + "-leaf-switcher-row", leafHeader);
+				var leafSwitcher = L.DomUtil.create("span", className + "-leaf-switcher", leafSwitcherRow);
+				L.DomEvent.on(leafSwitcher, "click", function (event) {
+					toggleLayerVisibility(event.srcElement.parentElement.parentElement.parentElement);
+				});
 			}
-			var leafContent = L.DomUtil.create("div", className + "-leaf-content", leafContainer);
-			if (leaf.childLayers && leaf.childLayers.length > 0) {
-				for (var i in leaf.childLayers) {
-					var child = leaf.childLayers[i];
-					// create a container
-					if (child) {
-						traverseLeaf(leaf, leafContent, child, layerId, i);
+			var layerId = parentId + "_" + leaf.code + "_" + order;
+			if (leaf.active) {
+				switch (parentLeaf.selectType) {
+					case "NONE":	//
+						leafTitle.innerHTML = "<label>" + leaf.name + "</label>"
+						break;
+					case "SINGLE":	// radio-group
+						var parentLeafCode = parentLeaf.code;
+						leafTitle.innerHTML = "<label><input type='radio' name='" + parentLeafCode + "' id='" + layerId + "' parentId='" + parentId + "'>" + leaf.name + "</label>"
+						L.DomEvent.on(leafTitle, "click", function (event) {
+							// select a single layer
+							// remove current group layers
+							// add selected layer
+							var sourceElementId = event.srcElement.id;
+							if (sourceElementId) {
+								var parentElementId = event.srcElement.attributes[3].value;
+								var checked = event.srcElement.checked;
+								console.log(sourceElementId + ", " + parentElementId + "," + checked);
+								console.log(event);
+								if (checked) {
+									me.removeLayers(parentLeaf, parentElementId);
+									me.addLayer(leaf, sourceElementId);
+								}
+							}
+						});
+						break;
+					case "MULTIPLE":
+					default:	// checkboxes
+						leafTitle.innerHTML = "<label><input type='checkbox' name='" + leaf.code + "' id='" + layerId + "'>" + leaf.name + "</label>"
+						L.DomEvent.on(leafTitle, "click", function (event) {
+							//event.sourceElement.checked
+							var sourceElementId = event.srcElement.id;
+							if (sourceElementId) {
+								var checked = event.srcElement.checked;
+								console.log(sourceElementId + ", " + checked);
+								console.log(event);
+								// add or remove currently selected layer
+								if (checked) {
+									me.addLayer(leaf, sourceElementId);
+								} else {
+									me.removeLayer(sourceElementId);
+								}
+							}
+						});
+						break;
+				}
+				var leafContent = L.DomUtil.create("div", className + "-leaf-content", leafContainer);
+				if (leaf.childLayers && leaf.childLayers.length > 0) {
+					for (var i in leaf.childLayers) {
+						var child = leaf.childLayers[i];
+						// create a container
+						if (child) {
+							traverseLeaf(leaf, leafContent, child, layerId, i);
+						}
 					}
 				}
+				toggleLayerVisibility(leafContainer, parentLeaf.openByDefault);
 			}
 		}
 

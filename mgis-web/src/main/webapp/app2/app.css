@@ -219,3 +219,7 @@ span.mgis-input-group-date button {
 .geo-map-layer-item .panel-body {
 	padding: 5px 5px 5px 15px;
 }
+
+.mgis-geo-map-layer-modal-form .modal-dialog {
+	width: 900px;
+}
