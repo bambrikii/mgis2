@@ -91,16 +91,10 @@ angular.module("mgis.geo.map", ["ui.router",
 				}
 			}
 
-			//traverseLayers(baseLayersObj, layers.base);
-			//traverseLayers(groupedOverlaysObj, layers.overlays);
-
 			map.attributionControl.setPrefix('');
 			map.setView(new L.LatLng(0, 0), 1);
 
-			var options = {};
-
-			//L.control.groupedLayers(baseLayersObj, groupedOverlays, options).addTo(map);
-			new L.Control.LayersTreeControl({layersTree: layers}).addTo(map);
+			new L.Control.LayersTreeControl({layersTree: layers, openByDefault: true}).addTo(map);
 		});
 	})
 ;

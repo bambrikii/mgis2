@@ -1,4 +1,13 @@
 .leaflet-layers-tree-control {
+	/*
+	width: calc(100% - 25px);
+	width: -moz-calc(100% - 25px);
+	width: -o-calc(100% - 25px);
+	*/
+	/* width: 50%; */
+}
+
+.leaflet-layers-tree-control-layers {
 	padding: 3px 9px 5px 9px;
 }
 
@@ -35,4 +44,35 @@
 .leaflet-layers-tree-control-leaf-switcher-closed:before {
 	font-family: 'Glyphicons Halflings';
 	content: "\e259";
+}
+
+.leaflet-layers-tree-control-toggle-open {
+	position: absolute;
+	left: -39px;
+	top: 0px;
+	cursor: hand;
+	width: 36px;
+	height: 36px;
+}
+
+.leaflet-layers-tree-control-toggle-closed {
+	cursor: hand;
+	width: 36px;
+	height: 36px;
+}
+
+.leaflet-layers-tree-control-toggle-open .leaflet-layers-tree-control-toggle-link {
+	background-image: url('../../../bower_components/leaflet/dist/images/layers.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 100%;
+	height: 100%;
+}
+
+.leaflet-layers-tree-control-toggle-closed .leaflet-layers-tree-control-toggle-link {
+	background-image: url('../../../bower_components/leaflet/dist/images/layers.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 100%;
+	height: 100%;
 }

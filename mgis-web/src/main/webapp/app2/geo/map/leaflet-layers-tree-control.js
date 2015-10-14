@@ -3,9 +3,11 @@ L.Control.LayersTreeControl = L.Control.extend({
 		position: "topright",
 		expand: false,
 		className: "leaflet-layers-tree-control",
-		layersTree: {}
+		layersTree: {},
+		openByDefault: false
 	},
 	initialize: function (options) {
+		console.log(options);
 		L.Util.setOptions(this, options);
 		if (options.layersTree == undefined) {
 			throw Error("Layer tree required to display");
@@ -16,15 +18,34 @@ L.Control.LayersTreeControl = L.Control.extend({
 	onAdd: function (map) {
 		this._map = map;
 		var className = this.options.className;
-		var container = this._container = L.DomUtil.create('div', className + ' leaflet-control-layers leaflet-control');
+		var container = this._container = L.DomUtil.create('div', className + " leaflet-control");
+		var layersContainer = L.DomUtil.create('div', className + '-layers leaflet-control-layers', container);
 		L.DomEvent.disableClickPropagation(container);
 		L.DomEvent.on(container, "wheel", L.DomEvent.stopPropagation);
 		container.setAttribute("aria-haspopup", true);
 
-		//
-		L.DomEvent.on(container, "click", function (event) {
+		var iconifyToggleControl = L.DomUtil.create("div", className + "-toggle-open leaflet-control-layers", container);
+		var icon = L.DomUtil.create("div", className + "-toggle-link", iconifyToggleControl);
 
+		//
+		function toggleIconify() {
+			if (layersContainer.style.display == "none") {
+				layersContainer.style.display = "";
+				iconifyToggleControl.className = className + "-toggle-open leaflet-control-layers";
+			} else {
+				layersContainer.style.display = "none";
+				iconifyToggleControl.className = className + "-toggle-closed leaflet-control-layers";
+			}
+		}
+
+		L.DomEvent.on(icon, "click", function (event) {
+			toggleIconify();
 		}, this);
+
+		console.log(this.options);
+		if (!this.options.openByDefault) {
+			toggleIconify();
+		}
 
 		//
 		var me = this;
@@ -41,7 +62,6 @@ L.Control.LayersTreeControl = L.Control.extend({
 					var toggleButtons = switcherRow[0].getElementsByClassName(className + "-leaf-switcher");
 					if (toggleButtons.length == 1) {
 						var toggleButton = toggleButtons[0];
-						console.log(open);
 						open = open || content.style.display == "none";
 						if (open) {
 							content.style.display = "";
@@ -56,7 +76,6 @@ L.Control.LayersTreeControl = L.Control.extend({
 		}
 
 		function traverseLeaf(parentLeaf, parentContainer, leaf, parentId, order) {
-			var type = '';
 			var leafContainer = L.DomUtil.create("div", className + "-leaf", parentContainer);
 			var leafHeader = L.DomUtil.create("div", className + "-leaf-header", leafContainer);
 			var leafTitle = L.DomUtil.create("span", className + "-leaf-title", leafHeader);
@@ -117,7 +136,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 				if (leaf.childLayers && leaf.childLayers.length > 0) {
 					for (var i in leaf.childLayers) {
 						var child = leaf.childLayers[i];
-						// create a container
+						// create a layersContainer
 						if (child) {
 							traverseLeaf(leaf, leafContent, child, layerId, i);
 						}
@@ -131,10 +150,10 @@ L.Control.LayersTreeControl = L.Control.extend({
 		if (Object.prototype.toString.call(layersTree) === '[object Array]') {
 			for (var i in layersTree) {
 				var layerTree = layersTree[i];
-				traverseLeaf(layerTree, container, layerTree, "", 0);
+				traverseLeaf(layerTree, layersContainer, layerTree, "", 0);
 			}
 		} else {
-			traverseLeaf(layersTree, container, layersTree, "", 0);
+			traverseLeaf(layersTree, layersContainer, layersTree, "", 0);
 		}
 
 		return container;
