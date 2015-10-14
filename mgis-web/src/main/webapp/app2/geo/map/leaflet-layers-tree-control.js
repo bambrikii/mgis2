@@ -7,7 +7,6 @@ L.Control.LayersTreeControl = L.Control.extend({
 		openByDefault: false
 	},
 	initialize: function (options) {
-		console.log(options);
 		L.Util.setOptions(this, options);
 		if (options.layersTree == undefined) {
 			throw Error("Layer tree required to display");
@@ -42,7 +41,6 @@ L.Control.LayersTreeControl = L.Control.extend({
 			toggleIconify();
 		}, this);
 
-		console.log(this.options);
 		if (!this.options.openByDefault) {
 			toggleIconify();
 		}
@@ -62,7 +60,9 @@ L.Control.LayersTreeControl = L.Control.extend({
 					var toggleButtons = switcherRow[0].getElementsByClassName(className + "-leaf-switcher");
 					if (toggleButtons.length == 1) {
 						var toggleButton = toggleButtons[0];
-						open = open || content.style.display == "none";
+						if (open === undefined) {
+							open = content.style.display == "none";
+						}
 						if (open) {
 							content.style.display = "";
 							toggleButton.className = className + "-leaf-switcher " + className + "-leaf-switcher-closed";
@@ -103,8 +103,6 @@ L.Control.LayersTreeControl = L.Control.extend({
 							if (sourceElementId) {
 								var parentElementId = event.srcElement.attributes[3].value;
 								var checked = event.srcElement.checked;
-								console.log(sourceElementId + ", " + parentElementId + "," + checked);
-								console.log(event);
 								if (checked) {
 									me.removeLayers(parentLeaf, parentElementId);
 									me.addLayer(leaf, sourceElementId);
@@ -120,8 +118,6 @@ L.Control.LayersTreeControl = L.Control.extend({
 							var sourceElementId = event.srcElement.id;
 							if (sourceElementId) {
 								var checked = event.srcElement.checked;
-								console.log(sourceElementId + ", " + checked);
-								console.log(event);
 								// add or remove currently selected layer
 								if (checked) {
 									me.addLayer(leaf, sourceElementId);
@@ -142,7 +138,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 						}
 					}
 				}
-				toggleLayerVisibility(leafContainer, parentLeaf.openByDefault);
+				toggleLayerVisibility(leafContainer.parentNode.parentNode, parentLeaf.openByDefault);
 			}
 		}
 
