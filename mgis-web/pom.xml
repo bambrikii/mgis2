@@ -168,6 +168,12 @@
 								<include>bower_components/**/*.png</include>
 								<include>bower_components/**/*.gif</include>
 								<include>bower_components/**/*.jpg</include>
+								<!-- fontawesome -->
+								<include>bower_components/**/*.eot</include>
+								<include>bower_components/**/*.svg</include>
+								<include>bower_components/**/*.ttf</include>
+								<include>bower_components/**/*.woff</include>
+								<include>bower_components/**/*.woff2</include>
 							</includes>
 						</resource>
 					</webResources>
