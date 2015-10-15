@@ -7,6 +7,10 @@
 	/* width: 50%; */
 }
 
+.leaflet-layers-tree-control-leaf-title input {
+	vertical-align: middle;
+}
+
 .leaflet-layers-tree-control-layers {
 	padding: 3px 9px 5px 9px;
 }
@@ -24,6 +28,7 @@
 
 .leaflet-layers-tree-control-leaf-header input {
 	margin-right: 5px;
+	margin-top: 0px;
 }
 
 .leaflet-layers-tree-control-leaf-content {

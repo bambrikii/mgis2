@@ -58,10 +58,9 @@ L.Control.LayersTreeControl = L.Control.extend({
 				}
 			}
 			layersContainer.style.minWidth = me._minWidth + "px";
-			console.log(me._minWidth + ", " + layersContainer.offsetWidth);
 		}
 
-		function toggleLayerVisibility(elem, open) {
+		function toggleChildrenVisibility(elem, open) {
 			if (
 				(elem.childNodes.length >= 2 && (elem.childNodes[0].className == className + "-leaf-header")) &&
 				(elem.childNodes.length >= 2 && (elem.childNodes[1].className == className + "-leaf-content"))
@@ -97,63 +96,92 @@ L.Control.LayersTreeControl = L.Control.extend({
 				var leafSwitcherRow = L.DomUtil.create("span", className + "-leaf-switcher-row", leafHeader);
 				var leafSwitcher = L.DomUtil.create("span", className + "-leaf-switcher", leafSwitcherRow);
 				L.DomEvent.on(leafSwitcher, "click", function (event) {
-					toggleLayerVisibility(event.srcElement.parentElement.parentElement.parentElement);
+					toggleChildrenVisibility(event.srcElement.parentElement.parentElement.parentElement);
 				});
 			}
 			var layerId = parentId + "_" + leaf.code + "_" + order;
+
+			function toggleLayerMULTIPLE(sourceElementId, checked) {
+				if (sourceElementId) {
+					// add or remove currently selected layer
+					if (checked) {
+						me.addLayer(leaf, sourceElementId);
+					} else {
+						me.removeLayer(sourceElementId);
+					}
+				}
+			}
+
+			function toggleLayerSINGLE(checked, parentElementId, sourceElementId) {
+				if (checked) {
+					me.removeLayers(parentLeaf, parentElementId);
+					me.addLayer(leaf, sourceElementId);
+				}
+			}
+
 			if (leaf.active) {
 				switch (parentLeaf.selectType) {
 					case "NONE":	//
 						leafTitle.innerHTML = "<label>" + leaf.name + "</label>"
 						break;
 					case "SINGLE":	// radio-group
+					{
 						var parentLeafCode = parentLeaf.code;
-						leafTitle.innerHTML = "<label><input type='radio' name='" + parentLeafCode + "' id='" + layerId + "' parentId='" + parentId + "'>" + leaf.name + "</label>"
-						L.DomEvent.on(leafTitle, "click", function (event) {
-							// select a single layer
-							// remove current group layers
-							// add selected layer
+						var checkbox = L.DomUtil.create("input", "", leafTitle);
+						checkbox.name = parentLeafCode;
+						checkbox.id = layerId;
+						checkbox.parentId = parentId;
+						checkbox.type = "radio";
+						var label = L.DomUtil.create("label", "", leafTitle);
+						var labelText = L.DomUtil.create("span", "", label);
+						labelText.innerHTML = leaf.name;
+						L.DomEvent.on(leafTitle, "change", function (event) {
 							var sourceElementId = event.srcElement.id;
 							if (sourceElementId) {
-								var parentElementId = event.srcElement.attributes[3].value;
+								var parentElementId = event.srcElement.parentId;
 								var checked = event.srcElement.checked;
-								if (checked) {
-									me.removeLayers(parentLeaf, parentElementId);
-									me.addLayer(leaf, sourceElementId);
-								}
+								toggleLayerSINGLE(checked, parentElementId, sourceElementId);
 							}
 						});
+						if (leaf.selectedByDefault) {
+							checkbox.checked = true;
+							toggleLayerMULTIPLE(layerId, true);
+						}
+					}
 						break;
 					case "MULTIPLE":
 					default:	// checkboxes
-						leafTitle.innerHTML = "<label><input type='checkbox' name='" + leaf.code + "' id='" + layerId + "'>" + leaf.name + "</label>"
-						L.DomEvent.on(leafTitle, "click", function (event) {
-							//event.sourceElement.checked
-							var sourceElementId = event.srcElement.id;
-							if (sourceElementId) {
-								var checked = event.srcElement.checked;
-								// add or remove currently selected layer
-								if (checked) {
-									me.addLayer(leaf, sourceElementId);
-								} else {
-									me.removeLayer(sourceElementId);
-								}
-							}
+					{
+						var parentLeafCode = parentLeaf.code;
+						var checkbox = L.DomUtil.create("input", "", leafTitle);
+						checkbox.name = parentLeafCode;
+						checkbox.id = layerId;
+						checkbox.parentId = parentId;
+						checkbox.type = "checkbox";
+						var label = L.DomUtil.create("label", "", leafTitle);
+						var labelText = L.DomUtil.create("span", "", label);
+						labelText.innerHTML = leaf.name;
+						L.DomEvent.on(leafTitle, "change", function (event) {
+							toggleLayerMULTIPLE(event.srcElement.id, event.srcElement.checked);
 						});
+						if (leaf.selectedByDefault) {
+							checkbox.checked = true;
+							toggleLayerMULTIPLE(layerId, true);
+						}
+					}
 						break;
 				}
 				var leafContent = L.DomUtil.create("div", className + "-leaf-content", leafContainer);
 				if (leaf.childLayers && leaf.childLayers.length > 0) {
 					for (var i in leaf.childLayers) {
 						var child = leaf.childLayers[i];
-						// create a layersContainer
 						if (child) {
 							traverseLeaf(leaf, leafContent, child, layerId, i);
 						}
 					}
 				}
 
-				toggleLayerVisibility(leafContainer.parentNode.parentNode, parentLeaf.openByDefault);
+				toggleChildrenVisibility(leafContainer.parentNode.parentNode, parentLeaf.openByDefault);
 			}
 		}
 
