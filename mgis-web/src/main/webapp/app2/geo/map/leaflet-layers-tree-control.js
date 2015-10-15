@@ -112,11 +112,9 @@ L.Control.LayersTreeControl = L.Control.extend({
 				}
 			}
 
-			function toggleLayerSINGLE(checked, parentElementId, sourceElementId) {
-				if (checked) {
-					me.removeLayers(parentLeaf, parentElementId);
-					me.addLayer(leaf, sourceElementId);
-				}
+			function toggleLayerSINGLE(parentElementId, sourceElementId) {
+				me.removeLayers(parentLeaf, parentElementId);
+				me.addLayer(leaf, sourceElementId);
 			}
 
 			if (leaf.active) {
@@ -135,17 +133,26 @@ L.Control.LayersTreeControl = L.Control.extend({
 						var label = L.DomUtil.create("label", "", leafTitle);
 						var labelText = L.DomUtil.create("span", "", label);
 						labelText.innerHTML = leaf.name;
-						L.DomEvent.on(leafTitle, "change", function (event) {
+						L.DomEvent.on(checkbox, "change", function (event) {
 							var sourceElementId = event.srcElement.id;
 							if (sourceElementId) {
 								var parentElementId = event.srcElement.parentId;
 								var checked = event.srcElement.checked;
-								toggleLayerSINGLE(checked, parentElementId, sourceElementId);
+								if (checked) {
+									toggleLayerSINGLE(parentElementId, sourceElementId);
+								}
 							}
+						});
+						L.DomEvent.on(label, "click", function (event) {
+							var checkbox = event.srcElement.parentElement.parentElement.getElementsByTagName("input")[0];
+							checkbox.checked = true;
+							var parentElementId = checkbox.parentId;
+							var sourceElementId = checkbox.id;
+							toggleLayerSINGLE(parentElementId, sourceElementId);
 						});
 						if (leaf.selectedByDefault) {
 							checkbox.checked = true;
-							toggleLayerMULTIPLE(layerId, true);
+							toggleLayerSINGLE(parentId, layerId);
 						}
 					}
 						break;
@@ -161,8 +168,21 @@ L.Control.LayersTreeControl = L.Control.extend({
 						var label = L.DomUtil.create("label", "", leafTitle);
 						var labelText = L.DomUtil.create("span", "", label);
 						labelText.innerHTML = leaf.name;
-						L.DomEvent.on(leafTitle, "change", function (event) {
+						L.DomEvent.on(checkbox, "change", function (event) {
 							toggleLayerMULTIPLE(event.srcElement.id, event.srcElement.checked);
+						});
+						L.DomEvent.on(label, "click", function (event) {
+							var checkbox = event.srcElement.parentElement.parentElement.getElementsByTagName("input")[0];
+							var checked;
+							if (checkbox.checked == true) {
+								checkbox.checked = undefined;
+								checked = false;
+							} else {
+								checkbox.checked = true;
+								checked = true;
+							}
+							var sourceElementId = checkbox.id;
+							toggleLayerMULTIPLE(sourceElementId, checked);
 						});
 						if (leaf.selectedByDefault) {
 							checkbox.checked = true;
