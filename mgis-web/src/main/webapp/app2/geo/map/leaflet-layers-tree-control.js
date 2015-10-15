@@ -12,7 +12,8 @@ L.Control.LayersTreeControl = L.Control.extend({
 			throw Error("Layer tree required to display");
 		}
 		this._layers = {};
-		this._reloadHandlers = {}
+		this._reloadHandlers = {};
+		this._minWidth = undefined;
 	},
 	onAdd: function (map) {
 		this._map = map;
@@ -48,6 +49,18 @@ L.Control.LayersTreeControl = L.Control.extend({
 		//
 		var me = this;
 
+		function updateMinWidth() {
+			if (me._minWidth == undefined) {
+				me._minWidth = layersContainer.offsetWidth;
+			} else {
+				if (me._minWidth < layersContainer.offsetWidth) {
+					me._minWidth = layersContainer.offsetWidth;
+				}
+			}
+			layersContainer.style.minWidth = me._minWidth + "px";
+			console.log(me._minWidth + ", " + layersContainer.offsetWidth);
+		}
+
 		function toggleLayerVisibility(elem, open) {
 			if (
 				(elem.childNodes.length >= 2 && (elem.childNodes[0].className == className + "-leaf-header")) &&
@@ -67,6 +80,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 							content.style.display = "";
 							toggleButton.className = className + "-leaf-switcher " + className + "-leaf-switcher-closed";
 						} else {
+							updateMinWidth();
 							content.style.display = "none";
 							toggleButton.className = className + "-leaf-switcher " + className + "-leaf-switcher-open";
 						}
@@ -138,6 +152,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 						}
 					}
 				}
+
 				toggleLayerVisibility(leafContainer.parentNode.parentNode, parentLeaf.openByDefault);
 			}
 		}
