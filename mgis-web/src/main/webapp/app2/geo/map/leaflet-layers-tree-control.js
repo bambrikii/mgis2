@@ -19,15 +19,15 @@ L.Control.LayersTreeControl = L.Control.extend({
 		this._map = map;
 		var className = this.options.className;
 		var container = this._container = L.DomUtil.create('div', className + " leaflet-control");
-		var layersContainer = L.DomUtil.create('div', className + '-layers leaflet-control-layers', container);
 		L.DomEvent.disableClickPropagation(container);
 		L.DomEvent.on(container, "wheel", L.DomEvent.stopPropagation);
 		container.setAttribute("aria-haspopup", true);
 
+		// Iconify
+		var layersContainer = L.DomUtil.create('div', className + '-layers leaflet-control-layers', container);
 		var iconifyToggleControl = L.DomUtil.create("div", className + "-toggle-open leaflet-control-layers", container);
 		var icon = L.DomUtil.create("div", className + "-toggle-link", iconifyToggleControl);
 
-		//
 		function toggleIconify() {
 			if (layersContainer.style.display == "none") {
 				layersContainer.style.display = "";
@@ -45,6 +45,39 @@ L.Control.LayersTreeControl = L.Control.extend({
 		if (!this.options.openByDefault) {
 			toggleIconify();
 		}
+
+		// Order
+		var orderContainer = L.DomUtil.create('div', className + '-layers leaflet-control-layers', container);
+		var orderToggleControl = L.DomUtil.create("div", className + "-order-toggle-open leaflet-control-layers", container);
+		var order = L.DomUtil.create("div", className + "-order-toggle-link", orderToggleControl);
+
+		function toggleOrder() {
+			if (orderContainer.style.display == "none") {
+				orderContainer.style.display = "";
+				orderToggleControl.className = className + "-order-toggle-open leaflet-control-layers";
+			} else {
+				orderContainer.style.display = "none";
+				orderToggleControl.className = className + "-order-toggle-closed leaflet-control-layers";
+			}
+		}
+
+		L.DomEvent.on(order, "click", function (event) {
+			fillOrders();
+			console.log("fill orders");
+			toggleOrder();
+		});
+
+		function fillOrders() {
+			orderContainer.innerHTML = "";
+			for (var i in this._layers) {
+				var layer = this._layer[i];
+				var row = L.DomUtil.create("div", className + "-order-", orderContainer);
+				row.innerHTML = "layer: " + layer.name;
+			}
+		}
+
+		fillOrders();
+
 
 		//
 		var me = this;
@@ -96,7 +129,8 @@ L.Control.LayersTreeControl = L.Control.extend({
 				var leafSwitcherRow = L.DomUtil.create("span", className + "-leaf-switcher-row", leafHeader);
 				var leafSwitcher = L.DomUtil.create("span", className + "-leaf-switcher", leafSwitcherRow);
 				L.DomEvent.on(leafSwitcher, "click", function (event) {
-					toggleChildrenVisibility(event.srcElement.parentElement.parentElement.parentElement);
+					var elem = event.srcElement != undefined ? event.srcElement : this;
+					toggleChildrenVisibility(elem.parentElement.parentElement.parentElement);
 				});
 			}
 			var layerId = parentId + "_" + leaf.code + "_" + order;
@@ -134,17 +168,19 @@ L.Control.LayersTreeControl = L.Control.extend({
 						var labelText = L.DomUtil.create("span", "", label);
 						labelText.innerHTML = leaf.name;
 						L.DomEvent.on(checkbox, "change", function (event) {
-							var sourceElementId = event.srcElement.id;
+							var elem = event.srcElement != undefined ? event.srcElement : this;
+							var sourceElementId = elem.id;
 							if (sourceElementId) {
-								var parentElementId = event.srcElement.parentId;
-								var checked = event.srcElement.checked;
+								var parentElementId = elem.parentId;
+								var checked = elem.checked;
 								if (checked) {
 									toggleLayerSINGLE(parentElementId, sourceElementId);
 								}
 							}
 						});
 						L.DomEvent.on(label, "click", function (event) {
-							var checkbox = event.srcElement.parentElement.parentElement.getElementsByTagName("input")[0];
+							var elem = event.srcElement != undefined ? event.srcElement : this;
+							var checkbox = elem.parentElement.parentElement.getElementsByTagName("input")[0];
 							checkbox.checked = true;
 							var parentElementId = checkbox.parentId;
 							var sourceElementId = checkbox.id;
@@ -169,7 +205,8 @@ L.Control.LayersTreeControl = L.Control.extend({
 						var labelText = L.DomUtil.create("span", "", label);
 						labelText.innerHTML = leaf.name;
 						L.DomEvent.on(checkbox, "change", function (event) {
-							toggleLayerMULTIPLE(event.srcElement.id, event.srcElement.checked);
+							var elem = event.srcElement != undefined ? event.srcElement : this;
+							toggleLayerMULTIPLE(elem.id, elem.checked);
 						});
 						L.DomEvent.on(label, "click", function (event) {
 							var checkbox = event.srcElement.parentElement.parentElement.getElementsByTagName("input")[0];

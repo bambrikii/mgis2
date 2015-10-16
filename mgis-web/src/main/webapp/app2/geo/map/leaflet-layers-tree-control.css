@@ -51,6 +51,7 @@
 	content: "\e259";
 }
 
+/* Toggle iconify */
 .leaflet-layers-tree-control-toggle-open {
 	position: absolute;
 	left: -39px;
@@ -81,3 +82,38 @@
 	width: 100%;
 	height: 100%;
 }
+
+/* Toggle order */
+.leaflet-layers-tree-control-order-toggle-open {
+	position: absolute;
+	left: -39px;
+	top: 39px;
+	cursor: hand;
+	width: 36px;
+	height: 36px;
+}
+
+.leaflet-layers-tree-control-order-toggle-closed {
+	position: relative;
+	top: 5px;
+	cursor: hand;
+	width: 36px;
+	height: 36px;
+}
+
+.leaflet-layers-tree-control-order-toggle-open .leaflet-layers-tree-control-order-toggle-link {
+	background-image: url('../../../bower_components/leaflet/dist/images/layers.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 100%;
+	height: 100%;
+}
+
+.leaflet-layers-tree-control-order-toggle-closed .leaflet-layers-tree-control-order-toggle-link {
+	background-image: url('../../../bower_components/leaflet/dist/images/layers.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 100%;
+	height: 100%;
+}
+
