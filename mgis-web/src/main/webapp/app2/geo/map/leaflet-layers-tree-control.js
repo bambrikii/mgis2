@@ -24,79 +24,102 @@ L.Control.LayersTreeControl = L.Control.extend({
 		container.setAttribute("aria-haspopup", true);
 
 		// Iconify
-		var layersContainer = L.DomUtil.create('div', className + '-layers leaflet-control-layers', container);
+		var layersContainer = L.DomUtil.create('div', className + '-layers-open leaflet-control-layers', container);
 		var iconifyToggleControl = L.DomUtil.create("div", className + "-toggle-open leaflet-control-layers", container);
 		var icon = L.DomUtil.create("div", className + "-toggle-link", iconifyToggleControl);
 
-		function toggleIconify() {
-			if (layersContainer.style.display == "none") {
-				layersContainer.style.display = "";
-				iconifyToggleControl.className = className + "-toggle-open leaflet-control-layers";
-			} else {
-				layersContainer.style.display = "none";
-				iconifyToggleControl.className = className + "-toggle-closed leaflet-control-layers";
-			}
+		function isLayersContainerOpen() {
+			return layersContainer.classList.contains(className + "-layers-open");
 		}
 
-		L.DomEvent.on(icon, "click", function (event) {
-			toggleIconify();
-		}, this);
+		function closeLayersContainer() {
+			layersContainer.className = className + '-layers-closed leaflet-control-layers';
+		}
 
-		if (!this.options.openByDefault) {
-			toggleIconify();
+		function openLayersContainer() {
+			layersContainer.className = className + '-layers-open leaflet-control-layers';
+		}
+
+		function updateLayerContainerMinWidth() {
+			if (me._minWidth == undefined) {
+				me._minWidth = layersContainer.offsetWidth;
+			} else {
+				if (me._minWidth < layersContainer.offsetWidth) {
+					me._minWidth = layersContainer.offsetWidth;
+				}
+			}
+			layersContainer.style.minWidth = me._minWidth + "px";
 		}
 
 		var me = this;
 
 		// Order
-		var orderContainer = L.DomUtil.create('div', className + '-layers leaflet-control-layers', container);
+		var orderContainer = L.DomUtil.create('div', className + '-order-closed leaflet-control-layers', container);
 		var orderToggleControl = L.DomUtil.create("div", className + "-order-toggle-open leaflet-control-layers", container);
 		var order = L.DomUtil.create("div", className + "-order-toggle-link", orderToggleControl);
 
+		function isOrderContainerOpen() {
+			return orderContainer.classList.contains(className + "-order-open");
+		}
+
+		function closeOrderContainer() {
+			orderContainer.className = className + '-order-closed leaflet-control-layers';
+		}
+
+		function openOrderContainer() {
+			updateLayerContainerMinWidth();
+			orderContainer.style.minWidth = layersContainer.style.minWidth;
+			orderContainer.className = className + '-order-open leaflet-control-layers';
+		}
+
+		function openOrderToggleControl() {
+			orderToggleControl.className = className + "-order-toggle-open leaflet-control-layers";
+		}
+
+		function closeOrderToggleControl() {
+			orderToggleControl.className = className + "-order-toggle-closed leaflet-control-layers";
+		}
+
+		function hideOrderToggleControl() {
+			orderToggleControl.className = className + "-order-toggle-hidden leaflet-control-layers";
+		}
 
 		var orderManager = {
 			orderContainer: orderContainer,
 			orderToggleControl: orderToggleControl,
+			layersContainer: layersContainer,
 			layers: me._layers,
 			toggleOrder: function () {
-				if (this.orderContainer.style.display == "none") {
-					this.orderContainer.style.display = "";
-					this.orderToggleControl.className = className + "-order-toggle-open leaflet-control-layers";
+				if (isOrderContainerOpen()) {
+					openOrderToggleControl();
+					closeOrderContainer();
+					openLayersContainer();
 				} else {
-					this.orderContainer.style.display = "none";
-					this.orderToggleControl.className = className + "-order-toggle-closed leaflet-control-layers";
+					closeOrderToggleControl();
+					openOrderContainer();
+					closeLayersContainer();
 				}
 			},
-			checkDragOver: function (src, targetId) {
-				var srcId = src.layerId;
-				return srcId != undefined && targetId != undefined && me._getLayerIndex(srcId) != undefined && me._getLayerIndex(targetId) != undefined;
-			},
-			moveDown: function (sourceId) {
-				var index = me._getLayerIndex(sourceId);
-				var top = index + 1;
-				var bottom = index;
-				var layers = orderManager.layers;
-				var s = layers[top];
-				for (var i = top; i > bottom; i--) {
-					layers[i] = layers[i - 1];
+			reorder: function (top, bottom) {
+				if (top > bottom) {
+					var layers = orderManager.layers;
+					var s = layers[top];
+					for (var i = top; i > bottom; i--) {
+						layers[i] = layers[i - 1];
+					}
+					layers[bottom] = s;
+				} else if (top < bottom) {
+					var layers = orderManager.layers;
+					var s = layers[top];
+					for (var i = top; i < bottom; i++) {
+						layers[i] = layers[i + 1];
+					}
+					layers[bottom] = s;
 				}
-				layers[bottom] = s;
-			},
-			moveUp: function (sourceId) {
-				var index = me._getLayerIndex(sourceId);
-				var top = index - 1;
-				var bottom = index;
-				var layers = orderManager.layers;
-				var s = layers[top];
-				for (var i = top; i < bottom; i++) {
-					layers[i] = layers[i + 1];
-				}
-				layers[bottom] = s;
 			},
 			fillOrders: function () {
 				this.orderContainer.innerHTML = "";
 				var layers = this.layers;
-				console.log(layers);
 				for (var i = layers.length - 1; i > -1; i--) {
 					var layerContainer = layers[i];
 					layerContainer.layer.setZIndex(i);
@@ -108,18 +131,20 @@ L.Control.LayersTreeControl = L.Control.extend({
 					if (i > 0) {
 						var up = L.DomUtil.create("span", className + "-order-up", rowContent);
 						L.DomEvent.on(up, "click", function (event) {
-							var elem = event.srcElement ? event.srcElement : this;
+							var elem = event.currentTarget ? event.currentTarget : this;
 							var layerId = elem.parentElement.layerId;
-							orderManager.moveUp(layerId);
+							var index = me._getLayerIndex(layerId);
+							orderManager.reorder(index - 1, index);
 							orderManager.fillOrders();
 						});
 					}
 					if (i < layers.length - 1) {
 						var down = L.DomUtil.create("span", className + "-order-down", rowContent);
 						L.DomEvent.on(down, "click", function (event) {
-							var elem = event.srcElement ? event.srcElement : this;
+							var elem = event.currentTarget ? event.currentTarget : this;
 							var layerId = elem.parentElement.layerId;
-							orderManager.moveDown(layerId);
+							var index = me._getLayerIndex(layerId);
+							orderManager.reorder(index + 1, index);
 							orderManager.fillOrders();
 						});
 					}
@@ -127,51 +152,55 @@ L.Control.LayersTreeControl = L.Control.extend({
 					rowContent.layerId = layerContainer.id;
 					rowContent.draggable = true;
 					rowContent.droppable = true;
-					rowContent.ondrag = function (event) {
-						var sourceId = event.srcElement.layerId;
-						console.log("ondrag: " + sourceId);
-						event.dataTransfer.setData("Text", sourceId);
+					rowContent.ondragstart = function (event) {
+						var elem = event.currentTarget != undefined ? event.currentTarget : this;
+						var sourceId = elem.layerId;
+						event.dataTransfer.setData("text/plain", sourceId);
 					};
 					rowContent.ondragover = function (event) {
-						console.log("ondragover: " + event.dataTransfer.getData("Text"));
-						event.preventDefault();
-						// TODO:
-						var targetId = event.dataTransfer.getData("Text");
-						console.log("ondragover: " + targetId);
-						//(orderManager.checkDragOver(event.srcElement.parentElement, targetId));
+						var elem = event.currentTarget != undefined ? event.currentTarget : this;
+						var sourceId = elem.layerId;
+						var targetId = event.dataTransfer.getData("text/plain");
+						var sourceIndex = me._getLayerIndex(sourceId);
+						//var targetIndex = me._getLayerIndex(targetId);
+						if (sourceIndex != undefined/* && targetIndex != undefined && sourceIndex != targetIndex*/) {
+							event.preventDefault();
+						}
 					};
 					rowContent.ondrop = function (event) {
 						event.preventDefault();
-						var src = event.srcElement.parentElement;
-						//var target = event.toElement.parentElement;
-						var targetId = event.dataTransfer.getData("Text");
-						console.log("ondrop: " + targetId);
-						if (orderManager.checkDragOver(src, targetId)) {
-							var sourceId = src.layerId;
-							console.log(sourceId);
-							console.log(targetId);
-							var sourceIndex = me._getLayerIndex(sourceId);
-							var targetIndex = me._getLayerIndex(targetId);
-							if (sourceIndex != undefined && targetIndex != undefined && sourceIndex != targetIndex) {
-								if (sourceIndex > targetIndex) {
-									var s = layers[sourceIndex];
-									for (var i = sourceIndex; i > targetIndex; i--) {
-										layers[i] = layers[i - 1];
-									}
-									layers[targetIndex] = s;
-								} else {
-									var s = layers[sourceIndex];
-									for (var i = sourceIndex; i < targetIndex; i++) {
-										layers[i] = layers[i + 1];
-									}
-									layers[targetIndex] = s;
-								}
-							}
+						var elem = event.currentTarget != undefined ? event.currentTarget : this;
+						var sourceId = elem.layerId;
+						var targetId = event.dataTransfer.getData("text/plain");
+						var sourceIndex = me._getLayerIndex(sourceId);
+						var targetIndex = me._getLayerIndex(targetId);
+						if (sourceIndex != undefined && targetIndex != undefined && sourceIndex != targetIndex) {
+							orderManager.reorder(targetIndex, sourceIndex);
+							orderManager.fillOrders();
 						}
-						console.log("ondrop");
-					};
+					}
 				}
 			}
+		}
+
+		function toggleIconify() {
+			if (isLayersContainerOpen() || isOrderContainerOpen()) {
+				closeLayersContainer();
+				closeOrderContainer();
+				hideOrderToggleControl();
+			} else {
+				openLayersContainer();
+				closeOrderContainer();
+				closeOrderToggleControl();
+			}
+		}
+
+		L.DomEvent.on(icon, "click", function (event) {
+			toggleIconify();
+		}, this);
+
+		if (!this.options.openByDefault) {
+			toggleIconify();
 		}
 
 		L.DomEvent.on(order, "click", function (event) {
@@ -181,18 +210,6 @@ L.Control.LayersTreeControl = L.Control.extend({
 
 
 		// Layers
-
-		function updateMinWidth() {
-			if (me._minWidth == undefined) {
-				me._minWidth = layersContainer.offsetWidth;
-			} else {
-				if (me._minWidth < layersContainer.offsetWidth) {
-					me._minWidth = layersContainer.offsetWidth;
-				}
-			}
-			layersContainer.style.minWidth = me._minWidth + "px";
-		}
-
 		function toggleChildrenVisibility(elem, open) {
 			if (
 				(elem.childNodes.length >= 2 && (elem.childNodes[0].className == className + "-leaf-header")) &&
@@ -212,7 +229,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 							content.style.display = "";
 							toggleButton.className = className + "-leaf-switcher " + className + "-leaf-switcher-closed";
 						} else {
-							updateMinWidth();
+							updateLayerContainerMinWidth();
 							content.style.display = "none";
 							toggleButton.className = className + "-leaf-switcher " + className + "-leaf-switcher-open";
 						}

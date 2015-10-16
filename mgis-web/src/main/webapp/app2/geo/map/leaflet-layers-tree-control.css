@@ -11,8 +11,12 @@
 	vertical-align: middle;
 }
 
-.leaflet-layers-tree-control-layers {
+.leaflet-layers-tree-control-layers-open {
 	padding: 3px 9px 5px 9px;
+}
+
+.leaflet-layers-tree-control-layers-closed {
+	display: none;
 }
 
 .leaflet-layers-tree-control-leaf-header,
@@ -22,7 +26,7 @@
 }
 
 .leaflet-layers-tree-control-leaf-header label {
-	cursor: hand;
+	cursor: pointer;
 	margin: 0px 0px 1px 0px;
 }
 
@@ -37,7 +41,7 @@
 
 .leaflet-layers-tree-control-leaf-switcher {
 	padding-left: 5px;
-	cursor: hand;
+	cursor: pointer;
 	vertical-align: bottom;
 }
 
@@ -56,13 +60,13 @@
 	position: absolute;
 	left: -39px;
 	top: 0px;
-	cursor: hand;
+	cursor: pointer;
 	width: 36px;
 	height: 36px;
 }
 
 .leaflet-layers-tree-control-toggle-closed {
-	cursor: hand;
+	cursor: pointer;
 	width: 36px;
 	height: 36px;
 }
@@ -88,17 +92,22 @@
 	position: absolute;
 	left: -39px;
 	top: 39px;
-	cursor: hand;
+	cursor: pointer;
 	width: 36px;
 	height: 36px;
 }
 
 .leaflet-layers-tree-control-order-toggle-closed {
-	position: relative;
-	top: 5px;
-	cursor: hand;
+	position: absolute;
+	left: -39px;
+	top: 39px;
+	cursor: pointer;
 	width: 36px;
 	height: 36px;
+}
+
+.leaflet-layers-tree-control-order-toggle-hidden {
+	display: none;
 }
 
 .leaflet-layers-tree-control-order-toggle-open .leaflet-layers-tree-control-order-toggle-link {
@@ -117,6 +126,14 @@
 	height: 100%;
 }
 
+.leaflet-layers-tree-control-order-open {
+	padding: 3px 9px 5px 9px;
+}
+
+.leaflet-layers-tree-control-order-closed {
+	display: none;
+}
+
 .leaflet-layers-tree-control-order-row {
 }
 
@@ -125,7 +142,7 @@
 }
 
 .leaflet-layers-tree-control-order-up {
-	cursor: hand;
+	cursor: pointer;
 	padding-left: 5px;
 }
 
@@ -135,7 +152,7 @@
 }
 
 .leaflet-layers-tree-control-order-down {
-	cursor: hand;
+	cursor: pointer;
 	padding-left: 5px;
 }
 
