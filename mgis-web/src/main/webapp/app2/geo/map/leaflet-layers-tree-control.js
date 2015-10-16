@@ -328,7 +328,8 @@ L.Control.LayersTreeControl = L.Control.extend({
 							toggleLayerMULTIPLE(elem.id, elem.checked);
 						});
 						L.DomEvent.on(label, "click", function (event) {
-							var checkbox = event.srcElement.parentElement.parentElement.getElementsByTagName("input")[0];
+							var elem = event.srcElement != undefined ? event.srcElement : this;
+							var checkbox = elem.parentElement.parentElement.getElementsByTagName("input")[0];
 							var checked;
 							if (checkbox.checked == true) {
 								checkbox.checked = undefined;
