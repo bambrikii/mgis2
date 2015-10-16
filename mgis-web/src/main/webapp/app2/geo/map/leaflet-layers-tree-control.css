@@ -117,3 +117,30 @@
 	height: 100%;
 }
 
+.leaflet-layers-tree-control-order-row {
+}
+
+.leaflet-layers-tree-control-order-row-content {
+	display: inline-flex;
+}
+
+.leaflet-layers-tree-control-order-up {
+	cursor: hand;
+	padding-left: 5px;
+}
+
+.leaflet-layers-tree-control-order-up:before {
+	font-family: 'Glyphicons Halflings';
+	content: "\e094";
+}
+
+.leaflet-layers-tree-control-order-down {
+	cursor: hand;
+	padding-left: 5px;
+}
+
+.leaflet-layers-tree-control-order-down:before {
+	font-family: 'Glyphicons Halflings';
+	content: "\e093";
+}
+

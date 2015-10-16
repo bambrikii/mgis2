@@ -11,7 +11,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 		if (options.layersTree == undefined) {
 			throw Error("Layer tree required to display");
 		}
-		this._layers = {};
+		this._layers = new Array();
 		this._reloadHandlers = {};
 		this._minWidth = undefined;
 	},
@@ -46,41 +46,141 @@ L.Control.LayersTreeControl = L.Control.extend({
 			toggleIconify();
 		}
 
+		var me = this;
+
 		// Order
 		var orderContainer = L.DomUtil.create('div', className + '-layers leaflet-control-layers', container);
 		var orderToggleControl = L.DomUtil.create("div", className + "-order-toggle-open leaflet-control-layers", container);
 		var order = L.DomUtil.create("div", className + "-order-toggle-link", orderToggleControl);
 
-		function toggleOrder() {
-			if (orderContainer.style.display == "none") {
-				orderContainer.style.display = "";
-				orderToggleControl.className = className + "-order-toggle-open leaflet-control-layers";
-			} else {
-				orderContainer.style.display = "none";
-				orderToggleControl.className = className + "-order-toggle-closed leaflet-control-layers";
+
+		var orderManager = {
+			orderContainer: orderContainer,
+			orderToggleControl: orderToggleControl,
+			layers: me._layers,
+			toggleOrder: function () {
+				if (this.orderContainer.style.display == "none") {
+					this.orderContainer.style.display = "";
+					this.orderToggleControl.className = className + "-order-toggle-open leaflet-control-layers";
+				} else {
+					this.orderContainer.style.display = "none";
+					this.orderToggleControl.className = className + "-order-toggle-closed leaflet-control-layers";
+				}
+			},
+			checkDragOver: function (src, targetId) {
+				var srcId = src.layerId;
+				return srcId != undefined && targetId != undefined && me._getLayerIndex(srcId) != undefined && me._getLayerIndex(targetId) != undefined;
+			},
+			moveDown: function (sourceId) {
+				var index = me._getLayerIndex(sourceId);
+				var top = index + 1;
+				var bottom = index;
+				var layers = orderManager.layers;
+				var s = layers[top];
+				for (var i = top; i > bottom; i--) {
+					layers[i] = layers[i - 1];
+				}
+				layers[bottom] = s;
+			},
+			moveUp: function (sourceId) {
+				var index = me._getLayerIndex(sourceId);
+				var top = index - 1;
+				var bottom = index;
+				var layers = orderManager.layers;
+				var s = layers[top];
+				for (var i = top; i < bottom; i++) {
+					layers[i] = layers[i + 1];
+				}
+				layers[bottom] = s;
+			},
+			fillOrders: function () {
+				this.orderContainer.innerHTML = "";
+				var layers = this.layers;
+				console.log(layers);
+				for (var i = layers.length - 1; i > -1; i--) {
+					var layerContainer = layers[i];
+					layerContainer.layer.setZIndex(i);
+					var row = L.DomUtil.create("div", className + "-order-row", this.orderContainer);
+					var rowContent = L.DomUtil.create("div", className + "-order-row-content", row);
+					var label = L.DomUtil.create("label", "", rowContent);
+					label.innerHTML = layerContainer.name;
+
+					if (i > 0) {
+						var up = L.DomUtil.create("span", className + "-order-up", rowContent);
+						L.DomEvent.on(up, "click", function (event) {
+							var elem = event.srcElement ? event.srcElement : this;
+							var layerId = elem.parentElement.layerId;
+							orderManager.moveUp(layerId);
+							orderManager.fillOrders();
+						});
+					}
+					if (i < layers.length - 1) {
+						var down = L.DomUtil.create("span", className + "-order-down", rowContent);
+						L.DomEvent.on(down, "click", function (event) {
+							var elem = event.srcElement ? event.srcElement : this;
+							var layerId = elem.parentElement.layerId;
+							orderManager.moveDown(layerId);
+							orderManager.fillOrders();
+						});
+					}
+
+					rowContent.layerId = layerContainer.id;
+					rowContent.draggable = true;
+					rowContent.droppable = true;
+					rowContent.ondrag = function (event) {
+						var sourceId = event.srcElement.layerId;
+						console.log("ondrag: " + sourceId);
+						event.dataTransfer.setData("Text", sourceId);
+					};
+					rowContent.ondragover = function (event) {
+						console.log("ondragover: " + event.dataTransfer.getData("Text"));
+						event.preventDefault();
+						// TODO:
+						var targetId = event.dataTransfer.getData("Text");
+						console.log("ondragover: " + targetId);
+						//(orderManager.checkDragOver(event.srcElement.parentElement, targetId));
+					};
+					rowContent.ondrop = function (event) {
+						event.preventDefault();
+						var src = event.srcElement.parentElement;
+						//var target = event.toElement.parentElement;
+						var targetId = event.dataTransfer.getData("Text");
+						console.log("ondrop: " + targetId);
+						if (orderManager.checkDragOver(src, targetId)) {
+							var sourceId = src.layerId;
+							console.log(sourceId);
+							console.log(targetId);
+							var sourceIndex = me._getLayerIndex(sourceId);
+							var targetIndex = me._getLayerIndex(targetId);
+							if (sourceIndex != undefined && targetIndex != undefined && sourceIndex != targetIndex) {
+								if (sourceIndex > targetIndex) {
+									var s = layers[sourceIndex];
+									for (var i = sourceIndex; i > targetIndex; i--) {
+										layers[i] = layers[i - 1];
+									}
+									layers[targetIndex] = s;
+								} else {
+									var s = layers[sourceIndex];
+									for (var i = sourceIndex; i < targetIndex; i++) {
+										layers[i] = layers[i + 1];
+									}
+									layers[targetIndex] = s;
+								}
+							}
+						}
+						console.log("ondrop");
+					};
+				}
 			}
 		}
 
 		L.DomEvent.on(order, "click", function (event) {
-			fillOrders();
-			console.log("fill orders");
-			toggleOrder();
+			orderManager.fillOrders();
+			orderManager.toggleOrder();
 		});
 
-		function fillOrders() {
-			orderContainer.innerHTML = "";
-			for (var i in this._layers) {
-				var layer = this._layer[i];
-				var row = L.DomUtil.create("div", className + "-order-", orderContainer);
-				row.innerHTML = "layer: " + layer.name;
-			}
-		}
 
-		fillOrders();
-
-
-		//
-		var me = this;
+		// Layers
 
 		function updateMinWidth() {
 			if (me._minWidth == undefined) {
@@ -143,12 +243,14 @@ L.Control.LayersTreeControl = L.Control.extend({
 					} else {
 						me.removeLayer(sourceElementId);
 					}
+					orderManager.fillOrders();
 				}
 			}
 
 			function toggleLayerSINGLE(parentElementId, sourceElementId) {
 				me.removeLayers(parentLeaf, parentElementId);
 				me.addLayer(leaf, sourceElementId);
+				orderManager.fillOrders();
 			}
 
 			if (leaf.active) {
@@ -252,6 +354,8 @@ L.Control.LayersTreeControl = L.Control.extend({
 			traverseLeaf(layersTree, layersContainer, layersTree, "", 0);
 		}
 
+		orderManager.fillOrders();
+
 		return container;
 	},
 	onRemove: function (map) {
@@ -271,29 +375,29 @@ L.Control.LayersTreeControl = L.Control.extend({
 		switch (layerSettings.serviceType) {
 			case "OSM":
 				var layer = L.tileLayer(layerSettings.params.url, {});
-				this._addLayer(layer, layerId);
+				this._addLayer(layer, layerId, layerSettings);
 				break;
 			case "TILE":
 				var layer = L.tileLayer(layerSettings.params.url, {});
-				this._addLayer(layer, layerId);
+				this._addLayer(layer, layerId, layerSettings);
 				break;
 			case "BING":
 				var layer = new L.BingLayer(layerSettings.params.url);
-				this._addLayer(layer, layerId);
+				this._addLayer(layer, layerId, layerSettings);
 				break;
 			case "GOOGLE":
 				layer = new L.Google();
-				this.addLayer(layer, layerId);
+				this.addLayer(layer, layerId, layerSettings);
 				break;
 			case "GOOGLE_TERRAIN":
 				var layer = new L.Google("TERRAIN");
-				this._addLayer(layer, layerId);
+				this._addLayer(layer, layerId, layerSettings);
 				break;
 			case "WMS":
 			{
 				var params = this.copyParams(layerSettings, /\burl\b/gi);
 				var layer = L.tileLayer.wms(layerSettings.params.url, params).addTo(map);
-				this._addLayer(layer, layerId);
+				this._addLayer(layer, layerId, layerSettings);
 			}
 				break;
 			case "WFS":
@@ -301,7 +405,7 @@ L.Control.LayersTreeControl = L.Control.extend({
 				var layer = new L.GeoJSON().addTo(map);
 				var params = this.copyParams(layerSettings, /\b(url|style)\b/gi);
 
-				this._addLayer(layer, layerId);
+				this._addLayer(layer, layerId, layerSettings);
 				var wfsHandler = function () {
 					var customParams = {
 						bbox: map.getBounds().toBBoxString(),
@@ -335,9 +439,9 @@ L.Control.LayersTreeControl = L.Control.extend({
 				break;
 		}
 	},
-	_addLayer: function (layer, layerId) {
+	_addLayer: function (layer, layerId, layerSettings) {
 		if (layer) {
-			this._layers[layerId] = layer;
+			this._layers.push({id: layerId, layer: layer, name: layerSettings.name});
 			this._map.addLayer(layer);
 		}
 	},
@@ -350,12 +454,26 @@ L.Control.LayersTreeControl = L.Control.extend({
 			}
 		}
 	},
+	_getLayerIndex: function (layerId) {
+		for (var i in this._layers) {
+			var layerContainer = this._layers[i];
+			if (layerContainer.id == layerId) {
+				return 1 * i;
+			}
+		}
+		return undefined;
+	},
 	removeLayer: function (layerId) {
 		var map = this._map;
-		if (this._layers.hasOwnProperty(layerId)) {
-			var layer = this._layers[layerId];
-			map.removeLayer(layer);
+		var layerIndex = this._getLayerIndex(layerId);
+		if (layerIndex != undefined) {
+			var layerContainer = this._layers[layerIndex];
+			var layer = layerContainer.layer;
+			map.removeLayer(layerContainer.layer);
+			delete layerContainer.layer;
 			delete layer;
+			delete layerContainer;
+			this._layers.splice(layerIndex, 1);
 		}
 		if (this._reloadHandlers.hasOwnProperty(layerId + "__moveend")) {
 			map.off("moveend", this._reloadHandlers[layerId + "__moveend"]);
