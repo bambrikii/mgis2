@@ -28,7 +28,7 @@ angular.module("mgis.geo.map", ["ui.router",
 				}
 			};
 
-			new L.Control.LayersTreeControl({layersTree: layers, openByDefault: true, layerBuilders: layerBuilders}).addTo(map);
+			new L.Control.LayerTreeControl({layerTree: layers, openByDefault: true, layerBuilders: layerBuilders}).addTo(map);
 		});
 	})
 ;

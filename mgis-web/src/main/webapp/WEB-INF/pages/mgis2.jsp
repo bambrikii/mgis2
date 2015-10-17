@@ -62,8 +62,8 @@
 	<script src="bower_components/leaflet-plugins/layer/tile/Google.js"></script>
 	<script src="bower_components/leaflet-plugins/layer/tile/Bing.js"></script>
 
-	<link type="text/css" rel="stylesheet" href="bower_components/leaflet-layers-tree-plugin/src/leaflet-layers-tree-control.css">
-	<script type="text/javascript" src="bower_components/leaflet-layers-tree-plugin/src/leaflet-layers-tree-control.js"></script>
+	<link type="text/css" rel="stylesheet" href="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.css">
+	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.js"></script>
 
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>
