@@ -62,6 +62,9 @@
 	<script src="bower_components/leaflet-plugins/layer/tile/Google.js"></script>
 	<script src="bower_components/leaflet-plugins/layer/tile/Bing.js"></script>
 
+	<link type="text/css" rel="stylesheet" href="bower_components/leaflet-layers-tree-plugin/src/leaflet-layers-tree-control.css">
+	<script type="text/javascript" src="bower_components/leaflet-layers-tree-plugin/src/leaflet-layers-tree-control.js"></script>
+
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>
 	<script type="text/javascript" src="app2/commons/common-modules.js"></script>
@@ -124,8 +127,6 @@
 	<script type="text/javascript" src="app2/geo/coordinate-system/coordinate-system-module.js"></script>
 	<script type="text/javascript" src="app2/geo/coordinate-system/coordinate-system-service.js"></script>
 	<script type="text/javascript" src="app2/geo/spatial/spatial-data-module.js"></script>
-	<link type="text/css" rel="stylesheet" href="app2/geo/map/leaflet-layers-tree-control.css">
-	<script type="text/javascript" src="app2/geo/map/leaflet-layers-tree-control.js"></script>
 	<script type="text/javascript" src="app2/geo/map/map-module.js"></script>
 	<script type="text/javascript" src="app2/geo/map-layer/map-layer-module.js"></script>
 	<script type="text/javascript" src="app2/geo/map-layer/map-layer-service.js"></script>
