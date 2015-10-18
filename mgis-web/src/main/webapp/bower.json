@@ -45,7 +45,7 @@
     "select2": "~3.5.2",
     "terraformer-wkt-parser": "~1.0.0",
     "leaflet-plugins": "gam6itko/leaflet-plugins#~1.1.0",
-    "leaflet-layer-tree-plugin": "bambrikii/leaflet-layers-tree-plugin"
+    "leaflet-layer-tree-plugin": "bambrikii/leaflet-layer-tree-plugin"
   },
   "resolutions": {
     "jquery": "1.10.2",
