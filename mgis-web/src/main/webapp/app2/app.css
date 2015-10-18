@@ -223,21 +223,3 @@ span.mgis-input-group-date button {
 .mgis-geo-map-layer-modal-form .modal-dialog {
 	width: 900px;
 }
-
-/* -> leaflet-layer-tree-plugin */
-.leaflet-layer-tree-control-toggle-open .leaflet-layer-tree-control-toggle-link {
-	background-image: url('bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control-hide_32x32.png');
-}
-
-.leaflet-layer-tree-control-toggle-closed .leaflet-layer-tree-control-toggle-link {
-	background-image: url('bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control_32x32.png');
-}
-
-.leaflet-layer-tree-control-order-toggle-open .leaflet-layer-tree-control-order-toggle-link {
-	background-image: url('bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control-select-layers_32x32.png');
-}
-
-.leaflet-layer-tree-control-order-toggle-closed .leaflet-layer-tree-control-order-toggle-link {
-	background-image: url('bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control-move-layers_32x32.png');
-
-/* <- */
