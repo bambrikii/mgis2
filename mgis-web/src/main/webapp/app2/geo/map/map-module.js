@@ -28,15 +28,16 @@ angular.module("mgis.geo.map", ["ui.router",
 				}
 			};
 
+			var featureBuilders = {
+				WFS: {
+					zoom: L.Control.LayerTreeControl.WFSZoomFeature
+				}
+			};
 			new L.Control.LayerTreeControl({
 				layerTree: layers,
 				openByDefault: true,
 				layerBuilders: layerBuilders,
-				featureBuilders: {
-					WFS: {
-						zoom: L.Control.LayerTreeControl.WFSZoomFeature
-					}
-				}
+				featureBuilders: featureBuilders
 			}).addTo(map);
 		});
 	})
