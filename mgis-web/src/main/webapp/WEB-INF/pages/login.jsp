@@ -90,6 +90,14 @@
 										</div>
 									</div>
 								</c:if>
+								<div class="form-group" ng-if="loginExceptionMessage">
+									<div class="alert" style="color: red;">
+										<strong translate>LoginAttemptFailedDueTo</strong>
+
+										<div ng-bind-html="loginExceptionMessage"></div>
+										.
+									</div>
+								</div>
 
 
 							</fieldset>

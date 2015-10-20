@@ -6,6 +6,7 @@ import java.util.List;
 public class UserModel {
 	private String username;
 	private String password;
+	private boolean active;
 
 	private List<String> grantedAuthorities = new ArrayList<String>();
 
@@ -33,4 +34,11 @@ public class UserModel {
 		this.grantedAuthorities = grantedAuthorities;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 }

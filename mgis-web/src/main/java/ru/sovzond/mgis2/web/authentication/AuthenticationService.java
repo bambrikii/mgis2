@@ -1,20 +1,18 @@
 package ru.sovzond.mgis2.web.authentication;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
 import ru.sovzond.mgis2.authentication.business.AuthenticationBean;
 import ru.sovzond.mgis2.authentication.model.Privilege;
 import ru.sovzond.mgis2.authentication.model.User;
+
+import javax.transaction.Transactional;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AuthenticationService {
@@ -29,6 +27,7 @@ public class AuthenticationService {
 			UserModel userModel = new UserModel();
 			userModel.setUsername(user.getUsername());
 			userModel.setPassword(user.getPassword());
+			userModel.setActive(user.isActive());
 			List<String> grantedAuthorities = user.getPrivileges().stream().map(privilege -> privilege.getName()).collect(Collectors.toList());
 			userModel.setGrantedAuthorities(grantedAuthorities);
 			return userModel;
