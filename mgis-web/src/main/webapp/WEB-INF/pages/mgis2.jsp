@@ -64,6 +64,7 @@
 
 	<link type="text/css" rel="stylesheet" href="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.css">
 	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.js"></script>
+	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control-wfs-zoom.js"></script>
 
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>
