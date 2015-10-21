@@ -57,8 +57,7 @@
 	<script type="text/javascript" src="bower_components/ngDraggable/ngDraggable.js"></script>
 
 	<!-- leaflet-plugins -->
-	<%--<script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>--%>
-	<script src="app2/geo/google-maps-api.js"></script>
+	<script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
 	<script src="bower_components/leaflet-plugins/layer/tile/Google.js"></script>
 	<script src="bower_components/leaflet-plugins/layer/tile/Bing.js"></script>
 
