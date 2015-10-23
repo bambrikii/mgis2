@@ -17,6 +17,9 @@ public class CoordinateSystem implements Cloneable {
 	@Column(name = "code", unique = true, nullable = false)
 	private String code;
 
+	@Column(name = "conversion_rules")
+	private String conversionRules;
+
 	public Long getId() {
 		return id;
 	}
@@ -33,10 +36,19 @@ public class CoordinateSystem implements Cloneable {
 		this.code = code;
 	}
 
+	public String getConversionRules() {
+		return conversionRules;
+	}
+
+	public void setConversionRules(String conversionRules) {
+		this.conversionRules = conversionRules;
+	}
+
 	public CoordinateSystem clone() {
 		CoordinateSystem coordinateSystem = new CoordinateSystem();
 		coordinateSystem.setId(id);
 		coordinateSystem.setCode(code);
+		coordinateSystem.setConversionRules(conversionRules);
 		return coordinateSystem;
 	}
 }

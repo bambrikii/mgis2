@@ -330,6 +330,8 @@
   "GEO.Settings": "Гео Настройки",
   "GEO.GeoServers": "Серверы ГИС",
   "GEO.CoordinateSystem": "Система координат",
+  "GEO.CoordinateSystem.ConversionRules": "Правила преобразования",
+  "GEO.CoordinateSystem.ConversionRules.Required": "Правила преобразования обязательны",
   "GEO.CoordinateSystems": "Системы координат",
   "GEO.Map": "Карта",
   "GEO.Spatial.Coordinate": "Координаты",
