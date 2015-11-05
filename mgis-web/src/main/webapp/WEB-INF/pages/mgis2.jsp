@@ -95,7 +95,12 @@
 	<script type="text/javascript" src="app2/admin/users/admin-users-module.js"></script>
 	<script type="text/javascript" src="app2/admin/privileges/admin-privileges-service.js"></script>
 	<script type="text/javascript" src="app2/admin/privileges/admin-privileges-module.js"></script>
+
+	<!-- Capital Constructs -->
 	<script type="text/javascript" src="app2/oks/oks.js"></script>
+	<script type="text/javascript" src="app2/oks/construct/construct-module.js"></script>
+	<script type="text/javascript" src="app2/oks/construct/construct-service.js"></script>
+
 	<link type="text/css" rel="stylesheet" href="app2/lands/land/lands-leaflet-control.css">
 	<script type="text/javascript" src="app2/lands/land/lands-leaflet-control.js"></script>
 	<script type="text/javascript" src="app2/lands/lands.js"></script>

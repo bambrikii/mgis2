@@ -43,7 +43,6 @@ public class GeoLayerRESTService implements Serializable {
 		BeanUtils.copyProperties(layer, layer2, new String[]{"id", "parent", "childLayers"});
 		layer2.setParent(layer.getParent() != null && layer.getParent().getId() != null && layer.getParent().getId() != 0 ? layerBean.load(layer.getParent().getId()) : null);
 		layer2.setParams(layer.getParams().entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
-		layer2.setParent((layer.getParent() != null) ? layerBean.load(layer.getParent().getId()) : null);
 		layerBean.save(layer2);
 		return layer2.clone();
 	}
