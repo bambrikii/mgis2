@@ -1,7 +1,7 @@
-package ru.sovzond.mgis2.registers.lands.includes;
+package ru.sovzond.mgis2.lands.includes;
 
 import ru.sovzond.mgis2.isogd.document.Document;
-import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.lands.Land;
 import ru.sovzond.mgis2.registers.oks.CapitalConstruction;
 
 import javax.persistence.*;

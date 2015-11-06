@@ -1,7 +1,7 @@
-package ru.sovzond.mgis2.registers.lands.rights;
+package ru.sovzond.mgis2.lands.rights;
 
 import ru.sovzond.mgis2.isogd.document.Document;
-import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.lands.Land;
 import ru.sovzond.mgis2.registers.national_classifiers.LandEncumbrance;
 import ru.sovzond.mgis2.registers.national_classifiers.OKFS;
 import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;

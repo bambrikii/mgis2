@@ -1,6 +1,6 @@
-package ru.sovzond.mgis2.registers.lands.works;
+package ru.sovzond.mgis2.lands.works;
 
-import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.lands.Land;
 
 import javax.persistence.*;
 import java.util.ArrayList;

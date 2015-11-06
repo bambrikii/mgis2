@@ -4,7 +4,6 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderQuery;
-import ru.sovzond.mgis2.registers.lands.Land;
 
 @Repository
 public class LandDao extends CRUDDaoBase<Land> {

@@ -5,7 +5,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
-import ru.sovzond.mgis2.registers.lands.TerritorialZone;
 
 /**
  * Created by Alexander Arakelyan on 27.07.15.

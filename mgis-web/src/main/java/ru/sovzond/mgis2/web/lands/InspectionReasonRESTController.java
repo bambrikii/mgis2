@@ -3,10 +3,9 @@ package ru.sovzond.mgis2.web.lands;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
-import ru.sovzond.mgis2.common.classifiers.ExecutivePerson;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.lands.LandControlInspectionReasonBean;
-import ru.sovzond.mgis2.registers.lands.control.LandControlInspectionReason;
+import ru.sovzond.mgis2.lands.control.LandControlInspectionReason;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;

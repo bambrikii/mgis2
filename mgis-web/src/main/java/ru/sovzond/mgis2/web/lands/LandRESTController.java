@@ -13,11 +13,11 @@ import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.national_classifiers.*;
 import ru.sovzond.mgis2.persons.PersonBean;
-import ru.sovzond.mgis2.registers.lands.Land;
-import ru.sovzond.mgis2.registers.lands.LandArea;
-import ru.sovzond.mgis2.registers.lands.characteristics.LandCharacteristics;
-import ru.sovzond.mgis2.registers.lands.control.LandControl;
-import ru.sovzond.mgis2.registers.lands.rights.LandRights;
+import ru.sovzond.mgis2.lands.Land;
+import ru.sovzond.mgis2.lands.LandArea;
+import ru.sovzond.mgis2.lands.characteristics.LandCharacteristics;
+import ru.sovzond.mgis2.lands.control.LandControl;
+import ru.sovzond.mgis2.lands.rights.LandRights;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;

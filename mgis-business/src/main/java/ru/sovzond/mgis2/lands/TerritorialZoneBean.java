@@ -7,7 +7,6 @@ import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
-import ru.sovzond.mgis2.registers.lands.TerritorialZone;
 
 /**
  * Created by Alexander Arakelyan on 27.07.15.

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
-import ru.sovzond.mgis2.registers.lands.rights.LandRights;
+import ru.sovzond.mgis2.lands.rights.LandRights;
 
 /**
  * Created by Alexander Arakelyan on 30.07.15.

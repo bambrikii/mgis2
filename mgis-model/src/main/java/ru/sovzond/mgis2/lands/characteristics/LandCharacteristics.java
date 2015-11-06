@@ -1,6 +1,6 @@
-package ru.sovzond.mgis2.registers.lands.characteristics;
+package ru.sovzond.mgis2.lands.characteristics;
 
-import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.lands.Land;
 import ru.sovzond.mgis2.registers.national_classifiers.OKATO;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 

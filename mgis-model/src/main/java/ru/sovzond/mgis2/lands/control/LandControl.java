@@ -1,8 +1,8 @@
-package ru.sovzond.mgis2.registers.lands.control;
+package ru.sovzond.mgis2.lands.control;
 
 import ru.sovzond.mgis2.common.classifiers.ExecutivePerson;
 import ru.sovzond.mgis2.isogd.document.Document;
-import ru.sovzond.mgis2.registers.lands.Land;
+import ru.sovzond.mgis2.lands.Land;
 import ru.sovzond.mgis2.registers.persons.Person;
 
 import javax.persistence.*;

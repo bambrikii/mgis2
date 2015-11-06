@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.lands.LandControlInspectionTypeBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
-import ru.sovzond.mgis2.registers.lands.control.LandControlInspectionType;
+import ru.sovzond.mgis2.lands.control.LandControlInspectionType;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;

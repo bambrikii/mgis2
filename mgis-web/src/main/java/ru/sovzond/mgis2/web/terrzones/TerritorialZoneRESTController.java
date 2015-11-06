@@ -9,7 +9,7 @@ import ru.sovzond.mgis2.lands.TerritorialZoneBean;
 import ru.sovzond.mgis2.lands.TerritorialZoneTypeBean;
 import ru.sovzond.mgis2.national_classifiers.LandAllowedUsageBean;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
-import ru.sovzond.mgis2.registers.lands.TerritorialZone;
+import ru.sovzond.mgis2.lands.TerritorialZone;
 
 import javax.transaction.Transactional;
 

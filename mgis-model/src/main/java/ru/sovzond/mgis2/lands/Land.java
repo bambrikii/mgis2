@@ -1,14 +1,14 @@
-package ru.sovzond.mgis2.registers.lands;
+package ru.sovzond.mgis2.lands;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 import org.hibernate.annotations.Type;
 import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.geo.SpatialGroup;
-import ru.sovzond.mgis2.registers.lands.characteristics.LandCharacteristics;
-import ru.sovzond.mgis2.registers.lands.control.LandControl;
-import ru.sovzond.mgis2.registers.lands.includes.LandIncludedObjects;
-import ru.sovzond.mgis2.registers.lands.rights.LandRights;
-import ru.sovzond.mgis2.registers.lands.works.LandWorks;
+import ru.sovzond.mgis2.lands.characteristics.LandCharacteristics;
+import ru.sovzond.mgis2.lands.control.LandControl;
+import ru.sovzond.mgis2.lands.includes.LandIncludedObjects;
+import ru.sovzond.mgis2.lands.rights.LandRights;
+import ru.sovzond.mgis2.lands.works.LandWorks;
 import ru.sovzond.mgis2.registers.national_classifiers.LandAllowedUsage;
 import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;

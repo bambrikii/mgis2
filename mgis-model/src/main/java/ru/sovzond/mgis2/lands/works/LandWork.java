@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.registers.lands.works;
+package ru.sovzond.mgis2.lands.works;
 
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.registers.persons.Person;

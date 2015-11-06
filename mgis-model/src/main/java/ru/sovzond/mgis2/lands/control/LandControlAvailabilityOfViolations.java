@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.registers.lands.control;
+package ru.sovzond.mgis2.lands.control;
 
 import javax.persistence.*;
 

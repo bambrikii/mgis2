@@ -1,12 +1,13 @@
-package ru.sovzond.mgis2.registers.lands.control;
+package ru.sovzond.mgis2.lands.control;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "lands_land_control_inspection_reason")
-public class LandControlInspectionReason {
+@Table(name = "lands_land_control_inspection_subject")
+public class LandControlInspectionSubject implements Cloneable {
+
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_land_control_inspection_reason_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_land_control_inspection_subject_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
@@ -41,12 +42,12 @@ public class LandControlInspectionReason {
 		this.name = name;
 	}
 
-
-	public LandControlInspectionReason clone() {
-		LandControlInspectionReason reason = new LandControlInspectionReason();
-		reason.setId(id);
-		reason.setCode(code);
-		reason.setName(name);
-		return reason;
+	public LandControlInspectionSubject clone() {
+		LandControlInspectionSubject subject = new LandControlInspectionSubject();
+		subject.setId(id);
+		subject.setCode(code);
+		subject.setName(name);
+		return subject;
 	}
+
 }
