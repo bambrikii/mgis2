@@ -114,6 +114,8 @@ public class CapitalConstruct implements Cloneable {
 	@Column
 	private Integer rebuildingLastYear;
 
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+
 
 	public CapitalConstruct clone() {
 		CapitalConstruct construct = new CapitalConstruct();

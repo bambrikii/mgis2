@@ -1,56 +1,18 @@
 package ru.sovzond.mgis2.lands.rights;
 
 import ru.sovzond.mgis2.isogd.document.Document;
-import ru.sovzond.mgis2.lands.Land;
 import ru.sovzond.mgis2.registers.national_classifiers.LandEncumbrance;
-import ru.sovzond.mgis2.registers.national_classifiers.OKFS;
-import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
-import ru.sovzond.mgis2.registers.persons.Person;
+import ru.sovzond.mgis2.rights.PropertyRights;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "lands_land_right")
-public class LandRights implements Cloneable {
-
-	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-	@Column
-	private Long id;
-
-	@OneToOne(optional = false)
-	private Land land;
-
-	@ManyToOne
-	private LandRightKind rightKind;
-
-	@ManyToOne
-	private Person rightOwner;
-
-	@ManyToOne
-	private OKFS ownershipForm;
-
-	@Column
-	private Date ownershipDate;
-
-	@Column
-	private Date terminationDate;
-
-	@Column
-	private float share;
-
-	@ManyToMany(cascade = {CascadeType.ALL})
-	@JoinTable(name = "lands_land_right_reg_docs", joinColumns = @JoinColumn(name = "land_land_right_id"), inverseJoinColumns = @JoinColumn(name = "registration_doc_id"))
-	private List<Document> registrationDocuments = new ArrayList<>();
-
-	@ManyToMany(cascade = {CascadeType.ALL})
-	@JoinTable(name = "lands_land_right_cert_docs", joinColumns = @JoinColumn(name = "land_land_right_id"), inverseJoinColumns = @JoinColumn(name = "cert_doc_id"))
-	private List<Document> documentsCertifyingRights = new ArrayList<>();
+public class LandRights extends PropertyRights {
 
 	@Column
 	private float totalArea;
@@ -67,85 +29,6 @@ public class LandRights implements Cloneable {
 	@Column
 	private String comment;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Land getLand() {
-		return land;
-	}
-
-	public void setLand(Land land) {
-		this.land = land;
-	}
-
-	public LandRightKind getRightKind() {
-		return rightKind;
-	}
-
-	public void setRightKind(LandRightKind rightKind) {
-		this.rightKind = rightKind;
-	}
-
-	public Person getRightOwner() {
-		return rightOwner;
-	}
-
-	public void setRightOwner(Person rightOwner) {
-		this.rightOwner = rightOwner;
-	}
-
-	public OKFS getOwnershipForm() {
-		return ownershipForm;
-	}
-
-	public void setOwnershipForm(OKFS ownershipForm) {
-		this.ownershipForm = ownershipForm;
-	}
-
-	public Date getOwnershipDate() {
-		return ownershipDate;
-	}
-
-	public void setOwnershipDate(Date ownershipDate) {
-		this.ownershipDate = ownershipDate;
-	}
-
-	public Date getTerminationDate() {
-		return terminationDate;
-	}
-
-	public void setTerminationDate(Date terminationDate) {
-		this.terminationDate = terminationDate;
-	}
-
-	public float getShare() {
-		return share;
-	}
-
-	public void setShare(float share) {
-		this.share = share;
-	}
-
-	public List<Document> getRegistrationDocuments() {
-		return registrationDocuments;
-	}
-
-	public void setRegistrationDocuments(List<Document> registrationDocuments) {
-		this.registrationDocuments = registrationDocuments;
-	}
-
-	public List<Document> getDocumentsCertifyingRights() {
-		return documentsCertifyingRights;
-	}
-
-	public void setDocumentsCertifyingRights(List<Document> documentsCertifyingRights) {
-		this.documentsCertifyingRights = documentsCertifyingRights;
-	}
 
 	public float getTotalArea() {
 		return totalArea;
@@ -189,25 +72,25 @@ public class LandRights implements Cloneable {
 
 	public LandRights clone() {
 		LandRights rights = new LandRights();
-		rights.setId(id);
+		rights.setId(getId());
 		rights.setComment(comment);
-		rights.setOwnershipDate(ownershipDate);
-		rights.setTerminationDate(terminationDate);
-		rights.setRightOwner(rightOwner != null ? rightOwner.clone() : null);
-		rights.setRightKind(rightKind != null ? rightKind.clone() : null);
-		rights.setOwnershipForm(ownershipForm != null ? ownershipForm.clone() : null);
+		rights.setOwnershipDate(getOwnershipDate());
+		rights.setTerminationDate(getTerminationDate());
+		rights.setRightOwner(getRightOwner() != null ? getRightOwner().clone() : null);
+		rights.setRightKind(getRightKind() != null ? getRightKind().clone() : null);
+		rights.setOwnershipForm(getOwnershipForm() != null ? getOwnershipForm().clone() : null);
 		rights.setEncumbrance(encumbrance != null ? encumbrance.clone() : null);
 		rights.setObligations(obligations);
-		rights.setShare(share);
+		rights.setShare(getShare());
 		rights.setAnnualTax(annualTax);
 		rights.setTotalArea(totalArea);
-		rights.setRegistrationDocuments(registrationDocuments != null ? registrationDocuments.stream().map(document -> {
+		rights.setRegistrationDocuments(getRegistrationDocuments() != null ? getRegistrationDocuments().stream().map(document -> {
 			Document doc2 = new Document();
 			doc2.setId(document.getId());
 			doc2.setName(document.getName());
 			return doc2;
 		}).collect(Collectors.toList()) : null);
-		rights.setDocumentsCertifyingRights(documentsCertifyingRights != null ? documentsCertifyingRights.stream().map(document -> {
+		rights.setDocumentsCertifyingRights(getDocumentsCertifyingRights() != null ? getDocumentsCertifyingRights().stream().map(document -> {
 			Document doc2 = new Document();
 			doc2.setId(document.getId());
 			doc2.setName(document.getName());
