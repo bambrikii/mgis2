@@ -2,6 +2,7 @@ package ru.sovzond.mgis2.capital_constructs;
 
 import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.kladr.KLADRLocality;
+import ru.sovzond.mgis2.rights.PropertyRights;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -115,6 +116,10 @@ public class CapitalConstruct implements Cloneable {
 	private Integer rebuildingLastYear;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "rights_id")
+	private PropertyRights rights;
+
+
 
 
 	public CapitalConstruct clone() {
