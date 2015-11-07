@@ -1,7 +1,7 @@
 package ru.sovzond.mgis2.capital_constructs.characteristics;
 
-import ru.sovzond.mgis2.capital_constructs.characteristics.economical.ConstructEconomicCharacteristic;
-import ru.sovzond.mgis2.capital_constructs.characteristics.technical.ConstructTechnicalCharacteristic;
+import ru.sovzond.mgis2.capital_constructs.characteristics.economical.EconomicCharacteristic;
+import ru.sovzond.mgis2.capital_constructs.characteristics.technical.TechnicalCharacteristic;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,11 +22,11 @@ public class ConstructCharacteristics implements Cloneable {
 
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "oks_capital_construct_economic_characteristics")
-	private List<ConstructEconomicCharacteristic> economicCharacteristics = new ArrayList<>();
+	private List<EconomicCharacteristic> economicCharacteristics = new ArrayList<>();
 
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "oks_capital_construct_technical_characteristics")
-	private List<ConstructTechnicalCharacteristic> technicalCharacteristics = new ArrayList<>();
+	private List<TechnicalCharacteristic> technicalCharacteristics = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -36,27 +36,27 @@ public class ConstructCharacteristics implements Cloneable {
 		this.id = id;
 	}
 
-	public List<ConstructEconomicCharacteristic> getEconomicCharacteristics() {
+	public List<EconomicCharacteristic> getEconomicCharacteristics() {
 		return economicCharacteristics;
 	}
 
-	public void setEconomicCharacteristics(List<ConstructEconomicCharacteristic> economicCharacteristics) {
+	public void setEconomicCharacteristics(List<EconomicCharacteristic> economicCharacteristics) {
 		this.economicCharacteristics = economicCharacteristics;
 	}
 
-	public List<ConstructTechnicalCharacteristic> getTechnicalCharacteristics() {
+	public List<TechnicalCharacteristic> getTechnicalCharacteristics() {
 		return technicalCharacteristics;
 	}
 
-	public void setTechnicalCharacteristics(List<ConstructTechnicalCharacteristic> technicalCharacteristics) {
+	public void setTechnicalCharacteristics(List<TechnicalCharacteristic> technicalCharacteristics) {
 		this.technicalCharacteristics = technicalCharacteristics;
 	}
 
 	public ConstructCharacteristics clone() {
 		ConstructCharacteristics characteristics = new ConstructCharacteristics();
 		characteristics.setId(id);
-		characteristics.getEconomicCharacteristics().addAll(economicCharacteristics.stream().map(ConstructEconomicCharacteristic::clone).collect(Collectors.toList()));
-		characteristics.getTechnicalCharacteristics().addAll(technicalCharacteristics.stream().map(ConstructTechnicalCharacteristic::clone).collect(Collectors.toList()));
+		characteristics.getEconomicCharacteristics().addAll(economicCharacteristics.stream().map(EconomicCharacteristic::clone).collect(Collectors.toList()));
+		characteristics.getTechnicalCharacteristics().addAll(technicalCharacteristics.stream().map(TechnicalCharacteristic::clone).collect(Collectors.toList()));
 		return characteristics;
 	}
 }

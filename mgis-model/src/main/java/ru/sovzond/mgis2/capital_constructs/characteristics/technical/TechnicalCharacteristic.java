@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "oks_capital_construct_technical_characteristic")
-public class ConstructTechnicalCharacteristic implements Cloneable {
+public class TechnicalCharacteristic implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)
@@ -22,7 +22,7 @@ public class ConstructTechnicalCharacteristic implements Cloneable {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "object_type_id")
-	private ConstructCharacteristicObjectType objectType;
+	private TechnicalCharacteristicObjectType objectType;
 
 	/**
 	 * Технический показатель
@@ -52,11 +52,11 @@ public class ConstructTechnicalCharacteristic implements Cloneable {
 		this.id = id;
 	}
 
-	public ConstructCharacteristicObjectType getObjectType() {
+	public TechnicalCharacteristicObjectType getObjectType() {
 		return objectType;
 	}
 
-	public void setObjectType(ConstructCharacteristicObjectType objectType) {
+	public void setObjectType(TechnicalCharacteristicObjectType objectType) {
 		this.objectType = objectType;
 	}
 
@@ -84,8 +84,8 @@ public class ConstructTechnicalCharacteristic implements Cloneable {
 		this.unitOfMeasure = unitOfMeasure;
 	}
 
-	public ConstructTechnicalCharacteristic clone() {
-		ConstructTechnicalCharacteristic characteristic = new ConstructTechnicalCharacteristic();
+	public TechnicalCharacteristic clone() {
+		TechnicalCharacteristic characteristic = new TechnicalCharacteristic();
 		characteristic.setId(id);
 		characteristic.setObjectType(objectType != null ? objectType.clone() : null);
 		characteristic.setTechnicalIndicator(technicalIndicator != null ? technicalIndicator.clone() : null);

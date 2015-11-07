@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "oks_capital_construct_tech_char_obj_type")
-public class ConstructCharacteristicObjectType implements Cloneable {
+public class TechnicalCharacteristicObjectType implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
@@ -23,8 +23,8 @@ public class ConstructCharacteristicObjectType implements Cloneable {
 		this.id = id;
 	}
 
-	public ConstructCharacteristicObjectType clone() {
-		ConstructCharacteristicObjectType objectType = new ConstructCharacteristicObjectType();
+	public TechnicalCharacteristicObjectType clone() {
+		TechnicalCharacteristicObjectType objectType = new TechnicalCharacteristicObjectType();
 		objectType.setId(id);
 		return objectType;
 	}

@@ -17,6 +17,9 @@ public class OKOF implements Cloneable {
 	@Column
 	private Long id;
 
+	@Column(name = "original_id")
+	private Long originalId;
+
 	@Column(name = "name")
 	private String name;
 
@@ -26,8 +29,8 @@ public class OKOF implements Cloneable {
 	@Column(name = "control_number")
 	private String controlNumber;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "parent_id")
+	@ManyToOne(fetch = FetchType.LAZY, optional = true, targetEntity = OKOF.class)
+	@JoinColumns(@JoinColumn(name = "parent_id", nullable = true))
 	private OKOF parent;
 
 	@Column(name = "parent_code")
@@ -42,6 +45,14 @@ public class OKOF implements Cloneable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getOriginalId() {
+		return originalId;
+	}
+
+	public void setOriginalId(Long originalId) {
+		this.originalId = originalId;
 	}
 
 	public String getName() {
@@ -90,6 +101,7 @@ public class OKOF implements Cloneable {
 		okof.setId(id);
 		okof.setName(name);
 		okof.setNodeCount(nodeCount);
+		okof.setOriginalId(originalId);
 		if (parent != null) {
 			OKOF parent2 = new OKOF();
 			parent2.setId(parent2.getId());
@@ -97,4 +109,5 @@ public class OKOF implements Cloneable {
 		}
 		return okof;
 	}
+
 }

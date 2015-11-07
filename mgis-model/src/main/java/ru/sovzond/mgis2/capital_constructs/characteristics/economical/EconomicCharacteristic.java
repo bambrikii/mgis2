@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "oks_capital_construct_economic_characteristic")
-public class ConstructEconomicCharacteristic implements Cloneable {
+public class EconomicCharacteristic implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
@@ -93,8 +93,8 @@ public class ConstructEconomicCharacteristic implements Cloneable {
 		this.amortizationGroup = amortizationGroup;
 	}
 
-	public ConstructEconomicCharacteristic clone() {
-		ConstructEconomicCharacteristic characteristic = new ConstructEconomicCharacteristic();
+	public EconomicCharacteristic clone() {
+		EconomicCharacteristic characteristic = new EconomicCharacteristic();
 		characteristic.setId(id);
 		characteristic.setUnitOfMeasure(unitOfMeasure != null ? unitOfMeasure.clone() : null);
 		characteristic.setAmortizationGroup(amortizationGroup);

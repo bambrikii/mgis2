@@ -6,10 +6,10 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 06.11.15.
  */
 @Entity
-@Table(name = "mgis_price_type")
+@Table(name = "mgis2_price_type")
 public class PriceType implements Cloneable {
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_price_type_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
