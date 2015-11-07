@@ -21,7 +21,7 @@ public class LandRights extends PropertyRights {
 	@ManyToOne
 	private LandEncumbrance encumbrance;
 
-	@column
+	@Column
 	private boolean obligations;
 
 	@Column
