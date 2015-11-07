@@ -1,31 +1,55 @@
 package ru.sovzond.mgis2.geo;
 
-import com.jhlabs.map.Point2D;
-import com.jhlabs.map.proj.Projection;
-import com.jhlabs.map.proj.ProjectionFactory;
+import com.vividsolutions.jts.geom.CoordinateSequence;
+import com.vividsolutions.jts.geom.LinearRing;
+import com.vividsolutions.jts.geom.MultiPolygon;
+import com.vividsolutions.jts.geom.Polygon;
+import com.vividsolutions.jts.geom.impl.CoordinateArraySequence;
+import org.hibernatespatial.cfg.GeometryFactoryHelper;
+import org.hibernatespatial.mgeom.MGeometryFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Alexander Arakelyan on 22.10.15.
  */
 public class GeometryConverter {
-	private String[] params;
 
-	public GeometryConverter(String params) {
-		if (params == null) {
-			throw new IllegalArgumentException("Params argument required.");
+	private CoordinatesConverter coordinatesConverter;
+	private MGeometryFactory geometryFactory;
+
+	public GeometryConverter(CoordinateSystem coordinateSystem) {
+		coordinatesConverter = new CoordinatesConverter(coordinateSystem.getConversionRules());
+		geometryFactory = GeometryFactoryHelper.createGeometryFactory(null);
+	}
+
+	public MultiPolygon convert(List<SpatialElement> elements) {
+		List<Polygon> polygons = new ArrayList<>();
+		if (elements.size() > 0) {
+			CoordinateSequence coordinateSequence = buildCoordinateSequence(elements.get(0));
+			LinearRing shell = new LinearRing(coordinateSequence, geometryFactory);
+			List<LinearRing> holes = new ArrayList<>();
+			for (int i = 1; i < elements.size(); i++) {
+				coordinateSequence = buildCoordinateSequence(elements.get(i));
+				LinearRing hole = new LinearRing(coordinateSequence, geometryFactory);
+				holes.add(hole);
+			}
+			polygons.add(new Polygon(shell, holes.toArray(new LinearRing[holes.size()]), geometryFactory));
 		}
-		this.params = params.trim().split("\\s+");
+		return new MultiPolygon(polygons.toArray(new Polygon[polygons.size()]), geometryFactory);
 	}
 
-	public String[] getParams() {
-		return params.clone();
-	}
-
-	public double[] convert(double x, double y) {
-		Projection projection = ProjectionFactory.fromPROJ4Specification(params);
-		Point2D.Double d1 = new Point2D.Double(x, y);
-		Point2D.Double d2 = new Point2D.Double(0, 0);
-		projection.transform(d1, d2);
-		return new double[]{d2.x, d2.y};
+	private CoordinateSequence buildCoordinateSequence(SpatialElement element) {
+		List<com.vividsolutions.jts.geom.Coordinate> coordinates = new ArrayList<>();
+		for (int i = 0; i < element.getCoordinates().size(); i++) {
+			Coordinate coordinate = element.getCoordinates().get(i);
+			double[] converted = coordinatesConverter.convert(coordinate.getX().doubleValue(), coordinate.getY().doubleValue());
+			coordinates.add(new com.vividsolutions.jts.geom.Coordinate(converted[0], converted[1]));
+		}
+		if (element.getCoordinates().size() > 0) {
+			coordinates.add(coordinates.get(0));
+		}
+		return new CoordinateArraySequence(coordinates.toArray(new com.vividsolutions.jts.geom.Coordinate[coordinates.size()]));
 	}
 }

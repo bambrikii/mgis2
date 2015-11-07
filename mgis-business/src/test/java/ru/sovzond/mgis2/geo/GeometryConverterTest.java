@@ -1,56 +1,50 @@
 package ru.sovzond.mgis2.geo;
 
+import com.vividsolutions.jts.geom.MultiPolygon;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 /**
- * Created by Alexander Arakelyan on 23.10.15.
+ * Created by Alexander Arakelyan on 07/11/15.
  */
 public class GeometryConverterTest {
-	@Test
-	public void testParamsConversion() {
-		GeometryConverter converter = new GeometryConverter("+proj=1 +to=2 +towgs");
-		String[] params = converter.getParams();
-		Assert.assertTrue(params.length == 3);
-		Assert.assertEquals("+proj=1", params[0]);
-		Assert.assertEquals("+to=2", params[1]);
-		Assert.assertEquals("+towgs", params[2]);
-	}
+
+	private static final String MSK50ZONE2 = "+proj=tmerc +lat_0=0 +lon_0=38.48333333333 +k=1 +x_0=2250000 +y_0=-5712900.566 +ellps=krass +towgs84=-118.754,-61.782,-93.237,2.40896,3.47502,-1.29688,-6.5177 +units=m +no_defs";
 
 	@Test
-	public void testConvertAustria() {
-		String rules = "+proj=tmerc +lat_0=0 +lon_0=10d20 +k=1 +x_0=150000 +y_0=-5000000 +ellps=bessel";
-		GeometryConverter converter = new GeometryConverter(rules);
-		print(converter.convert(1, 1));
+	public void testConvert1() {
+		SpatialGroup geometry = new SpatialGroup();
+		CoordinateSystem coordinateSystem = new CoordinateSystem();
+		coordinateSystem.setConversionRules(MSK50ZONE2);
+		geometry.setCoordinateSystem(coordinateSystem);
+
+		SpatialElement element1 = new SpatialElement();
+		element1.getCoordinates().add(createCoordinates(0, 0));
+		element1.getCoordinates().add(createCoordinates(5, 0));
+		element1.getCoordinates().add(createCoordinates(2.5, 3));
+
+		SpatialElement element2 = new SpatialElement();
+		element2.getCoordinates().add(createCoordinates(10, 10));
+		element2.getCoordinates().add(createCoordinates(10, 20));
+		element2.getCoordinates().add(createCoordinates(20, 20));
+		element2.getCoordinates().add(createCoordinates(20, 10));
+
+		geometry.getSpatialElements().add(element1);
+		geometry.getSpatialElements().add(element2);
+		GeometryConverter converter = new GeometryConverter(coordinateSystem);
+		MultiPolygon converted = converter.convert(geometry.getSpatialElements());
+		Assert.assertNotNull(converted);
+		//		Assert.assertEquals(2, converted.getEnvelope().getNumGeometries());
+		System.out.println(converted);
+		System.out.println(converted.getEnvelope());
 	}
 
-	private void print(double[] arr) {
-		for (double item : arr) {
-			System.out.println(item);
-		}
-	}
-
-	@Test
-	public void testConversionZero() {
-		String rules = "+proj=tmerc lat_0=0 lon_0=0 +ellps +k=1 +towgs84=0,0,0,0,0,0,0 +units=m +x=0 +y=0 +alpha=1 +no_defs +to +datum=WGS84";
-		GeometryConverter converter = new GeometryConverter(rules);
-		print(converter.convert(1, 1));
-	}
-
-	@Test
-	public void testConversion() {
-		String rules = "+proj=tmerc lat_0=0 lon_0=50.553 +ellps=krass +k=1 +towgs84=0,0,0,0,0,0,0 +units=m +x=2250000 +y=-5914743.504 +to +datum=WGS84";
-		GeometryConverter converter = new GeometryConverter(rules);
-		print(converter.convert(0, 0));
-	}
-
-	@Test
-	public void testTransversiveMercator() {
-		print(new GeometryConverter("+proj=tmerc lat_0=45 lon_0=10").convert(0, 0));
-	}
-
-	@Test
-	public void testPoly() {
-		print(new GeometryConverter("+proj=poly lat_0=45 lon_0=10").convert(786491.58, 5033320.60));
+	private Coordinate createCoordinates(double x, double y) {
+		Coordinate coordinate = new Coordinate();
+		coordinate.setX(new BigDecimal(x));
+		coordinate.setY(new BigDecimal(y));
+		return coordinate;
 	}
 }
