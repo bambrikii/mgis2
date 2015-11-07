@@ -7,7 +7,6 @@
   "ISOGD": "ИСОГД",
   "LANDS": "Земельные участки",
   "TERRITORIAL_ZONES": "Территориальные зоны",
-  "OKS": "ОКС",
   "ADMINISTRATION": "Администрирование",
   "ADMINISTRATION.Users": "Пользователи",
   "ADMINISTRATION.Groups": "Группы",
@@ -355,5 +354,11 @@
   "GEO.Map.Layers": "Слои",
   "GEO.Map.Layer.Param": "Параметр",
   "GEO.Map.Layer.SelectedByDefault": "Выбран по умолчанию",
-  "GEO.Map.Layer.OpenByDefault": "Открыт по умолчанию"
+  "GEO.Map.Layer.OpenByDefault": "Открыт по умолчанию",
+  "CapitalConstructs": "ОКС",
+  "CapitalConstructs.Constructs": "Объекты капитального строительства",
+  "CapitalConstructs.Construct": "Объект капитального строительства",
+  "CapitalConstructs.Construct.Characteristics": "Характеристики",
+  "CapitalConstructs.Construct.ConstructiveElements": "Конструктивные элементы",
+  "CapitalConstructs.Construct.IncludedObjects": "Вложенные объекты"
 }

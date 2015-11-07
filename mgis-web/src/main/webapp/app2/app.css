@@ -99,8 +99,7 @@
 	border: 5px dashed red;
 }
 
-/*
-*/
+/* */
 .mgis-document-content .mgis-content-list-region div div {
 	padding-bottom: 5px;
 }
@@ -125,14 +124,6 @@
 	float: right;
 }
 
-.mgis-document-modal-form .modal-dialog {
-	width: 850px;
-}
-
-.mgis-error-handling-modal .modal-dialog {
-	width: 850px;
-}
-
 span.mgis-input-group-date input {
 	width: 190px !important;
 }
@@ -141,26 +132,8 @@ span.mgis-input-group-date button {
 	height: 34px !important;
 }
 
-/*
- * Lands
- */
-.mgis-land-modal-form .modal-dialog {
-	width: 995px;
-}
-
 .modal-backdrop {
 	opacity: 0.2;
-}
-
-/*
- * TerrZones
- */
-.mgis-terr-zones-modal-form .modal-dialog {
-	width: 995px;
-}
-
-.mgis-document-selector-modal-form .modal-dialog {
-	width: 995px;
 }
 
 .mgis-document-selector-list {
@@ -174,30 +147,10 @@ span.mgis-input-group-date button {
 	padding-top: 3px;
 }
 
-.mgis-address-modal-form .modal-dialog {
-	width: 730px;
-}
-
-.mgis-person-modal-form .modal-dialog {
-	width: 900px;
-}
-
-.mgis-terr-zone-modal-form .modal-dialog {
-	width: 730px;
-}
-
-.mgis-crud-modal-form .modal-dialog {
-	width: 730px;
-}
-
 .mgis-top-right-search-form {
 	position: relative;
 	top: -60px;
 	height: 0px;
-}
-
-.mgis-document-search-modal-form .modal-dialog {
-	width: 780px;
 }
 
 .geo-map-layer-group {
@@ -220,10 +173,6 @@ span.mgis-input-group-date button {
 	padding: 5px 5px 5px 15px;
 }
 
-.mgis-geo-map-layer-modal-form .modal-dialog {
-	width: 900px;
-}
-
 /* disabling bootstrap modal animation
  * http://stackoverflow.com/questions/18873428/turn-off-animation-modal-angular-ui
  */
@@ -237,3 +186,4 @@ span.mgis-input-group-date button {
 	-ms-transform: translate(0, 0);
 	transform: translate(0, 0);
 }
+

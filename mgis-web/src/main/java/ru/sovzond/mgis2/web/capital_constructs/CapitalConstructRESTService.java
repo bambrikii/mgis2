@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
  * Created by Alexander Arakelyan on 05.11.15.
  */
 @RestController
-@RequestMapping("/capital-constructs")
+@RequestMapping("/capital-constructs/constructs")
 @Scope("session")
 public class CapitalConstructRESTService {
 	@Autowired
@@ -22,7 +22,7 @@ public class CapitalConstructRESTService {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<CapitalConstruct> list(@RequestParam(value = "orderBy", defaultValue = "sortOrder") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+	public PageableContainer<CapitalConstruct> list(@RequestParam(value = "orderBy", defaultValue = "id DESC") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
 		return capitalConstructBean.list(orderBy, first, max);
 	}
 

@@ -6,6 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<link type="text/css" rel="stylesheet" href="app2/app.css">
+	<link type="text/css" rel="stylesheet" href="app2/app-desktop.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
@@ -97,9 +98,9 @@
 	<script type="text/javascript" src="app2/admin/privileges/admin-privileges-module.js"></script>
 
 	<!-- Capital Constructs -->
-	<script type="text/javascript" src="app2/oks/oks.js"></script>
-	<script type="text/javascript" src="app2/oks/construct/construct-module.js"></script>
-	<script type="text/javascript" src="app2/oks/construct/construct-service.js"></script>
+	<script type="text/javascript" src="app2/capital-constructs/capital-constructs.js"></script>
+	<script type="text/javascript" src="app2/capital-constructs/construct/construct-module.js"></script>
+	<script type="text/javascript" src="app2/capital-constructs/construct/construct-service.js"></script>
 
 	<link type="text/css" rel="stylesheet" href="app2/lands/land/lands-leaflet-control.css">
 	<script type="text/javascript" src="app2/lands/land/lands-leaflet-control.js"></script>

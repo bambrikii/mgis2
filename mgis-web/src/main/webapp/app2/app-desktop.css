@@ -1,0 +1,53 @@
+@media (min-width: 1000px) {
+
+	.mgis-document-modal-form .modal-dialog {
+		width: 850px;
+	}
+
+	.mgis-error-handling-modal .modal-dialog {
+		width: 850px;
+	}
+
+	/* Lands */
+	.mgis-land-modal-form .modal-dialog {
+		width: 995px;
+	}
+
+	/* TerrZones */
+	.mgis-terr-zones-modal-form .modal-dialog {
+		width: 995px;
+	}
+
+	.mgis-document-selector-modal-form .modal-dialog {
+		width: 995px;
+	}
+
+	.mgis-address-modal-form .modal-dialog {
+		width: 730px;
+	}
+
+	.mgis-person-modal-form .modal-dialog {
+		width: 900px;
+	}
+
+	.mgis-terr-zone-modal-form .modal-dialog {
+		width: 730px;
+	}
+
+	.mgis-crud-modal-form .modal-dialog {
+		width: 730px;
+	}
+
+	.mgis-document-search-modal-form .modal-dialog {
+		width: 780px;
+	}
+
+	.mgis-geo-map-layer-modal-form .modal-dialog {
+		width: 900px;
+	}
+
+	/* Capital Constructs */
+	.mgis-capital-construct-modal-form .modal-dialog {
+		width: 900px;
+	}
+}

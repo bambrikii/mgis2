@@ -1,7 +1,7 @@
-angular.module("mgis.oks.construct.service", ["ngResource",
+angular.module("mgis.capital-constructs.construct.service", ["ngResource",
 	"mgis.error.service"])
-	.factory("OKSConstructService", function ($q, $resource, MGISErrorService) {
-		var res = $resource('rest/oks/constructs/:id.json');
+	.factory("CapitalConstructsConstructService", function ($q, $resource, MGISErrorService) {
+		var res = $resource('rest/capital-constructs/constructs/:id.json');
 		return {
 			get: function (id, first, max) {
 				var deferred = $q.defer();

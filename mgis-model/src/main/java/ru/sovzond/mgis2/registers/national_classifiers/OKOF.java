@@ -17,13 +17,13 @@ public class OKOF implements Cloneable {
 	@Column
 	private Long id;
 
-	@Column(name = "original_id")
+	@Column(name = "original_id", unique = true)
 	private Long originalId;
 
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "code")
+	@Column(name = "code", unique = true, nullable = false)
 	private String code;
 
 	@Column(name = "control_number")
@@ -110,4 +110,11 @@ public class OKOF implements Cloneable {
 		return okof;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
 }

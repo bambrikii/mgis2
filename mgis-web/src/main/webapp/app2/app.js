@@ -2,7 +2,7 @@ angular.module("mgis", //
 	["ui.router", 'pascalprecht.translate', //
 		"mgis.isogd",
 		"mgis.menu.main",
-		"mgis.oks",
+		"mgis.capital-constructs",
 		"mgis.admin",
 		"mgis.lands",
 		"mgis.terr-zones",
