@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.capital_constructs.characteristics;
+package ru.sovzond.mgis2.capital_constructs.characteristics.economical;
 
 /**
  * Created by Alexander Arakelyan on 06.11.15.

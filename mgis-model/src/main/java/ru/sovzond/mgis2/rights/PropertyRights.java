@@ -25,9 +25,6 @@ public class PropertyRights implements Cloneable {
 	@Column
 	private Long id;
 
-	@OneToOne(optional = false)
-	private Land land;
-
 	@ManyToOne
 	private LandRightKind rightKind;
 
@@ -47,11 +44,11 @@ public class PropertyRights implements Cloneable {
 	private float share;
 
 	@ManyToMany(cascade = {CascadeType.ALL})
-	@JoinTable(name = "lands_land_right_reg_docs", joinColumns = @JoinColumn(name = "land_land_right_id"), inverseJoinColumns = @JoinColumn(name = "registration_doc_id"))
+	@JoinTable(name = "mgis2_property_rights_reg_docs", joinColumns = @JoinColumn(name = "mgis2_property_rights_id"), inverseJoinColumns = @JoinColumn(name = "registration_doc_id"))
 	private List<Document> registrationDocuments = new ArrayList<>();
 
 	@ManyToMany(cascade = {CascadeType.ALL})
-	@JoinTable(name = "lands_land_right_cert_docs", joinColumns = @JoinColumn(name = "land_land_right_id"), inverseJoinColumns = @JoinColumn(name = "cert_doc_id"))
+	@JoinTable(name = "mgis2_property_rights_cert_docs", joinColumns = @JoinColumn(name = "mgis2_property_rights_id"), inverseJoinColumns = @JoinColumn(name = "cert_doc_id"))
 	private List<Document> documentsCertifyingRights = new ArrayList<>();
 
 
@@ -61,14 +58,6 @@ public class PropertyRights implements Cloneable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Land getLand() {
-		return land;
-	}
-
-	public void setLand(Land land) {
-		this.land = land;
 	}
 
 	public LandRightKind getRightKind() {

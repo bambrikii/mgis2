@@ -1,13 +1,11 @@
 package ru.sovzond.mgis2.lands.rights;
 
 import ru.sovzond.mgis2.isogd.document.Document;
+import ru.sovzond.mgis2.lands.Land;
 import ru.sovzond.mgis2.registers.national_classifiers.LandEncumbrance;
 import ru.sovzond.mgis2.rights.PropertyRights;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.stream.Collectors;
 
 @Entity
@@ -23,12 +21,15 @@ public class LandRights extends PropertyRights {
 	@ManyToOne
 	private LandEncumbrance encumbrance;
 
-	@Column
+	@column
 	private boolean obligations;
 
 	@Column
 	private String comment;
 
+	@OneToOne(optional = false)
+	@JoinColumn(name = "land_id")
+	private Land land;
 
 	public float getTotalArea() {
 		return totalArea;
@@ -68,6 +69,14 @@ public class LandRights extends PropertyRights {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public Land getLand() {
+		return land;
+	}
+
+	public void setLand(Land land) {
+		this.land = land;
 	}
 
 	public LandRights clone() {

@@ -223,3 +223,17 @@ span.mgis-input-group-date button {
 .mgis-geo-map-layer-modal-form .modal-dialog {
 	width: 900px;
 }
+
+/* disabling bootstrap modal animation
+ * http://stackoverflow.com/questions/18873428/turn-off-animation-modal-angular-ui
+ */
+
+.modal.fade {
+	opacity: 1;
+}
+
+.modal.fade .modal-dialog, .modal.in .modal-dialog {
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
+}

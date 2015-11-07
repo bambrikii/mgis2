@@ -18,23 +18,23 @@
 		</dependency>
 
 		<!-- jai -->
-		<dependency>
-			<groupId>com.sun.media</groupId>
-			<artifactId>jai_codec</artifactId>
-			<version>1.1.3</version>
-		</dependency>
+		<!--<dependency>-->
+		<!--<groupId>com.sun.media</groupId>-->
+		<!--<artifactId>jai_codec</artifactId>-->
+		<!--<version>1.1.3</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>com.sun.media</groupId>
-			<artifactId>jai_core</artifactId>
-			<version>1.1.3</version>
-		</dependency>
+		<!--<dependency>-->
+		<!--<groupId>com.sun.media</groupId>-->
+		<!--<artifactId>jai_core</artifactId>-->
+		<!--<version>1.1.3</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>com.sun.media</groupId>
-			<artifactId>jai_imageio</artifactId>
-			<version>1.1</version>
-		</dependency>
+		<!--<dependency>-->
+		<!--<groupId>com.sun.media</groupId>-->
+		<!--<artifactId>jai_imageio</artifactId>-->
+		<!--<version>1.1</version>-->
+		<!--</dependency>-->
 
 		<!-- http://www.artofsolving.com/opensource/jodconverter/guide.html -->
 		<!-- <dependency> -->
@@ -62,11 +62,11 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.jhlabs</groupId>
-			<artifactId>javaproj</artifactId>
-			<version>1.0.6-noawt</version>
-		</dependency>
+		<!--<dependency>-->
+		<!--<groupId>com.jhlabs</groupId>-->
+		<!--<artifactId>javaproj</artifactId>-->
+		<!--<version>1.0.6-noawt</version>-->
+		<!--</dependency>-->
 
 		<!--<dependency>-->
 		<!--<groupId>org.osgeo</groupId>-->
