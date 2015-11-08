@@ -9,12 +9,14 @@ import com.jhlabs.map.proj.ProjectionFactory;
  */
 public class CoordinatesConverter {
 	private String[] params;
+	private Projection projection;
 
 	public CoordinatesConverter(String params) {
 		if (params == null) {
 			throw new IllegalArgumentException("Params argument required.");
 		}
 		this.params = buildConversionParams(params);
+		projection = ProjectionFactory.fromPROJ4Specification(this.params);
 	}
 
 	private String[] buildConversionParams(String params) {
@@ -26,7 +28,6 @@ public class CoordinatesConverter {
 	}
 
 	public double[] convert(double x, double y) {
-		Projection projection = ProjectionFactory.fromPROJ4Specification(params);
 		Point2D.Double d1 = new Point2D.Double(x, y);
 		Point2D.Double d2 = new Point2D.Double(0, 0);
 		projection.transform(d1, d2);
