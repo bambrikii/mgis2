@@ -16,7 +16,10 @@
 				<tab-heading>
 					<span translate>Lands.Land.Rights</span>
 				</tab-heading>
-				<div ng-include src="'app2/lands/land/land-form-rights.htm'"></div>
+				<div>
+					<mgis-property-rights rights="land.rights"></mgis-property-rights>
+					<mgis-property-payments payments="land.rights"></mgis-property-payments>
+				</div>
 			</tab>
 			<tab>
 				<tab-heading>

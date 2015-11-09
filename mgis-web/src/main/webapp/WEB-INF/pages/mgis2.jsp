@@ -72,6 +72,11 @@
 	<script type="text/javascript" src="app2/commons/common-services.js"></script>
 	<script type="text/javascript" src="app2/errors/error-module.js"></script>
 	<script type="text/javascript" src="app2/errors/error-service.js"></script>
+
+	<!-- Property -->
+	<script type="text/javascript" src="app2/property/property-module.js"></script>
+
+	<!-- ISOGD -->
 	<script type="text/javascript" src="app2/isogd/isogd.js"></script>
 	<script type="text/javascript" src="app2/isogd/section/isogd-sections-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/section/isogd-sections-module.js"></script>

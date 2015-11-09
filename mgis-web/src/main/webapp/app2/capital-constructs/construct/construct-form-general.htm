@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>GeneralInfo</h3>
+	</div>
+	<div class="panel-body">
+		<commons-forms-drop-down title="Type" property="item.type" available-elements="availableTypes"></commons-forms-drop-down>
+		<commons-forms-text title="Name" property="item.name"></commons-forms-text>
+		<commons-forms-text title="ObjectPurpose" property="item.objectPurpose"></commons-forms-text>
+		<commons-forms-text title="CadastralNumber" property="item.cadastralNumber"></commons-forms-text>
+		<commons-forms-text title="ConditionalNumber" property="item.conditionalNumber"></commons-forms-text>
+		<commons-forms-text title="InventoryNumber" property="item.inventoryNumber"></commons-forms-text>
+		<commons-forms-text title="OverallArea" property="item.overallArea"></commons-forms-text>
+		<commons-forms-drop-down-ajax title="MunicipalEntity" property="item.municipalEntity"
+									  available-elements="availableMunicipalEntities"
+									  refresh="refreshAvailableDropDownAjaxElements(name)"></commons-forms-drop-down-ajax>
+		<div class="form-group row">
+			<div class="col-sm-4"><label translate>Lands.Land.Address</label></div>
+			<div class="col-sm-8">
+				<address-selector address="item.address"></address-selector>
+			</div>
+		</div>
+		<commons-forms-text title="Placement" property="item.placement"></commons-forms-text>
+		<commons-forms-text title="Letter" property="item.letter"></commons-forms-text>
+		<commons-forms-date title="TechnicalAccountingStatementDate" property="item.technicalAccountingStatementDate"></commons-forms-date>
+		<commons-forms-text title="ActualUsage" property="item.actualUsage"></commons-forms-text>
+		<commons-forms-date title="TechnicalAccountingStatementDate" property="item.technicalAccountingStatementDate"></commons-forms-date>
+		<commons-forms-text title="operationStartYear" property="item.operationStartYear"></commons-forms-text>
+		<commons-forms-text title="buildCompletionYear" property="item.buildCompletionYear"></commons-forms-text>
+		<commons-forms-date title="lastReconstructionDate" property="item.lastReconstructionDate"></commons-forms-date>
+		<commons-forms-text title="rebuildingLastYear" property="item.rebuildingLastYear"></commons-forms-text>
+	</div>
+</div>

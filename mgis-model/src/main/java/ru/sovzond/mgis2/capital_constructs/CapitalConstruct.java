@@ -55,7 +55,7 @@ public class CapitalConstruct implements Cloneable {
 	 * Общая площадь
 	 */
 	@Column
-	private Double overalArea;
+	private Double overallArea;
 
 	/**
 	 * Муниципальное образование
@@ -183,12 +183,12 @@ public class CapitalConstruct implements Cloneable {
 		this.inventoryNumber = inventoryNumber;
 	}
 
-	public Double getOveralArea() {
-		return overalArea;
+	public Double getOverallArea() {
+		return overallArea;
 	}
 
-	public void setOveralArea(Double overalArea) {
-		this.overalArea = overalArea;
+	public void setOverallArea(Double overallArea) {
+		this.overallArea = overallArea;
 	}
 
 	public KLADRLocality getMunicipalEntity() {
@@ -303,7 +303,7 @@ public class CapitalConstruct implements Cloneable {
 		construct.setMunicipalEntity(municipalEntity != null ? municipalEntity.clone() : null);
 		construct.setObjectPurpose(objectPurpose);
 		construct.setOperationStartYear(operationStartYear);
-		construct.setOveralArea(overalArea);
+		construct.setOverallArea(overallArea);
 		construct.setPlacement(placement);
 		construct.setRebuildingLastYear(rebuildingLastYear);
 		construct.setRights(rights != null ? rights.clone() : null);
