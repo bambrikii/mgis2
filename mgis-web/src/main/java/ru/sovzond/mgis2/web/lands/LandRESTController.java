@@ -219,8 +219,8 @@ public class LandRESTController implements Serializable {
 			chars2.setSpecificIndexOfCadastralCost(chars.getSpecificIndexOfCadastralCost());
 			chars2.setMarketCost(chars.getMarketCost());
 			chars2.setMortgageValue(chars.getMortgageValue());
-			chars2.setImplementationDate(chars.getImplementationDate());
-			chars2.setTerminationDate(chars.getTerminationDate());
+			chars2.setCadastralCostImplementationDate(chars.getCadastralCostImplementationDate());
+			chars2.setMarketCostImplementationDate(chars.getMarketCostImplementationDate());
 			chars2.setStandardCost(chars.getStandardCost());
 			chars2.setTypeOfEngineeringSupportArea(chars.getTypeOfEngineeringSupportArea() != null ? typeOfEngineeringSupportAreaBean.load(chars.getTypeOfEngineeringSupportArea().getId()) : null);
 			chars2.setDistanceToTheConnectionPoint(chars.getDistanceToTheConnectionPoint());

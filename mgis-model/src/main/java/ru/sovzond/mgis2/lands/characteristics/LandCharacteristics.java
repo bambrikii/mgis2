@@ -24,19 +24,19 @@ public class LandCharacteristics implements Cloneable {
 	private float cadastralCost;
 
 	@Column
+	private Date cadastralCostImplementationDate;
+
+	@Column
 	private float specificIndexOfCadastralCost;
 
 	@Column
 	private float marketCost;
 
 	@Column
+	private Date marketCostImplementationDate;
+
+	@Column
 	private float mortgageValue;
-
-	@Column
-	private Date implementationDate;
-
-	@Column
-	private Date terminationDate;
 
 	@Column
 	private float standardCost;
@@ -113,12 +113,12 @@ public class LandCharacteristics implements Cloneable {
 		this.mortgageValue = mortgageValue;
 	}
 
-	public Date getImplementationDate() {
-		return implementationDate;
+	public Date getCadastralCostImplementationDate() {
+		return cadastralCostImplementationDate;
 	}
 
-	public void setImplementationDate(Date implementationDate) {
-		this.implementationDate = implementationDate;
+	public void setCadastralCostImplementationDate(Date cadastralCostImplementationDate) {
+		this.cadastralCostImplementationDate = cadastralCostImplementationDate;
 	}
 
 	public float getStandardCost() {
@@ -193,12 +193,12 @@ public class LandCharacteristics implements Cloneable {
 		this.distanceToTheCountrySubjectCenter = distanceToTheCountrySubjectCenter;
 	}
 
-	public Date getTerminationDate() {
-		return terminationDate;
+	public Date getMarketCostImplementationDate() {
+		return marketCostImplementationDate;
 	}
 
-	public void setTerminationDate(Date terminationDate) {
-		this.terminationDate = terminationDate;
+	public void setMarketCostImplementationDate(Date marketCostImplementationDate) {
+		this.marketCostImplementationDate = marketCostImplementationDate;
 	}
 
 	public LandCharacteristics clone() {
@@ -208,8 +208,8 @@ public class LandCharacteristics implements Cloneable {
 		ch.setSpecificIndexOfCadastralCost(specificIndexOfCadastralCost);
 		ch.setMarketCost(marketCost);
 		ch.setMortgageValue(mortgageValue);
-		ch.setImplementationDate(implementationDate);
-		ch.setTerminationDate(terminationDate);
+		ch.setCadastralCostImplementationDate(cadastralCostImplementationDate);
+		ch.setMarketCostImplementationDate(marketCostImplementationDate);
 		ch.setStandardCost(standardCost);
 		ch.setTypeOfEngineeringSupportArea(typeOfEngineeringSupportArea != null ? typeOfEngineeringSupportArea.clone() : null);
 		ch.setDistanceToTheConnectionPoint(distanceToTheConnectionPoint);
