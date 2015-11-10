@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.capital_construct;
+package ru.sovzond.mgis2.national_classifiers;
 
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.capital_constructs.characteristics.economical.PriceType;

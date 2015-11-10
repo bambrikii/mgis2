@@ -1,0 +1,41 @@
+<div class="modal-header">
+	<h3 class="modal-title"><span translate>CapitalConstructs.Construct.Characteristics.EconomicCharacteristics</span>: {{construct.cadastralNumber}}
+	</h3>
+</div>
+<div class="modal-body">
+	<form name="characteristicsForm" class="" novalidate>
+		<commons-forms-drop-down title="CapitalConstructs.Construct.Characteristics.PriceType" property="item.priceType"
+								 available-elements="availablePriceTypes"></commons-forms-drop-down>
+		<commons-forms-text title="Value" property="item.value"></commons-forms-text>
+		<commons-forms-drop-down-ajax title="NationalClassifiers.UnitOfMeasure" property="item.unitOfMeasure"
+									  available-elements="availableUnitsOfMeasure"
+									  refresh="refreshAvailableUnitsOfMeasure(name)"></commons-forms-drop-down-ajax>
+		<commons-forms-date title="CapitalConstructs.Construct.Characteristics.ValueImplementationDate"
+							property="item.valueImplementationDate"></commons-forms-date>
+		<commons-forms-drop-down-ajax title="NationalClassifiers.OKOF" property="item.okof"
+									  available-elements="availableOKOFs"
+									  refresh="refreshAvailableOKOFs(name)"></commons-forms-drop-down-ajax>
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>CapitalConstructs.Construct.Characteristics.AmortizationGroup</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="item.amortizationGroup"
+							options="c for c in availableAmortizationGroups"
+							data-multiple="false"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="characteristicsForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

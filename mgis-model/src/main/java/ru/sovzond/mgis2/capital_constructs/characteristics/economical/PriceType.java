@@ -14,6 +14,7 @@ public class PriceType implements Cloneable {
 	@Column
 	private Long id;
 
+	@Column(nullable = false, unique = true)
 	private String name;
 
 	public Long getId() {

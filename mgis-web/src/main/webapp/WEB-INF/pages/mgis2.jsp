@@ -73,6 +73,11 @@
 	<script type="text/javascript" src="app2/errors/error-module.js"></script>
 	<script type="text/javascript" src="app2/errors/error-service.js"></script>
 
+	<!-- National Classifiers -->
+	<script type="text/javascript" src="app2/nc/nc-services.js"></script>
+	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
+	<script type="text/javascript" src="app2/nc/price-type-service.js"></script>
+
 	<!-- Property -->
 	<script type="text/javascript" src="app2/property/property-module.js"></script>
 
@@ -104,6 +109,8 @@
 
 	<!-- Capital Constructs -->
 	<script type="text/javascript" src="app2/capital-constructs/capital-constructs.js"></script>
+	<script type="text/javascript" src="app2/capital-constructs/characteristics/characteristics-module.js"></script>
+	<script type="text/javascript" src="app2/capital-constructs/characteristics/characteristics-services.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/construct/construct-module.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/construct/construct-service.js"></script>
 
@@ -117,9 +124,6 @@
 	<script type="text/javascript" src="app2/terr-zones/terr-zones.js"></script>
 	<script type="text/javascript" src="app2/terr-zones/zone/zone-service.js"></script>
 	<script type="text/javascript" src="app2/terr-zones/zone/zone-module.js"></script>
-
-	<script type="text/javascript" src="app2/nc/nc-services.js"></script>
-	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
 
 	<script type="text/javascript" src="app2/persons/natural-person/natural-person-service.js"></script>
 	<script type="text/javascript" src="app2/persons/natural-person/natural-person-module.js"></script>

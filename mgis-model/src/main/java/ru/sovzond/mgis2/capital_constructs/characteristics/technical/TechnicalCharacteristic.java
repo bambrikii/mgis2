@@ -1,5 +1,6 @@
 package ru.sovzond.mgis2.capital_constructs.characteristics.technical;
 
+import ru.sovzond.mgis2.capital_constructs.ConstructType;
 import ru.sovzond.mgis2.registers.national_classifiers.OKEI;
 
 import javax.persistence.*;
@@ -18,11 +19,11 @@ public class TechnicalCharacteristic implements Cloneable {
 	private Long id;
 
 	/**
-	 * Вид объекта
+	 * Тип объекта (Здания, Сооружения, ОНС)
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "object_type_id")
-	private TechnicalCharacteristicObjectType objectType;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "construct_type")
+	private ConstructType constructType;
 
 	/**
 	 * Технический показатель
@@ -52,12 +53,12 @@ public class TechnicalCharacteristic implements Cloneable {
 		this.id = id;
 	}
 
-	public TechnicalCharacteristicObjectType getObjectType() {
-		return objectType;
+	public ConstructType getConstructType() {
+		return constructType;
 	}
 
-	public void setObjectType(TechnicalCharacteristicObjectType objectType) {
-		this.objectType = objectType;
+	public void setConstructType(ConstructType constructType) {
+		this.constructType = constructType;
 	}
 
 	public TechnicalIndicator getTechnicalIndicator() {
@@ -87,7 +88,7 @@ public class TechnicalCharacteristic implements Cloneable {
 	public TechnicalCharacteristic clone() {
 		TechnicalCharacteristic characteristic = new TechnicalCharacteristic();
 		characteristic.setId(id);
-		characteristic.setObjectType(objectType != null ? objectType.clone() : null);
+		characteristic.setConstructType(constructType);
 		characteristic.setTechnicalIndicator(technicalIndicator != null ? technicalIndicator.clone() : null);
 		characteristic.setValue(value);
 		characteristic.setUnitOfMeasure(unitOfMeasure != null ? unitOfMeasure.clone() : null);

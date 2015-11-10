@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.capital_construct;
+package ru.sovzond.mgis2.national_classifiers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

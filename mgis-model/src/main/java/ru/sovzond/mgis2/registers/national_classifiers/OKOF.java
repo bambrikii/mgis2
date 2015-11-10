@@ -20,7 +20,7 @@ public class OKOF implements Cloneable {
 	@Column(name = "original_id", unique = true)
 	private Long originalId;
 
-	@Column(name = "name")
+	@Column(name = "name", columnDefinition = "text")
 	private String name;
 
 	@Column(name = "code", unique = true, nullable = false)

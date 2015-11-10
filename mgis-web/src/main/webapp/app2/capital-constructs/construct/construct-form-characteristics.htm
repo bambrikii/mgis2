@@ -1,0 +1,49 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>CapitalConstructs.Construct.Characteristics.EconomicCharacteristics</h3>
+	</div>
+	<div class="panel-body">
+		<div class="form-group row">
+			<div class="col-sm-12"><label translate>ObjectPrices</label></div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-12">
+				<div ng-repeat="char in item.economicCharacteristics" class="row">
+					<div class="col-sm-8">
+						{{char}}
+					</div>
+					<div class="col-sm-4">
+						<button class="btn btn-sm btn-warn" ng-click="editEconomicCharacteristic(char)" translate>Edit</button>
+						<button class="btn btn-sm btn-error" ng-click="removeEconomicCharacteristic(item, char)" translate>Remove</button>
+					</div>
+				</div>
+				<button class="btn btn-sm btn-info" ng-click="addEconomicCharacteristic()" translate>Add</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>CapitalConstructs.Construct.Characteristics.TechnicalCharacteristics</h3>
+	</div>
+	<div class="panel-body">
+		<div class="form-group row">
+			<div class="col-sm-12"><label translate>TechnicalCharacteristics</label></div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-12">
+				<div ng-repeat="char in item.technicalCharacteristics" class="row">
+					<div class="col-sm-8">
+						{{char}}
+					</div>
+					<div class="col-sm-4">
+						<button class="btn btn-sm btn-warn" ng-click="editTechnicalCharacteristic(char)" translate>Edit</button>
+						<button class="btn btn-sm btn-error" ng-click="removeTechnicalCharacteristic(item, char)" translate>Remove</button>
+					</div>
+				</div>
+				<button class="btn btn-sm btn-info" ng-click="addTechnicalCharacteristic()" translate>Add</button>
+			</div>
+		</div>
+	</div>
+</div>

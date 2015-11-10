@@ -1,5 +1,5 @@
 /**
- * Created by asd on 29.07.15.
+ * Created by Alexander Arakelyan on 29.07.15.
  */
 angular.module("mgis.nc.services", ["ngResource",
 	"mgis.error.service"
@@ -164,6 +164,34 @@ angular.module("mgis.nc.services", ["ngResource",
 	})
 	.factory("NcOKOPFService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/nc/okopf/:id.json');
+		return {
+			get: function (id, first, max, name) {
+				var deferred = $q.defer();
+				res.get({id: id, first: first, max: max, name: name}, {}, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+				return deferred.promise;
+			}
+		}
+	})
+	.factory("NcOKOFService", function ($resource, $q, MGISErrorService) {
+		var res = $resource('rest/nc/okof/:id.json');
+		return {
+			get: function (id, first, max, code, name) {
+				var deferred = $q.defer();
+				res.get({id: id, first: first, max: max, code: code, name: name}, {}, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+				return deferred.promise;
+			}
+		}
+	})
+	.factory("NcOKEIService", function ($resource, $q, MGISErrorService) {
+		var res = $resource('rest/nc/okei/:id.json');
 		return {
 			get: function (id, first, max, name) {
 				var deferred = $q.defer();

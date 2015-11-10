@@ -1,7 +1,8 @@
 angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap",
 	"mgis.commons",
-	"mgis.capital-constructs.construct.service",
-	"mgis.property"
+	"mgis.capital_constructs.construct.service",
+	"mgis.property",
+	"mgis.capital_constructs.characteristics"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -10,8 +11,12 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 				templateUrl: "app2/capital-constructs/construct/construct-list.htm"
 			});
 	})
-	.controller("CapitalConstructsConstructController", function ($scope, $rootScope, CapitalConstructsConstructService, MGISCommonsModalForm) {
-		console.log("CapitalConstructsConstructController");
+	.controller("CapitalConstructsConstructController", function ($scope,
+																  $rootScope,
+																  CapitalConstructsConstructService,
+																  CapitalConstructEconomicCharacteristicsCRUDService,
+																  CapitalConstructTechnicalCharacteristicsCRUDService,
+																  MGISCommonsModalForm) {
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = 15;
 		function updateGrid() {
@@ -21,7 +26,7 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		}
 
 		function editItem(modalScope) {
-			MGISCommonsModalForm.edit("app2/capital-constructs/construct/construct-form.htm", modalScope, function (scope, $modalInstance) {
+			MGISCommonsModalForm.edit("app2/capital-constructs/construct/construct-form.htm", modalScope, function (scope, modalInstance) {
 
 			}, {windowClass: "mgis-capital-construct-modal-form"});
 		}
@@ -48,6 +53,28 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 					updateGrid();
 				});
 			});
+		}
+
+		// Economic Characteristics
+		$scope.addEconomicCharacteristic = function (item) {
+			CapitalConstructEconomicCharacteristicsCRUDService.add(item);
+		}
+		$scope.editEconomicCharacteristic = function (char) {
+			CapitalConstructEconomicCharacteristicsCRUDService.edit(char);
+		}
+		$scope.removeTechnicalCharacteristic = function (item, char) {
+			CapitalConstructEconomicCharacteristicsCRUDService.remove(item, char);
+		}
+
+		// Technical Characteristics
+		$scope.addTechnicalCharacteristic = function (item) {
+			CapitalConstructTechnicalCharacteristicsCRUDService.add(item);
+		}
+		$scope.editTechnicalCharacteristic = function (char) {
+			CapitalConstructTechnicalCharacteristicsCRUDService.edit(char);
+		}
+		$scope.removeTechnicalCharacteristic = function (item, char) {
+			CapitalConstructTechnicalCharacteristicsCRUDService.remove(item, char);
 		}
 
 	})

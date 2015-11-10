@@ -40,7 +40,7 @@ public class EconomicCharacteristic implements Cloneable {
 	/**
 	 * Дата установления значения
 	 */
-	private Date valueDate;
+	private Date valueImplementationDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "okof_id")
@@ -77,6 +77,14 @@ public class EconomicCharacteristic implements Cloneable {
 		this.unitOfMeasure = unitOfMeasure;
 	}
 
+	public Date getValueImplementationDate() {
+		return valueImplementationDate;
+	}
+
+	public void setValueImplementationDate(Date valueImplementationDate) {
+		this.valueImplementationDate = valueImplementationDate;
+	}
+
 	public OKOF getOkof() {
 		return okof;
 	}
@@ -98,8 +106,10 @@ public class EconomicCharacteristic implements Cloneable {
 		characteristic.setId(id);
 		characteristic.setUnitOfMeasure(unitOfMeasure != null ? unitOfMeasure.clone() : null);
 		characteristic.setAmortizationGroup(amortizationGroup);
+		characteristic.setValueImplementationDate(valueImplementationDate);
 		characteristic.setOkof(okof != null ? okof.clone() : null);
 		characteristic.setPriceType(priceType != null ? priceType.clone() : null);
 		return characteristic;
 	}
+
 }

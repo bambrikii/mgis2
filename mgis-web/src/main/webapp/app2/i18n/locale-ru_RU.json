@@ -214,6 +214,8 @@
   "Lands.Land.DisplayAsAList": "Отобразить списком",
   "Lands.Land.Map": "Карта",
   "NationalClassifiers.MunicipalEntity": "Муниципальное образование",
+  "NationalClassifiers.UnitOfMeasure": "Единица измерения",
+  "NationalClassifiers.OKOF": "ОКОФ",
   "TerritorialZones.Zone": "Территориальная зона",
   "TerritorialZones.Zone.StateRealtyCadasterInfo": "Сведения из ГКН",
   "TerritorialZones.Zone.CreationDate": "Дата создания",
@@ -358,7 +360,14 @@
   "CapitalConstructs": "ОКС",
   "CapitalConstructs.Constructs": "Объекты капитального строительства",
   "CapitalConstructs.Construct": "Объект капитального строительства",
-  "CapitalConstructs.Construct.Characteristics": "Характеристики",
+  "CapitalConstructs.Construct.Type": "Тип объекта",
   "CapitalConstructs.Construct.ConstructiveElements": "Конструктивные элементы",
-  "CapitalConstructs.Construct.IncludedObjects": "Вложенные объекты"
+  "CapitalConstructs.Construct.IncludedObjects": "Вложенные объекты",
+  "CapitalConstructs.Construct.Characteristics": "Характеристики",
+  "CapitalConstructs.Construct.Characteristics.PriceType": "Вид стоимости",
+  "CapitalConstructs.Construct.Characteristics.ValueImplementationDate": "Дата установки значения",
+  "CapitalConstructs.Construct.Characteristics.AmortizationGroup": "Амортизационная группа",
+  "CapitalConstructs.Construct.Characteristics.EconomicCharacteristics": "Экономические характеристики",
+  "CapitalConstructs.Construct.Characteristics.TechnicalCharacteristics": "Технические характеристики",
+  "CapitalConstructs.Construct.Characteristics.TechnicalIndicator": "Технический показатель"
 }

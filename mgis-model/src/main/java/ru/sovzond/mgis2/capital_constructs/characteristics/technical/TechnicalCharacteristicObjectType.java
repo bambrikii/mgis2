@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 /**
  * Created by Alexander Arakelyan on 06/11/15.
+ * <p/>
+ * TODO: справочник видов недвижимого имущества
  */
 @Entity
 @Table(name = "oks_capital_construct_tech_char_obj_type")
