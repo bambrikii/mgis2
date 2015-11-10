@@ -1,7 +1,7 @@
-angular.module("mgis.capital_constructs.characteristics", ["ui.bootstrap",
+angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 	"mgis.commons",
 	"mgis.nc.services",
-	"mgis.capital_constructs.characteristics.services"
+	"mgis.capital-constructs.characteristics.services"
 ])
 	.factory("CapitalConstructEconomicCharacteristicsCRUDService", function ($rootScope,
 																			 MGISCommonsModalForm,

@@ -1,4 +1,4 @@
-angular.module("mgis.capital_constructs.characteristics.services", ["ngResource",
+angular.module("mgis.capital-constructs.characteristics.services", ["ngResource",
 	"mgis.error.service"
 ])
 	.factory("CapitalConstructCharacteristicsAmortizationGroup", function ($q, $resource, MGISErrorService) {

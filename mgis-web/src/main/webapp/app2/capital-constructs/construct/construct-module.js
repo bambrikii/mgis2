@@ -1,8 +1,8 @@
 angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap",
 	"mgis.commons",
-	"mgis.capital_constructs.construct.service",
+	"mgis.capital-constructs.construct.service",
 	"mgis.property",
-	"mgis.capital_constructs.characteristics"
+	"mgis.capital-constructs.characteristics"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider

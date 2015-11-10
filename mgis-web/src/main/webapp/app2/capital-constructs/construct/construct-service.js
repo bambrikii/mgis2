@@ -1,5 +1,5 @@
-angular.module("mgis.capital_constructs.construct.service", ["ngResource",
-	"mgis.error.service"])
+angular.module("mgis.capital-constructs.construct.service", ["ngResource",
+		"mgis.error.service"])
 	.factory("CapitalConstructsConstructService", function ($q, $resource, MGISErrorService) {
 		var res = $resource('rest/capital-constructs/constructs/:id.json');
 		return {

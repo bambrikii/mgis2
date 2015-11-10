@@ -76,7 +76,7 @@
 	<!-- National Classifiers -->
 	<script type="text/javascript" src="app2/nc/nc-services.js"></script>
 	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
-	<script type="text/javascript" src="app2/nc/price-type-service.js"></script>
+	<%--<script type="text/javascript" src="app2/nc/price-type-service.js"></script>--%>
 
 	<!-- Property -->
 	<script type="text/javascript" src="app2/property/property-module.js"></script>
