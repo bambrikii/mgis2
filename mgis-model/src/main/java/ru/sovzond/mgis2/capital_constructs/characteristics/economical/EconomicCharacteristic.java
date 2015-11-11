@@ -1,7 +1,6 @@
 package ru.sovzond.mgis2.capital_constructs.characteristics.economical;
 
 import ru.sovzond.mgis2.indicators.PriceIndicator;
-import ru.sovzond.mgis2.registers.national_classifiers.OKEI;
 import ru.sovzond.mgis2.registers.national_classifiers.OKOF;
 
 import javax.persistence.*;
@@ -23,20 +22,13 @@ public class EconomicCharacteristic implements Cloneable {
 	 * Вид стоимости
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "price_type_id")
-	private PriceIndicator priceType;
+	@JoinColumn(name = "price_indicator_id")
+	private PriceIndicator priceIndicator;
 
 	/**
 	 * Значение
 	 */
 	private String value;
-
-	/**
-	 * Единица измерения
-	 */
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "okei_id")
-	private OKEI unitOfMeasure;
 
 	/**
 	 * Дата установления значения
@@ -62,20 +54,12 @@ public class EconomicCharacteristic implements Cloneable {
 		this.id = id;
 	}
 
-	public PriceIndicator getPriceType() {
-		return priceType;
+	public PriceIndicator getPriceIndicator() {
+		return priceIndicator;
 	}
 
-	public void setPriceType(PriceIndicator priceType) {
-		this.priceType = priceType;
-	}
-
-	public OKEI getUnitOfMeasure() {
-		return unitOfMeasure;
-	}
-
-	public void setUnitOfMeasure(OKEI unitOfMeasure) {
-		this.unitOfMeasure = unitOfMeasure;
+	public void setPriceIndicator(PriceIndicator priceIndicator) {
+		this.priceIndicator = priceIndicator;
 	}
 
 	public Date getValueImplementationDate() {
@@ -105,11 +89,10 @@ public class EconomicCharacteristic implements Cloneable {
 	public EconomicCharacteristic clone() {
 		EconomicCharacteristic characteristic = new EconomicCharacteristic();
 		characteristic.setId(id);
-		characteristic.setUnitOfMeasure(unitOfMeasure != null ? unitOfMeasure.clone() : null);
 		characteristic.setAmortizationGroup(amortizationGroup);
 		characteristic.setValueImplementationDate(valueImplementationDate);
 		characteristic.setOkof(okof != null ? okof.clone() : null);
-		characteristic.setPriceType(priceType != null ? priceType.clone() : null);
+		characteristic.setPriceIndicator(priceIndicator != null ? priceIndicator.clone() : null);
 		return characteristic;
 	}
 

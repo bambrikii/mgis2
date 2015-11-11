@@ -1,12 +1,14 @@
 package ru.sovzond.mgis2.indicators;
 
+import ru.sovzond.mgis2.registers.national_classifiers.OKEI;
+
 import javax.persistence.*;
 
 /**
  * Created by Alexander Arakelyan on 11.11.15.
  */
 @Entity
-@Table(name = "mgis_indicator")
+@Table(name = "mgis2_indicator")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Indicator {
 	@Id
@@ -17,6 +19,13 @@ public class Indicator {
 
 	@Column(nullable = false, unique = true)
 	private String name;
+
+	/**
+	 * Единица измерения
+	 */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "okei_id")
+	private OKEI unitOfMeasure;
 
 	public Long getId() {
 		return id;
@@ -34,10 +43,19 @@ public class Indicator {
 		this.name = name;
 	}
 
+	public OKEI getUnitOfMeasure() {
+		return unitOfMeasure;
+	}
+
+	public void setUnitOfMeasure(OKEI unitOfMeasure) {
+		this.unitOfMeasure = unitOfMeasure;
+	}
+
 	public Indicator clone() {
 		Indicator indicator = new Indicator();
 		indicator.setId(id);
 		indicator.setName(name);
+		indicator.setUnitOfMeasure(unitOfMeasure != null ? unitOfMeasure.clone() : null);
 		return indicator;
 	}
 }

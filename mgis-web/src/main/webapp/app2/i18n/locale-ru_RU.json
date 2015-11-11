@@ -364,10 +364,10 @@
   "CapitalConstructs.Construct.ConstructiveElements": "Конструктивные элементы",
   "CapitalConstructs.Construct.IncludedObjects": "Вложенные объекты",
   "CapitalConstructs.Construct.Characteristics": "Характеристики",
-  "CapitalConstructs.Construct.Characteristics.PriceType": "Вид стоимости",
   "CapitalConstructs.Construct.Characteristics.ValueImplementationDate": "Дата установки значения",
   "CapitalConstructs.Construct.Characteristics.AmortizationGroup": "Амортизационная группа",
   "CapitalConstructs.Construct.Characteristics.EconomicCharacteristics": "Экономические характеристики",
   "CapitalConstructs.Construct.Characteristics.TechnicalCharacteristics": "Технические характеристики",
-  "CapitalConstructs.Construct.Characteristics.TechnicalIndicator": "Технический показатель"
+  "Indicators.PriceIndicator": "Стоимостной показатель",
+  "Indicators.TechnicalIndicator": "Технический показатель"
 }

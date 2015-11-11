@@ -1,28 +1,30 @@
-package ru.sovzond.mgis2.national_classifiers;
+package ru.sovzond.mgis2.indicators;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.business.CRUDBeanBase;
+import ru.sovzond.mgis2.indicators.TechnicalIndicator;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
-import ru.sovzond.mgis2.indicators.PriceIndicator;
+import ru.sovzond.mgis2.indicators.TechnicalIndicatorDao;
 
 /**
  * Created by Alexander Arakelyan on 07/11/15.
  */
 @Service
-public class PriceIndicatorBean extends CRUDBeanBase<PriceIndicator> {
+public class TechnicalIndicatorBean extends CRUDBeanBase<TechnicalIndicator> {
 
 	@Autowired
-	private PriceIndicatorDao dao;
+	private TechnicalIndicatorDao dao;
+
 
 	@Override
-	protected IPageableDAOBase<PriceIndicator> getPageableDao() {
+	protected IPageableDAOBase<TechnicalIndicator> getPageableDao() {
 		return dao;
 	}
 
 	@Override
-	protected IIdentifiableDao<PriceIndicator> getIIdentifiableDao() {
+	protected IIdentifiableDao<TechnicalIndicator> getIIdentifiableDao() {
 		return dao;
 	}
 }

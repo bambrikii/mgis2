@@ -5,16 +5,17 @@ import javax.persistence.Table;
 
 /**
  * Created by Alexander Arakelyan on 06/11/15.
- * <p/>
+ * <p>
  * Технические показатели
  */
 @Entity
-@Table(name = "oks_tech_indicator")
+@Table(name = "mgis2_tech_indicator")
 public class TechnicalIndicator extends Indicator {
 	public TechnicalIndicator clone() {
-		TechnicalIndicator indicator = new TechnicalIndicator();
-		indicator.setId(getId());
-		indicator.setName(getName());
-		return indicator;
+		TechnicalIndicator technicalIndicator = new TechnicalIndicator();
+		technicalIndicator.setId(getId());
+		technicalIndicator.setName(getName());
+		technicalIndicator.setUnitOfMeasure(getUnitOfMeasure() != null ? getUnitOfMeasure().clone() : null);
+		return technicalIndicator;
 	}
 }

@@ -80,6 +80,10 @@
 	<!-- Property -->
 	<script type="text/javascript" src="app2/property/property-module.js"></script>
 
+	<!-- Indicators -->
+	<script type="text/javascript" src="app2/indicators/indicator-services.js"></script>
+	<script type="text/javascript" src="app2/indicators/indicator-module.js"></script>
+
 	<!-- ISOGD -->
 	<script type="text/javascript" src="app2/isogd/isogd.js"></script>
 	<script type="text/javascript" src="app2/isogd/section/isogd-sections-service.js"></script>
@@ -150,7 +154,6 @@
 	<script type="text/javascript" src="app2/commons/crud/common-crud-module.js"></script>
 
 	<!-- test pages -->
-
 	<script type="text/javascript" src="app2/commons/forms/commons-forms-module.js"></script>
 	<script type="text/javascript" src="app2/test/test-module.js"></script>
 

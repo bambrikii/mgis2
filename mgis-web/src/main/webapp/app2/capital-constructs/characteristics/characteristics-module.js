@@ -1,41 +1,31 @@
 angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
-	"mgis.commons",
-	"mgis.nc.services",
-	"mgis.capital-constructs.characteristics.services",
-	"mgis.capital-constructs.construct.service"
-])
+		"mgis.commons",
+		"mgis.nc.services",
+		"mgis.capital-constructs.characteristics.services",
+		"mgis.capital-constructs.construct.service",
+		"mgis.indicators"
+	])
 	.factory("CapitalConstructEconomicCharacteristicsCRUDService", function ($rootScope,
 																			 MGISCommonsModalForm,
-																			 NcPriceTypeService,
 																			 NcOKOFService,
-																			 NcOKEIService,
 																			 CapitalConstructCharacteristicsAmortizationGroup) {
 		function editItem(item, updateFunction) {
 			var modalScope = $rootScope.$new();
 			modalScope.item = {};
 			angular.copy(item, modalScope.item);
-			NcPriceTypeService.get("", 0, 0).then(function (priceTypePager) {
-				modalScope.availablePriceTypes = priceTypePager.list;
-				CapitalConstructCharacteristicsAmortizationGroup.get("", 0, 0).then(function (amortizationGroupPager) {
-					modalScope.availableAmortizationGroups = amortizationGroupPager.list
-					modalScope.refreshAvailableOKOFs = function (name) {
-						NcOKOFService.get("", 0, 15, null, name).then(function (okofPager) {
-							modalScope.availableOKOFs = okofPager.list;
-						});
-					}
-					modalScope.refreshAvailableOKEIs = function (name) {
-						NcOKEIService.get("", 0, 15, name).then(function (okeiPager) {
-							modalScope.availableOKEIs = okeiPager.list;
-						});
-					}
-
-					MGISCommonsModalForm.edit("app2/capital-constructs/characteristics/economic-characteristic-form.htm", modalScope, function (scope, modalInstance) {
-						angular.copy(scope.item, item)
-						if (updateFunction) {
-							updateFunction(scope.item);
-						}
-						modalInstance.close();
+			CapitalConstructCharacteristicsAmortizationGroup.get("", 0, 0).then(function (amortizationGroupPager) {
+				modalScope.availableAmortizationGroups = amortizationGroupPager.list
+				modalScope.refreshAvailableOKOFs = function (name) {
+					NcOKOFService.get("", 0, 15, null, name).then(function (okofPager) {
+						modalScope.availableOKOFs = okofPager.list;
 					});
+				}
+				MGISCommonsModalForm.edit("app2/capital-constructs/characteristics/economic-characteristic-form.htm", modalScope, function (scope, modalInstance) {
+					angular.copy(scope.item, item)
+					if (updateFunction) {
+						updateFunction(scope.item);
+					}
+					modalInstance.close();
 				});
 			});
 		}
@@ -67,21 +57,13 @@ angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 	})
 	.factory("CapitalConstructTechnicalCharacteristicsCRUDService", function ($rootScope,
 																			  MGISCommonsModalForm,
-																			  CapitalConstructsConstructTypeService,
-																			  NcOKEIService) {
+																			  CapitalConstructsConstructTypeService) {
 		function editItem(item, updateFunction) {
 			var modalScope = $rootScope.$new();
 			modalScope.item = {};
 			angular.copy(item, modalScope.item);
 			CapitalConstructsConstructTypeService.get().then(function (constructTypesPager) {
 				modalScope.availableConstructTypes = constructTypesPager.list;
-
-				modalScope.refreshAvailableOKEIs = function (name) {
-					NcOKEIService.get("", 0, 15, name).then(function (okeiPager) {
-						modalScope.availableOKEIs = okeiPager.list;
-					});
-				}
-
 				MGISCommonsModalForm.edit("app2/capital-constructs/characteristics/technical-characteristic-form.htm", modalScope, function (scope, modalInstance) {
 					angular.copy(scope.item, item);
 					if (updateFunction) {

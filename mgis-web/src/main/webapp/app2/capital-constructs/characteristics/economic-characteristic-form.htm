@@ -4,12 +4,17 @@
 </div>
 <div class="modal-body">
 	<form name="characteristicsForm" class="" novalidate>
-		<commons-forms-drop-down title="CapitalConstructs.Construct.Characteristics.PriceType" property="item.priceType"
-								 available-elements="availablePriceTypes"></commons-forms-drop-down>
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>Indicators.PriceIndicator</label>
+			</div>
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<price-indicator value="item.priceIndicator"></price-indicator>
+				</p>
+			</div>
+		</div>
 		<commons-forms-text title="Value" property="item.value"></commons-forms-text>
-		<commons-forms-drop-down-ajax title="NationalClassifiers.UnitOfMeasure" property="item.unitOfMeasure"
-									  available-elements="availableOKEIs"
-									  refresh="refreshAvailableOKEIs(name)"></commons-forms-drop-down-ajax>
 		<commons-forms-date title="CapitalConstructs.Construct.Characteristics.ValueImplementationDate"
 							property="item.valueImplementationDate"></commons-forms-date>
 		<commons-forms-drop-down-ajax title="NationalClassifiers.OKOF" property="item.okof"
