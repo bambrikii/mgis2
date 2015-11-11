@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.capital_constructs.characteristics.economical;
+package ru.sovzond.mgis2.indicators;
 
 import javax.persistence.*;
 
@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 06.11.15.
  */
 @Entity
-@Table(name = "mgis2_price_type")
-public class PriceType implements Cloneable {
+@Table(name = "mgis2_price_indicators")
+public class PriceIndicator extends EconomicIndicator {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_price_type_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
@@ -33,8 +33,8 @@ public class PriceType implements Cloneable {
 		this.name = name;
 	}
 
-	public PriceType clone() {
-		PriceType priceType = new PriceType();
+	public PriceIndicator clone() {
+		PriceIndicator priceType = new PriceIndicator();
 		priceType.setId(id);
 		priceType.setName(name);
 		return priceType;

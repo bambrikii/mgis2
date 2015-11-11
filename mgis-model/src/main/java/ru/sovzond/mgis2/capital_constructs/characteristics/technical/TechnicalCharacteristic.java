@@ -1,6 +1,7 @@
 package ru.sovzond.mgis2.capital_constructs.characteristics.technical;
 
 import ru.sovzond.mgis2.capital_constructs.ConstructType;
+import ru.sovzond.mgis2.indicators.TechnicalIndicator;
 import ru.sovzond.mgis2.registers.national_classifiers.OKEI;
 
 import javax.persistence.*;

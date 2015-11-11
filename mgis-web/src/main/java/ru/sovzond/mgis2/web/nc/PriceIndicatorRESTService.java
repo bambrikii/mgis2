@@ -4,10 +4,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
-import ru.sovzond.mgis2.national_classifiers.PriceTypeBean;
 import ru.sovzond.mgis2.capital_constructs.CapitalConstruct;
-import ru.sovzond.mgis2.capital_constructs.characteristics.economical.PriceType;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+import ru.sovzond.mgis2.indicators.PriceIndicator;
+import ru.sovzond.mgis2.national_classifiers.PriceIndicatorBean;
 
 import javax.transaction.Transactional;
 
@@ -15,24 +15,24 @@ import javax.transaction.Transactional;
  * Created by Alexander Arakelyan on 10.11.15.
  */
 @RestController
-@RequestMapping("/nc/price-types")
+@RequestMapping("/nc/price-indicators")
 @Scope("session")
-public class PriceTypeRESTService {
+public class PriceIndicatorRESTService {
 	@Autowired
-	private PriceTypeBean priceTypeBean;
+	private PriceIndicatorBean priceTypeBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<PriceType> list(@RequestParam(value = "orderBy", defaultValue = "id DESC") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+	public PageableContainer<PriceIndicator> list(@RequestParam(value = "orderBy", defaultValue = "id DESC") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
 		return priceTypeBean.list(orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@Transactional
-	public PriceType save(@PathVariable Long id, @RequestBody CapitalConstruct capitalConstruct) {
-		PriceType priceType2;
+	public PriceIndicator save(@PathVariable Long id, @RequestBody CapitalConstruct capitalConstruct) {
+		PriceIndicator priceType2;
 		if (id == 0) {
-			priceType2 = new PriceType();
+			priceType2 = new PriceIndicator();
 		} else {
 			priceType2 = priceTypeBean.load(id);
 		}
@@ -43,7 +43,7 @@ public class PriceTypeRESTService {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
-	public PriceType read(@PathVariable Long id) {
+	public PriceIndicator read(@PathVariable Long id) {
 		return priceTypeBean.load(id).clone();
 	}
 

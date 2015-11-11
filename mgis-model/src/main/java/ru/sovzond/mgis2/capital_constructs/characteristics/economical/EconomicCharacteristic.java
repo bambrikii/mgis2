@@ -1,5 +1,6 @@
 package ru.sovzond.mgis2.capital_constructs.characteristics.economical;
 
+import ru.sovzond.mgis2.indicators.PriceIndicator;
 import ru.sovzond.mgis2.registers.national_classifiers.OKEI;
 import ru.sovzond.mgis2.registers.national_classifiers.OKOF;
 
@@ -23,7 +24,7 @@ public class EconomicCharacteristic implements Cloneable {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "price_type_id")
-	private PriceType priceType;
+	private PriceIndicator priceType;
 
 	/**
 	 * Значение
@@ -61,11 +62,11 @@ public class EconomicCharacteristic implements Cloneable {
 		this.id = id;
 	}
 
-	public PriceType getPriceType() {
+	public PriceIndicator getPriceType() {
 		return priceType;
 	}
 
-	public void setPriceType(PriceType priceType) {
+	public void setPriceType(PriceIndicator priceType) {
 		this.priceType = priceType;
 	}
 

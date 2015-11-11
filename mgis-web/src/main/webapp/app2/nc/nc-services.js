@@ -2,8 +2,8 @@
  * Created by Alexander Arakelyan on 29.07.15.
  */
 angular.module("mgis.nc.services", ["ngResource",
-		"mgis.error.service"
-	])
+	"mgis.error.service"
+])
 	.factory("NcOKTMOService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/nc/oktmo/:id.json');
 		return {
@@ -205,7 +205,7 @@ angular.module("mgis.nc.services", ["ngResource",
 		}
 	})
 	.factory("NcPriceTypeService", function ($resource, $q, MGISErrorService) {
-		var res = $resource('rest/nc/price-types/:id.json');
+		var res = $resource('rest/nc/price-indicators/:id.json');
 		return {
 			get: function (id, first, max, code, name) {
 				var deferred = $q.defer();
