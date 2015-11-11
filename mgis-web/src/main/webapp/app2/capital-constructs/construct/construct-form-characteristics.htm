@@ -4,20 +4,35 @@
 	</div>
 	<div class="panel-body">
 		<div class="form-group row">
-			<div class="col-sm-12"><label translate>ObjectPrices</label></div>
+			<div class="col-sm-12"><label translate>CapitalConstructs.Construct.Characteristics.EconomicCharacteristics</label></div>
 		</div>
 		<div class="form-group row">
 			<div class="col-sm-12">
-				<div ng-repeat="char in item.economicCharacteristics" class="row">
-					<div class="col-sm-8">
-						{{char}}
+				<div ng-repeat="chr in item.economicCharacteristics" class="row">
+					<div class="col-sm-2">
+						{{chr.priceType.name}}
+					</div>
+					<div class="col-sm-1">
+						{{chr.value}}
+					</div>
+					<div class="col-sm-2">
+						{{chr.unitOfMeasure.name}}
+					</div>
+					<div class="col-sm-1">
+						{{chr.valueImplementationDate|date:'yyyy/MM/dd'}}
+					</div>
+					<div class="col-sm-1">
+						{{chr.OKOF.code}}
+					</div>
+					<div class="col-sm-1">
+						{{chr.amortizationGroup}}
 					</div>
 					<div class="col-sm-4">
-						<button class="btn btn-sm btn-warn" ng-click="editEconomicCharacteristic(char)" translate>Edit</button>
-						<button class="btn btn-sm btn-error" ng-click="removeEconomicCharacteristic(item, char)" translate>Remove</button>
+						<button class="btn btn-sm btn-warning" ng-click="editEconomicCharacteristic(chr)" translate>Edit</button>
+						<button class="btn btn-sm btn-danger" ng-click="removeEconomicCharacteristic(item, chr)" translate>Remove</button>
 					</div>
 				</div>
-				<button class="btn btn-sm btn-info" ng-click="addEconomicCharacteristic()" translate>Add</button>
+				<button class="btn btn-sm btn-info" ng-click="addEconomicCharacteristic(item)" translate>Add</button>
 			</div>
 		</div>
 	</div>
@@ -29,20 +44,29 @@
 	</div>
 	<div class="panel-body">
 		<div class="form-group row">
-			<div class="col-sm-12"><label translate>TechnicalCharacteristics</label></div>
+			<div class="col-sm-12"><label translate>CapitalConstructs.Construct.Characteristics.TechnicalCharacteristics</label></div>
 		</div>
 		<div class="form-group row">
 			<div class="col-sm-12">
-				<div ng-repeat="char in item.technicalCharacteristics" class="row">
-					<div class="col-sm-8">
-						{{char}}
+				<div ng-repeat="chr in item.technicalCharacteristics" class="row">
+					<div class="col-sm-2">
+						{{chr.constructType}}
+					</div>
+					<div class="col-sm-2">
+						{{chr.technicalIndicator.name}}
+					</div>
+					<div class="col-sm-2">
+						{{chr.value}}
+					</div>
+					<div class="col-sm-2">
+						{{chr.unitOfMeasure.name}}
 					</div>
 					<div class="col-sm-4">
-						<button class="btn btn-sm btn-warn" ng-click="editTechnicalCharacteristic(char)" translate>Edit</button>
-						<button class="btn btn-sm btn-error" ng-click="removeTechnicalCharacteristic(item, char)" translate>Remove</button>
+						<button class="btn btn-sm btn-warning" ng-click="editTechnicalCharacteristic(chr)" translate>Edit</button>
+						<button class="btn btn-sm btn-danger" ng-click="removeTechnicalCharacteristic(item, chr)" translate>Remove</button>
 					</div>
 				</div>
-				<button class="btn btn-sm btn-info" ng-click="addTechnicalCharacteristic()" translate>Add</button>
+				<button class="btn btn-sm btn-info" ng-click="addTechnicalCharacteristic(item)" translate>Add</button>
 			</div>
 		</div>
 	</div>

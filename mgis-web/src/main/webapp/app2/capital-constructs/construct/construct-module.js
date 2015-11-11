@@ -62,7 +62,7 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		$scope.editEconomicCharacteristic = function (char) {
 			CapitalConstructEconomicCharacteristicsCRUDService.edit(char);
 		}
-		$scope.removeTechnicalCharacteristic = function (item, char) {
+		$scope.removeEconomicCharacteristic = function (item, char) {
 			CapitalConstructEconomicCharacteristicsCRUDService.remove(item, char);
 		}
 

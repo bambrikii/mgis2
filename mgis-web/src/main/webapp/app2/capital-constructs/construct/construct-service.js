@@ -1,5 +1,5 @@
 angular.module("mgis.capital-constructs.construct.service", ["ngResource",
-		"mgis.error.service"])
+	"mgis.error.service"])
 	.factory("CapitalConstructsConstructService", function ($q, $resource, MGISErrorService) {
 		var res = $resource('rest/capital-constructs/constructs/:id.json');
 		return {
@@ -28,6 +28,20 @@ angular.module("mgis.capital-constructs.construct.service", ["ngResource",
 				res.remove({
 					id: id
 				}, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+				return deferred.promise;
+			}
+		}
+	})
+	.factory("CapitalConstructsConstructTypeService", function ($q, $resource, MGISErrorService) {
+		var res = $resource('rest/capital-constructs/construct-types/:id.json');
+		return {
+			get: function (id, first, max) {
+				var deferred = $q.defer();
+				res.get({id: id, first: first, max: max}, {}, function (data) {
 					deferred.resolve(data);
 				}, function (error) {
 					MGISErrorService.handleError(error);

@@ -24,7 +24,7 @@ public class OKOFDao extends CRUDDaoBase<OKOF> {
 		private String code;
 		private String name;
 
-		private OKOFFilter(String name, String code, String orderBy, int first, int max) {
+		private OKOFFilter(String code, String name, String orderBy, int first, int max) {
 			super(orderBy, first, max);
 			this.code = code;
 			this.name = name;
@@ -36,7 +36,7 @@ public class OKOFDao extends CRUDDaoBase<OKOF> {
 				criteria.add(Restrictions.like("code", "%" + code + "%"));
 			}
 			if (name != null && name.length() > 0) {
-				criteria.add(Restrictions.like("code", "%" + name + "%"));
+				criteria.add(Restrictions.like("name", "%" + name + "%"));
 			}
 		}
 	}

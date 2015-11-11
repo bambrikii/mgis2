@@ -4,15 +4,29 @@
 </div>
 <div class="modal-body">
 	<form name="characteristicsForm" class="" novalidate>
-		<commons-forms-drop-down title="CapitalConstructs.Construct.Type" property="item.constructType"
-								 available-elements="availableConstructTypes"></commons-forms-drop-down>
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label translate>CapitalConstructs.Construct.Type</label>
+			</div>
+
+			<div class="col-sm-8">
+				<p class="input-group input-group-sm">
+					<multiselect
+							ng-model="item.constructType"
+							options="c for c in availableConstructTypes"
+							data-multiple="false"
+							scroll-after-rows="15">
+					</multiselect>
+				</p>
+			</div>
+		</div>
 		<commons-forms-drop-down-ajax title="CapitalConstructs.Construct.Characteristics.TechnicalIndicator" property="item.technicalIndicator"
 									  available-elements="availableTechnicalIndicators"
 									  refresh="refreshAvailableTechnicalIndicators(name)"></commons-forms-drop-down-ajax>
 		<commons-forms-text title="Value" property="item.value"></commons-forms-text>
 		<commons-forms-drop-down-ajax title="NationalClassifiers.UnitOfMeasure" property="item.unitOfMeasure"
-									  available-elements="availableUnitsOfMeasure"
-									  refresh="refreshAvailableUnitsOfMeasure(name)"></commons-forms-drop-down-ajax>
+									  available-elements="availableOKEIs"
+									  refresh="refreshAvailableOKEIs(name)"></commons-forms-drop-down-ajax>
 	</form>
 </div>
 </div>
