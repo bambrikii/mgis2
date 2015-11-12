@@ -368,6 +368,7 @@
   "CapitalConstructs.Construct.Characteristics.AmortizationGroup": "Амортизационная группа",
   "CapitalConstructs.Construct.Characteristics.EconomicCharacteristics": "Экономические характеристики",
   "CapitalConstructs.Construct.Characteristics.TechnicalCharacteristics": "Технические характеристики",
+  "Indicators": "Показатели",
   "Indicators.PriceIndicator": "Стоимостной показатель",
   "Indicators.TechnicalIndicator": "Технический показатель"
 }

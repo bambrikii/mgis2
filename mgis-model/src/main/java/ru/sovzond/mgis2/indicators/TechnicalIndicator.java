@@ -5,7 +5,7 @@ import javax.persistence.Table;
 
 /**
  * Created by Alexander Arakelyan on 06/11/15.
- * <p>
+ * <p/>
  * Технические показатели
  */
 @Entity

@@ -30,8 +30,8 @@ public class OKOFBean extends CRUDBeanBase<OKOF> {
 		return dao;
 	}
 
-	public PageableContainer<OKOF> list(String code, String name, String orderBy, int first, int max) {
-		Pageable<OKOF> pager = dao.pager(dao.createFilter(code, name, orderBy, first, max));
+	public PageableContainer<OKOF> list(String code, String name, String[] codeTemplates, String orderBy, int first, int max) {
+		Pageable<OKOF> pager = dao.pager(dao.createFilter(code, name, codeTemplates, orderBy, first, max));
 		return new PageableContainer<>(pager.list().stream().map(OKOF::clone).collect(Collectors.toList()), pager.count(), first, max);
 	}
 }

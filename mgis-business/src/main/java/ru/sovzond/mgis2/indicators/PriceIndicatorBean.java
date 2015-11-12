@@ -5,8 +5,9 @@ import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
-import ru.sovzond.mgis2.indicators.PriceIndicator;
-import ru.sovzond.mgis2.indicators.PriceIndicatorDao;
+import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+
+import java.util.stream.Collectors;
 
 /**
  * Created by Alexander Arakelyan on 07/11/15.
@@ -25,5 +26,10 @@ public class PriceIndicatorBean extends CRUDBeanBase<PriceIndicator> {
 	@Override
 	protected IIdentifiableDao<PriceIndicator> getIIdentifiableDao() {
 		return dao;
+	}
+
+	public PageableContainer<PriceIndicator> list(String orderBy, int first, int max) {
+		PageableContainer<PriceIndicator> pager = super.list(orderBy, first, max);
+		return new PageableContainer<>(pager.getList().stream().map(PriceIndicator::clone).collect(Collectors.toList()), pager.getTotalNumberOfItems(), pager.getCurrentPosition(), pager.getItemsPerPage());
 	}
 }

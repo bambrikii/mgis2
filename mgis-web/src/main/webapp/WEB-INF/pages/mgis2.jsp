@@ -83,6 +83,8 @@
 	<!-- Indicators -->
 	<script type="text/javascript" src="app2/indicators/indicator-services.js"></script>
 	<script type="text/javascript" src="app2/indicators/indicator-module.js"></script>
+	<script type="text/javascript" src="app2/indicators/price-indicator/price-indicator-module.js"></script>
+	<script type="text/javascript" src="app2/indicators/technical-indicator/technical-indicator-module.js"></script>
 
 	<!-- ISOGD -->
 	<script type="text/javascript" src="app2/isogd/isogd.js"></script>

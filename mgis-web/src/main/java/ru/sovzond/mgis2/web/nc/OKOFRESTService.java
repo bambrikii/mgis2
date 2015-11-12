@@ -22,8 +22,8 @@ public class OKOFRESTService {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<OKOF> list(@RequestParam(defaultValue = "") String code, @RequestParam(defaultValue = "") String name, @RequestParam(defaultValue = "name") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		return okofBean.list(code, name, orderBy, first, max);
+	public PageableContainer<OKOF> list(@RequestParam(defaultValue = "") String code, @RequestParam(defaultValue = "") String name, @RequestParam(defaultValue = "") String codeTemplates, @RequestParam(defaultValue = "name") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+		return okofBean.list(code, name, codeTemplates != null ? codeTemplates.split(",") : null, orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

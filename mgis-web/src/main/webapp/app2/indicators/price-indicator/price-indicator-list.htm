@@ -1,0 +1,14 @@
+<div ng-controller="IndicatorsPriceIndicatorController">
+	<mgis-commons-crud-panel
+			list-item-template-url="'app2/indicators/price-indicator/price-indicator-list-item.htm'"
+			edit-form-template-url="'app2/indicators/price-indicator/price-indicator-edit-form.htm'"
+			search-form-template-url="'app2/indicators/price-indicator/price-indicator-search.htm'"
+
+			create-handler="createHandler(scope, onPrepare)"
+			read-handler="readHandler(id, scope, onPrepare)"
+			update-handler="updateHandler(item, onComplete)"
+			delete-handler="deleteHandler(id, onComplete)"
+			list-handler="listHandler(filter, first, max, onComplete)"
+
+			></mgis-commons-crud-panel>
+</div>

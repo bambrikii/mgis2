@@ -1,10 +1,10 @@
 angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
-		"mgis.commons",
-		"mgis.nc.services",
-		"mgis.capital-constructs.characteristics.services",
-		"mgis.capital-constructs.construct.service",
-		"mgis.indicators"
-	])
+	"mgis.commons",
+	"mgis.nc.services",
+	"mgis.capital-constructs.characteristics.services",
+	"mgis.capital-constructs.construct.service",
+	"mgis.indicators"
+])
 	.factory("CapitalConstructEconomicCharacteristicsCRUDService", function ($rootScope,
 																			 MGISCommonsModalForm,
 																			 NcOKOFService,
@@ -16,7 +16,7 @@ angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 			CapitalConstructCharacteristicsAmortizationGroup.get("", 0, 0).then(function (amortizationGroupPager) {
 				modalScope.availableAmortizationGroups = amortizationGroupPager.list
 				modalScope.refreshAvailableOKOFs = function (name) {
-					NcOKOFService.get("", 0, 15, null, name).then(function (okofPager) {
+					NcOKOFService.get("", 0, 15, null, name, [11, 12, 13]).then(function (okofPager) {
 						modalScope.availableOKOFs = okofPager.list;
 					});
 				}

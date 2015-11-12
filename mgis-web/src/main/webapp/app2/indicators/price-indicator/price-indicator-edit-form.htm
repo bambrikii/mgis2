@@ -1,0 +1,19 @@
+<div class="modal-header">
+	<h3 class="modal-title"><span translate>Indicators.PriceIndicator</span>: {{item.name}}</h3>
+</div>
+
+<div class="modal-body">
+
+	<form name="editForm" class="" ng-controller="IndicatorsPriceIndicatorFormController" novalidate>
+		<commons-forms-text title="Name" property="item.name" required></commons-forms-text>
+		<commons-forms-drop-down-ajax title="NationalClassifiers.UnitOfMeasure" property="item.unitOfMeasure"
+									  available-elements="availableOKEIs"
+									  refresh="refreshAvailableOKEIs(name)"></commons-forms-drop-down-ajax>
+	</form>
+
+</div>
+
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

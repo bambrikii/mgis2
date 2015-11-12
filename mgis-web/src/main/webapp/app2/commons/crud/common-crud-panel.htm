@@ -7,7 +7,7 @@
 		<div class="row" ng-repeat="item in crudPager.list" style="padding: 5px;">
 			<div ng-include src="listItemTemplateUrl" class="col-md-8 row"></div>
 			<div class="col-md-4">
-				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
+				<button class="btn btn-warning btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
 				<button class="btn btn-danger btn-sm" ng-click="removeItem(item.id)" translate>Delete</button>
 			</div>
 		</div>

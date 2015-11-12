@@ -179,9 +179,9 @@ angular.module("mgis.nc.services", ["ngResource",
 	.factory("NcOKOFService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/nc/okof/:id.json');
 		return {
-			get: function (id, first, max, code, name) {
+			get: function (id, first, max, code, name, codeTemplates) {
 				var deferred = $q.defer();
-				res.get({id: id, first: first, max: max, code: code, name: name}, {}, function (data) {
+				res.get({id: id, first: first, max: max, code: code, name: name, codeTemplates: codeTemplates}, {}, function (data) {
 					deferred.resolve(data);
 				}, function (error) {
 					MGISErrorService.handleError(error);
@@ -193,9 +193,9 @@ angular.module("mgis.nc.services", ["ngResource",
 	.factory("NcOKEIService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/nc/okei/:id.json');
 		return {
-			get: function (id, first, max, name) {
+			get: function (id, first, max, code, name) {
 				var deferred = $q.defer();
-				res.get({id: id, first: first, max: max, name: name}, {}, function (data) {
+				res.get({id: id, first: first, max: max, code: code, name: name}, {}, function (data) {
 					deferred.resolve(data);
 				}, function (error) {
 					MGISErrorService.handleError(error);
