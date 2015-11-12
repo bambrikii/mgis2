@@ -20,7 +20,7 @@ angular.module("mgis.indicators.technical-indicator", ["ui.bootstrap",
 					modalScope.currentPage = 1;
 					modalScope.itemsPerPage = 15;
 					function updateGrid() {
-						IndicatorsTechnicalIndicatorCRUDService.load(modalScope.currentPage, modalScope.itemsPerPage, function (data) {
+						IndicatorsTechnicalIndicatorCRUDService.load((modalScope.currentPage - 1) * modalScope.itemsPerPage, modalScope.itemsPerPage, function (data) {
 							modalScope.pager = data;
 						});
 					}

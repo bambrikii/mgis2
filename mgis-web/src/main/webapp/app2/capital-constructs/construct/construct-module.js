@@ -21,7 +21,7 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = 15;
 		function updateGrid() {
-			CapitalConstructsConstructService.get("", $scope.first, $scope.max).then(function (data) {
+			CapitalConstructsConstructService.get("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage).then(function (data) {
 				$scope.constructsPager = data;
 			});
 		}
