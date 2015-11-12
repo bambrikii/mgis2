@@ -50,16 +50,16 @@
 			<div class="col-sm-12">
 				<div ng-repeat="chr in item.technicalCharacteristics" class="row">
 					<div class="col-sm-2">
-						{{chr.constructType}}
+						<span translate>{{'CapitalConstructs.Construct.Types.' + chr.constructType}}</span>
 					</div>
 					<div class="col-sm-2">
 						{{chr.technicalIndicator.name}}
 					</div>
 					<div class="col-sm-2">
-						{{chr.value}}
+						{{chr.technicalIndicator.unitOfMeasure.name}}
 					</div>
 					<div class="col-sm-2">
-						{{chr.unitOfMeasure.name}}
+						{{chr.value}}
 					</div>
 					<div class="col-sm-4">
 						<button class="btn btn-sm btn-warning" ng-click="editTechnicalCharacteristic(chr)" translate>Edit</button>

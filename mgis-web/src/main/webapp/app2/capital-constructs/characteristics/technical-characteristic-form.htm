@@ -13,7 +13,7 @@
 				<p class="input-group input-group-sm">
 					<multiselect
 							ng-model="item.constructType"
-							options="c for c in availableConstructTypes"
+							options="c.label for c in availableConstructTypes"
 							data-multiple="false"
 							scroll-after-rows="15">
 					</multiselect>
@@ -26,7 +26,7 @@
 			</div>
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
-					<price-indicator value="item.technicalIndicator"></price-indicator>
+					<technical-indicator value="item.technicalIndicator"></technical-indicator>
 				</p>
 			</div>
 		</div>

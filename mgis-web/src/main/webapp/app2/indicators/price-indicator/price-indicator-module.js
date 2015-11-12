@@ -97,7 +97,7 @@ angular.module("mgis.indicators.price-indicator", ["ui.bootstrap",
 			}
 		}
 	})
-	// Templated version
+	// Template version
 	.controller("IndicatorsPriceIndicatorController", function ($scope,
 																$rootScope,
 																MGISCommonsModalForm,
