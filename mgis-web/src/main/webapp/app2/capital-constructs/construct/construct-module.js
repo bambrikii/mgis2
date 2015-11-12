@@ -16,6 +16,7 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 																  CapitalConstructsConstructService,
 																  CapitalConstructEconomicCharacteristicsCRUDService,
 																  CapitalConstructTechnicalCharacteristicsCRUDService,
+																  CapitalConstructsConstructTypeService,
 																  MGISCommonsModalForm) {
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = 15;
@@ -26,9 +27,14 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		}
 
 		function editItem(modalScope) {
-			MGISCommonsModalForm.edit("app2/capital-constructs/construct/construct-form.htm", modalScope, function (scope, modalInstance) {
-
-			}, {windowClass: "mgis-capital-construct-modal-form"});
+			CapitalConstructsConstructTypeService.get().then(function (constructTypePager) {
+				modalScope.availableTypes = constructTypePager.list;
+				MGISCommonsModalForm.edit("app2/capital-constructs/construct/construct-form.htm", modalScope, function (scope, modalInstance) {
+					CapitalConstructsConstructService.save(scope.item).then(function () {
+						modalInstance.close();
+					});
+				}, {windowClass: "mgis-capital-construct-modal-form"});
+			});
 		}
 
 		updateGrid();

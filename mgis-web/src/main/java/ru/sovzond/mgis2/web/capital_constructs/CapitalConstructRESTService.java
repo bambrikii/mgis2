@@ -4,11 +4,22 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
+import ru.sovzond.mgis2.address.AddressBean;
 import ru.sovzond.mgis2.capital_construct.CapitalConstructBean;
+import ru.sovzond.mgis2.capital_construct.ConstructTypeBean;
 import ru.sovzond.mgis2.capital_constructs.CapitalConstruct;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+import ru.sovzond.mgis2.isogd.business.DocumentBean;
+import ru.sovzond.mgis2.kladr.KLADRLocalityBean;
+import ru.sovzond.mgis2.national_classifiers.LandRightKindBean;
+import ru.sovzond.mgis2.national_classifiers.OKFSBean;
+import ru.sovzond.mgis2.national_classifiers.OKOFBean;
+import ru.sovzond.mgis2.persons.PersonBean;
+import ru.sovzond.mgis2.property.PropertyRightsBean;
+import ru.sovzond.mgis2.rights.PropertyRights;
 
 import javax.transaction.Transactional;
+import java.util.stream.Collectors;
 
 /**
  * Created by Alexander Arakelyan on 05.11.15.
@@ -17,8 +28,36 @@ import javax.transaction.Transactional;
 @RequestMapping("/capital-constructs/constructs")
 @Scope("session")
 public class CapitalConstructRESTService {
+
 	@Autowired
 	private CapitalConstructBean capitalConstructBean;
+
+	@Autowired
+	private ConstructTypeBean constructTypeBean;
+
+	@Autowired
+	private KLADRLocalityBean kladrLocalityBean;
+
+	@Autowired
+	private AddressBean addressBean;
+
+	@Autowired
+	private PropertyRightsBean propertyRightsBean;
+
+	@Autowired
+	private DocumentBean documentBean;
+
+	@Autowired
+	private OKFSBean okfsBean;
+
+	@Autowired
+	private OKOFBean okofBean;
+
+	@Autowired
+	private LandRightKindBean landRightKindBean;
+
+	@Autowired
+	private PersonBean personBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -35,7 +74,37 @@ public class CapitalConstructRESTService {
 		} else {
 			capitalConstruct2 = capitalConstructBean.load(id);
 		}
-		BeanUtils.copyProperties(capitalConstruct, capitalConstruct2, new String[]{"id", "parent", "childLayers"});
+		BeanUtils.copyProperties(capitalConstruct, capitalConstruct2, new String[]{ //
+				"id", //
+				"constructType", //
+				"municipalEntity", //
+				"address", //
+				"rights", //
+				"constructiveElements", //
+
+		});
+		capitalConstruct2.setType(capitalConstruct.getType() != null ? constructTypeBean.load(capitalConstruct.getType().getId()) : null);
+		capitalConstruct2.setMunicipalEntity(capitalConstruct.getMunicipalEntity() != null ? kladrLocalityBean.load(capitalConstruct.getMunicipalEntity().getId()) : null);
+		capitalConstruct2.setAddress(capitalConstruct.getAddress() != null ? addressBean.load(capitalConstruct.getAddress().getId()) : null);
+		PropertyRights rights = capitalConstruct.getRights();
+		// Rights
+		PropertyRights rights2;
+		if (rights == null || rights.getId() == null || rights.getId() == 0) {
+			rights2 = new PropertyRights();
+		} else {
+			rights2 = propertyRightsBean.load(rights.getId());
+		}
+		if (rights != null) {
+			rights2.setOwnershipDate(rights.getOwnershipDate());
+			rights2.setShare(rights.getShare());
+			rights2.setTerminationDate(rights.getTerminationDate());
+			rights2.setDocumentsCertifyingRights(documentBean.load(rights.getDocumentsCertifyingRights().stream().map(document -> document.getId()).collect(Collectors.toList())));
+			rights2.setOwnershipForm(rights.getOwnershipForm() != null ? okfsBean.load(rights.getOwnershipForm().getId()) : null);
+			rights2.setRegistrationDocuments(documentBean.load(rights.getRegistrationDocuments().stream().map(document -> document.getId()).collect(Collectors.toList())));
+			rights2.setRightKind(rights.getRightKind() != null ? landRightKindBean.load(rights.getRightKind().getId()) : null);
+			rights2.setRightOwner(rights.getRightOwner() != null ? personBean.load(rights.getRightOwner().getId()) : null);
+		}
+		capitalConstruct2.setRights(rights2);
 		capitalConstructBean.save(capitalConstruct2);
 		return capitalConstruct2.clone();
 	}

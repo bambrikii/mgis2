@@ -26,7 +26,8 @@ public class CapitalConstruct implements Cloneable {
 	@Column
 	private String name;
 
-	@Enumerated(EnumType.STRING)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "type_id")
 	private ConstructType type;
 
 	@Column
@@ -60,14 +61,14 @@ public class CapitalConstruct implements Cloneable {
 	/**
 	 * Муниципальное образование
 	 */
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "municipal_entity_id")
 	private KLADRLocality municipalEntity;
 
 	/**
 	 * Адрес
 	 */
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "address_id")
 	private Address address;
 
@@ -119,7 +120,7 @@ public class CapitalConstruct implements Cloneable {
 	@Column
 	private Integer rebuildingLastYear;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
 	@JoinColumn(name = "rights_id")
 	private PropertyRights rights;
 

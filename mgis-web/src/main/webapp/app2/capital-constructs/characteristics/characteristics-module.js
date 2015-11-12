@@ -1,10 +1,10 @@
 angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
-	"mgis.commons",
-	"mgis.nc.services",
-	"mgis.capital-constructs.characteristics.services",
-	"mgis.capital-constructs.construct.service",
-	"mgis.indicators"
-])
+		"mgis.commons",
+		"mgis.nc.services",
+		"mgis.capital-constructs.characteristics.services",
+		"mgis.capital-constructs.construct.service",
+		"mgis.indicators"
+	])
 	.factory("CapitalConstructEconomicCharacteristicsCRUDService", function ($rootScope,
 																			 MGISCommonsModalForm,
 																			 NcOKOFService,
@@ -64,22 +64,9 @@ angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 			modalScope.item = {};
 			angular.copy(item, modalScope.item);
 			CapitalConstructsConstructTypeService.get().then(function (constructTypesPager) {
-				//modalScope.availableConstructTypes = constructTypesPager.list;
-				var constructTypes = constructTypesPager.list;
-				modalScope.availableConstructTypes = new Array();
-				for (var i in constructTypes) {
-					var constructTypeCode = constructTypes[i];
-					var constructTypeLabel = $filter('translate')('CapitalConstructs.Construct.Types.' + constructTypeCode);
-					var constructType = {code: constructTypeCode, label: constructTypeLabel};
-					modalScope.availableConstructTypes.push(constructType);
-					if (modalScope.item.constructType == constructTypeCode) {
-						modalScope.item.constructType = constructType;
-					}
-				}
-
+				modalScope.availableConstructTypes = constructTypesPager.list;
 				MGISCommonsModalForm.edit("app2/capital-constructs/characteristics/technical-characteristic-form.htm", modalScope, function (scope, modalInstance) {
 					angular.copy(scope.item, item);
-					item.constructType = scope.item.constructType.code;
 					if (updateFunction) {
 						updateFunction(item);
 					}

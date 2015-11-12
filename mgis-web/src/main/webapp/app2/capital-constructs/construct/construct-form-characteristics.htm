@@ -9,24 +9,12 @@
 		<div class="form-group row">
 			<div class="col-sm-12">
 				<div ng-repeat="chr in item.economicCharacteristics" class="row">
-					<div class="col-sm-2">
-						{{chr.priceIndicator.name}}
-					</div>
-					<div class="col-sm-2">
-						{{chr.priceIndicator.unitOfMeasure.name}}
-					</div>
-					<div class="col-sm-1">
-						{{chr.value}}
-					</div>
-					<div class="col-sm-1">
-						{{chr.valueImplementationDate|date:'yyyy/MM/dd'}}
-					</div>
-					<div class="col-sm-1">
-						{{chr.OKOF.code}}
-					</div>
-					<div class="col-sm-1">
-						{{chr.amortizationGroup}}
-					</div>
+					<div class="col-sm-2">{{chr.priceIndicator.name}}</div>
+					<div class="col-sm-2">{{chr.priceIndicator.unitOfMeasure.name}}</div>
+					<div class="col-sm-1">{{chr.value}}</div>
+					<div class="col-sm-1">{{chr.valueImplementationDate|date:'yyyy/MM/dd'}}</div>
+					<div class="col-sm-1">{{chr.okof.code}}</div>
+					<div class="col-sm-1">{{chr.amortizationGroup}}</div>
 					<div class="col-sm-4">
 						<button class="btn btn-sm btn-warning" ng-click="editEconomicCharacteristic(chr)" translate>Edit</button>
 						<button class="btn btn-sm btn-danger" ng-click="removeEconomicCharacteristic(item, chr)" translate>Remove</button>
@@ -49,18 +37,10 @@
 		<div class="form-group row">
 			<div class="col-sm-12">
 				<div ng-repeat="chr in item.technicalCharacteristics" class="row">
-					<div class="col-sm-2">
-						<span translate>{{'CapitalConstructs.Construct.Types.' + chr.constructType}}</span>
-					</div>
-					<div class="col-sm-2">
-						{{chr.technicalIndicator.name}}
-					</div>
-					<div class="col-sm-2">
-						{{chr.technicalIndicator.unitOfMeasure.name}}
-					</div>
-					<div class="col-sm-2">
-						{{chr.value}}
-					</div>
+					<div class="col-sm-2">{{chr.constructType.name}}</div>
+					<div class="col-sm-2">{{chr.technicalIndicator.name}}</div>
+					<div class="col-sm-2">{{chr.technicalIndicator.unitOfMeasure.name}}</div>
+					<div class="col-sm-2">{{chr.value}}</div>
 					<div class="col-sm-4">
 						<button class="btn btn-sm btn-warning" ng-click="editTechnicalCharacteristic(chr)" translate>Edit</button>
 						<button class="btn btn-sm btn-danger" ng-click="removeTechnicalCharacteristic(item, chr)" translate>Remove</button>

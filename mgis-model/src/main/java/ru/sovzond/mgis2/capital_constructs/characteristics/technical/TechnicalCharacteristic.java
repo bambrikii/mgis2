@@ -22,8 +22,8 @@ public class TechnicalCharacteristic implements Cloneable {
 	/**
 	 * Тип объекта (Здания, Сооружения, ОНС)
 	 */
-	@Enumerated(EnumType.STRING)
-	@Column(name = "construct_type")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "construct_type_id")
 	private ConstructType constructType;
 
 	/**
