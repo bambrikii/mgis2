@@ -18,6 +18,7 @@ import javax.transaction.Transactional;
 @RequestMapping("/indicators/price-indicators")
 @Scope("session")
 public class PriceIndicatorRESTService {
+
 	@Autowired
 	private PriceIndicatorBean priceIndicatorBean;
 
