@@ -16,10 +16,12 @@ angular.module("mgis.indicators.price-indicator", ["ui.bootstrap",
 					var modalScope = $rootScope.$new();
 					modalScope.item = {};
 					angular.copy($scope.value, modalScope.item);
-					modalScope.currentPage = 1;
-					modalScope.itemsPerPage = 15;
+					modalScope.pager0 = {
+						currentPage: 1,
+						itemsPerPage: 15
+					};
 					function updateGrid() {
-						IndicatorsPriceIndicatorCRUDService.load((modalScope.currentPage - 1) * modalScope.itemsPerPage, modalScope.itemsPerPage, function (data) {
+						IndicatorsPriceIndicatorCRUDService.load((modalScope.pager0.currentPage - 1) * modalScope.pager0.itemsPerPage, modalScope.pager0.itemsPerPage, function (data) {
 							modalScope.pager = data;
 						});
 					}
@@ -38,6 +40,9 @@ angular.module("mgis.indicators.price-indicator", ["ui.bootstrap",
 						IndicatorsPriceIndicatorCRUDService.remove(id, function () {
 							updateGrid();
 						});
+					}
+					modalScope.pageChanged = function () {
+						updateGrid();
 					}
 					updateGrid();
 

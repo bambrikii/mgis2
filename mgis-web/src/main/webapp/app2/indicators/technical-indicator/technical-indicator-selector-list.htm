@@ -14,8 +14,8 @@
 				<button class="btn btn-sm btn-danger" ng-click="remove(listItem.id)" translate>Remove</button>
 			</div>
 		</div>
-		<pagination total-items="pager.totalNumberOfItems" ng-model="currentPage"
-					items-per-page="itemsPerPage" ng-change="pageChanged()"
+		<pagination total-items="pager.totalNumberOfItems" ng-model="pager0.currentPage"
+					items-per-page="pager0.itemsPerPage" ng-change="pageChanged()"
 					class="pagination-sm" previous-text="&lsaquo;"
 					next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
 		<div>
