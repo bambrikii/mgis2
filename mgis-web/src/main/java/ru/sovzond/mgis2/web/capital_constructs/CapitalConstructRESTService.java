@@ -98,13 +98,39 @@ public class CapitalConstructRESTService {
 			rights2.setOwnershipDate(rights.getOwnershipDate());
 			rights2.setShare(rights.getShare());
 			rights2.setTerminationDate(rights.getTerminationDate());
-			rights2.setDocumentsCertifyingRights(documentBean.load(rights.getDocumentsCertifyingRights().stream().map(document -> document.getId()).collect(Collectors.toList())));
+			if (rights.getDocumentsCertifyingRights() != null || rights.getDocumentsCertifyingRights().size() > 0) {
+				rights2.setDocumentsCertifyingRights(documentBean.load(rights.getDocumentsCertifyingRights().stream().map(document -> document.getId()).collect(Collectors.toList())));
+			} else {
+				rights2.getDocumentsCertifyingRights().clear();
+			}
 			rights2.setOwnershipForm(rights.getOwnershipForm() != null ? okfsBean.load(rights.getOwnershipForm().getId()) : null);
-			rights2.setRegistrationDocuments(documentBean.load(rights.getRegistrationDocuments().stream().map(document -> document.getId()).collect(Collectors.toList())));
+			if (rights.getRegistrationDocuments() != null || rights.getRegistrationDocuments().size() > 0) {
+				rights2.setRegistrationDocuments(documentBean.load(rights.getRegistrationDocuments().stream().map(document -> document.getId()).collect(Collectors.toList())));
+			} else {
+				rights2.getRegistrationDocuments().clear();
+			}
 			rights2.setRightKind(rights.getRightKind() != null ? landRightKindBean.load(rights.getRightKind().getId()) : null);
 			rights2.setRightOwner(rights.getRightOwner() != null ? personBean.load(rights.getRightOwner().getId()) : null);
 		}
 		capitalConstruct2.setRights(rights2);
+		// Economic Characteristics
+		if (capitalConstruct.getEconomicCharacteristics() != null && capitalConstruct.getEconomicCharacteristics().size() > 0) {
+			capitalConstruct2.setEconomicCharacteristics(capitalConstruct.getEconomicCharacteristics());
+		} else {
+			capitalConstruct2.getEconomicCharacteristics().clear();
+		}
+		// Technical Characteristics
+		if (capitalConstruct.getTechnicalCharacteristics() != null && capitalConstruct.getTechnicalCharacteristics().size() > 0) {
+			capitalConstruct2.setTechnicalCharacteristics(capitalConstruct.getTechnicalCharacteristics());
+		} else {
+			capitalConstruct2.getTechnicalCharacteristics().clear();
+		}
+		// Consturctive Elements
+		if (capitalConstruct.getConstructiveElements() != null && capitalConstruct.getConstructiveElements().size() > 0) {
+			capitalConstruct2.setConstructiveElements(capitalConstruct.getConstructiveElements());
+		} else {
+			capitalConstruct2.getConstructiveElements().clear();
+		}
 		capitalConstructBean.save(capitalConstruct2);
 		return capitalConstruct2.clone();
 	}

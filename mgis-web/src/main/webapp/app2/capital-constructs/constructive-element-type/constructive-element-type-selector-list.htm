@@ -1,5 +1,5 @@
 <div class="modal-header">
-	<h3 class="modal-title"><span translate>CapitalConstructs.Construct.ConstructiveElements</span>: {{item.description}}</h3>
+	<h3 class="modal-title"><span translate>CapitalConstructs.Construct.ConstructiveElement.Types</span>: {{item.description}}</h3>
 </div>
 
 <div class="modal-body">
@@ -7,7 +7,6 @@
 		<div ng-repeat="listItem in pager.list" class="row" style="padding-bottom: 7px;">
 			<div class="col-sm-1">{{listItem.id}}</div>
 			<div class="col-sm-2">{{listItem.name}}</div>
-			<div class="col-sm-2">{{listItem.unitOfMeasure.name}}</div>
 			<div class="col-sm-7">
 				<button class="btn btn-sm btn-primary" ng-click="select(listItem)" translate>Select</button>
 				<button class="btn btn-sm btn-info" ng-click="edit(listItem.id)" translate>Edit</button>

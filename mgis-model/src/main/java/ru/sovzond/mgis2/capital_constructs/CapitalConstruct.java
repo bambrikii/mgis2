@@ -1,6 +1,9 @@
 package ru.sovzond.mgis2.capital_constructs;
 
+import org.hibernate.annotations.Cascade;
 import ru.sovzond.mgis2.address.Address;
+import ru.sovzond.mgis2.capital_constructs.characteristics.economical.EconomicCharacteristic;
+import ru.sovzond.mgis2.capital_constructs.characteristics.technical.TechnicalCharacteristic;
 import ru.sovzond.mgis2.capital_constructs.constructive_elements.ConstructiveElement;
 import ru.sovzond.mgis2.kladr.KLADRLocality;
 import ru.sovzond.mgis2.rights.PropertyRights;
@@ -125,7 +128,18 @@ public class CapitalConstruct implements Cloneable {
 	private PropertyRights rights;
 
 	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "oks_capital_construct_economic_characteristics")
+	@Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
+	private List<EconomicCharacteristic> economicCharacteristics = new ArrayList<>();
+
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "oks_capital_construct_technical_characteristics")
+	@Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
+	private List<TechnicalCharacteristic> technicalCharacteristics = new ArrayList<>();
+
+	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "oks_capital_construct_constructive_elements")
+	@Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
 	private List<ConstructiveElement> constructiveElements = new ArrayList<>();
 
 	public Long getId() {
@@ -288,6 +302,22 @@ public class CapitalConstruct implements Cloneable {
 		this.constructiveElements = constructiveElements;
 	}
 
+	public List<EconomicCharacteristic> getEconomicCharacteristics() {
+		return economicCharacteristics;
+	}
+
+	public void setEconomicCharacteristics(List<EconomicCharacteristic> economicCharacteristics) {
+		this.economicCharacteristics = economicCharacteristics;
+	}
+
+	public List<TechnicalCharacteristic> getTechnicalCharacteristics() {
+		return technicalCharacteristics;
+	}
+
+	public void setTechnicalCharacteristics(List<TechnicalCharacteristic> technicalCharacteristics) {
+		this.technicalCharacteristics = technicalCharacteristics;
+	}
+
 	public CapitalConstruct clone() {
 		CapitalConstruct construct = new CapitalConstruct();
 		construct.setId(id);
@@ -309,6 +339,10 @@ public class CapitalConstruct implements Cloneable {
 		construct.setRebuildingLastYear(rebuildingLastYear);
 		construct.setRights(rights != null ? rights.clone() : null);
 		construct.setTechnicalAccountingStatementDate(technicalAccountingStatementDate);
+		construct.setType(type != null ? type.clone() : null);
+		construct.setEconomicCharacteristics(economicCharacteristics.stream().map(EconomicCharacteristic::clone).collect(Collectors.toList()));
+		construct.setTechnicalCharacteristics(technicalCharacteristics.stream().map(TechnicalCharacteristic::clone).collect(Collectors.toList()));
+		construct.setConstructiveElements(constructiveElements.stream().map(ConstructiveElement::clone).collect(Collectors.toList()));
 		return construct;
 	}
 

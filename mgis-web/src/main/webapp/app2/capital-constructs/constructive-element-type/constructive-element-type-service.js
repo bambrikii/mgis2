@@ -1,6 +1,6 @@
 angular.module("mgis.capital-constructs.constructive-element-type.service", ["ngResource",
 	"mgis.error.service"])
-	.factory("CapitalConstructsConstructService", function ($q, $resource, MGISErrorService) {
+	.factory("CapitalConstructsConstructiveElementTypeService", function ($q, $resource, MGISErrorService) {
 		var res = $resource('rest/capital-constructs/constructive-element-types/:id.json');
 		return {
 			get: function (id, first, max) {

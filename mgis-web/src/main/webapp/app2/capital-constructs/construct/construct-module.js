@@ -89,7 +89,7 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		$scope.addConstructiveElement = function (item) {
 			CapitalConstructsConstructiveElementCRUDService.add(item);
 		}
-		$scope.editConstructiveElement = function (elem) {
+		$scope.editConstructiveElement = function (element) {
 			CapitalConstructsConstructiveElementCRUDService.edit(element);
 		}
 		$scope.removeConstructiveElement = function (item, element) {

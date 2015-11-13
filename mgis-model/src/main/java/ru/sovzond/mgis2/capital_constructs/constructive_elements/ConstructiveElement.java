@@ -14,7 +14,8 @@ public class ConstructiveElement implements Cloneable {
 	@Column
 	private Long id;
 
-	@Column
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "type_id")
 	private ConstructiveElementType type;
 
 	@Column
