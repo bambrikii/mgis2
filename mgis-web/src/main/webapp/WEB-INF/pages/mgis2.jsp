@@ -116,6 +116,9 @@
 	<script type="text/javascript" src="app2/capital-constructs/capital-constructs.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/characteristics/characteristics-module.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/characteristics/characteristics-services.js"></script>
+	<script type="text/javascript" src="app2/capital-constructs/constructive-element/constructive-element-module.js"></script>
+	<script type="text/javascript" src="app2/capital-constructs/constructive-element-type/constructive-element-type-module.js"></script>
+	<script type="text/javascript" src="app2/capital-constructs/constructive-element-type/constructive-element-type-service.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/construct/construct-module.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/construct/construct-service.js"></script>
 

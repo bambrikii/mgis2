@@ -15,7 +15,7 @@ public class ConstructiveElement implements Cloneable {
 	private Long id;
 
 	@Column
-	private String name;
+	private ConstructiveElementType type;
 
 	@Column
 	private String description;
@@ -31,12 +31,12 @@ public class ConstructiveElement implements Cloneable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public ConstructiveElementType getType() {
+		return type;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setType(ConstructiveElementType type) {
+		this.type = type;
 	}
 
 	public String getDescription() {
@@ -57,7 +57,7 @@ public class ConstructiveElement implements Cloneable {
 
 	public ConstructiveElement clone() {
 		ConstructiveElement element = new ConstructiveElement();
-		element.setName(name);
+		element.setType(type != null ? type.clone() : null);
 		element.setId(id);
 		element.setDescription(description);
 		element.setTechnicalCondition(technicalCondition);

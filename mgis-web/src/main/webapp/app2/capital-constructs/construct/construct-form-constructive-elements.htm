@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 translate>CapitalConstructs.Construct.Characteristics.ConstructiveElements</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row" ng-repeat="element in item.constructiveElements">
+			<div class="col-sm-2">{{element.id}}</div>
+			<div class="col-sm-2">{{element.elementType.name}}</div>
+			<div class="col-sm-2">{{element.description}}</div>
+			<div class="col-sm-2">{{element.technicalCondition}}</div>
+			<div class="col-sm-4">
+				<button class="btn btn-sm btn-warning" ng-click="editConstructiveElement(element)" translate>Edit</button>
+				<button class="btn btn-sm btn-danger" ng-click="removeConstructiveElement(item,element)" translate>Remove</button>
+			</div>
+		</div>
+		<button class="btn btn-sm btn-info" ng-click="addConstructiveElement(item)" translate>Add</button>
+	</div>
+</div>

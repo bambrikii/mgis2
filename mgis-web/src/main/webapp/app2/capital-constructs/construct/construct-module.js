@@ -2,7 +2,8 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 	"mgis.commons",
 	"mgis.capital-constructs.construct.service",
 	"mgis.property",
-	"mgis.capital-constructs.characteristics"
+	"mgis.capital-constructs.characteristics",
+	"mgis.capital-constructs.constructive-elements"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -17,7 +18,8 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 																  CapitalConstructEconomicCharacteristicsCRUDService,
 																  CapitalConstructTechnicalCharacteristicsCRUDService,
 																  CapitalConstructsConstructTypeService,
-																  MGISCommonsModalForm) {
+																  MGISCommonsModalForm,
+																  CapitalConstructsConstructiveElementCRUDService) {
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = 15;
 		function updateGrid() {
@@ -81,6 +83,17 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		}
 		$scope.removeTechnicalCharacteristic = function (item, char) {
 			CapitalConstructTechnicalCharacteristicsCRUDService.remove(item, char);
+		}
+
+		// Constructive Elements
+		$scope.addConstructiveElement = function (item) {
+			CapitalConstructsConstructiveElementCRUDService.add(item);
+		}
+		$scope.editConstructiveElement = function (elem) {
+			CapitalConstructsConstructiveElementCRUDService.edit(element);
+		}
+		$scope.removeConstructiveElement = function (item, element) {
+			CapitalConstructsConstructiveElementCRUDService.remove(item, element);
 		}
 
 	})
