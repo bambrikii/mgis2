@@ -17,6 +17,7 @@ import ru.sovzond.mgis2.indicators.TechnicalIndicatorBean;
 import ru.sovzond.mgis2.isogd.business.DocumentBean;
 import ru.sovzond.mgis2.kladr.KLADRLocalityBean;
 import ru.sovzond.mgis2.national_classifiers.LandRightKindBean;
+import ru.sovzond.mgis2.national_classifiers.OKEIBean;
 import ru.sovzond.mgis2.national_classifiers.OKFSBean;
 import ru.sovzond.mgis2.national_classifiers.OKOFBean;
 import ru.sovzond.mgis2.persons.PersonBean;
@@ -86,6 +87,9 @@ public class CapitalConstructRESTService {
 	@Autowired
 	private ConstructiveElementTypeBean constructiveElementTypeBean;
 
+	@Autowired
+	private OKEIBean okeiBean;
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
 	public PageableContainer<CapitalConstruct> list(@RequestParam(value = "orderBy", defaultValue = "id DESC") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
@@ -154,14 +158,15 @@ public class CapitalConstructRESTService {
 
 			// Economic Characteristics
 			if (characteristics.getEconomicCharacteristics() != null && characteristics.getEconomicCharacteristics().size() > 0) {
-				syncEconomicCharacteristics(characteristics2.getEconomicCharacteristics(), characteristics2.getEconomicCharacteristics());
+				syncEconomicCharacteristics(characteristics2.getEconomicCharacteristics(), characteristics.getEconomicCharacteristics());
 			} else {
 				characteristics2.getEconomicCharacteristics().forEach(economicCharacteristicBean::remove);
 				characteristics2.getEconomicCharacteristics().clear();
 			}
+			constructCharacteristicsBean.save(characteristics2);
 			// Technical Characteristics
 			if (characteristics.getTechnicalCharacteristics() != null && characteristics.getTechnicalCharacteristics().size() > 0) {
-				syncTechnicalCharacteristics(characteristics2.getTechnicalCharacteristics(), characteristics2.getTechnicalCharacteristics());
+				syncTechnicalCharacteristics(characteristics2.getTechnicalCharacteristics(), characteristics.getTechnicalCharacteristics());
 			} else {
 				characteristics2.getTechnicalCharacteristics().forEach(technicalCharacteristicBean::remove);
 				characteristics2.getTechnicalCharacteristics().clear();
@@ -170,63 +175,62 @@ public class CapitalConstructRESTService {
 			capitalConstruct2.setCharacteristics(characteristics2);
 		}
 		// Constructive Elements
-		syncConstructiveElements(capitalConstruct2.getConstructiveElements(), capitalConstruct2.getConstructiveElements());
+		syncConstructiveElements(capitalConstruct2.getConstructiveElements(), capitalConstruct.getConstructiveElements());
 
 		capitalConstructBean.save(capitalConstruct2);
 		return capitalConstruct2.clone();
 	}
 
-	private void syncEconomicCharacteristics(List<EconomicCharacteristic> persistentCharacteristics, List<EconomicCharacteristic> newCharacteristics) {
-		Map<Long, EconomicCharacteristic> persistentCharacteristicsMap = new HashMap<>();
-		for (EconomicCharacteristic characteristic : persistentCharacteristics) {
-			persistentCharacteristicsMap.put(characteristic.getId(), characteristic);
+	private void syncEconomicCharacteristics(List<EconomicCharacteristic> persistentList, List<EconomicCharacteristic> newList) {
+		Map<Long, EconomicCharacteristic> persistentMap = new HashMap<>();
+		for (EconomicCharacteristic characteristic : persistentList) {
+			persistentMap.put(characteristic.getId(), characteristic);
 		}
-		Set<Long> newCharacteristicIds = new HashSet<>();
-		for (EconomicCharacteristic characteristic : newCharacteristics) {
-			if (characteristic.getId() != null && characteristic.getId() > 0) {
-				EconomicCharacteristic persistent = persistentCharacteristicsMap.get(characteristic.getId());
-				if (persistent == null) {
-					persistent = new EconomicCharacteristic();
-				} else {
-					persistent = economicCharacteristicBean.load(persistent.getId());
-					newCharacteristicIds.add(persistent.getId());
-				}
-				BeanUtils.copyProperties(characteristic, persistent, new String[]{"id, priceIndicator", "okof"});
-				persistent.setPriceIndicator(characteristic.getPriceIndicator() != null ? priceIndicatorBean.load(characteristic.getPriceIndicator().getId()) : null);
-				persistent.setOkof(characteristic.getOkof() != null ? okofBean.load(characteristic.getOkof().getId()) : null);
-				economicCharacteristicBean.save(persistent);
+		Set<Long> newIds = new HashSet<>();
+		for (EconomicCharacteristic characteristic : newList) {
+			EconomicCharacteristic persistent;
+			if (characteristic.getId() == null || characteristic.getId() == 0) {
+				persistent = new EconomicCharacteristic();
+				persistentList.add(persistent);
+			} else {
+				persistent = persistentMap.get(characteristic.getId());
+				newIds.add(persistent.getId());
 			}
+			BeanUtils.copyProperties(characteristic, persistent, new String[]{"id", "priceIndicator", "okof"});
+			persistent.setPriceIndicator(characteristic.getPriceIndicator() != null ? priceIndicatorBean.load(characteristic.getPriceIndicator().getId()) : null);
+			persistent.setOkof(characteristic.getOkof() != null ? okofBean.load(characteristic.getOkof().getId()) : null);
+			economicCharacteristicBean.save(persistent);
 		}
-		persistentCharacteristicsMap.entrySet().stream().filter(entry -> newCharacteristicIds.contains(entry.getKey())).forEach(entry -> {
-			economicCharacteristicBean.remove(persistentCharacteristicsMap.get(entry.getValue()));
-			persistentCharacteristicsMap.remove(entry.getKey());
+		persistentMap.entrySet().stream().filter(entry -> !newIds.contains(entry.getKey())).forEach(entry -> {
+			economicCharacteristicBean.remove(persistentMap.get(entry.getValue()));
+			persistentMap.remove(entry.getKey());
 		});
 	}
 
-	private void syncTechnicalCharacteristics(List<TechnicalCharacteristic> persistentCharacteristics, List<TechnicalCharacteristic> newCharacteristics) {
-		Map<Long, TechnicalCharacteristic> persistentCharacteristicsMap = new HashMap<>();
-		for (TechnicalCharacteristic characteristic : persistentCharacteristics) {
-			persistentCharacteristicsMap.put(characteristic.getId(), characteristic);
+	private void syncTechnicalCharacteristics(List<TechnicalCharacteristic> persistentList, List<TechnicalCharacteristic> newList) {
+		Map<Long, TechnicalCharacteristic> persistentMap = new HashMap<>();
+		for (TechnicalCharacteristic characteristic : persistentList) {
+			persistentMap.put(characteristic.getId(), characteristic);
 		}
-		Set<Long> newCharacteristicIds = new HashSet<>();
-		for (TechnicalCharacteristic characteristic : newCharacteristics) {
-			if (characteristic.getId() != null && characteristic.getId() > 0) {
-				TechnicalCharacteristic persistent = persistentCharacteristicsMap.get(characteristic.getId());
-				if (persistent == null) {
-					persistent = new TechnicalCharacteristic();
-				} else {
-					persistent = technicalCharacteristicBean.load(persistent.getId());
-					newCharacteristicIds.add(persistent.getId());
-				}
-				BeanUtils.copyProperties(characteristic, persistent, new String[]{"id", "priceIndicator", "okof"});
-				persistent.setConstructType(characteristic.getConstructType() != null ? constructTypeBean.load(characteristic.getConstructType().getId()) : null);
-				persistent.setTechnicalIndicator(characteristic.getTechnicalIndicator() != null ? technicalIndicatorBean.load(characteristic.getTechnicalIndicator().getId()) : null);
-				technicalCharacteristicBean.save(persistent);
+		Set<Long> newIds = new HashSet<>();
+		for (TechnicalCharacteristic characteristic : newList) {
+			TechnicalCharacteristic persistent;
+			if (characteristic.getId() == null || characteristic.getId() == 0) {
+				persistent = new TechnicalCharacteristic();
+				persistentList.add(persistent);
+			} else {
+				persistent = persistentMap.get(characteristic.getId());
+				newIds.add(persistent.getId());
 			}
+			BeanUtils.copyProperties(characteristic, persistent, new String[]{"id", "constructType", "technicalIndicator", "unitOfMeasure"});
+			persistent.setConstructType(characteristic.getConstructType() != null ? constructTypeBean.load(characteristic.getConstructType().getId()) : null);
+			persistent.setTechnicalIndicator(characteristic.getTechnicalIndicator() != null ? technicalIndicatorBean.load(characteristic.getTechnicalIndicator().getId()) : null);
+			persistent.setUnitOfMeasure(characteristic.getUnitOfMeasure() != null ? okeiBean.load(characteristic.getUnitOfMeasure().getId()) : null);
+			technicalCharacteristicBean.save(persistent);
 		}
-		persistentCharacteristicsMap.entrySet().stream().filter(entry -> newCharacteristicIds.contains(entry.getKey())).forEach(entry -> {
-			technicalCharacteristicBean.remove(persistentCharacteristicsMap.get(entry.getValue()));
-			persistentCharacteristicsMap.remove(entry.getKey());
+		persistentMap.entrySet().stream().filter(entry -> !newIds.contains(entry.getKey())).forEach(entry -> {
+			technicalCharacteristicBean.remove(persistentMap.get(entry.getValue()));
+			persistentMap.remove(entry.getKey());
 		});
 	}
 
@@ -240,20 +244,19 @@ public class CapitalConstructRESTService {
 			}
 			Set<Long> newIds = new HashSet<>();
 			for (ConstructiveElement element : newList) {
-				if (element.getId() != null && element.getId() > 0) {
-					ConstructiveElement persistent = persistentMap.get(element.getId());
-					if (persistent == null) {
-						persistent = new ConstructiveElement();
-					} else {
-						persistent = constructiveElementBean.load(persistent.getId());
-						newIds.add(persistent.getId());
-					}
-					BeanUtils.copyProperties(element, persistent, new String[]{"id, type"});
-					persistent.setType(element.getType() != null ? constructiveElementTypeBean.load(element.getType().getId()) : null);
-					constructiveElementBean.save(persistent);
+				ConstructiveElement persistent;
+				if (element.getId() == null || element.getId() == 0) {
+					persistent = new ConstructiveElement();
+					persistentList.add(persistent);
+				} else {
+					persistent = persistentMap.get(element.getId());
+					newIds.add(persistent.getId());
 				}
+				BeanUtils.copyProperties(element, persistent, new String[]{"id", "type"});
+				persistent.setType(element.getType() != null ? constructiveElementTypeBean.load(element.getType().getId()) : null);
+				constructiveElementBean.save(persistent);
 			}
-			persistentMap.entrySet().stream().filter(entry -> newIds.contains(entry.getKey())).forEach(entry -> {
+			persistentMap.entrySet().stream().filter(entry -> !newIds.contains(entry.getKey())).forEach(entry -> {
 				constructiveElementBean.remove(persistentMap.get(entry.getValue()));
 				persistentMap.remove(entry.getKey());
 			});

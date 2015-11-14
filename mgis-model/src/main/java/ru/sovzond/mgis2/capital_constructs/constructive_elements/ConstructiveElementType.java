@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 13.11.15.
  */
 @Entity
-@Table(name = "oks_constructive_element")
+@Table(name = "oks_constructive_element_type")
 public class ConstructiveElementType implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)

@@ -89,7 +89,7 @@ public class TechnicalCharacteristic implements Cloneable {
 	public TechnicalCharacteristic clone() {
 		TechnicalCharacteristic characteristic = new TechnicalCharacteristic();
 		characteristic.setId(id);
-		characteristic.setConstructType(constructType);
+		characteristic.setConstructType(constructType != null ? constructType.clone() : null);
 		characteristic.setTechnicalIndicator(technicalIndicator != null ? technicalIndicator.clone() : null);
 		characteristic.setValue(value);
 		characteristic.setUnitOfMeasure(unitOfMeasure != null ? unitOfMeasure.clone() : null);
