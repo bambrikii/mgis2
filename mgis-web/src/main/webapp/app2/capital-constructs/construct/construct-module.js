@@ -28,11 +28,14 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 			});
 		}
 
-		function editItem(modalScope) {
+		function editItem(modalScope, updateHandler) {
 			CapitalConstructsConstructTypeService.get().then(function (constructTypePager) {
 				modalScope.availableTypes = constructTypePager.list;
 				MGISCommonsModalForm.edit("app2/capital-constructs/construct/construct-form.htm", modalScope, function (scope, modalInstance) {
 					CapitalConstructsConstructService.save(scope.item).then(function () {
+						if (updateHandler) {
+							updateHandler();
+						}
 						modalInstance.close();
 					});
 				}, {windowClass: "mgis-capital-construct-modal-form"});
@@ -44,14 +47,18 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		$scope.addItem = function () {
 			var modalScope = $rootScope.$new();
 			modalScope.item = {id: 0};
-			editItem(modalScope);
+			editItem(modalScope, function () {
+				updateGrid();
+			});
 		}
 
 		$scope.editItem = function (id) {
 			var modalScope = $rootScope.$new();
 			CapitalConstructsConstructService.get(id).then(function (data) {
 				modalScope.item = data;
-				editItem(modalScope);
+				editItem(modalScope, function () {
+					updateGrid();
+				});
 			});
 		}
 		$scope.deleteItem = function (id) {

@@ -8,7 +8,7 @@ import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 
 /**
- * Created by Alexander Arakelyan on 07/11/15.
+ * Created by Alexander Arakelyan on 14/11/15.
  */
 @Service
 public class ConstructCharacteristicsBean extends CRUDBeanBase<ConstructCharacteristics> {
@@ -25,4 +25,5 @@ public class ConstructCharacteristicsBean extends CRUDBeanBase<ConstructCharacte
 	protected IIdentifiableDao<ConstructCharacteristics> getIIdentifiableDao() {
 		return dao;
 	}
+
 }

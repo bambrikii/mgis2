@@ -2,10 +2,10 @@
 	<h3><span translate>CapitalConstructs.Constructs</span></h3>
 
 	<div>
-		<div ng-repeat="item in constructsPager.list">
+		<div ng-repeat="item in constructsPager.list" class="row" style="padding: 5px;">
 			<div class="col-sm-1">{{item.id}}</div>
-			<div class="col-sm-1">{{item.id}}</div>
-			<div class="col-sm-1">{{item.id}}</div>
+			<div class="col-sm-3">{{item.type.name}}</div>
+			<div class="col-sm-4">{{item.cadastralNumber}}</div>
 			<div class="col-sm-4">
 				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
 				<button class="btn btn-danger btn-sm" ng-click="deleteItem(item.id)" translate>Delete</button>
@@ -13,11 +13,12 @@
 		</div>
 	</div>
 
-	<pagination total-items="constructsPager.totalNumberOfItems" ng-model="currentPage"
-				items-per-page="itemsPerPage" ng-change="pageChanged()"
-				class="pagination-sm" previous-text="&lsaquo;"
-				next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
-
+	<div>
+		<pagination total-items="constructsPager.totalNumberOfItems" ng-model="currentPage"
+					items-per-page="itemsPerPage" ng-change="pageChanged()"
+					class="pagination-sm" previous-text="&lsaquo;"
+					next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+	</div>
 	<div>
 		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
 	</div>

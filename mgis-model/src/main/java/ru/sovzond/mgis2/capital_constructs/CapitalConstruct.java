@@ -1,9 +1,7 @@
 package ru.sovzond.mgis2.capital_constructs;
 
-import org.hibernate.annotations.Cascade;
 import ru.sovzond.mgis2.address.Address;
-import ru.sovzond.mgis2.capital_constructs.characteristics.economical.EconomicCharacteristic;
-import ru.sovzond.mgis2.capital_constructs.characteristics.technical.TechnicalCharacteristic;
+import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructCharacteristics;
 import ru.sovzond.mgis2.capital_constructs.constructive_elements.ConstructiveElement;
 import ru.sovzond.mgis2.kladr.KLADRLocality;
 import ru.sovzond.mgis2.rights.PropertyRights;
@@ -127,19 +125,10 @@ public class CapitalConstruct implements Cloneable {
 	@JoinColumn(name = "rights_id")
 	private PropertyRights rights;
 
-	@ElementCollection(fetch = FetchType.LAZY)
-	@CollectionTable(name = "oks_capital_construct_economic_characteristics")
-	@Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
-	private List<EconomicCharacteristic> economicCharacteristics = new ArrayList<>();
+	@OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL, orphanRemoval = true)
+	private ConstructCharacteristics characteristics;
 
-	@ElementCollection(fetch = FetchType.LAZY)
-	@CollectionTable(name = "oks_capital_construct_technical_characteristics")
-	@Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
-	private List<TechnicalCharacteristic> technicalCharacteristics = new ArrayList<>();
-
-	@ElementCollection(fetch = FetchType.LAZY)
-	@CollectionTable(name = "oks_capital_construct_constructive_elements")
-	@Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
 	private List<ConstructiveElement> constructiveElements = new ArrayList<>();
 
 	public Long getId() {
@@ -294,28 +283,20 @@ public class CapitalConstruct implements Cloneable {
 		this.rights = rights;
 	}
 
+	public ConstructCharacteristics getCharacteristics() {
+		return characteristics;
+	}
+
+	public void setCharacteristics(ConstructCharacteristics characteristics) {
+		this.characteristics = characteristics;
+	}
+
 	public List<ConstructiveElement> getConstructiveElements() {
 		return constructiveElements;
 	}
 
 	public void setConstructiveElements(List<ConstructiveElement> constructiveElements) {
 		this.constructiveElements = constructiveElements;
-	}
-
-	public List<EconomicCharacteristic> getEconomicCharacteristics() {
-		return economicCharacteristics;
-	}
-
-	public void setEconomicCharacteristics(List<EconomicCharacteristic> economicCharacteristics) {
-		this.economicCharacteristics = economicCharacteristics;
-	}
-
-	public List<TechnicalCharacteristic> getTechnicalCharacteristics() {
-		return technicalCharacteristics;
-	}
-
-	public void setTechnicalCharacteristics(List<TechnicalCharacteristic> technicalCharacteristics) {
-		this.technicalCharacteristics = technicalCharacteristics;
 	}
 
 	public CapitalConstruct clone() {
@@ -340,10 +321,8 @@ public class CapitalConstruct implements Cloneable {
 		construct.setRights(rights != null ? rights.clone() : null);
 		construct.setTechnicalAccountingStatementDate(technicalAccountingStatementDate);
 		construct.setType(type != null ? type.clone() : null);
-		construct.setEconomicCharacteristics(economicCharacteristics.stream().map(EconomicCharacteristic::clone).collect(Collectors.toList()));
-		construct.setTechnicalCharacteristics(technicalCharacteristics.stream().map(TechnicalCharacteristic::clone).collect(Collectors.toList()));
+		construct.setCharacteristics(characteristics != null ? characteristics.clone() : null);
 		construct.setConstructiveElements(constructiveElements.stream().map(ConstructiveElement::clone).collect(Collectors.toList()));
 		return construct;
 	}
-
 }

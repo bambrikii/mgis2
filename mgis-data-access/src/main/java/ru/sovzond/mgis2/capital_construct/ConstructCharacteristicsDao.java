@@ -5,7 +5,7 @@ import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructCharacterist
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 
 /**
- * Created by Alexander Arakelyan on 07/11/15.
+ * Created by Alexander Arakelyan on 14/11/15.
  */
 @Repository
 public class ConstructCharacteristicsDao extends CRUDDaoBase<ConstructCharacteristics> {

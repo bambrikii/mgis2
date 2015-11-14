@@ -1,10 +1,10 @@
 angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
-		"mgis.commons",
-		"mgis.nc.services",
-		"mgis.capital-constructs.characteristics.services",
-		"mgis.capital-constructs.construct.service",
-		"mgis.indicators"
-	])
+	"mgis.commons",
+	"mgis.nc.services",
+	"mgis.capital-constructs.characteristics.services",
+	"mgis.capital-constructs.construct.service",
+	"mgis.indicators"
+])
 	.factory("CapitalConstructEconomicCharacteristicsCRUDService", function ($rootScope,
 																			 MGISCommonsModalForm,
 																			 NcOKOFService,
@@ -33,10 +33,13 @@ angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 		return {
 			add: function (construct) {
 				editItem({id: 0}, function (item) {
-					if (!construct.economicCharacteristics) {
-						construct.economicCharacteristics = new Array();
+					if (!construct.characteristics) {
+						construct.characteristics = {};
 					}
-					construct.economicCharacteristics.push(item);
+					if (!construct.characteristics.economicCharacteristics) {
+						construct.characteristics.economicCharacteristics = new Array();
+					}
+					construct.characteristics.economicCharacteristics.push(item);
 				});
 			},
 			edit: function (characteristic) {
@@ -44,10 +47,10 @@ angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 			},
 			remove: function (construct, item) {
 				MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
-					for (var i in construct.economicCharacteristics) {
-						var char = construct.economicCharacteristics[i];
+					for (var i in construct.characteristics.economicCharacteristics) {
+						var char = construct.characteristics.economicCharacteristics[i];
 						if (char == item) {
-							construct.economicCharacteristics.splice(i, 1);
+							construct.characteristics.economicCharacteristics.splice(i, 1);
 						}
 					}
 					modalInstance.close();
@@ -78,10 +81,13 @@ angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 		return {
 			add: function (construct) {
 				editItem({id: 0}, function (item) {
-					if (!construct.technicalCharacteristics) {
-						construct.technicalCharacteristics = new Array();
+					if (!construct.characteristics) {
+						construct.characteristics = {};
 					}
-					construct.technicalCharacteristics.push(item);
+					if (!construct.characteristics.technicalCharacteristics) {
+						construct.characteristics.technicalCharacteristics = new Array();
+					}
+					construct.characteristics.technicalCharacteristics.push(item);
 				});
 			},
 			edit: function (characteristic) {
@@ -89,7 +95,7 @@ angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 			},
 			remove: function (construct, characteristic) {
 				MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
-					for (var i in construct.technicalCharacteristics) {
+					for (var i in construct.characteristics.technicalCharacteristics) {
 						var char = construct.technicalCharacteristics[i];
 						if (char == characteristic) {
 							construct.technicalCharacteristics.splice(i, 1);

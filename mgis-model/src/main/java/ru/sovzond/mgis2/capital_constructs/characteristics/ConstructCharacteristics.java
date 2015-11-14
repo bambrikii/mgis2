@@ -20,12 +20,10 @@ public class ConstructCharacteristics implements Cloneable {
 	@Column
 	private Long id;
 
-	@ElementCollection(fetch = FetchType.LAZY)
-	@CollectionTable(name = "oks_capital_construct_economic_characteristics")
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
 	private List<EconomicCharacteristic> economicCharacteristics = new ArrayList<>();
 
-	@ElementCollection(fetch = FetchType.LAZY)
-	@CollectionTable(name = "oks_capital_construct_technical_characteristics")
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
 	private List<TechnicalCharacteristic> technicalCharacteristics = new ArrayList<>();
 
 	public Long getId() {
