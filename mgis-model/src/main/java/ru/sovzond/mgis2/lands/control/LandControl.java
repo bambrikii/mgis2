@@ -2,7 +2,6 @@ package ru.sovzond.mgis2.lands.control;
 
 import ru.sovzond.mgis2.common.classifiers.ExecutivePerson;
 import ru.sovzond.mgis2.isogd.document.Document;
-import ru.sovzond.mgis2.lands.Land;
 import ru.sovzond.mgis2.registers.persons.Person;
 
 import javax.persistence.*;
@@ -19,9 +18,6 @@ public class LandControl implements Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
-
-	@OneToOne(optional = false)
-	private Land land;
 
 	@ManyToOne
 	private Person inspectedPerson;
@@ -71,14 +67,6 @@ public class LandControl implements Cloneable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Land getLand() {
-		return land;
-	}
-
-	public void setLand(Land land) {
-		this.land = land;
 	}
 
 	public Person getInspectedPerson() {

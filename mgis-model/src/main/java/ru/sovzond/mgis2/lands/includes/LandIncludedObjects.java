@@ -21,9 +21,6 @@ public class LandIncludedObjects {
 	@Column
 	private Long id;
 
-	@OneToOne(optional = false)
-	private Land land;
-
 	@ManyToOne
 	private Document landDealDocument;
 
@@ -46,14 +43,6 @@ public class LandIncludedObjects {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Land getLand() {
-		return land;
-	}
-
-	public void setLand(Land land) {
-		this.land = land;
 	}
 
 	public Document getLandDealDocument() {

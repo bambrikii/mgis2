@@ -126,8 +126,9 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		}
 
 		function deleteItem(id, updateGrid) {
-			MGISCommonsModalForm.confirmRemoval(function () {
+			MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
 				LandsLandService.remove(id).then(function () {
+					modalInstance.close();
 					updateGrid();
 				});
 			});

@@ -1,6 +1,5 @@
 package ru.sovzond.mgis2.lands.characteristics;
 
-import ru.sovzond.mgis2.lands.Land;
 import ru.sovzond.mgis2.registers.national_classifiers.OKATO;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 
@@ -16,9 +15,6 @@ public class LandCharacteristics implements Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
-
-	@OneToOne(optional = false)
-	private Land land;
 
 	@Column
 	private float cadastralCost;
@@ -71,14 +67,6 @@ public class LandCharacteristics implements Cloneable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Land getLand() {
-		return land;
-	}
-
-	public void setLand(Land land) {
-		this.land = land;
 	}
 
 	public float getCadastralCost() {

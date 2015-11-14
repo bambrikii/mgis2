@@ -32,56 +32,56 @@ public class Land implements Cloneable {
 	@Column
 	private String cadastralNumber;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private LandCategory landCategory;
 
 	@Column
 	private Date stateRealEstateCadastreaStaging;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<LandArea> landAreas = new ArrayList<>();
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private LandAllowedUsage allowedUsageByDictionary;
 
 	@Column
 	private String allowedUsageByDocument;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TerritorialZone allowedUsageByTerritorialZone;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private OKTMO addressOfMunicipalEntity;
 
 	@Column
 	private String addressPlacement;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Address address;
 
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
 	private LandRights rights;
 
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
 	private LandCharacteristics characteristics;
 
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
 	private LandIncludedObjects includedObjects;
 
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
 	private LandWorks works;
 
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
 	private LandControl control;
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
 	private Land previousVersion;
 
 	@Type(type = "org.hibernate.spatial.GeometryType")
 	@Column(name = "geometry")
 	private MultiPolygon geometry;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "spatial_data_id")
 	private SpatialGroup spatialData;
 

@@ -11,13 +11,11 @@ import ru.sovzond.mgis2.geo.SpatialGroup;
 import ru.sovzond.mgis2.isogd.business.DocumentBean;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.lands.*;
-import ru.sovzond.mgis2.national_classifiers.*;
-import ru.sovzond.mgis2.persons.PersonBean;
-import ru.sovzond.mgis2.lands.Land;
-import ru.sovzond.mgis2.lands.LandArea;
 import ru.sovzond.mgis2.lands.characteristics.LandCharacteristics;
 import ru.sovzond.mgis2.lands.control.LandControl;
 import ru.sovzond.mgis2.lands.rights.LandRights;
+import ru.sovzond.mgis2.national_classifiers.*;
+import ru.sovzond.mgis2.persons.PersonBean;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
@@ -178,7 +176,6 @@ public class LandRESTController implements Serializable {
 			LandRights rights2 = land2.getRights();
 			if (rights2 == null) {
 				rights2 = new LandRights();
-				rights2.setLand(land2);
 				land2.setRights(rights2);
 				landRightsBean.save(rights2);
 			}
@@ -211,7 +208,6 @@ public class LandRESTController implements Serializable {
 			LandCharacteristics chars2 = land2.getCharacteristics();
 			if (chars2 == null) {
 				chars2 = new LandCharacteristics();
-				chars2.setLand(land2);
 				land2.setCharacteristics(chars2);
 				landCharacteristicsBean.save(chars2);
 			}
@@ -237,7 +233,6 @@ public class LandRESTController implements Serializable {
 			LandControl control2 = land2.getControl();
 			if (control2 == null) {
 				control2 = new LandControl();
-				control2.setLand(land2);
 				land2.setControl(control2);
 				landControlBean.save(control2);
 			}
