@@ -21,9 +21,9 @@ angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 					});
 				}
 				MGISCommonsModalForm.edit("app2/capital-constructs/characteristics/economic-characteristic-form.htm", modalScope, function (scope, modalInstance) {
-					angular.copy(scope.item, item)
+					angular.copy(scope.item, item);
 					if (updateFunction) {
-						updateFunction(scope.item);
+						updateFunction(item);
 					}
 					modalInstance.close();
 				});
@@ -96,9 +96,9 @@ angular.module("mgis.capital-constructs.characteristics", ["ui.bootstrap",
 			remove: function (construct, characteristic) {
 				MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
 					for (var i in construct.characteristics.technicalCharacteristics) {
-						var char = construct.technicalCharacteristics[i];
+						var char = construct.characteristics.technicalCharacteristics[i];
 						if (char == characteristic) {
-							construct.technicalCharacteristics.splice(i, 1);
+							construct.characteristics.technicalCharacteristics.splice(i, 1);
 						}
 					}
 					modalInstance.close();

@@ -201,10 +201,12 @@ public class CapitalConstructRESTService {
 			persistent.setOkof(characteristic.getOkof() != null ? okofBean.load(characteristic.getOkof().getId()) : null);
 			economicCharacteristicBean.save(persistent);
 		}
-		persistentMap.entrySet().stream().filter(entry -> !newIds.contains(entry.getKey())).forEach(entry -> {
-			economicCharacteristicBean.remove(persistentMap.get(entry.getValue()));
-			persistentMap.remove(entry.getKey());
-		});
+		List<EconomicCharacteristic> toBeRemoved = persistentMap.entrySet().stream().filter(entry -> !newIds.contains(entry.getKey())).map(entry -> entry.getValue()).collect(Collectors.toList());
+		for (int i = 0; i < toBeRemoved.size(); i++) {
+			EconomicCharacteristic entity = toBeRemoved.get(i);
+			economicCharacteristicBean.remove(entity);
+			persistentList.remove(entity);
+		}
 	}
 
 	private void syncTechnicalCharacteristics(List<TechnicalCharacteristic> persistentList, List<TechnicalCharacteristic> newList) {
@@ -228,10 +230,12 @@ public class CapitalConstructRESTService {
 			persistent.setUnitOfMeasure(characteristic.getUnitOfMeasure() != null ? okeiBean.load(characteristic.getUnitOfMeasure().getId()) : null);
 			technicalCharacteristicBean.save(persistent);
 		}
-		persistentMap.entrySet().stream().filter(entry -> !newIds.contains(entry.getKey())).forEach(entry -> {
-			technicalCharacteristicBean.remove(persistentMap.get(entry.getValue()));
-			persistentMap.remove(entry.getKey());
-		});
+		List<TechnicalCharacteristic> toBeRemoved = persistentMap.entrySet().stream().filter(entry -> !newIds.contains(entry.getKey())).map(entry -> entry.getValue()).collect(Collectors.toList());
+		for (int i = 0; i < toBeRemoved.size(); i++) {
+			TechnicalCharacteristic entity = toBeRemoved.get(i);
+			technicalCharacteristicBean.remove(entity);
+			persistentList.remove(entity);
+		}
 	}
 
 	private void syncConstructiveElements(List<ConstructiveElement> persistentList, List<ConstructiveElement> newList) {
@@ -256,10 +260,12 @@ public class CapitalConstructRESTService {
 				persistent.setType(element.getType() != null ? constructiveElementTypeBean.load(element.getType().getId()) : null);
 				constructiveElementBean.save(persistent);
 			}
-			persistentMap.entrySet().stream().filter(entry -> !newIds.contains(entry.getKey())).forEach(entry -> {
-				constructiveElementBean.remove(persistentMap.get(entry.getValue()));
-				persistentMap.remove(entry.getKey());
-			});
+			List<ConstructiveElement> toBeRemoved = persistentMap.entrySet().stream().filter(entry -> !newIds.contains(entry.getKey())).map(entry -> entry.getValue()).collect(Collectors.toList());
+			for (int i = 0; i < toBeRemoved.size(); i++) {
+				ConstructiveElement entity = toBeRemoved.get(i);
+				constructiveElementBean.remove(entity);
+				persistentList.remove(entity);
+			}
 		}
 	}
 

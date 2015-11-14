@@ -187,3 +187,7 @@ span.mgis-input-group-date button {
 	transform: translate(0, 0);
 }
 
+.mgis-grid-row {
+	padding: 2px;
+}
+

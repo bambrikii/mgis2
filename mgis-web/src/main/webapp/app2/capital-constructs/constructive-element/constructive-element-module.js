@@ -30,13 +30,14 @@ angular.module("mgis.capital-constructs.constructive-elements", ["ui.bootstrap",
 				editItem(constructiveElement);
 			},
 			remove: function (capitalConstruct, constructiveElement) {
-				MGISCommonsModalForm.confirmRemoval(function () {
+				MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
 					for (var i in capitalConstruct.constructiveElements) {
-						var elem = capitalConstruct.constructiveElements;
+						var elem = capitalConstruct.constructiveElements[i];
 						if (elem == constructiveElement) {
 							capitalConstruct.constructiveElements.splice(i, 1);
 						}
 					}
+					modalInstance.close();
 				});
 			}
 		}

@@ -62,6 +62,14 @@ public class EconomicCharacteristic implements Cloneable {
 		this.priceIndicator = priceIndicator;
 	}
 
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
 	public Date getValueImplementationDate() {
 		return valueImplementationDate;
 	}
@@ -90,6 +98,7 @@ public class EconomicCharacteristic implements Cloneable {
 		EconomicCharacteristic characteristic = new EconomicCharacteristic();
 		characteristic.setId(id);
 		characteristic.setAmortizationGroup(amortizationGroup);
+		characteristic.setValue(value);
 		characteristic.setValueImplementationDate(valueImplementationDate);
 		characteristic.setOkof(okof != null ? okof.clone() : null);
 		characteristic.setPriceIndicator(priceIndicator != null ? priceIndicator.clone() : null);
