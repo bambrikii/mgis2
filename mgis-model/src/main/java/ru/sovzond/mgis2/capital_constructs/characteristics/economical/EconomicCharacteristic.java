@@ -10,10 +10,10 @@ import java.util.Date;
  * Created by Alexander Arakelyan on 06.11.15.
  */
 @Entity
-@Table(name = "oks_capital_construct_economic_characteristic")
+@Table(name = "occ_economic_characteristic")
 public class EconomicCharacteristic implements Cloneable {
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_occ_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;

@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.address.AddressBean;
 import ru.sovzond.mgis2.capital_construct.*;
-import ru.sovzond.mgis2.capital_constructs.CapitalConstruct;
-import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructCharacteristics;
+import ru.sovzond.mgis2.capital_constructs.CapitalConstruction;
+import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructionCharacteristics;
 import ru.sovzond.mgis2.capital_constructs.characteristics.economical.EconomicCharacteristic;
 import ru.sovzond.mgis2.capital_constructs.characteristics.technical.TechnicalCharacteristic;
 import ru.sovzond.mgis2.capital_constructs.constructive_elements.ConstructiveElement;
@@ -92,16 +92,16 @@ public class CapitalConstructRESTService {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<CapitalConstruct> list(@RequestParam(value = "orderBy", defaultValue = "id DESC") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+	public PageableContainer<CapitalConstruction> list(@RequestParam(value = "orderBy", defaultValue = "id DESC") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
 		return capitalConstructBean.list(orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@Transactional
-	public CapitalConstruct save(@PathVariable Long id, @RequestBody CapitalConstruct capitalConstruct) {
-		CapitalConstruct capitalConstruct2;
+	public CapitalConstruction save(@PathVariable Long id, @RequestBody CapitalConstruction capitalConstruct) {
+		CapitalConstruction capitalConstruct2;
 		if (id == 0) {
-			capitalConstruct2 = new CapitalConstruct();
+			capitalConstruct2 = new CapitalConstruction();
 		} else {
 			capitalConstruct2 = capitalConstructBean.load(id);
 		}
@@ -147,11 +147,11 @@ public class CapitalConstructRESTService {
 		capitalConstruct2.setRights(rights2);
 
 		// Characteristics
-		ConstructCharacteristics characteristics = capitalConstruct.getCharacteristics();
+		ConstructionCharacteristics characteristics = capitalConstruct.getCharacteristics();
 		if (characteristics != null) {
-			ConstructCharacteristics characteristics2 = capitalConstruct2.getCharacteristics();
+			ConstructionCharacteristics characteristics2 = capitalConstruct2.getCharacteristics();
 			if (characteristics2 == null || characteristics2.getId() == null || characteristics2.getId() == 0) {
-				characteristics2 = new ConstructCharacteristics();
+				characteristics2 = new ConstructionCharacteristics();
 			} else {
 				characteristics2 = constructCharacteristicsBean.load(characteristics.getId());
 			}
@@ -271,7 +271,7 @@ public class CapitalConstructRESTService {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
-	public CapitalConstruct read(@PathVariable Long id) {
+	public CapitalConstruction read(@PathVariable Long id) {
 		return capitalConstructBean.load(id).clone();
 	}
 

@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 06.11.15.
  */
 @Entity
-@Table(name = "oks_capital_construct_characteristics")
-public class ConstructCharacteristics implements Cloneable {
+@Table(name = "occ_capital_construction_characteristics")
+public class ConstructionCharacteristics implements Cloneable {
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_occ_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
@@ -50,8 +50,8 @@ public class ConstructCharacteristics implements Cloneable {
 		this.technicalCharacteristics = technicalCharacteristics;
 	}
 
-	public ConstructCharacteristics clone() {
-		ConstructCharacteristics characteristics = new ConstructCharacteristics();
+	public ConstructionCharacteristics clone() {
+		ConstructionCharacteristics characteristics = new ConstructionCharacteristics();
 		characteristics.setId(id);
 		characteristics.getEconomicCharacteristics().addAll(economicCharacteristics.stream().map(EconomicCharacteristic::clone).collect(Collectors.toList()));
 		characteristics.getTechnicalCharacteristics().addAll(technicalCharacteristics.stream().map(TechnicalCharacteristic::clone).collect(Collectors.toList()));

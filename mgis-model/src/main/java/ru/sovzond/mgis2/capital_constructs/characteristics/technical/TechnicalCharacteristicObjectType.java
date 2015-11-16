@@ -8,10 +8,10 @@ import javax.persistence.*;
  * TODO: справочник видов недвижимого имущества
  */
 @Entity
-@Table(name = "oks_capital_construct_tech_char_obj_type")
+@Table(name = "occ_technical_characteristic_object_type")
 public class TechnicalCharacteristicObjectType implements Cloneable {
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_occ_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;

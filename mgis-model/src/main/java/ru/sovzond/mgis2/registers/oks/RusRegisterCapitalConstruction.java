@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "rosreg_oks_capital_construction")
-public class CapitalConstruction {
+public class RusRegisterCapitalConstruction {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "rosreg_entity_seq", allocationSize = 1)

@@ -1,6 +1,6 @@
 package ru.sovzond.mgis2.capital_constructs.characteristics.technical;
 
-import ru.sovzond.mgis2.capital_constructs.ConstructType;
+import ru.sovzond.mgis2.capital_constructs.ConstructionType;
 import ru.sovzond.mgis2.indicators.TechnicalIndicator;
 import ru.sovzond.mgis2.registers.national_classifiers.OKEI;
 
@@ -10,11 +10,11 @@ import javax.persistence.*;
  * Created by Alexander Arakelyan on 06/11/15.
  */
 @Entity
-@Table(name = "oks_capital_construct_technical_characteristic")
+@Table(name = "occ_technical_characteristic")
 public class TechnicalCharacteristic implements Cloneable {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_occ_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
@@ -24,7 +24,7 @@ public class TechnicalCharacteristic implements Cloneable {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "construct_type_id")
-	private ConstructType constructType;
+	private ConstructionType constructType;
 
 	/**
 	 * Технический показатель
@@ -54,11 +54,11 @@ public class TechnicalCharacteristic implements Cloneable {
 		this.id = id;
 	}
 
-	public ConstructType getConstructType() {
+	public ConstructionType getConstructType() {
 		return constructType;
 	}
 
-	public void setConstructType(ConstructType constructType) {
+	public void setConstructType(ConstructionType constructType) {
 		this.constructType = constructType;
 	}
 

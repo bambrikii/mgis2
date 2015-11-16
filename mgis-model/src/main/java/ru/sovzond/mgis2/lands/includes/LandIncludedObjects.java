@@ -2,7 +2,7 @@ package ru.sovzond.mgis2.lands.includes;
 
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.lands.Land;
-import ru.sovzond.mgis2.registers.oks.CapitalConstruction;
+import ru.sovzond.mgis2.registers.oks.RusRegisterCapitalConstruction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class LandIncludedObjects {
 	private Document inventoryDealDocument;
 
 	@OneToMany
-	private List<CapitalConstruction> includedCapitalConstructions = new ArrayList<>();
+	private List<RusRegisterCapitalConstruction> includedCapitalConstructions = new ArrayList<>();
 
 	@OneToMany
 	private List<Document> urbanPlanningDocuments = new ArrayList<>();
@@ -70,11 +70,11 @@ public class LandIncludedObjects {
 		this.inventoryDealDocument = inventoryDealDocument;
 	}
 
-	public List<CapitalConstruction> getIncludedCapitalConstructions() {
+	public List<RusRegisterCapitalConstruction> getIncludedCapitalConstructions() {
 		return includedCapitalConstructions;
 	}
 
-	public void setIncludedCapitalConstructions(List<CapitalConstruction> includedCapitalConstructions) {
+	public void setIncludedCapitalConstructions(List<RusRegisterCapitalConstruction> includedCapitalConstructions) {
 		this.includedCapitalConstructions = includedCapitalConstructions;
 	}
 

@@ -1,7 +1,7 @@
 package ru.sovzond.mgis2.capital_constructs;
 
 import ru.sovzond.mgis2.address.Address;
-import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructCharacteristics;
+import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructionCharacteristics;
 import ru.sovzond.mgis2.capital_constructs.constructive_elements.ConstructiveElement;
 import ru.sovzond.mgis2.kladr.KLADRLocality;
 import ru.sovzond.mgis2.rights.PropertyRights;
@@ -16,10 +16,10 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 05.11.15.
  */
 @Entity
-@Table(name = "oks_capital_construct")
-public class CapitalConstruct implements Cloneable {
+@Table(name = "occ_capital_construction")
+public class CapitalConstruction implements Cloneable {
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_oks_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_occ_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
@@ -29,7 +29,7 @@ public class CapitalConstruct implements Cloneable {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "type_id")
-	private ConstructType type;
+	private ConstructionType type;
 
 	@Column
 	private String objectPurpose;
@@ -126,7 +126,7 @@ public class CapitalConstruct implements Cloneable {
 	private PropertyRights rights;
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-	private ConstructCharacteristics characteristics;
+	private ConstructionCharacteristics characteristics;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
 	private List<ConstructiveElement> constructiveElements = new ArrayList<>();
@@ -147,11 +147,11 @@ public class CapitalConstruct implements Cloneable {
 		this.name = name;
 	}
 
-	public ConstructType getType() {
+	public ConstructionType getType() {
 		return type;
 	}
 
-	public void setType(ConstructType type) {
+	public void setType(ConstructionType type) {
 		this.type = type;
 	}
 
@@ -283,11 +283,11 @@ public class CapitalConstruct implements Cloneable {
 		this.rights = rights;
 	}
 
-	public ConstructCharacteristics getCharacteristics() {
+	public ConstructionCharacteristics getCharacteristics() {
 		return characteristics;
 	}
 
-	public void setCharacteristics(ConstructCharacteristics characteristics) {
+	public void setCharacteristics(ConstructionCharacteristics characteristics) {
 		this.characteristics = characteristics;
 	}
 
@@ -299,8 +299,8 @@ public class CapitalConstruct implements Cloneable {
 		this.constructiveElements = constructiveElements;
 	}
 
-	public CapitalConstruct clone() {
-		CapitalConstruct construct = new CapitalConstruct();
+	public CapitalConstruction clone() {
+		CapitalConstruction construct = new CapitalConstruction();
 		construct.setId(id);
 		construct.setName(name);
 		construct.setActualUsage(actualUsage);
