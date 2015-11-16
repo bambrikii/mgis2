@@ -2,6 +2,7 @@
 <!DOCTYPE log4j:configuration PUBLIC
 		"-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration debug="false">
+	<!--
 	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
 		<param name="Threshold" value="debug"/>
 		<layout class="org.apache.log4j.PatternLayout">
@@ -38,4 +39,5 @@
 		<priority value="debug"/>
 		<appender-ref ref="STDOUT"/>
 	</root>
+	-->
 </log4j:configuration>
