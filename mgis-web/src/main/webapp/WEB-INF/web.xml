@@ -17,6 +17,10 @@
 		<servlet-name>ProxyServlet</servlet-name>
 		<servlet-class>ru.sovzond.mgis2.web.proxy.ProxyServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Import.RusRegister.Lands</servlet-name>
+		<servlet-class>ru.sovzond.mgis2.web.data_exchange.rusregister.LandsImportServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
@@ -58,6 +62,10 @@
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<url-pattern>/bower_components</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Import.RusRegister.Lands</servlet-name>
+		<url-pattern>/data-exchange/import/rusregister/lands</url-pattern>
 	</servlet-mapping>
 
 	<listener>

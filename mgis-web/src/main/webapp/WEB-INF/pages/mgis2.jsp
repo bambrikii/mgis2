@@ -66,6 +66,10 @@
 	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.js"></script>
 	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control-wfs-zoom.js"></script>
 
+	<!-- https://github.com/flowjs/ng-flow -->
+	<script type="text/javascript" src="bower_components/ng-flow/dist/ng-flow-standalone.min.js"></script>
+
+	<!-- app2 -->
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>
 	<script type="text/javascript" src="app2/commons/common-modules.js"></script>

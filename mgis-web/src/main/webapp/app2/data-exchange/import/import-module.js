@@ -1,4 +1,4 @@
-angular.module("mgis.data-exchange.import", [])
+angular.module("mgis.data-exchange.import", ["ngFileUpload", "flow"])
 	.config(function ($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.when("/data-exchange/import", "/data-exchange/import/");
 		$stateProvider //

@@ -1,1 +1,36 @@
 <h3 translate>DataExchange.Import</h3>
+
+<h4 translate>DataExchange.Import.RusRegister.Lands</h4>
+
+<div flow-init="{target: 'data-exchange/import/rusregister/lands'}"
+	 flow-files-submitted="$flow.upload()"
+	 flow-file-success="$file.msg = $message">
+
+	<span translate>DropFilesHereToUpload</span>
+	<input type="file" flow-btn/>
+	Input OR Other element as upload button
+	<span class="btn" flow-btn>Upload File</span>
+
+	<table>
+		<tr ng-repeat="file in $flow.files">
+			<td>{{$index+1}}</td>
+			<td>{{file.name}}</td>
+			<td>{{file.msg}}</td>
+		</tr>
+	</table>
+</div>
+
+<div class="alert drop-box"
+	 flow-init="{target:'data-exchange/import/rusregister/lands'}"
+	 flow-files-submitted="$flow.upload()"
+	 flow-drop>
+	<span translate>DropFilesHereToUpload</span>
+	<table>
+		<tr ng-repeat="file in $flow.files">
+			<td>{{$index+1}}</td>
+			<td>{{file.name}}</td>
+			<td>{{file.msg}}</td>
+		</tr>
+	</table>
+</div>
+
