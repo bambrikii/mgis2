@@ -382,6 +382,7 @@
   "CapitalConstructs.Construct.RebuildingLastYear": "Год последнего кап. ремонта",
   "CapitalConstructs.Construct.ActualUsage": "Фактическое использование",
   "CapitalConstructs.Construct.Placement": "Местоположение",
+  "CapitalConstructs.Construct.ObjectPurpose": "Назначение объекта",
   "Indicators": "Показатели",
   "Indicators.PriceIndicator": "Стоимостной показатель",
   "Indicators.TechnicalIndicator": "Технический показатель",
