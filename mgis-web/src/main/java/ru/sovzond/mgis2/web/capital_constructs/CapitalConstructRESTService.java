@@ -15,11 +15,7 @@ import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.indicators.PriceIndicatorBean;
 import ru.sovzond.mgis2.indicators.TechnicalIndicatorBean;
 import ru.sovzond.mgis2.isogd.business.DocumentBean;
-import ru.sovzond.mgis2.kladr.KLADRLocalityBean;
-import ru.sovzond.mgis2.national_classifiers.LandRightKindBean;
-import ru.sovzond.mgis2.national_classifiers.OKEIBean;
-import ru.sovzond.mgis2.national_classifiers.OKFSBean;
-import ru.sovzond.mgis2.national_classifiers.OKOFBean;
+import ru.sovzond.mgis2.national_classifiers.*;
 import ru.sovzond.mgis2.persons.PersonBean;
 import ru.sovzond.mgis2.property.PropertyRightsBean;
 import ru.sovzond.mgis2.rights.PropertyRights;
@@ -43,7 +39,7 @@ public class CapitalConstructRESTService {
 	private ConstructTypeBean constructTypeBean;
 
 	@Autowired
-	private KLADRLocalityBean kladrLocalityBean;
+	private OKTMOBean oktmoBean;
 
 	@Autowired
 	private AddressBean addressBean;
@@ -115,7 +111,7 @@ public class CapitalConstructRESTService {
 
 		});
 		capitalConstruct2.setType(capitalConstruct.getType() != null ? constructTypeBean.load(capitalConstruct.getType().getId()) : null);
-		capitalConstruct2.setMunicipalEntity(capitalConstruct.getMunicipalEntity() != null ? kladrLocalityBean.load(capitalConstruct.getMunicipalEntity().getId()) : null);
+		capitalConstruct2.setMunicipalEntity(capitalConstruct.getMunicipalEntity() != null ? oktmoBean.load(capitalConstruct.getMunicipalEntity().getId()) : null);
 		capitalConstruct2.setAddress(capitalConstruct.getAddress() != null ? addressBean.load(capitalConstruct.getAddress().getId()) : null);
 		PropertyRights rights = capitalConstruct.getRights();
 		// Rights

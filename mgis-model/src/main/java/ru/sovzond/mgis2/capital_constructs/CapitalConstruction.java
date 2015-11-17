@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.capital_constructs;
 import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructionCharacteristics;
 import ru.sovzond.mgis2.capital_constructs.constructive_elements.ConstructiveElement;
-import ru.sovzond.mgis2.kladr.KLADRLocality;
+import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 import ru.sovzond.mgis2.rights.PropertyRights;
 
 import javax.persistence.*;
@@ -64,7 +64,7 @@ public class CapitalConstruction implements Cloneable {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "municipal_entity_id")
-	private KLADRLocality municipalEntity;
+	private OKTMO municipalEntity;
 
 	/**
 	 * Адрес
@@ -195,11 +195,11 @@ public class CapitalConstruction implements Cloneable {
 		this.overallArea = overallArea;
 	}
 
-	public KLADRLocality getMunicipalEntity() {
+	public OKTMO getMunicipalEntity() {
 		return municipalEntity;
 	}
 
-	public void setMunicipalEntity(KLADRLocality municipalEntity) {
+	public void setMunicipalEntity(OKTMO municipalEntity) {
 		this.municipalEntity = municipalEntity;
 	}
 

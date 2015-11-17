@@ -3,7 +3,8 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 	"mgis.capital-constructs.construct.service",
 	"mgis.property",
 	"mgis.capital-constructs.characteristics",
-	"mgis.capital-constructs.constructive-elements"
+	"mgis.capital-constructs.constructive-elements",
+	"mgis.nc.services"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -19,7 +20,8 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 																  CapitalConstructTechnicalCharacteristicsCRUDService,
 																  CapitalConstructsConstructTypeService,
 																  MGISCommonsModalForm,
-																  CapitalConstructsConstructiveElementCRUDService) {
+																  CapitalConstructsConstructiveElementCRUDService,
+																  NcOKTMOService) {
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = 15;
 		function updateGrid() {
@@ -29,6 +31,13 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		}
 
 		function editItem(modalScope, updateHandler) {
+			// AddressMunicipalEntities
+			modalScope.availableMunicipalEntities = new Array();
+			modalScope.refreshAvailableMunicipalEntities = function (name) {
+				NcOKTMOService.get("", 0, 15, null, name).then(function (data) {
+					modalScope.availableMunicipalEntities = data.list;
+				});
+			}
 			CapitalConstructsConstructTypeService.get().then(function (constructTypePager) {
 				modalScope.availableTypes = constructTypePager.list;
 				MGISCommonsModalForm.edit("app2/capital-constructs/construct/construct-form.htm", modalScope, function (scope, modalInstance) {
