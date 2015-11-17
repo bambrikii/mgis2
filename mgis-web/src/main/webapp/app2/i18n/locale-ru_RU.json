@@ -389,5 +389,8 @@
   "ConditionalNumber": "Условный номер",
   "InventoryNumber": "Инвентарный номер",
   "OverallArea": "Общая площадь",
-  "MunicipalEntity": "Муниципальное образование"
+  "MunicipalEntity": "Муниципальное образование",
+  "DataExchange": "Обмен данными",
+  "DataExchange.Import": "Импорт",
+  "DataExchange.Export": "Экспорт"
 }
