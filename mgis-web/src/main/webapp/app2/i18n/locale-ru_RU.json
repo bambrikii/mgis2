@@ -392,5 +392,6 @@
   "MunicipalEntity": "Муниципальное образование",
   "DataExchange": "Обмен данными",
   "DataExchange.Import": "Импорт",
-  "DataExchange.Export": "Экспорт"
+  "DataExchange.Export": "Экспорт",
+  "DataExchange.Import.RusRegister.Lands": "РосРеестр - Земельные участки"
 }
