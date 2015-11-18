@@ -70,7 +70,7 @@ public abstract class AbstractUploadServlet extends HttpServlet {
 					Files.delete(file.toPath());
 				}
 			} else {
-				response.getWriter().print("Upload: chunkNumber:" + flowChunkNumber + ", seekPosition:" + pos + ", contentLength:" + contentLength + ", totalSize:" + info.flowTotalSize + " .");
+				response.getWriter().print("Upload: chunkNumber:" + flowChunkNumber + ", chunkSize:" + info.flowChunkSize + ", seekPosition:" + pos + ", contentLength:" + contentLength + ", totalSize:" + info.flowTotalSize + " .");
 			}
 		}
 	}
