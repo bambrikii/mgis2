@@ -13,30 +13,30 @@ import org.xml.sax.helpers.DefaultHandler;
  * -  Cadastral_Blocks
  * -   Cadastral_Block
  * -   Area
- * -    Parcels
- * -     Parcel[CadastralNumber,Name,State,DateCreated]
+ * -   Parcels
+ * -    Parcel[CadastralNumber,Name,State,DateCreated]
+ * -     Area
  * -      Area
- * -       Area
- * -       Unit
- * -      Location
- * -       inBounds
- * -       Placed
- * -       Address
- * -        Code_OKATO
- * -        Code_KLADR
- * -        Region
- * -        District[Name,Type]
- * -        Locality[Name,Type]
- * -        Street[Name,Type]
- * -        Level1
- * -        Note
- * -    OMSPoints
+ * -      Unit
+ * -     Location
+ * -      inBounds
+ * -      Placed
+ * -      Address
+ * -       Code_OKATO
+ * -       Code_KLADR
+ * -       Region
+ * -       District[Name,Type]
+ * -       Locality[Name,Type]
+ * -       Street[Name,Type]
+ * -       Level1
+ * -       Note
+ * -   OMSPoints
  * -
- * -    SpatialData
+ * -   SpatialData
  * -
- * -    Bounds
+ * -   Bounds
  * -
- * -    Certification_Doc
+ * -   Certification_Doc
  * -
  */
 public class Region_CadastrHandler extends DefaultHandler {

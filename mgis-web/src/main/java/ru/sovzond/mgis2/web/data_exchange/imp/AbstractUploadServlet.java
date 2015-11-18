@@ -22,23 +22,30 @@ import java.nio.file.Files;
 public abstract class AbstractUploadServlet extends HttpServlet {
 
 	public static final String UPLOAD_DIR = System.getProperty("java.io.tmpdir");
+	public static final String FLOW_CHUNK_NUMBER = "flowChunkNumber";
+	public static final String FLOW_CHUNK_SIZE = "flowChunkSize";
+	public static final String FLOW_TOTAL_SIZE = "flowTotalSize";
+	public static final String FLOW_IDENTIFIER = "flowIdentifier";
+	public static final String FLOW_FILENAME = "flowFilename";
+	public static final String FLOW_RELATIVE_PATH = "flowRelativePath";
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int flowChunkNumber = getFlowChunkNumber(request);
-
 		FlowInfo info = getFlowInfo(request);
 
 		try (RandomAccessFile raf = new RandomAccessFile(info.flowFilePath, "rw")) {
 
 			//Seek to position
-			raf.seek((flowChunkNumber - 1) * info.flowChunkSize);
+			int pos = (flowChunkNumber - 1) * info.flowChunkSize;
+			raf.seek(pos);
+
+			long contentLength = request.getContentLength();
 
 			//Save to file
 			Part part = request.getPart("file");
 
 			try (InputStream is = part.getInputStream()) {
 				long read = 0;
-				long contentLength = request.getContentLength();
 				byte[] bytes = new byte[1024 * 100];
 				while (read < contentLength) {
 					int r = is.read(bytes);
@@ -52,7 +59,7 @@ public abstract class AbstractUploadServlet extends HttpServlet {
 
 
 			//Mark as uploaded.
-			info.uploadedChunks.add(new FlowInfo.ResumableChunkNumber(flowChunkNumber));
+			info.uploadedChunks.add(new FlowInfo.FlowChunkNumber(flowChunkNumber));
 			if (info.checkIfUploadFinished()) { //Check if all chunks uploaded, and change filename
 				FlowInfoStorage.getInstance().remove(info);
 				response.getWriter().print("All finished.");
@@ -63,7 +70,7 @@ public abstract class AbstractUploadServlet extends HttpServlet {
 					Files.delete(file.toPath());
 				}
 			} else {
-				response.getWriter().print("Upload");
+				response.getWriter().print("Upload: chunkNumber:" + flowChunkNumber + ", seekPosition:" + pos + ", contentLength:" + contentLength + ", totalSize:" + info.flowTotalSize + " .");
 			}
 		}
 	}
@@ -75,7 +82,7 @@ public abstract class AbstractUploadServlet extends HttpServlet {
 
 		FlowInfo info = getFlowInfo(request);
 
-		if (info.uploadedChunks.contains(new FlowInfo.ResumableChunkNumber(flowChunkNumber))) {
+		if (info.uploadedChunks.contains(new FlowInfo.FlowChunkNumber(flowChunkNumber))) {
 			response.getWriter().print("Uploaded."); //This Chunk has been Uploaded.
 		} else {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -83,25 +90,23 @@ public abstract class AbstractUploadServlet extends HttpServlet {
 	}
 
 	private int getFlowChunkNumber(HttpServletRequest request) {
-		return HttpUtils.toInt(request.getParameter("flowChunkNumber"), -1);
+		return HttpUtils.toInt(request.getParameter(FLOW_CHUNK_NUMBER), -1);
 	}
 
 	private FlowInfo getFlowInfo(HttpServletRequest request) throws ServletException {
-		String base_dir = UPLOAD_DIR;
 
-		int chunkSize = HttpUtils.toInt(request.getParameter("flowChunkSize"), -1);
-		long totalSize = HttpUtils.toLong(request.getParameter("flowTotalSize"), -1);
-		String identifier = request.getParameter("flowIdentifier");
-		String filename = request.getParameter("flowFilename");
-		String relativePath = request.getParameter("flowRelativePath");
+		int chunkSize = HttpUtils.toInt(request.getParameter(FLOW_CHUNK_SIZE), -1);
+		long totalSize = HttpUtils.toLong(request.getParameter(FLOW_TOTAL_SIZE), -1);
+		String identifier = request.getParameter(FLOW_IDENTIFIER);
+		String filename = request.getParameter(FLOW_FILENAME);
+		String relativePath = request.getParameter(FLOW_RELATIVE_PATH);
 		//Here we add a ".temp" to every upload file to indicate NON-FINISHED
-		String filePath = new File(base_dir, filename).getAbsolutePath() + ".temp";
+		String filePath = new File(UPLOAD_DIR, filename).getAbsolutePath() + ".temp";
 
 		FlowInfoStorage storage = FlowInfoStorage.getInstance();
 
-		FlowInfo info = storage.getFlowInfo(chunkSize, totalSize,
-				identifier, filename, relativePath, filePath);
-		if (!info.isVaild()) {
+		FlowInfo info = storage.getFlowInfo(chunkSize, totalSize, identifier, filename, relativePath, filePath);
+		if (!info.isValid()) {
 			storage.remove(info);
 			throw new ServletException("Invalid request params.");
 		}

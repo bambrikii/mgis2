@@ -14,8 +14,8 @@ public class FlowInfo {
 	public String flowFilename;
 	public String flowRelativePath;
 
-	public static class ResumableChunkNumber {
-		public ResumableChunkNumber(int number) {
+	public static class FlowChunkNumber {
+		public FlowChunkNumber(int number) {
 			this.number = number;
 		}
 
@@ -23,8 +23,7 @@ public class FlowInfo {
 
 		@Override
 		public boolean equals(Object obj) {
-			return obj instanceof ResumableChunkNumber
-					? ((ResumableChunkNumber) obj).number == this.number : false;
+			return obj instanceof FlowChunkNumber ? ((FlowChunkNumber) obj).number == this.number : false;
 		}
 
 		@Override
@@ -33,35 +32,29 @@ public class FlowInfo {
 		}
 	}
 
-	//Chunks uploaded
-	public HashSet<ResumableChunkNumber> uploadedChunks = new HashSet<ResumableChunkNumber>();
+	/**
+	 * Chunks uploaded.
+	 */
+	public HashSet<FlowChunkNumber> uploadedChunks = new HashSet<>();
 
 	public String flowFilePath;
 
-	public boolean isVaild() {
-		if (flowChunkSize < 0 || flowTotalSize < 0
-				|| HttpUtils.isEmpty(flowIdentifier)
-				|| HttpUtils.isEmpty(flowFilename)
-				|| HttpUtils.isEmpty(flowRelativePath)) {
-			return false;
-		} else {
-			return true;
-		}
+	public boolean isValid() {
+		return (flowChunkSize > 0 && flowTotalSize > 0 && !(HttpUtils.isEmpty(flowIdentifier) || HttpUtils.isEmpty(flowFilename) || HttpUtils.isEmpty(flowRelativePath)));
 	}
 
 	public boolean checkIfUploadFinished() {
-		//check if upload finished
 		int count = (int) Math.ceil(((double) flowTotalSize) / ((double) flowChunkSize));
 		for (int i = 1; i < count + 1; i++) {
-			if (!uploadedChunks.contains(new ResumableChunkNumber(i))) {
+			if (!uploadedChunks.contains(new FlowChunkNumber(i))) {
 				return false;
 			}
 		}
 
 		//Upload finished, change filename.
 		File file = new File(flowFilePath);
-		String new_path = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - ".temp".length());
-		file.renameTo(new File(new_path));
+		String newPath = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - ".temp".length());
+		file.renameTo(new File(newPath));
 		return true;
 	}
 }
