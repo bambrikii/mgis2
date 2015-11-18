@@ -1,4 +1,4 @@
-package ru.sovzond.mgis.integration.data_exchange.imp;
+package ru.sovzond.mgis2.integration.data_exchange.imp;
 
 import java.io.File;
 import java.io.InputStream;
