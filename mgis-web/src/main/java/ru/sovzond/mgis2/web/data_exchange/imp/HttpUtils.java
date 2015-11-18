@@ -1,7 +1,7 @@
 package ru.sovzond.mgis2.web.data_exchange.imp;
 
 /**
- * Created by Alexander Arakelyan on 17.11.15.
+ * by fanxu123
  */
 public class HttpUtils {
 

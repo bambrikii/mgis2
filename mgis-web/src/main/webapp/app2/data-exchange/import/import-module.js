@@ -11,4 +11,9 @@ angular.module("mgis.data-exchange.import", ["ngFileUpload", "flow"])
 				}
 			});
 	}) //
+	.controller("RusRegisterImportController", function ($scope) {
+		$scope.someHandlerMethod = function () {
+			// console.log(arguments);
+		}
+	});
 ;

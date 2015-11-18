@@ -67,7 +67,9 @@
 	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control-wfs-zoom.js"></script>
 
 	<!-- https://github.com/flowjs/ng-flow -->
-	<script type="text/javascript" src="bower_components/ng-flow/dist/ng-flow-standalone.min.js"></script>
+	<%--<script type="text/javascript" src="bower_components/ng-flow/dist/ng-flow-standalone.min.js"></script>--%>
+	<script src="bower_components/flow.js/dist/flow.js"></script>
+	<script src="bower_components/ng-flow/dist/ng-flow.js"></script>
 
 	<!-- app2 -->
 	<script type="text/javascript" src="app2/app.js"></script>

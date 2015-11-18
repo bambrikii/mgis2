@@ -93,6 +93,12 @@
 			<version>${project.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>ru.sovzond.mgis2</groupId>
+			<artifactId>mgis-integration</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<!--Jackson -->
 		<!--<dependency> -->
 		<!--<groupId>org.codehaus.jackson</groupId> -->

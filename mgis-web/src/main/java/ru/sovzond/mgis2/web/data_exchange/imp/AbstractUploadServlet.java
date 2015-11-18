@@ -1,86 +1,110 @@
 package ru.sovzond.mgis2.web.data_exchange.imp;
 
+/**
+ * Created by Alexander Arakelyan on 18.11.15.
+ */
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import javax.servlet.http.Part;
+import java.io.*;
+import java.nio.file.Files;
 
 /**
- * Created by Alexander Arakelyan on 17.11.15.
+ * This is a servlet demo,  for using Resumable.js to upload files.
  * <p>
- * https://github.com/flowjs/flow.js/tree/master/samples/java/src/resumable/js/upload
+ * by fanxu123
  */
-public class AbstractUploadServlet extends HttpServlet {
+@MultipartConfig
+public abstract class AbstractUploadServlet extends HttpServlet {
+
+	public static final String UPLOAD_DIR = System.getProperty("java.io.tmpdir");
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int flowChunkNumber = getFlowChunkNumber(request);
 
-		OutputStream os = new ByteArrayOutputStream();
-		consume(request, response, os);
-	}
+		FlowInfo info = getFlowInfo(request);
 
-	protected void consume(HttpServletRequest request, HttpServletResponse response, OutputStream os) throws ServletException, IOException {
-		int resumableChunkNumber = getResumableChunkNumber(request);
+		try (RandomAccessFile raf = new RandomAccessFile(info.flowFilePath, "rw")) {
 
-		ResumableInfo info = getResumableInfo(request);
+			//Seek to position
+			raf.seek((flowChunkNumber - 1) * info.flowChunkSize);
 
-		InputStream is = request.getInputStream();
-		long readed = 0;
-		long content_length = request.getContentLength();
-		byte[] bytes = new byte[1024 * 100];
-		while (readed < content_length) {
-			int r = is.read(bytes);
-			if (r < 0) {
-				break;
+			//Save to file
+			Part part = request.getPart("file");
+
+			try (InputStream is = part.getInputStream()) {
+				long read = 0;
+				long contentLength = request.getContentLength();
+				byte[] bytes = new byte[1024 * 100];
+				while (read < contentLength) {
+					int r = is.read(bytes);
+					if (r < 0) {
+						break;
+					}
+					raf.write(bytes, 0, r);
+					read += r;
+				}
 			}
-			os.write(bytes, 0, r);
-			readed += r;
-		}
-		os.close();
 
-		info.uploadedChunks.add(new ResumableInfo.ResumableChunkNumber(resumableChunkNumber));
-		if (info.checkIfUploadFinished()) {
-			ResumableInfoStorage.getInstance().remove(info);
-			response.getWriter().print("All finished.");
+
+			//Mark as uploaded.
+			info.uploadedChunks.add(new FlowInfo.ResumableChunkNumber(flowChunkNumber));
+			if (info.checkIfUploadFinished()) { //Check if all chunks uploaded, and change filename
+				FlowInfoStorage.getInstance().remove(info);
+				response.getWriter().print("All finished.");
+				File file = new File(info.flowFilePath);
+				try (InputStream is = new FileInputStream(file)) {
+					doImport(is);
+				} finally {
+					Files.delete(file.toPath());
+				}
+			} else {
+				response.getWriter().print("Upload");
+			}
+		}
+	}
+
+	protected abstract void doImport(InputStream inputStream);
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int flowChunkNumber = getFlowChunkNumber(request);
+
+		FlowInfo info = getFlowInfo(request);
+
+		if (info.uploadedChunks.contains(new FlowInfo.ResumableChunkNumber(flowChunkNumber))) {
+			response.getWriter().print("Uploaded."); //This Chunk has been Uploaded.
 		} else {
-			response.getWriter().print("Upload");
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		}
 	}
 
-	private int getResumableChunkNumber(HttpServletRequest request) {
-		return HttpUtils.toInt(request.getParameter("resumableChunkNumber"), -1);
+	private int getFlowChunkNumber(HttpServletRequest request) {
+		return HttpUtils.toInt(request.getParameter("flowChunkNumber"), -1);
 	}
 
-	private ResumableInfo getResumableInfo(HttpServletRequest request) throws ServletException {
+	private FlowInfo getFlowInfo(HttpServletRequest request) throws ServletException {
+		String base_dir = UPLOAD_DIR;
 
-		int resumableChunkSize = HttpUtils.toInt(request.getParameter("resumableChunkSize"), -1);
-		long resumableTotalSize = HttpUtils.toLong(request.getParameter("resumableTotalSize"), -1);
-		String resumableIdentifier = request.getParameter("resumableIdentifier");
-		String resumableFilename = request.getParameter("resumableFilename");
-		String resumableRelativePath = request.getParameter("resumableRelativePath");
+		int chunkSize = HttpUtils.toInt(request.getParameter("flowChunkSize"), -1);
+		long totalSize = HttpUtils.toLong(request.getParameter("flowTotalSize"), -1);
+		String identifier = request.getParameter("flowIdentifier");
+		String filename = request.getParameter("flowFilename");
+		String relativePath = request.getParameter("flowRelativePath");
+		//Here we add a ".temp" to every upload file to indicate NON-FINISHED
+		String filePath = new File(base_dir, filename).getAbsolutePath() + ".temp";
 
-		ResumableInfoStorage storage = ResumableInfoStorage.getInstance();
+		FlowInfoStorage storage = FlowInfoStorage.getInstance();
 
-		ResumableInfo info = storage.get(resumableChunkSize, resumableTotalSize,
-				resumableIdentifier, resumableFilename, resumableRelativePath, "resumableFilePath");
-		if (!info.vaild()) {
+		FlowInfo info = storage.getFlowInfo(chunkSize, totalSize,
+				identifier, filename, relativePath, filePath);
+		if (!info.isVaild()) {
 			storage.remove(info);
 			throw new ServletException("Invalid request params.");
 		}
 		return info;
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int resumableChunkNumber = getResumableChunkNumber(request);
-
-		ResumableInfo info = getResumableInfo(request);
-
-		if (info.uploadedChunks.contains(new ResumableInfo.ResumableChunkNumber(resumableChunkNumber))) {
-			response.getWriter().print("Uploaded.");
-		} else {
-			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-		}
 	}
 }
