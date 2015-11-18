@@ -19,6 +19,6 @@ public class LandsImporter implements Importable {
 	}
 
 	public void imp(InputStream inputStream) {
-
+		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 }
