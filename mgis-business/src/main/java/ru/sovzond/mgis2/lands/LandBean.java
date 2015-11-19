@@ -43,4 +43,9 @@ public class LandBean extends CRUDBeanBase<Land> {
 		dao.save(land);
 		return true;
 	}
+
+
+	public Pageable<Land> find(String cadastralNumber, int first, int max) {
+		return dao.pager(dao.createFilter(cadastralNumber, null, null, first, max));
+	}
 }

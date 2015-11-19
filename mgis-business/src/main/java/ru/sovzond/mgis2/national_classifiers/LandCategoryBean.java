@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.business.CRUDBeanBase;
 import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
 
 /**
@@ -24,5 +25,13 @@ public class LandCategoryBean extends CRUDBeanBase<LandCategory> {
 	@Override
 	protected IIdentifiableDao<LandCategory> getIIdentifiableDao() {
 		return dao;
+	}
+
+	public Pageable<LandCategory> find(String code, int first, int max) {
+		return dao.pager(dao.createFilter(code, null, first, max));
+	}
+
+	public LandCategory findByCode(String code) {
+		return dao.findByCode(code);
 	}
 }

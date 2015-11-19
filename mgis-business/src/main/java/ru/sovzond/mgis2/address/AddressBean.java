@@ -8,6 +8,7 @@ import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -33,5 +34,9 @@ public class AddressBean extends CRUDBeanBase<Address> {
 	public PageableContainer<Address> list(String orderBy, int first, int max, String name) {
 		Pageable<Address> pager = dao.pager(dao.createFilter(name, orderBy, first, max));
 		return new PageableContainer<>(pager.list().stream().map(Address::clone).collect(Collectors.toList()), pager.count(), first, max);
+	}
+
+	public List<Address> find(String okato, String kladr) {
+		return dao.find(okato, kladr);
 	}
 }

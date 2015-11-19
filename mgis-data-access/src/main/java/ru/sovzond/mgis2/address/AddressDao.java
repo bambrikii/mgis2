@@ -7,11 +7,21 @@ import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 
+import java.util.List;
+
 @Repository
 public class AddressDao extends CRUDDaoBase<Address> {
 
 	public PagerBuilderBase<Address> createFilter(String name, String orderBy, int first, int max) {
 		return new AddressPagerBuilder(name, orderBy, first, max);
+	}
+
+	public List<Address> find(String okato, String kladr) {
+		Criteria criteria = getSession().createCriteria(persistentClass);
+		criteria.add(Restrictions.eq("okato", okato));
+		criteria.add(Restrictions.eq("kladr", kladr));
+		// TODO: return criteria.list();
+		throw new UnsupportedOperationException("Not yet implemented.");
 	}
 
 	private class AddressPagerBuilder extends PagerBuilderCriteria<Address> {
