@@ -1,6 +1,8 @@
 package ru.sovzond.mgis2.web.data_exchange.imp;
 
-import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * by fanxu
@@ -13,7 +15,9 @@ public class FlowInfoStorage {
 	private FlowInfoStorage() {
 	}
 
-	private static FlowInfoStorage sInstance;
+	private static volatile FlowInfoStorage sInstance;
+
+	private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
 	public static synchronized FlowInfoStorage getInstance() {
 		if (sInstance == null) {
@@ -22,11 +26,23 @@ public class FlowInfoStorage {
 		return sInstance;
 	}
 
-	//flowIdentifier --  ResumableInfo
-	private HashMap<String, FlowInfo> mMap = new HashMap<String, FlowInfo>();
+	// flowIdentifier --  FlowInfo
+	private Map<String, FlowInfo> flowInfoMap = new ConcurrentHashMap<>();
+
+	public FlowInfo readFlowInfo(String flowIdentifier) {
+		FlowInfo info = null;
+		ReentrantReadWriteLock.ReadLock readLock = lock.readLock();
+		try {
+			readLock.lock();
+			info = flowInfoMap.get(flowIdentifier);
+		} finally {
+			readLock.unlock();
+		}
+		return info;
+	}
 
 	/**
-	 * Get ResumableInfo from mMap or Create a new one.
+	 * Get FlowInfo from flowInfoMap or Create a new one.
 	 *
 	 * @param flowChunkSize
 	 * @param flowTotalSize
@@ -36,23 +52,30 @@ public class FlowInfoStorage {
 	 * @param flowFilePath
 	 * @return
 	 */
-	public synchronized FlowInfo getFlowInfo(int flowChunkSize, long flowTotalSize,
-											 String flowIdentifier, String flowFilename,
-											 String flowRelativePath, String flowFilePath) {
+	public FlowInfo writeFlowInfoIfNone(int flowChunkSize, long flowTotalSize,
+										String flowIdentifier, String flowFilename,
+										String flowRelativePath, String flowFilePath) {
 
-		FlowInfo info = mMap.get(flowIdentifier);
-
+//		ReentrantReadWriteLock.ReadLock readLock = lock.readLock();
+		ReentrantReadWriteLock.WriteLock writeLock = lock.writeLock();
+		FlowInfo info = flowInfoMap.get(flowIdentifier);
 		if (info == null) {
-			info = new FlowInfo();
-
-			info.flowChunkSize = flowChunkSize;
-			info.flowTotalSize = flowTotalSize;
-			info.flowIdentifier = flowIdentifier;
-			info.flowFilename = flowFilename;
-			info.flowRelativePath = flowRelativePath;
-			info.flowFilePath = flowFilePath;
-
-			mMap.put(flowIdentifier, info);
+			try {
+				writeLock.lock();
+				info = flowInfoMap.get(flowIdentifier);
+				if (info == null) {
+					info = new FlowInfo(
+							flowChunkSize,
+							flowTotalSize,
+							flowIdentifier,
+							flowFilename,
+							flowRelativePath,
+							flowFilePath);
+					flowInfoMap.put(flowIdentifier, info);
+				}
+			} finally {
+				writeLock.unlock();
+			}
 		}
 		return info;
 	}
@@ -63,6 +86,6 @@ public class FlowInfoStorage {
 	 * @param info
 	 */
 	public void remove(FlowInfo info) {
-		mMap.remove(info.flowIdentifier);
+		flowInfoMap.remove(info.getFlowIdentifier());
 	}
 }

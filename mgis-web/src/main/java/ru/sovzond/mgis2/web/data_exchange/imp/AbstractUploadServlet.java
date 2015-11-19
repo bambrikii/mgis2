@@ -31,12 +31,12 @@ public abstract class AbstractUploadServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int flowChunkNumber = getFlowChunkNumber(request);
-		FlowInfo info = getFlowInfo(request);
+		FlowInfo info = writeFlowInfo(request);
 
-		try (RandomAccessFile raf = new RandomAccessFile(info.flowFilePath, "rw")) {
+		try (RandomAccessFile raf = new RandomAccessFile(info.getFlowFilePath(), "rw")) {
 
 			//Seek to position
-			int pos = (flowChunkNumber - 1) * info.flowChunkSize;
+			long pos = (long) (flowChunkNumber - 1) * info.getFlowChunkSize();
 			raf.seek(pos);
 
 			long contentLength = request.getContentLength();
@@ -44,33 +44,43 @@ public abstract class AbstractUploadServlet extends HttpServlet {
 			//Save to file
 			Part part = request.getPart("file");
 
+			long bytesReadTotal = 0;
 			try (InputStream is = part.getInputStream()) {
-				long read = 0;
 				byte[] bytes = new byte[1024 * 100];
-				while (read < contentLength) {
+				while (bytesReadTotal < contentLength) {
 					int r = is.read(bytes);
 					if (r < 0) {
 						break;
 					}
 					raf.write(bytes, 0, r);
-					read += r;
+					bytesReadTotal += r;
 				}
 			}
 
 
 			//Mark as uploaded.
-			info.uploadedChunks.add(new FlowInfo.FlowChunkNumber(flowChunkNumber));
-			if (info.checkIfUploadFinished()) { //Check if all chunks uploaded, and change filename
+			info.addChunk(flowChunkNumber, pos, pos + bytesReadTotal);
+			if (info.checkIfUploadComplete()) { //Check if all chunks uploaded, and change filename
 				FlowInfoStorage.getInstance().remove(info);
 				response.getWriter().print("All finished.");
-				File file = new File(info.flowFilePath);
+				File file = new File(info.getFlowFilePath());
 				try (InputStream is = new FileInputStream(file)) {
 					doImport(is);
+				} catch (Exception ex) {
+					ex.printStackTrace(response.getWriter());
 				} finally {
+					// Upload finished, change filename.
 					Files.delete(file.toPath());
 				}
 			} else {
-				response.getWriter().print("Upload: chunkNumber:" + flowChunkNumber + ", chunkSize:" + info.flowChunkSize + ", seekPosition:" + pos + ", contentLength:" + contentLength + ", totalSize:" + info.flowTotalSize + " .");
+				response.getWriter().print(
+						"Upload: chunkNumber:" + flowChunkNumber
+								+ ", chunkSize:" + info.getFlowChunkSize()
+								+ ", seekPosition:" + pos
+								+ ", contentLength:" + contentLength
+								+ ", totalSize:" + info.getFlowTotalSize()
+								+ " ."
+				);
 			}
 		}
 	}
@@ -80,9 +90,9 @@ public abstract class AbstractUploadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int flowChunkNumber = getFlowChunkNumber(request);
 
-		FlowInfo info = getFlowInfo(request);
+		FlowInfo info = readFlowInfo(request);
 
-		if (info.uploadedChunks.contains(new FlowInfo.FlowChunkNumber(flowChunkNumber))) {
+		if (info != null && info.containsChunk(flowChunkNumber)) {
 			response.getWriter().print("Uploaded."); //This Chunk has been Uploaded.
 		} else {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -93,23 +103,29 @@ public abstract class AbstractUploadServlet extends HttpServlet {
 		return HttpUtils.toInt(request.getParameter(FLOW_CHUNK_NUMBER), -1);
 	}
 
-	private FlowInfo getFlowInfo(HttpServletRequest request) throws ServletException {
-
+	private FlowInfo writeFlowInfo(HttpServletRequest request) throws ServletException {
 		int chunkSize = HttpUtils.toInt(request.getParameter(FLOW_CHUNK_SIZE), -1);
 		long totalSize = HttpUtils.toLong(request.getParameter(FLOW_TOTAL_SIZE), -1);
 		String identifier = request.getParameter(FLOW_IDENTIFIER);
 		String filename = request.getParameter(FLOW_FILENAME);
 		String relativePath = request.getParameter(FLOW_RELATIVE_PATH);
 		//Here we add a ".temp" to every upload file to indicate NON-FINISHED
-		String filePath = new File(UPLOAD_DIR, filename).getAbsolutePath() + ".temp";
+		String filePath = new File(UPLOAD_DIR, filename + "." + identifier).getAbsolutePath() + ".temp";
 
 		FlowInfoStorage storage = FlowInfoStorage.getInstance();
 
-		FlowInfo info = storage.getFlowInfo(chunkSize, totalSize, identifier, filename, relativePath, filePath);
+		FlowInfo info = storage.writeFlowInfoIfNone(chunkSize, totalSize, identifier, filename, relativePath, filePath);
 		if (!info.isValid()) {
 			storage.remove(info);
 			throw new ServletException("Invalid request params.");
 		}
+		return info;
+	}
+
+	private FlowInfo readFlowInfo(HttpServletRequest request) {
+		FlowInfoStorage storage = FlowInfoStorage.getInstance();
+		String identifier = request.getParameter(FLOW_IDENTIFIER);
+		FlowInfo info = storage.readFlowInfo(identifier);
 		return info;
 	}
 }
