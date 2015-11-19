@@ -12,6 +12,7 @@ import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 import ru.sovzond.mgis2.geo.GeometryParser;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,7 +46,7 @@ public class LandBean extends CRUDBeanBase<Land> {
 	}
 
 
-	public Pageable<Land> find(String cadastralNumber, int first, int max) {
-		return dao.pager(dao.createFilter(cadastralNumber, null, null, first, max));
+	public List<Land> find(String cadastralNumber) {
+		return dao.find(cadastralNumber);
 	}
 }

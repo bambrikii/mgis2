@@ -24,4 +24,12 @@ public class CoordinateSystemBean extends CRUDBeanBase<CoordinateSystem> {
 	protected IIdentifiableDao<CoordinateSystem> getIIdentifiableDao() {
 		return dao;
 	}
+
+	public CoordinateSystem findByName(String name) {
+		return findByCode(name);
+	}
+
+	public CoordinateSystem findByCode(String code) {
+		return dao.findByCode(code);
+	}
 }

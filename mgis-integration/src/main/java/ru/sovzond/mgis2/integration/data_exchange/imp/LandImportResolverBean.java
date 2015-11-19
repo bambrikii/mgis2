@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.address.AddressBean;
-import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 import ru.sovzond.mgis2.geo.CoordinateSystem;
+import ru.sovzond.mgis2.geo.CoordinateSystemBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.AddressDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandDTO;
 import ru.sovzond.mgis2.lands.Land;
@@ -41,6 +41,9 @@ public class LandImportResolverBean {
 	@Autowired
 	private OKTMOBean oktmoBean;
 
+	@Autowired
+	private CoordinateSystemBean coordinateSystemBean;
+
 	private Address resolveAddress(AddressDTO addressDTO) {
 		List<Address> addresses = addressBean.find(addressDTO.getOkato(), addressDTO.getKladr());
 		switch (addresses.size()) {
@@ -54,24 +57,20 @@ public class LandImportResolverBean {
 	}
 
 	private CoordinateSystem resolveCoordinateSystem(String name) {
-		throw new UnsupportedOperationException();
+		return coordinateSystemBean.findByCode(name);
 	}
 
 	private LandRightKind resolveLandRightKind(String name, String type) {
-		throw new UnsupportedOperationException();
-	}
-
-	private Land resolveLand(String cadastralNumber) {
-		throw new UnsupportedOperationException();
+		return landRightKindBean.find(type);
 	}
 
 	public Land resolveLand(LandDTO landDTO) {
-		Pageable<Land> pager = landBean.find(landDTO.getCadastralNumber(), 0, 0);
-		switch (pager.count().intValue()) {
+		List<Land> lands = landBean.find(landDTO.getCadastralNumber());
+		switch (lands.size()) {
 			case 0:
 				return createLand(landDTO);
 			case 1:
-				return updateLand(landDTO, pager.list().get(0));
+				return updateLand(landDTO, lands.get(0));
 			default:
 				throw new UnsupportedOperationException();
 		}
@@ -100,22 +99,6 @@ public class LandImportResolverBean {
 	}
 
 	private void copyPlainProperties(LandDTO landDTO, Land land) {
-		BeanUtils.copyProperties(landDTO, land, new String[]{
-				"id",
-				"landCategory",
-				"landAreas",
-				"allowedUsageByDictionary",
-				"allowedUsageByTerritorialZone",
-				"oktmo",
-				"address",
-				"rights",
-				"characteristics",
-				"includedObjects",
-				"works",
-				"control",
-				"previousVersion",
-				"geometry",
-				"spatialData"
-		});
+		BeanUtils.copyProperties(landDTO, land, new String[]{"id", "landCategory", "landAreas", "allowedUsageByDictionary", "allowedUsageByTerritorialZone", "oktmo", "address", "rights", "characteristics", "includedObjects", "works", "control", "previousVersion", "geometry", "spatialData"});
 	}
 }
