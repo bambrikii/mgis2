@@ -1,10 +1,13 @@
 package ru.sovzond.mgis2.kladr;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
+
+import java.util.List;
 
 /**
  * Created by Alexander Arakelyan on 10.09.15.
@@ -21,6 +24,33 @@ public class KLADRLocalityDao extends CRUDDaoBase<KLADRLocality> {
 
 	public PagerBuilderBase<KLADRLocality> createLocalityFilter(String subjectCode, String regionCode, String localityName, String orderBy, int first, int max) {
 		return new KLADRLocalityFilter(subjectCode, regionCode, localityName, orderBy, first, max);
+	}
+
+	public List<KLADRLocality> findSubject(String subjectName, String subjectType) {
+		return createCriteria() //
+				.add(Restrictions.like("code", "__00000000000")) //
+				.add(Restrictions.eq("name", subjectName)).add(Restrictions.eq("socr", subjectType)) //
+				.list();
+	}
+
+	public KLADRLocality findSubjectByCode(String subjectCode) {
+		return (KLADRLocality) createCriteria() //
+				.add(Restrictions.eq("code", subjectCode + "00000000000")) //
+				.uniqueResult();
+	}
+
+	public List<KLADRLocality> findRegion(String subjectCode, String regionName, String regionType) {
+		return createCriteria() //
+				.add(Restrictions.like("code", subjectCode.substring(0, 2) + "______00000")) //
+				.add(Restrictions.eq("name", regionName)).add(Restrictions.eq("socr", regionType)) //
+				.list();
+	}
+
+	public List<KLADRLocality> findLocality(String regionCode, String localityName, String localityType) {
+		Criteria criteria = createCriteria();
+		criteria.add(Restrictions.like("code", regionCode.substring(0, 8) + "_____"));
+		return criteria.add(Restrictions.eq("name", localityName)).add(Restrictions.eq("socr", localityType)) //
+				.list();
 	}
 
 	private class KLADRSubjectFilter extends PagerBuilderCriteria<KLADRLocality> {

@@ -17,6 +17,10 @@ public class OKATODao extends CRUDDaoBase<OKATO> {
 		return new OKATOPagerBuilder(code, name, orderBy, first, max);
 	}
 
+	public OKATO findByCode(String code) {
+		return (OKATO) createCriteria().add(Restrictions.eq("code", code)).uniqueResult();
+	}
+
 	private class OKATOPagerBuilder extends PagerBuilderCriteria<OKATO> {
 		private String code;
 		private String name;

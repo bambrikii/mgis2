@@ -10,14 +10,16 @@ import ru.sovzond.mgis2.geo.CoordinateSystem;
 import ru.sovzond.mgis2.geo.CoordinateSystemBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.AddressDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandDTO;
+import ru.sovzond.mgis2.kladr.KLADRLocality;
+import ru.sovzond.mgis2.kladr.KLADRLocalityDao;
+import ru.sovzond.mgis2.kladr.KLADRStreet;
+import ru.sovzond.mgis2.kladr.KLADRStreetDao;
 import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.national_classifiers.LandCategoryBean;
 import ru.sovzond.mgis2.national_classifiers.LandRightKindBean;
+import ru.sovzond.mgis2.national_classifiers.OKATOBean;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
-import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
-import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
-import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
-import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZoneType;
+import ru.sovzond.mgis2.registers.national_classifiers.*;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -55,26 +57,67 @@ public class LandImportResolverBean {
 	@Autowired
 	private TerritorialZoneBean territorialZoneBean;
 
+	@Autowired
+	private KLADRLocalityDao kladrLocalityDao;
+
+	@Autowired
+	private KLADRStreetDao kladrStreetDao;
+
+	@Autowired
+	private OKATOBean okatoBean;
+
 	private Pattern cadastralNumberPattern = Pattern.compile(CADASTRAL_BLOCK_PATTERN);
 
 
 	private Address resolveAddress(AddressDTO addressDTO) {
-		// TODO:
 		AddressFilterBuilder filterBuilder = addressBean.createfilterBuilder();
-		filterBuilder
-				.subject(addressDTO.getDistrictName(), addressDTO.getDistrictType())
-		//.
-		//.apartment(addressDTO.getLevelValue())
+		filterBuilder //
+				.subjectCode(addressDTO.getRegion()) //
+				.region(addressDTO.getDistrictName(), addressDTO.getDistrictType()) //
+				.locality(addressDTO.getLocalityName(), addressDTO.getLocalityType()) //
+				.street(addressDTO.getStreetName(), addressDTO.getStreetType()) //
+				.home(addressDTO.getLevelValue()).housing(addressDTO.getLevelType()) //
 		;
 		List<Address> addresses = addressBean.find(filterBuilder.build());
 		switch (addresses.size()) {
 			case 0:
-				return null;
+				return updateAddress(new Address(), addressDTO);
 			case 1:
-				return addresses.get(0);
+				return updateAddress(addresses.get(0), addressDTO);
 			default:
 				throw new UnsupportedOperationException("More than one address found for dto: " + addressDTO);
 		}
+	}
+
+	private Address updateAddress(Address address, AddressDTO addressDTO) {
+		// TODO:
+		//		address.setApartment(addressDTO.getLevelValue());
+		//		address.setBuilding(addressDTO.getLevelValue());
+		//		address.setHousing(addressDTO.getLevelValue());
+		address.setHousing(addressDTO.getLevelType());
+		address.setHome(addressDTO.getLevelValue());
+
+
+		KLADRLocality subject = kladrLocalityDao.findSubjectByCode(addressDTO.getRegion());
+		KLADRLocality region = kladrLocalityDao.findRegion(subject.getCode(), addressDTO.getDistrictName(), addressDTO.getDistrictType()).get(0);
+		KLADRLocality locality = kladrLocalityDao.findLocality(region.getCode(), addressDTO.getLocalityName(), addressDTO.getLocalityType()).get(0);
+		KLADRStreet street = kladrStreetDao.findStreet(locality.getCode(), addressDTO.getStreetName(), addressDTO.getStreetType()).get(0);
+
+		address.setSubject(subject);
+		address.setRegion(region);
+		address.setLocality(locality);
+		address.setStreet(street);
+
+		OKATO okato = okatoBean.findByCode("79");
+		address.setOkato(okato);
+
+		OKTMO oktmo = oktmoBean.list("79000000", null, null, 0, 0).getList().get(0);
+		address.setOktmo(oktmo);
+
+		address.setOther(addressDTO.getNote());
+		// address.setPostalCode(addressDTO.getPostalCode());
+		addressBean.save(address);
+		return address;
 	}
 
 	private CoordinateSystem resolveCoordinateSystem(String name) {

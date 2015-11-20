@@ -6,10 +6,9 @@ package ru.sovzond.mgis2.address;
 public class AddressFilterBuilder {
 	private String subject;
 	private String subjectType;
+	private String subjectCode;
 	private String region;
 	private String regionType;
-	private String district;
-	private String districtType;
 	private String locality;
 	private String localityType;
 	private String street;
@@ -25,15 +24,14 @@ public class AddressFilterBuilder {
 		return this;
 	}
 
-	public AddressFilterBuilder region(String region, String regionType) {
-		this.region = region;
-		this.regionType = regionType;
+	public AddressFilterBuilder subjectCode(String subjectCode) {
+		this.subjectCode = subjectCode;
 		return this;
 	}
 
-	public AddressFilterBuilder district(String district, String districtType) {
-		this.district = district;
-		this.districtType = districtType;
+	public AddressFilterBuilder region(String region, String regionType) {
+		this.region = region;
+		this.regionType = regionType;
 		return this;
 	}
 
@@ -70,17 +68,7 @@ public class AddressFilterBuilder {
 	}
 
 	public AddressFilter build() {
-		return new AddressFilter(
-				subject, subjectType,
-				region, regionType,
-				district, districtType,
-				locality, localityType,
-				street, streetType,
-				home,
-				housing,
-				building,
-				apartment
-		);
+		return new AddressFilter(subject, subjectType, subjectCode, region, regionType, locality, localityType, street, streetType, home, housing, building, apartment);
 	}
 
 }

@@ -34,4 +34,8 @@ public class OKATOBean extends CRUDBeanBase<OKATO> {
 		Pageable<OKATO> pager = dao.pager(dao.createFilter(code, name, orderBy, first, max));
 		return new PageableContainer<>(pager.list().stream().map(OKATO::clone).collect(Collectors.toList()), pager.count(), first, max);
 	}
+
+	public OKATO findByCode(String code) {
+		return dao.findByCode(code);
+	}
 }

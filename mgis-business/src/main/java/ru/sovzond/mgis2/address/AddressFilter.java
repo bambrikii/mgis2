@@ -6,6 +6,7 @@ package ru.sovzond.mgis2.address;
 class AddressFilter {
 	private final String subject;
 	private final String subjectType;
+	private final String subjectCode;
 	private final String region;
 	private final String regionType;
 	private final String locality;
@@ -17,21 +18,21 @@ class AddressFilter {
 	private final String apartment;
 	private final String building;
 
-	public AddressFilter(
-			String subject, String subjectType,
-			String region, String regionType,
-			String district, String districtType,
-			String locality, String localityType,
-			String street, String streetType,
-			String home,
-			String housing,
-			String building,
-			String apartment
+	public AddressFilter(String subject, String subjectType, //
+						 String subjectCode, //
+						 String region, String regionType, //
+						 String locality, String localityType, //
+						 String street, String streetType, //
+						 String home, //
+						 String housing, //
+						 String building, //
+						 String apartment //
 	) {
 		this.subject = subject;
 		this.subjectType = subjectType;
 		this.region = region;
 		this.regionType = regionType;
+		this.subjectCode = subjectCode;
 		this.locality = locality;
 		this.localityType = localityType;
 		this.street = street;
@@ -64,6 +65,14 @@ class AddressFilter {
 
 	public boolean region() {
 		return region != null && region.length() > 0 && regionType != null && regionType.length() > 0;
+	}
+
+	public String getSubjectCode() {
+		return subjectCode;
+	}
+
+	public boolean subjectCode() {
+		return subjectCode != null && subjectCode.length() > 0;
 	}
 
 	public String getLocality() {
@@ -107,7 +116,7 @@ class AddressFilter {
 		return housing != null && housing.length() > 0;
 	}
 
-	public Object getBuilding() {
+	public String getBuilding() {
 		return building;
 	}
 
