@@ -7,6 +7,7 @@ import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
+import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZoneType;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class TerritorialZoneBean extends CRUDBeanBase<TerritorialZone> {
 		return new PageableContainer<>(pager.list(), pager.count(), first, max);
 	}
 
-	public List<TerritorialZone> findByZoneTypeNameSubstring(String zoneTypeNameSubstring) {
-		return dao.findByZoneTypeNameSubstring(zoneTypeNameSubstring);
+	public List<TerritorialZone> findByCadastralNumberAndZoneType(String cadastralNumber, TerritorialZoneType zoneType) {
+		return dao.findByCadastralNumberAndZoneType(cadastralNumber, zoneType);
 	}
 }

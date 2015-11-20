@@ -16,12 +16,31 @@ public class AddressDao extends CRUDDaoBase<Address> {
 		return new AddressPagerBuilder(name, orderBy, first, max);
 	}
 
-	public List<Address> find(String okato, String kladr) {
+	public List<Address> find(AddressFilter filter) {
 		Criteria criteria = getSession().createCriteria(persistentClass);
-		criteria.add(Restrictions.eq("okato", okato));
-		criteria.add(Restrictions.eq("kladr", kladr));
-		// TODO: return criteria.list();
-		throw new UnsupportedOperationException("Not yet implemented.");
+		criteria
+				.createAlias("subject", "subject")
+				.createAlias("region", "region")
+				.createAlias("locality", "locality")
+				.createAlias("street", "street")
+		;
+		if (filter.subject()) {
+			criteria.add(Restrictions.eq("subject.name", filter.getSubject()));
+			criteria.add(Restrictions.eq("subject.socr", filter.getSubjectType()));
+		}
+		if (filter.region()) {
+			criteria.add(Restrictions.eq("region.name", filter.getRegion()));
+			criteria.add(Restrictions.eq("region.socr", filter.getRegionType()));
+		}
+		if (filter.locality()) {
+			criteria.add(Restrictions.eq("locality.name", filter.getLocality()));
+			criteria.add(Restrictions.eq("locality.socr", filter.getLocalityType()));
+		}
+		criteria.add(filter.home() ? Restrictions.eq("home", filter.getHome()) : Restrictions.isEmpty("home"));
+		criteria.add(filter.housing() ? Restrictions.eq("housing", filter.getHousing()) : Restrictions.isEmpty("housing"));
+		criteria.add(filter.building() ? Restrictions.eq("building", filter.getBuilding()) : Restrictions.isEmpty("building"));
+		criteria.add(filter.apartment() ? Restrictions.eq("apartment", filter.getApartment()) : Restrictions.isEmpty("apartment"));
+		return criteria.list();
 	}
 
 	private class AddressPagerBuilder extends PagerBuilderCriteria<Address> {

@@ -100,7 +100,7 @@ public class LandsImporterTest {
 		OrdinateDTO ordinateDTO = new OrdinateDTO();
 		ordinateDTO.setX(Double.parseDouble(x));
 		ordinateDTO.setY(Double.parseDouble(y));
-		ordinateDTO.setOrdNumber(Integer.parseInt(x));
+		ordinateDTO.setOrdNumber(Integer.parseInt(ordNumb));
 		unitDTO.setOrdinates(new OrdinateDTO[]{ordinateDTO});
 		return unitDTO;
 	}

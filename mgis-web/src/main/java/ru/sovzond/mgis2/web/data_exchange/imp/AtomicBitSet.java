@@ -4,6 +4,8 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 
 /**
  * Created by Alexander Arakelyan on 19.11.15.
+ * <p>
+ * http://stackoverflow.com/questions/12424633/atomicbitset-implementation-for-java
  */
 public class AtomicBitSet {
 	private final AtomicIntegerArray array;

@@ -36,7 +36,11 @@ public class AddressBean extends CRUDBeanBase<Address> {
 		return new PageableContainer<>(pager.list().stream().map(Address::clone).collect(Collectors.toList()), pager.count(), first, max);
 	}
 
-	public List<Address> find(String okato, String kladr) {
-		return dao.find(okato, kladr);
+	public AddressFilterBuilder createfilterBuilder() {
+		return new AddressFilterBuilder();
+	}
+
+	public List<Address> find(AddressFilter addressFilter) {
+		return dao.find(addressFilter);
 	}
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.address.AddressBean;
+import ru.sovzond.mgis2.address.AddressFilterBuilder;
 import ru.sovzond.mgis2.geo.CoordinateSystem;
 import ru.sovzond.mgis2.geo.CoordinateSystemBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.AddressDTO;
@@ -19,12 +20,16 @@ import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZoneType;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Alexander Arakelyan on 19.11.15.
  */
 @Service
 public class LandImportResolverBean {
+
+	public static final String CADASTRAL_BLOCK_PATTERN = "(\\d+):(\\d+):(\\d{2})(\\d{2})(\\d+).*";
 
 	@Autowired
 	private LandBean landBean;
@@ -50,8 +55,18 @@ public class LandImportResolverBean {
 	@Autowired
 	private TerritorialZoneBean territorialZoneBean;
 
+	private Pattern cadastralNumberPattern = Pattern.compile(CADASTRAL_BLOCK_PATTERN);
+
+
 	private Address resolveAddress(AddressDTO addressDTO) {
-		List<Address> addresses = addressBean.find(addressDTO.getOkato(), addressDTO.getKladr());
+		// TODO:
+		AddressFilterBuilder filterBuilder = addressBean.createfilterBuilder();
+		filterBuilder
+				.subject(addressDTO.getDistrictName(), addressDTO.getDistrictType())
+		//.
+		//.apartment(addressDTO.getLevelValue())
+		;
+		List<Address> addresses = addressBean.find(filterBuilder.build());
 		switch (addresses.size()) {
 			case 0:
 				return null;
@@ -88,28 +103,44 @@ public class LandImportResolverBean {
 		land.setAddress(resolveAddress(landDTO.getAddress()));
 		land.setAddressOfMunicipalEntity(resolveOKTMO(null));
 		land.setLandCategory(resolveLandCategory(landDTO.getCategory()));
-		land.setAllowedUsageByTerritorialZone(resolveTerritorialZone(landDTO.getLocationPlaced()));
+		TerritorialZoneType zoneType = resolveTerritorialZoneType(landDTO.getLocationPlaced());
+		land.setAllowedUsageByTerritorialZone(resolveTerritorialZone(landDTO.getCadastralNumber(), zoneType));
 		return land;
 	}
 
-	private TerritorialZone resolveTerritorialZone(String territorialZoneType) {
-		List<TerritorialZone> list = territorialZoneBean.findByZoneTypeNameSubstring("%(" + territorialZoneType + ")%");
+	private TerritorialZone resolveTerritorialZone(String landCadastralNumber, TerritorialZoneType territorialZoneType) {
 		TerritorialZone zone = null;
-		switch (list.size()) {
-			case 0:
-				break;
-			default:
+		Matcher matcher = cadastralNumberPattern.matcher(landCadastralNumber);
+		if (matcher.matches()) {
+			String cadastralNumber1 = matcher.group(1) + ":" + matcher.group(2) + ":" + matcher.group(3) + matcher.group(4) + matcher.group(5);
+			List<TerritorialZone> list = territorialZoneBean.findByCadastralNumberAndZoneType(cadastralNumber1, territorialZoneType);
+			if (list.size() >= 1) {
 				zone = list.get(0);
-				break;
+			} else {
+				String cadastralNumber2 = matcher.group(1) + ":" + matcher.group(2) + ":" + matcher.group(3) + matcher.group(4);
+				list = territorialZoneBean.findByCadastralNumberAndZoneType(cadastralNumber2, territorialZoneType);
+				if (list.size() >= 1) {
+					zone = list.get(0);
+				} else {
+					zone = new TerritorialZone();
+					zone.setAccountNumber(cadastralNumber1);
+					zone.setName(cadastralNumber1 + " (" + territorialZoneType.getName() + ")");
+					territorialZoneBean.save(zone);
+				}
+			}
 		}
 		return zone;
 	}
 
 	private TerritorialZoneType resolveTerritorialZoneType(String territorialZoneType) {
 		List<TerritorialZoneType> list = territorialZoneTypeBean.findByNameSubstring("%(" + territorialZoneType + ")%");
-		TerritorialZoneType type = null;
+		TerritorialZoneType type;
 		switch (list.size()) {
 			case 0:
+				type = new TerritorialZoneType();
+				type.setCode(territorialZoneType);
+				type.setName(territorialZoneType);
+				territorialZoneTypeBean.save(type);
 				break;
 			default:
 				type = list.get(0);
