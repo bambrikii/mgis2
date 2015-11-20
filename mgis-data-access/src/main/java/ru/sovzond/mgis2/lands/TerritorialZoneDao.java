@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 
+import java.util.List;
+
 /**
  * Created by Alexander Arakelyan on 27.07.15.
  */
@@ -13,6 +15,10 @@ import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 public class TerritorialZoneDao extends CRUDDaoBase<TerritorialZone> {
 	public PagerBuilderCriteria<TerritorialZone> createFilter(String name, String orderBy, int first, int max) {
 		return new TerritorialZoneFilter(name, orderBy, first, max);
+	}
+
+	public List<TerritorialZone> findByZoneTypeNameSubstring(String zoneTypeNameSubstring) {
+		return createCriteria().createAlias("zoneType", "zoneType").add(Restrictions.like("zoneType.name", zoneTypeNameSubstring)).list();
 	}
 
 	private class TerritorialZoneFilter extends PagerBuilderCriteria<TerritorialZone> {

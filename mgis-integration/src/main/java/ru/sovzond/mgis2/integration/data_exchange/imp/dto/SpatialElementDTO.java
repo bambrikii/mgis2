@@ -5,5 +5,13 @@ package ru.sovzond.mgis2.integration.data_exchange.imp.dto;
  */
 
 public class SpatialElementDTO {
-	public SpatialElementUnitDTO[] spatialElementUnits;
+	private SpatialElementUnitDTO[] spatialElementUnits;
+
+	public SpatialElementUnitDTO[] getSpatialElementUnits() {
+		return spatialElementUnits;
+	}
+
+	public void setSpatialElementUnits(SpatialElementUnitDTO[] spatialElementUnits) {
+		this.spatialElementUnits = spatialElementUnits;
+	}
 }

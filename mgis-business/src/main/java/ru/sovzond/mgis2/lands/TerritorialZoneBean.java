@@ -8,6 +8,8 @@ import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 
+import java.util.List;
+
 /**
  * Created by Alexander Arakelyan on 27.07.15.
  */
@@ -30,5 +32,9 @@ public class TerritorialZoneBean extends CRUDBeanBase<TerritorialZone> {
 	public PageableContainer<TerritorialZone> list(String orderBy, int first, int max, String name) {
 		Pageable<TerritorialZone> pager = dao.pager(dao.createFilter(name, orderBy, first, max));
 		return new PageableContainer<>(pager.list(), pager.count(), first, max);
+	}
+
+	public List<TerritorialZone> findByZoneTypeNameSubstring(String zoneTypeNameSubstring) {
+		return dao.findByZoneTypeNameSubstring(zoneTypeNameSubstring);
 	}
 }

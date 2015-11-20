@@ -17,6 +17,9 @@ import java.io.*;
  */
 @Component
 public class LandsImporter implements Importable {
+
+	public static final String YYYY_MM_DD = "yyyy-MM-dd";
+
 	@Autowired
 	private LandBean landBean;
 

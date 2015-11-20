@@ -9,14 +9,14 @@ import ru.sovzond.mgis2.geo.CoordinateSystem;
 import ru.sovzond.mgis2.geo.CoordinateSystemBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.AddressDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandDTO;
-import ru.sovzond.mgis2.lands.Land;
-import ru.sovzond.mgis2.lands.LandBean;
+import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.national_classifiers.LandCategoryBean;
 import ru.sovzond.mgis2.national_classifiers.LandRightKindBean;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
 import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
 import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
+import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZoneType;
 
 import java.util.List;
 
@@ -43,6 +43,12 @@ public class LandImportResolverBean {
 
 	@Autowired
 	private CoordinateSystemBean coordinateSystemBean;
+
+	@Autowired
+	private TerritorialZoneTypeBean territorialZoneTypeBean;
+
+	@Autowired
+	private TerritorialZoneBean territorialZoneBean;
 
 	private Address resolveAddress(AddressDTO addressDTO) {
 		List<Address> addresses = addressBean.find(addressDTO.getOkato(), addressDTO.getKladr());
@@ -82,7 +88,34 @@ public class LandImportResolverBean {
 		land.setAddress(resolveAddress(landDTO.getAddress()));
 		land.setAddressOfMunicipalEntity(resolveOKTMO(null));
 		land.setLandCategory(resolveLandCategory(landDTO.getCategory()));
+		land.setAllowedUsageByTerritorialZone(resolveTerritorialZone(landDTO.getLocationPlaced()));
 		return land;
+	}
+
+	private TerritorialZone resolveTerritorialZone(String territorialZoneType) {
+		List<TerritorialZone> list = territorialZoneBean.findByZoneTypeNameSubstring("%(" + territorialZoneType + ")%");
+		TerritorialZone zone = null;
+		switch (list.size()) {
+			case 0:
+				break;
+			default:
+				zone = list.get(0);
+				break;
+		}
+		return zone;
+	}
+
+	private TerritorialZoneType resolveTerritorialZoneType(String territorialZoneType) {
+		List<TerritorialZoneType> list = territorialZoneTypeBean.findByNameSubstring("%(" + territorialZoneType + ")%");
+		TerritorialZoneType type = null;
+		switch (list.size()) {
+			case 0:
+				break;
+			default:
+				type = list.get(0);
+				break;
+		}
+		return type;
 	}
 
 	private LandCategory resolveLandCategory(String category) {
