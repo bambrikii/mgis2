@@ -47,5 +47,8 @@ public class FormatTest {
 		String str = "325170.46";
 		Double result = Double.parseDouble(str);
 		Assert.assertEquals(Double.valueOf(325170.46), result);
+
+		result = Double.parseDouble("243");
+		Assert.assertEquals(Double.valueOf(243), result);
 	}
 }

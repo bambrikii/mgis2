@@ -22,7 +22,7 @@ public class SpatialGroup implements Cloneable {
 	@JoinColumn(name = "coord_system_id")
 	private CoordinateSystem coordinateSystem;
 
-	@OneToMany(mappedBy = "spatialGroup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE}, orphanRemoval = true)
 	private List<SpatialElement> spatialElements = new ArrayList<>();
 
 	public Long getId() {

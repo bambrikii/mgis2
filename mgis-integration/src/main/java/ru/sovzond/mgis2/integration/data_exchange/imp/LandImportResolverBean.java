@@ -1,26 +1,27 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.address.AddressBean;
 import ru.sovzond.mgis2.address.AddressFilterBuilder;
-import ru.sovzond.mgis2.geo.CoordinateSystem;
-import ru.sovzond.mgis2.geo.CoordinateSystemBean;
-import ru.sovzond.mgis2.integration.data_exchange.imp.dto.AddressDTO;
-import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandDTO;
+import ru.sovzond.mgis2.geo.*;
+import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
 import ru.sovzond.mgis2.kladr.KLADRLocality;
 import ru.sovzond.mgis2.kladr.KLADRLocalityDao;
 import ru.sovzond.mgis2.kladr.KLADRStreet;
 import ru.sovzond.mgis2.kladr.KLADRStreetDao;
 import ru.sovzond.mgis2.lands.*;
+import ru.sovzond.mgis2.lands.characteristics.LandCharacteristics;
+import ru.sovzond.mgis2.lands.rights.LandRights;
 import ru.sovzond.mgis2.national_classifiers.LandCategoryBean;
 import ru.sovzond.mgis2.national_classifiers.LandRightKindBean;
 import ru.sovzond.mgis2.national_classifiers.OKATOBean;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
 import ru.sovzond.mgis2.registers.national_classifiers.*;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -90,13 +91,11 @@ public class LandImportResolverBean {
 	}
 
 	private Address updateAddress(Address address, AddressDTO addressDTO) {
-		// TODO:
-		//		address.setApartment(addressDTO.getLevelValue());
-		//		address.setBuilding(addressDTO.getLevelValue());
-		//		address.setHousing(addressDTO.getLevelValue());
+		address.setApartment(null);
+		address.setBuilding(null);
+		address.setHousing(null);
 		address.setHousing(addressDTO.getLevelType());
 		address.setHome(addressDTO.getLevelValue());
-
 
 		KLADRLocality subject = kladrLocalityDao.findSubjectByCode(addressDTO.getRegion());
 		KLADRLocality region = kladrLocalityDao.findRegion(subject.getCode(), addressDTO.getDistrictName(), addressDTO.getDistrictType()).get(0);
@@ -130,11 +129,16 @@ public class LandImportResolverBean {
 
 	public Land resolveLand(LandDTO landDTO) {
 		List<Land> lands = landBean.find(landDTO.getCadastralNumber());
+		Land land;
 		switch (lands.size()) {
 			case 0:
-				return createLand(landDTO);
+				land = createLand(landDTO);
+				landBean.save(land);
+				return land;
 			case 1:
-				return updateLand(landDTO, lands.get(0));
+				land = updateLand(landDTO, lands.get(0));
+				landBean.save(land);
+				return land;
 			default:
 				throw new UnsupportedOperationException();
 		}
@@ -142,13 +146,65 @@ public class LandImportResolverBean {
 
 	private Land createLand(LandDTO landDTO) {
 		Land land = new Land();
-		copyPlainProperties(landDTO, land);
+		land.setCharacteristics(new LandCharacteristics());
+		land.setRights(new LandRights());
+
+		updateLand0(landDTO, land);
+		return land;
+	}
+
+	private void updateLand0(LandDTO landDTO, Land land) {
+		land.setCadastralNumber(landDTO.getCadastralNumber());
+		land.setStateRealEstateCadastreaStaging(landDTO.getDateCreated());
 		land.setAddress(resolveAddress(landDTO.getAddress()));
 		land.setAddressOfMunicipalEntity(resolveOKTMO(null));
 		land.setLandCategory(resolveLandCategory(landDTO.getCategory()));
 		TerritorialZoneType zoneType = resolveTerritorialZoneType(landDTO.getLocationPlaced());
 		land.setAllowedUsageByTerritorialZone(resolveTerritorialZone(landDTO.getCadastralNumber(), zoneType));
-		return land;
+		if (landDTO.getCadastralCostValue() != null) {
+			land.getCharacteristics().setCadastralCost(landDTO.getCadastralCostValue().floatValue());
+		}
+		if (landDTO.getArea() != null) {
+			land.getRights().setTotalArea(landDTO.getArea().floatValue());
+		}
+		if (landDTO.getEntitySpatial() != null) {
+			SpatialGroup group = new SpatialGroup();
+			String entSys = landDTO.getEntitySpatial().getEntSys();
+			//
+			CoordinateSystem coordinateSystem = coordinateSystemBean.findByName(entSys);
+			group.setCoordinateSystem(coordinateSystem);
+			SpatialElementDTO[] elements = landDTO.getEntitySpatial().getSpatialElements();
+			if (elements != null) {
+				for (int i = 0; i < elements.length; i++) {
+					SpatialElementDTO element = elements[i];
+					SpatialElementUnitDTO[] units = element.getSpatialElementUnits();
+					//
+					SpatialElement spatialElement = new SpatialElement();
+					group.getSpatialElements().add(spatialElement);
+					spatialElement.setPosition(BigDecimal.valueOf(i));
+					for (SpatialElementUnitDTO unit : units) {
+						int suNumb = unit.getSuNumb();
+						String typeUnit = unit.getTypeUnit();
+						OrdinateDTO[] ordinates = unit.getOrdinates();
+						for (OrdinateDTO ordinate : ordinates) {
+							int ordNumber = ordinate.getOrdNumber();
+							double x = ordinate.getX();
+							double y = ordinate.getY();
+							//
+							Coordinate coordinate = new Coordinate();
+							coordinate.setPosition(BigInteger.valueOf(ordNumber));
+							coordinate.setX(BigDecimal.valueOf(x));
+							coordinate.setY(BigDecimal.valueOf(y));
+							spatialElement.getCoordinates().add(coordinate);
+						}
+					}
+				}
+			} else {
+				land.setSpatialData(null);
+			}
+		} else {
+			land.setSpatialData(null);
+		}
 	}
 
 	private TerritorialZone resolveTerritorialZone(String landCadastralNumber, TerritorialZoneType territorialZoneType) {
@@ -201,11 +257,11 @@ public class LandImportResolverBean {
 	}
 
 	private Land updateLand(LandDTO landDTO, Land land) {
-		copyPlainProperties(landDTO, land);
+		updateLand0(landDTO, land);
 		return land;
 	}
 
-	private void copyPlainProperties(LandDTO landDTO, Land land) {
-		BeanUtils.copyProperties(landDTO, land, new String[]{"id", "landCategory", "landAreas", "allowedUsageByDictionary", "allowedUsageByTerritorialZone", "oktmo", "address", "rights", "characteristics", "includedObjects", "works", "control", "previousVersion", "geometry", "spatialData"});
+	public void removeLand(Land land) {
+		landBean.remove(land);
 	}
 }

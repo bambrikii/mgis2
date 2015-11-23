@@ -1,6 +1,7 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class LandsImporterTest {
 
 	@Test
 	@Transactional
+	@Ignore
 	public void testImp() throws IOException {
 		try (InputStream inputStream = LandsImporterTest.class.getResourceAsStream("doc2394077.xml")) {
 			landsImporter.imp(inputStream);
@@ -48,7 +50,7 @@ public class LandsImporterTest {
 		landDTO.setName("01");
 		landDTO.setState("01");
 		landDTO.setDateCreated(new SimpleDateFormat(YYYY_MM_DD).parse("2001-04-20"));
-		landDTO.setArea("243");
+		landDTO.setArea(Double.parseDouble("243"));
 		landDTO.setAreaUnit("055");
 		landDTO.setLocationInBounds("1");
 		landDTO.setLocationPlaced("Ж2");
@@ -77,13 +79,14 @@ public class LandsImporterTest {
 		landDTO.setRights(new LandRightDTO[]{rightDTO});
 
 		landDTO.setCadastralCostValue(Double.valueOf("233783.01"));
-		landDTO.setCadastralConstUnit(Integer.parseInt("383"));
+		landDTO.setCadastralCostUnit(Integer.parseInt("383")); // Ruble
 
 		// Spatial Data
 		EntitySpatialDTO entitySpatialDTO = new EntitySpatialDTO();
 		entitySpatialDTO.setEntSys("364");
 		SpatialElementDTO spatialElementDTO = new SpatialElementDTO();
 		spatialElementDTO.setSpatialElementUnits(new SpatialElementUnitDTO[]{createSpatialElementUnit("Точка", "1", "325170.46", "1477361.18", "1")});
+		entitySpatialDTO.setSpatialElements(new SpatialElementDTO[]{spatialElementDTO});
 
 		landDTO.setEntitySpatial(entitySpatialDTO);
 
@@ -91,6 +94,9 @@ public class LandsImporterTest {
 		landDTO.setAddress(addressDTO);
 		Land land = landImportResolverBean.resolveLand(landDTO);
 		Assert.assertNotNull(land);
+		Assert.assertNotNull(land.getId());
+		Assert.assertTrue(land.getId() != 0);
+		//landImportResolverBean.removeLand(land);
 	}
 
 	private SpatialElementUnitDTO createSpatialElementUnit(String typeUnit, String suNumb, String x, String y, String ordNumb) {

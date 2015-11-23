@@ -5,6 +5,8 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
+	<link rel="icon" type="image/png" href="app2/images/dino.png">
+
 	<link type="text/css" rel="stylesheet" href="app2/app.css">
 	<link type="text/css" rel="stylesheet" href="app2/app-desktop.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">

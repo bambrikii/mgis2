@@ -20,14 +20,14 @@ public class AddressDao extends CRUDDaoBase<Address> {
 
 	public List<Address> find(KLADRLocality subject, KLADRLocality region, KLADRLocality locality, KLADRStreet street, String home, String housing, String building, String apartment) {
 		Criteria criteria = getSession().createCriteria(persistentClass);
-		criteria.add(subject != null ? Restrictions.eq("subject", subject) : Restrictions.isEmpty("subject"));
-		criteria.add(region != null ? Restrictions.eq("region", region) : Restrictions.isEmpty("region"));
-		criteria.add(locality != null ? Restrictions.eq("locality", locality) : Restrictions.isEmpty("locality"));
-		criteria.add(street != null ? Restrictions.eq("street", street) : Restrictions.isEmpty("street"));
-		criteria.add(home != null ? Restrictions.eq("home", home) : Restrictions.isEmpty("home"));
-		criteria.add(housing != null ? Restrictions.eq("housing", housing) : Restrictions.isEmpty("housing"));
-		criteria.add(building != null ? Restrictions.eq("building", building) : Restrictions.isEmpty("building"));
-		criteria.add(apartment != null ? Restrictions.eq("apartment", apartment) : Restrictions.isEmpty("apartment"));
+		criteria.add(subject != null ? Restrictions.eq("subject", subject) : Restrictions.isNull("subject"));
+		criteria.add(region != null ? Restrictions.eq("region", region) : Restrictions.isNull("region"));
+		criteria.add(locality != null ? Restrictions.eq("locality", locality) : Restrictions.isNull("locality"));
+		criteria.add(street != null ? Restrictions.eq("street", street) : Restrictions.isNull("street"));
+		criteria.add(home != null ? Restrictions.eq("home", home) : Restrictions.isNull("home"));
+		criteria.add(housing != null ? Restrictions.eq("housing", housing) : Restrictions.isNull("housing"));
+		criteria.add(building != null ? Restrictions.eq("building", building) : Restrictions.isNull("building"));
+		criteria.add(apartment != null ? Restrictions.eq("apartment", apartment) : Restrictions.isNull("apartment"));
 		return criteria.list();
 	}
 

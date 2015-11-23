@@ -8,7 +8,7 @@ import java.math.BigInteger;
  * Created by Alexander Arakelyan on 05.10.15.
  */
 @Entity
-@Table(name = "mgis2_geo_coord", indexes = {@Index(name = "mgis2_geo_coord_se_pos_ux", columnList = "position, spatial_element_id")})
+@Table(name = "mgis2_geo_coord")
 public class Coordinate implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_geo_seq", allocationSize = 1)
@@ -24,11 +24,6 @@ public class Coordinate implements Cloneable {
 
 	@Column
 	private BigDecimal y;
-
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "spatial_element_id")
-	private SpatialElement spatialElement;
-
 
 	public Long getId() {
 		return id;
@@ -69,13 +64,5 @@ public class Coordinate implements Cloneable {
 		coordinate.setX(x);
 		coordinate.setY(y);
 		return coordinate;
-	}
-
-	public SpatialElement getSpatialElement() {
-		return spatialElement;
-	}
-
-	public void setSpatialElement(SpatialElement spatialElement) {
-		this.spatialElement = spatialElement;
 	}
 }

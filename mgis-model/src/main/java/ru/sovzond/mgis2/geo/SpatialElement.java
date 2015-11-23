@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  * Created by Alexander Arakelyan on 05.10.15.
  */
 @Entity
-@Table(name = "mgis2_geo_spatial_elem", indexes = {@Index(name = "mgis2_geo_spatial_elem_sg_pos_ux", columnList = "position, spatial_group_id")})
+@Table(name = "mgis2_geo_spatial_elem")
 public class SpatialElement implements Cloneable {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_geo_seq", allocationSize = 1)
@@ -21,12 +21,8 @@ public class SpatialElement implements Cloneable {
 	@Column
 	private BigDecimal position;
 
-	@OneToMany(mappedBy = "spatialElement", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE}, orphanRemoval = true)
 	private List<Coordinate> coordinates = new ArrayList<>();
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "spatial_group_id")
-	private SpatialGroup spatialGroup;
 
 	public Long getId() {
 		return id;
@@ -50,14 +46,6 @@ public class SpatialElement implements Cloneable {
 
 	public void setCoordinates(List<Coordinate> coordinates) {
 		this.coordinates = coordinates;
-	}
-
-	public SpatialGroup getSpatialGroup() {
-		return spatialGroup;
-	}
-
-	public void setSpatialGroup(SpatialGroup spatialGroup) {
-		this.spatialGroup = spatialGroup;
 	}
 
 	public SpatialElement clone() {

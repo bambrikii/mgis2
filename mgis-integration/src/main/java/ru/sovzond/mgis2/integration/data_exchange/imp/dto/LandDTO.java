@@ -10,7 +10,7 @@ public class LandDTO {
 	private String name;
 	private String state;
 	private Date dateCreated;
-	private String area;
+	private Double area;
 	private String areaUnit;
 	private String locationInBounds;
 	private String locationPlaced;
@@ -18,7 +18,6 @@ public class LandDTO {
 	private String category;
 	private LandRightDTO[] rights;
 	private Double cadastralCostValue;
-	private int cadastralConstUnit;
 	private Integer cadastralCostUnit;
 	private String utilizationByDoc;
 	private EntitySpatialDTO entitySpatial;
@@ -55,11 +54,11 @@ public class LandDTO {
 		this.dateCreated = dateCreated;
 	}
 
-	public String getArea() {
+	public Double getArea() {
 		return area;
 	}
 
-	public void setArea(String area) {
+	public void setArea(Double area) {
 		this.area = area;
 	}
 
@@ -134,14 +133,6 @@ public class LandDTO {
 
 	public String getUtilizationByDoc() {
 		return utilizationByDoc;
-	}
-
-	public int getCadastralConstUnit() {
-		return cadastralConstUnit;
-	}
-
-	public void setCadastralConstUnit(int cadastralConstUnit) {
-		this.cadastralConstUnit = cadastralConstUnit;
 	}
 
 	public EntitySpatialDTO getEntitySpatial() {

@@ -40,10 +40,8 @@ public class SpatialDataBean {
 				coordinate2.setX(coordinate.getX());
 				coordinate2.setY(coordinate.getY());
 				spatialElement2.getCoordinates().add(coordinate2);
-				coordinate2.setSpatialElement(spatialElement2);
 			}
 			persistent.getSpatialElements().add(spatialElement2);
-			spatialElement2.setSpatialGroup(persistent);
 		}
 		spatialGroupBean.save(persistent);
 		return persistent;
