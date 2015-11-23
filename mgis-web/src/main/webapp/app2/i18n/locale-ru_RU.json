@@ -393,5 +393,9 @@
   "DataExchange": "Обмен данными",
   "DataExchange.Import": "Импорт",
   "DataExchange.Export": "Экспорт",
-  "DataExchange.Import.RusRegister.Lands": "РосРеестр - Земельные участки"
+  "DataExchange.Import.RusRegister.Lands": "РосРеестр - Земельные участки",
+  "About": "О Системе",
+  "About.Help": "Помощь",
+  "About.Info": "Информация",
+  "About.ReleaseNotes": "Изменения"
 }

@@ -171,6 +171,9 @@
 	<script type="text/javascript" src="app2/data-exchange/import/import-module.js"></script>
 	<script type="text/javascript" src="app2/data-exchange/export/export-module.js"></script>
 
+	<!-- About -->
+	<script type="text/javascript" src="app2/about/about-module.js"></script>
+
 	<!-- test pages -->
 	<script type="text/javascript" src="app2/commons/forms/commons-forms-module.js"></script>
 	<script type="text/javascript" src="app2/test/test-module.js"></script>

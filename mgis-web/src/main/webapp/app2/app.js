@@ -12,7 +12,8 @@ angular.module("mgis", //
 		"mgis.test",
 		"mgis.geo",
 		"mgis.indicators",
-		"mgis.data-exchange"
+		"mgis.data-exchange",
+		"mgis.about"
 	])
 	.config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
 		$translateProvider.preferredLanguage('ru_RU');

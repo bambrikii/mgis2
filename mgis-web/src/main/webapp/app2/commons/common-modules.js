@@ -157,5 +157,9 @@ angular.module("mgis.commons", ["ui.bootstrap",
 			});
 		}
 	})
-
+	.filter('mgisCommonsReverse', function () {
+		return function (items) {
+			return items ? items.slice().reverse() : null;
+		};
+	});
 ;

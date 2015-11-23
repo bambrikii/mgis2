@@ -1,0 +1,13 @@
+<h3><span translate>About.ReleaseNotes</span></h3>
+
+<div ng-controller="AboutReleaseNotesController">
+	<br/>
+
+	<div ng-repeat="releaseNote in item.releaseNotes|mgisCommonsReverse"
+		 ng-class="releaseNote.release?'bg-primary release-notes-note':'release-notes-note'">
+		<div>{{releaseNote.version}} - {{releaseNote.name}} <span ng-if="releaseNote.release" class="release-notes-release-label">release</span> <span
+				class="release-notes-note-label">{{releaseNote.date}}</span>
+		</div>
+		<div ng-repeat="task in releaseNote.tasks" class="small disabled release-notes-task">#{{task.number}}: {{task.name}}</div>
+	</div>
+</div>
