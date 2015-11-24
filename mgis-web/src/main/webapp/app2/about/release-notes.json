@@ -40,7 +40,7 @@
 	  "version": "0.0.4",
 	  "name": "ISOGD Document Parts",
 	  "date": "17.07.2015 ",
-	  "release": true,
+	  "release": false,
 	  "tasks": [
 		{
 		  "number": "1",
