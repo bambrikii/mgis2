@@ -8,6 +8,10 @@ import ru.sovzond.mgis2.integration.data_exchange.imp.LandsImporter;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
 import ru.sovzond.mgis2.lands.Land;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 /**
  * Created by Alexander Arakelyan on 18.11.15.
  * <p/>
@@ -96,6 +100,10 @@ public class Region_CadastrHandler extends DefaultHandler {
 	 * ********************************************************
 	 */
 
+	//-------All attributes name--------
+	final static String NAME_ALL = "Name";
+	final static String TYPE_ALL = "Type";
+	final static String VALUE = "Type";
 	//-------Parcel attributes name-----
 	final static String CADASTRAL_NUMBER = "CadastralNumber";
 	final static String NAME = "Name";
@@ -194,13 +202,23 @@ public class Region_CadastrHandler extends DefaultHandler {
 	boolean t_Appointment = false;
 	boolean t_FIO = false;
 
-	java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat(LandsImporter.YYYY_MM_DD);
+	SimpleDateFormat dateFormat = new SimpleDateFormat(LandsImporter.YYYY_MM_DD);
 
 
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
 
+		if (qName.equalsIgnoreCase("Parcels")) { //-------------Parcels
+			t_Parcels = true;
+		}
+		if (qName.equalsIgnoreCase("Parcel") && t_Parcels) {
+			t_Parcel = true;
+			landDTO.setCadastralNumber(attributes.getValue(CADASTRAL_NUMBER));
+			landDTO.setName(attributes.getValue(NAME));
+			landDTO.setState(attributes.getValue(STATE));
+			landDTO.setDateCreated(toDate(attributes.getValue(DATE_CR), dateFormat));
+		}
 		if (qName.equalsIgnoreCase("Area")) { //-------------Area
 			t_Area = true;
 		}
@@ -236,41 +254,41 @@ public class Region_CadastrHandler extends DefaultHandler {
 		}
 		if (qName.equalsIgnoreCase("District")) {
 			t_District = true;
-			addressDTO.setDistrictName(attributes.getValue("Name"));
-			addressDTO.setDistrictType(attributes.getValue("Type"));
+			addressDTO.setDistrictName(attributes.getValue(NAME_ALL));
+			addressDTO.setDistrictType(attributes.getValue(TYPE_ALL));
 		}
 		if (qName.equalsIgnoreCase("Locality")) {
 			t_Locality = true;
-			addressDTO.setLocalityName(attributes.getValue("Name"));
-			addressDTO.setLocalityType(attributes.getValue("Type"));
+			addressDTO.setLocalityName(attributes.getValue(NAME_ALL));
+			addressDTO.setLocalityType(attributes.getValue(TYPE_ALL));
 		}
 		if (qName.equalsIgnoreCase("Street")) {
 			t_Street = true;
-			addressDTO.setStreetName(attributes.getValue("Name"));
-			addressDTO.setStreetType(attributes.getValue("Type"));
+			addressDTO.setStreetName(attributes.getValue(NAME_ALL));
+			addressDTO.setStreetType(attributes.getValue(TYPE_ALL));
 		}
 
 		if (qName.equalsIgnoreCase("Level1")) {
 			t_Level1 = true;
-			addressDTO.setLevelType(attributes.getValue("Type"));
-			addressDTO.setLevelValue(attributes.getValue("Value"));
+			addressDTO.setLevelType(attributes.getValue(TYPE_ALL));
+			addressDTO.setLevelValue(attributes.getValue(VALUE));
 		}
 		if (qName.equalsIgnoreCase("Note")) {
 			t_Note = true;
 		}
-		if (qName.equalsIgnoreCase("Category")) {
+		if (qName.equalsIgnoreCase("Category")) { //-------Category
 			t_Category = true;
 			landDTO.setCategory(attributes.getValue(CATEGORY));
 		}
 
-		if (qName.equalsIgnoreCase("Utilization")) {
+		if (qName.equalsIgnoreCase("Utilization")) { //-------Utiliz
 			t_Utilization = true;
 			landDTO.setUtilizationByDoc(attributes.getValue(UTILIZ));
 		}
 		if (qName.equalsIgnoreCase("Rights")) { //---------Rights
 			t_Rights = true;
 		}
-		if (qName.equalsIgnoreCase("Right")) {
+		if (qName.equalsIgnoreCase("Right") && t_Rights) {
 			t_Right = true;
 			landRightDTO = new LandRightDTO();
 		}
@@ -280,7 +298,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 		if (qName.equalsIgnoreCase("Type")) {
 			t_Type_R = true;
 		}
-		if (qName.equalsIgnoreCase("CadastralCost")) { //-----------Cadastral
+		if (qName.equalsIgnoreCase("CadastralCost")) { //-----------Cadastral cost
 			t_CadastralCost = true;
 			landDTO.setCadastralCostValue(Double.valueOf(attributes.getValue(CADASTRAL_COST_VALUE)));
 			landDTO.setCadastralCostUnit(Integer.valueOf(attributes.getValue(CADASTRAL_COST_UNIT)));
@@ -294,7 +312,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 			entitySpatialDTO.setEntSys(attributes.getValue(ENT_SYS));
 
 		}
-		if (qName.equalsIgnoreCase("Spatial_Element")) {
+		if (qName.equalsIgnoreCase("Spatial_Element")) { //-----Spatial Element
 			t_Spatial_Element = true;
 			spatialElementDTO = new SpatialElementDTO();
 		}
@@ -359,6 +377,15 @@ public class Region_CadastrHandler extends DefaultHandler {
 	@Override
 	public void warning(SAXParseException e) {
 		e.printStackTrace();
+	}
+
+	private Date toDate(String dateS, SimpleDateFormat dateFormat) {
+		try {
+			return new Date(dateFormat.parse(dateS).getTime());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
