@@ -92,14 +92,13 @@ public class FlowInfo {
 			if (last.end == flowTotalSize) {
 				while (iterator.hasNext()) {
 					FlowChunkNumber chunk = iterator.next();
-					if (last.start == chunk.end) {
-						if (chunk.start == 0) {
-							return true;
-						}
-					} else {
+					if (last.start != chunk.end) {
 						return false;
 					}
 					last = chunk;
+				}
+				if (last.start == 0) {
+					return true;
 				}
 			}
 		}

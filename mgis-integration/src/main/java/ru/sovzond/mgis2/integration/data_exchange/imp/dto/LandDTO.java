@@ -1,22 +1,27 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.dto;
 
+import java.util.Date;
+
 /**
  * Created by Alexander Arakelyan on 19.11.15.
  */
 public class LandDTO {
-	public String cadastralNumber;
-	public String name;
-	public String state;
-	public String dateCreated;
-	public String area;
-	public String areaUnit;
-	public String locationInBounds;
-	public String locationPlaced;
-	public AddressDTO address;
-	public String category;
-	public LandRightDTO[] rights;
-	public Double cadastralCost;
-	public Integer cadastralCostUnit;
+	private String cadastralNumber;
+	private String name;
+	private String state;
+	private Date dateCreated;
+	private String area;
+	private String areaUnit;
+	private String locationInBounds;
+	private String locationPlaced;
+	private AddressDTO address;
+	private String category;
+	private LandRightDTO[] rights;
+	private Double cadastralCostValue;
+	private int cadastralConstUnit;
+	private Integer cadastralCostUnit;
+	private String utilizationByDoc;
+	private EntitySpatialDTO entitySpatial;
 
 	public String getCadastralNumber() {
 		return cadastralNumber;
@@ -42,11 +47,11 @@ public class LandDTO {
 		this.state = state;
 	}
 
-	public String getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(String dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
@@ -106,12 +111,12 @@ public class LandDTO {
 		this.rights = rights;
 	}
 
-	public Double getCadastralCost() {
-		return cadastralCost;
+	public Double getCadastralCostValue() {
+		return cadastralCostValue;
 	}
 
-	public void setCadastralCost(Double cadastralCost) {
-		this.cadastralCost = cadastralCost;
+	public void setCadastralCostValue(Double cadastralCostValue) {
+		this.cadastralCostValue = cadastralCostValue;
 	}
 
 	public Integer getCadastralCostUnit() {
@@ -122,4 +127,28 @@ public class LandDTO {
 		this.cadastralCostUnit = cadastralCostUnit;
 	}
 
+
+	public void setUtilizationByDoc(String utilizationByDoc) {
+		this.utilizationByDoc = utilizationByDoc;
+	}
+
+	public String getUtilizationByDoc() {
+		return utilizationByDoc;
+	}
+
+	public int getCadastralConstUnit() {
+		return cadastralConstUnit;
+	}
+
+	public void setCadastralConstUnit(int cadastralConstUnit) {
+		this.cadastralConstUnit = cadastralConstUnit;
+	}
+
+	public EntitySpatialDTO getEntitySpatial() {
+		return entitySpatial;
+	}
+
+	public void setEntitySpatial(EntitySpatialDTO entitySpatial) {
+		this.entitySpatial = entitySpatial;
+	}
 }

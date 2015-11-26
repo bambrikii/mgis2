@@ -25,4 +25,8 @@ public class LandRightKindBean extends CRUDBeanBase<LandRightKind> {
 	protected IIdentifiableDao<LandRightKind> getIIdentifiableDao() {
 		return dao;
 	}
+
+	public LandRightKind find(String classificationCode) {
+		return dao.findByClassificationCode(classificationCode);
+	}
 }

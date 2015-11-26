@@ -33,4 +33,7 @@ public class OKTMOBean extends CRUDBeanBase<OKTMO> {
 		return new PageableContainer<>(pager.list(), pager.count(), first, max);
 	}
 
+	public OKTMO findByCode(String code) {
+		return dao.findByCode(code);
+	}
 }

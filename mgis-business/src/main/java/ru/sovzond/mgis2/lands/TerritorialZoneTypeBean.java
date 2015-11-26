@@ -7,6 +7,8 @@ import ru.sovzond.mgis2.dataaccess.base.IIdentifiableDao;
 import ru.sovzond.mgis2.dataaccess.base.IPageableDAOBase;
 import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZoneType;
 
+import java.util.List;
+
 /**
  * Created by Alexander Arakelyan on 04.08.15.
  */
@@ -25,5 +27,9 @@ public class TerritorialZoneTypeBean extends CRUDBeanBase<TerritorialZoneType> {
 	@Override
 	protected IIdentifiableDao<TerritorialZoneType> getIIdentifiableDao() {
 		return dao;
+	}
+
+	public List<TerritorialZoneType> findByNameSubstring(String nameSubstring) {
+		return dao.findByNameSubstring(nameSubstring);
 	}
 }

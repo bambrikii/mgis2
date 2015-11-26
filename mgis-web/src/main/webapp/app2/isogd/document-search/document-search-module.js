@@ -51,12 +51,19 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 						$scope.availableSections = data.list;
 					});
 				}
-				function updateGrid() {
-					var filter = $scope.searchFilter;
-					var filterState = ISOGDDocumentSearchConverterService.filterState(filter);
-					if ($scope.hideGridWhenFilterEmpty && filterState == ISOGDDocumentSearchConstants.FILTER_EMPTY) {
+
+				function isFilterStateEmpty(filterState) {
+					var isEmpty = $scope.hideGridWhenFilterEmpty && filterState == ISOGDDocumentSearchConstants.FILTER_EMPTY;
+					if (isEmpty) {
 						$scope.pager = {};
-					} else {
+					}
+					return isEmpty;
+				}
+
+				function updateGrid() {
+					var filterState = ISOGDDocumentSearchConverterService.filterState($scope.searchFilter);
+					if (!isFilterStateEmpty(filterState)) {
+						var filter = $scope.searchFilter;
 						ISOGDDocumentSearchService.get(null, ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage,
 							filter.section,
 							filter.docName,
@@ -65,7 +72,10 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 							filter.docDateTill,
 							filter.docNumber
 						).then(function (data) {
-								$scope.pager = data;
+								var filterState = ISOGDDocumentSearchConverterService.filterState($scope.searchFilter);
+								if (!isFilterStateEmpty(filterState)) {
+									$scope.pager = data;
+								}
 							});
 					}
 					$scope.filterStateChanged({state: filterState});

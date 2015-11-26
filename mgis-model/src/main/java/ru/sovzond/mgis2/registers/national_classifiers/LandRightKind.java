@@ -27,6 +27,9 @@ public class LandRightKind implements Cloneable {
 	@Column
 	private String comment;
 
+	@Column
+	private String rusRegisterSchemaCode;
+
 	public Long getId() {
 		return id;
 	}
@@ -67,6 +70,14 @@ public class LandRightKind implements Cloneable {
 		this.comment = comment;
 	}
 
+	public String getRusRegisterSchemaCode() {
+		return rusRegisterSchemaCode;
+	}
+
+	public void setRusRegisterSchemaCode(String rusRegisterSchemaCode) {
+		this.rusRegisterSchemaCode = rusRegisterSchemaCode;
+	}
+
 	public LandRightKind clone() {
 		LandRightKind kind = new LandRightKind();
 		kind.setId(id);
@@ -74,8 +85,7 @@ public class LandRightKind implements Cloneable {
 		kind.setClassificationCode(classificationCode);
 		kind.setName(name);
 		kind.setComment(comment);
+		kind.setRusRegisterSchemaCode(rusRegisterSchemaCode);
 		return kind;
 	}
-
-
 }

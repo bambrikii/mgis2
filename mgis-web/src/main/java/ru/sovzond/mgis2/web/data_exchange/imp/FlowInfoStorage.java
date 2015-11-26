@@ -11,19 +11,24 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class FlowInfoStorage {
 
-	//Single instance
+	// Single instance
 	private FlowInfoStorage() {
 	}
 
-	private static volatile FlowInfoStorage sInstance;
+	private static volatile FlowInfoStorage instance;
 
 	private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+	private static final Object instanceLock = new Object();
 
-	public static synchronized FlowInfoStorage getInstance() {
-		if (sInstance == null) {
-			sInstance = new FlowInfoStorage();
+	public static FlowInfoStorage getInstance() {
+		if (instance == null) {
+			synchronized (instanceLock) {
+				if (instance == null) {
+					instance = new FlowInfoStorage();
+				}
+			}
 		}
-		return sInstance;
+		return instance;
 	}
 
 	// flowIdentifier --  FlowInfo
@@ -52,11 +57,7 @@ public class FlowInfoStorage {
 	 * @param flowFilePath
 	 * @return
 	 */
-	public FlowInfo writeFlowInfoIfNone(int flowChunkSize, long flowTotalSize,
-										String flowIdentifier, String flowFilename,
-										String flowRelativePath, String flowFilePath) {
-
-//		ReentrantReadWriteLock.ReadLock readLock = lock.readLock();
+	public FlowInfo writeFlowInfoIfNone(int flowChunkSize, long flowTotalSize, String flowIdentifier, String flowFilename, String flowRelativePath, String flowFilePath) {
 		ReentrantReadWriteLock.WriteLock writeLock = lock.writeLock();
 		FlowInfo info = flowInfoMap.get(flowIdentifier);
 		if (info == null) {
@@ -64,13 +65,7 @@ public class FlowInfoStorage {
 				writeLock.lock();
 				info = flowInfoMap.get(flowIdentifier);
 				if (info == null) {
-					info = new FlowInfo(
-							flowChunkSize,
-							flowTotalSize,
-							flowIdentifier,
-							flowFilename,
-							flowRelativePath,
-							flowFilePath);
+					info = new FlowInfo(flowChunkSize, flowTotalSize, flowIdentifier, flowFilename, flowRelativePath, flowFilePath);
 					flowInfoMap.put(flowIdentifier, info);
 				}
 			} finally {
@@ -81,7 +76,7 @@ public class FlowInfoStorage {
 	}
 
 	/**
-	 * É¾³ýResumableInfo
+	 * Remove FlowInfo
 	 *
 	 * @param info
 	 */

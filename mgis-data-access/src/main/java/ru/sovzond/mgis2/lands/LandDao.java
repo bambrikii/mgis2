@@ -1,14 +1,21 @@
 package ru.sovzond.mgis2.lands;
 
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderQuery;
+
+import java.util.List;
 
 @Repository
 public class LandDao extends CRUDDaoBase<Land> {
 	public LandsFilter createFilter(String cadastralNumber, Long[] ids, String orderBy, int first, int max) {
 		return new LandsFilter(cadastralNumber, ids, orderBy, first, max);
+	}
+
+	public List<Land> find(String cadastralNumber) {
+		return getSession().createCriteria(persistentClass).add(Restrictions.eq("cadastralNumber", cadastralNumber)).list();
 	}
 
 	class LandsFilter extends PagerBuilderQuery<Land> {
