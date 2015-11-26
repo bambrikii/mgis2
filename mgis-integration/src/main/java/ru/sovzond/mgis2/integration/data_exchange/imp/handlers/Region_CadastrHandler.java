@@ -10,6 +10,7 @@ import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -83,6 +84,7 @@ import java.util.List;
  * -
  */
 public class Region_CadastrHandler extends DefaultHandler {
+
 	public static final String YYYY_MM_DD = "yyyy-MM-dd";
 
 	AddressDTO addressDTO;
@@ -92,7 +94,12 @@ public class Region_CadastrHandler extends DefaultHandler {
 	OrdinateDTO ordinateDTO;
 	SpatialElementDTO spatialElementDTO;
 	SpatialElementUnitDTO spatialElementUnitDTO;
+	CoordinateSystemDTO coordinateSystemDTO;
+
 	List<LandRightDTO> landRightDTOs;
+	List<SpatialElementDTO> spatialElementDTOs;
+	List<SpatialElementUnitDTO> spatialElementUnitDTOs;
+	List<OrdinateDTO> ordinateDTOs;
 
 
 	/**
@@ -135,6 +142,8 @@ public class Region_CadastrHandler extends DefaultHandler {
 	 * ********************************************************
 	 */
 
+	boolean t_Cadastral_Blocks = false;
+	boolean t_Cadastral_Block = false;
 	boolean t_AreaM = false;//-----Area all
 	//--------Parcels-----------
 	boolean t_Parcels = false;
@@ -214,159 +223,303 @@ public class Region_CadastrHandler extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
+		//-------------Cadastral_Blocks---------
+		if (qName.equalsIgnoreCase("Cadastral_Blocks")) {
+			t_Cadastral_Blocks = true;
+		}
+		if (qName.equalsIgnoreCase("Cadastral_Block")) {
+			t_Cadastral_Block = true;
+		}
 
-		if (qName.equalsIgnoreCase("Parcels")) { //-------------Parcels
+		//-------------Parcels------------------
+		if (qName.equalsIgnoreCase("Parcels")) {
 			t_Parcels = true;
 		}
+
 		if (qName.equalsIgnoreCase("Parcel") && t_Parcels) {
 			t_Parcel = true;
+			landDTO = new LandDTO();
 			landDTO.setCadastralNumber(attributes.getValue(CADASTRAL_NUMBER));
 			landDTO.setName(attributes.getValue(NAME));
 			landDTO.setState(attributes.getValue(STATE));
 			landDTO.setDateCreated(toDate(attributes.getValue(DATE_CR), dateFormat));
 		}
-		if (qName.equalsIgnoreCase("Area")) { //-------------Area
+
+		//-------------Area---------------------
+		if (qName.equalsIgnoreCase("Area")) {
 			t_Area = true;
 		}
+
 		if (qName.equalsIgnoreCase("Area") && t_Area) {
 			t_AreaIn = true;
 		}
+
 		if (qName.equalsIgnoreCase("Unit") && t_Area) {
 			t_Unit = true;
 		}
-		if (qName.equalsIgnoreCase("Location")) { //--------Location
+
+		//--------Location---------------------
+		if (qName.equalsIgnoreCase("Location")) {
 			t_Location = true;
 		}
-		if (qName.equalsIgnoreCase("inBounds")) {
+
+		if (qName.equalsIgnoreCase("inBounds") && t_Location) {
 			t_inBounds = true;
 		}
-		if (qName.equalsIgnoreCase("Placed")) {
+
+		if (qName.equalsIgnoreCase("Placed") && t_Location) {
 			t_Placed = true;
 		}
 
-		if (qName.equalsIgnoreCase("Address")) { //-------Address
+		//-------Address------------------------
+		if (qName.equalsIgnoreCase("Address") && t_Location) {
 			t_Address = true;
 			addressDTO = new AddressDTO();
 		}
-		if (qName.equalsIgnoreCase("Code_OKATO")) {
+
+		if (qName.equalsIgnoreCase("Code_OKATO") && t_Address) {
 			t_Code_OKATO = true;
 		}
-		if (qName.equalsIgnoreCase("Code_KLADR")) {
+
+		if (qName.equalsIgnoreCase("Code_KLADR") && t_Address) {
 			t_Code_KLADR = true;
 		}
 
-		if (qName.equalsIgnoreCase("Region")) {
+		if (qName.equalsIgnoreCase("Region") && t_Address) {
 			t_Region = true;
 		}
-		if (qName.equalsIgnoreCase("District")) {
+
+		if (qName.equalsIgnoreCase("District") && t_Address) {
 			t_District = true;
 			addressDTO.setDistrictName(attributes.getValue(NAME_ALL));
 			addressDTO.setDistrictType(attributes.getValue(TYPE_ALL));
+			t_District = false;
 		}
-		if (qName.equalsIgnoreCase("Locality")) {
+
+		if (qName.equalsIgnoreCase("Locality") && t_Address) {
 			t_Locality = true;
 			addressDTO.setLocalityName(attributes.getValue(NAME_ALL));
 			addressDTO.setLocalityType(attributes.getValue(TYPE_ALL));
+			t_Locality = false;
 		}
-		if (qName.equalsIgnoreCase("Street")) {
+
+		if (qName.equalsIgnoreCase("Street") && t_Address) {
 			t_Street = true;
 			addressDTO.setStreetName(attributes.getValue(NAME_ALL));
 			addressDTO.setStreetType(attributes.getValue(TYPE_ALL));
+			t_Street = false;
 		}
 
-		if (qName.equalsIgnoreCase("Level1")) {
+		if (qName.equalsIgnoreCase("Level1") && t_Address) {
 			t_Level1 = true;
 			addressDTO.setLevelType(attributes.getValue(TYPE_ALL));
 			addressDTO.setLevelValue(attributes.getValue(VALUE));
-		}
-		if (qName.equalsIgnoreCase("Note")) {
-			t_Note = true;
-		}
-		if (qName.equalsIgnoreCase("Category")) { //-------Category
-			t_Category = true;
-			landDTO.setCategory(attributes.getValue(CATEGORY));
+			t_Level1 = false;
 		}
 
-		if (qName.equalsIgnoreCase("Utilization")) { //-------Utiliz
+		if (qName.equalsIgnoreCase("Note") && t_Address) {
+			t_Note = true;
+		}
+
+		//-------Category-----------------------
+		if (qName.equalsIgnoreCase("Category") && t_Parcel) {
+			t_Category = true;
+			landDTO.setCategory(attributes.getValue(CATEGORY));
+			t_Category = false;
+		}
+
+		//-------Utiliz--------------------------
+		if (qName.equalsIgnoreCase("Utilization") && t_Parcel) {
 			t_Utilization = true;
 			landDTO.setUtilizationByDoc(attributes.getValue(UTILIZ));
+			t_Utilization = false;
 		}
-		if (qName.equalsIgnoreCase("Rights")) { //---------Rights
+
+		//---------Rights------------------------
+		if (qName.equalsIgnoreCase("Rights")) {
 			t_Rights = true;
+			landRightDTOs = new ArrayList<LandRightDTO>();
 		}
+
 		if (qName.equalsIgnoreCase("Right") && t_Rights) {
 			t_Right = true;
 			landRightDTO = new LandRightDTO();
 		}
-		if (qName.equalsIgnoreCase("Name")) {
+		if (qName.equalsIgnoreCase("Name") && t_Right) {
 			t_Name_R = true;
 		}
-		if (qName.equalsIgnoreCase("Type")) {
+
+		if (qName.equalsIgnoreCase("Type") && t_Right) {
 			t_Type_R = true;
 		}
-		if (qName.equalsIgnoreCase("CadastralCost")) { //-----------Cadastral cost
+
+		//-----------Cadastral cost----------------
+		if (qName.equalsIgnoreCase("CadastralCost")) {
 			t_CadastralCost = true;
 			landDTO.setCadastralCostValue(Double.valueOf(attributes.getValue(CADASTRAL_COST_VALUE)));
 			landDTO.setCadastralCostUnit(Integer.valueOf(attributes.getValue(CADASTRAL_COST_UNIT)));
+			t_CadastralCost = false;
 		}
-		if (qName.equalsIgnoreCase("SpatialData")) { //-----SpatialData
-			t_SpatialData = true;
-			entitySpatialDTO = new EntitySpatialDTO();
-		}
-		if (qName.equalsIgnoreCase("Entity_Spatial")) {
+
+		//-----SpatialData-------------------------
+		if (qName.equalsIgnoreCase("Entity_Spatial") && t_Parcel) {
 			t_Entity_Spatial = true;
+			entitySpatialDTO = new EntitySpatialDTO();
 			entitySpatialDTO.setEntSys(attributes.getValue(ENT_SYS));
+			spatialElementDTOs = new ArrayList<SpatialElementDTO>();
 
 		}
-		if (qName.equalsIgnoreCase("Spatial_Element")) { //-----Spatial Element
+
+		//-----Spatial Element---------------------
+		if (qName.equalsIgnoreCase("Spatial_Element") && t_Entity_Spatial) {
 			t_Spatial_Element = true;
 			spatialElementDTO = new SpatialElementDTO();
+			spatialElementUnitDTOs = new ArrayList<SpatialElementUnitDTO>();
 		}
-		if (qName.equalsIgnoreCase("Spelement_Unit")) {
-			//TODO: Не понял что куда закинуть в массивы ordinates из атрибутов
+
+		if (qName.equalsIgnoreCase("Spelement_Unit") && t_Spatial_Element) {
 			t_Spelement_Unit = true;
 			spatialElementUnitDTO = new SpatialElementUnitDTO();
-			attributes.getValue(TYPE_UNIT);
-			attributes.getValue(SU_NMB);
+			ordinateDTOs = new ArrayList<OrdinateDTO>();
+			spatialElementUnitDTO.setTypeUnit(attributes.getValue(TYPE_UNIT));
+			spatialElementUnitDTO.setSuNumb(Integer.parseInt(attributes.getValue(SU_NMB)));
 		}
-		if (qName.equalsIgnoreCase("Ordinate")) {
+
+		if (qName.equalsIgnoreCase("Ordinate") && t_Spelement_Unit) {
 			t_Ordinate = true;
 			ordinateDTO = new OrdinateDTO();
 			ordinateDTO.setX(Double.valueOf(attributes.getValue(X)));
 			ordinateDTO.setY(Double.valueOf(attributes.getValue(Y)));
 			ordinateDTO.setOrdNumber(Integer.valueOf(attributes.getValue(ORD)));
+			ordinateDTOs.add(ordinateDTO);
+			t_Ordinate = false;
+		}
 
+		if (qName.equalsIgnoreCase("Coord_System") && t_Cadastral_Block) {
+			t_Coord_System = true;
+			coordinateSystemDTO = new CoordinateSystemDTO();
+			coordinateSystemDTO.setId(attributes.getValue(CS_ID));
+			coordinateSystemDTO.setName(attributes.getValue(NAME_COORD_SYS));
+			landResolver.updateCoordinateSystem(coordinateSystemDTO);
+			t_Coord_System = false;
 		}
 	}
 
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
+
+		if (t_Area && qName.endsWith("Area")) {
+			t_Area = false;
+		}
+
 		if (t_Address && qName.endsWith("Address")) {
 			landDTO.setAddress(addressDTO);
 			t_Address = false;
 		}
 
+		if (t_Location && qName.endsWith("Location")) {
+			t_Location = false;
+		}
+
 		if (t_Right && qName.endsWith("Right")) {
+			landRightDTOs.add(landRightDTO);
 			t_Right = false;
-			//landRightDTOs
 		}
 
 		if (t_Rights && qName.endsWith("Rights")) {
 			landDTO.setRights(landRightDTOs);
 			t_Rights = false;
 		}
+
+		if (t_Spelement_Unit && qName.endsWith("Spelement_Unit")) {
+			spatialElementUnitDTO.setOrdinates(ordinateDTOs);
+			spatialElementUnitDTOs.add(spatialElementUnitDTO);
+			t_Spelement_Unit = false;
+		}
+
+		if (t_Spatial_Element && qName.endsWith("Spatial_Element")) {
+			spatialElementDTO.setSpatialElementUnits(spatialElementUnitDTOs);
+			spatialElementDTOs.add(spatialElementDTO);
+			t_Spatial_Element = false;
+		}
+
+		if (t_Entity_Spatial && qName.endsWith("Entity_Spatial")) {
+			entitySpatialDTO.setSpatialElements(spatialElementDTOs);
+			landDTO.setEntitySpatial(entitySpatialDTO);
+			t_Entity_Spatial = false;
+		}
+
+		if (t_Parcel && qName.endsWith("Parcel")) {
+			landResolver.resolve(landDTO);
+			t_Parcel = false;
+		}
+
+		if (t_Parcels && qName.endsWith("Parcels")) {
+			t_Parcels = false;
+		}
+
+		if (t_Cadastral_Block && qName.endsWith("Cadastral_Block")) {
+			t_Cadastral_Block = false;
+		}
+
+		if (t_Cadastral_Blocks && qName.endsWith("Cadastral_Blocks")) {
+			t_Cadastral_Blocks = false;
+		}
 	}
 
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
+
+		//----------AREA------------
 		if (t_Area && t_AreaIn) {
 			landDTO.setArea(Double.parseDouble(String.valueOf(ch, start, length)));
 			t_AreaIn = false;
 		}
+
 		if (t_Area && t_Unit) {
 			landDTO.setAreaUnit(String.valueOf(ch, start, length));
 			t_Unit = false;
 		}
+		//----------LOCATION---------
+		if (t_inBounds) {
+			landDTO.setLocationInBounds(String.valueOf(ch, start, length));
+			t_inBounds = false;
+		}
+
+		if (t_Placed) {
+			landDTO.setLocationPlaced(String.valueOf(ch, start, length));
+			t_Placed = false;
+		}
+
+		//----------ADDRESS-----------
+		if (t_Code_OKATO) {
+			addressDTO.setOkato(String.valueOf(ch, start, length));
+			t_Code_OKATO = false;
+		}
+		if (t_Code_KLADR) {
+			addressDTO.setKladr(String.valueOf(ch, start, length));
+			t_Code_KLADR = false;
+		}
+		if (t_Region) {
+			addressDTO.setRegion(String.valueOf(ch, start, length));
+			t_Region = false;
+		}
+		if (t_Note) {
+			addressDTO.setNote(String.valueOf(ch, start, length));
+			t_Note = false;
+		}
+
+		//----------RIGHTS---------
+		if (t_Name_R) {
+			landRightDTO.setName(String.valueOf(ch, start, length));
+			t_Name_R = false;
+		}
+
+		if (t_Type_R) {
+			landRightDTO.setType(String.valueOf(ch, start, length));
+			t_Type_R = false;
+		}
+
 	}
 
 	@Override
