@@ -3,7 +3,7 @@
 <div ng-controller="AboutReleaseNotesController">
 	<br/>
 
-	<div ng-repeat="releaseNote in item.releaseNotes|mgisCommonsReverse"
+	<div ng-repeat="releaseNote in item.releaseNotes"
 		 ng-class="releaseNote.release?'bg-primary release-notes-note':'release-notes-note'">
 		<div>{{releaseNote.version}} - {{releaseNote.name}}
 			<span class="release-notes-note-label">{{releaseNote.date}}</span>
