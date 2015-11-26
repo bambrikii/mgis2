@@ -127,6 +127,15 @@ public class LandImportResolverBean {
 		return landRightKindBean.find(type);
 	}
 
+	public void updateCoordinateSystemBean(Land land) {
+
+	}
+
+	public void updateCoordinateSystem(Long landId, CoordinateSystemDTO coordinateSystemDTO) {
+		Long id = null;
+		// TODO:
+	}
+
 	public Land resolveLand(LandDTO landDTO) {
 		List<Land> lands = landBean.find(landDTO.getCadastralNumber());
 		Land land;
@@ -173,11 +182,11 @@ public class LandImportResolverBean {
 			//
 			CoordinateSystem coordinateSystem = coordinateSystemBean.findByName(entSys);
 			group.setCoordinateSystem(coordinateSystem);
-			SpatialElementDTO[] elements = landDTO.getEntitySpatial().getSpatialElements();
+			List<SpatialElementDTO> elements = landDTO.getEntitySpatial().getSpatialElements();
 			if (elements != null) {
-				for (int i = 0; i < elements.length; i++) {
-					SpatialElementDTO element = elements[i];
-					SpatialElementUnitDTO[] units = element.getSpatialElementUnits();
+				for (int i = 0; i < elements.size(); i++) {
+					SpatialElementDTO element = elements.get(i);
+					List<SpatialElementUnitDTO> units = element.getSpatialElementUnits();
 					//
 					SpatialElement spatialElement = new SpatialElement();
 					group.getSpatialElements().add(spatialElement);
@@ -185,7 +194,7 @@ public class LandImportResolverBean {
 					for (SpatialElementUnitDTO unit : units) {
 						int suNumb = unit.getSuNumb();
 						String typeUnit = unit.getTypeUnit();
-						OrdinateDTO[] ordinates = unit.getOrdinates();
+						List<OrdinateDTO> ordinates = unit.getOrdinates();
 						for (OrdinateDTO ordinate : ordinates) {
 							int ordNumber = ordinate.getOrdNumber();
 							double x = ordinate.getX();

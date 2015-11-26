@@ -4,13 +4,13 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
-import ru.sovzond.mgis2.integration.data_exchange.imp.LandsImporter;
+import ru.sovzond.mgis2.integration.data_exchange.imp.ILandResolver;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
-import ru.sovzond.mgis2.lands.Land;
 
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 /**
  * Created by Alexander Arakelyan on 18.11.15.
@@ -83,6 +83,7 @@ import java.text.SimpleDateFormat;
  * -
  */
 public class Region_CadastrHandler extends DefaultHandler {
+	public static final String YYYY_MM_DD = "yyyy-MM-dd";
 
 	AddressDTO addressDTO;
 	EntitySpatialDTO entitySpatialDTO;
@@ -91,7 +92,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 	OrdinateDTO ordinateDTO;
 	SpatialElementDTO spatialElementDTO;
 	SpatialElementUnitDTO spatialElementUnitDTO;
-	LandRightDTO[] landRightDTOs;
+	List<LandRightDTO> landRightDTOs;
 
 
 	/**
@@ -202,8 +203,13 @@ public class Region_CadastrHandler extends DefaultHandler {
 	boolean t_Appointment = false;
 	boolean t_FIO = false;
 
-	SimpleDateFormat dateFormat = new SimpleDateFormat(LandsImporter.YYYY_MM_DD);
+	SimpleDateFormat dateFormat = new SimpleDateFormat(YYYY_MM_DD);
 
+	private ILandResolver landResolver;
+
+	public Region_CadastrHandler(ILandResolver landResolver) {
+		this.landResolver = landResolver;
+	}
 
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {

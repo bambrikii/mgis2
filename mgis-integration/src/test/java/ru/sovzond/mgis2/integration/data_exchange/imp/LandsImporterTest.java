@@ -16,8 +16,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
-import static ru.sovzond.mgis2.integration.data_exchange.imp.LandsImporter.YYYY_MM_DD;
+import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.Region_CadastrHandler.YYYY_MM_DD;
 
 /**
  * Created by Alexander Arakelyan on 18.11.15.
@@ -76,7 +78,10 @@ public class LandsImporterTest {
 		LandRightDTO rightDTO = new LandRightDTO();
 		rightDTO.setName("Собственность");
 		rightDTO.setType("001001000000");
-		landDTO.setRights(new LandRightDTO[]{rightDTO});
+
+		List<LandRightDTO> landRightDTOs = new ArrayList<>();
+		landRightDTOs.add(rightDTO);
+		landDTO.setRights(landRightDTOs);
 
 		landDTO.setCadastralCostValue(Double.valueOf("233783.01"));
 		landDTO.setCadastralCostUnit(Integer.parseInt("383")); // Ruble
@@ -85,8 +90,14 @@ public class LandsImporterTest {
 		EntitySpatialDTO entitySpatialDTO = new EntitySpatialDTO();
 		entitySpatialDTO.setEntSys("364");
 		SpatialElementDTO spatialElementDTO = new SpatialElementDTO();
-		spatialElementDTO.setSpatialElementUnits(new SpatialElementUnitDTO[]{createSpatialElementUnit("Точка", "1", "325170.46", "1477361.18", "1")});
-		entitySpatialDTO.setSpatialElements(new SpatialElementDTO[]{spatialElementDTO});
+
+		List<SpatialElementUnitDTO> spatialElementUnitsDTOs = new ArrayList<>();
+		spatialElementUnitsDTOs.add(createSpatialElementUnit("Точка", "1", "325170.46", "1477361.18", "1"));
+		spatialElementDTO.setSpatialElementUnits(spatialElementUnitsDTOs);
+
+		List<SpatialElementDTO> spatialElementsDTOs = new ArrayList<>();
+		spatialElementsDTOs.add(spatialElementDTO);
+		entitySpatialDTO.setSpatialElements(spatialElementsDTOs);
 
 		landDTO.setEntitySpatial(entitySpatialDTO);
 
@@ -107,7 +118,9 @@ public class LandsImporterTest {
 		ordinateDTO.setX(Double.parseDouble(x));
 		ordinateDTO.setY(Double.parseDouble(y));
 		ordinateDTO.setOrdNumber(Integer.parseInt(ordNumb));
-		unitDTO.setOrdinates(new OrdinateDTO[]{ordinateDTO});
+		List<OrdinateDTO> ordinateDTOs = new ArrayList<>();
+		ordinateDTOs.add(ordinateDTO);
+		unitDTO.setOrdinates(ordinateDTOs);
 		return unitDTO;
 	}
 }

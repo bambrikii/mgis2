@@ -1,6 +1,7 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.dto;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Alexander Arakelyan on 19.11.15.
@@ -16,7 +17,7 @@ public class LandDTO {
 	private String locationPlaced;
 	private AddressDTO address;
 	private String category;
-	private LandRightDTO[] rights;
+	private List<LandRightDTO> rights;
 	private Double cadastralCostValue;
 	private Integer cadastralCostUnit;
 	private String utilizationByDoc;
@@ -102,11 +103,11 @@ public class LandDTO {
 		this.category = category;
 	}
 
-	public LandRightDTO[] getRights() {
+	public List<LandRightDTO> getRights() {
 		return rights;
 	}
 
-	public void setRights(LandRightDTO[] rights) {
+	public void setRights(List<LandRightDTO> rights) {
 		this.rights = rights;
 	}
 

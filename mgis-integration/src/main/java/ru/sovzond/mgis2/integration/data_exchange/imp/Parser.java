@@ -4,6 +4,8 @@ package ru.sovzond.mgis2.integration.data_exchange.imp;
  * Created by donchenko-y on 11/18/15.
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -15,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Parser {
+	private static final Logger logger = LoggerFactory.getLogger(LandsImporter.class);
 
 	SAXParserFactory factory = SAXParserFactory.newInstance();
 	SAXParser parser = null;
@@ -23,7 +26,7 @@ public class Parser {
 		try {
 			parser = factory.newSAXParser();
 		} catch (ParserConfigurationException | SAXException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 

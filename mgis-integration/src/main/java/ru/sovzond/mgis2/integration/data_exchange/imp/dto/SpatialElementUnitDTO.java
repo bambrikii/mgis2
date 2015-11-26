@@ -1,19 +1,21 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.dto;
 
+import java.util.List;
+
 /**
  * Created by Alexander Arakelyan on 19.11.15.
  */
 public class SpatialElementUnitDTO {
 
-	public OrdinateDTO[] ordinates;
+	public List<OrdinateDTO> ordinates;
 	private String typeUnit;
 	private int suNumb;
 
-	public OrdinateDTO[] getOrdinates() {
+	public List<OrdinateDTO> getOrdinates() {
 		return ordinates;
 	}
 
-	public void setOrdinates(OrdinateDTO[] ordinates) {
+	public void setOrdinates(List<OrdinateDTO> ordinates) {
 		this.ordinates = ordinates;
 	}
 
