@@ -23,7 +23,7 @@ public class TerritorialZoneDao extends CRUDDaoBase<TerritorialZone> {
 		if (cadastralNumber != null && cadastralNumber.length() > 0) {
 			criteria.add(Restrictions.eq("accountNumber", cadastralNumber));
 		}
-		criteria.add(Restrictions.like("zoneType", zoneType));
+		criteria.add(Restrictions.eq("zoneType", zoneType));
 		return criteria.list();
 	}
 

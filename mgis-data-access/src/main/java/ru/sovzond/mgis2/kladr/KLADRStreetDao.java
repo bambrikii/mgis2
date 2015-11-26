@@ -7,6 +7,8 @@ import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 
+import java.util.List;
+
 /**
  * Created by Alexander Arakelyan on 10.09.15.
  */
@@ -14,6 +16,13 @@ import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 public class KLADRStreetDao extends CRUDDaoBase<KLADRStreet> {
 	public PagerBuilderBase<KLADRStreet> createFilter(String subjectCode, String regionCode, String localityCode, String streetName, String orderBy, int first, int max) {
 		return new KLADRStreetFilter(subjectCode, regionCode, localityCode, streetName, orderBy, first, max);
+	}
+
+	public List<KLADRStreet> findStreet(String localityCode, String streetName, String streetType) {
+		return createCriteria() //
+				.add(Restrictions.like("code", localityCode + "____")) //
+				.add(Restrictions.eq("name", streetName)).add(Restrictions.eq("socr", streetType)) //
+				.list();
 	}
 
 	private class KLADRStreetFilter extends PagerBuilderCriteria<KLADRStreet> {
@@ -32,11 +41,7 @@ public class KLADRStreetDao extends CRUDDaoBase<KLADRStreet> {
 
 		@Override
 		protected void applyFilter(Criteria criteria) {
-			new KLADRCriteriaBuilder()
-					.subjectCode(subjectCode)
-					.regionCode(regionCode)
-					.localityCode(localityCode)
-					.filterStreet(criteria, streetName);
+			new KLADRCriteriaBuilder().subjectCode(subjectCode).regionCode(regionCode).localityCode(localityCode).filterStreet(criteria, streetName);
 			if (streetName != null && !"".equals(streetName)) {
 				criteria.add(Restrictions.like("name", "%" + streetName + "%"));
 			}

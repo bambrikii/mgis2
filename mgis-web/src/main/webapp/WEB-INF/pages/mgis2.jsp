@@ -5,6 +5,8 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
+	<link rel="icon" type="image/png" href="app2/images/dino.png">
+
 	<link type="text/css" rel="stylesheet" href="app2/app.css">
 	<link type="text/css" rel="stylesheet" href="app2/app-desktop.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
@@ -168,6 +170,9 @@
 	<script type="text/javascript" src="app2/data-exchange/data-exchange.js"></script>
 	<script type="text/javascript" src="app2/data-exchange/import/import-module.js"></script>
 	<script type="text/javascript" src="app2/data-exchange/export/export-module.js"></script>
+
+	<!-- About -->
+	<script type="text/javascript" src="app2/about/about-module.js"></script>
 
 	<!-- test pages -->
 	<script type="text/javascript" src="app2/commons/forms/commons-forms-module.js"></script>

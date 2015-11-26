@@ -10,7 +10,7 @@ import javax.persistence.*;
 /**
  * Описание раздела «Адрес (описание местоположения)»
  * Код элемента Содержание элемента Тип Формат Наименование Дополнительная информация Address (Адрес (описание местоположения)) Тип tAddressOut
- * <p/>
+ * <p>
  * OKATO Н Т(11) ОКАТО Ограничение на тип строка OKATOType.
  * KLADR Н Т(20) КЛАДР
  * OKTMO Н Т(11) ОКТМО Ограничение на тип строка OKTMOType.
@@ -28,7 +28,7 @@ import javax.persistence.*;
  * Apartment Н SА Квартира Тип tApartment. См. описание типа ниже в данной таблице.
  * Other Н Т(2500) Иное
  * Note Н Т(4000) Неформализованное описание
- * <p/>
+ * <p>
  * Описание комплексных типов
  * Тип tName (Наименование) tName Name ОА Т(255) Наименование tName Type ОА Т(255) Тип
  * Тип tUrbanDistrict (Городской район) tUrbanDistrict Name ОА Т(255) Наименование tUrbanDistrict Type ОА Т Тип По справочнику dUrbanDistrict «Городской район»
@@ -39,7 +39,7 @@ import javax.persistence.*;
  * Тип tApartment (Квартира) tApartment Type ОА Т Тип По справочнику dApartmentType «Тип адресного элемента четвертого уровня» tApartment Value ОА Т(255) Значение
  */
 @Entity
-@Table(name = "mgis2_address")
+@Table(name = "mgis2_address", uniqueConstraints = @UniqueConstraint(columnNames = {"subject", "region", "locality", "street", "home", "housing", "apartment"}))
 public class Address implements Cloneable {
 
 	@Id

@@ -10,6 +10,7 @@
 	<packaging>war</packaging>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jackson.version>1.9.10</jackson.version>
 	</properties>
 

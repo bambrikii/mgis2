@@ -6,6 +6,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Login</title>
 
+	<link rel="icon" type="image/png" href="app2/images/dino.png">
+
 	<link type="text/css" rel="stylesheet" href="app2/app.css">
 
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>

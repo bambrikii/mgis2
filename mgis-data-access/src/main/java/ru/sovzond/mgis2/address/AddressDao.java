@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderBase;
 import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
+import ru.sovzond.mgis2.kladr.KLADRLocality;
+import ru.sovzond.mgis2.kladr.KLADRStreet;
 
 import java.util.List;
 
@@ -16,30 +18,16 @@ public class AddressDao extends CRUDDaoBase<Address> {
 		return new AddressPagerBuilder(name, orderBy, first, max);
 	}
 
-	public List<Address> find(AddressFilter filter) {
+	public List<Address> find(KLADRLocality subject, KLADRLocality region, KLADRLocality locality, KLADRStreet street, String home, String housing, String building, String apartment) {
 		Criteria criteria = getSession().createCriteria(persistentClass);
-		criteria
-				.createAlias("subject", "subject")
-				.createAlias("region", "region")
-				.createAlias("locality", "locality")
-				.createAlias("street", "street")
-		;
-		if (filter.subject()) {
-			criteria.add(Restrictions.eq("subject.name", filter.getSubject()));
-			criteria.add(Restrictions.eq("subject.socr", filter.getSubjectType()));
-		}
-		if (filter.region()) {
-			criteria.add(Restrictions.eq("region.name", filter.getRegion()));
-			criteria.add(Restrictions.eq("region.socr", filter.getRegionType()));
-		}
-		if (filter.locality()) {
-			criteria.add(Restrictions.eq("locality.name", filter.getLocality()));
-			criteria.add(Restrictions.eq("locality.socr", filter.getLocalityType()));
-		}
-		criteria.add(filter.home() ? Restrictions.eq("home", filter.getHome()) : Restrictions.isEmpty("home"));
-		criteria.add(filter.housing() ? Restrictions.eq("housing", filter.getHousing()) : Restrictions.isEmpty("housing"));
-		criteria.add(filter.building() ? Restrictions.eq("building", filter.getBuilding()) : Restrictions.isEmpty("building"));
-		criteria.add(filter.apartment() ? Restrictions.eq("apartment", filter.getApartment()) : Restrictions.isEmpty("apartment"));
+		criteria.add(subject != null ? Restrictions.eq("subject", subject) : Restrictions.isNull("subject"));
+		criteria.add(region != null ? Restrictions.eq("region", region) : Restrictions.isNull("region"));
+		criteria.add(locality != null ? Restrictions.eq("locality", locality) : Restrictions.isNull("locality"));
+		criteria.add(street != null ? Restrictions.eq("street", street) : Restrictions.isNull("street"));
+		criteria.add(home != null ? Restrictions.eq("home", home) : Restrictions.isNull("home"));
+		criteria.add(housing != null ? Restrictions.eq("housing", housing) : Restrictions.isNull("housing"));
+		criteria.add(building != null ? Restrictions.eq("building", building) : Restrictions.isNull("building"));
+		criteria.add(apartment != null ? Restrictions.eq("apartment", apartment) : Restrictions.isNull("apartment"));
 		return criteria.list();
 	}
 

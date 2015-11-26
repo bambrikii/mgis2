@@ -41,12 +41,13 @@ angular.module("mgis.geo.spatial.data", [
 					});
 				}
 				$scope.removeElement = function (element) {
-					MGISCommonsModalForm.confirmRemoval(function () {
+					MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
 						for (var i in $scope.spatialGroup.spatialElements) {
 							if (element == $scope.spatialGroup.spatialElements[i]) {
 								$scope.spatialGroup.spatialElements.splice(i, 1);
 							}
 						}
+						modalInstance.close();
 					});
 				}
 			}
