@@ -246,7 +246,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 		}
 
 		//-------------Area---------------------
-		if (qName.equalsIgnoreCase("Area")) {
+		if (qName.equalsIgnoreCase("Area") && t_Parcel) {
 			t_Area = true;
 		}
 
@@ -408,7 +408,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 
-		if (t_Area && qName.endsWith("Area")) {
+		if (t_Area && t_Parcel && qName.endsWith("Area")) {
 			t_Area = false;
 		}
 
