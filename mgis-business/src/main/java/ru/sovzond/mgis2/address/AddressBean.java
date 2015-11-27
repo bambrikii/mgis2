@@ -59,7 +59,7 @@ public class AddressBean extends CRUDBeanBase<Address> {
 		KLADRLocality region = kladrLocalityDao.findRegion(subject != null ? subject.getCode() : null, filter.getRegion(), filter.getRegionType()).get(0);
 		KLADRLocality locality = kladrLocalityDao.findLocality(region.getCode(), filter.getLocality(), filter.getLocalityType()).get(0);
 		List<KLADRStreet> streets = kladrStreetDao.findStreet(locality.getCode(), filter.getStreet(), filter.getStreetType());
-		KLADRStreet street = null;
+		KLADRStreet street;
 		switch (streets.size()) {
 			case 1:
 				street = streets.get(0);

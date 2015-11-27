@@ -36,7 +36,6 @@ public class LandsImporterTest {
 
 	@Test
 	@Transactional
-	@Ignore
 	public void testImp() throws IOException {
 		try (InputStream inputStream = LandsImporterTest.class.getResourceAsStream("doc2394077.xml")) {
 			landsImporter.imp(inputStream);

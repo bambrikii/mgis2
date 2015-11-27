@@ -217,27 +217,33 @@ public class LandImportResolverBean {
 	}
 
 	private TerritorialZone resolveTerritorialZone(String landCadastralNumber, TerritorialZoneType territorialZoneType) {
-		TerritorialZone zone = null;
 		Matcher matcher = cadastralNumberPattern.matcher(landCadastralNumber);
 		if (matcher.matches()) {
 			String cadastralNumber1 = matcher.group(1) + ":" + matcher.group(2) + ":" + matcher.group(3) + matcher.group(4) + matcher.group(5);
 			List<TerritorialZone> list = territorialZoneBean.findByCadastralNumberAndZoneType(cadastralNumber1, territorialZoneType);
-			if (list.size() >= 1) {
-				zone = list.get(0);
-			} else {
-				String cadastralNumber2 = matcher.group(1) + ":" + matcher.group(2) + ":" + matcher.group(3) + matcher.group(4);
-				list = territorialZoneBean.findByCadastralNumberAndZoneType(cadastralNumber2, territorialZoneType);
-				if (list.size() >= 1) {
-					zone = list.get(0);
-				} else {
-					zone = new TerritorialZone();
-					zone.setAccountNumber(cadastralNumber1);
-					zone.setName(cadastralNumber1 + " (" + territorialZoneType.getName() + ")");
-					territorialZoneBean.save(zone);
-				}
+			switch (list.size()) {
+				case 1:
+					return list.get(0);
+				case 0:
+					String cadastralNumber2 = matcher.group(1) + ":" + matcher.group(2) + ":" + matcher.group(3) + matcher.group(4);
+					list = territorialZoneBean.findByCadastralNumberAndZoneType(cadastralNumber2, territorialZoneType);
+					switch (list.size()) {
+						case 1:
+							return list.get(0);
+						case 0:
+							TerritorialZone zone = new TerritorialZone();
+							zone.setAccountNumber(cadastralNumber1);
+							zone.setName(cadastralNumber1 + " (" + territorialZoneType.getName() + ")");
+							territorialZoneBean.save(zone);
+							return zone;
+						default:
+							throw new IllegalArgumentException("More than one territorial zone found by cadastralNumber: " + cadastralNumber2 + " and territorialZoneType: " + territorialZoneType.getCode() + ".");
+					}
+				default:
+					throw new IllegalArgumentException("More than one territorial zone found by cadastralNumber: " + cadastralNumber1 + " and territorialZoneType: " + territorialZoneType.getCode() + ".");
 			}
 		}
-		return zone;
+		throw new IllegalArgumentException("Cadastral number " + landCadastralNumber + " cannot be parsed.");
 	}
 
 	private TerritorialZoneType resolveTerritorialZoneType(String territorialZoneType) {
