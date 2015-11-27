@@ -1,0 +1,2880 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://portal.rosreestr.ru/xsl/GKN/KPT/08/common.xsl"?>
+<Region_Cadastr CodeType="101" Version="08">
+	<Package>
+		<Cadastral_Blocks>
+			<Cadastral_Block CadastralNumber="72:17:0201005">
+				<Area Total="32.89" Unit="059"/>
+				<Parcels>
+					<Parcel CadastralNumber="72:17:0201005:1" Name="01" State="01" DateCreated="2001-04-07">
+						<Area>
+							<Area>1264</Area>
+							<Unit>055</Unit>
+						</Area>
+						<Location>
+							<inBounds>1</inBounds>
+							<Placed>Г0</Placed>
+							<Address>
+								<Code_OKATO>71244812001</Code_OKATO>
+								<Code_KLADR>72001000012001600</Code_KLADR>
+								<Region>72</Region>
+								<District Name="Тюменский" Type="р-н"/>
+								<Locality Name="Боровский" Type="рп"/>
+								<Street Name="Пушкина" Type="пер"/>
+								<Level1 Type="д" Value="13"/>
+								<Note>обл. Тюменская, р-н Тюменский, рп. Боровский, пер. Пушкина, дом 13</Note>
+							</Address>
+						</Location>
+						<Category Category="003002000000"/>
+						<Utilization ByDoc="для индивидуального жилищного строительства"/>
+						<Rights>
+							<Right>
+								<Name>Собственность</Name>
+								<Type>001001000000</Type>
+							</Right>
+						</Rights>
+						<CadastralCost Value="1216056.48" Unit="383"/>
+					</Parcel>
+					<Parcel CadastralNumber="72:17:0201005:2" Name="01" State="01" DateCreated="2001-04-20">
+						<Area>
+							<Area>243</Area>
+							<Unit>055</Unit>
+						</Area>
+						<Location>
+							<inBounds>1</inBounds>
+							<Placed>Ж2</Placed>
+							<Address>
+								<Code_OKATO>71244812001</Code_OKATO>
+								<Code_KLADR>72001000012000600</Code_KLADR>
+								<Region>72</Region>
+								<District Name="Тюменский" Type="р-н"/>
+								<Locality Name="Боровский" Type="рп"/>
+								<Street Name="Лермонтова" Type="ул"/>
+								<Level1 Type="д" Value="21а."/>
+								<Note>обл. Тюменская, р-н Тюменский, рп. Боровский, ул. Лермонтова, дом 21а.</Note>
+							</Address>
+						</Location>
+						<Category Category="003002000000"/>
+						<Utilization ByDoc="для индивидуального жилищного строительства и ведения подсобного хозяйства"/>
+						<Rights>
+							<Right>
+								<Name>Собственность</Name>
+								<Type>001001000000</Type>
+							</Right>
+						</Rights>
+						<CadastralCost Value="233783.01" Unit="383"/>
+						<Entity_Spatial Ent_Sys="364">
+							<Spatial_Element>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325170.46" Y="1477361.18" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+									<Ordinate X="325146.84" Y="1477361.68" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+									<Ordinate X="325146.48" Y="1477369.03" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+									<Ordinate X="325163.95" Y="1477368.48" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+									<Ordinate X="325164.25" Y="1477372.65" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+									<Ordinate X="325174.74" Y="1477372.39" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+									<Ordinate X="325174.65" Y="1477362.18" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="8">
+									<Ordinate X="325170.47" Y="1477361.72" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325170.46" Y="1477361.18" Ord_Nmb="1"/>
+								</Spelement_Unit>
+							</Spatial_Element>
+						</Entity_Spatial>
+					</Parcel>
+					<Parcel CadastralNumber="72:17:0201005:3" Name="01" State="01" DateCreated="2001-06-08">
+						<Area>
+							<Area>1200</Area>
+							<Unit>055</Unit>
+							<Innccuracy>0</Innccuracy>
+						</Area>
+						<Location>
+							<inBounds>1</inBounds>
+							<Placed>К2</Placed>
+							<Address>
+								<Code_OKATO>71244812001</Code_OKATO>
+								<Code_KLADR>72001000012002100</Code_KLADR>
+								<Region>72</Region>
+								<District Name="Тюменский" Type="р-н"/>
+								<Locality Name="Боровский" Type="рп"/>
+								<Street Name="8 Марта" Type="ул"/>
+								<Level1 Type="д" Value="12"/>
+								<Note>обл. Тюменская, р-н Тюменский, рп. Боровский, ул. 8 Марта, дом 12</Note>
+							</Address>
+						</Location>
+						<Category Category="003002000000"/>
+						<Utilization ByDoc="для индивидуального жилищного строительства"/>
+						<Rights>
+							<Right>
+								<Name>Собственность</Name>
+								<Type>001001000000</Type>
+							</Right>
+						</Rights>
+						<CadastralCost Value="1154484" Unit="383"/>
+						<Entity_Spatial Ent_Sys="364">
+							<Spatial_Element>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325151.04" Y="1477652.17" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+									<Ordinate X="325149.82" Y="1477639.15" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+									<Ordinate X="325148.15" Y="1477620.05" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+									<Ordinate X="325148.08" Y="1477617.55" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+									<Ordinate X="325148" Y="1477614.56" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+									<Ordinate X="325147.93" Y="1477611.45" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+									<Ordinate X="325118.39" Y="1477614.02" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="8">
+									<Ordinate X="325117.73" Y="1477617" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="9">
+									<Ordinate X="325122.29" Y="1477650.26" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="10">
+									<Ordinate X="325122.96" Y="1477655.21" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="11">
+									<Ordinate X="325133.68" Y="1477653.95" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325151.04" Y="1477652.17" Ord_Nmb="1"/>
+								</Spelement_Unit>
+							</Spatial_Element>
+						</Entity_Spatial>
+					</Parcel>
+					<Parcel CadastralNumber="72:17:0201005:4" Name="01" State="01" DateCreated="2001-06-13">
+						<Area>
+							<Area>1499.73</Area>
+							<Unit>055</Unit>
+						</Area>
+						<Location>
+							<inBounds>1</inBounds>
+							<Placed>А3</Placed>
+							<Address>
+								<Code_OKATO>71244812001</Code_OKATO>
+								<Code_KLADR>72001000012001300</Code_KLADR>
+								<Region>72</Region>
+								<District Name="Тюменский" Type="р-н"/>
+								<Locality Name="Боровский" Type="рп"/>
+								<Street Name="Тельмана" Type="ул"/>
+								<Level1 Type="д" Value="68"/>
+								<Note>обл. Тюменская, р-н Тюменский, рп. Боровский, ул. Тельмана, дом 68</Note>
+							</Address>
+						</Location>
+						<Category Category="003002000000"/>
+						<Utilization ByDoc="для индивидуального жилищного строительства и ведения личного подсобного хозяйства"/>
+						<Rights>
+							<Right>
+								<Name>частная индивидуальная собственность</Name>
+								<Type>001001000000</Type>
+							</Right>
+						</Rights>
+						<CadastralCost Value="1442845.24" Unit="383"/>
+						<Entity_Spatial Ent_Sys="364">
+							<Spatial_Element>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325095.44" Y="1476767.46" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+									<Ordinate X="325053.96" Y="1476765.86" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+									<Ordinate X="325052.81" Y="1476780.42" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+									<Ordinate X="325052.70" Y="1476781.82" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+									<Ordinate X="325052.34" Y="1476786.34" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+									<Ordinate X="325051.98" Y="1476790.91" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+									<Ordinate X="325053.69" Y="1476791.13" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="8">
+									<Ordinate X="325053.29" Y="1476797.63" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="9">
+									<Ordinate X="325053.35" Y="1476800.49" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="10">
+									<Ordinate X="325053.38" Y="1476801.61" Ord_Nmb="1" Delta_Geopoint="0.20"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="11">
+									<Ordinate X="325058.81" Y="1476801.19" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="12">
+									<Ordinate X="325060.23" Y="1476801.08" Ord_Nmb="1" Delta_Geopoint="0.20"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="13">
+									<Ordinate X="325072.82" Y="1476800.87" Ord_Nmb="1" Delta_Geopoint="0.20"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="14">
+									<Ordinate X="325073.82" Y="1476800.81" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="15">
+									<Ordinate X="325084.72" Y="1476800.03" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="16">
+									<Ordinate X="325085.62" Y="1476799.96" Ord_Nmb="1" Delta_Geopoint="0.20"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="17">
+									<Ordinate X="325094.96" Y="1476799.24" Ord_Nmb="1" Delta_Geopoint="0.20"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="18">
+									<Ordinate X="325095.96" Y="1476799.20" Ord_Nmb="1" Delta_Geopoint="0.20"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="19">
+									<Ordinate X="325099.47" Y="1476799.09" Ord_Nmb="1" Delta_Geopoint="0.20"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="20">
+									<Ordinate X="325098.53" Y="1476791.31" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="21">
+									<Ordinate X="325096.85" Y="1476778.59" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325095.44" Y="1476767.46" Ord_Nmb="1"/>
+								</Spelement_Unit>
+							</Spatial_Element>
+						</Entity_Spatial>
+					</Parcel>
+					<Parcel CadastralNumber="72:17:0201005:5" Name="01" State="01" DateCreated="2001-06-16">
+						<Area>
+							<Area>710</Area>
+							<Unit>055</Unit>
+							<Innccuracy>0</Innccuracy>
+						</Area>
+						<Location>
+							<inBounds>1</inBounds>
+							<Placed>Ж7</Placed>
+							<Address>
+								<Code_OKATO>71244812001</Code_OKATO>
+								<Code_KLADR>72001000012001400</Code_KLADR>
+								<Region>72</Region>
+								<District Name="Тюменский" Type="р-н"/>
+								<Locality Name="Боровский" Type="рп"/>
+								<Street Name="Тельмана" Type="пер"/>
+								<Level1 Type="д" Value="12"/>
+								<Note>обл. Тюменская, р-н Тюменский, рп. Боровский, пер. Тельмана, дом 12</Note>
+							</Address>
+						</Location>
+						<Category Category="003002000000"/>
+						<Utilization ByDoc="для индивидуального жилищного строительства"/>
+						<Rights>
+							<Right>
+								<Name>Собственность</Name>
+								<Type>001001000000</Type>
+							</Right>
+						</Rights>
+						<CadastralCost Value="683069.7" Unit="383"/>
+						<Entity_Spatial Ent_Sys="364">
+							<Spatial_Element>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="324898.52" Y="1477459.12" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+									<Ordinate X="324900.68" Y="1477443.28" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+									<Ordinate X="324862.72" Y="1477433.96" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+									<Ordinate X="324860.04" Y="1477443.74" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+									<Ordinate X="324857.76" Y="1477451.56" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+									<Ordinate X="324862.40" Y="1477452.72" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+									<Ordinate X="324875.38" Y="1477455.95" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="324898.52" Y="1477459.12" Ord_Nmb="1"/>
+								</Spelement_Unit>
+							</Spatial_Element>
+						</Entity_Spatial>
+					</Parcel>
+					<Parcel CadastralNumber="72:17:0201005:6" Name="01" State="01" DateCreated="2001-06-20">
+						<Area>
+							<Area>705.74</Area>
+							<Unit>055</Unit>
+						</Area>
+						<Location>
+							<inBounds>1</inBounds>
+							<Placed>Д4</Placed>
+							<Address>
+								<Code_OKATO>71244812001</Code_OKATO>
+								<Code_KLADR>72001000012001300</Code_KLADR>
+								<Region>72</Region>
+								<District Name="Тюменский" Type="р-н"/>
+								<Locality Name="Боровский" Type="рп"/>
+								<Street Name="Тельмана" Type="ул"/>
+								<Level1 Type="д" Value="44 а"/>
+								<Note>обл. Тюменская, р-н Тюменский, рп. Боровский, ул. Тельмана, дом 44 а</Note>
+							</Address>
+						</Location>
+						<Category Category="003002000000"/>
+						<Utilization ByDoc="для индивидуального жилищного строительства и ведения личного подсобного хозяйства"/>
+						<Rights>
+							<Right>
+								<Name>Собственность</Name>
+								<Type>001001000000</Type>
+							</Right>
+						</Rights>
+						<CadastralCost Value="678971.28" Unit="383"/>
+						<Entity_Spatial Ent_Sys="364">
+							<Spatial_Element>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325088.17" Y="1477155.75" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+									<Ordinate X="325088.25" Y="1477139.16" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+									<Ordinate X="325062.87" Y="1477138.68" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+									<Ordinate X="325063.11" Y="1477140.03" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+									<Ordinate X="325053.23" Y="1477139.89" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+									<Ordinate X="325046.89" Y="1477139.80" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+									<Ordinate X="325044.22" Y="1477139.76" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="8">
+									<Ordinate X="325044.48" Y="1477155.10" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325088.17" Y="1477155.75" Ord_Nmb="1"/>
+								</Spelement_Unit>
+							</Spatial_Element>
+						</Entity_Spatial>
+					</Parcel>
+					<Parcel CadastralNumber="72:17:0201005:7" Name="01" State="01" DateCreated="2001-07-10">
+						<Area>
+							<Area>21.35</Area>
+							<Unit>055</Unit>
+						</Area>
+						<Location>
+							<inBounds>1</inBounds>
+							<Address>
+								<Code_OKATO>71244812001</Code_OKATO>
+								<Code_KLADR>72001000012001000</Code_KLADR>
+								<Region>72</Region>
+								<District Name="Тюменский" Type="р-н"/>
+								<Locality Name="Боровский" Type="рп"/>
+								<Street Name="Мира" Type="ул"/>
+								<Apartment Type="кв" Value="24, гараж № 12"/>
+								<Note>обл. Тюменская, р-н Тюменский, рп. Боровский, ул. Мира, 24, гараж № 12</Note>
+							</Address>
+						</Location>
+						<Category Category="003002000000"/>
+						<Utilization ByDoc="для строительства индивидуального  гаража"/>
+						<Rights>
+							<Right>
+								<Name>Собственность</Name>
+								<Type>001001000000</Type>
+							</Right>
+						</Rights>
+						<CadastralCost Value="64089.92" Unit="383"/>
+						<Entity_Spatial Ent_Sys="364">
+							<Spatial_Element>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325125.14" Y="1476809.34" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+									<Ordinate X="325125.22" Y="1476805.78" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+									<Ordinate X="325119.22" Y="1476805.62" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+									<Ordinate X="325119.14" Y="1476809.18" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325125.14" Y="1476809.34" Ord_Nmb="1"/>
+								</Spelement_Unit>
+							</Spatial_Element>
+						</Entity_Spatial>
+					</Parcel>
+					<Parcel CadastralNumber="72:17:0201005:8" Name="01" State="01" DateCreated="2001-09-19">
+						<Area>
+							<Area>800</Area>
+							<Unit>055</Unit>
+							<Innccuracy>18.52</Innccuracy>
+						</Area>
+						<Location>
+							<inBounds>1</inBounds>
+							<Address>
+								<Code_OKATO>71244812001</Code_OKATO>
+								<Code_KLADR>72001000012001300</Code_KLADR>
+								<Region>72</Region>
+								<District Name="Тюменский" Type="р-н"/>
+								<Locality Name="Боровский" Type="рп"/>
+								<Street Name="Тельмана" Type="ул"/>
+								<Level1 Type="д" Value="68"/>
+								<Note>обл. Тюменская, р-н Тюменский, рп. Боровский, ул. Тельмана, дом 68</Note>
+							</Address>
+						</Location>
+						<Category Category="003002000000"/>
+						<Utilization ByDoc="для индивидуального жилищного строительства и ведения личного подсобного хозяйства"/>
+						<Rights>
+							<Right>
+								<Name>Собственность</Name>
+								<Type>001001000000</Type>
+							</Right>
+						</Rights>
+						<CadastralCost Value="769656" Unit="383"/>
+						<Entity_Spatial Ent_Sys="364">
+							<Spatial_Element>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325052.70" Y="1476781.82" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+									<Ordinate X="325052.34" Y="1476786.34" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+									<Ordinate X="325051.98" Y="1476790.91" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+									<Ordinate X="325053.69" Y="1476791.13" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+									<Ordinate X="325053.29" Y="1476797.63" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+									<Ordinate X="325053.35" Y="1476800.49" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+									<Ordinate X="325053.38" Y="1476801.61" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="8">
+									<Ordinate X="325058.81" Y="1476801.19" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="9">
+									<Ordinate X="325060.23" Y="1476801.08" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="10">
+									<Ordinate X="325072.82" Y="1476800.87" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="11">
+									<Ordinate X="325073.82" Y="1476800.84" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="12">
+									<Ordinate X="325084.72" Y="1476800.03" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="13">
+									<Ordinate X="325085.62" Y="1476799.96" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="14">
+									<Ordinate X="325094.96" Y="1476799.24" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="15">
+									<Ordinate X="325095.96" Y="1476799.20" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="16">
+									<Ordinate X="325099.47" Y="1476799.09" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="17">
+									<Ordinate X="325098.53" Y="1476791.31" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="18">
+									<Ordinate X="325090.93" Y="1476791.30" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="19">
+									<Ordinate X="325090.39" Y="1476780.51" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="20">
+									<Ordinate X="325055.13" Y="1476781.95" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325052.70" Y="1476781.82" Ord_Nmb="1"/>
+								</Spelement_Unit>
+							</Spatial_Element>
+						</Entity_Spatial>
+					</Parcel>
+					<Parcel CadastralNumber="72:17:0201005:9" Name="01" State="01" DateCreated="2001-09-19">
+						<Area>
+							<Area>700</Area>
+							<Unit>055</Unit>
+						</Area>
+						<Location>
+							<inBounds>1</inBounds>
+							<Address>
+								<Code_OKATO>71244812001</Code_OKATO>
+								<Code_KLADR>72001000012001300</Code_KLADR>
+								<Region>72</Region>
+								<District Name="Тюменский" Type="р-н"/>
+								<Locality Name="Боровский" Type="рп"/>
+								<Street Name="Тельмана" Type="ул"/>
+								<Level1 Type="д" Value="68 а"/>
+								<Note>обл. Тюменская, р-н Тюменский, рп. Боровский, ул. Тельмана, дом 68 а</Note>
+							</Address>
+						</Location>
+						<Category Category="003002000000"/>
+						<Utilization ByDoc="для индивидуального жилищного строительства и ведения личного подсобного хозяйства"/>
+						<Rights>
+							<Right>
+								<Name>Общая совместная собственность</Name>
+								<Type>001003000000</Type>
+							</Right>
+						</Rights>
+						<CadastralCost Value="673449" Unit="383"/>
+						<Entity_Spatial Ent_Sys="364">
+							<Spatial_Element>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325095.44" Y="1476767.46" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+									<Ordinate X="325053.96" Y="1476765.86" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+									<Ordinate X="325052.81" Y="1476780.42" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+									<Ordinate X="325052.70" Y="1476781.82" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+									<Ordinate X="325055.13" Y="1476781.96" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+									<Ordinate X="325090.39" Y="1476780.51" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+									<Ordinate X="325090.93" Y="1476791.30" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="8">
+									<Ordinate X="325098.53" Y="1476791.31" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="9">
+									<Ordinate X="325096.85" Y="1476778.59" Ord_Nmb="1"/>
+								</Spelement_Unit>
+								<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+									<Ordinate X="325095.44" Y="1476767.46" Ord_Nmb="1"/>
+								</Spelement_Unit>
+							</Spatial_Element>
+						</Entity_Spatial>
+					</Parcel>
+				</Parcels>
+				<OMSPoints>
+					<OMSPoint>
+						<PNmb>24888</PNmb>
+						<PName>п.п.1242; 2 г.р.; р.п. Боровский</PName>
+						<PKlass>Класс ОМС – -; Система координат - МСК № 1</PKlass>
+						<OrdX>325025.55</OrdX>
+						<OrdY>1477357.64</OrdY>
+					</OMSPoint>
+					<OMSPoint>
+						<PNmb>24887</PNmb>
+						<PName>п.п.6324; 5 г.р.; р.п. Боровский</PName>
+						<PKlass>Класс ОМС – -; Система координат - МСК № 1</PKlass>
+						<OrdX>325041.61</OrdX>
+						<OrdY>1477139.53</OrdY>
+					</OMSPoint>
+				</OMSPoints>
+				<SpatialData>
+					<Entity_Spatial Ent_Sys="364">
+						<Spatial_Element>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+								<Ordinate X="325048.68" Y="1476739.73" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+								<Ordinate X="325048.79" Y="1476742.79" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+								<Ordinate X="325048.70" Y="1476766.82" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+								<Ordinate X="325039.21" Y="1476865.27" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+								<Ordinate X="325035.40" Y="1476886.55" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+								<Ordinate X="325034.80" Y="1476900.26" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+								<Ordinate X="325029.25" Y="1476921.52" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="8">
+								<Ordinate X="324973.76" Y="1477056.13" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="9">
+								<Ordinate X="324934.05" Y="1477162.46" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="10">
+								<Ordinate X="324922.72" Y="1477203.59" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="11">
+								<Ordinate X="324914.79" Y="1477223.39" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="12">
+								<Ordinate X="324866.24" Y="1477321.18" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="13">
+								<Ordinate X="324812.17" Y="1477450.26" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="14">
+								<Ordinate X="324773.81" Y="1477532.26" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="15">
+								<Ordinate X="324756.32" Y="1477560.29" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="16">
+								<Ordinate X="324776.04" Y="1477622.16" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="17">
+								<Ordinate X="324801.18" Y="1477699.37" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="18">
+								<Ordinate X="324799.46" Y="1477759.91" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="19">
+								<Ordinate X="324822.05" Y="1477744.89" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="20">
+								<Ordinate X="324890.38" Y="1477727.13" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="21">
+								<Ordinate X="324959.55" Y="1477709.13" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="22">
+								<Ordinate X="324991.78" Y="1477699.26" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="23">
+								<Ordinate X="325024.85" Y="1477691.76" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="24">
+								<Ordinate X="325032.82" Y="1477687.85" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="25">
+								<Ordinate X="325043.79" Y="1477683.70" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="26">
+								<Ordinate X="325081.35" Y="1477677.44" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="27">
+								<Ordinate X="325226.44" Y="1477657.95" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="28">
+								<Ordinate X="325217.93" Y="1477649.97" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="29">
+								<Ordinate X="325217.97" Y="1477647.98" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="30">
+								<Ordinate X="325225.56" Y="1477642.69" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="31">
+								<Ordinate X="325227.51" Y="1477630.26" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="32">
+								<Ordinate X="325226.78" Y="1477610.25" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="33">
+								<Ordinate X="325224.15" Y="1477576.93" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="34">
+								<Ordinate X="325222.84" Y="1477539.15" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="35">
+								<Ordinate X="325221.29" Y="1477458.59" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="36">
+								<Ordinate X="325218.37" Y="1477415.92" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="37">
+								<Ordinate X="325220.78" Y="1477361.42" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="38">
+								<Ordinate X="325229.97" Y="1477364.68" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="39">
+								<Ordinate X="325236.90" Y="1477365.55" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="40">
+								<Ordinate X="325246" Y="1477316.80" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="41">
+								<Ordinate X="325250.61" Y="1477287.40" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="42">
+								<Ordinate X="325257.86" Y="1477239.48" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="43">
+								<Ordinate X="325264.56" Y="1477186.91" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="44">
+								<Ordinate X="325270.55" Y="1477128.69" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="45">
+								<Ordinate X="325276.23" Y="1477091.09" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="46">
+								<Ordinate X="325279.15" Y="1477043.70" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="47">
+								<Ordinate X="325280.41" Y="1477003.39" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="48">
+								<Ordinate X="325280.10" Y="1476941.32" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="49">
+								<Ordinate X="325278.58" Y="1476920.37" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="50">
+								<Ordinate X="325277.44" Y="1476909.93" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="51">
+								<Ordinate X="325276.48" Y="1476909.91" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="52">
+								<Ordinate X="325276.49" Y="1476901.08" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="53">
+								<Ordinate X="325272.47" Y="1476864.11" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="54">
+								<Ordinate X="325272.35" Y="1476832.34" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="55">
+								<Ordinate X="325278.74" Y="1476744.79" Ord_Nmb="1"/>
+							</Spelement_Unit>
+							<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+								<Ordinate X="325048.68" Y="1476739.73" Ord_Nmb="1"/>
+							</Spelement_Unit>
+						</Spatial_Element>
+					</Entity_Spatial>
+					<Documents>
+						<Document>
+							<Code_Document>558301990000</Code_Document>
+							<Name>Приказ "Об утверждении кадастрового деления территории: г.Тюмени, г.Тобольска, г.Ишима, Абатского, Омутинского,
+								Сорокинского, Тюменского, Ишимского районов"
+							</Name>
+							<Number>115</Number>
+							<IssueOrgan>Комитет по земельным ресурсам и землеустройству Тюменской области</IssueOrgan>
+						</Document>
+					</Documents>
+				</SpatialData>
+				<Bounds>
+					<Bound>
+						<AccountNumber>3495055</AccountNumber>
+						<Boundaries>
+							<Boundary>
+								<Entity_Spatial Ent_Sys="364">
+									<Spatial_Element>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+											<Ordinate X="323678.45" Y="1465262.14" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+											<Ordinate X="323786.07" Y="1465287.39" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+											<Ordinate X="323973.78" Y="1465301.55" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+											<Ordinate X="324254.15" Y="1465276.65" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+											<Ordinate X="324531.90" Y="1465206.15" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+											<Ordinate X="324791.07" Y="1465140.13" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+											<Ordinate X="325214.63" Y="1465023.59" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="8">
+											<Ordinate X="325463.65" Y="1464952.17" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="9">
+											<Ordinate X="325567.82" Y="1464929.40" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="10">
+											<Ordinate X="325767.44" Y="1464887.94" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="11">
+											<Ordinate X="325880.54" Y="1464866.15" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="12">
+											<Ordinate X="326107.55" Y="1464856.08" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="13">
+											<Ordinate X="326328.21" Y="1464863.44" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="14">
+											<Ordinate X="326477.37" Y="1464882.35" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="15">
+											<Ordinate X="326650.29" Y="1464905.27" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="16">
+											<Ordinate X="326755.90" Y="1464926.53" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="17">
+											<Ordinate X="327004.44" Y="1465007.10" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="18">
+											<Ordinate X="327104.70" Y="1465039.48" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="19">
+											<Ordinate X="327246.10" Y="1465095.77" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="20">
+											<Ordinate X="327455" Y="1465179.43" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="21">
+											<Ordinate X="327797.88" Y="1465317.97" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="22">
+											<Ordinate X="327784.02" Y="1465363.25" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="23">
+											<Ordinate X="327657.39" Y="1465401.04" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="24">
+											<Ordinate X="327527.09" Y="1465539.73" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="25">
+											<Ordinate X="327506" Y="1465751.68" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="26">
+											<Ordinate X="327351.89" Y="1465867.29" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="27">
+											<Ordinate X="327328.16" Y="1465893.96" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="28">
+											<Ordinate X="327326.45" Y="1465910.52" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="29">
+											<Ordinate X="327322.95" Y="1465944.40" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="30">
+											<Ordinate X="327311.54" Y="1466022.61" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="31">
+											<Ordinate X="327279.55" Y="1466084.34" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="32">
+											<Ordinate X="327273.19" Y="1466231.52" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="33">
+											<Ordinate X="327366.61" Y="1466436.47" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="34">
+											<Ordinate X="327464.16" Y="1466634.22" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="35">
+											<Ordinate X="327578.13" Y="1466878.31" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="36">
+											<Ordinate X="327348.24" Y="1467158.01" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="37">
+											<Ordinate X="327160.63" Y="1467378.08" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="38">
+											<Ordinate X="327002.90" Y="1467573.45" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="39">
+											<Ordinate X="326597.64" Y="1467580.55" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="40">
+											<Ordinate X="326750.43" Y="1467857.61" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="41">
+											<Ordinate X="326730.81" Y="1468459.57" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="42">
+											<Ordinate X="326750.96" Y="1469910.77" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="43">
+											<Ordinate X="327124.79" Y="1470434.22" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="44">
+											<Ordinate X="327377.27" Y="1470774.24" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="45">
+											<Ordinate X="327499.33" Y="1470935.35" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="46">
+											<Ordinate X="327583.46" Y="1471051.83" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="47">
+											<Ordinate X="327584.96" Y="1471045.03" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="48">
+											<Ordinate X="327601.03" Y="1470971.94" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="49">
+											<Ordinate X="327632.64" Y="1470863.47" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="50">
+											<Ordinate X="327682.41" Y="1470805.54" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="51">
+											<Ordinate X="327716.39" Y="1470798.12" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="52">
+											<Ordinate X="327774.36" Y="1470807.31" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="53">
+											<Ordinate X="327820.72" Y="1470833.05" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="54">
+											<Ordinate X="327831.75" Y="1470857.42" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="55">
+											<Ordinate X="327820.89" Y="1470898.06" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="56">
+											<Ordinate X="327806.59" Y="1470924.86" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="57">
+											<Ordinate X="327759.41" Y="1470957.23" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="58">
+											<Ordinate X="327755.50" Y="1470970.64" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="59">
+											<Ordinate X="327768.85" Y="1471013.03" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="60">
+											<Ordinate X="327799.07" Y="1471062.81" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="61">
+											<Ordinate X="327818.02" Y="1471123.80" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="62">
+											<Ordinate X="327831.79" Y="1471175.72" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="63">
+											<Ordinate X="327854.26" Y="1471190.02" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="64">
+											<Ordinate X="328010.45" Y="1471863.04" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="65">
+											<Ordinate X="328049.13" Y="1472043.08" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="66">
+											<Ordinate X="328088.26" Y="1472214.27" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="67">
+											<Ordinate X="328103.13" Y="1472243.28" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="68">
+											<Ordinate X="328198.36" Y="1472265.76" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="69">
+											<Ordinate X="328199.99" Y="1472290.62" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="70">
+											<Ordinate X="328192.51" Y="1472315.46" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="71">
+											<Ordinate X="328198.14" Y="1472364.77" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="72">
+											<Ordinate X="328201.06" Y="1472428.06" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="73">
+											<Ordinate X="328225.44" Y="1472506.29" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="74">
+											<Ordinate X="328231.90" Y="1472590.48" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="75">
+											<Ordinate X="328249.73" Y="1472651.99" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="76">
+											<Ordinate X="328253.24" Y="1472710.49" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="77">
+											<Ordinate X="328259.12" Y="1472785.13" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="78">
+											<Ordinate X="328263.83" Y="1472847.22" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="79">
+											<Ordinate X="328281" Y="1472954.70" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="80">
+											<Ordinate X="328284.72" Y="1472981.47" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="81">
+											<Ordinate X="328285.15" Y="1472984.55" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="82">
+											<Ordinate X="328324.94" Y="1472954.73" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="83">
+											<Ordinate X="328374.79" Y="1472905.86" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="84">
+											<Ordinate X="328499.11" Y="1472783.03" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="85">
+											<Ordinate X="328548.26" Y="1472727.91" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="86">
+											<Ordinate X="328663.71" Y="1472700.98" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="87">
+											<Ordinate X="328706.97" Y="1472733.19" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="88">
+											<Ordinate X="328721.20" Y="1472788.67" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="89">
+											<Ordinate X="328718.84" Y="1472830.89" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="90">
+											<Ordinate X="328497.37" Y="1473142.24" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="91">
+											<Ordinate X="328402.10" Y="1473280.89" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="92">
+											<Ordinate X="328365.47" Y="1473336.51" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="93">
+											<Ordinate X="328284.90" Y="1473450.43" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="94">
+											<Ordinate X="328245.20" Y="1473497.69" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="95">
+											<Ordinate X="328218.15" Y="1473531.70" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="96">
+											<Ordinate X="328126.65" Y="1473628.60" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="97">
+											<Ordinate X="328055.17" Y="1473703.64" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="98">
+											<Ordinate X="328046.44" Y="1473712.68" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="99">
+											<Ordinate X="328046.45" Y="1473712.68" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="100">
+											<Ordinate X="328059.55" Y="1473713.92" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="101">
+											<Ordinate X="328077.51" Y="1473714.86" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="102">
+											<Ordinate X="328244.04" Y="1473723.56" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="103">
+											<Ordinate X="328729.40" Y="1473748.96" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="104">
+											<Ordinate X="328737.32" Y="1473815.97" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="105">
+											<Ordinate X="328730.03" Y="1474179.35" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="106">
+											<Ordinate X="328715" Y="1474972.57" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="107">
+											<Ordinate X="328702.04" Y="1475687.93" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="108">
+											<Ordinate X="328691.98" Y="1475730.92" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="109">
+											<Ordinate X="328682.95" Y="1475759.91" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="110">
+											<Ordinate X="328669.91" Y="1475788.89" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="111">
+											<Ordinate X="328648.27" Y="1475820.65" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="112">
+											<Ordinate X="328625.84" Y="1475848.84" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="113">
+											<Ordinate X="328598.35" Y="1475873.92" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="114">
+											<Ordinate X="328308.59" Y="1476055.45" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="115">
+											<Ordinate X="327961.34" Y="1476258.03" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="116">
+											<Ordinate X="327868.64" Y="1476388.30" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="117">
+											<Ordinate X="327863.43" Y="1476394.69" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="118">
+											<Ordinate X="327861.97" Y="1476403.80" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="119">
+											<Ordinate X="327836.16" Y="1476541.54" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="120">
+											<Ordinate X="327889.41" Y="1476878.20" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="121">
+											<Ordinate X="327892.64" Y="1476879.09" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="122">
+											<Ordinate X="327914.58" Y="1476885.12" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="123">
+											<Ordinate X="328060.48" Y="1476925.25" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="124">
+											<Ordinate X="328131.32" Y="1476944.69" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="125">
+											<Ordinate X="328537.58" Y="1477056.14" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="126">
+											<Ordinate X="328909.40" Y="1477073.29" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="127">
+											<Ordinate X="328924.85" Y="1477074.01" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="128">
+											<Ordinate X="328560.23" Y="1477342.53" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="129">
+											<Ordinate X="328146.99" Y="1477692.52" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="130">
+											<Ordinate X="327968.40" Y="1477843.78" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="131">
+											<Ordinate X="327932.28" Y="1477868.56" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="132">
+											<Ordinate X="327639.94" Y="1478069.12" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="133">
+											<Ordinate X="327507.56" Y="1478159.94" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="134">
+											<Ordinate X="327186.09" Y="1478393.55" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="135">
+											<Ordinate X="327066.22" Y="1478497.76" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="136">
+											<Ordinate X="326881.84" Y="1478641.29" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="137">
+											<Ordinate X="326881.11" Y="1478641.85" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="138">
+											<Ordinate X="326880.16" Y="1478655.53" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="139">
+											<Ordinate X="326857.87" Y="1478977.43" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="140">
+											<Ordinate X="326736.06" Y="1479048.44" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="141">
+											<Ordinate X="326736.04" Y="1479066.60" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="142">
+											<Ordinate X="326684.18" Y="1479091.41" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="143">
+											<Ordinate X="326628.82" Y="1479117.54" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="144">
+											<Ordinate X="326609.09" Y="1479124.64" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="145">
+											<Ordinate X="326609.07" Y="1479125.63" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="146">
+											<Ordinate X="326606.47" Y="1479125.58" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="147">
+											<Ordinate X="326513.03" Y="1479159.18" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="148">
+											<Ordinate X="326452.61" Y="1479166.83" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="149">
+											<Ordinate X="326415.66" Y="1479185.08" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="150">
+											<Ordinate X="326328.72" Y="1479245.39" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="151">
+											<Ordinate X="326262.94" Y="1479258.23" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="152">
+											<Ordinate X="326205.08" Y="1479271.11" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="153">
+											<Ordinate X="326118.15" Y="1479305.04" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="154">
+											<Ordinate X="326073.49" Y="1479307.42" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="155">
+											<Ordinate X="326060.46" Y="1479286.23" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="156">
+											<Ordinate X="326044.93" Y="1479230.75" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="157">
+											<Ordinate X="326040.04" Y="1479222.08" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="158">
+											<Ordinate X="326005.01" Y="1479222.72" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="159">
+											<Ordinate X="326002.67" Y="1479283.33" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="160">
+											<Ordinate X="325991.86" Y="1479330.78" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="161">
+											<Ordinate X="325967.87" Y="1479407.21" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="162">
+											<Ordinate X="325946.54" Y="1479486.30" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="163">
+											<Ordinate X="325932.85" Y="1479597.11" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="164">
+											<Ordinate X="325906.44" Y="1479668.78" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="165">
+											<Ordinate X="325874.16" Y="1479686.28" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="166">
+											<Ordinate X="325856.79" Y="1479642.06" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="167">
+											<Ordinate X="325880.42" Y="1479615.72" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="168">
+											<Ordinate X="325896.86" Y="1479581.03" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="169">
+											<Ordinate X="325889.48" Y="1479536.45" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="170">
+											<Ordinate X="325851.57" Y="1479503.90" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="171">
+											<Ordinate X="325834.21" Y="1479480.27" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="172">
+											<Ordinate X="325784.69" Y="1479424.19" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="173">
+											<Ordinate X="325717.47" Y="1479394.42" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="174">
+											<Ordinate X="325632.71" Y="1479376.41" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="175">
+											<Ordinate X="325530.27" Y="1479370.02" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="176">
+											<Ordinate X="325407.50" Y="1479337.03" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="177">
+											<Ordinate X="325343.35" Y="1479292.66" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="178">
+											<Ordinate X="325299.69" Y="1479248.31" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="179">
+											<Ordinate X="325215.09" Y="1479174.38" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="180">
+											<Ordinate X="325156.76" Y="1479147.63" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="181">
+											<Ordinate X="325086.49" Y="1479147.27" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="182">
+											<Ordinate X="325016.15" Y="1479161.61" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="183">
+											<Ordinate X="324957.63" Y="1479170.18" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="184">
+											<Ordinate X="324913.62" Y="1479175.85" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="185">
+											<Ordinate X="324884.31" Y="1479202.10" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="186">
+											<Ordinate X="324834.43" Y="1479222.44" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="187">
+											<Ordinate X="324802.20" Y="1479231.13" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="188">
+											<Ordinate X="324764.02" Y="1479248.55" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="189">
+											<Ordinate X="324720.01" Y="1479274.79" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="190">
+											<Ordinate X="324681.99" Y="1479286.38" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="191">
+											<Ordinate X="324620.42" Y="1479303.74" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="192">
+											<Ordinate X="324555.82" Y="1479350.46" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="193">
+											<Ordinate X="324500.04" Y="1479394.26" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="194">
+											<Ordinate X="324435.56" Y="1479414.53" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="195">
+											<Ordinate X="324368.09" Y="1479434.83" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="196">
+											<Ordinate X="324312.32" Y="1479475.73" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="197">
+											<Ordinate X="324253.63" Y="1479519.50" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="198">
+											<Ordinate X="324226.87" Y="1479536.28" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="199">
+											<Ordinate X="324218.73" Y="1479540.70" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="200">
+											<Ordinate X="324156.94" Y="1479524.92" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="201">
+											<Ordinate X="324115.90" Y="1479536.48" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="202">
+											<Ordinate X="324071.82" Y="1479580.36" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="203">
+											<Ordinate X="324039.50" Y="1479603.75" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="204">
+											<Ordinate X="323989.75" Y="1479621.13" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="205">
+											<Ordinate X="323948.65" Y="1479644.47" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="206">
+											<Ordinate X="323904.46" Y="1479708.98" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="207">
+											<Ordinate X="323872.06" Y="1479752.90" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="208">
+											<Ordinate X="323822.12" Y="1479785.03" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="209">
+											<Ordinate X="323674.14" Y="1479850.13" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="210">
+											<Ordinate X="323461.34" Y="1479986.20" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="211">
+											<Ordinate X="323382.14" Y="1480015.28" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="212">
+											<Ordinate X="323308.18" Y="1480014.74" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="213">
+											<Ordinate X="323245.05" Y="1480014.43" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="214">
+											<Ordinate X="323206.60" Y="1479993.84" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="215">
+											<Ordinate X="323130.57" Y="1479987.59" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="216">
+											<Ordinate X="323104.35" Y="1479955.11" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="217">
+											<Ordinate X="323154.24" Y="1479931.76" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="218">
+											<Ordinate X="323198.10" Y="1479934.96" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="219">
+											<Ordinate X="323262.36" Y="1479952.90" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="220">
+											<Ordinate X="323280.11" Y="1479923.58" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="221">
+											<Ordinate X="323265.61" Y="1479882.34" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="222">
+											<Ordinate X="323224.76" Y="1479879.22" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="223">
+											<Ordinate X="323177.74" Y="1479905.40" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="224">
+											<Ordinate X="323154.43" Y="1479890.60" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="225">
+											<Ordinate X="323138.89" Y="1479888.20" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="226">
+											<Ordinate X="323105.43" Y="1479899.18" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="227">
+											<Ordinate X="323057.66" Y="1479914.89" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="228">
+											<Ordinate X="323033.80" Y="1479916.36" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="229">
+											<Ordinate X="323005.20" Y="1479909.84" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="230">
+											<Ordinate X="322994.11" Y="1479905.01" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="231">
+											<Ordinate X="322992.63" Y="1479888.92" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="232">
+											<Ordinate X="322992.69" Y="1479865.20" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="233">
+											<Ordinate X="322991.17" Y="1479852.44" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="234">
+											<Ordinate X="322981.69" Y="1479841.25" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="235">
+											<Ordinate X="322972.18" Y="1479834.84" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="236">
+											<Ordinate X="322956.28" Y="1479834.76" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="237">
+											<Ordinate X="322949.85" Y="1479849.05" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="238">
+											<Ordinate X="322954.51" Y="1479871.38" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="239">
+											<Ordinate X="322962.41" Y="1479882.56" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="240">
+											<Ordinate X="322970.28" Y="1479898.53" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="241">
+											<Ordinate X="322971.83" Y="1479908.08" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="242">
+											<Ordinate X="322967" Y="1479917.61" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="243">
+											<Ordinate X="322954.26" Y="1479922.33" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="244">
+											<Ordinate X="322935.18" Y="1479922.24" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="245">
+											<Ordinate X="322889.08" Y="1479918.83" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="246">
+											<Ordinate X="322865.14" Y="1479939.41" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="247">
+											<Ordinate X="322858.69" Y="1479956.89" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="248">
+											<Ordinate X="322857.03" Y="1479972.81" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="249">
+											<Ordinate X="322852.11" Y="1479999.85" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="250">
+											<Ordinate X="322851.99" Y="1480026.92" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="251">
+											<Ordinate X="322853.54" Y="1480036.49" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="252">
+											<Ordinate X="322848.70" Y="1480049.21" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="253">
+											<Ordinate X="322764.19" Y="1480103.46" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="254">
+											<Ordinate X="322708.42" Y="1480144.38" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="255">
+											<Ordinate X="322673.04" Y="1480208.95" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="256">
+											<Ordinate X="322552.50" Y="1480334.89" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="257">
+											<Ordinate X="322538.40" Y="1480357.72" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="258">
+											<Ordinate X="322528.93" Y="1480373.05" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="259">
+											<Ordinate X="322487.55" Y="1480458.13" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="260">
+											<Ordinate X="322422.73" Y="1480551.98" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="261">
+											<Ordinate X="322396.29" Y="1480587.20" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="262">
+											<Ordinate X="322381.74" Y="1480625.87" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="263">
+											<Ordinate X="322375.25" Y="1480608.67" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="264">
+											<Ordinate X="322359.48" Y="1480600.69" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="265">
+											<Ordinate X="322338.42" Y="1480603.21" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="266">
+											<Ordinate X="322302.89" Y="1480629.46" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="267">
+											<Ordinate X="322575.01" Y="1479982.48" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="268">
+											<Ordinate X="321979.10" Y="1480285.11" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="269">
+											<Ordinate X="321709.71" Y="1480310.30" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="270">
+											<Ordinate X="321491.43" Y="1480424.64" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="271">
+											<Ordinate X="321276.18" Y="1480543.20" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="272">
+											<Ordinate X="321049.32" Y="1480688.69" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="273">
+											<Ordinate X="320564.51" Y="1481037.42" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="274">
+											<Ordinate X="320483.67" Y="1481106.50" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="275">
+											<Ordinate X="320256.59" Y="1481306.08" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="276">
+											<Ordinate X="319525.50" Y="1481983.98" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="277">
+											<Ordinate X="319576.46" Y="1481765.63" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="278">
+											<Ordinate X="319838.70" Y="1480637.30" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="279">
+											<Ordinate X="319517.19" Y="1480707.09" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="280">
+											<Ordinate X="319102.51" Y="1480604.25" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="281">
+											<Ordinate X="318619.93" Y="1477314.22" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="282">
+											<Ordinate X="318842.51" Y="1476403.06" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="283">
+											<Ordinate X="316872.25" Y="1475936.51" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="284">
+											<Ordinate X="317606.11" Y="1473021.37" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="285">
+											<Ordinate X="317852.08" Y="1472032.29" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="286">
+											<Ordinate X="318001.85" Y="1471413.92" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="287">
+											<Ordinate X="317992.84" Y="1470692.88" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="288">
+											<Ordinate X="320085.28" Y="1470993.59" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="289">
+											<Ordinate X="320072.59" Y="1469823.25" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="290">
+											<Ordinate X="320046.97" Y="1467633.50" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="291">
+											<Ordinate X="320907.77" Y="1467584.62" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="292">
+											<Ordinate X="321671.35" Y="1467521.75" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="293">
+											<Ordinate X="321665.39" Y="1467614.34" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="294">
+											<Ordinate X="321880.79" Y="1467668.93" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="295">
+											<Ordinate X="322392.73" Y="1467813.17" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="296">
+											<Ordinate X="323262.07" Y="1468073.29" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="297">
+											<Ordinate X="323674.29" Y="1468182.78" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="298">
+											<Ordinate X="323674.26" Y="1468143.20" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="299">
+											<Ordinate X="323672.49" Y="1467354.86" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="300">
+											<Ordinate X="323674.17" Y="1466172.45" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="301">
+											<Ordinate X="323659.08" Y="1466082.39" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+											<Ordinate X="323678.45" Y="1465262.14" Ord_Nmb="1" Geopoint_Opred="692003000000" Delta_Geopoint="0.20"/>
+										</Spelement_Unit>
+									</Spatial_Element>
+								</Entity_Spatial>
+							</Boundary>
+						</Boundaries>
+						<Documents>
+							<Document>
+								<Code_Document>558221030000</Code_Document>
+								<Name>Закон Тюменской области "Об установлении границ муниципальных образований Тюменской области и наделении их
+									статусом муниципального района, городского округа и сельского поселения от 5 ноября 2004 года"
+								</Name>
+								<Number>263</Number>
+								<IssueOrgan>Тюменская областная Дума</IssueOrgan>
+							</Document>
+						</Documents>
+						<MunicipalBoundary>
+							<Name>7217 - Сельское поселение поселок Боровский</Name>
+						</MunicipalBoundary>
+					</Bound>
+					<Bound>
+						<AccountNumber>1694332</AccountNumber>
+						<Boundaries>
+							<Boundary>
+								<Entity_Spatial Ent_Sys="364">
+									<Spatial_Element>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+											<Ordinate X="323162.15" Y="1476217.22" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="2">
+											<Ordinate X="323138.77" Y="1476218.68" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="3">
+											<Ordinate X="323031.22" Y="1476214.07" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="4">
+											<Ordinate X="322887.93" Y="1476211.25" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="5">
+											<Ordinate X="322711.48" Y="1476209.71" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="6">
+											<Ordinate X="322483.30" Y="1476202.81" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="7">
+											<Ordinate X="322207.34" Y="1476194.51" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="8">
+											<Ordinate X="322020.26" Y="1476192.96" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="9">
+											<Ordinate X="322026.88" Y="1476210.22" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="10">
+											<Ordinate X="322043.91" Y="1476399.96" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="11">
+											<Ordinate X="322054.99" Y="1476494.82" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="12">
+											<Ordinate X="322055" Y="1476499.86" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="13">
+											<Ordinate X="322070.13" Y="1476500.05" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="14">
+											<Ordinate X="322096.75" Y="1476500.54" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="15">
+											<Ordinate X="322142.95" Y="1476500.95" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="16">
+											<Ordinate X="322157.07" Y="1476501.10" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="17">
+											<Ordinate X="322186.81" Y="1476502.46" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="18">
+											<Ordinate X="322100.38" Y="1476501.54" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="19">
+											<Ordinate X="322238.50" Y="1476503.07" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="20">
+											<Ordinate X="322332.34" Y="1476505.41" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="21">
+											<Ordinate X="322460.80" Y="1476506.91" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="22">
+											<Ordinate X="322500.62" Y="1476508.14" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="23">
+											<Ordinate X="322505.45" Y="1476508.24" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="24">
+											<Ordinate X="322677.91" Y="1476511.80" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="25">
+											<Ordinate X="322894.32" Y="1476516.31" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="26">
+											<Ordinate X="322895.39" Y="1476526.26" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="27">
+											<Ordinate X="322923.64" Y="1476787.50" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="28">
+											<Ordinate X="323042.94" Y="1476774.37" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="29">
+											<Ordinate X="323051.96" Y="1476773.37" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="30">
+											<Ordinate X="323056.19" Y="1476638.32" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="31">
+											<Ordinate X="323168.51" Y="1476638.17" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="32">
+											<Ordinate X="323225.02" Y="1476619.90" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="33">
+											<Ordinate X="323346.13" Y="1476921.18" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="34">
+											<Ordinate X="323381.08" Y="1477070.39" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="35">
+											<Ordinate X="323389.58" Y="1477201" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="36">
+											<Ordinate X="323384.26" Y="1477331.13" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="37">
+											<Ordinate X="323351.28" Y="1477438.34" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="38">
+											<Ordinate X="323296.18" Y="1477573.43" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="39">
+											<Ordinate X="323239.27" Y="1477675.43" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="40">
+											<Ordinate X="323163.28" Y="1477781.50" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="41">
+											<Ordinate X="323085.89" Y="1477866.99" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="42">
+											<Ordinate X="322800.05" Y="1478185.29" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="43">
+											<Ordinate X="322785.09" Y="1478201.88" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="44">
+											<Ordinate X="322768.40" Y="1478220.38" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="45">
+											<Ordinate X="322661.69" Y="1478338.60" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="46">
+											<Ordinate X="322457.98" Y="1478540.13" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="47">
+											<Ordinate X="322349.08" Y="1478636.89" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="48">
+											<Ordinate X="322301.82" Y="1478720.67" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="49">
+											<Ordinate X="322295.81" Y="1478733.68" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="50">
+											<Ordinate X="322279.74" Y="1478768.42" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="51">
+											<Ordinate X="322260.09" Y="1478810.95" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="52">
+											<Ordinate X="322228.09" Y="1478901.25" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="53">
+											<Ordinate X="322212.91" Y="1479012.83" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="54">
+											<Ordinate X="322212.83" Y="1479075.71" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="55">
+											<Ordinate X="322222.44" Y="1479188.20" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="56">
+											<Ordinate X="322250.67" Y="1479282.11" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="57">
+											<Ordinate X="322295.71" Y="1479384.90" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="58">
+											<Ordinate X="322336.90" Y="1479464.06" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="59">
+											<Ordinate X="322358.28" Y="1479505.41" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="60">
+											<Ordinate X="322333.61" Y="1479516.07" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="61">
+											<Ordinate X="322344.22" Y="1479538.44" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="62">
+											<Ordinate X="322368.44" Y="1479597.75" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="63">
+											<Ordinate X="322374.79" Y="1479612.92" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="64">
+											<Ordinate X="322382.39" Y="1479631.09" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="65">
+											<Ordinate X="322392.47" Y="1479656.46" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="66">
+											<Ordinate X="322397.02" Y="1479671.01" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="67">
+											<Ordinate X="322358.47" Y="1479740.26" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="68">
+											<Ordinate X="322307.69" Y="1479826.66" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="69">
+											<Ordinate X="322278.22" Y="1479873.07" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="70">
+											<Ordinate X="322260.74" Y="1479897.11" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="71">
+											<Ordinate X="322250.14" Y="1479908.98" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="72">
+											<Ordinate X="322246.58" Y="1479912.84" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="73">
+											<Ordinate X="322232.21" Y="1479928.39" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="74">
+											<Ordinate X="322214.47" Y="1479948.39" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="75">
+											<Ordinate X="322196.33" Y="1479968.47" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="76">
+											<Ordinate X="322188.21" Y="1479975.98" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="77">
+											<Ordinate X="322178.69" Y="1479983.74" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="78">
+											<Ordinate X="322152.37" Y="1480001.51" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="79">
+											<Ordinate X="322097.66" Y="1480038.31" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="80">
+											<Ordinate X="321798.43" Y="1480223.73" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="81">
+											<Ordinate X="321728.93" Y="1480263.32" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="82">
+											<Ordinate X="321753.44" Y="1480301.61" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="83">
+											<Ordinate X="322022.89" Y="1480252.31" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="84">
+											<Ordinate X="322167.84" Y="1480168.06" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="85">
+											<Ordinate X="322303.37" Y="1480117.81" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="86">
+											<Ordinate X="322573.62" Y="1480006.99" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="87">
+											<Ordinate X="322485.93" Y="1480224.11" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="88">
+											<Ordinate X="322441.89" Y="1480343.41" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="89">
+											<Ordinate X="322433.46" Y="1480371.59" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="90">
+											<Ordinate X="322425.23" Y="1480398.48" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="91">
+											<Ordinate X="322408.87" Y="1480452.52" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="92">
+											<Ordinate X="322415.60" Y="1480453.18" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="93">
+											<Ordinate X="322466.21" Y="1480458.83" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="94">
+											<Ordinate X="322496.45" Y="1480412.54" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="95">
+											<Ordinate X="322516.86" Y="1480366.94" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="96">
+											<Ordinate X="322541.44" Y="1480356.44" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="97">
+											<Ordinate X="322565.34" Y="1480334" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="98">
+											<Ordinate X="322605.40" Y="1480295.44" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="99">
+											<Ordinate X="322660.21" Y="1480225.05" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="100">
+											<Ordinate X="322697.07" Y="1480166.32" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="101">
+											<Ordinate X="322733.88" Y="1480118.72" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="102">
+											<Ordinate X="322838.54" Y="1480077.59" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="103">
+											<Ordinate X="322856.28" Y="1480059.18" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="104">
+											<Ordinate X="322853.54" Y="1480036.49" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="105">
+											<Ordinate X="322851.99" Y="1480026.92" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="106">
+											<Ordinate X="322852.11" Y="1479999.85" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="107">
+											<Ordinate X="322857.03" Y="1479972.81" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="108">
+											<Ordinate X="322858.69" Y="1479956.89" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="109">
+											<Ordinate X="322865.14" Y="1479939.41" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="110">
+											<Ordinate X="322889.08" Y="1479918.83" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="111">
+											<Ordinate X="322935.18" Y="1479922.24" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="112">
+											<Ordinate X="322954.26" Y="1479922.33" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="113">
+											<Ordinate X="322967" Y="1479917.61" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="114">
+											<Ordinate X="322971.83" Y="1479908.08" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="115">
+											<Ordinate X="322970.28" Y="1479898.53" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="116">
+											<Ordinate X="322962.41" Y="1479882.56" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="117">
+											<Ordinate X="322954.52" Y="1479871.38" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="118">
+											<Ordinate X="322949.85" Y="1479849.05" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="119">
+											<Ordinate X="322956.28" Y="1479834.76" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="120">
+											<Ordinate X="322972.18" Y="1479834.84" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="121">
+											<Ordinate X="322981.69" Y="1479841.25" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="122">
+											<Ordinate X="322991.17" Y="1479852.44" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="123">
+											<Ordinate X="322992.69" Y="1479865.20" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="124">
+											<Ordinate X="322992.59" Y="1479889.07" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="125">
+											<Ordinate X="322994.10" Y="1479905.01" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="126">
+											<Ordinate X="323005.20" Y="1479909.84" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="127">
+											<Ordinate X="323033.80" Y="1479916.36" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="128">
+											<Ordinate X="323057.66" Y="1479914.89" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="129">
+											<Ordinate X="323105.43" Y="1479899.18" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="130">
+											<Ordinate X="323138.89" Y="1479888.20" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="131">
+											<Ordinate X="323165.82" Y="1479907.45" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="132">
+											<Ordinate X="323183.29" Y="1479912.31" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="133">
+											<Ordinate X="323199.25" Y="1479901.25" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="134">
+											<Ordinate X="323208.85" Y="1479885.37" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="135">
+											<Ordinate X="323221.60" Y="1479879.05" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="136">
+											<Ordinate X="323237.52" Y="1479880.73" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="137">
+											<Ordinate X="323258.11" Y="1479893.57" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="138">
+											<Ordinate X="323269.16" Y="1479911.13" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="139">
+											<Ordinate X="323269.08" Y="1479927.05" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="140">
+											<Ordinate X="323267.42" Y="1479942.97" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="141">
+											<Ordinate X="323257.83" Y="1479952.48" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="142">
+											<Ordinate X="323230.80" Y="1479952.35" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="143">
+											<Ordinate X="323211.75" Y="1479944.29" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="144">
+											<Ordinate X="323175.24" Y="1479932.97" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="145">
+											<Ordinate X="323146.61" Y="1479932.82" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="146">
+											<Ordinate X="323132.28" Y="1479937.54" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="147">
+											<Ordinate X="323119.51" Y="1479947.03" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="148">
+											<Ordinate X="323116.25" Y="1479966.12" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="149">
+											<Ordinate X="323125.70" Y="1479983.69" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="150">
+											<Ordinate X="323140" Y="1479986.94" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="151">
+											<Ordinate X="323163.84" Y="1479987.05" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="152">
+											<Ordinate X="323194.05" Y="1479988.79" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="153">
+											<Ordinate X="323235.29" Y="1480009.69" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="154">
+											<Ordinate X="323309.99" Y="1480016.41" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="155">
+											<Ordinate X="323384.76" Y="1480008.82" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="156">
+											<Ordinate X="323454.83" Y="1479988.46" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="157">
+											<Ordinate X="323536.12" Y="1479947.47" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="158">
+											<Ordinate X="323662.16" Y="1479862.11" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="159">
+											<Ordinate X="323730.69" Y="1479829.02" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="160">
+											<Ordinate X="323829.52" Y="1479780.15" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="161">
+											<Ordinate X="323878.97" Y="1479750.15" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="162">
+											<Ordinate X="323891.79" Y="1479729.51" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="163">
+											<Ordinate X="323920.64" Y="1479683.49" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="164">
+											<Ordinate X="323943.07" Y="1479648.57" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="165">
+											<Ordinate X="323965.43" Y="1479629.58" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="166">
+											<Ordinate X="323998.89" Y="1479618.61" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="167">
+											<Ordinate X="324022.74" Y="1479615.53" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="168">
+											<Ordinate X="324045.08" Y="1479601.32" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="169">
+											<Ordinate X="324067.40" Y="1479588.71" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="170">
+											<Ordinate X="324089.79" Y="1479563.34" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="171">
+											<Ordinate X="324112.17" Y="1479537.98" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="172">
+											<Ordinate X="324153.59" Y="1479525.45" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="173">
+											<Ordinate X="324218.86" Y="1479540.65" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="174">
+											<Ordinate X="324227" Y="1479536.23" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="175">
+											<Ordinate X="324258.57" Y="1479518.02" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="176">
+											<Ordinate X="324280.91" Y="1479505.40" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="177">
+											<Ordinate X="324320.80" Y="1479475.35" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="178">
+											<Ordinate X="324365.53" Y="1479434.19" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="179">
+											<Ordinate X="324389.42" Y="1479426.35" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="180">
+											<Ordinate X="324434" Y="1479415.42" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="181">
+											<Ordinate X="324492.92" Y="1479396.63" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="182">
+											<Ordinate X="324518.44" Y="1479382.43" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="183">
+											<Ordinate X="324545.60" Y="1479358.68" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="184">
+											<Ordinate X="324577.56" Y="1479327.02" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="185">
+											<Ordinate X="324609.46" Y="1479304.89" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="186">
+											<Ordinate X="324668.35" Y="1479292.46" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="187">
+											<Ordinate X="324712.91" Y="1479284.72" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="188">
+											<Ordinate X="324732.09" Y="1479268.90" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="189">
+											<Ordinate X="324759.24" Y="1479246.75" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="190">
+											<Ordinate X="324791.10" Y="1479234.19" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="191">
+											<Ordinate X="324846.81" Y="1479223.33" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="192">
+											<Ordinate X="324878.69" Y="1479205.98" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="193">
+											<Ordinate X="324915.38" Y="1479183.89" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="194">
+											<Ordinate X="324945.66" Y="1479169.70" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="195">
+											<Ordinate X="324971.11" Y="1479169.83" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="196">
+											<Ordinate X="325015.67" Y="1479162.10" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="197">
+											<Ordinate X="325065.02" Y="1479152.80" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="198">
+											<Ordinate X="325158.85" Y="1479146.91" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="199">
+											<Ordinate X="325187.42" Y="1479158.20" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="200">
+											<Ordinate X="325222.31" Y="1479177.47" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="201">
+											<Ordinate X="325269.79" Y="1479222.28" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="202">
+											<Ordinate X="325304.56" Y="1479262.25" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="203">
+											<Ordinate X="325344.16" Y="1479292.68" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="204">
+											<Ordinate X="325382.19" Y="1479319.92" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="205">
+											<Ordinate X="325410.73" Y="1479337.57" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="206">
+											<Ordinate X="325440.90" Y="1479345.68" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="207">
+											<Ordinate X="325475.84" Y="1479353.81" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="208">
+											<Ordinate X="325521.89" Y="1479366.78" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="209">
+											<Ordinate X="325571.15" Y="1479373.39" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="210">
+											<Ordinate X="325606.13" Y="1479371.97" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="211">
+											<Ordinate X="325663.32" Y="1479383.40" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="212">
+											<Ordinate X="325698.28" Y="1479389.94" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="213">
+											<Ordinate X="325749.07" Y="1479407.70" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="214">
+											<Ordinate X="325772.86" Y="1479420.55" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="215">
+											<Ordinate X="325817.21" Y="1479454.19" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="216">
+											<Ordinate X="325834.54" Y="1479486.10" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="217">
+											<Ordinate X="325855.11" Y="1479505.30" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="218">
+											<Ordinate X="325878.87" Y="1479524.52" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="219">
+											<Ordinate X="325891.54" Y="1479535.71" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="220">
+											<Ordinate X="325894.65" Y="1479548.46" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="221">
+											<Ordinate X="325894.54" Y="1479572.33" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="222">
+											<Ordinate X="325892.89" Y="1479585.05" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="223">
+											<Ordinate X="325889.62" Y="1479600.94" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="224">
+											<Ordinate X="325881.60" Y="1479615.23" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="225">
+											<Ordinate X="325861.61" Y="1479640.36" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="226">
+											<Ordinate X="325857.48" Y="1479669.21" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="227">
+											<Ordinate X="325863.78" Y="1479681.97" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="228">
+											<Ordinate X="325884.40" Y="1479691.62" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="229">
+											<Ordinate X="325905.15" Y="1479677.40" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="230">
+											<Ordinate X="325911.57" Y="1479663.11" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="231">
+											<Ordinate X="325919.64" Y="1479639.29" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="232">
+											<Ordinate X="325926.16" Y="1479607.50" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="233">
+											<Ordinate X="325936.03" Y="1479540.72" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="234">
+											<Ordinate X="325953.94" Y="1479459.65" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="235">
+											<Ordinate X="325962.08" Y="1479419.91" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="236">
+											<Ordinate X="325987.92" Y="1479340.47" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="237">
+											<Ordinate X="325994.39" Y="1479321.42" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="238">
+											<Ordinate X="325997.68" Y="1479299.15" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="239">
+											<Ordinate X="325997.76" Y="1479283.24" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="240">
+											<Ordinate X="325999.47" Y="1479257.79" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="241">
+											<Ordinate X="325999.55" Y="1479241.88" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="242">
+											<Ordinate X="326001.25" Y="1479221.21" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="243">
+											<Ordinate X="326012.48" Y="1479200.58" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="244">
+											<Ordinate X="326023.63" Y="1479199.04" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="245">
+											<Ordinate X="326036.28" Y="1479211.83" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="246">
+											<Ordinate X="326050.39" Y="1479250.09" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="247">
+											<Ordinate X="326058.18" Y="1479281.96" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="248">
+											<Ordinate X="326062.84" Y="1479304.26" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="249">
+											<Ordinate X="326073.92" Y="1479313.86" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="250">
+											<Ordinate X="326099.36" Y="1479315.57" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="251">
+											<Ordinate X="326167.84" Y="1479293.65" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="252">
+											<Ordinate X="326199.72" Y="1479277.91" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="253">
+											<Ordinate X="326288.86" Y="1479259.26" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="254">
+											<Ordinate X="326323.86" Y="1479254.66" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="255">
+											<Ordinate X="326350.97" Y="1479240.48" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="256">
+											<Ordinate X="326387.67" Y="1479213.62" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="257">
+											<Ordinate X="326410.03" Y="1479196.22" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="258">
+											<Ordinate X="326438.74" Y="1479180.46" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="259">
+											<Ordinate X="326475.37" Y="1479169.51" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="260">
+											<Ordinate X="326508.77" Y="1479164.90" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="261">
+											<Ordinate X="326577.26" Y="1479144.58" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="262">
+											<Ordinate X="326605.93" Y="1479131.99" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="263">
+											<Ordinate X="326685.63" Y="1479095.81" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="264">
+											<Ordinate X="326706.41" Y="1479075.23" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="265">
+											<Ordinate X="326719.22" Y="1479057.79" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="266">
+											<Ordinate X="326740.16" Y="1479003.82" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="267">
+											<Ordinate X="326772.13" Y="1478973.75" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="268">
+											<Ordinate X="326816.69" Y="1478964.43" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="269">
+											<Ordinate X="326827.81" Y="1478966.08" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="270">
+											<Ordinate X="326845.25" Y="1478974.12" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="271">
+											<Ordinate X="326878.61" Y="1478977.51" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="272">
+											<Ordinate X="326880" Y="1478929.65" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="273">
+											<Ordinate X="326880.67" Y="1478844.45" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="274">
+											<Ordinate X="326880.25" Y="1478655.48" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="275">
+											<Ordinate X="326881.19" Y="1478641.80" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="276">
+											<Ordinate X="326982.74" Y="1478564.13" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="277">
+											<Ordinate X="327062.47" Y="1478507.02" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="278">
+											<Ordinate X="327392.34" Y="1478253.67" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="279">
+											<Ordinate X="327500.90" Y="1478174.82" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="280">
+											<Ordinate X="327554.76" Y="1478133.87" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="281">
+											<Ordinate X="327585.20" Y="1478110.73" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="282">
+											<Ordinate X="327667.51" Y="1478048.19" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="283">
+											<Ordinate X="327781.03" Y="1477967.65" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="284">
+											<Ordinate X="327814.25" Y="1477936.60" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="285">
+											<Ordinate X="327856.63" Y="1477895.67" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="286">
+											<Ordinate X="327935.62" Y="1477847.85" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="287">
+											<Ordinate X="328012.39" Y="1477793.29" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="288">
+											<Ordinate X="328091.03" Y="1477735.07" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="289">
+											<Ordinate X="328168.16" Y="1477676.44" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="290">
+											<Ordinate X="328242.76" Y="1477620.39" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="291">
+											<Ordinate X="328320.12" Y="1477561.56" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="292">
+											<Ordinate X="328399.75" Y="1477501.35" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="293">
+											<Ordinate X="328479.71" Y="1477440.82" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="294">
+											<Ordinate X="328561.78" Y="1477379.07" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="295">
+											<Ordinate X="328719.57" Y="1477260.37" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="296">
+											<Ordinate X="328796.49" Y="1477202.45" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="297">
+											<Ordinate X="328848.45" Y="1477163.17" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="298">
+											<Ordinate X="328872.09" Y="1477145.30" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="299">
+											<Ordinate X="328901.70" Y="1477122.85" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="300">
+											<Ordinate X="328945.33" Y="1477089.73" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="301">
+											<Ordinate X="328963.78" Y="1477075.75" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="302">
+											<Ordinate X="328931.45" Y="1477074.26" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="303">
+											<Ordinate X="328907.80" Y="1477073.16" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="304">
+											<Ordinate X="328537.65" Y="1477056.08" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="305">
+											<Ordinate X="328131.40" Y="1476944.65" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="306">
+											<Ordinate X="328060.57" Y="1476925.18" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="307">
+											<Ordinate X="327914.67" Y="1476885.07" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="308">
+											<Ordinate X="327892.71" Y="1476879.04" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="309">
+											<Ordinate X="327889.48" Y="1476878.15" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="310">
+											<Ordinate X="327836.24" Y="1476541.49" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="311">
+											<Ordinate X="327863.60" Y="1476395.45" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="312">
+											<Ordinate X="327961.40" Y="1476258" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="313">
+											<Ordinate X="328308.65" Y="1476055.42" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="314">
+											<Ordinate X="328598.40" Y="1475873.89" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="315">
+											<Ordinate X="328625.90" Y="1475848.81" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="316">
+											<Ordinate X="328648.33" Y="1475820.61" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="317">
+											<Ordinate X="328669.97" Y="1475788.86" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="318">
+											<Ordinate X="328683" Y="1475759.88" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="319">
+											<Ordinate X="328692.04" Y="1475730.89" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="320">
+											<Ordinate X="328702.09" Y="1475687.90" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="321">
+											<Ordinate X="328715.05" Y="1474972.54" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="322">
+											<Ordinate X="328730.08" Y="1474179.33" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="323">
+											<Ordinate X="328737.37" Y="1473815.95" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="324">
+											<Ordinate X="328729.45" Y="1473748.94" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="325">
+											<Ordinate X="328128.01" Y="1473717.49" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="326">
+											<Ordinate X="328084.10" Y="1473759.15" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="327">
+											<Ordinate X="327987.88" Y="1473821.90" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="328">
+											<Ordinate X="327887.09" Y="1473868.63" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="329">
+											<Ordinate X="327864.85" Y="1473880.45" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="330">
+											<Ordinate X="327829.80" Y="1473899.09" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="331">
+											<Ordinate X="327740.31" Y="1473946.69" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="332">
+											<Ordinate X="327534.91" Y="1474019.65" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="333">
+											<Ordinate X="327419.99" Y="1474051.09" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="334">
+											<Ordinate X="327409.46" Y="1474055.03" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="335">
+											<Ordinate X="327298.97" Y="1474096.39" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="336">
+											<Ordinate X="327287.09" Y="1474100.84" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="337">
+											<Ordinate X="327259.85" Y="1474111.04" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="338">
+											<Ordinate X="326422.07" Y="1474424.70" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="339">
+											<Ordinate X="326311.91" Y="1474464.23" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="340">
+											<Ordinate X="326301.66" Y="1474467.92" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="341">
+											<Ordinate X="326295.39" Y="1474470.13" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="342">
+											<Ordinate X="326098.69" Y="1474539.74" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="343">
+											<Ordinate X="325489.04" Y="1474750.56" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="344">
+											<Ordinate X="325462.73" Y="1474760.01" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="345">
+											<Ordinate X="325307.47" Y="1474810.80" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="346">
+											<Ordinate X="325307.43" Y="1474782.40" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="347">
+											<Ordinate X="325296.72" Y="1474773.90" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="348">
+											<Ordinate X="325296.36" Y="1474661.21" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="349">
+											<Ordinate X="325304.74" Y="1474119.06" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="350">
+											<Ordinate X="325306.55" Y="1474002.38" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="351">
+											<Ordinate X="325307.92" Y="1473913.38" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="352">
+											<Ordinate X="325324.89" Y="1473126.46" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="353">
+											<Ordinate X="322631.13" Y="1473123.20" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="354">
+											<Ordinate X="322641.22" Y="1475042.33" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="355">
+											<Ordinate X="323466.23" Y="1475164.30" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="356">
+											<Ordinate X="323554.07" Y="1475256.73" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="357">
+											<Ordinate X="323758.32" Y="1475324.48" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="358">
+											<Ordinate X="323752.87" Y="1475335.96" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="359">
+											<Ordinate X="323768.90" Y="1475340.72" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="360">
+											<Ordinate X="323773.59" Y="1475351.22" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="361">
+											<Ordinate X="323638.50" Y="1475419.85" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="362">
+											<Ordinate X="323538.41" Y="1475491.55" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="363">
+											<Ordinate X="323519.81" Y="1475504.88" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="364">
+											<Ordinate X="323429.08" Y="1475592.04" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="365">
+											<Ordinate X="323390.36" Y="1475629.25" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="366">
+											<Ordinate X="323298.30" Y="1475759.02" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="367">
+											<Ordinate X="323271.79" Y="1475811.69" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="368">
+											<Ordinate X="323238.92" Y="1475876.98" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="369">
+											<Ordinate X="323227.03" Y="1475912.91" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="370">
+											<Ordinate X="323185.36" Y="1476038.66" Ord_Nmb="1"/>
+										</Spelement_Unit>
+										<Spelement_Unit Type_Unit="Точка" Su_Nmb="1">
+											<Ordinate X="323162.15" Y="1476217.22" Ord_Nmb="1"/>
+										</Spelement_Unit>
+									</Spatial_Element>
+								</Entity_Spatial>
+							</Boundary>
+						</Boundaries>
+						<Documents>
+							<Document>
+								<Code_Document>558501010000</Code_Document>
+								<Name>Решение о внесении кадастровых сведений в государственный кадастр недвижимости в соответствии с документами,
+									поступившими в порядке информационного взаимодействия
+								</Name>
+								<Number>72/09-854</Number>
+								<Date>2009-11-11</Date>
+								<IssueOrgan>Управление Роснедвижимости по Тюменской области</IssueOrgan>
+							</Document>
+							<Document>
+								<Code_Document>558403990000</Code_Document>
+								<Name>Приказ "О ведении государственного кадастра недвижимости на территории Тюменского кадастрового округа"</Name>
+								<Number>П/167/П/333</Number>
+								<Date>2012-10-30</Date>
+								<IssueOrgan>Филиал ФГБУ "ФКП Росреестра" по Тюменской области, Управление Росреестра по Тюменской области</IssueOrgan>
+							</Document>
+						</Documents>
+						<InhabitedLocalityBoundary>
+							<Name>7217 - Тюменский район, п. Боровский</Name>
+						</InhabitedLocalityBoundary>
+					</Bound>
+				</Bounds>
+				<Coord_System Name="МСК № 1" Cs_Id="364"/>
+			</Cadastral_Block>
+		</Cadastral_Blocks>
+		<Certification_Doc>
+			<Organization>филиал федерального государственного бюджетного учреждения «Федеральная кадастровая палата Федеральной службы
+				государственной регистрации, кадастра и картографии» по Тюменской области
+			</Organization>
+			<Date>2014-02-26</Date>
+			<Number>7200/201/14-52782</Number>
+			<Appointment>заместитель начальника отдела</Appointment>
+			<FIO>Гордеюк А. В.</FIO>
+		</Certification_Doc>
+	</Package>
+</Region_Cadastr>

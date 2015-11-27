@@ -65,7 +65,12 @@ public class AddressBean extends CRUDBeanBase<Address> {
 				street = streets.get(0);
 				break;
 			default:
-				throw new IllegalArgumentException("No street found: " + filter.getStreet() + ", " + filter.getStreetType());
+				throw new IllegalArgumentException(
+						"No street found: " + filter.getStreet() + ", " + filter.getStreetType()
+								+ ". Subject: " + subject.getCode() + ", " + subject.getName() + ", " + subject.getSocr()
+								+ ". Region: " + region.getCode() + ", " + region.getName() + ", " + region.getSocr()
+								+ ". Locality: " + locality.getCode() + ", " + locality.getName() + ", " + locality.getSocr()
+				);
 		}
 		return dao.find(subject, region, locality, street, filter.getHome(), filter.getHousing(), filter.getBuilding(), filter.getApartment());
 	}

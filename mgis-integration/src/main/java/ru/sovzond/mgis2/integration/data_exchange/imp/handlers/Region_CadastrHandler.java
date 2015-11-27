@@ -245,14 +245,16 @@ public class Region_CadastrHandler extends DefaultHandler {
 			landDTO.setDateCreated(toDate(attributes.getValue(DATE_CR), dateFormat));
 		}
 
-		//-------------Area---------------------
-		if (qName.equalsIgnoreCase("Area") && t_Parcel) {
-			t_Area = true;
-		}
 
+		//-------------Area---------------------
 		if (qName.equalsIgnoreCase("Area") && t_Area) {
 			t_AreaIn = true;
 		}
+		if (qName.equalsIgnoreCase("Area") && t_Parcel && !t_Area) {
+			t_Area = true;
+		}
+
+
 
 		if (qName.equalsIgnoreCase("Unit") && t_Area) {
 			t_Unit = true;
@@ -408,9 +410,13 @@ public class Region_CadastrHandler extends DefaultHandler {
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 
-		if (t_Area && t_Parcel && qName.endsWith("Area")) {
+		if (t_Area && qName.endsWith("Area") && !t_AreaIn ) {
 			t_Area = false;
 		}
+
+//		if (t_AreaIn && qName.endsWith("Area")) {
+//			t_AreaIn = false;
+//		}
 
 		if (t_Address && qName.endsWith("Address")) {
 			landDTO.setAddress(addressDTO);

@@ -157,6 +157,7 @@ public class LandImportResolverBean {
 		Land land = new Land();
 		land.setCharacteristics(new LandCharacteristics());
 		land.setRights(new LandRights());
+		landBean.save(land);
 
 		updateLand0(landDTO, land);
 		return land;
@@ -168,8 +169,14 @@ public class LandImportResolverBean {
 		land.setAddress(resolveAddress(landDTO.getAddress()));
 		land.setAddressOfMunicipalEntity(resolveOKTMO(null));
 		land.setLandCategory(resolveLandCategory(landDTO.getCategory()));
-		TerritorialZoneType zoneType = resolveTerritorialZoneType(landDTO.getLocationPlaced());
-		land.setAllowedUsageByTerritorialZone(resolveTerritorialZone(landDTO.getCadastralNumber(), zoneType));
+		String locationPlaced = landDTO.getLocationPlaced();
+		TerritorialZoneType zoneType;
+		if (locationPlaced != null) {
+			zoneType = resolveTerritorialZoneType(locationPlaced);
+			land.setAllowedUsageByTerritorialZone(resolveTerritorialZone(landDTO.getCadastralNumber(), zoneType));
+		} else {
+			land.setAllowedUsageByTerritorialZone(null);
+		}
 		if (landDTO.getCadastralCostValue() != null) {
 			land.getCharacteristics().setCadastralCost(landDTO.getCadastralCostValue().floatValue());
 		}
@@ -234,6 +241,7 @@ public class LandImportResolverBean {
 							TerritorialZone zone = new TerritorialZone();
 							zone.setAccountNumber(cadastralNumber1);
 							zone.setName(cadastralNumber1 + " (" + territorialZoneType.getName() + ")");
+							zone.setZoneType(territorialZoneType);
 							territorialZoneBean.save(zone);
 							return zone;
 						default:

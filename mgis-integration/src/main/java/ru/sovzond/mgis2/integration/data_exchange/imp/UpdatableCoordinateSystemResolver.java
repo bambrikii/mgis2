@@ -22,12 +22,14 @@ public class UpdatableCoordinateSystemResolver implements ILandResolver {
 
 	@Override
 	public void resolve(LandDTO land) {
-		String entSys = land.getEntitySpatial().getEntSys();
 		Land resolvedLand = landImportResolverBean.resolveLand(land);
-		if (!ids.containsKey(entSys)) {
-			ids.put(entSys, new ArrayList<>());
+		if (land.getEntitySpatial() != null) {
+			String entSys = land.getEntitySpatial().getEntSys();
+			if (!ids.containsKey(entSys)) {
+				ids.put(entSys, new ArrayList<>());
+			}
+			ids.get(entSys).add(resolvedLand.getId());
 		}
-		ids.get(entSys).add(resolvedLand.getId());
 	}
 
 	@Override

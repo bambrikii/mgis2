@@ -35,7 +35,6 @@ public class LandsImporter implements Importable {
 
 	public void imp(InputStream inputStream) {
 		Parser parser = new Parser();
-		List<Long> ids = new ArrayList<>();
 		DefaultHandler handler = new Region_CadastrHandler(new UpdatableCoordinateSystemResolver(landImportResolverBean));
 		try {
 			parser.parse(inputStream, handler);
