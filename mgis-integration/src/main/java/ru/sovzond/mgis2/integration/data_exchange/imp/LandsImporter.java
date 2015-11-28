@@ -3,19 +3,17 @@ package ru.sovzond.mgis2.integration.data_exchange.imp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.Region_CadastrHandler;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Alexander Arakelyan on 18.11.15.
  */
-@Component
+@Service
 public class LandsImporter implements Importable {
 
 	private static final Logger logger = LoggerFactory.getLogger(LandsImporter.class);
