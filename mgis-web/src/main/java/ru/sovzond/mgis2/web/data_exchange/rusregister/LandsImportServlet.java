@@ -1,8 +1,7 @@
 package ru.sovzond.mgis2.web.data_exchange.rusregister;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import ru.sovzond.mgis2.integration.data_exchange.imp.LandsImporter;
-import ru.sovzond.mgis2.lands.LandBean;
 import ru.sovzond.mgis2.web.data_exchange.imp.AbstractUploadServlet;
 
 import javax.servlet.annotation.MultipartConfig;
@@ -16,13 +15,8 @@ import java.io.InputStream;
 @MultipartConfig
 public class LandsImportServlet extends AbstractUploadServlet {
 
-	@Autowired
-	private LandsImporter landsImporter;
-
-	@Autowired
-	private LandBean landBean;
-
 	protected void doImport(InputStream inputStream) {
+		LandsImporter landsImporter = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext()).getBean(LandsImporter.class);
 		landsImporter.imp(inputStream);
 	}
 }
