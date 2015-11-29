@@ -21,7 +21,7 @@
 
 	<servers>
 		<server>
-			<id>sovzond-mgis-repository</id>
+			<id>my-mgis-repository</id>
 			<username>maven</username>
 			<privateKey>[path to your home directory]/.ssh/id_rsa</privateKey>
 			<passphrase>[your passphrase]</passphrase>
@@ -45,7 +45,7 @@
 			<id>my-profile</id>
 			<repositories>
 				<repository>
-					<id>sovzond-mgis-repository</id>
+					<id>my-mgis-repository</id>
 					<name>My MGIS Repository</name>
 					<url>scp://maven@192.168.11.196:/home/maven/.m2/repository</url>
 					<layout>default</layout>
