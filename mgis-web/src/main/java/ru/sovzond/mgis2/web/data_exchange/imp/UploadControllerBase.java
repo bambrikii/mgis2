@@ -66,7 +66,8 @@ public abstract class UploadControllerBase {
 
 				//Mark as uploaded.
 				info.addChunk(flowChunkNumber, pos, pos + bytesReadTotal);
-				if (info.checkIfUploadComplete()) { //Check if all chunks uploaded, and change filename
+				if (info.checkIfUploadComplete()) {
+					//Check if all chunks uploaded, and change filename
 					FlowInfoStorage.getInstance().remove(info);
 					result.append("All finished.");
 					File file = new File(info.getFlowFilePath());

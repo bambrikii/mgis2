@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import ru.sovzond.mgis2.integration.data_exchange.imp.LandsImporter;
+import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 import ru.sovzond.mgis2.web.data_exchange.imp.FlowInfo;
 import ru.sovzond.mgis2.web.data_exchange.imp.UploadControllerBase;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by Alexander Arakelyan on 17.11.15.
@@ -37,8 +39,12 @@ public class LandsImportController extends UploadControllerBase {
 	) {
 		FlowInfo info = writeFlowInfo(flowChunkSize, flowTotalSize, flowIdentifier, flowFileName, flowRelativePath);
 		return processStream(flowChunkNumber, info, file, inputStream -> {
-			landsImporter.imp(inputStream);
-			return "TODO";
+			List<ReportRecord> result = landsImporter.imp(inputStream);
+			StringBuilder sb = new StringBuilder();
+			for (ReportRecord record : result) {
+				sb.append(record.getIdentifier()).append(", ").append(record.getMessage()).append(", ").append(record.getOutcome()).append("\n");
+			}
+			return sb.toString();
 		});
 	}
 
@@ -52,7 +58,7 @@ public class LandsImportController extends UploadControllerBase {
 			result.append("Uploaded."); //This Chunk has been Uploaded.
 			return new ResponseEntity<>(result.toString(), HttpStatus.OK);
 		} else {
-			result.append("Then chunk ").append(flowChunkNumber).append(" of ").append(flowIdentifier).append(" not found.");
+			result.append("The chunk ").append(flowChunkNumber).append(" of ").append(flowIdentifier).append(" not found.");
 			return new ResponseEntity<>(result.toString(), HttpStatus.NOT_FOUND);
 		}
 	}

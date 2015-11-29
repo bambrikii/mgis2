@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.Region_CadastrHandler;
+import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 
 import java.io.*;
+import java.util.List;
 
 /**
  * Created by Alexander Arakelyan on 18.11.15.
@@ -21,19 +23,20 @@ public class LandsImporter implements Importable {
 	@Autowired
 	private LandImportResolverBean landImportResolverBean;
 
-	public void imp(File file) {
+	public List<ReportRecord> imp(File file) {
 		try (InputStream is = new FileInputStream(file)) {
-			imp(is);
+			return imp(is);
 		} catch (FileNotFoundException ex) {
-			logger.error(ex.getMessage(), ex);
+			throw new IllegalArgumentException(ex);
 		} catch (IOException ex) {
-			logger.error(ex.getMessage(), ex);
+			throw new IllegalArgumentException(ex);
 		}
 	}
 
-	public void imp(InputStream inputStream) {
+	public List<ReportRecord> imp(InputStream inputStream) {
 		Parser parser = new Parser();
-		DefaultHandler handler = new Region_CadastrHandler(new UpdatableCoordinateSystemResolver(landImportResolverBean));
+		LandResolver landResolver = new LandResolver(landImportResolverBean);
+		DefaultHandler handler = new Region_CadastrHandler(landResolver);
 		try {
 			parser.parse(inputStream, handler);
 		} catch (SAXException ex) {
@@ -41,5 +44,6 @@ public class LandsImporter implements Importable {
 		} catch (IOException ex) {
 			logger.error(ex.getMessage(), ex);
 		}
+		return landResolver.getReports();
 	}
 }

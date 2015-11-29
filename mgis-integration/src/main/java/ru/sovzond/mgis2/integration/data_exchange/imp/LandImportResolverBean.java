@@ -33,6 +33,8 @@ import java.util.regex.Pattern;
 public class LandImportResolverBean {
 
 	public static final String CADASTRAL_BLOCK_PATTERN = "(\\d+):(\\d+):(\\d{2})(\\d{2})(\\d+).*";
+	public static final String EPSG4326 = "EPSG:4326";
+	public static final String EPSG4326_CONVERSION_RULES = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
 
 	@Autowired
 	private LandBean landBean;
@@ -66,6 +68,9 @@ public class LandImportResolverBean {
 
 	@Autowired
 	private OKATOBean okatoBean;
+
+	@Autowired
+	private SpatialGroupBean spatialGroupBean;
 
 	private Pattern cadastralNumberPattern = Pattern.compile(CADASTRAL_BLOCK_PATTERN);
 
@@ -119,21 +124,22 @@ public class LandImportResolverBean {
 		return address;
 	}
 
-	private CoordinateSystem resolveCoordinateSystem(String name) {
-		return coordinateSystemBean.findByCode(name);
-	}
-
 	private LandRightKind resolveLandRightKind(String name, String type) {
 		return landRightKindBean.find(type);
 	}
 
-	public void updateCoordinateSystemBean(Land land) {
-
-	}
-
 	public void updateCoordinateSystem(Long landId, CoordinateSystemDTO coordinateSystemDTO) {
-		Long id = null;
 		// TODO:
+		Land land = landBean.load(landId);
+		SpatialGroup spatialData = land.getSpatialData();
+		if (spatialData != null) {
+			CoordinateSystem coordinateSystem = resolveCoordinateSystem(coordinateSystemDTO.getName(), "-");
+			spatialData.setCoordinateSystem(coordinateSystem);
+			spatialGroupBean.save(spatialData);
+			GeometryConverter converter = new GeometryConverter(coordinateSystem);
+			land.setGeometry(converter.convert(spatialData.getSpatialElements()));
+			landBean.save(land);
+		}
 	}
 
 	public Land resolveLand(LandDTO landDTO) {
@@ -184,43 +190,57 @@ public class LandImportResolverBean {
 			land.getRights().setTotalArea(landDTO.getArea().floatValue());
 		}
 		if (landDTO.getEntitySpatial() != null) {
-			SpatialGroup group = new SpatialGroup();
 			String entSys = landDTO.getEntitySpatial().getEntSys();
 			//
-			CoordinateSystem coordinateSystem = coordinateSystemBean.findByName(entSys);
-			group.setCoordinateSystem(coordinateSystem);
 			List<SpatialElementDTO> elements = landDTO.getEntitySpatial().getSpatialElements();
 			if (elements != null) {
+				SpatialGroup spatialGroup = new SpatialGroup();
 				for (int i = 0; i < elements.size(); i++) {
 					SpatialElementDTO element = elements.get(i);
 					List<SpatialElementUnitDTO> units = element.getSpatialElementUnits();
 					//
 					SpatialElement spatialElement = new SpatialElement();
-					group.getSpatialElements().add(spatialElement);
-					spatialElement.setPosition(BigDecimal.valueOf(i));
+					spatialGroup.getSpatialElements().add(spatialElement);
+					spatialElement.setPosition(BigDecimal.valueOf(i + 1));
+					int accumulatedPosition = 0;
 					for (SpatialElementUnitDTO unit : units) {
 						int suNumb = unit.getSuNumb();
 						String typeUnit = unit.getTypeUnit();
 						List<OrdinateDTO> ordinates = unit.getOrdinates();
 						for (OrdinateDTO ordinate : ordinates) {
 							int ordNumber = ordinate.getOrdNumber();
+							accumulatedPosition += ordNumber - 1;
 							double x = ordinate.getX();
 							double y = ordinate.getY();
 							//
 							Coordinate coordinate = new Coordinate();
-							coordinate.setPosition(BigInteger.valueOf(ordNumber));
+							coordinate.setPosition(BigInteger.valueOf(suNumb == 1 ? 1 : (suNumb + accumulatedPosition)));
 							coordinate.setX(BigDecimal.valueOf(x));
 							coordinate.setY(BigDecimal.valueOf(y));
 							spatialElement.getCoordinates().add(coordinate);
 						}
 					}
 				}
+				CoordinateSystem coordinateSystem = resolveCoordinateSystem(EPSG4326, EPSG4326_CONVERSION_RULES);
+				spatialGroup.setCoordinateSystem(coordinateSystem);
+				land.setSpatialData(spatialGroup);
 			} else {
 				land.setSpatialData(null);
 			}
 		} else {
 			land.setSpatialData(null);
 		}
+	}
+
+	private CoordinateSystem resolveCoordinateSystem(String code, String rules) {
+		CoordinateSystem coordinateSystem = coordinateSystemBean.findByCode(code);
+		if (coordinateSystem == null) {
+			coordinateSystem = new CoordinateSystem();
+			coordinateSystem.setCode(code);
+			coordinateSystem.setConversionRules(rules);
+			coordinateSystemBean.save(coordinateSystem);
+		}
+		return coordinateSystem;
 	}
 
 	private TerritorialZone resolveTerritorialZone(String landCadastralNumber, TerritorialZoneType territorialZoneType) {
@@ -296,9 +316,5 @@ public class LandImportResolverBean {
 	private Land updateLand(LandDTO landDTO, Land land) {
 		updateLand0(landDTO, land);
 		return land;
-	}
-
-	public void removeLand(Land land) {
-		landBean.remove(land);
 	}
 }
