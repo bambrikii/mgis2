@@ -15,4 +15,8 @@ public class TerritorialZoneTypeDao extends CRUDDaoBase<TerritorialZoneType> {
 	public List<TerritorialZoneType> findByNameSubstring(String nameSubstring) {
 		return createCriteria().add(Restrictions.like("name", nameSubstring)).list();
 	}
+
+	public TerritorialZoneType findByCode(String code) {
+		return (TerritorialZoneType) createCriteria().add(Restrictions.eq("code", code)).uniqueResult();
+	}
 }

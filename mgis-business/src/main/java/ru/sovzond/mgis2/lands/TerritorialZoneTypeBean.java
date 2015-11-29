@@ -32,4 +32,8 @@ public class TerritorialZoneTypeBean extends CRUDBeanBase<TerritorialZoneType> {
 	public List<TerritorialZoneType> findByNameSubstring(String nameSubstring) {
 		return dao.findByNameSubstring(nameSubstring);
 	}
+
+	public TerritorialZoneType findByCode(String code) {
+		return dao.findByCode(code);
+	}
 }

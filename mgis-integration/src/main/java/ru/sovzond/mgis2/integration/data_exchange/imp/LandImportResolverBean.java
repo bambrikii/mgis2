@@ -255,18 +255,32 @@ public class LandImportResolverBean {
 	}
 
 	private TerritorialZoneType resolveTerritorialZoneType(String territorialZoneType) {
-		List<TerritorialZoneType> list = territorialZoneTypeBean.findByNameSubstring("%(" + territorialZoneType + ")%");
-		TerritorialZoneType type;
-		switch (list.size()) {
-			case 0:
-				type = new TerritorialZoneType();
-				type.setCode(territorialZoneType);
-				type.setName(territorialZoneType);
-				territorialZoneTypeBean.save(type);
-				break;
-			default:
-				type = list.get(0);
-				break;
+		TerritorialZoneType type = territorialZoneTypeBean.findByCode(territorialZoneType);
+		if (type == null) {
+			List<TerritorialZoneType> list = territorialZoneTypeBean.findByNameSubstring("%(" + territorialZoneType + ")%");
+			switch (list.size()) {
+				case 0:
+					list = territorialZoneTypeBean.findByNameSubstring(territorialZoneType);
+					switch (list.size()) {
+						case 0:
+							type = new TerritorialZoneType();
+							type.setCode(territorialZoneType);
+							type.setName(territorialZoneType);
+							territorialZoneTypeBean.save(type);
+							break;
+						case 1:
+							type = list.get(0);
+							break;
+						default:
+							throw new IllegalArgumentException("More than one TerritorialZoneType found for name '" + territorialZoneType + "'");
+					}
+					break;
+				case 1:
+					type = list.get(0);
+					break;
+				default:
+					throw new IllegalArgumentException("More than one TerritorialZoneType found for name '%(" + territorialZoneType + ")%'");
+			}
 		}
 		return type;
 	}

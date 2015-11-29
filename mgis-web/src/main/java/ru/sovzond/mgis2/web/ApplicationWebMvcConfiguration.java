@@ -147,14 +147,9 @@ public class ApplicationWebMvcConfiguration extends WebMvcConfigurerAdapter {
 	@Bean(name = "multipartResolver")
 	public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		multipartResolver.setMaxUploadSize(500000);
+		multipartResolver.setMaxUploadSize(1024 * 1024 * 15);
 		return multipartResolver;
 	}
-
-	//	@Bean(name = "multipartResolver")
-	//	public StandardServletMultipartResolver resolver() {
-	//		return new StandardServletMultipartResolver();
-	//	}
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
