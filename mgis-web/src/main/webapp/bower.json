@@ -26,7 +26,7 @@
     "angular-ui-select": "~0.12.1",
     "angular-utils-ui-breadcrumbs": "~0.2.1",
     "backgrid": "~0.3.5",
-    "bootstrap": "~3.3.4",
+    "bootstrap": "~3.3.6",
     "bootstrap-datetimepicker": "~0.0.11",
     "bootstrap-modal": "~2.2.6",
     "bootstrap-treeview": "~1.2.0",
@@ -52,6 +52,7 @@
     "bootstrap": "3.3.5",
     "underscore": "1.8.3",
     "angular": "1.4.3",
-    "angular-bootstrap": "0.13.0"
+    "angular-bootstrap": "0.13.0",
+    "bootstrap": "3.3.6"
   }
 }
