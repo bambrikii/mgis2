@@ -30,8 +30,12 @@
 		<div ng-repeat="file in $flow.files">
 			<div class="row">
 				<div class="col-sm-2">{{$index+1}}</div>
-				<div class="col-sm-4">{{file.name}}</div>
-				<div class="col-sm-6">{{file.msg}}</div>
+				<div class="col-sm-10">{{file.name}}</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<pre>{{file.msg}}</pre>
+				</div>
 			</div>
 			<div class="progress progress-striped" ng-class="{active: file.isUploading()}">
 				<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"

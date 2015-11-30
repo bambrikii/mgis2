@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import ru.sovzond.mgis2.integration.data_exchange.imp.LandsImporter;
+import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportOutcome;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 import ru.sovzond.mgis2.web.data_exchange.imp.FlowInfo;
 import ru.sovzond.mgis2.web.data_exchange.imp.UploadControllerBase;
@@ -42,7 +43,11 @@ public class LandsImportController extends UploadControllerBase {
 			List<ReportRecord> result = landsImporter.imp(inputStream);
 			StringBuilder sb = new StringBuilder();
 			for (ReportRecord record : result) {
-				sb.append(record.getIdentifier()).append(", ").append(record.getMessage()).append(", ").append(record.getOutcome()).append("\n");
+				sb.append(record.getIdentifier()).append(", ").append(record.getMessage()).append(", ").append(record.getOutcome());
+				if (ReportOutcome.ERROR.equals(record.getOutcome())) {
+					sb.append(", ").append(record.getDetails());
+				}
+				sb.append("\n");
 			}
 			return sb.toString();
 		});

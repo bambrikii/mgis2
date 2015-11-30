@@ -47,9 +47,6 @@ public class GeometryConverter {
 			double[] converted = coordinatesConverter.convert(coordinate.getX().doubleValue(), coordinate.getY().doubleValue());
 			coordinates.add(new com.vividsolutions.jts.geom.Coordinate(converted[0], converted[1]));
 		}
-		if (element.getCoordinates().size() > 0) {
-			coordinates.add(coordinates.get(0));
-		}
 		return new CoordinateArraySequence(coordinates.toArray(new com.vividsolutions.jts.geom.Coordinate[coordinates.size()]));
 	}
 }

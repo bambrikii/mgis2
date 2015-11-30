@@ -1,7 +1,9 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp;
 
+import ru.sovzond.mgis2.common.exceptions.StackTraceFactory;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandDTO;
+import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportFactory;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportOutcome;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 import ru.sovzond.mgis2.lands.Land;
@@ -34,24 +36,17 @@ public class LandResolver implements ILandResolver {
 				}
 				ids.get(entSys).add(resolvedLand.getId());
 			}
-			reportSuccess(land.getCadastralNumber());
+			reports.add(ReportFactory.success(land.getCadastralNumber()));
 		} catch (Exception ex) {
-			reportError(land.getCadastralNumber(), ex.getMessage());
+			reports.add(ReportFactory.error(land.getCadastralNumber(), ex));
 		}
 	}
 
-	private void reportSuccess(String identifier) {
+	private void reportError(String identifier, Exception ex) {
 		ReportRecord report = new ReportRecord();
 		report.setIdentifier(identifier);
-		report.setMessage("OK");
-		report.setOutcome(ReportOutcome.SUCCESS);
-		reports.add(report);
-	}
-
-	private void reportError(String identifier, String message) {
-		ReportRecord report = new ReportRecord();
-		report.setIdentifier(identifier);
-		report.setMessage(message);
+		report.setMessage(ex.getMessage());
+		report.setDetails(StackTraceFactory.stackTraceToString(ex));
 		report.setOutcome(ReportOutcome.ERROR);
 		reports.add(report);
 	}
@@ -62,9 +57,9 @@ public class LandResolver implements ILandResolver {
 			for (Long id : ids.get(coordinateSystemDTO.getId())) {
 				try {
 					landImportResolverBean.updateCoordinateSystem(id, coordinateSystemDTO);
-					reportSuccess(id + ", coordinate: " + coordinateSystemDTO.getName());
+					reports.add(ReportFactory.success(id + ", coordinate: " + coordinateSystemDTO.getName()));
 				} catch (Exception ex) {
-					reportError(id + ", coordinate: " + coordinateSystemDTO.getName(), ex.getMessage());
+					reportError(id + ", coordinate: " + coordinateSystemDTO.getName(), ex);
 				}
 			}
 		}

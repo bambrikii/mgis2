@@ -5,9 +5,9 @@ package ru.sovzond.mgis2.web.data_exchange.imp;
  */
 
 import org.springframework.web.multipart.MultipartFile;
+import ru.sovzond.mgis2.common.exceptions.StackTraceFactory;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 
 /**
@@ -74,7 +74,7 @@ public abstract class UploadControllerBase {
 					try (InputStream is = new FileInputStream(file)) {
 						result.append(importProcessable.doImport(is));
 					} catch (Exception ex) {
-						printStackTrace(result, ex);
+						StackTraceFactory.printStackTrace(result, ex);
 					} finally {
 						// Upload finished, delete the file.
 						Files.delete(file.toPath());
@@ -84,19 +84,9 @@ public abstract class UploadControllerBase {
 				}
 			}
 		} catch (IOException ex) {
-			printStackTrace(result, ex);
+			StackTraceFactory.printStackTrace(result, ex);
 		}
 		return result.toString();
-	}
-
-	private void printStackTrace(StringBuilder result, Exception ex) {
-		try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			 PrintStream ps = new PrintStream(baos)) {
-			ex.printStackTrace(ps);
-			result.append(new String(baos.toByteArray(), Charset.forName("utf-8")));
-		} catch (IOException ex2) {
-			result.append(ex2.getMessage());
-		}
 	}
 
 	protected FlowInfo readFlowInfo(String identifier) {
