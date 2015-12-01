@@ -242,3 +242,9 @@ span.mgis-input-group-date button {
 	background-color: white;
 	margin: 5px 5px 5px 5px;
 }
+
+/* selection mark */
+.mgis-row-selected {
+	background-color: yellowgreen;
+}
+

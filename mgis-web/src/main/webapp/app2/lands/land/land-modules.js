@@ -151,10 +151,17 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = 15;
 
+		$scope.selectedIds;
+
+		$scope.inSelectedIds = function (id) {
+			return $scope.selectedIds && $scope.selectedIds.indexOf(id) > -1;
+		}
+
 		function updateGrid() {
+			$scope.selectedIds = LandsLandSelectorService.ids();
 			LandsLandService.get("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage,
 				$scope.cadastralNumber,
-				LandsLandSelectorService.ids()
+				$scope.selectedIds
 			).then(function (data) {
 					$scope.landsPager = data;
 				}

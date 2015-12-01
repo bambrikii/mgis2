@@ -112,14 +112,10 @@ public class LandImportResolverBean {
 		address.setLocality(locality);
 		address.setStreet(street);
 
-		OKATO okato = okatoBean.findByCode("79");
+		OKATO okato = okatoBean.findByCode(addressDTO.getOkato());
 		address.setOkato(okato);
 
-		OKTMO oktmo = oktmoBean.list("79000000", null, null, 0, 0).getList().get(0);
-		address.setOktmo(oktmo);
-
 		address.setOther(addressDTO.getNote());
-		// address.setPostalCode(addressDTO.getPostalCode());
 		addressBean.save(address);
 		return address;
 	}
@@ -173,7 +169,7 @@ public class LandImportResolverBean {
 		land.setCadastralNumber(landDTO.getCadastralNumber());
 		land.setStateRealEstateCadastreaStaging(landDTO.getDateCreated());
 		land.setAddress(resolveAddress(landDTO.getAddress()));
-		land.setAddressOfMunicipalEntity(resolveOKTMO(null));
+//		land.setAddressOfMunicipalEntity(resolveOKTMO(null));
 		land.setLandCategory(resolveLandCategory(landDTO.getCategory()));
 		String locationPlaced = landDTO.getLocationPlaced();
 		TerritorialZoneType zoneType;
@@ -188,6 +184,18 @@ public class LandImportResolverBean {
 		}
 		if (landDTO.getArea() != null) {
 			land.getRights().setTotalArea(landDTO.getArea().floatValue());
+			if (landDTO.getRights() != null) {
+				switch (landDTO.getRights().size()) {
+					case 0:
+						throw new IllegalArgumentException("No land right found while land.rights node container exists.");
+					case 1:
+						LandRightDTO landRightDTO = landDTO.getRights().get(0);
+						land.getRights().setRightKind(resolveLandRightKind(landRightDTO.getName(), landRightDTO.getType()));
+						break;
+					default:
+						throw new IllegalArgumentException("More than one land right found in node land.rights node container exists.");
+				}
+			}
 		}
 		if (landDTO.getEntitySpatial() != null) {
 			String entSys = landDTO.getEntitySpatial().getEntSys();
