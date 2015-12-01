@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+import ru.sovzond.mgis2.integration.data_exchange.imp.impl.RegionCadastrLandsImporter;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -17,7 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Parser {
-	private static final Logger logger = LoggerFactory.getLogger(LandsImporter.class);
+	private static final Logger logger = LoggerFactory.getLogger(RegionCadastrLandsImporter.class);
 
 	SAXParserFactory factory = SAXParserFactory.newInstance();
 	SAXParser parser = null;

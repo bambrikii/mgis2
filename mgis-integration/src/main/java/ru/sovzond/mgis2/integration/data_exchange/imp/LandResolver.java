@@ -1,10 +1,8 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp;
 
-import ru.sovzond.mgis2.common.exceptions.StackTraceFactory;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportFactory;
-import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportOutcome;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 import ru.sovzond.mgis2.lands.Land;
 
@@ -42,15 +40,6 @@ public class LandResolver implements ILandResolver {
 		}
 	}
 
-	private void reportError(String identifier, Exception ex) {
-		ReportRecord report = new ReportRecord();
-		report.setIdentifier(identifier);
-		report.setMessage(ex.getMessage());
-		report.setDetails(StackTraceFactory.stackTraceToString(ex));
-		report.setOutcome(ReportOutcome.ERROR);
-		reports.add(report);
-	}
-
 	@Override
 	public void updateCoordinateSystem(CoordinateSystemDTO coordinateSystemDTO) {
 		if (ids.containsKey(coordinateSystemDTO.getId())) {
@@ -59,7 +48,7 @@ public class LandResolver implements ILandResolver {
 					landImportResolverBean.updateCoordinateSystem(id, coordinateSystemDTO);
 					reports.add(ReportFactory.success(id + ", coordinate: " + coordinateSystemDTO.getName()));
 				} catch (Exception ex) {
-					reportError(id + ", coordinate: " + coordinateSystemDTO.getName(), ex);
+					reports.add(ReportFactory.error(id + ", coordinate: " + coordinateSystemDTO.getName(), ex));
 				}
 			}
 		}

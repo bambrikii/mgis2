@@ -4,11 +4,18 @@ package ru.sovzond.mgis2.web.data_exchange.imp;
  * Created by Alexander Arakelyan on 18.11.15.
  */
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ru.sovzond.mgis2.common.exceptions.StackTraceFactory;
+import ru.sovzond.mgis2.integration.data_exchange.imp.Importable;
+import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportOutcome;
+import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.util.List;
 
 /**
  * This is a servlet demo,  for using Resumable.js to upload files.
@@ -93,5 +100,33 @@ public abstract class UploadControllerBase {
 		FlowInfoStorage storage = FlowInfoStorage.getInstance();
 		FlowInfo info = storage.readFlowInfo(identifier);
 		return info;
+	}
+
+	protected String doUploadChunk(@RequestParam(FLOW_CHUNK_NUMBER) int flowChunkNumber, @RequestParam(FLOW_CHUNK_SIZE) int flowChunkSize, @RequestParam(FLOW_TOTAL_SIZE) long flowTotalSize, @RequestParam(FLOW_IDENTIFIER) String flowIdentifier, @RequestParam(FLOW_FILENAME) String flowFileName, @RequestParam(FLOW_RELATIVE_PATH) String flowRelativePath, @RequestParam(FLOW_FILE) MultipartFile file, Importable importable) {
+		FlowInfo info = writeFlowInfo(flowChunkSize, flowTotalSize, flowIdentifier, flowFileName, flowRelativePath);
+		return processStream(flowChunkNumber, info, file, inputStream -> {
+			List<ReportRecord> result = importable.imp(inputStream);
+			StringBuilder sb = new StringBuilder();
+			for (ReportRecord record : result) {
+				sb.append(record.getIdentifier()).append(", ").append(record.getMessage()).append(", ").append(record.getOutcome());
+				if (ReportOutcome.ERROR.equals(record.getOutcome())) {
+					sb.append(", ").append(record.getDetails());
+				}
+				sb.append("\n");
+			}
+			return sb.toString();
+		});
+	}
+
+	protected ResponseEntity<String> doCheckCunk(@RequestParam(FLOW_CHUNK_NUMBER) int flowChunkNumber, @RequestParam(FLOW_IDENTIFIER) String flowIdentifier) {
+		StringBuilder result = new StringBuilder();
+		FlowInfo info = readFlowInfo(flowIdentifier);
+		if (info != null && info.containsChunk(flowChunkNumber)) {
+			result.append("Uploaded."); //This Chunk has been Uploaded.
+			return new ResponseEntity<>(result.toString(), HttpStatus.OK);
+		} else {
+			result.append("The chunk ").append(flowChunkNumber).append(" of ").append(flowIdentifier).append(" not found.");
+			return new ResponseEntity<>(result.toString(), HttpStatus.NOT_FOUND);
+		}
 	}
 }

@@ -1,29 +1,28 @@
-package ru.sovzond.mgis2.integration.data_exchange.imp;
+package ru.sovzond.mgis2.integration.data_exchange.imp.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.Region_CadastrHandler;
+import ru.sovzond.mgis2.integration.data_exchange.imp.Importable;
+import ru.sovzond.mgis2.integration.data_exchange.imp.Parser;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 
 import java.io.*;
 import java.util.List;
 
 /**
- * Created by Alexander Arakelyan on 18.11.15.
+ * Created by Alexander Arakelyan on 01/12/15.
  */
-@Service
-public class LandsImporter implements Importable {
+abstract class LandImportBase implements Importable {
 
-	private static final Logger logger = LoggerFactory.getLogger(LandsImporter.class);
-
-	@Autowired
-	private LandImportResolverBean landImportResolverBean;
+	private static final Logger logger = LoggerFactory.getLogger(LandImportBase.class);
 
 	public List<ReportRecord> imp(File file) {
+		return doImport(file);
+	}
+
+	private List<ReportRecord> doImport(File file) {
 		try (InputStream is = new FileInputStream(file)) {
 			return imp(is);
 		} catch (FileNotFoundException ex) {
@@ -33,10 +32,9 @@ public class LandsImporter implements Importable {
 		}
 	}
 
-	public List<ReportRecord> imp(InputStream inputStream) {
+
+	void doImport(InputStream inputStream, DefaultHandler handler) {
 		Parser parser = new Parser();
-		LandResolver landResolver = new LandResolver(landImportResolverBean);
-		DefaultHandler handler = new Region_CadastrHandler(landResolver);
 		try {
 			parser.parse(inputStream, handler);
 		} catch (SAXException ex) {
@@ -44,6 +42,5 @@ public class LandsImporter implements Importable {
 		} catch (IOException ex) {
 			logger.error(ex.getMessage(), ex);
 		}
-		return landResolver.getReports();
 	}
 }

@@ -1,7 +1,6 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.sovzond.mgis2.integration.HibernateConfiguration;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
+import ru.sovzond.mgis2.integration.data_exchange.imp.impl.RegionCadastrLandsImporter;
 import ru.sovzond.mgis2.lands.Land;
 
 import javax.transaction.Transactional;
@@ -29,7 +29,7 @@ import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.Region_Cad
 public class LandsImporterTest {
 
 	@Autowired
-	private LandsImporter landsImporter;
+	private RegionCadastrLandsImporter landsImporter;
 
 	@Autowired
 	private LandImportResolverBean landImportResolverBean;

@@ -394,6 +394,7 @@
   "DataExchange.Import": "Импорт",
   "DataExchange.Export": "Экспорт",
   "DataExchange.Import.RusRegister.Lands": "РосРеестр - Земельные участки",
+  "DataExchange.Import.ImportedDataWillBeOverwrittenWarning": "Внимание, данные в системе будут обновлены данными из загружаемых файлов!",
   "About": "О Системе",
   "About.Help": "Помощь",
   "About.Info": "Информация",
