@@ -161,5 +161,23 @@ angular.module("mgis.commons", ["ui.bootstrap",
 		return function (items) {
 			return items ? items.slice().reverse() : null;
 		};
-	});
+	})
+	//
+	.directive("mgisShortenedMessage", function () {
+		return {
+			restrict: "E",
+			scope: {
+				message: "="
+			},
+			templateUrl: "app2/commons/shortened-message.htm",
+			controller: function ($scope, $rootScope, MGISCommonsModalForm) {
+				$scope.displayFullMessage = function () {
+					// TODO: Show modal window with a message
+					MGISCommonsModalForm.edit("app2/commons/shortened-message-form.htm", $scope, function (scope, modalInstance) {
+						modalInstance.close();
+					});
+				}
+			}
+		}
+	})
 ;
