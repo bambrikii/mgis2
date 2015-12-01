@@ -76,18 +76,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.jhlabs</groupId>
-			<artifactId>javaproj</artifactId>
-			<version>1.0.6-noawt</version>
-		</dependency>
-
-		<!--<dependency>-->
-		<!--<groupId>org.osgeo</groupId>-->
-		<!--<artifactId>proj4j</artifactId>-->
-		<!--<version>0.1.0</version>-->
-		<!--</dependency>-->
-
-		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
@@ -106,6 +94,28 @@
 			<artifactId>gt-shapefile</artifactId>
 			<version>${geotools.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-epsg-hsql</artifactId>
+			<version>${geotools.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-epsg-wkt</artifactId>
+			<version>${geotools.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-opengis</artifactId>
+			<version>${geotools.version}</version>
+		</dependency>
+
+		<!--<dependency>-->
+			<!--<groupId>org.geotools</groupId>-->
+			<!--<artifactId>gt-image</artifactId>-->
+			<!--<version>${geotools.version}</version>-->
+		<!--</dependency>-->
 
 	</dependencies>
 

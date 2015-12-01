@@ -100,6 +100,7 @@ angular.module("mgis.lands.land.map", [
 							createMap();
 							map.setView(new L.LatLng(0, 0), 1);
 							container.drawCreatedEvent = drawCreatedEvent;
+							L.control.mousePosition().addTo(map);
 						} else {
 							MGISErrorService.handleError({
 								status: "GIS_SERVER_CONFIGURATION_REQUIRED",

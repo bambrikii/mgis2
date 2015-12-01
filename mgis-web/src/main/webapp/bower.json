@@ -45,14 +45,14 @@
     "terraformer-wkt-parser": "~1.0.0",
     "leaflet-plugins": "gam6itko/leaflet-plugins#~1.1.0",
     "leaflet-layer-tree-plugin": "bambrikii/leaflet-layer-tree-plugin",
-    "ng-flow": "~2"
+    "ng-flow": "~2",
+    "Leaflet.MousePosition": "ardhi/Leaflet.MousePosition"
   },
   "resolutions": {
     "jquery": "1.10.2",
-    "bootstrap": "3.3.5",
+    "bootstrap": "3.3.6",
     "underscore": "1.8.3",
     "angular": "1.4.3",
-    "angular-bootstrap": "0.13.0",
-    "bootstrap": "3.3.6"
+    "angular-bootstrap": "0.13.0"
   }
 }

@@ -19,12 +19,12 @@ public class GeometryConverter {
 	private CoordinatesConverter coordinatesConverter;
 	private MGeometryFactory geometryFactory;
 
-	public GeometryConverter(CoordinateSystem coordinateSystem) {
-		coordinatesConverter = new CoordinatesConverter(coordinateSystem.getConversionRules());
+	public GeometryConverter(String targetConversionRules) {
+		coordinatesConverter = new CoordinatesConverter(targetConversionRules);
 		geometryFactory = GeometryFactoryHelper.createGeometryFactory(null);
 	}
 
-	public MultiPolygon convert(List<SpatialElement> elements) {
+	public MultiPolygon createMultipolygon(List<SpatialElement> elements) {
 		List<Polygon> polygons = new ArrayList<>();
 		if (elements.size() > 0) {
 			CoordinateSequence coordinateSequence = buildCoordinateSequence(elements.get(0));
@@ -44,9 +44,15 @@ public class GeometryConverter {
 		List<com.vividsolutions.jts.geom.Coordinate> coordinates = new ArrayList<>();
 		for (int i = 0; i < element.getCoordinates().size(); i++) {
 			Coordinate coordinate = element.getCoordinates().get(i);
-			double[] converted = coordinatesConverter.convert(coordinate.getX().doubleValue(), coordinate.getY().doubleValue());
-			coordinates.add(new com.vividsolutions.jts.geom.Coordinate(converted[0], converted[1]));
+			double x = coordinate.getX().doubleValue();
+			double y = coordinate.getY().doubleValue();
+			coordinates.add(new com.vividsolutions.jts.geom.Coordinate(y, x));
 		}
 		return new CoordinateArraySequence(coordinates.toArray(new com.vividsolutions.jts.geom.Coordinate[coordinates.size()]));
 	}
+
+	public MultiPolygon convert(MultiPolygon elements) {
+		return (MultiPolygon) coordinatesConverter.convert(elements);
+	}
+
 }

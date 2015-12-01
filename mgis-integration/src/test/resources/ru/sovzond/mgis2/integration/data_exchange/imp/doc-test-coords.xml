@@ -2,10 +2,10 @@
 <Region_Cadastr CodeType="101" Version="08">
 	<Package>
 		<Cadastral_Blocks>
-			<Cadastral_Block CadastralNumber="72:17:0201005">
+			<Cadastral_Block CadastralNumber="23:33:0203002:1">
 				<Area Total="32.89" Unit="059"/>
 				<Parcels>
-					<Parcel CadastralNumber="72:17:0201005:1" Name="01" State="01" DateCreated="2001-04-07">
+					<Parcel CadastralNumber="23:33:0203002:1" Name="01" State="01" DateCreated="2001-04-07">
 						<Area>
 							<Area>1264</Area>
 							<Unit>055</Unit>

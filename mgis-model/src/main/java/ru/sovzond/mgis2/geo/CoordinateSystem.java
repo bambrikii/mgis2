@@ -17,7 +17,7 @@ public class CoordinateSystem implements Cloneable {
 	@Column(name = "code", unique = true, nullable = false)
 	private String code;
 
-	@Column(name = "conversion_rules")
+	@Column(name = "conversion_rules", columnDefinition = "text")
 	private String conversionRules;
 
 	public Long getId() {

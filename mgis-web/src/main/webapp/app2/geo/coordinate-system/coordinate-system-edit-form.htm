@@ -23,7 +23,7 @@
 				<label translate>GEO.CoordinateSystem.ConversionRules</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="text" class="form-control" ng-model="item.conversionRules" required/>
+				<textarea class="form-control" ng-model="item.conversionRules" rows="5" style="width: 100%;" required></textarea>
 
 				<p ng-show="editForm.conversionRules.$invalid && (!editForm.conversionRules.$pristine || editForm.conversionRules.$touched)"
 				   class="help-block"

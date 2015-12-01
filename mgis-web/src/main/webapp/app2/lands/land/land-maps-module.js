@@ -42,6 +42,7 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", //
 				}).addTo(map);
 
 				map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text. Attribution overload
+				L.control.mousePosition().addTo(map);
 
 				var landsSelectorControl = new L.Control.MGIS2LandsSelector();
 

@@ -133,11 +133,11 @@ public class LandImportResolverBean {
 		Land land = landBean.load(landId);
 		SpatialGroup spatialData = land.getSpatialData();
 		if (spatialData != null) {
-			CoordinateSystem coordinateSystem = resolveCoordinateSystem(coordinateSystemDTO.getName(), "-");
+			CoordinateSystem coordinateSystem = resolveCoordinateSystem(coordinateSystemDTO.getName(), null);
 			spatialData.setCoordinateSystem(coordinateSystem);
 			spatialGroupBean.save(spatialData);
-			GeometryConverter converter = new GeometryConverter(coordinateSystem);
-			land.setGeometry(converter.convert(spatialData.getSpatialElements()));
+			GeometryConverter converter = new GeometryConverter(coordinateSystem.getConversionRules());
+			land.setGeometry(converter.convert(converter.createMultipolygon(spatialData.getSpatialElements())));
 			landBean.save(land);
 		}
 	}
