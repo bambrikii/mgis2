@@ -111,7 +111,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 	//-------All attributes name--------
 	final static String NAME_ALL = "Name";
 	final static String TYPE_ALL = "Type";
-	final static String VALUE = "Type";
+	final static String VALUE = "Value";
 	//-------Parcel attributes name-----
 	final static String CADASTRAL_NUMBER = "CadastralNumber";
 	final static String NAME = "Name";
@@ -142,6 +142,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 	 * ********************************************************
 	 */
 
+	boolean t_Region_Cadastr = false;
 	boolean t_Cadastral_Blocks = false;
 	boolean t_Cadastral_Block = false;
 	boolean t_AreaM = false;//-----Area all
@@ -150,6 +151,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 	boolean t_Parcel = false;
 	boolean t_Area = false;//-----Area
 	boolean t_AreaIn = false;
+	boolean flagAreaIn = false;
 	boolean t_Unit = false;
 	//--------------------------
 	boolean t_Location = false;//-----Location
@@ -224,6 +226,9 @@ public class Region_CadastrHandler extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
 		//-------------Cadastral_Blocks---------
+		if (qName.equalsIgnoreCase("Region_Cadastr")) {
+			t_Region_Cadastr = true;
+		}
 		if (qName.equalsIgnoreCase("Cadastral_Blocks")) {
 			t_Cadastral_Blocks = true;
 		}
@@ -232,7 +237,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 		}
 
 		//-------------Parcels------------------
-		if (qName.equalsIgnoreCase("Parcels")) {
+		if (qName.equalsIgnoreCase("Parcels") && t_Region_Cadastr && t_Cadastral_Blocks && t_Cadastral_Block) {
 			t_Parcels = true;
 		}
 
@@ -249,11 +254,13 @@ public class Region_CadastrHandler extends DefaultHandler {
 		//-------------Area---------------------
 		if (qName.equalsIgnoreCase("Area") && t_Area) {
 			t_AreaIn = true;
-		}
-		if (qName.equalsIgnoreCase("Area") && t_Parcel && !t_Area) {
-			t_Area = true;
+			flagAreaIn = true;
 		}
 
+		if (qName.equalsIgnoreCase("Area") && t_Parcel && !t_Area) {
+			t_Area = true;
+			flagAreaIn = false;
+		}
 
 
 		if (qName.equalsIgnoreCase("Unit") && t_Area) {
@@ -405,18 +412,43 @@ public class Region_CadastrHandler extends DefaultHandler {
 			landResolver.updateCoordinateSystem(coordinateSystemDTO);
 			t_Coord_System = false;
 		}
+
 	}
 
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 
-		if (t_Area && qName.endsWith("Area") && !t_AreaIn ) {
+		//-----Area--------------
+		if (t_Area && qName.endsWith("Area") && !t_AreaIn && !flagAreaIn) {
 			t_Area = false;
 		}
 
-//		if (t_AreaIn && qName.endsWith("Area")) {
-//			t_AreaIn = false;
-//		}
+		if (t_AreaIn && flagAreaIn && qName.endsWith("Area")) {
+			t_AreaIn = false;
+			flagAreaIn = false;
+		}
+		if (t_Area && t_Unit && qName.endsWith("Unit")) {
+			t_Unit = false;
+		}
+		//----Location-----------
+		if (t_Location && t_inBounds && qName.endsWith("inBounds")) {
+			t_inBounds = false;
+		}
+		if (t_Location && t_Placed && qName.endsWith("Placed")) {
+			t_Placed = false;
+		}
+		if (t_Address && t_Code_OKATO && qName.endsWith("Code_OKATO")) {
+			t_Code_OKATO = false;
+		}
+		if (t_Address && t_Code_KLADR && qName.endsWith("Code_KLADR")) {
+			t_Code_KLADR = false;
+		}
+		if (t_Address && t_Region && qName.endsWith("Region")) {
+			t_Region = false;
+		}
+		if (t_Address && t_Note && qName.endsWith("Note")) {
+			t_Note = false;
+		}
 
 		if (t_Address && qName.endsWith("Address")) {
 			landDTO.setAddress(addressDTO);
@@ -426,8 +458,15 @@ public class Region_CadastrHandler extends DefaultHandler {
 		if (t_Location && qName.endsWith("Location")) {
 			t_Location = false;
 		}
+		//-------Rights------------
+		if (t_Right && t_Name_R && qName.endsWith("Name")) {
+			t_Name_R = false;
+		}
+		if (t_Right && t_Type_R && qName.endsWith("Type")) {
+			t_Type_R = false;
+		}
 
-		if (t_Right && qName.endsWith("Right")) {
+		if (t_Rights && t_Right && qName.endsWith("Right")) {
 			landRightDTOs.add(landRightDTO);
 			t_Right = false;
 		}
@@ -436,7 +475,7 @@ public class Region_CadastrHandler extends DefaultHandler {
 			landDTO.setRights(landRightDTOs);
 			t_Rights = false;
 		}
-
+		//------Spetial Data-------
 		if (t_Spelement_Unit && qName.endsWith("Spelement_Unit")) {
 			spatialElementUnitDTO.setOrdinates(ordinateDTOs);
 			spatialElementUnitDTOs.add(spatialElementUnitDTO);
@@ -471,59 +510,52 @@ public class Region_CadastrHandler extends DefaultHandler {
 		if (t_Cadastral_Blocks && qName.endsWith("Cadastral_Blocks")) {
 			t_Cadastral_Blocks = false;
 		}
+		if (t_Region_Cadastr && qName.endsWith("Region_Cadastr")) {
+			t_Region_Cadastr = false;
+		}
 	}
 
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
 
 		//----------AREA------------
-		if (t_Area && t_AreaIn) {
+		if (t_Area && t_AreaIn && flagAreaIn) {
 			landDTO.setArea(Double.parseDouble(String.valueOf(ch, start, length)));
-			t_AreaIn = false;
 		}
 
 		if (t_Area && t_Unit) {
 			landDTO.setAreaUnit(String.valueOf(ch, start, length));
-			t_Unit = false;
 		}
 		//----------LOCATION---------
 		if (t_inBounds) {
 			landDTO.setLocationInBounds(String.valueOf(ch, start, length));
-			t_inBounds = false;
 		}
 
 		if (t_Placed) {
 			landDTO.setLocationPlaced(String.valueOf(ch, start, length));
-			t_Placed = false;
 		}
 
 		//----------ADDRESS-----------
 		if (t_Code_OKATO) {
 			addressDTO.setOkato(String.valueOf(ch, start, length));
-			t_Code_OKATO = false;
 		}
 		if (t_Code_KLADR) {
 			addressDTO.setKladr(String.valueOf(ch, start, length));
-			t_Code_KLADR = false;
 		}
 		if (t_Region) {
 			addressDTO.setRegion(String.valueOf(ch, start, length));
-			t_Region = false;
 		}
 		if (t_Note) {
 			addressDTO.setNote(String.valueOf(ch, start, length));
-			t_Note = false;
 		}
 
 		//----------RIGHTS---------
 		if (t_Name_R) {
 			landRightDTO.setName(String.valueOf(ch, start, length));
-			t_Name_R = false;
 		}
 
 		if (t_Type_R) {
 			landRightDTO.setType(String.valueOf(ch, start, length));
-			t_Type_R = false;
 		}
 
 	}

@@ -78,6 +78,11 @@ KPT
 		<div ng-repeat="file in $flow.files">
 			<div class="row">
 				<div class="col-sm-2">{{$index+1}}</div>
+				<div class="col-sm-4">{{file.name}}</div>
+				<div class="col-sm-6">
+                    <!--{{file.msg}}-->
+                    <mgis-shortened-message message="file.msg"></mgis-shortened-message>
+                </div>
 				<div class="col-sm-10">{{file.name}}</div>
 			</div>
 			<div class="row">
