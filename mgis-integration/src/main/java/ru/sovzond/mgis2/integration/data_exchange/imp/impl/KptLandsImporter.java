@@ -3,6 +3,8 @@ package ru.sovzond.mgis2.integration.data_exchange.imp.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.integration.data_exchange.imp.LandImportResolverBean;
+import ru.sovzond.mgis2.integration.data_exchange.imp.LandResolver;
+import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.KptHandler;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 
 import java.io.InputStream;
@@ -19,6 +21,8 @@ public class KptLandsImporter extends LandImportBase {
 
 	@Override
 	public List<ReportRecord> imp(InputStream inputStream) {
-		throw new UnsupportedOperationException("Not yet implemented");
+		LandResolver landResolver = new LandResolver(landImportResolverBean);
+		doImport(inputStream, new KptHandler(landResolver));
+		return landResolver.getReports();
 	}
 }
