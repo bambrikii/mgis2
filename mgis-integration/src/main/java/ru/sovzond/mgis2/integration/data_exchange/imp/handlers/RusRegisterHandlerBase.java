@@ -4,6 +4,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
+import org.xml.sax.helpers.NamespaceSupport;
 import ru.sovzond.mgis2.integration.data_exchange.imp.ILandResolver;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
 
@@ -164,6 +165,8 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 	boolean t_FIO = false;
 	SimpleDateFormat dateFormat = new SimpleDateFormat(YYYY_MM_DD);
 	private Map<String, String> nodeNames = new HashMap<>();
+	private NamespaceSupport namespaceSupport;
+	private String[] qNames = new String[3];
 
 	RusRegisterHandlerBase(ILandResolver landResolver, String propertyClassName) {
 		this.landResolver = landResolver;
@@ -199,25 +202,50 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 	}
 
 	@Override
+	public void startDocument() throws SAXException {
+		super.startDocument();
+		namespaceSupport = new NamespaceSupport();
+	}
+
+	@Override
+	public void endDocument() throws SAXException {
+		super.endDocument();
+	}
+
+	@Override
+	public void startPrefixMapping(String prefix, String uri) throws SAXException {
+		namespaceSupport.declarePrefix(prefix, uri);
+	}
+
+	@Override
+	public void endPrefixMapping(String prefix) throws SAXException {
+
+	}
+
+
+	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
+		namespaceSupport.processName(qName, qNames, false);
+		String qName2 = qNames[1];
+
 		//-------------Cadastral_Blocks---------
-		if (byNode(qName, REGION_CADASTR)) {
+		if (byNode(qName2, REGION_CADASTR)) {
 			t_Region_Cadastr = true;
 		}
-		if (byNode(qName, CADASTRAL_BLOCKS)) {
+		if (byNode(qName2, CADASTRAL_BLOCKS)) {
 			t_Cadastral_Blocks = true;
 		}
-		if (byNode(qName, CADASTRAL_BLOCK)) {
+		if (byNode(qName2, CADASTRAL_BLOCK)) {
 			t_Cadastral_Block = true;
 		}
 
 		//-------------Parcels------------------
-		if (byNode(qName, PARCELS) && t_Region_Cadastr && t_Cadastral_Blocks && t_Cadastral_Block) {
+		if (byNode(qName2, PARCELS) && t_Region_Cadastr && t_Cadastral_Blocks && t_Cadastral_Block) {
 			t_Parcels = true;
 		}
 
-		if (byNode(qName, PARCEL) && t_Parcels) {
+		if (byNode(qName2, PARCEL) && t_Parcels) {
 			t_Parcel = true;
 			landDTO = new LandDTO();
 			landDTO.setCadastralNumber(byNodeAttr(attributes, CADASTRAL_NUMBER_ATTR));
@@ -228,118 +256,118 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 
 		//-------------Area---------------------
-		if (byNode(qName, AREA) && t_Area) {
+		if (byNode(qName2, AREA) && t_Area) {
 			t_AreaIn = true;
 			flagAreaIn = true;
 		}
 
-		if (byNode(qName, AREA) && t_Parcel && !t_Area) {
+		if (byNode(qName2, AREA) && t_Parcel && !t_Area) {
 			t_Area = true;
 			flagAreaIn = false;
 		}
 
 
-		if (byNode(qName, UNIT) && t_Area) {
+		if (byNode(qName2, UNIT) && t_Area) {
 			t_Unit = true;
 		}
 
 		//--------Location---------------------
-		if (byNode(qName, LOCATION)) {
+		if (byNode(qName2, LOCATION)) {
 			t_Location = true;
 		}
 
-		if (byNode(qName, IN_BOUNDS) && t_Location) {
+		if (byNode(qName2, IN_BOUNDS) && t_Location) {
 			t_inBounds = true;
 		}
 
-		if (byNode(qName, PLACED) && t_Location) {
+		if (byNode(qName2, PLACED) && t_Location) {
 			t_Placed = true;
 		}
 
 		//-------Address------------------------
-		if (byNode(qName, ADDRESS) && t_Location) {
+		if (byNode(qName2, ADDRESS) && t_Location) {
 			t_Address = true;
 			addressDTO = new AddressDTO();
 		}
 
-		if (byNode(qName, CODE_OKATO) && t_Address) {
+		if (byNode(qName2, CODE_OKATO) && t_Address) {
 			t_Code_OKATO = true;
 		}
 
-		if (byNode(qName, CODE_KLADR) && t_Address) {
+		if (byNode(qName2, CODE_KLADR) && t_Address) {
 			t_Code_KLADR = true;
 		}
 
-		if (byNode(qName, REGION) && t_Address) {
+		if (byNode(qName2, REGION) && t_Address) {
 			t_Region = true;
 		}
 
-		if (byNode(qName, DISTRICT) && t_Address) {
+		if (byNode(qName2, DISTRICT) && t_Address) {
 			t_District = true;
 			addressDTO.setDistrictName(byNodeAttr(attributes, NAME_ALL_ATTR));
 			addressDTO.setDistrictType(byNodeAttr(attributes, TYPE_ALL_ATTR));
 			t_District = false;
 		}
 
-		if (byNode(qName, LOCALITY) && t_Address) {
+		if (byNode(qName2, LOCALITY) && t_Address) {
 			t_Locality = true;
 			addressDTO.setLocalityName(byNodeAttr(attributes, NAME_ALL_ATTR));
 			addressDTO.setLocalityType(byNodeAttr(attributes, TYPE_ALL_ATTR));
 			t_Locality = false;
 		}
 
-		if (byNode(qName, STREET) && t_Address) {
+		if (byNode(qName2, STREET) && t_Address) {
 			t_Street = true;
 			addressDTO.setStreetName(byNodeAttr(attributes, NAME_ALL_ATTR));
 			addressDTO.setStreetType(byNodeAttr(attributes, TYPE_ALL_ATTR));
 			t_Street = false;
 		}
 
-		if (byNode(qName, LEVEL_1) && t_Address) {
+		if (byNode(qName2, LEVEL_1) && t_Address) {
 			t_Level1 = true;
 			addressDTO.setLevelType(byNodeAttr(attributes, TYPE_ALL_ATTR));
 			addressDTO.setLevelValue(byNodeAttr(attributes, VALUE_ATTR));
 			t_Level1 = false;
 		}
 
-		if (byNode(qName, NOTE) && t_Address) {
+		if (byNode(qName2, NOTE) && t_Address) {
 			t_Note = true;
 		}
 
 		//-------Category-----------------------
-		if (byNode(qName, CATEGORY) && t_Parcel) {
+		if (byNode(qName2, CATEGORY) && t_Parcel) {
 			t_Category = true;
 			landDTO.setCategory(byNodeAttr(attributes, CATEGORY_ATTR));
 			t_Category = false;
 		}
 
 		//-------Utiliz--------------------------
-		if (byNode(qName, UTILIZATION) && t_Parcel) {
+		if (byNode(qName2, UTILIZATION) && t_Parcel) {
 			t_Utilization = true;
 			landDTO.setUtilizationByDoc(byNodeAttr(attributes, UTILIZ_ATTR));
 			t_Utilization = false;
 		}
 
 		//---------Rights------------------------
-		if (byNode(qName, RIGHTS)) {
+		if (byNode(qName2, RIGHTS)) {
 			t_Rights = true;
 			landRightDTOs = new ArrayList<>();
 		}
 
-		if (byNode(qName, RIGHT) && t_Rights) {
+		if (byNode(qName2, RIGHT) && t_Rights) {
 			t_Right = true;
 			landRightDTO = new LandRightDTO();
 		}
-		if (byNode(qName, NAME) && t_Right) {
+		if (byNode(qName2, NAME) && t_Right) {
 			t_Name_R = true;
 		}
 
-		if (byNode(qName, TYPE) && t_Right) {
+		if (byNode(qName2, TYPE) && t_Right) {
 			t_Type_R = true;
 		}
 
 		//-----------Cadastral cost----------------
-		if (byNode(qName, CADASTRAL_COST)) {
+		if (byNode(qName2, CADASTRAL_COST)) {
 			t_CadastralCost = true;
 			landDTO.setCadastralCostValue(Double.valueOf(byNodeAttr(attributes, CADASTRAL_COST_VALUE_ATTR)));
 			landDTO.setCadastralCostUnit(Integer.valueOf(byNodeAttr(attributes, CADASTRAL_COST_UNIT_ATTR)));
@@ -347,7 +375,7 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 		}
 
 		//-----SpatialData-------------------------
-		if (byNode(qName, ENTITY_SPATIAL) && t_Parcel) {
+		if (byNode(qName2, ENTITY_SPATIAL) && t_Parcel) {
 			t_Entity_Spatial = true;
 			entitySpatialDTO = new EntitySpatialDTO();
 			entitySpatialDTO.setEntSys(byNodeAttr(attributes, ENT_SYS_ATTR));
@@ -356,13 +384,13 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 		}
 
 		//-----Spatial Element---------------------
-		if (byNode(qName, SPATIAL_ELEMENT) && t_Entity_Spatial) {
+		if (byNode(qName2, SPATIAL_ELEMENT) && t_Entity_Spatial) {
 			t_Spatial_Element = true;
 			spatialElementDTO = new SpatialElementDTO();
 			spatialElementUnitDTOs = new ArrayList<>();
 		}
 
-		if (byNode(qName, SPELEMENT_UNIT) && t_Spatial_Element) {
+		if (byNode(qName2, SPELEMENT_UNIT) && t_Spatial_Element) {
 			t_Spelement_Unit = true;
 			spatialElementUnitDTO = new SpatialElementUnitDTO();
 			ordinateDTOs = new ArrayList<>();
@@ -370,7 +398,7 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 			spatialElementUnitDTO.setSuNumb(Integer.parseInt(byNodeAttr(attributes, SU_NMB_ATTR)));
 		}
 
-		if (byNode(qName, ORDINATE) && t_Spelement_Unit) {
+		if (byNode(qName2, ORDINATE) && t_Spelement_Unit) {
 			t_Ordinate = true;
 			ordinateDTO = new OrdinateDTO();
 			ordinateDTO.setX(Double.valueOf(byNodeAttr(attributes, X_ATTR)));
@@ -380,7 +408,7 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 			t_Ordinate = false;
 		}
 
-		if (byNode(qName, COORD_SYSTEM) && t_Cadastral_Block) {
+		if (byNode(qName2, COORD_SYSTEM) && t_Cadastral_Block) {
 			t_Coord_System = true;
 			coordinateSystemDTO = new CoordinateSystemDTO();
 			coordinateSystemDTO.setId(byNodeAttr(attributes, CS_ID_ATTR));
