@@ -5,6 +5,8 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
+	<link rel="icon" type="image/png" href="app2/images/dino.png">
+
 	<link type="text/css" rel="stylesheet" href="app2/app.css">
 	<link type="text/css" rel="stylesheet" href="app2/app-desktop.css">
 	<link type="text/css" rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css">
@@ -52,6 +54,7 @@
 	<%--<script type="text/javascript" src="bower_components/leaflet-plugins/layer/tile/Yandex.js"></script>--%>
 	<link type="text/css" rel="stylesheet" href="bower_components/leaflet.draw/dist/leaflet.draw.css">
 	<script type="text/javascript" src="bower_components/leaflet.draw/dist/leaflet.draw-src.js"></script>
+	<script type="text/javascript" src="bower_components/Leaflet.MousePosition/src/L.Control.MousePosition.js"></script>
 	<script type="text/javascript" src="bower_components/terraformer/terraformer.js"></script>
 	<script type="text/javascript" src="bower_components/terraformer-wkt-parser/terraformer-wkt-parser.js"></script>
 	<script type="text/javascript" src="bower_components/moment/min/moment-with-locales.js"></script>
@@ -66,6 +69,12 @@
 	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.js"></script>
 	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control-wfs-zoom.js"></script>
 
+	<!-- https://github.com/flowjs/ng-flow -->
+	<%--<script type="text/javascript" src="bower_components/ng-flow/dist/ng-flow-standalone.min.js"></script>--%>
+	<script src="bower_components/flow.js/dist/flow.js"></script>
+	<script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+
+	<!-- app2 -->
 	<script type="text/javascript" src="app2/app.js"></script>
 	<script type="text/javascript" src="app2/menu/app-menu.js"></script>
 	<script type="text/javascript" src="app2/commons/common-modules.js"></script>
@@ -157,6 +166,14 @@
 	<script type="text/javascript" src="app2/settings/settings.js"></script>
 
 	<script type="text/javascript" src="app2/commons/crud/common-crud-module.js"></script>
+
+	<!-- Data Exchange -->
+	<script type="text/javascript" src="app2/data-exchange/data-exchange.js"></script>
+	<script type="text/javascript" src="app2/data-exchange/import/import-module.js"></script>
+	<script type="text/javascript" src="app2/data-exchange/export/export-module.js"></script>
+
+	<!-- About -->
+	<script type="text/javascript" src="app2/about/about-module.js"></script>
 
 	<!-- test pages -->
 	<script type="text/javascript" src="app2/commons/forms/commons-forms-module.js"></script>

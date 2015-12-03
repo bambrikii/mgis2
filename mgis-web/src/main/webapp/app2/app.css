@@ -191,3 +191,60 @@ span.mgis-input-group-date button {
 	padding: 2px;
 }
 
+.release-notes-note {
+	padding: 8px 15px 5px 10px;
+	border-radius: 5px;
+}
+
+.bg-primary.release-notes-note {
+	margin-top: 3px;
+}
+
+.release-notes-task {
+	padding: 1px 1px 1px 10px;
+	opacity: 0.5;
+}
+
+.release-notes-release-label {
+	padding: 0px 5px 0px 5px;
+	vertical-align: super;
+	font-size: xx-small;
+	color: white;
+	-webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+	border-radius: 6px;
+	background-color: chocolate;
+	margin: 3px 3px 3px 3px;
+}
+
+.bg-primary.release-notes-note .release-notes-note-label {
+	padding: 0px 5px 0px 5px;
+	vertical-align: super;
+	font-size: xx-small;
+	color: white;
+	-webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+	border-radius: 6px;
+	background-color: cadetblue;
+}
+
+.release-notes-note .release-notes-note-label {
+	padding: 0px 5px 0px 5px;
+	vertical-align: super;
+	font-size: xx-small;
+	color: darkgray;
+	-webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+	border-radius: 6px;
+	background-color: white;
+	margin: 5px 5px 5px 5px;
+}
+
+/* selection mark */
+.mgis-row-selected {
+	background-color: yellowgreen;
+}
+

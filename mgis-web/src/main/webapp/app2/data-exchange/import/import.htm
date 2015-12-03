@@ -1,0 +1,104 @@
+<h3 translate>DataExchange.Import</h3>
+
+<div class="alert alert-danger" translate>DataExchange.Import.ImportedDataWillBeOverwrittenWarning</div>
+
+<label class="cabinet">
+	<span translate>DropFilesHereToUpload</span>:
+</label>
+
+<hr/>
+
+<h4><span translate>DataExchange.Import.RusRegister.Lands</span></h4>
+
+Region_Cadastr
+
+<div ng-controller="RusRegisterImportController">
+	<div flow-init="{target: 'data-exchange/import/lands/rusregister/regcad',testChunks:false}"
+		 flow-files-submitted="$flow.upload()"
+		 flow-file-success="$file.msg = $message"
+		 flow-file-success="someHandlerMethod( $file, $message, $flow )"
+		 flow-file-progress="someHandlerMethod( $file, $flow )"
+		 flow-file-added="someHandlerMethod( $file, $event, $flow )"
+		 flow-files-added="someHandlerMethod( $files, $event, $flow )"
+		 flow-files-submitted="someHandlerMethod( $files, $event, $flow )"
+		 flow-file-retry="someHandlerMethod( $file, $flow )"
+		 flow-file-error="someHandlerMethod( $file, $message, $flow )"
+		 flow-error="someHandlerMethod( $file, $message, $flow )"
+		 flow-complete="someHandlerMethod( $file, $message, $flow )"
+		 flow-upload-started="someHandlerMethod( $file, $message, $flow )"
+		 flow-progress="someHandlerMethod( $file, $message, $flow )"
+		 flow-drag-enter="rusregisterUploadStyle={border:'4px dotted gray'}" flow-drag-leave="rusregisterUploadStyle={}"
+			>
+
+		<input type="file" ng-style="rusregisterUploadStyle" flow-btn class="btn">
+
+		<div ng-repeat="file in $flow.files">
+			<div class="row">
+				<div class="col-sm-2">{{$index+1}}</div>
+				<div class="col-sm-10">{{file.name}}</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<pre>{{file.msg}}</pre>
+				</div>
+			</div>
+			<div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+				<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+					 ng-style="{width: (file.progress() * 100) + '%'}" style="width: 100%;">
+					<span class="sr-only ng-binding">1% Complete</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+KPT
+
+<div ng-controller="RusRegisterImportController">
+	<div flow-init="{target: 'data-exchange/import/lands/rusregister/kpt',testChunks:false}"
+		 flow-files-submitted="$flow.upload()"
+		 flow-file-success="$file.msg = $message"
+		 flow-file-success="someHandlerMethod( $file, $message, $flow )"
+		 flow-file-progress="someHandlerMethod( $file, $flow )"
+		 flow-file-added="someHandlerMethod( $file, $event, $flow )"
+		 flow-files-added="someHandlerMethod( $files, $event, $flow )"
+		 flow-files-submitted="someHandlerMethod( $files, $event, $flow )"
+		 flow-file-retry="someHandlerMethod( $file, $flow )"
+		 flow-file-error="someHandlerMethod( $file, $message, $flow )"
+		 flow-error="someHandlerMethod( $file, $message, $flow )"
+		 flow-complete="someHandlerMethod( $file, $message, $flow )"
+		 flow-upload-started="someHandlerMethod( $file, $message, $flow )"
+		 flow-progress="someHandlerMethod( $file, $message, $flow )"
+		 flow-drag-enter="rusregisterUploadStyle={border:'4px dotted gray'}" flow-drag-leave="rusregisterUploadStyle={}"
+			>
+
+		<input type="file" ng-style="rusregisterUploadStyle" flow-btn class="btn">
+
+		<div ng-repeat="file in $flow.files">
+			<div class="row">
+				<div class="col-sm-2">{{$index+1}}</div>
+				<div class="col-sm-4">{{file.name}}</div>
+				<div class="col-sm-6">
+                    <!--{{file.msg}}-->
+                    <mgis-shortened-message message="file.msg"></mgis-shortened-message>
+                </div>
+				<div class="col-sm-10">{{file.name}}</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<pre>{{file.msg}}</pre>
+				</div>
+			</div>
+			<div class="progress progress-striped" ng-class="{active: file.isUploading()}">
+				<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+					 ng-style="{width: (file.progress() * 100) + '%'}" style="width: 100%;">
+					<span class="sr-only ng-binding">1% Complete</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<hr/>

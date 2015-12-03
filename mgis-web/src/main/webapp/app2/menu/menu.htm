@@ -30,9 +30,9 @@
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.land}">
 						<a href="#/lands" ng-click="updateMenu('land')"><span translate>LANDS</span></a>
 					</li>
-					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.terrZone}">
-						<a href="#/terr-zones" ng-click="updateMenu('terrZone')"><span translate>TERRITORIAL_ZONES</span></a>
-					</li>
+					<!--<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.terrZone}">-->
+					<!--<a href="#/terr-zones" ng-click="updateMenu('terrZone')"><span translate>TERRITORIAL_ZONES</span></a>-->
+					<!--</li>-->
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.persons}">
 						<a href="#/persons" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
 						   ng-click="updateMenu('persons')"><span translate>Persons</span> <span class="caret"></span></a>
@@ -58,6 +58,14 @@
 							<li><a href="#/geo/geo-servers" translate>GEO.GeoServers</a></li>
 						</ul>
 					</li>
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.dataExchange}">
+						<a href="#/data-exchange" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+						   ng-click="updateMenu('dataExchange')"><span translate>DataExchange</span> <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#/data-exchange/import" translate>DataExchange.Import</a></li>
+							<li><a href="#/data-exchange/export" translate>DataExchange.Export</a></li>
+						</ul>
+					</li>
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.admin}">
 						<a href="#/admin" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
 						   ng-click="updateMenu('admin')"><span translate>ADMINISTRATION</span> <span class="caret"></span></a>
@@ -66,6 +74,15 @@
 							<li><a href="#/admin/groups" translate>ADMINISTRATION.Groups</a></li>
 							<li class="divider"></li>
 							<li><a href="#/admin/privileges" translate>ADMINISTRATION.Privileges</a></li>
+						</ul>
+					</li>
+					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.about}">
+						<a href="#/about/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+						   ng-click="updateMenu('about')"><span translate>About</span> <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#/about/info/" translate>About.Info</a></li>
+							<li><a href="#/about/help/" translate>About.Help</a></li>
+							<li><a href="#/about/release-notes/" translate>About.ReleaseNotes</a></li>
 						</ul>
 					</li>
 				</ul>

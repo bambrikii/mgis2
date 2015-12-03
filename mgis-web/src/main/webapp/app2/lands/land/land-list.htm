@@ -1,6 +1,6 @@
 <div ng-controller="LandsLandController">
 	<div class="container">
-		<form name="landSearchForm" class="form-horizontal pull-right">
+		<form name="landSearchForm" class="form-horizontal pull-right" style="position: relative; top: -60px; height: 0px;">
 			<div class="control-group">
 				<label for="cadastralNumber" translate>CadastralNumber</label>
 
@@ -14,7 +14,7 @@
 	</div>
 
 	<div>
-		<div class="row" ng-repeat="item in landsPager.list" style="padding: 5px;">
+		<div ng-repeat="item in landsPager.list" ng-class="inSelectedIds(item.id)?'mgis-row-selected mgis-grid-row row':'mgis-grid-row row'">
 			<div class="col-md-1">{{item.id}}</div>
 			<div class="col-md-2">{{item.cadastralNumber}}</div>
 			<div class="col-md-1">{{item.stateRealEstateCadastreaStaging|date:'yyyy-MM-dd'}}</div>

@@ -5,21 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -30,12 +25,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * Created by Alexander Arakelyan on 28/11/15.
+ */
 @Configuration
-@EnableTransactionManagement
 @EnableWebMvc
 @ComponentScan({"ru.sovzond.mgis2"})
-@PropertySource(value = {"classpath:application.properties"})
-public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
+public class ApplicationWebMvcConfiguration extends WebMvcConfigurerAdapter {
 
 	@Autowired
 	private Environment environment;
@@ -90,7 +86,7 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 		resolver.setContentNegotiationManager(manager);
 
 		// Define all possible view resolvers
-		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
+		List<ViewResolver> resolvers = new ArrayList<>();
 
 		// resolvers.add(jaxb2MarshallingXmlViewResolver());
 		resolvers.add(jsonViewResolver());
@@ -148,10 +144,10 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 		return viewResolver;
 	}
 
-	@Bean
+	@Bean(name = "multipartResolver")
 	public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		multipartResolver.setMaxUploadSize(500000);
+		multipartResolver.setMaxUploadSize(1024 * 1024 * 15);
 		return multipartResolver;
 	}
 
@@ -160,5 +156,10 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/app2/**").addResourceLocations("/app2/");
 		registry.addResourceHandler("/template/**").addResourceLocations("/template/");
 		registry.addResourceHandler("/bower_components/**").addResourceLocations("/bower_components/");
+	}
+
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
 	}
 }

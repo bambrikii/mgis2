@@ -12,6 +12,7 @@ import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.dataaccess.base.impl.Pageable;
 import ru.sovzond.mgis2.geo.GeometryParser;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,5 +43,10 @@ public class LandBean extends CRUDBeanBase<Land> {
 		land.setGeometry(geom);
 		dao.save(land);
 		return true;
+	}
+
+
+	public List<Land> find(String cadastralNumber) {
+		return dao.find(cadastralNumber);
 	}
 }

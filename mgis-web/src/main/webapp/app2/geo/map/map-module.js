@@ -14,6 +14,7 @@ angular.module("mgis.geo.map", ["ui.router",
 
 			var map = L.map("geo-map");
 			map.attributionControl.setPrefix('');
+			L.control.mousePosition().addTo(map);
 			map.setView(new L.LatLng(0, 0), 1);
 
 			var layerBuilders = {

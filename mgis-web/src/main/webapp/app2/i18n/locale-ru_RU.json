@@ -390,5 +390,14 @@
   "ConditionalNumber": "Условный номер",
   "InventoryNumber": "Инвентарный номер",
   "OverallArea": "Общая площадь",
-  "MunicipalEntity": "Муниципальное образование"
+  "MunicipalEntity": "Муниципальное образование",
+  "DataExchange": "Обмен данными",
+  "DataExchange.Import": "Импорт",
+  "DataExchange.Export": "Экспорт",
+  "DataExchange.Import.RusRegister.Lands": "РосРеестр - Земельные участки",
+  "DataExchange.Import.ImportedDataWillBeOverwrittenWarning": "Внимание, данные в системе будут обновлены данными из загружаемых файлов!",
+  "About": "О Системе",
+  "About.Help": "Помощь",
+  "About.Info": "Информация",
+  "About.ReleaseNotes": "Изменения"
 }

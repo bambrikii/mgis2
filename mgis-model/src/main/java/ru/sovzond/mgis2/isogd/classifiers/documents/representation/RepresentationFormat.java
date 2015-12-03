@@ -32,7 +32,10 @@ public class RepresentationFormat implements Cloneable {
 	private RepresentationForm representationForm;
 
 	@ElementCollection
-	@CollectionTable(name = "isogd_cls_document_repr_format_fmt")
+	@CollectionTable(name = "isogd_cls_document_repr_format_fmt",
+			uniqueConstraints = @UniqueConstraint(columnNames = {"formats"})
+	)
+	@Column(name = "formats")
 	private Set<String> formats = new HashSet<>();
 
 	public Long getId() {

@@ -1,0 +1,156 @@
+{
+  "releaseNotes": [
+	{
+	  "version": "0.1.9",
+	  "name": "Import",
+	  "date": "21.11.2015",
+	  "release": true,
+	  "tasks": [
+		{
+		  "number": "MGIS-12",
+		  "name": "RusRegister import"
+		},
+		{
+		  "number": "2",
+		  "name": "FlowJS, ng-flow integration"
+		},
+		{
+		  "number": "3",
+		  "name": "Spatial elements"
+		}
+	  ]
+	},
+	{
+	  "version": "0.1.8",
+	  "name": "OKS",
+	  "date": "16.11.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.1.7",
+	  "name": "Spatial Coordinates",
+	  "date": "08.11.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.1.6",
+	  "name": "ISOGD Search",
+	  "date": "03.10.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.1.5",
+	  "name": "Forms",
+	  "date": "29.09.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.1.4",
+	  "name": "Settings",
+	  "date": "17.09.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.1.3",
+	  "name": "Expired Session",
+	  "date": "16.09.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.1.2",
+	  "name": "Address",
+	  "date": "11.09.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.1.1",
+	  "name": "Land Map Editor",
+	  "date": "07.09.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.1.0",
+	  "name": "Address Selector",
+	  "date": "05.09.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.0.9",
+	  "name": "ISOGD Document Selector Component",
+	  "date": "04.09.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.0.8",
+	  "name": "Legal/Natural Persons",
+	  "date": "15.09.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.0.7",
+	  "name": "Maps",
+	  "date": "18.10.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.0.6",
+	  "name": "Territorial Zones",
+	  "date": "12.08.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.0.5",
+	  "name": "Lands",
+	  "date": "10.08.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.0.4",
+	  "name": "ISOGD Document Parts",
+	  "date": "17.07.2015 ",
+	  "release": false,
+	  "tasks": [
+		{
+		  "number": "1",
+		  "name": "Document Parts"
+		}
+	  ]
+	},
+	{
+	  "version": "0.0.3",
+	  "name": "Reports",
+	  "date": "09.06.2015",
+	  "tasks": []
+	},
+	{
+	  "version": "0.0.2",
+	  "name": "BPM Integration",
+	  "date": "26.05.2015",
+	  "tasks": [
+		{
+		  "number": "1",
+		  "name": "Camunda BPM integration for future usage"
+		}
+	  ]
+	},
+	{
+	  "version": "0.0.1",
+	  "name": "Unstable version",
+	  "date": "08.05.2015",
+	  "tasks": [
+		{
+		  "number": "1",
+		  "name": "Spring Framework integration"
+		},
+		{
+		  "number": "2",
+		  "name": "Hibernate integration"
+		},
+		{
+		  "number": "3",
+		  "name": "AngularJS for future usage"
+		}
+	  ]
+	}
+  ]
+}

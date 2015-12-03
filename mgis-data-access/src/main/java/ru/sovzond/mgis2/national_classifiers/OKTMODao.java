@@ -13,6 +13,10 @@ public class OKTMODao extends CRUDDaoBase<OKTMO> {
 		return new OKTMOFilter(code, name, orderBy, first, max);
 	}
 
+	public OKTMO findByCode(String code) {
+		return (OKTMO) getSession().createCriteria(persistentClass).add(Restrictions.eq("code", code)).uniqueResult();
+	}
+
 	private class OKTMOFilter extends PagerBuilderCriteria<OKTMO> {
 
 		private String code;
