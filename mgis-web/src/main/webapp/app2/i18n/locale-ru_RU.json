@@ -399,5 +399,7 @@
   "About": "О Системе",
   "About.Help": "Помощь",
   "About.Info": "Информация",
-  "About.ReleaseNotes": "Изменения"
+  "About.ReleaseNotes": "Изменения",
+  "Commons.PreviewMessage": "Просмотреть",
+  "Commons.DisplayFullMessage": "Посмотреть детали"
 }
