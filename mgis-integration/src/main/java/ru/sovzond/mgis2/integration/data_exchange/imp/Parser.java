@@ -25,6 +25,7 @@ public class Parser {
 
 	public Parser() {
 		try {
+			factory.setNamespaceAware(true);
 			parser = factory.newSAXParser();
 		} catch (ParserConfigurationException | SAXException e) {
 			logger.error(e.getMessage(), e);

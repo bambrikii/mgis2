@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.sovzond.mgis2.integration.HibernateConfiguration;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
+import ru.sovzond.mgis2.integration.data_exchange.imp.impl.KptLandsImporter;
 import ru.sovzond.mgis2.integration.data_exchange.imp.impl.RegionCadastrLandsImporter;
 import ru.sovzond.mgis2.lands.Land;
 
@@ -32,13 +33,23 @@ public class LandsImporterTest {
 	private RegionCadastrLandsImporter landsImporter;
 
 	@Autowired
+	private KptLandsImporter kptLandsImporter;
+
+	@Autowired
 	private LandImportResolverBean landImportResolverBean;
 
 	@Test
 	@Transactional
-	public void testImp() throws IOException {
-		try (InputStream inputStream = LandsImporterTest.class.getResourceAsStream("doc-test.xml")) {
+	public void testRegionCadasterImport() throws IOException {
+		try (InputStream inputStream = LandsImporterTest.class.getResourceAsStream("doc-test-coords.xml")) {
 			landsImporter.imp(inputStream);
+		}
+	}
+
+	@Test
+	public void testKptImport() throws IOException {
+		try (InputStream inputStream = LandsImporterTest.class.getResourceAsStream("doc-test-kpt_v09.xml")) {
+			kptLandsImporter.imp(inputStream);
 		}
 	}
 
