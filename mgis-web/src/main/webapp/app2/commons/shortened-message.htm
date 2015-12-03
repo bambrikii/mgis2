@@ -1,4 +1,6 @@
-<div>
-    {{message|limitTo:15}}...
-    <button ng-click="displayFullMessage()" translate>Commons.DisplayFullMessage</button>
+<small class="warning">{{message|limitTo:15}} ...</small>
+<button ng-click="displayFullMessage()" ng-show="enableWindow" class="btn btn-xs btn-warning" translate>Commons.DisplayFullMessage</button>
+<button ng-click="previewMessage()" ng-show="!enableWindow" class="btn btn-xs btn-warning" translate>Commons.PreviewMessage</button>
+<div ng-show="isPreviewOpen">
+	<pre style="font-size: xx-small;">{{message}}</pre>
 </div>
