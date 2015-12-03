@@ -248,3 +248,8 @@ span.mgis-input-group-date button {
 	background-color: yellowgreen;
 }
 
+.mgis-row-header {
+	text-transform: uppercase;
+	font-weight: bold;
+
+}

@@ -14,12 +14,20 @@
 	</div>
 
 	<div>
+		<div class="row mgis-row-header">
+			<div class="col-sm-2" translate>CadastralNumber</div>
+			<div class="col-sm-3" translate>Address</div>
+			<div class="col-sm-1" translate>Lands.Land.Rights.TotalArea</div>
+			<div class="col-sm-2" translate>Lands.Land.Rights.RightsSubject</div>
+			<div class="col-sm-4">
+			</div>
+		</div>
 		<div ng-repeat="item in landsPager.list" ng-class="inSelectedIds(item.id)?'mgis-row-selected mgis-grid-row row':'mgis-grid-row row'">
-			<div class="col-md-1">{{item.id}}</div>
-			<div class="col-md-2">{{item.cadastralNumber}}</div>
-			<div class="col-md-1">{{item.stateRealEstateCadastreaStaging|date:'yyyy-MM-dd'}}</div>
-			<div class="col-md-4">{{item.landCategory.name|limitTo:35:0}}...</div>
-			<div class="col-md-4">
+			<div class="col-sm-2">{{item.cadastralNumber}}</div>
+			<div class="col-sm-3">{{formatAddress(item.address)}}</div>
+			<div class="col-sm-1">{{item.rights.totalArea}}</div>
+			<div class="col-sm-2">{{item.rights.rightOwner.name}}</div>
+			<div class="col-sm-4">
 				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
 				<button class="btn btn-danger btn-sm" ng-click="deleteItem(item.id)" translate>Delete</button>
 			</div>
