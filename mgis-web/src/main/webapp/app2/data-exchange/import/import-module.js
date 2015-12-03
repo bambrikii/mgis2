@@ -15,5 +15,5 @@ angular.module("mgis.data-exchange.import", ["ngFileUpload", "flow"])
 		$scope.someHandlerMethod = function () {
 			// console.log(arguments);
 		}
-	});
+	})
 ;

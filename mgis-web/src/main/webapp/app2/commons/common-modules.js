@@ -167,15 +167,20 @@ angular.module("mgis.commons", ["ui.bootstrap",
 		return {
 			restrict: "E",
 			scope: {
-				message: "="
+				message: "=",
+				enableWindow: "@"
 			},
 			templateUrl: "app2/commons/shortened-message.htm",
 			controller: function ($scope, $rootScope, MGISCommonsModalForm) {
+				$scope.isPreviewOpen = false;
 				$scope.displayFullMessage = function () {
-					// TODO: Show modal window with a message
+					$scope.isPreviewOpen = false;
 					MGISCommonsModalForm.edit("app2/commons/shortened-message-form.htm", $scope, function (scope, modalInstance) {
 						modalInstance.close();
 					});
+				}
+				$scope.previewMessage = function () {
+					$scope.isPreviewOpen = $scope.isPreviewOpen ? false : true;
 				}
 			}
 		}

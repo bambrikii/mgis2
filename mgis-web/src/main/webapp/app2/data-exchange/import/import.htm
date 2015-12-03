@@ -33,19 +33,15 @@ Region_Cadastr
 		<input type="file" ng-style="rusregisterUploadStyle" flow-btn class="btn">
 
 		<div ng-repeat="file in $flow.files">
-			<div class="row">
-				<div class="col-sm-2">{{$index+1}}</div>
-				<div class="col-sm-10">{{file.name}}</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<pre>{{file.msg}}</pre>
+			<div class="row mgis-grid-row">
+				<div class="col-sm-12">{{file.name}} ({{$index+1}})
+					<mgis-shortened-message message="file.msg"></mgis-shortened-message>
 				</div>
 			</div>
 			<div class="progress progress-striped" ng-class="{active: file.isUploading()}">
 				<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
 					 ng-style="{width: (file.progress() * 100) + '%'}" style="width: 100%;">
-					<span class="sr-only ng-binding">1% Complete</span>
+					<span class="ng-binding">{{file.name}} ({{$index+1}}). {{file.progress() * 100}}%</span>
 				</div>
 			</div>
 		</div>
@@ -76,24 +72,15 @@ KPT
 		<input type="file" ng-style="rusregisterUploadStyle" flow-btn class="btn">
 
 		<div ng-repeat="file in $flow.files">
-			<div class="row">
-				<div class="col-sm-2">{{$index+1}}</div>
-				<div class="col-sm-4">{{file.name}}</div>
-				<div class="col-sm-6">
-                    <!--{{file.msg}}-->
-                    <mgis-shortened-message message="file.msg"></mgis-shortened-message>
-                </div>
-				<div class="col-sm-10">{{file.name}}</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<pre>{{file.msg}}</pre>
+			<div class="row mgis-grid-row">
+				<div class="col-sm-12">{{file.name}} ({{$index+1}})
+					<mgis-shortened-message message="file.msg"></mgis-shortened-message>
 				</div>
 			</div>
 			<div class="progress progress-striped" ng-class="{active: file.isUploading()}">
 				<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
 					 ng-style="{width: (file.progress() * 100) + '%'}" style="width: 100%;">
-					<span class="sr-only ng-binding">1% Complete</span>
+					<span class="ng-binding">{{file.name}} ({{$index+1}}). {{file.progress() * 100}}%</span>
 				</div>
 			</div>
 		</div>
