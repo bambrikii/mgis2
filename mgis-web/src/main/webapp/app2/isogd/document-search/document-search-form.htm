@@ -37,35 +37,22 @@
                     <small translate>ISOGD.Document.Search.SetExactDate</small>
                 </div>
                 <div class="col-sm-8" ng-if="searchFilter.searchExactDateChecked=='y'">
-                    <p class="input-group" ng-controller="MGISDateTimeController">
-					<span class="input-group-btn mgis-input-group-date">
-						<input
-                                type="text"
-                                class="form-control"
-                                datepicker-popup="{{format}}"
-                                ng-model="searchFilter.docDate"
-                                is-open="opened"
-                                datepicker-options="dateOptions"
-                                date-disabled="disabled(date, mode)"
-                                close-text="{{Close|translate}}"
-                                ng-click="open($event)"
-                                ng-change="searchFilterChanged()"
-                                ng-disabled="searchFilter.searchExactDateChecked=='n'"
-                                />
-						<button class="btn btn-default" ng-click="open($event)"><i
-                                class="glyphicon glyphicon-calendar"></i></button>
-
-					</span>
-                    </p>
+                    <commons-date value="searchFilter.docDate"
+                                  value-changed="docDateChanged(newValue)"
+                            ></commons-date>
                 </div>
                 <div class="col-sm-8 row" ng-if="searchFilter.searchExactDateChecked!='y'">
                     <div class="col-sm-6">
                         <commons-date value="searchFilter.docDateFrom"
-                                      max-date="searchFilter.docDateTill"></commons-date>
+                                      max-date="searchFilter.docDateTill"
+                                      value-changed="dateFromChanged(newValue)"
+                                ></commons-date>
                     </div>
                     <div class="col-sm-6">
                         <commons-date value="searchFilter.docDateTill"
-                                      min-date="searchFilter.docDateFrom"></commons-date>
+                                      min-date="searchFilter.docDateFrom"
+                                      value-changed="dateTillChanged(newValue)"
+                                ></commons-date>
                     </div>
                 </div>
             </div>

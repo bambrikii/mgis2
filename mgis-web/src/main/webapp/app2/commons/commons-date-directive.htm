@@ -9,7 +9,7 @@
                                 datepicker-options="dateOptions"
                                 date-disabled="disabled(date, mode)"
                                 ng-click="open($event)"
-                                ng-change="searchFilterChanged()"
+                                ng-change="valueChangedInternal()"
                                 close-text="{{'Calendar.Done'|translate}}"
                                 clear-text="{{'Calendar.Clear'|translate}}"
                                 current-text="{{'Calendar.Today'|translate}}"
@@ -20,3 +20,4 @@
                                 class="glyphicon glyphicon-calendar"></i></button>
 					</span>
 </p>
+
