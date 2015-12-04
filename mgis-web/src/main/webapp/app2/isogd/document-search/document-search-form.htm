@@ -1,91 +1,78 @@
 <div class="modal-header">
-    <h3 class="modal-title"><span translate>ISOGD.Document</span></h3>
+	<h3 class="modal-title"><span translate>ISOGD.Document</span></h3>
 </div>
 <div class="modal-body">
-    <div>
+	<div>
 
-        <form novalidate>
-            <div class="form-group row">
-                <div class="col-sm-4">
-                    <label translate>ISOGD.Section</label>
-                </div>
-                <div class="col-sm-8">
-                    <p class="input-group input-group-sm">
-                        <ui-select ng-model="searchFilter.section" theme="select2" style="width: 450px;"
-                                   on-select="searchFilterChanged()">
-                            <ui-select-match placeholder="">{{searchFilter.section.name}}</ui-select-match>
-                            <ui-select-choices repeat="section in availableSections | filter: {name: $select.search}"
-                                               refresh="refreshAvailableSections($select.search)"
-                                               refresh-delay="0"
-                                    >
-                                {{section.name}}
-                                <div ng-bind-html="section.name"></div>
-                            </ui-select-choices>
-                        </ui-select>
-                    </p>
-                </div>
-            </div>
+		<form novalidate>
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>ISOGD.Section</label>
+				</div>
+				<div class="col-sm-8">
+					<p class="input-group input-group-sm">
+						<ui-select ng-model="searchFilter.section" theme="select2" style="width: 450px;">
+							<ui-select-match placeholder="">{{searchFilter.section.name}}</ui-select-match>
+							<ui-select-choices repeat="section in availableSections | filter: {name: $select.search}"
+											   refresh="refreshAvailableSections($select.search)"
+											   refresh-delay="0"
+									>
+								{{section.name}}
+								<div ng-bind-html="section.name"></div>
+							</ui-select-choices>
+						</ui-select>
+					</p>
+				</div>
+			</div>
 
-            <div class="form-group row">
-                <div class="col-sm-4">
-                    <label ng-if="searchFilter.searchExactDateChecked=='y'" translate>ISOGD.Document.Date</label>
-                    <label ng-if="searchFilter.searchExactDateChecked!='y'" translate>ISOGD.Document.Search.DateFromAndTill</label>
-                    <br/>
-                    <input type="checkbox" ng-model="searchFilter.searchExactDateChecked"
-                           ng-change="searchExactDateChanged()" ng-true-value="'y'"
-                           ng-false-value="'n'"/>
-                    <small translate>ISOGD.Document.Search.SetExactDate</small>
-                </div>
-                <div class="col-sm-8" ng-if="searchFilter.searchExactDateChecked=='y'">
-                    <commons-date value="searchFilter.docDate"
-                                  value-changed="docDateChanged(newValue)"
-                            ></commons-date>
-                </div>
-                <div class="col-sm-8 row" ng-if="searchFilter.searchExactDateChecked!='y'">
-                    <div class="col-sm-6">
-                        <commons-date value="searchFilter.docDateFrom"
-                                      max-date="searchFilter.docDateTill"
-                                      value-changed="dateFromChanged(newValue)"
-                                ></commons-date>
-                    </div>
-                    <div class="col-sm-6">
-                        <commons-date value="searchFilter.docDateTill"
-                                      min-date="searchFilter.docDateFrom"
-                                      value-changed="dateTillChanged(newValue)"
-                                ></commons-date>
-                    </div>
-                </div>
-            </div>
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label ng-if="searchFilter.searchExactDateChecked=='y'" translate>ISOGD.Document.Date</label>
+					<label ng-if="searchFilter.searchExactDateChecked!='y'" translate>ISOGD.Document.Search.DateFromAndTill</label>
+					<br/>
+					<input type="checkbox" ng-model="searchFilter.searchExactDateChecked" ng-true-value="'y'" ng-false-value="'n'"/>
+					<small translate>ISOGD.Document.Search.SetExactDate</small>
+				</div>
+				<div class="col-sm-8" ng-if="searchFilter.searchExactDateChecked=='y'">
+					<commons-date value="searchFilter.docDate"></commons-date>
+				</div>
+				<div class="col-sm-8 row" ng-if="searchFilter.searchExactDateChecked!='y'">
+					<div class="col-sm-6">
+						<commons-date value="searchFilter.docDateFrom" max-date="searchFilter.docDateTill"></commons-date>
+					</div>
+					<div class="col-sm-6">
+						<commons-date value="searchFilter.docDateTill" min-date="searchFilter.docDateFrom"></commons-date>
+					</div>
+				</div>
+			</div>
 
-            <div class="form-group row">
-                <div class="col-sm-4">
-                    <label translate>ISOGD.Document.Number</label>
-                </div>
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>ISOGD.Document.Number</label>
+				</div>
 
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" ng-model="searchFilter.docNumber"
-                           ng-change="searchFilterChanged()"/>
-                </div>
-            </div>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" ng-model="searchFilter.docNumber"/>
+				</div>
+			</div>
 
-            <div class="form-group row">
-                <div class="col-sm-4">
-                    <label translate>ISOGD.Document.Name</label>
-                </div>
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>ISOGD.Document.Name</label>
+				</div>
 
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" ng-model="searchFilter.docName"
-                           ng-change="searchFilterChanged()"/>
-                </div>
-            </div>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" ng-model="searchFilter.docName"/>
+				</div>
+			</div>
 
-        </form>
+		</form>
 
-    </div>
+	</div>
 
 </div>
 
 <div class="modal-footer">
-    <button type="submit" class="btn btn-primary" ng-disabled="landForm.$invalid" ng-click="ok()" translate>Закрыть
-    </button>
+	<button type="submit" class="btn btn-primary" ng-disabled="landForm.$invalid" ng-click="ok()" translate>Закрыть
+	</button>
 </div>

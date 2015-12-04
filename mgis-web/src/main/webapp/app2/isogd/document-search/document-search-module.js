@@ -90,30 +90,35 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 					$scope.searchFilter = ISOGDDocumentSearchConverterService.toObject($scope.searchText);
 					updateGrid();
 				}
-				$scope.docDateChanged = function (newValue) {
-					$scope.searchFilter.docDate = newValue;
-					$scope.searchText = ISOGDDocumentSearchConverterService.toString($scope.searchFilter);
-					$scope.filterStateChanged({state: $scope.searchText ? ISOGDDocumentSearchConstants.FILTER_FILLED : ISOGDDocumentSearchConstants.FILTER_EMPTY});
-					updateGrid();
-				}
-				$scope.dateFromChanged = function (newValue) {
-					$scope.searchFilter.docDateFrom = newValue;
-					$scope.searchText = ISOGDDocumentSearchConverterService.toString($scope.searchFilter);
-					$scope.filterStateChanged({state: $scope.searchText ? ISOGDDocumentSearchConstants.FILTER_FILLED : ISOGDDocumentSearchConstants.FILTER_EMPTY});
-					updateGrid();
-				}
-				$scope.dateTillChanged = function (newValue) {
-					$scope.searchFilter.docDateTill = newValue;
-					$scope.searchText = ISOGDDocumentSearchConverterService.toString($scope.searchFilter);
-					$scope.filterStateChanged({state: $scope.searchText ? ISOGDDocumentSearchConstants.FILTER_FILLED : ISOGDDocumentSearchConstants.FILTER_EMPTY});
-					updateGrid();
-				}
 
-				$scope.searchFilterChanged = function (newValue) {
+
+				$scope.searchFilterChanged1 = function (newValue) {
 					$scope.searchText = ISOGDDocumentSearchConverterService.toString($scope.searchFilter);
 					$scope.filterStateChanged({state: $scope.searchText ? ISOGDDocumentSearchConstants.FILTER_FILLED : ISOGDDocumentSearchConstants.FILTER_EMPTY});
 					updateGrid();
 				}
+				$scope.$watch("searchFilter.docDate", function () {
+					if ($scope.searchFilter.searchExactDateChecked == "y") {
+						$scope.searchFilter.docDateFrom = null;
+						$scope.searchFilter.docDateTill = null;
+					} else {
+						$scope.searchFilter.docDate = null;
+					}
+					$scope.searchFilterChanged1();
+				});
+				$scope.$watchGroup([
+					"searchFilter.section",
+					"searchFilter.docDateFrom",
+					"searchFilter.docDateTill",
+					"searchFilter.docNumber",
+					"searchFilter.docName"
+				], function () {
+					$scope.searchFilterChanged1();
+				});
+				$scope.$watch("searchFilter.docDateTill", function () {
+					$scope.searchFilterChanged1();
+				});
+
 				$scope.extendedSearchClick = function () {
 					var sectionId = $scope.searchFilter.section != null && $scope.searchFilter.section.id ? $scope.searchFilter.section.id : null;
 
@@ -136,15 +141,6 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 				$scope.resetSearchClick = function () {
 					$scope.searchText = "";
 					$scope.searchClick();
-				}
-				$scope.searchExactDateChanged = function () {
-					if ($scope.searchFilter.searchExactDateChecked == "y") {
-						$scope.searchFilter.docDateFrom = null;
-						$scope.searchFilter.docDateTill = null;
-					} else {
-						$scope.searchFilter.docDate = null;
-					}
-					$scope.searchFilterChanged();
 				}
 				$scope.pageChanged = function () {
 					updateGrid();
