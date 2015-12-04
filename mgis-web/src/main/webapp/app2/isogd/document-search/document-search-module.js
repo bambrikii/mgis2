@@ -92,7 +92,7 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 				}
 
 
-				$scope.searchFilterChanged1 = function (newValue) {
+				$scope.searchFilterChangedInternal = function (newValue) {
 					$scope.searchText = ISOGDDocumentSearchConverterService.toString($scope.searchFilter);
 					$scope.filterStateChanged({state: $scope.searchText ? ISOGDDocumentSearchConstants.FILTER_FILLED : ISOGDDocumentSearchConstants.FILTER_EMPTY});
 					updateGrid();
@@ -104,7 +104,7 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 					} else {
 						$scope.searchFilter.docDate = null;
 					}
-					$scope.searchFilterChanged1();
+					$scope.searchFilterChangedInternal();
 				});
 				$scope.$watchGroup([
 					"searchFilter.section",
@@ -113,10 +113,10 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 					"searchFilter.docNumber",
 					"searchFilter.docName"
 				], function () {
-					$scope.searchFilterChanged1();
+					$scope.searchFilterChangedInternal();
 				});
 				$scope.$watch("searchFilter.docDateTill", function () {
-					$scope.searchFilterChanged1();
+					$scope.searchFilterChangedInternal();
 				});
 
 				$scope.extendedSearchClick = function () {
