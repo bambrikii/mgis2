@@ -23,6 +23,7 @@
 
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="bower_components/angular-i18n/angular-locale_ru-ru.js"></script>
 	<!-- <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script> -->
 	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>

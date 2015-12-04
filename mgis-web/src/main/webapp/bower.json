@@ -46,13 +46,14 @@
     "leaflet-plugins": "gam6itko/leaflet-plugins#~1.1.0",
     "leaflet-layer-tree-plugin": "bambrikii/leaflet-layer-tree-plugin",
     "ng-flow": "~2",
-    "Leaflet.MousePosition": "ardhi/Leaflet.MousePosition"
+    "Leaflet.MousePosition": "ardhi/Leaflet.MousePosition",
+    "angular-i18n": "angular/bower-angular-i18n#~1.4.8"
   },
   "resolutions": {
     "jquery": "1.10.2",
     "bootstrap": "3.3.6",
     "underscore": "1.8.3",
-    "angular": "1.4.3",
+    "angular": "1.4.8",
     "angular-bootstrap": "0.13.0"
   }
 }
