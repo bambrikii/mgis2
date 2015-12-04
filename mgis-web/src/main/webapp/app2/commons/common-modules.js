@@ -73,6 +73,17 @@ angular.module("mgis.commons", ["ui.bootstrap",
 
 		$scope.format = "dd.MM.yyyy";
 	})
+	.directive("commonsDate", function () {
+		return {
+			restrict: "E",
+			scope: {
+				value: "=",
+				minDate: "=",
+				maxDate: "="
+			},
+			templateUrl: "app2/commons/commons-date-directive.htm"
+		}
+	})
 	.controller("MGISUploadFileController", function ($scope, Upload) {
 		$scope.init = function (uploadUrl, uploadFields, uploadProgress, uploadComplete) {
 			$scope.uploadUrl = uploadUrl;

@@ -1,0 +1,22 @@
+<p class="input-group" ng-controller="MGISDateTimeController">
+					<span class="input-group-btn mgis-input-group-date">
+						<input
+                                type="text"
+                                class="form-control"
+                                datepicker-popup="{{format}}"
+                                ng-model="value"
+                                is-open="opened"
+                                datepicker-options="dateOptions"
+                                date-disabled="disabled(date, mode)"
+                                ng-click="open($event)"
+                                ng-change="searchFilterChanged()"
+                                close-text="{{'Calendar.Done'|translate}}"
+                                clear-text="{{'Calendar.Clear'|translate}}"
+                                current-text="{{'Calendar.Today'|translate}}"
+                                min-date="minDate"
+                                max-date="maxDate"
+                                />
+						<button class="btn btn-default" ng-click="open($event)"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+					</span>
+</p>

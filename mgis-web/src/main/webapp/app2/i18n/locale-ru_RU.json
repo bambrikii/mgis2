@@ -402,5 +402,8 @@
   "About.Info": "Информация",
   "About.ReleaseNotes": "Изменения",
   "Commons.PreviewMessage": "Просмотреть",
-  "Commons.DisplayFullMessage": "Посмотреть детали"
+  "Commons.DisplayFullMessage": "Посмотреть детали",
+  "Calendar.Today": "Сегодня",
+  "Calendar.Clear": "Очистить",
+  "Calendar.Done": "Готово"
 }
