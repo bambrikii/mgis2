@@ -1,23 +1,30 @@
 <div>
-	<isogd-document-search-filter></isogd-document-search-filter>
+    <isogd-document-search-filter></isogd-document-search-filter>
 
-	<div>
-		<div class="row" ng-repeat="item in pager.list" style="padding: 5px;">
-			<div class="col-sm-1">{{item.id}}</div>
-			<div class="col-sm-1">{{item.docNumber}}</div>
-			<div class="col-sm-2">{{item.docDate | date:'yyyy/MM/dd'}}</div>
-			<div class="col-sm-4">{{item.name}}</div>
-			<div class="col-sm-4">
-				<isgod-document-search-button-container item="item" update-action="list()">
-					<ng-transclude></ng-transclude>
-				</isgod-document-search-button-container>
-			</div>
-		</div>
-	</div>
+    <div ng-if="pager.list.length">
+        <div class="row mgis-row-header">
+            <div class="col-sm-4" translate>ISOGD.Document.Name</div>
+            <div class="col-sm-2" translate>ISOGD.Document.Date</div>
+            <div class="col-sm-2" translate>ISOGD.Document.DocNumber</div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+        <div class="row" ng-repeat="item in pager.list" style="padding: 5px;">
+            <div class="col-sm-4">{{item.name}}</div>
+            <div class="col-sm-2">{{item.docDate | date:'yyyy/MM/dd'}}</div>
+            <div class="col-sm-2">{{item.docNumber}}</div>
+            <div class="col-sm-4">
+                <isgod-document-search-button-container item="item" update-action="list()">
+                    <ng-transclude></ng-transclude>
+                </isgod-document-search-button-container>
+            </div>
+        </div>
+    </div>
 
-	<pagination ng-show="pager.totalNumberOfItems>itemsPerPage" total-items="pager.totalNumberOfItems" ng-model="currentPage"
-				items-per-page="itemsPerPage" ng-change="pageChanged()"
-				class="pagination-sm" previous-text="&lsaquo;"
-				next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    <pagination ng-show="pager.totalNumberOfItems>itemsPerPage" total-items="pager.totalNumberOfItems"
+                ng-model="currentPage"
+                items-per-page="itemsPerPage" ng-change="pageChanged()"
+                class="pagination-sm" previous-text="&lsaquo;"
+                next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
 
 </div>

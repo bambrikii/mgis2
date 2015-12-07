@@ -12,7 +12,7 @@
 				<div class="col-sm-8">
 					<p class="input-group input-group-sm">
 						<ui-select ng-model="searchFilter.section" theme="select2" style="width: 450px;">
-							<ui-select-match placeholder="">{{searchFilter.section.name}}</ui-select-match>
+							<ui-select-match allow-clear="true" placeholder="">{{searchFilter.section.name}}</ui-select-match>
 							<ui-select-choices repeat="section in availableSections | filter: {name: $select.search}"
 											   refresh="refreshAvailableSections($select.search)"
 											   refresh-delay="0"
