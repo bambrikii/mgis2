@@ -87,17 +87,20 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 					updateGrid();
 				}
 				$scope.searchClick = function () {
+					$scope.textSearch = true;
 					$scope.searchFilter = ISOGDDocumentSearchConverterService.toObject($scope.searchText);
-					updateGrid();
+					$scope.searchFilterChangedInternal();
 				}
 
 
 				$scope.searchFilterChangedInternal = function (newValue) {
-					$scope.searchText = ISOGDDocumentSearchConverterService.toString($scope.searchFilter);
+					if (!$scope.textSearch) {
+						$scope.searchText = ISOGDDocumentSearchConverterService.toString($scope.searchFilter);
+					}
 					$scope.filterStateChanged({state: $scope.searchText ? ISOGDDocumentSearchConstants.FILTER_FILLED : ISOGDDocumentSearchConstants.FILTER_EMPTY});
 					updateGrid();
 				}
-				$scope.$watch("searchFilter.docDate", function () {
+				$scope.$watch("searchFilter.searchExactDateChecked", function () {
 					if ($scope.searchFilter.searchExactDateChecked == "y") {
 						$scope.searchFilter.docDateFrom = null;
 						$scope.searchFilter.docDateTill = null;
@@ -108,6 +111,7 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 				});
 				$scope.$watchGroup([
 					"searchFilter.section",
+					"searchFilter.docDate",
 					"searchFilter.docDateFrom",
 					"searchFilter.docDateTill",
 					"searchFilter.docNumber",
@@ -123,6 +127,7 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 					var sectionId = $scope.searchFilter.section != null && $scope.searchFilter.section.id ? $scope.searchFilter.section.id : null;
 
 					function openExtendedSearchForm(modalScope) {
+						$scope.textSearch = false;
 						MGISCommonsModalForm.edit("app2/isogd/document-search/document-search-form.htm", modalScope, function (scope, modalInstance) {
 								modalInstance.close();
 							}, {windowClass: "mgis-document-search-modal-form"}

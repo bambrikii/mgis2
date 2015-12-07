@@ -58,7 +58,9 @@ angular.module("mgis.isogd.search.service", ["ngResource",
 				return obj.docName;
 			},
 			toObject: function (str) {
-				var obj = new Object();
+				var obj = {
+					searchExactDateChecked: "n"
+				};
 				var matchFound = false;
 				var pattern = /((name:((['"][^'"]+['"])|([^\s]+)))|((date|from|till):\d{4}\/\d{2}\/\d{2})|(number:[\w\d\.\-_]+)|(section:[\d]+))+/gi;
 				var match = pattern.exec(str);
@@ -70,7 +72,8 @@ angular.module("mgis.isogd.search.service", ["ngResource",
 							matchFound = true;
 						} else if (matchItem.indexOf("date:") == 0) {
 							var docDate = matchItem.substring(5);
-							obj.docDate = docDateFrom ? moment(docDate).toDate() : "";
+							obj.docDate = docDate ? moment(docDate).toDate() : "";
+							obj.searchExactDateChecked = "y";
 							matchFound = true;
 						} else if (matchItem.indexOf("from:") == 0) {
 							var docDateFrom = matchItem.substring(5);
