@@ -4,7 +4,7 @@
 <div class="modal-body">
 	<div>
 
-		<form novalidate>
+		<form name="searchForm" novalidate>
 			<div class="form-group row">
 				<div class="col-sm-4">
 					<label translate>ISOGD.Section</label>
@@ -73,6 +73,5 @@
 </div>
 
 <div class="modal-footer">
-	<button type="submit" class="btn btn-primary" ng-disabled="landForm.$invalid" ng-click="ok()" translate>Закрыть
-	</button>
+	<button type="submit" class="btn btn-primary" ng-disabled="searchForm.$invalid" ng-click="ok()" translate>Close</button>
 </div>
