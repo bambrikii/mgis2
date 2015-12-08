@@ -89,7 +89,6 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 				$scope.searchClick = function () {
 					$scope.textSearch = true;
 					$scope.searchFilter = ISOGDDocumentSearchConverterService.toObject($scope.searchText);
-					$scope.searchFilterChangedInternal();
 				}
 
 
@@ -117,9 +116,6 @@ angular.module("mgis.isogd.documents.search", ["ui.router",
 					"searchFilter.docNumber",
 					"searchFilter.docName"
 				], function () {
-					$scope.searchFilterChangedInternal();
-				});
-				$scope.$watch("searchFilter.docDateTill", function () {
 					$scope.searchFilterChangedInternal();
 				});
 
