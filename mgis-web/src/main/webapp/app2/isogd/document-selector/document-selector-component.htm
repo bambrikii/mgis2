@@ -4,4 +4,6 @@
 		<li ng-repeat="item in documents" class="list-group-item">{{item.name}}</li>
 	</ul>
 </div>
-<button ng-click="openSelector()" class="btn btn-info btn-sm" translate>Select</button>
+<button ng-click="openSelector()" class="btn btn-info btn-sm">
+	{{(((multipleDocuments && documents.length)||(!multipleDocuments && document.id))?'Edit':'Select')|translate}}
+</button>
