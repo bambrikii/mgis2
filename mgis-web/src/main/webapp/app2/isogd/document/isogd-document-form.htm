@@ -1,118 +1,109 @@
 <div class="modal-header">
-	<h3 class="modal-title">
-		<span translate>ISOGD.Document</span>: {{document.name}}
-	</h3>
+    <h3 class="modal-title">
+        <span translate>ISOGD.Document</span>: {{document.name}}
+    </h3>
 </div>
 <div class="modal-body">
-	<form name="documentForm" novalidate>
-		<!-- NAME -->
-		<div class="form-group row" ng-class="{ 'has-error' : documentForm.name.$invalid && !documentForm.name.$pristine }">
-			<div class="col-sm-4">
-				<label translate>ISOGD.Name</label>
-			</div>
-			<div class="col-sm-8">
-				<input type="text" name="name" class="form-control" ng-model="document.name" required>
+    <form name="documentForm" novalidate>
+        <!-- NAME -->
+        <div class="form-group row"
+             ng-class="{ 'has-error' : documentForm.name.$invalid && !documentForm.name.$pristine }">
+            <div class="col-sm-4">
+                <label translate>ISOGD.Name</label>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" name="name" class="form-control" ng-model="document.name" required>
 
-				<p ng-show="documentForm.name.$invalid && !documentForm.name.$pristine" class="help-block" translate>ISOGD.NameRequired</p>
-			</div>
-		</div>
-		<!-- DOC_DATE -->
-		<div class="form-group row" ng-class="{ 'has-error' : documentForm.docDate.$invalid && !documentForm.docDate.$pristine }">
-			<div class="col-sm-4">
-				<label translate>ISOGD.Document.DocDate</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="document.docDate"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							ng-required="true"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							required
-							/>
-                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-					</button>
-                </span>
-				</p>
-				<p ng-show="documentForm.docDate.$invalid && !documentForm.docDate.$pristine" class="help-block" translate>ISOGD.DocDateRequired</p>
-			</div>
-		</div>
-		<!-- DOC_NUMBER -->
-		<div class="form-group row" ng-class="{ 'has-error' : documentForm.docNumber.$invalid && !documentForm.docNumber.$pristine }">
-			<div class="col-sm-4">
-				<label translate>ISOGD.Document.DocNumber</label>
-			</div>
-			<div class="col-sm-8 row">
-				<div class="col-sm-6">
-					<input type="text" name="docNumber" class="form-control" ng-model="document.docNumber" required>
-				</div>
+                <p ng-show="documentForm.name.$invalid && !documentForm.name.$pristine" class="help-block" translate>
+                    ISOGD.NameRequired</p>
+            </div>
+        </div>
+        <!-- DOC_DATE -->
+        <div class="form-group row"
+             ng-class="{ 'has-error' : documentForm.docDate.$invalid && !documentForm.docDate.$pristine }">
+            <div class="col-sm-4">
+                <label translate>ISOGD.Document.DocDate</label>
+            </div>
+            <div class="col-sm-8">
 
-				<p ng-show="documentForm.docNumber.$invalid && !documentForm.docNumber.$pristine" class="help-block" translate>
-					ISOGD.DocNumberRequired</p>
-			</div>
-		</div>
-		<!-- DOCUMENT_AUTHOR -->
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>ISOGD.Document.Author</label>
-			</div>
+                <commons-date value="document.docDate" name="'docDate'" required="true"></commons-date>
 
-			<div class="col-sm-8">
-				<person-selector person="document.author"/>
-			</div>
-		</div>
-		<!-- DOCUMENT_SUB_OBJECT -->
-		<div class="form-group row"
-			 ng-class="{ 'has-error' : documentForm.documentSubObject2.$invalid }">
-			<div class="col-sm-4">
-				<label translate>ISOGD.Classifiers.Documents.SubObject.Name</label>
-			</div>
-			<div class="col-sm-8">
-				<multiselect
-						ng-model="document.documentSubObject"
-						options="c.name for c in availableDocumentSubObjects"
-						data-multiple="false"
-						data-compare-by="id"
-						scroll-after-rows="15">
-				</multiselect>
-				<input type="hidden" ng-model="document.documentSubObject.id" name="documentSubObject2" required/>
+                <p ng-show="documentForm.docDate.$invalid && !documentForm.docDate.$pristine" class="help-block"
+                   translate>ISOGD.DocDateRequired</p>
+            </div>
+        </div>
+        <!-- DOC_NUMBER -->
+        <div class="form-group row"
+             ng-class="{ 'has-error' : documentForm.docNumber.$invalid && !documentForm.docNumber.$pristine }">
+            <div class="col-sm-4">
+                <label translate>ISOGD.Document.DocNumber</label>
+            </div>
+            <div class="col-sm-8 row">
+                <div class="col-sm-6">
+                    <input type="text" name="docNumber" class="form-control" ng-model="document.docNumber" required>
+                </div>
 
-				<p ng-show="!document.documentSubObject.id" class="help-block" translate>ISOGD.Classifiers.Documents.SubObject.Required</p>
-			</div>
-		</div>
+                <p ng-show="documentForm.docNumber.$invalid && !documentForm.docNumber.$pristine" class="help-block"
+                   translate>
+                    ISOGD.DocNumberRequired</p>
+            </div>
+        </div>
+        <!-- DOCUMENT_AUTHOR -->
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label translate>ISOGD.Document.Author</label>
+            </div>
 
-		<accordion close-others="oneAtATime">
-			<accordion-group is-open="commonPartTab.open" ng-if="commonPartTab.open">
-				<accordion-heading>
-					<span translate>ISOGD.Classifiers.Documents.Class.CommonPart</span>
-					<i class="pull-right glyphicon"
-					   ng-class="{'glyphicon-chevron-down': commonPartTab.open, 'glyphicon-chevron-right': !commonPartTab.open}"></i>
-				</accordion-heading>
-				<div ng-include="'app2/isogd/document/isogd-document-form-common-content.htm'"></div>
-			</accordion-group>
-			<accordion-group is-open="specialPartTab.open" ng-if="specialPartTab.open">
-				<accordion-heading>
-					<span translate>ISOGD.Classifiers.Documents.Class.SpecialPart</span>
-					<i class="pull-right glyphicon"
-					   ng-class="{'glyphicon-chevron-down': specialPartTab.open, 'glyphicon-chevron-right': !specialPartTab.open}"></i>
-				</accordion-heading>
-				<div ng-include="'app2/isogd/document/isogd-document-form-special-content.htm'"></div>
-			</accordion-group>
-		</accordion>
+            <div class="col-sm-8">
+                <person-selector person="document.author"/>
+            </div>
+        </div>
+        <!-- DOCUMENT_SUB_OBJECT -->
+        <div class="form-group row"
+             ng-class="{ 'has-error' : documentForm.documentSubObject2.$invalid }">
+            <div class="col-sm-4">
+                <label translate>ISOGD.Classifiers.Documents.SubObject.Name</label>
+            </div>
+            <div class="col-sm-8">
+                <multiselect
+                        ng-model="document.documentSubObject"
+                        options="c.name for c in availableDocumentSubObjects"
+                        data-multiple="false"
+                        data-compare-by="id"
+                        scroll-after-rows="15">
+                </multiselect>
+                <input type="hidden" ng-model="document.documentSubObject.id" name="documentSubObject2" required/>
+
+                <p ng-show="!document.documentSubObject.id" class="help-block" translate>
+                    ISOGD.Classifiers.Documents.SubObject.Required</p>
+            </div>
+        </div>
+
+        <accordion close-others="oneAtATime">
+            <accordion-group is-open="commonPartTab.open" ng-if="commonPartTab.open">
+                <accordion-heading>
+                    <span translate>ISOGD.Classifiers.Documents.Class.CommonPart</span>
+                    <i class="pull-right glyphicon"
+                       ng-class="{'glyphicon-chevron-down': commonPartTab.open, 'glyphicon-chevron-right': !commonPartTab.open}"></i>
+                </accordion-heading>
+                <div ng-include="'app2/isogd/document/isogd-document-form-common-content.htm'"></div>
+            </accordion-group>
+            <accordion-group is-open="specialPartTab.open" ng-if="specialPartTab.open">
+                <accordion-heading>
+                    <span translate>ISOGD.Classifiers.Documents.Class.SpecialPart</span>
+                    <i class="pull-right glyphicon"
+                       ng-class="{'glyphicon-chevron-down': specialPartTab.open, 'glyphicon-chevron-right': !specialPartTab.open}"></i>
+                </accordion-heading>
+                <div ng-include="'app2/isogd/document/isogd-document-form-special-content.htm'"></div>
+            </accordion-group>
+        </accordion>
 
 
-	</form>
+    </form>
 
 </div>
 <div class="modal-footer">
-	<button type="submit" class="btn btn-primary" ng-disabled="documentForm.$invalid" ng-click="ok()" translate>Submit</button>
-	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+    <button type="submit" class="btn btn-primary" ng-disabled="documentForm.$invalid" ng-click="ok()" translate>Submit
+    </button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
 </div>

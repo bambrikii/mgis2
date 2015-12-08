@@ -84,7 +84,9 @@ angular.module("mgis.commons", ["ui.bootstrap",
 				value: "=",
 				minDate: "=",
 				maxDate: "=",
-				valueChanged: "&"
+				valueChanged: "&",
+				name: "=",
+				required: "="
 			},
 			templateUrl: "app2/commons/commons-date-directive.htm",
 			controller: function ($scope) {
