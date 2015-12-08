@@ -72,12 +72,7 @@ public class LandAllowedUsage implements Cloneable {
 		usage.setClassificationCode(classificationCode);
 		usage.setName(name);
 		if (parent != null) {
-			LandAllowedUsage parent2 = new LandAllowedUsage();
-			parent2.setId(parent.getId());
-			parent2.setClassificationCode(parent.getClassificationCode());
-			parent2.setNumber(parent.getNumber());
-			parent2.setName(parent.getName());
-			usage.setParent(parent2);
+			usage.setParent(parent.clone());
 		}
 		return usage;
 	}
