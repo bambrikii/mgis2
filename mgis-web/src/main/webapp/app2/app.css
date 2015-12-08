@@ -253,3 +253,7 @@ span.mgis-input-group-date button {
 	font-weight: bold;
 
 }
+
+multiselect button.btn {
+	white-space: normal !important;
+}

@@ -31,7 +31,8 @@
 							options="c.name for c in availableLandCategories"
 							data-multiple="false"
 							data-compare-by="id"
-							scroll-after-rows="15">
+							scroll-after-rows="15"
+							ms-header="{{'Select'|translate}}">
 					</multiselect>
 				</p>
 
@@ -112,7 +113,7 @@
 				<p class="input-group input-group-sm">
 					<multiselect
 							ng-model="land.allowedUsageByDictionary"
-							options="c.name for c in availableLandsAllowedUsage"
+							options="(c.name + (c.parent?' ('+c.parent.name+')' : '')) for c in availableLandsAllowedUsage"
 							data-multiple="false"
 							data-compare-by="id"
 							scroll-after-rows="15">

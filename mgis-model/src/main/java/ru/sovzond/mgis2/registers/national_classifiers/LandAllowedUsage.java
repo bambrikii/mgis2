@@ -21,6 +21,10 @@ public class LandAllowedUsage implements Cloneable {
 	@Column
 	private String name;
 
+	@ManyToOne
+	@JoinColumn(name = "parent_id")
+	private LandAllowedUsage parent;
+
 	public Long getId() {
 		return id;
 	}
@@ -53,12 +57,29 @@ public class LandAllowedUsage implements Cloneable {
 		this.classificationCode = classificationCode;
 	}
 
+	public LandAllowedUsage getParent() {
+		return parent;
+	}
+
+	public void setParent(LandAllowedUsage parent) {
+		this.parent = parent;
+	}
+
 	public LandAllowedUsage clone() {
 		LandAllowedUsage usage = new LandAllowedUsage();
 		usage.setId(id);
 		usage.setNumber(number);
 		usage.setClassificationCode(classificationCode);
 		usage.setName(name);
+		if (parent != null) {
+			LandAllowedUsage parent2 = new LandAllowedUsage();
+			parent2.setId(parent.getId());
+			parent2.setClassificationCode(parent.getClassificationCode());
+			parent2.setNumber(parent.getNumber());
+			parent2.setName(parent.getName());
+			usage.setParent(parent2);
+		}
 		return usage;
 	}
+
 }
