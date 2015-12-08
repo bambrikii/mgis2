@@ -112,6 +112,7 @@
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
 					<multiselect
+                            ms-header="{{'Select'|translate}}"
 							ng-model="land.allowedUsageByDictionary"
 							options="(c.name + (c.parent?' ('+c.parent.name+')' + (c.parent.parent?' ('+c.parent.parent.name+')':'') : '')) for c in availableLandsAllowedUsage"
 							data-multiple="false"
