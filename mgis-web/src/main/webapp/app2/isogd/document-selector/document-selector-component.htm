@@ -1,9 +1,9 @@
 <span ng-if="!multipleDocuments && document.id">{{document.name}}</span>
-<div ng-if="multipleDocuments && documents">
+<div ng-if="multipleDocuments && documents && documents.length">
 	<ul class="list-group">
 		<li ng-repeat="item in documents" class="list-group-item">{{item.name}}</li>
 	</ul>
 </div>
 <button ng-click="openSelector()" class="btn btn-info btn-sm">
-	{{(((multipleDocuments && documents.length)||(!multipleDocuments && document.id))?'Edit':'Select')|translate}}
+	{{(((multipleDocuments && documents && documents.length)||(!multipleDocuments && document.id))?'Edit':'Select')|translate}}
 </button>
