@@ -1,6 +1,6 @@
-<div class="form-group row">
+<div class="form-group row" ng-class="{'has-error': form[name].$invalid && form[name].$touched}">
 	<div class="col-sm-4">
-		<label translate>{{title}}</label>
+		<label translate>{{title}}</label><span class="mgis-field-required" ng-if="required || pattern">*</span>
 	</div>
 
 	<div class="col-sm-8">
@@ -9,7 +9,7 @@
                     <input
 							type="text"
 							class="form-control"
-							name="docDate"
+							name="{{name}}"
 							datepicker-popup="{{format}}"
 							ng-model="item.value"
 							is-open="opened"
@@ -18,10 +18,12 @@
 							close-text="{{Close|translate}}"
 							ng-click="open($event)"
 							ng-change="dateChanged()"
+							ng-required="required"
 							/>
                     <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
 					</button>
                 </span>
 		</p>
+		<p ng-show="form[name].$invalid && form[name].$touched" class="help-block" translate>FieldInvalid</p>
 	</div>
 </div>
