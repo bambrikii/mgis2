@@ -73,16 +73,6 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 			}
 		}
 	})
-	.directive("commonsFormsTextRequired", function () {
-		return {
-			restrict: "E",
-			scope: {
-				title: "@",
-				property: "=",
-			},
-			templateUrl: "app2/commons/forms/text-required.htm"
-		}
-	})
 	.directive("commonsFormsDropDown", function () {
 		return {
 			restrict: "E",
@@ -90,9 +80,17 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				title: "@",
 				property: "=",
 				availableElements: "=",
-				validate: "@"
+				form: "=",
+				name: "=",
+				required: "="
 			},
-			templateUrl: "app2/commons/forms/drop-down.htm"
+			templateUrl: "app2/commons/forms/drop-down.htm",
+			controller: function ($scope) {
+				$scope.property__flag = undefined;
+				$scope.$watch("property", function (value) {
+					$scope.property__flag = angular.equals({}, $scope.property) ? null : true;
+				});
+			}
 		}
 	})
 	.directive("commonsFormsDropDownAjax", function () {

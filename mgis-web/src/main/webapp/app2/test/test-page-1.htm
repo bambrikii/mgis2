@@ -27,7 +27,7 @@
 	<pre>{{item}}</pre>
 
 	<commons-forms-form title="Code" name="form1">
-		<commons-forms-text-required title="Name" property="item.text2"></commons-forms-text-required>
+		<commons-forms-text title="Name" property="item.text2" form="form1" required="true"></commons-forms-text>
 		<button type="submit" class="btn btn-primary" ng-disabled="form1.$invalid" ng-click="ok()" translate>Submit</button>
 		<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
 	</commons-forms-form>
