@@ -49,50 +49,23 @@
 		<h3 translate>Lands.Land.AllowedUsage</h3>
 	</div>
 	<div class="panel-body">
+
 		<commons-forms-drop-down form="landForm" name="allowedUsageByDictionary" property="land.allowedUsageByDictionary"
 								 title="Lands.Land.AllowedUsage.ByDictionary" available-elements="availableLandsAllowedUsage"
 								 element-label-expression="(element.name + (element.parent?' ('+element.parent.name+')' + (element.parent.parent?' ('+element.parent.parent.name+')':'') : ''))"
 				></commons-forms-drop-down>
-		<!--<div class="form-group row">-->
-			<!--<div class="col-sm-4">-->
-				<!--<label translate>Lands.Land.AllowedUsage.ByDictionary</label>-->
-			<!--</div>-->
 
-			<!--<div class="col-sm-8">-->
-				<!--<p class="input-group input-group-sm">-->
-					<!--<multiselect-->
-							<!--ms-header="{{'Select'|translate}}"-->
-							<!--ng-model="land.allowedUsageByDictionary"-->
-							<!--options="(c.name + (c.parent?' ('+c.parent.name+')' + (c.parent.parent?' ('+c.parent.parent.name+')':'') : '')) for c in availableLandsAllowedUsage"-->
-							<!--data-multiple="false"-->
-							<!--data-compare-by="id"-->
-							<!--scroll-after-rows="15">-->
-					<!--</multiselect>-->
-				<!--</p>-->
-			<!--</div>-->
-		<!--</div>-->
 		<commons-forms-text form="landForm" name="allowedUsageByDocument" property="land.allowedUsageByDocument"
 							title="Lands.Land.AllowedUsage.ByDocument"></commons-forms-text>
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>TerritorialZones.Zone</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
 
-					<ui-select ng-model="land.allowedUsageByTerritorialZone" theme="select2" style="width: 450px;">
-						<ui-select-match placeholder="">{{land.allowedUsageByTerritorialZone.name}}</ui-select-match>
-						<ui-select-choices repeat="terrZone in availableAllowedUsageByTerritorialZones | filter: {name: $select.search}"
-										   refresh="refreshAvailableAllowedUsageByTerritorialZones($select.search)"
-										   refresh-delay="0">
-							{{terrZone.name}}
-							<div ng-bind-html="terrZone.name"></div>
-						</ui-select-choices>
-					</ui-select>
-
-				</p>
-			</div>
-		</div>
+		<commons-forms-drop-down-ajax form="landForm" name="allowedUsageByTerritorialZone"
+									  property="land.allowedUsageByTerritorialZone"
+									  title="TerritorialZones.Zone"
+									  available-elements="availableAllowedUsageByTerritorialZones"
+									  available-elements-loader="refreshAvailableAllowedUsageByTerritorialZones(search)"
+									  element-filter="name"
+									  element-label-expression="name"
+				></commons-forms-drop-down-ajax>
 
 	</div>
 </div>

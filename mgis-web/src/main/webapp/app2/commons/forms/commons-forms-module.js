@@ -105,16 +105,28 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				title: "@",
 				property: "=",
 				availableElements: "=",
-				refresh: "&",
-				validate: "@"
+				availableElementsLoader: "&",
+				form: "=",
+				name: "@",
+				required: "=",
+				elementFilter: "@",
+				elementLabelExpression: "@"
 			},
 			templateUrl: "app2/commons/forms/drop-down-ajax.htm",
 			controller: function ($scope) {
 				$scope.item = {
 					value: $scope.property
 				}
+				$scope.choices = "elem in availableElements | filter: {" + ($scope.elementFilter ? $scope.elementFilter : "name") + ": $select.search}"
+				var labelExpression = ($scope.elementLabelExpression ? $scope.elementLabelExpression :
+						($scope.elementFilter ? $scope.elementFilter : "name")
+				);
+				$scope.displayLabel = "elem." + labelExpression;
+				$scope.matchLabel = "item.value." + labelExpression;
 				$scope.refreshAvailableElements = function (name) {
-					$scope.refresh({name: name});
+					if ($scope.availableElementsLoader) {
+						$scope.availableElementsLoader({search: name});
+					}
 				}
 				$scope.elementSelected = function ($item) {
 					var val = {}

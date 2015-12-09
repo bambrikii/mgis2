@@ -5,13 +5,13 @@
 	<div class="col-sm-8">
 		<p class="input-group input-group-sm">
 			<ui-select ng-model="item.value" theme="select2" style="width: 450px;" on-select="elementSelected($item)">
-				<ui-select-match placeholder="">{{item.value.name}}</ui-select-match>
-				<ui-select-choices repeat="elem in availableElements | filter: {name: $select.search}"
+				<ui-select-match placeholder="">{{$eval(matchLabel)}}</ui-select-match>
+				<ui-select-choices repeat="{{choices}}"
 								   refresh="refreshAvailableElements($select.search)"
 
 								   refresh-delay="0">
-					{{elem.name}}
-					<div ng-bind-html="elem.name"></div>
+					{{$eval(displayLabel)}}
+					<div ng-bind-html="$eval(displayLabel)"></div>
 				</ui-select-choices>
 			</ui-select>
 		</p>
