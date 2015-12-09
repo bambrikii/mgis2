@@ -1,6 +1,9 @@
 angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 	"mgis.error.service"
 ])
+	.constant("LandsLandConstants", {
+		LAND_CADASTRAL_NUMBER: /^\d{2}:\d{2}:\d{7}:\d{1}/
+	})
 	.factory("LandsLandService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/land/:id.json');
 

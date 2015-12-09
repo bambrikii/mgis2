@@ -1,11 +1,12 @@
-<div class="form-group row">
-	<div class="col-sm-4" ng-class="{'has-error': elem.$invalid && (!elem.$pristine || elem.$touched)}">
-		<label translate>{{title}}</label>
+<div class="form-group row" ng-class="{'has-error': form[name].$invalid && form[name].$touched}">
+	<div class="col-sm-4">
+		<label translate>{{title}}</label><span class="mgis-field-required" ng-if="required || pattern">*</span>
 	</div>
 
 	<div class="col-sm-8">
-		<input type="text" class="form-control" ng-model="property" ng-change="valueChanged()"/>
+		<input type="text" class="form-control" name="{{name}}" ng-model="property" ng-required="required" ng-pattern="pattern"
+			   ng-change="valueChanged()"/>
 
-		<p ng-show="elem.$invalid && (!elem.$pristine || elem.$touched)" class="help-block" translate>FieldInvalid</p>
+		<p ng-show="form[name].$invalid && form[name].$touched" class="help-block" translate>FieldInvalid</p>
 	</div>
 </div>

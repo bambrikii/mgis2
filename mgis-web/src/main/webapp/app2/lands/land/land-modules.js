@@ -1,5 +1,6 @@
 angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.commons", //
+	"mgis.commons.forms", //
 	"mgis.lands.services",
 	"mgis.nc.services",
 	"mgis.commons.executive_person.service",
@@ -32,8 +33,10 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 											   LandsAvailabilityOfViolationsService,
 											   LandsInspectionReasonService,
 											   LandsInspectionSubjectService,
-											   TerrZonesZoneService) {
+											   TerrZonesZoneService,
+											   LandsLandConstants) {
 		function editItem0(modalScope, updateGrid) {
+			modalScope.LAND_CADASTRAL_NUMBER = LandsLandConstants.LAND_CADASTRAL_NUMBER;
 			LandsInspectionKindService.get().then(function (inspectionKinds) {
 				modalScope.availableInspectionKinds = inspectionKinds.list;
 				LandsInspectionTypeService.get().then(function (inspectionTypes) {

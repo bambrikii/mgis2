@@ -257,3 +257,7 @@ span.mgis-input-group-date button {
 multiselect button.btn {
 	white-space: normal !important;
 }
+
+.mgis-field-required {
+	color: red;
+}
