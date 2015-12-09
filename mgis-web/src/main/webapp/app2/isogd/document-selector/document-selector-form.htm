@@ -1,150 +1,166 @@
 <div>
-	<div class="modal-header">
-		<h3 class="modal-title"><span translate>ISOGD.Document.Select</span>: {{document.name}}</h3>
-	</div>
-	<div class="modal-body">
-		<form name="documentSelectorForm" ng-controller="ISOGDDocumentSelectorController" novalidate>
-			<div>
-				<ul class="list-group">
-					<li ng-repeat="selectedDocument in selectedDocuments" class="list-group-item mgis-document-selector-list-item">
-						<div class="row">
-							<div class="col-sm-8">{{selectedDocument.id}} {{selectedDocument.name}}</div>
-							<div class="col-sm-4 pull-right">
-								<button ng-click="removeSelectedDocument(selectedDocument)" class="btn btn-danger btn-sm" translate>Remove</button>
-							</div>
-						</div>
-					</li>
-				</ul>
+    <div class="modal-header">
+        <h3 class="modal-title"><span translate>ISOGD.Document.Select</span>: {{document.name}}</h3>
+    </div>
+    <div class="modal-body">
+        <form name="documentSelectorForm" ng-controller="ISOGDDocumentSelectorController" novalidate>
+            <div>
+                <ul class="list-group">
+                    <li ng-repeat="selectedDocument in selectedDocuments"
+                        class="list-group-item mgis-document-selector-list-item">
+                        <div class="row">
+                            <div class="col-sm-8">{{selectedDocument.name}}</div>
+                            <div class="col-sm-4 pull-right">
+                                <button ng-click="removeSelectedDocument(selectedDocument)"
+                                        class="btn btn-danger btn-sm" translate>Remove
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
 
-				<tabset>
-					<tab>
-						<tab-heading>
-							<span translate>ISOGD.Document.Search.UsingFilter</span>
-						</tab-heading>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 translate>ISOGD.Document.Search.UsingFilter</h3>
-							</div>
-							<div class="panel-body">
-								<isogd-document-search>
-									<isgod-document-search-button label="Select" class="warning"
-																  document-item-click="selectSearchItemClick(item, updateAction)"></isgod-document-search-button>
-									<!--<isgod-document-search-button label="ISOGD.EditTheDocument" class="info" document-item-click="editDocument(item.id)"></isgod-document-search-button>-->
-									<!--<isgod-document-search-button label="ISOGD.RemoveTheDocument" class="danger" document-item-click="removeDocument(item.id)"></isgod-document-search-button>-->
-								</isogd-document-search>
-							</div>
-						</div>
-					</tab>
-					<tab>
-						<tab-heading>
-							<span translate>ISOGD.Document.Search.UsingHierarchy</span>
-						</tab-heading>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 translate>ISOGD.Document.Search.UsingHierarchy</h3>
-							</div>
-							<div class="panel-body">
-								<ul class="list-group">
-									<li ng-repeat="section in sections" class="list-group-item mgis-document-selector-list-item">
-										<div class="row">
-											<div class="col-sm-2">
-												<button ng-click="openSection(section)" class="btn btn-info btn-sm" ng-if="!section.books.length"
-														translate>
-													Open
-												</button>
-												<button ng-click="closeSection(section)" class="btn btn-info btn-sm" ng-if="section.books.length"
-														translate>
-													Close
-												</button>
-											</div>
-											<div class="col-sm-10">{{section.name}}</div>
-										</div>
-										<div>
-											<ul class="mgis-document-selector-list">
-												<li ng-repeat="book in section.books" class="mgis-document-selector-list-item">
-													<div class="row">
-														<div class="col-sm-2">
-															<button ng-click="openBook(book)" class="btn btn-info btn-sm" ng-if="!book.volumes.length"
-																	translate>Open
-															</button>
-															<button ng-click="closeBook(book)" class="btn btn-info btn-sm" ng-if="book.volumes.length"
-																	translate>Close
-															</button>
-														</div>
-														<div class="col-sm-10">{{book.name}}</div>
-													</div>
-													<div>
-														<ul class="mgis-document-selector-list">
-															<li ng-repeat="volume in book.volumes" class="mgis-document-selector-list-item">
-																<div class="row">
-																	<div class="col-sm-2">
-																		<button ng-click="openVolume(volume)" class="btn btn-info btn-sm"
-																				ng-if="!volume.documents.length"
-																				translate>
-																			Open
-																		</button>
-																		<button ng-click="closeVolume(volume)" class="btn btn-info btn-sm"
-																				ng-if="volume.documents.length"
-																				translate>
-																			Close
-																		</button>
-																	</div>
-																	<div class="col-sm-7">{{volume.name}}
-																	</div>
-																	<div class="col-sm-3">
-																		<button ng-click="addDocument(volume)" class="btn btn-info btn-sm"
-																				translate>
-																			ISOGD.AddADocument
-																		</button>
-																	</div>
-																</div>
-																<div>
-																	<ul class="mgis-document-selector-list">
-																		<li ng-repeat="document in volume.documents"
-																			class="mgis-document-selector-list-item">
-																			<div class="row">
-																				<div class="col-sm-2">
-																					<button class="btn btn-warning btn-sm"
-																							ng-click="documentSelectClicked(document.id, document.name)"
-																							translate>
-																						Select
-																					</button>
-																				</div>
-																				<div class="col-sm-8">{{document.name}}
-																				</div>
-																				<div class="col-sm-2">
-																					<button ng-click="editDocument(document.id, volume)"
-																							class="btn btn-info btn-sm"
-																							translate>
-																						Edit
-																					</button>
-																				</div>
-																			</div>
-																		</li>
-																	</ul>
-																</div>
-															</li>
-														</ul>
-													</div>
-												</li>
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
+                <tabset>
+                    <tab>
+                        <tab-heading>
+                            <span translate>ISOGD.Document.Search.UsingFilter</span>
+                        </tab-heading>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 translate>ISOGD.Document.Search.UsingFilter</h3>
+                            </div>
+                            <div class="panel-body">
+                                <isogd-document-search>
+                                    <isgod-document-search-button label="Select" class="warning"
+                                                                  document-item-click="selectSearchItemClick(item, updateAction)"></isgod-document-search-button>
+                                    <!--<isgod-document-search-button label="ISOGD.EditTheDocument" class="info" document-item-click="editDocument(item.id)"></isgod-document-search-button>-->
+                                    <!--<isgod-document-search-button label="ISOGD.RemoveTheDocument" class="danger" document-item-click="removeDocument(item.id)"></isgod-document-search-button>-->
+                                </isogd-document-search>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab>
+                        <tab-heading>
+                            <span translate>ISOGD.Document.Search.UsingHierarchy</span>
+                        </tab-heading>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 translate>ISOGD.Document.Search.UsingHierarchy</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li ng-repeat="section in sections"
+                                        class="list-group-item mgis-document-selector-list-item">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <button ng-click="openSection(section)" class="btn btn-info btn-sm"
+                                                        ng-if="!section.books.length"
+                                                        translate>
+                                                    Open
+                                                </button>
+                                                <button ng-click="closeSection(section)" class="btn btn-info btn-sm"
+                                                        ng-if="section.books.length"
+                                                        translate>
+                                                    Close
+                                                </button>
+                                            </div>
+                                            <div class="col-sm-10">{{section.name}}</div>
+                                        </div>
+                                        <div>
+                                            <ul class="mgis-document-selector-list">
+                                                <li ng-repeat="book in section.books"
+                                                    class="mgis-document-selector-list-item">
+                                                    <div class="row">
+                                                        <div class="col-sm-2">
+                                                            <button ng-click="openBook(book)"
+                                                                    class="btn btn-info btn-sm"
+                                                                    ng-if="!book.volumes.length"
+                                                                    translate>Open
+                                                            </button>
+                                                            <button ng-click="closeBook(book)"
+                                                                    class="btn btn-info btn-sm"
+                                                                    ng-if="book.volumes.length"
+                                                                    translate>Close
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-10">{{book.name}}</div>
+                                                    </div>
+                                                    <div>
+                                                        <ul class="mgis-document-selector-list">
+                                                            <li ng-repeat="volume in book.volumes"
+                                                                class="mgis-document-selector-list-item">
+                                                                <div class="row">
+                                                                    <div class="col-sm-2">
+                                                                        <button ng-click="openVolume(volume)"
+                                                                                class="btn btn-info btn-sm"
+                                                                                ng-if="!volume.documents.length"
+                                                                                translate>
+                                                                            Open
+                                                                        </button>
+                                                                        <button ng-click="closeVolume(volume)"
+                                                                                class="btn btn-info btn-sm"
+                                                                                ng-if="volume.documents.length"
+                                                                                translate>
+                                                                            Close
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="col-sm-7">{{volume.name}}
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <button ng-click="addDocument(volume)"
+                                                                                class="btn btn-info btn-sm"
+                                                                                translate>
+                                                                            ISOGD.AddADocument
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <ul class="mgis-document-selector-list">
+                                                                        <li ng-repeat="document in volume.documents"
+                                                                            class="mgis-document-selector-list-item">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-2">
+                                                                                    <button class="btn btn-warning btn-sm"
+                                                                                            ng-click="documentSelectClicked(document.id, document.name)"
+                                                                                            translate>
+                                                                                        Select
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="col-sm-8">{{document.name}}
+                                                                                </div>
+                                                                                <div class="col-sm-2">
+                                                                                    <button ng-click="editDocument(document.id, volume)"
+                                                                                            class="btn btn-info btn-sm"
+                                                                                            translate>
+                                                                                        Edit
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-					</tab>
-				</tabset>
+                    </tab>
+                </tabset>
 
-			</div>
-		</form>
-	</div>
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="modal-footer">
-	<button type="submit" class="btn btn-primary" ng-disabled="documentSelectorForm.$invalid" ng-click="ok()" ng-if="multipleDocuments" translate>
-		Submit
-	</button>
-	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+    <button type="submit" class="btn btn-primary" ng-disabled="documentSelectorForm.$invalid" ng-click="ok()"
+            ng-if="multipleDocuments" translate>
+        Submit
+    </button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
 </div>
