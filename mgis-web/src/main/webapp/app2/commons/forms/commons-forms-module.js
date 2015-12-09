@@ -93,7 +93,7 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				$scope.property__flag = undefined;
 				$scope.options = ($scope.elementLabelExpression ? $scope.elementLabelExpression : "element.name") + " for element in availableElements";
 				$scope.$watch("property", function (value) {
-					$scope.property__flag = angular.equals({}, $scope.property) ? null : true;
+					$scope.property__flag = !$scope.property || angular.equals({}, $scope.property) ? null : true;
 				});
 			}
 		}
