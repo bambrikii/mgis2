@@ -46,24 +46,7 @@
 			</div>
 
 			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="land.control.inspectionDate"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							/>
-                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-					</button>
-                </span>
-				</p>
+                <commons-date value="land.control.inspectionDate" name="'docDate'" required="true"></commons-date>
 			</div>
 		</div>
 
@@ -174,24 +157,7 @@
 			</div>
 
 			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="land.control.timelineForViolations"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							/>
-                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-					</button>
-                </span>
-				</p>
+                <commons-date value="land.control.timelineForViolations" name="'docDate'" required="true"></commons-date>
 			</div>
 		</div>
 

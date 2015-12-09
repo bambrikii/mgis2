@@ -20,24 +20,7 @@
 			</div>
 
 			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="land.characteristics.cadastralCostImplementationDate"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							/>
-                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-					</button>
-                </span>
-				</p>
+                <commons-date value="land.characteristics.cadastralCostImplementationDate" name="'docDate'" required="true"></commons-date>
 			</div>
 		</div>
 
@@ -68,24 +51,7 @@
 			</div>
 
 			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="land.characteristics.marketCostImplementationDate"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							/>
-                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-					</button>
-                </span>
-				</p>
+                <commons-date value="land.characteristics.marketCostImplementationDate" name="'docDate'" required="true"></commons-date>
 			</div>
 		</div>
 

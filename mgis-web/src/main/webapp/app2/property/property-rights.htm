@@ -1,144 +1,108 @@
 <div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 translate>Lands.Land.Rights.MainInformation</h3>
-	</div>
-	<div class="panel-body">
+    <div class="panel-heading">
+        <h3 translate>Lands.Land.Rights.MainInformation</h3>
+    </div>
+    <div class="panel-body">
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.RightsSubject</label>
-			</div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label translate>Lands.Land.Rights.RightsSubject</label>
+            </div>
 
-			<div class="col-sm-8">
-				<person-selector person="rights.rightOwner"/>
-			</div>
-		</div>
+            <div class="col-sm-8">
+                <person-selector person="rights.rightOwner"/>
+            </div>
+        </div>
 
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.OwnershipForm</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="rights.ownershipForm"
-							options="(c.name + (c.gatheringParent?' ('+c.gatheringParent.name+')' : '')) for c in availableLandOwnershipForms"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
-				</p>
-			</div>
-		</div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label translate>Lands.Land.Rights.OwnershipForm</label>
+            </div>
+            <div class="col-sm-8">
+                <p class="input-group input-group-sm">
+                    <multiselect
+                            ng-model="rights.ownershipForm"
+                            options="(c.name + (c.gatheringParent?' ('+c.gatheringParent.name+')' : '')) for c in availableLandOwnershipForms"
+                            data-multiple="false"
+                            data-compare-by="id"
+                            scroll-after-rows="15">
+                    </multiselect>
+                </p>
+            </div>
+        </div>
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.RightsKind</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="rights.rightKind"
-							options="c.name for c in availableLandRightKinds"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
-				</p>
-			</div>
-		</div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label translate>Lands.Land.Rights.RightsKind</label>
+            </div>
+            <div class="col-sm-8">
+                <p class="input-group input-group-sm">
+                    <multiselect
+                            ng-model="rights.rightKind"
+                            options="c.name for c in availableLandRightKinds"
+                            data-multiple="false"
+                            data-compare-by="id"
+                            scroll-after-rows="15">
+                    </multiselect>
+                </p>
+            </div>
+        </div>
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.Share</label>
-			</div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label translate>Lands.Land.Rights.Share</label>
+            </div>
 
-			<div class="col-sm-8">
-				<input type="text" class="form-control" name="share" ng-model="rights.share"/>
-			</div>
-		</div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="share" ng-model="rights.share"/>
+            </div>
+        </div>
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.DateOfCreation</label>
-			</div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label translate>Lands.Land.Rights.DateOfCreation</label>
+            </div>
 
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="rights.ownershipDate"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							/>
-                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-					</button>
-                </span>
-				</p>
-			</div>
-		</div>
+            <div class="col-sm-8">
+                <commons-date value="rights.ownershipDate" name="'docDate'" required="true"></commons-date>
+            </div>
+        </div>
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.DateOfTermination</label>
-			</div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label translate>Lands.Land.Rights.DateOfTermination</label>
+            </div>
 
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="rights.marketCostImplementationDate"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							/>
-					<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-					</button>
-                </span>
-				</p>
-			</div>
-		</div>
+            <div class="col-sm-8">
+                <commons-date value="rights.marketCostImplementationDate" name="'docDate'" required="true"></commons-date>
+            </div>
+        </div>
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.RegistrationDocument</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<isogd-document-selector documents="rights.registrationDocuments"
-											 multiple-documents="true"
-							/>
-				</p>
-			</div>
-		</div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label translate>Lands.Land.Rights.RegistrationDocument</label>
+            </div>
+            <div class="col-sm-8">
+                <p class="input-group input-group-sm">
+                    <isogd-document-selector documents="rights.registrationDocuments" multiple-documents="true"/>
+                </p>
+            </div>
+        </div>
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.Rights.DocumentCertifyingRights</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<isogd-document-selector documents="rights.documentsCertifyingRights"
-											 multiple-documents="true"
-							/>
-				</p>
-			</div>
-		</div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label translate>Lands.Land.Rights.DocumentCertifyingRights</label>
+            </div>
+            <div class="col-sm-8">
+                <p class="input-group input-group-sm">
+                    <isogd-document-selector documents="rights.documentsCertifyingRights"
+                                             multiple-documents="true"
+                            />
+                </p>
+            </div>
+        </div>
 
-	</div>
+    </div>
 </div>
 
