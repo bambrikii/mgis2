@@ -50,7 +50,7 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 				var deferred = $q.defer();
 				var rights = item.rights;
 				var characteristics = item.characteristics;
-				var control = item.control;
+				var control = item.control ? item.control : {};
 				var landAreas = item.landAreas;
 				var landAreas2 = buildLandAreas(landAreas);
 				//var registrationDocuments2 = buildRegistrationDocuments(rights);

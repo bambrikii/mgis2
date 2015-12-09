@@ -7,26 +7,8 @@
 		<commons-forms-text form="landForm" name="'cadastralNumber'" property="land.cadastralNumber" required="true"
 							pattern="LAND_CADASTRAL_NUMBER" title="CadastralNumber"></commons-forms-text>
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.LandCategory</label>
-			</div>
-
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.landCategory"
-							options="c.name for c in availableLandCategories"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15"
-							ms-header="{{'Select'|translate}}">
-					</multiselect>
-				</p>
-
-				<!--<p ng-show="!land.landCategory.id" class="help-block" translate>Required</p>-->
-			</div>
-		</div>
+		<commons-forms-drop-down form="landForm" name="'landCategory'" property="land.landCategory" required="true"
+								 title="Lands.LandCategory" available-elements="availableLandCategories"></commons-forms-drop-down>
 
 		<div class="form-group row">
 			<div class="col-sm-4">
