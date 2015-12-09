@@ -33,71 +33,14 @@
 			<div class="col-sm-8"><input type="text" class="form-control" ng-model="item.grn"/></div>
 		</div>
 
-		<div class="form-group row">
-			<div class="col-sm-4"><label translate>IndividualEntrepreneur.EGRIPInitialDate</label></div>
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-								<span class="input-group-btn mgis-input-group-date">
-									<input
-											type="text"
-											class="form-control"
-											datepicker-popup="{{format}}"
-											ng-model="item.egripInitialDate"
-											is-open="opened"
-											datepicker-options="dateOptions"
-											date-disabled="disabled(date, mode)"
-											close-text="{{Close|translate}}"
-											ng-click="open($event)"
-											/>
-									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-								</span>
-				</p>
-			</div>
-		</div>
+		<commons-forms-date form="naturalPersonForm" name="'egripInitialDate'" property="item.egripInitialDate"
+							title="IndividualEntrepreneur.EGRIPInitialDate"></commons-forms-date>
 
-		<div class="form-group row">
-			<div class="col-sm-4"><label translate>IndividualEntrepreneur.RegistrationDate</label></div>
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-								<span class="input-group-btn mgis-input-group-date">
-									<input
-											type="text"
-											class="form-control"
-											datepicker-popup="{{format}}"
-											ng-model="item.registrationDate"
-											is-open="opened"
-											datepicker-options="dateOptions"
-											date-disabled="disabled(date, mode)"
-											close-text="{{Close|translate}}"
-											ng-click="open($event)"
-											/>
-									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-								</span>
-				</p>
-			</div>
-		</div>
+		<commons-forms-date form="naturalPersonForm" name="'registrationDate'" property="item.registrationDate"
+							title="IndividualEntrepreneur.RegistrationDate"></commons-forms-date>
 
-		<div class="form-group row">
-			<div class="col-sm-4"><label translate>IndividualEntrepreneur.IssueDate</label></div>
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-								<span class="input-group-btn mgis-input-group-date">
-									<input
-											type="text"
-											class="form-control"
-											datepicker-popup="{{format}}"
-											ng-model="item.issueDate"
-											is-open="opened"
-											datepicker-options="dateOptions"
-											date-disabled="disabled(date, mode)"
-											close-text="{{Close|translate}}"
-											ng-click="open($event)"
-											/>
-									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-								</span>
-				</p>
-			</div>
-		</div>
+		<commons-forms-date form="naturalPersonForm" name="'issueDate'" property="item.issueDate"
+							title="IndividualEntrepreneur.IssueDate"></commons-forms-date>
 
 	</div>
 </div>

@@ -15,11 +15,12 @@
 							is-open="opened"
 							datepicker-options="dateOptions"
 							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
 							ng-click="open($event)"
 							ng-change="dateChanged()"
 							ng-required="required"
-							/>
+							close-text="{{'Calendar.Done'|translate}}"
+							clear-text="{{'Calendar.Clear'|translate}}"
+							current-text="{{'Calendar.Today'|translate}}"/>
                     <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
 					</button>
                 </span>

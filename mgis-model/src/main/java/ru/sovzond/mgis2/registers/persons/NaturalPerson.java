@@ -125,7 +125,7 @@ public class NaturalPerson extends Person {
 	 * ГРН и дата внесения в ЕГРИП записи
 	 */
 	@Column
-	private String egripInitialDate;
+	private Date egripInitialDate;
 
 	/**
 	 * Дата регистрации
@@ -284,11 +284,11 @@ public class NaturalPerson extends Person {
 		this.grn = grn;
 	}
 
-	public String getEgripInitialDate() {
+	public Date getEgripInitialDate() {
 		return egripInitialDate;
 	}
 
-	public void setEgripInitialDate(String egripInitialDate) {
+	public void setEgripInitialDate(Date egripInitialDate) {
 		this.egripInitialDate = egripInitialDate;
 	}
 
