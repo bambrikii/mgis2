@@ -39,7 +39,7 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				title: "@",
 				property: "=",
 				form: "=",
-				name: "=",
+				name: "@",
 				required: "=",
 				pattern: "="
 			},
@@ -62,7 +62,7 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				property: "=",
 				textChange: "&",
 				form: "=",
-				name: "=",
+				name: "@",
 				required: "=",
 				pattern: "="
 			},
@@ -84,12 +84,14 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				property: "=",
 				availableElements: "=",
 				form: "=",
-				name: "=",
-				required: "="
+				name: "@",
+				required: "=",
+				elementLabelExpression: "@"
 			},
 			templateUrl: "app2/commons/forms/drop-down.htm",
 			controller: function ($scope) {
 				$scope.property__flag = undefined;
+				$scope.options = ($scope.elementLabelExpression ? $scope.elementLabelExpression : "element.name") + " for element in availableElements";
 				$scope.$watch("property", function (value) {
 					$scope.property__flag = angular.equals({}, $scope.property) ? null : true;
 				});

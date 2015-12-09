@@ -6,7 +6,7 @@
 		<p class="input-group input-group-sm">
 			<multiselect
 					ng-model="property"
-					options="c.name for c in availableElements"
+					options="{{options}}"
 					data-multiple="false"
 					data-compare-by="id"
 					scroll-after-rows="15"

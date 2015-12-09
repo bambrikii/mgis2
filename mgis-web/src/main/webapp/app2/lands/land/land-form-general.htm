@@ -4,18 +4,17 @@
 	</div>
 	<div class="panel-body">
 		<!-- CadastralNumber -->
-		<commons-forms-text form="landForm" name="'cadastralNumber'" property="land.cadastralNumber" required="true"
+		<commons-forms-text form="landForm" name="cadastralNumber" property="land.cadastralNumber" required="true"
 							pattern="LAND_CADASTRAL_NUMBER" title="CadastralNumber"></commons-forms-text>
 
-		<commons-forms-drop-down form="landForm" name="'landCategory'" property="land.landCategory" required="true"
+		<commons-forms-drop-down form="landForm" name="landCategory" property="land.landCategory" required="true"
 								 title="Lands.LandCategory" available-elements="availableLandCategories"></commons-forms-drop-down>
 
-		<commons-forms-date form="landForm" name="'docDate'" property="land.stateRealEstateCadastreaStaging" required="true"
+		<commons-forms-date form="landForm" name="docDate" property="land.stateRealEstateCadastreaStaging" required="true"
 							title="Lands.Land.StateRealEstateCadastralStaging"></commons-forms-date>
 
 	</div>
 </div>
-
 
 <div class="panel panel-default" ng-controller="LandsLandAreaController">
 	<div class="panel-heading">
@@ -50,33 +49,30 @@
 		<h3 translate>Lands.Land.AllowedUsage</h3>
 	</div>
 	<div class="panel-body">
+		<commons-forms-drop-down form="landForm" name="allowedUsageByDictionary" property="land.allowedUsageByDictionary"
+								 title="Lands.Land.AllowedUsage.ByDictionary" available-elements="availableLandsAllowedUsage"
+								 element-label-expression="(element.name + (element.parent?' ('+element.parent.name+')' + (element.parent.parent?' ('+element.parent.parent.name+')':'') : ''))"
+				></commons-forms-drop-down>
+		<!--<div class="form-group row">-->
+			<!--<div class="col-sm-4">-->
+				<!--<label translate>Lands.Land.AllowedUsage.ByDictionary</label>-->
+			<!--</div>-->
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.AllowedUsage.ByDictionary</label>
-			</div>
-
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<multiselect
-							ms-header="{{'Select'|translate}}"
-							ng-model="land.allowedUsageByDictionary"
-							options="(c.name + (c.parent?' ('+c.parent.name+')' + (c.parent.parent?' ('+c.parent.parent.name+')':'') : '')) for c in availableLandsAllowedUsage"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
-				</p>
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.AllowedUsage.ByDocument</label>
-			</div>
-			<div class="col-sm-8">
-				<input type="text" class="form-control" name="allowedUsageByDocument" ng-model="land.allowedUsageByDocument"/>
-			</div>
-		</div>
+			<!--<div class="col-sm-8">-->
+				<!--<p class="input-group input-group-sm">-->
+					<!--<multiselect-->
+							<!--ms-header="{{'Select'|translate}}"-->
+							<!--ng-model="land.allowedUsageByDictionary"-->
+							<!--options="(c.name + (c.parent?' ('+c.parent.name+')' + (c.parent.parent?' ('+c.parent.parent.name+')':'') : '')) for c in availableLandsAllowedUsage"-->
+							<!--data-multiple="false"-->
+							<!--data-compare-by="id"-->
+							<!--scroll-after-rows="15">-->
+					<!--</multiselect>-->
+				<!--</p>-->
+			<!--</div>-->
+		<!--</div>-->
+		<commons-forms-text form="landForm" name="allowedUsageByDocument" property="land.allowedUsageByDocument"
+							title="Lands.Land.AllowedUsage.ByDocument"></commons-forms-text>
 		<div class="form-group row">
 			<div class="col-sm-4">
 				<label translate>TerritorialZones.Zone</label>
