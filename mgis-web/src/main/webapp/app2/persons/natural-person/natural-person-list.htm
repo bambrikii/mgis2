@@ -1,33 +1,34 @@
 <div ng-controller="NaturalPersonsController">
-    <h3 translate>Persons.Natural</h3>
+	<h3 translate>Persons.Natural</h3>
 
-    <div ng-if=" naturalPersonsPager.list.length">
-        <div class="row mgis-row-header">
-            <div class="col-sm-2" translate>NaturalPerson.Surname</div>
-            <div class="col-sm-2" translate>NaturalPerson.FirstName</div>
-            <div class="col-sm-2" translate>NaturalPerson.Patronymic</div>
-            <div class="col-sm-2" translate>NaturalPerson.Businessman</div>
-            <div class="col-sm-4">
-            </div>
-        </div>
+	<div ng-if="naturalPersonsPager.list.length">
+		<div class="row mgis-row-header">
+			<div class="col-sm-2" translate>NaturalPerson.Surname</div>
+			<div class="col-sm-2" translate>NaturalPerson.FirstName</div>
+			<div class="col-sm-2" translate>NaturalPerson.Patronymic</div>
+			<div class="col-sm-2" translate>IndividualEntrepreneur</div>
+			<div class="col-sm-4">
+			</div>
+		</div>
 
-        <div ng-repeat="item in naturalPersonsPager.list" class="row" style="padding-bottom: 7px;">
-            <div class="col-sm-2">{{item.surname}}</div>
-            <div class="col-sm-2">{{item.firstName}}</div>
-            <div class="col-sm-2">{{item.patronymic}}</div>
-            <div class="col-sm-2">{{item.businessman}}</div>
-            <div class="col-sm-4">
-                <button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
-                <button class="btn btn-danger btn-sm" ng-click="removeItem(item.id)" translate>Delete</button>
-            </div>
-        </div>
+		<div ng-repeat="item in naturalPersonsPager.list" class="row" style="padding-bottom: 7px;">
+			<div class="col-sm-2">{{item.surname}}</div>
+			<div class="col-sm-2">{{item.firstName}}</div>
+			<div class="col-sm-2">{{item.patronymic}}</div>
+			<div class="col-sm-2" translate>{{item.individualEntrepreneur}}</div>
+			<div class="col-sm-4">
+				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
+				<button class="btn btn-danger btn-sm" ng-click="removeItem(item.id)" translate>Delete</button>
+			</div>
+		</div>
 
-        <pagination total-items="naturalPersonsPager.totalNumberOfItems" ng-model="currentPage"
-                    items-per-page="itemsPerPage" ng-change="pageChanged()"
-                    class="pagination-sm" previous-text="&lsaquo;"
-                    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+		<pagination total-items="naturalPersonsPager.totalNumberOfItems" ng-model="currentPage"
+					items-per-page="itemsPerPage" ng-change="pageChanged()"
+					class="pagination-sm" previous-text="&lsaquo;"
+					next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
 
-        <div>
-            <button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
-        </div>
-    </div>
+	</div>
+	<div>
+		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
+	</div>
+</div>

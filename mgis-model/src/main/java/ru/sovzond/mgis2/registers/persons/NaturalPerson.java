@@ -94,10 +94,14 @@ public class NaturalPerson extends Person {
 	@Column
 	private String passportIssuerDepartment;
 
-	// ПБОЮЛ
+	/**
+	 * Индивидуальный предприниматель
+	 */
+	@Column(columnDefinition = "boolean default false")
+	private boolean individualEntrepreneur;
 
 	/**
-	 * Регистрационный номер
+	 * Регистрационный номер ИП
 	 */
 	@Column
 	private String individualEntrepreneurRegNum;
@@ -252,6 +256,14 @@ public class NaturalPerson extends Person {
 		this.passportIssuerDepartment = passportIssuerDepartment;
 	}
 
+	public boolean isIndividualEntrepreneur() {
+		return individualEntrepreneur;
+	}
+
+	public void setIndividualEntrepreneur(boolean individualEntrepreneur) {
+		this.individualEntrepreneur = individualEntrepreneur;
+	}
+
 	public String getIndividualEntrepreneurRegNum() {
 		return individualEntrepreneurRegNum;
 	}
@@ -322,6 +334,7 @@ public class NaturalPerson extends Person {
 		np.setEgripInitialDate(egripInitialDate);
 		np.setEmail(email);
 		np.setGrn(grn);
+		np.setIndividualEntrepreneur(individualEntrepreneur);
 		np.setIndividualEntrepreneurRegNum(individualEntrepreneurRegNum);
 		np.setInn(inn);
 		np.setIssueDate(issueDate);
@@ -337,4 +350,5 @@ public class NaturalPerson extends Person {
 		np.setSnils(snils);
 		return np;
 	}
+
 }

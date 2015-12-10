@@ -32,26 +32,17 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 			templateUrl: "app2/commons/forms/field.htm"
 		}
 	})
-	.directive("commonsFormsDate", function () {
+	.directive("commonsFormsCheck", function () {
 		return {
 			restrict: "E",
+			transclude: true,
 			scope: {
 				title: "@",
 				property: "=",
 				form: "=",
-				name: "@",
-				required: "=",
-				pattern: "="
+				name: "@"
 			},
-			templateUrl: "app2/commons/forms/date.htm",
-			controller: function ($scope) {
-				$scope.item = {
-					value: $scope.property
-				}
-				$scope.dateChanged = function () {
-					$scope.property = $scope.item.value;
-				}
-			}
+			templateUrl: "app2/commons/forms/check.htm"
 		}
 	})
 	.directive("commonsFormsText", function () {
@@ -72,6 +63,28 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 					if ($scope.textChange) {
 						$scope.textChange({event: event});
 					}
+				}
+			}
+		}
+	})
+	.directive("commonsFormsDate", function () {
+		return {
+			restrict: "E",
+			scope: {
+				title: "@",
+				property: "=",
+				form: "=",
+				name: "@",
+				required: "=",
+				pattern: "="
+			},
+			templateUrl: "app2/commons/forms/date.htm",
+			controller: function ($scope) {
+				$scope.item = {
+					value: $scope.property
+				}
+				$scope.dateChanged = function () {
+					$scope.property = $scope.item.value;
 				}
 			}
 		}
@@ -157,17 +170,6 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				property: "="
 			},
 			templateUrl: "app2/commons/forms/choose-many.htm"
-		}
-	})
-	.directive("commonsFormsCheck", function () {
-		return {
-			restrict: "E",
-			transclude: true,
-			scope: {
-				title: "@",
-				property: "="
-			},
-			templateUrl: "app2/commons/forms/check.htm"
 		}
 	})
 ;
