@@ -3,6 +3,10 @@
 		<label translate>{{title}}</label>
 	</div>
 	<div class="col-sm-8">
-		<input type="checkbox" name="{{name}}" class="form-control" ng-model="property"/>
+		<!--<input type="checkbox" name="{{name}}" class="form-control" ng-model="property"/>-->
+		<button type="button" ng-class="property?'btn btn-sm btn-info':'btn btn-sm btn-info'" ng-model="property" btn-checkbox
+				btn-checkbox-true="true" btn-checkbox-false="">
+			<span translate>{{property?'true':'false'}}</span>
+		</button>
 	</div>
 </div>
