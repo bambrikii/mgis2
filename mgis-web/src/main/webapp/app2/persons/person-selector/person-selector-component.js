@@ -11,7 +11,7 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 			restrict: "E",
 			scope: {
 				person: "=",
-				selectClicked: "&",
+				selectClicked: "&"
 			},
 			templateUrl: "app2/persons/person-selector/person-selector-component.htm",
 			controller: function ($scope, NATURAL_PERSON_TYPE, LEGAL_PERSON_TYPE) {
@@ -22,7 +22,8 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 				}
 				$scope.openSelector = function (person, personType) {
 					var modalScope = $rootScope.$new();
-					modalScope.person = angular.extend({}, person);
+					modalScope.person = {};
+					angular.copy(person, modalScope.person);
 					modalScope.personType = personType;
 					modalScope.naturalPersonTabActive = !personType || personType == NATURAL_PERSON_TYPE;
 					modalScope.legalPersonTabActive = personType == LEGAL_PERSON_TYPE;
