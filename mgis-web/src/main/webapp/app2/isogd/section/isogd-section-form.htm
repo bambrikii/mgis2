@@ -6,46 +6,21 @@
 <div class="modal-body">
 
 	<form name="sectionForm" ng-submit="saveSection()" novalidate>
+
 		<!-- NAME -->
-		<div class="form-group row" ng-class="{ 'has-error' : sectionForm.name.$invalid && !sectionForm.name.$pristine }">
-			<div class="col-sm-4">
-				<label translate>Name</label>
-			</div>
+		<commons-forms-text form="sectionForm" name="name" property="section.name" required="true" title="Name"
+							validation-message="ISOGD.NameRequired"></commons-forms-text>
 
-			<div class="col-sm-8" class="form-group">
-				<input type="text" class="form-control" ng-model="section.name" required>
-
-				<p ng-show="sectionForm.name.$invalid && !sectionForm.name.$pristine" class="help-block" translate>ISOGD.NameRequired</p>
-			</div>
-		</div>
 		<!-- DOCUMENT_CLASS -->
-		<div class="form-group row" ng-class="{ 'has-error' : sectionForm.documentClass2.$invalid }">
-			<div class="col-sm-4">
-				<label translate>ISOGD.Classifiers.Documents.Class.Name</label>
-			</div>
-			<div class="col-sm-8" class="form-group">
-				<multiselect
-						ng-model="section.documentClass"
-						options="c.name for c in availableDocumentClasses"
-						data-multiple="false"
-						data-compare-by="id"
-						scroll-after-rows="15">
-				</multiselect>
-				<input type="hidden" ng-model="section.documentClass.id" name="documentClass2" required/>
+		<commons-forms-drop-down form="sectionForm" name="documentClass" property="section.documentClass"
+								 available-elements="availableDocumentClasses"
+								 title="ISOGD.Classifiers.Documents.Class.Name"
+								 validation-message="ISOGD.Classifiers.Documents.Class.Required" required="true"></commons-forms-drop-down>
 
-				<p ng-show="!section.documentClass.id" class="help-block" translate>
-					ISOGD.Classifiers.Documents.Class.Required</p>
-			</div>
-		</div>
-		<!-- Order -->
-		<div class="form-group row" ng-class="{ 'has-error' : sectionForm.documentClass2.$invalid }">
-			<div class="col-sm-4">
-				<label translate>Order</label>
-			</div>
-			<div class="col-sm-8" class="form-group">
-				<input type="text" class="form-control" ng-model="section.sortOrder"/>
-			</div>
-		</div>
+		<!-- ORDER -->
+		<commons-forms-text form="sectionForm" name="sortOrder" property="section.sortOrder" required="true" title="Order"
+							validation-message="ISOGD.SortOrderRequired"></commons-forms-text>
+
 	</form>
 </div>
 <div class="modal-footer">
