@@ -60,8 +60,7 @@ angular.module("mgis.isogd.books.service", ["ui.router", "ngResource",
 					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
-			}
-			,
+			},
 			swapOrders: function (sourceId, targetId) {
 				var deferred = $q.defer();
 				swapRes.save({}, {

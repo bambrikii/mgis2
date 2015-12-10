@@ -3,8 +3,8 @@ package ru.sovzond.mgis2.isogd;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 import ru.sovzond.mgis2.dataaccess.base.impl.CRUDDaoBase;
+import ru.sovzond.mgis2.dataaccess.base.impl.PagerBuilderCriteria;
 
 @Repository
 public class VolumeDao extends CRUDDaoBase<Volume> {
@@ -15,15 +15,15 @@ public class VolumeDao extends CRUDDaoBase<Volume> {
 		return (Volume) filter(Restrictions.eq(ID2, id)).uniqueResult();
 	}
 
-	public VolumeBaseBuilder createFilter(Book book, int first, int max) {
-		return new VolumeBaseBuilder(book, first, max);
+	public VolumeBaseBuilder createFilter(Book book, String sortOrder, int first, int max) {
+		return new VolumeBaseBuilder(book, sortOrder, first, max);
 	}
 
 	class VolumeBaseBuilder extends PagerBuilderCriteria<Volume> {
 		private Book book;
 
-		private VolumeBaseBuilder(Book book, int first, int max) {
-			super(first, max);
+		private VolumeBaseBuilder(Book book, String sortOrder, int first, int max) {
+			super(sortOrder, first, max);
 			this.book = book;
 		}
 

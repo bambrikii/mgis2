@@ -76,17 +76,7 @@ public class BookRESTController implements Serializable {
 	@RequestMapping(value = "/swap-orders", method = RequestMethod.POST)
 	@Transactional
 	public void swapOrders(@RequestBody SwapIdPair pair) {
-		Long sourceId = pair.getSourceId();
-		Long targetId = pair.getTargetId();
-		Book source = bookBean.load(sourceId);
-		Book target = bookBean.load(targetId);
-		Long sourceOrder = (source.getSortOrder() == null || source.getSortOrder() == 0) ? sourceId : source.getSortOrder();
-		Long targetOrder = (target.getSortOrder() == null || target.getSortOrder() == 0) ? targetId : target.getSortOrder();
-
-		source.setSortOrder(targetOrder);
-		target.setSortOrder(sourceOrder);
-		bookBean.save(source);
-		bookBean.save(target);
+		SwapManager.byOrder(pair, bookBean);
 	}
 
 }

@@ -1,5 +1,6 @@
 package ru.sovzond.mgis2.isogd;
 
+import ru.sovzond.mgis2.Sortable;
 import ru.sovzond.mgis2.isogd.document.Document;
 
 import javax.persistence.*;
@@ -11,8 +12,8 @@ import java.util.stream.Collectors;
  * @author Alexander Arakelyan
  */
 @Entity
-@Table(name = "isogd_volume")
-public class Volume implements Cloneable {
+@Table(name = "isogd_volume", indexes = {@Index(name = "isogd_volume_sortorder_ix", columnList = "book_id, sort_order")})
+public class Volume implements Cloneable, Sortable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)
@@ -24,7 +25,11 @@ public class Volume implements Cloneable {
 	private String name;
 
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "book_id")
 	private Book book;
+
+	@Column(name = "sort_order")
+	private Long sortOrder;
 
 	@OneToMany(mappedBy = "volume", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
 	private List<Document> documents = new ArrayList<Document>();
@@ -53,6 +58,14 @@ public class Volume implements Cloneable {
 		this.book = book;
 	}
 
+	public Long getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(Long sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+
 	public List<Document> getDocuments() {
 		return documents;
 	}
@@ -66,6 +79,7 @@ public class Volume implements Cloneable {
 		volume.setId(id);
 		volume.setName(name);
 		volume.setBook(book.clone());
+		volume.setSortOrder(sortOrder);
 		volume.setDocuments(documents.stream().map(document -> {
 			Document document2 = new Document();
 			document2.setId(document.getId());
@@ -76,4 +90,5 @@ public class Volume implements Cloneable {
 		}).collect(Collectors.toList()));
 		return volume;
 	}
+
 }

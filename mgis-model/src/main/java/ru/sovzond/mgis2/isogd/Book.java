@@ -1,5 +1,6 @@
 package ru.sovzond.mgis2.isogd;
 
+import ru.sovzond.mgis2.Sortable;
 import ru.sovzond.mgis2.isogd.classifiers.documents.DocumentObject;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
  */
 @Entity
 @Table(name = "isogd_book", indexes = {@Index(name = "isogd_book_sortorder_ix", columnList = "section_id, sort_order")})
-public class Book implements Cloneable {
+public class Book implements Cloneable, Sortable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "isogd_entity_seq", allocationSize = 1)

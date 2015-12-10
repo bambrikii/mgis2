@@ -58,6 +58,13 @@ angular.module("mgis.isogd.volumes", ["ui.router", "ui.bootstrap",//
 							});
 						});
 					}
+					$scope.onVolumeDropComplete = function ($data, $event, book) {
+						var source = $data;
+						var target = book;
+						ISOGDVolumesService.swapOrders(source.id, target.id).then(function () {
+							updateGrid();
+						});
+					}
 				}
 			})//
 			.state("isogd.volumes.edit", {

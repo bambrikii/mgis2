@@ -8,11 +8,14 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<form name="volumeForm" ng-submit="saveVolume()" novalidate>
+
 					<!-- NAME -->
-					<div class="form-group" ng-class="{ 'has-error' : volumeForm.name.$invalid && !volumeForm.name.$pristine }">
-						<label translate>ISOGD.Name</label> <input type="text" name="name" class="form-control" ng-model="volume.name" required>
-						<p ng-show="volumeForm.name.$invalid && !volumeForm.name.$pristine" class="help-block" translate>ISOGD.NameRequired</p>
-					</div>
+					<commons-forms-text form="volumeForm" name="name" property="volume.name" title="ISOGD.Name"
+										validation-message="ISOGD.NameRequired" required="true"></commons-forms-text>
+
+					<commons-forms-text form="volumeForm" name="sortOrder" property="volume.sortOrder" title="SortOrder" required="true"
+										pattern="NUMBER_PATTERN"></commons-forms-text>
+
 				</form>
 			</div>
 		</div>

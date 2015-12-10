@@ -1,17 +1,18 @@
 <breadcrumb sectionId="{{stateParams.sectionId}}" bookId="{{stateParams.bookId}}"></breadcrumb>
 
-<div ng-repeat="volume in volumes">
-	<div class="col-sm-12" style="padding: 5px;">
+<div ng-repeat="volume in volumes" class="row mgis-grid-row">
+	<div class="col-sm-8" ng-drag="true" ng-drop="true" ng-drag-data="volume"
+		 ng-drop-success="onVolumeDropComplete($data,$event, volume)">
 		<a ui-sref="isogd.structure.documents({
 										sectionId:stateParams.sectionId,
 										bookId:stateParams.bookId,
 										volumeId:volume.id
 	})">{{volume.name}}</a>
 
-		<div style="float: right;">
-			<button class="btn btn-info btn-sm" ng-click="editVolume(volume.id)" translate>ISOGD.EditTheVolume</button>
-			<button class="btn btn-danger btn-sm" ng-click="removeVolume(volume.id)" translate>ISOGD.RemoveTheVolume</button>
-		</div>
+	</div>
+	<div class="col-sm-4">
+		<button class="btn btn-info btn-sm" ng-click="editVolume(volume.id)" translate>ISOGD.EditTheVolume</button>
+		<button class="btn btn-danger btn-sm" ng-click="removeVolume(volume.id)" translate>ISOGD.RemoveTheVolume</button>
 	</div>
 </div>
 <div style="float: left;">

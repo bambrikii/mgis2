@@ -1,5 +1,6 @@
 package ru.sovzond.mgis2.web.isogd;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +31,9 @@ public class VolumeRESTController implements Serializable {
 
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
-	public PageableContainer<Volume> list(@RequestParam("bookId") Long bookId, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+	public PageableContainer<Volume> list(@RequestParam("bookId") Long bookId, @RequestParam(defaultValue = "sortOrder") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
 		Book book = bookBean.load(bookId);
-		return volumeBean.pageVolumes(book, first, max);
+		return volumeBean.list(book, orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -45,7 +46,7 @@ public class VolumeRESTController implements Serializable {
 		} else {
 			volume2 = volumeBean.readVolume(id);
 		}
-		volume2.setName(volume.getName());
+		BeanUtils.copyProperties(volume, volume2, new String[]{"id", "book", "documents"});
 		volumeBean.save(volume2);
 		return volume2.clone();
 	}
@@ -59,7 +60,13 @@ public class VolumeRESTController implements Serializable {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	@Transactional
 	public void delete(@PathVariable Long id) {
-		volumeBean.delete(volumeBean.readVolume(id));
+		volumeBean.remove(volumeBean.readVolume(id));
+	}
+
+	@RequestMapping(value = "/swap-orders", method = RequestMethod.POST)
+	@Transactional
+	public void swapOrders(@RequestBody SwapIdPair pair) {
+		SwapManager.byOrder(pair, volumeBean);
 	}
 
 }

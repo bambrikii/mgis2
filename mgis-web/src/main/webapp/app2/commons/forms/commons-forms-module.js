@@ -1,6 +1,9 @@
 angular.module("mgis.commons.forms", ["ui.bootstrap",
 	"mgis.commons"
 ])
+	.constant("NUMBER_PATTERN", /^\d+$/)
+	.constant("INTEGER_PATTERN", /^[+-]?\d+?$/)
+	.constant("FLOAT_PATTERN", /^[+-]\d+(\.\d+)?$/)
 	.directive("commonsFormsForm", function () {
 		return {
 			restrict: "E",
