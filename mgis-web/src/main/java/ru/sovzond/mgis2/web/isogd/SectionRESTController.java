@@ -64,7 +64,7 @@ public class SectionRESTController implements Serializable {
 
 	@RequestMapping(value = "/swap-orders", method = RequestMethod.POST)
 	@Transactional
-	public void swapOrders(@RequestBody IdPair pair) {
+	public void swapOrders(@RequestBody SwapIdPair pair) {
 		Long sourceId = pair.getSourceId();
 		Long targetId = pair.getTargetId();
 		Section source = isogdBean.load(sourceId);
@@ -78,27 +78,4 @@ public class SectionRESTController implements Serializable {
 		isogdBean.save(target);
 	}
 
-	/**
-	 * Created by Alexander Arakelyan on 06.10.15.
-	 */
-	public static class IdPair {
-		private Long sourceId;
-		private Long targetId;
-
-		public void setSourceId(Long sourceId) {
-			this.sourceId = sourceId;
-		}
-
-		public Long getSourceId() {
-			return sourceId;
-		}
-
-		public void setTargetId(Long targetId) {
-			this.targetId = targetId;
-		}
-
-		public Long getTargetId() {
-			return targetId;
-		}
-	}
 }

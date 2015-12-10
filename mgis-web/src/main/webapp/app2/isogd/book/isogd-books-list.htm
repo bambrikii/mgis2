@@ -1,17 +1,18 @@
 <breadcrumb sectionId="{{stateParams.sectionId}}"></breadcrumb>
 
-<div ng-repeat="book in books">
-    <div class="col-sm-12" style="padding: 5px;">
-        <a ui-sref="isogd.structure.volumes({sectionId: stateParams.sectionId, bookId:book.id})">{{book.name}}</a>
+<div ng-repeat="book in books" class="row mgis-grid-row">
+	<div class="col-sm-8" ng-drag="true" ng-drop="true" ng-drag-data="book"
+		 ng-drop-success="onBookDropComplete($data,$event, book)">
+		<a ui-sref="isogd.structure.volumes({sectionId: stateParams.sectionId, bookId:book.id})">{{book.name}}</a>
 
-        <div style="float: right">
-            <button class="btn btn-info btn-sm" ng-click="editBook(book.id)" translate>ISOGD.EditTheBook</button>
-            <button class="btn btn-danger btn-sm" ng-click="removeBook(book.id)" translate>ISOGD.RemoveTheBook</button>
-        </div>
-    </div>
+	</div>
+	<div class="col-sm-4" style="float: right">
+		<button class="btn btn-info btn-sm" ng-click="editBook(book.id)" translate>ISOGD.EditTheBook</button>
+		<button class="btn btn-danger btn-sm" ng-click="removeBook(book.id)" translate>ISOGD.RemoveTheBook</button>
+	</div>
 </div>
 <div style="float: left;">
-    <button class="btn btn-info btn-sm" ng-click="addBook(stateParams.sectionId)" translate>ISOGD.AddABook</button>
+	<button class="btn btn-info btn-sm" ng-click="addBook(stateParams.sectionId)" translate>ISOGD.AddABook</button>
 </div>
 
 <div ui-view></div>

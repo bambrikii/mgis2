@@ -9,6 +9,7 @@ angular.module("mgis.isogd.books", ["ui.router", "ui.bootstrap", //
 				templateUrl: "app2/isogd/book/isogd-books-list.htm",
 				controller: function ($scope, $state, $stateParams, ISOGDBooksService, $modal, MGISCommonsModalForm, $rootScope) {
 					$scope.stateParams = $stateParams;
+					var NUMBER_PATTERN = /^\d+$/
 
 					function updateGrid() {
 						return ISOGDBooksService.get("", 0, 15, $stateParams.sectionId).then(function (data) {
@@ -31,6 +32,7 @@ angular.module("mgis.isogd.books", ["ui.router", "ui.bootstrap", //
 					$scope.addBook = function (sectionId) {
 						ISOGDBooksService.listDocumentObjectsBySectionId(sectionId).then(function (documentObjects) {
 							var modalScope = $rootScope.$new();
+							modalScope.NUMBER_PATTERN = NUMBER_PATTERN;
 							modalScope.book = {
 								id: 0,
 								name: "",
@@ -47,6 +49,7 @@ angular.module("mgis.isogd.books", ["ui.router", "ui.bootstrap", //
 						ISOGDBooksService.get(id).then(function (book) {
 							ISOGDBooksService.listDocumentObjectsBySectionId(book.section.id).then(function (documentObjects) {
 								var modalScope = $rootScope.$new();
+								modalScope.NUMBER_PATTERN = NUMBER_PATTERN;
 								modalScope.book = book;
 								modalScope.availableDocumentObjects = documentObjects.list;
 								openEditBookForm(modalScope);
@@ -62,6 +65,14 @@ angular.module("mgis.isogd.books", ["ui.router", "ui.bootstrap", //
 								})
 							}
 						);
+					}
+
+					$scope.onBookDropComplete = function ($data, $event, book) {
+						var source = $data;
+						var target = book;
+						ISOGDBooksService.swapOrders(source.id, target.id).then(function () {
+							updateGrid();
+						});
 					}
 				}
 			})

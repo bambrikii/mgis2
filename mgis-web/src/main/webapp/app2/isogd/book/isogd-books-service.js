@@ -4,6 +4,7 @@ angular.module("mgis.isogd.books.service", ["ui.router", "ngResource",
 	.factory("ISOGDBooksService", function ($resource, $q, MGISErrorService) {
 
 		var res = $resource("rest/isogd/books/:id.json");
+		var swapRes = $resource('rest/isogd/books/swap-orders.json');
 		return {
 			get: function (id, first, max, sectionId) {
 				var deferred = $q.defer();
@@ -53,6 +54,19 @@ angular.module("mgis.isogd.books.service", ["ui.router", "ngResource",
 				var res = $resource("rest/isogd/books/listDocumentObjectsBySectionId/:sectionId.json");
 				res.get({
 					sectionId: sectionId
+				}, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+				return deferred.promise;
+			}
+			,
+			swapOrders: function (sourceId, targetId) {
+				var deferred = $q.defer();
+				swapRes.save({}, {
+					sourceId: sourceId,
+					targetId: targetId
 				}, function (data) {
 					deferred.resolve(data);
 				}, function (error) {

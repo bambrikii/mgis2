@@ -31,7 +31,7 @@ public class VolumeRESTController implements Serializable {
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
 	@Transactional
 	public PageableContainer<Volume> list(@RequestParam("bookId") Long bookId, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		Book book = bookBean.readBook(bookId);
+		Book book = bookBean.load(bookId);
 		return volumeBean.pageVolumes(book, first, max);
 	}
 
@@ -41,7 +41,7 @@ public class VolumeRESTController implements Serializable {
 		Volume volume2;
 		if (id == 0) {
 			volume2 = new Volume();
-			volume2.setBook(bookBean.readBook(volume.getBook().getId()));
+			volume2.setBook(bookBean.load(volume.getBook().getId()));
 		} else {
 			volume2 = volumeBean.readVolume(id);
 		}
