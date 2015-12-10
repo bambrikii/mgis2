@@ -5,34 +5,18 @@
 	<div class="panel-body">
 
 		<div class="form-group row"
-			 ng-class="{'has-error': naturalPersonForm.name.$invalid && (!naturalPersonForm.name.$pristine || naturalPersonForm.name.$touched)}">
+			 ng-class="{'has-error': naturalPersonForm.surname.$invalid && (!naturalPersonForm.surname.$pristine || naturalPersonForm.surname.$touched)}">
 			<div class="col-sm-4">
-				<label translate>NaturalPerson.Name</label>
+				<label translate>NaturalPerson.Surname</label>
 			</div>
 
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="name" ng-model="item.name"
-					   value="{item.firstName + ' ' + item.surName + item.patronymic?(' ' + item.patronymic):''}" required/>
+				<input type="text" class="form-control" name="surname" ng-model="item.surname" required/>
 
-				<p ng-show="naturalPersonForm.name.$invalid && (!naturalPersonForm.name.$pristine || naturalPersonForm.name.$touched)"
-				   class="help-block" translate>
-					NaturalPerson.Name</p>
+				<p ng-show="naturalPersonForm.surname.$invalid && (!naturalPersonForm.surname.$pristine || naturalPersonForm.surname.$touched)"
+				   class="help-block" translate>NaturalPerson.Surname</p>
 			</div>
 		</div>
-
-        <div class="form-group row"
-             ng-class="{'has-error': naturalPersonForm.surname.$invalid && (!naturalPersonForm.surname.$pristine || naturalPersonForm.surname.$touched)}">
-            <div class="col-sm-4">
-                <label translate>NaturalPerson.Surname</label>
-            </div>
-
-            <div class="col-sm-8">
-                <input type="text" class="form-control" name="surname" ng-model="item.surname" required/>
-
-                <p ng-show="naturalPersonForm.surname.$invalid && (!naturalPersonForm.surname.$pristine || naturalPersonForm.surname.$touched)"
-                   class="help-block" translate>NaturalPerson.Surname</p>
-            </div>
-        </div>
 
 		<div class="form-group row"
 			 ng-class="{'has-error': naturalPersonForm.firstName.$invalid && (!naturalPersonForm.firstName.$pristine || naturalPersonForm.firstName.$touched)}">

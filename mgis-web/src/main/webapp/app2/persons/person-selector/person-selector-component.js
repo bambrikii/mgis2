@@ -20,6 +20,9 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 				} else {
 					$scope.personType = "";
 				}
+				$scope.formatPersonName = function (person) {
+					return person ? (person.name ? person.name : (person.surname + ' ' + person.firstName + ' ' + person.patronymic)) : "?";
+				}
 				$scope.openSelector = function (person, personType) {
 					var modalScope = $rootScope.$new();
 					modalScope.person = {};

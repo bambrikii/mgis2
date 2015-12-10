@@ -16,8 +16,7 @@
 		</div>
 		<div>
 			<div ng-repeat="listItem in list" class="row" style="padding-bottom: 7px;">
-				<div class="col-sm-1">{{listItem.id}}</div>
-				<div class="col-sm-4">{{listItem.name}}</div>
+				<div class="col-sm-5">{{listItem.name}}</div>
 				<div class="col-sm-7">
 					<button class="btn btn-sm btn-primary" ng-click="select(listItem.id)" translate>Select</button>
 					<button class="btn btn-sm btn-info" ng-click="edit(listItem.id)" translate>Edit</button>

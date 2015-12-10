@@ -13,9 +13,6 @@ public class Person implements Cloneable {
 	@Column
 	private Long id;
 
-	@Column
-	private String name;
-
 	public Long getId() {
 		return id;
 	}
@@ -24,18 +21,9 @@ public class Person implements Cloneable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Person clone() {
 		Person person = new Person();
 		person.setId(id);
-		person.setName(name);
 		return person;
 	}
 }

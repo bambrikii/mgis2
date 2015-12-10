@@ -85,7 +85,7 @@ angular.module("mgis.persons.person.natural", ["ui.router", "ui.bootstrap", //
 		$scope.select = function (id) {
 			NaturalPersonService.get(id).then(function (item) {
 				if ($scope.selectClicked) {
-					$scope.selectClicked({id: id, name: item.name});
+					$scope.selectClicked({id: id, name: item.surname + " " + item.firstName + " " + item.patronymic});
 				}
 			});
 		}

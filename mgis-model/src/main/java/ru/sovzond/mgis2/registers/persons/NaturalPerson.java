@@ -101,6 +101,11 @@ public class NaturalPerson extends Person {
 	private boolean individualEntrepreneur;
 
 	/**
+	 * Наименование ИП
+	 */
+	private String individualEntrepreneurName;
+
+	/**
 	 * Регистрационный номер ИП
 	 */
 	@Column
@@ -264,6 +269,14 @@ public class NaturalPerson extends Person {
 		this.individualEntrepreneur = individualEntrepreneur;
 	}
 
+	public String getIndividualEntrepreneurName() {
+		return individualEntrepreneurName;
+	}
+
+	public void setIndividualEntrepreneurName(String individualEntrepreneurName) {
+		this.individualEntrepreneurName = individualEntrepreneurName;
+	}
+
 	public String getIndividualEntrepreneurRegNum() {
 		return individualEntrepreneurRegNum;
 	}
@@ -324,7 +337,6 @@ public class NaturalPerson extends Person {
 	public NaturalPerson clone() {
 		NaturalPerson np = new NaturalPerson();
 		np.setId(getId());
-		np.setName(getName());
 		np.setFirstName(firstName);
 		np.setSurname(surname);
 		np.setPatronymic(patronymic);
@@ -335,6 +347,7 @@ public class NaturalPerson extends Person {
 		np.setEmail(email);
 		np.setGrn(grn);
 		np.setIndividualEntrepreneur(individualEntrepreneur);
+		np.setIndividualEntrepreneurName(individualEntrepreneurName);
 		np.setIndividualEntrepreneurRegNum(individualEntrepreneurRegNum);
 		np.setInn(inn);
 		np.setIssueDate(issueDate);

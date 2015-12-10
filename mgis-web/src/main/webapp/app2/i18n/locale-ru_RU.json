@@ -249,7 +249,7 @@
   "LegalPerson": "Юр. лицо",
   "LegalPerson.Name": "Наименование организации",
   "NaturalPerson": "Физ. лицо",
-  "NaturalPerson.Name": "Полное имя",
+  "NaturalPerson.IndividualEntrepreneur.Name": "Наименование",
   "NaturalPerson.FirstName": "Имя",
   "NaturalPerson.Surname": "Фамилия",
   "NaturalPerson.Patronymic": "Отчество",

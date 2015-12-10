@@ -1,7 +1,7 @@
-<span ng-if="!multiple && person.id">{{person.name}} (<span translate>{{personType}}</span>)</span>
+<span ng-if="!multiple && person.id">{{formatPersonName(person)}} (<span translate>{{personType}}</span>)</span>
 <div ng-if="multiple && persons">
 	<ul class="list-group">
-		<li ng-repeat="item in persons" class="list-group-item">{{item.name}}</li>
+		<li ng-repeat="item in persons" class="list-group-item">{{formatPersonName(item)}}</li>
 	</ul>
 </div>
 <button ng-click="openSelector()" class="btn btn-info btn-sm" translate>Select</button>

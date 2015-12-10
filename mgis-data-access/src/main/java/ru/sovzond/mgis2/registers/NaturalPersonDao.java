@@ -29,7 +29,7 @@ public class NaturalPersonDao extends CRUDDaoBase<NaturalPerson> {
 		@Override
 		protected void applyFilter(Criteria criteria) {
 			if (name != null && !"".equals(name)) {
-				criteria.add(Restrictions.or(Restrictions.like("name", "%" + name + "%"), Restrictions.like("firstName", "%" + name + "%"), Restrictions.like("surname", "%" + name + "%"), Restrictions.like("patronymic", "%" + name + "%")));
+				criteria.add(Restrictions.or(Restrictions.like("firstName", "%" + name + "%"), Restrictions.like("surname", "%" + name + "%"), Restrictions.like("patronymic", "%" + name + "%")));
 			}
 		}
 	}

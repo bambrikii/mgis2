@@ -16,6 +16,9 @@ import java.util.stream.Collectors;
 @Table(name = "mgis2_legal_person")
 public class LegalPerson extends Person {
 
+	@Column
+	private String name;
+
 	/**
 	 * Сокращенное наименование юридического лица
 	 */
@@ -218,6 +221,14 @@ public class LegalPerson extends Person {
 	 */
 	@Column
 	private String directorEmail;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getShortName() {
 		return shortName;
@@ -498,7 +509,7 @@ public class LegalPerson extends Person {
 			if (p instanceof LegalPerson) {
 				LegalPerson lp = new LegalPerson();
 				lp.setId(p.getId());
-				lp.setName(p.getName());
+				lp.setName(((LegalPerson) p).getName());
 				return lp;
 			}
 			return p.clone();
