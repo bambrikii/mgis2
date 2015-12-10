@@ -206,6 +206,8 @@
   "Lands.Land.LandControl.TilmelineForViolations": "Срок устранения нарушений",
   "Lands.Land.LandControl.PenaltyAmount": "Размер штрафа",
   "Lands.Land.LandControl.InspectionResultDocuments": "Оформленные нарушения",
+  "Lands.Land.Areas.SquareMeters": "Площади, кв.м.",
+  "Lands.Land.Area.SquareMeters": "Площадь, кв.м.",
   "Lands.Land.Area.Type": "Тип земельного участка",
   "Lands.Land.Area.Type.Required": "Выберите 'Тип земельного участка' ",
   "Lands.Land.TownPlanningRegulations": "Градостроительный регламент",

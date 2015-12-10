@@ -221,19 +221,27 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 
 		function editItem(area, addFlag) {
 			var modalScope = $rootScope.$new();
+			modalScope.NUMBER_FORMAT = /^\d+([\.\,]\d+)?$/
 			modalScope.area = {id: area.id, value: area.value, landAreaType: area.landAreaType};
 			LandsLandAreaTypeService.get("", 0, 0).then(function (data) {
 				modalScope.availableLandAreaTypes = data.list;
 				MGISCommonsModalForm.edit('app2/lands/land/land-area-form.htm', modalScope, function ($scope, $modalInstance) {
-					var area2 = $scope.area;
-					if (addFlag) {
-						areas.push(area2);
-					} else {
-						area.value = area2.value;
-						area.landAreaType = area2.landAreaType;
-					}
-					$modalInstance.close();
-				});
+						var area2 = $scope.area;
+
+						function normalizeNumber(value) {
+							return value ? value.replace(/\,/, ".") : value;
+						}
+
+						if (addFlag) {
+							area2.value = normalizeNumber(area2.value);
+							areas.push(area2);
+						} else {
+							area.value = normalizeNumber(area2.value);
+							area.landAreaType = area2.landAreaType;
+						}
+						$modalInstance.close();
+					},
+					{windowClass: "mgis-land-area-modal-form"});
 			});
 		}
 

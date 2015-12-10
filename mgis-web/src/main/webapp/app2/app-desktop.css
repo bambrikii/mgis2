@@ -13,6 +13,10 @@
 		width: 995px;
 	}
 
+	.mgis-land-area-modal-form .modal-dialog {
+		width: 795px;
+	}
+
 	/* TerrZones */
 	.mgis-terr-zones-modal-form .modal-dialog {
 		width: 995px;
