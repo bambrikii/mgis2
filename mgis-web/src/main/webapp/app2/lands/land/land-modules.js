@@ -9,7 +9,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.lands.land.map",
 	"mgis.isogd.document.selector",
 	"mgis.address.selector",
-	"mgis.geo.spatial.data"
+	"mgis.geo.spatial.data",
+	"mgis.address"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -198,21 +199,6 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 
 		$scope.displayOnTheMap = function () {
 			$state.go("^.maps");
-		}
-
-		$scope.formatAddress = function (address) {
-			if (address) {
-				return (address.subject ? address.subject.socr + " " + address.subject.name : "")
-					+ (address.region ? ", " + address.region.socr + " " + address.region.name : "")
-					+ (address.locality ? ", " + address.locality.socr + " " + address.locality.name : "")
-					+ (address.street ? ", " + address.street.socr + " " + address.street.name : "")
-					+ (address.home ? ", " + $filter("translate")("Address.Home.Short") + address.home : "")
-					+ (address.housing ? ", " + $filter("translate")("Address.Housing.Short") + address.housing : "")
-					+ (address.building ? ", " + $filter("translate")("Address.Building.Short") + address.building : "")
-					+ (address.apartment ? ", " + $filter("translate")("Address.Apartment.Short") + address.apartment : "")
-					;
-			}
-			return "";
 		}
 	})
 	.controller("LandsLandAreaController", function ($scope, $rootScope, MGISCommonsModalForm, LandsLandAreaTypeService) {

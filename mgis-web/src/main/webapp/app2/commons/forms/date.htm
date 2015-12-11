@@ -20,7 +20,9 @@
 							ng-required="required"
 							close-text="{{'Calendar.Done'|translate}}"
 							clear-text="{{'Calendar.Clear'|translate}}"
-							current-text="{{'Calendar.Today'|translate}}"/>
+							current-text="{{'Calendar.Today'|translate}}"
+                            min-date="minDate"
+                            max-date="maxDate"/>
                     <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
 					</button>
                 </span>

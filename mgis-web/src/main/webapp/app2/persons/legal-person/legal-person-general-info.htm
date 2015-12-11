@@ -74,7 +74,8 @@
 				<label translate>LegalPerson.Resident</label>
 			</div>
 			<div class="col-sm-8">
-				<button type="button" class="btn btn-info" ng-model="item.resident" btn-checkbox btn-checkbox-true="true"
+				<button type="button" class="btn btn-info" ng-model="item.resident" btn-checkbox
+						btn-checkbox-true="true"
 						btn-checkbox-false="">
 					<span ng-if="item.resident" translate>true</span>
 					<span ng-if="!item.resident" translate>false</span>
@@ -214,59 +215,13 @@
 		</div>
 
 		<!-- StatusStartDate -->
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>LegalPerson.StatusStartDate</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-								<span class="input-group-btn mgis-input-group-date">
-									<input
-											type="text"
-											class="form-control"
-											name="docDate"
-											datepicker-popup="{{format}}"
-											ng-model="item.statusStartDate"
-											is-open="opened"
-											datepicker-options="dateOptions"
-											date-disabled="disabled(date, mode)"
-											close-text="{{Close|translate}}"
-											ng-click="open($event)"
-											/>
-									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-									</button>
-								</span>
-				</p>
-			</div>
-		</div>
-
+		<commons-forms-date form="legalPersonForm" name="statusStartDate" property="item.statusStartDate"
+							max-date="currentDate"
+							title="LegalPerson.StatusStartDate"></commons-forms-date>
 		<!-- RegistrationDate -->
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>LegalPerson.RegistrationDate</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-								<span class="input-group-btn mgis-input-group-date">
-									<input
-											type="text"
-											class="form-control"
-											name="docDate"
-											datepicker-popup="{{format}}"
-											ng-model="item.registrationDate"
-											is-open="opened"
-											datepicker-options="dateOptions"
-											date-disabled="disabled(date, mode)"
-											close-text="{{Close|translate}}"
-											ng-click="open($event)"
-											/>
-									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-									</button>
-								</span>
-				</p>
-			</div>
-		</div>
-
+		<commons-forms-date form="legalPersonForm" name="registrationDat" property="item.registrationDate"
+							max-date="currentDate"
+							title="LegalPerson.RegistrationDate"></commons-forms-date>
 		<!-- RegistrationCertificate -->
 		<div class="form-group row">
 			<div class="col-sm-4">
@@ -278,31 +233,9 @@
 		</div>
 
 		<!-- EGRULInitialDate -->
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>LegalPerson.EGRULInitialDate</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-								<span class="input-group-btn mgis-input-group-date">
-									<input
-											type="text"
-											class="form-control"
-											name="docDate"
-											datepicker-popup="{{format}}"
-											ng-model="item.egrulInitialDate"
-											is-open="opened"
-											datepicker-options="dateOptions"
-											date-disabled="disabled(date, mode)"
-											close-text="{{Close|translate}}"
-											ng-click="open($event)"
-											/>
-									<button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
-									</button>
-								</span>
-				</p>
-			</div>
-		</div>
+		<commons-forms-date form="legalPersonForm" name="egrulInitialDate" property="item.egrulInitialDate"
+							max-date="currentDate"
+							title="LegalPerson.EGRULInitialDate"></commons-forms-date>
 
 	</div>
 </div>

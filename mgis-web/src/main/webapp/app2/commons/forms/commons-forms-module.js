@@ -78,6 +78,8 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				property: "=",
 				form: "=",
 				name: "@",
+				minDate: "=",
+				maxDate: "=",
 				required: "=",
 				pattern: "="
 			},
@@ -89,6 +91,7 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				$scope.dateChanged = function () {
 					$scope.property = $scope.item.value;
 				}
+
 			}
 		}
 	})
@@ -135,7 +138,7 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				}
 				$scope.choices = "elem in availableElements | filter: {" + ($scope.elementFilter ? $scope.elementFilter : "name") + ": $select.search}"
 				var labelExpression = ($scope.elementLabelExpression ? $scope.elementLabelExpression :
-						($scope.elementFilter ? $scope.elementFilter : "name")
+					($scope.elementFilter ? $scope.elementFilter : "name")
 				);
 				$scope.displayLabel = "elem." + labelExpression;
 				$scope.matchLabel = "item.value." + labelExpression;

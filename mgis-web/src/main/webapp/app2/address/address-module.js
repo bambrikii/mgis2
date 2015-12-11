@@ -293,4 +293,27 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 
 		updateGrid();
 	})
+	.directive("addressFormatter", function () {
+		return {
+			restrict: "E",
+			scope: {
+				address: "="
+			},
+			template: "{{addressAsString}}",
+			controller: function ($scope, $filter) {
+				var address = $scope.address;
+				if (address) {
+					$scope.addressAsString = (address.subject ? address.subject.socr + " " + address.subject.name : "")
+					+ (address.region ? ", " + address.region.socr + " " + address.region.name : "")
+					+ (address.locality ? ", " + address.locality.socr + " " + address.locality.name : "")
+					+ (address.street ? ", " + address.street.socr + " " + address.street.name : "")
+					+ (address.home ? ", " + $filter("translate")("Address.Home.Short") + address.home : "")
+					+ (address.housing ? ", " + $filter("translate")("Address.Housing.Short") + address.housing : "")
+					+ (address.building ? ", " + $filter("translate")("Address.Building.Short") + address.building : "")
+					+ (address.apartment ? ", " + $filter("translate")("Address.Apartment.Short") + address.apartment : "")
+					;
+				}
+			}
+		}
+	})
 ;

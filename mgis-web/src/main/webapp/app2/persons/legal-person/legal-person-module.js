@@ -1,7 +1,8 @@
 angular.module("mgis.persons.person.legal", ["ui.router", "ui.bootstrap", //
 	"mgis.persons.person.legal.service",
 	"mgis.commons",
-	"mgis.nc.services"
+	"mgis.nc.services",
+	"mgis.address"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -13,6 +14,7 @@ angular.module("mgis.persons.person.legal", ["ui.router", "ui.bootstrap", //
 	.factory("LegalPersonModule", function ($rootScope, LegalPersonService, MGISCommonsModalForm, NcOKVEDService, NcOKOGUService, NcOKOPFService, NcOKATOService, NcOKFSService) {
 
 		function editItem0(modalScope, updateFunction) {
+			modalScope.currentDate = new Date();
 			NcOKFSService.get("", 0, 0).then(function (okfss) {
 				modalScope.availableOKFSs = okfss.list;
 
