@@ -6,7 +6,8 @@ angular.module("mgis.property", ["ui.router", "ui.bootstrap", "ui.select",
 		return {
 			restrict: "E",
 			scope: {
-				rights: "="
+				rights: "=",
+				form: "="
 			},
 			templateUrl: "app2/property/property-rights.htm",
 			controller: function ($scope,
