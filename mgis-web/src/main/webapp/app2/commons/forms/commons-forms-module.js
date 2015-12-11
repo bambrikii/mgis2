@@ -4,6 +4,18 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 	.constant("NUMBER_PATTERN", /^\d+$/)
 	.constant("INTEGER_PATTERN", /^[+-]?\d+?$/)
 	.constant("FLOAT_PATTERN", /^[+-]\d+(\.\d+)?$/)
+	.constant("PAGER__PAGE_SIZE", 15)
+	.constant("PAGER__MAX_SIZE", 5)
+	.factory("CommonsPagerManager", function (PAGER__PAGE_SIZE, PAGER__MAX_SIZE) {
+		return {
+			pageSize: function () {
+				return PAGER__PAGE_SIZE;
+			},
+			maxSize: function () {
+				return PAGER__MAX_SIZE;
+			}
+		}
+	})
 	.directive("commonsFormsForm", function () {
 		return {
 			restrict: "E",
@@ -138,7 +150,7 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				}
 				$scope.choices = "elem in availableElements | filter: {" + ($scope.elementFilter ? $scope.elementFilter : "name") + ": $select.search}"
 				var labelExpression = ($scope.elementLabelExpression ? $scope.elementLabelExpression :
-					($scope.elementFilter ? $scope.elementFilter : "name")
+						($scope.elementFilter ? $scope.elementFilter : "name")
 				);
 				$scope.displayLabel = "elem." + labelExpression;
 				$scope.matchLabel = "item.value." + labelExpression;

@@ -151,10 +151,12 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 												 $filter,
 												 LandsLandService,
 												 LandsLandCRUDService,
-												 LandsLandSelectorService) {
+												 LandsLandSelectorService,
+												 CommonsPagerManager) {
 		$scope.cadastralNumber = "";
 		$scope.currentPage = 1;
-		$scope.itemsPerPage = 15;
+		$scope.itemsPerPage = CommonsPagerManager.pageSize();
+		$scope.pagerMaxSize = CommonsPagerManager.maxSize();
 
 		$scope.selectedIds;
 

@@ -46,7 +46,9 @@
 	<pagination total-items="landsPager.totalNumberOfItems" ng-model="currentPage"
 				items-per-page="itemsPerPage" ng-change="pageChanged()"
 				class="pagination-sm" previous-text="&lsaquo;"
-				next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+				next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+				max-size="pagerMaxSize"
+			></pagination>
 
 	<div>
 		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
