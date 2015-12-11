@@ -30,6 +30,12 @@
 			<version>${project.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>ru.sovzond.mgis2</groupId>
+			<artifactId>mgis-report</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<!-- jai -->
 		<dependency>
 			<groupId>com.sun.media</groupId>
@@ -112,9 +118,9 @@
 		</dependency>
 
 		<!--<dependency>-->
-			<!--<groupId>org.geotools</groupId>-->
-			<!--<artifactId>gt-image</artifactId>-->
-			<!--<version>${geotools.version}</version>-->
+		<!--<groupId>org.geotools</groupId>-->
+		<!--<artifactId>gt-image</artifactId>-->
+		<!--<version>${geotools.version}</version>-->
 		<!--</dependency>-->
 
 	</dependencies>

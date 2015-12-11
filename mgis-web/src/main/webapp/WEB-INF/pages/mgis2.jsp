@@ -173,6 +173,11 @@
 	<script type="text/javascript" src="app2/data-exchange/import/import-module.js"></script>
 	<script type="text/javascript" src="app2/data-exchange/export/export-module.js"></script>
 
+	<!-- Reports -->
+	<script type="text/javascript" src="app2/reports/reports.js"></script>
+	<script type="text/javascript" src="app2/reports/report-service.js"></script>
+	<script type="text/javascript" src="app2/reports/report-module.js"></script>
+
 	<!-- About -->
 	<script type="text/javascript" src="app2/about/about-module.js"></script>
 

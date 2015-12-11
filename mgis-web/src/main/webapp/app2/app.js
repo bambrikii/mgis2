@@ -13,6 +13,7 @@ angular.module("mgis", //
 		"mgis.geo",
 		"mgis.indicators",
 		"mgis.data-exchange",
+		"mgis.reports",
 		"mgis.about"
 	])
 	.config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
