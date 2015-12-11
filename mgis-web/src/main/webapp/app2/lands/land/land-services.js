@@ -30,6 +30,13 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 			return null;
 		}
 
+		function buildInspectionResultDocuments(control) {
+			if (control.inspectionResultDocuments && control.inspectionResultDocuments.length) {
+				return new Array().concat(control.inspectionResultDocuments);
+			}
+			return null;
+		}
+
 		return {
 			get: function (id, first, max, cadastralNumber, ids) {
 				var deferred = $q.defer();
@@ -111,6 +118,7 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 						inspectionReasonDescription: control.inspectionReasonDescription,
 						inspectionResultAvailabilityOfViolations: control.inspectionResultAvailabilityOfViolations ? {id: control.inspectionResultAvailabilityOfViolations.id} : null,
 						inspectionResultDescription: control.inspectionResultDescription,
+						inspectionResultDocuments: control ? buildInspectionResultDocuments(control) : null,
 						inspectionSubject: control.inspectionSubject ? {id: control.inspectionSubject.id} : null,
 						inspectionType: control.inspectionType ? {id: control.inspectionType.id} : null,
 						penaltyAmount: control.penaltyAmount,

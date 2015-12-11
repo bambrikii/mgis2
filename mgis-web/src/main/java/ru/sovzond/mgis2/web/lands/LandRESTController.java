@@ -244,6 +244,13 @@ public class LandRESTController implements Serializable {
 			control2.setInspectionReasonDescription(control.getInspectionReasonDescription());
 			control2.setInspectionResultAvailabilityOfViolations(control.getInspectionResultAvailabilityOfViolations() != null ? landControlInspectionResultAvailabilityOfViolationsBean.load(control.getInspectionResultAvailabilityOfViolations().getId()) : null);
 			control2.setInspectionResultDescription(control.getInspectionResultDescription());
+			// Inspection result Documents
+			control2.getInspectionResultDocuments().clear();
+			if (control.getInspectionResultDocuments() != null && control.getInspectionResultDocuments().size() > 0) {
+				List<Document> load = documentBean.load(control.getInspectionResultDocuments().stream().map(document -> document.getId()).collect(Collectors.toList()));
+				control2.getInspectionResultDocuments().addAll(load);
+			}
+
 			control2.setInspectionSubject(control.getInspectionSubject() != null ? landControlInspectionSubjectBean.load(control.getInspectionSubject().getId()) : null);
 			control2.setInspectionType(control.getInspectionType() != null ? landControlInspectionTypeBean.load(control.getInspectionType().getId()) : null);
 			control2.setPenaltyAmount(control.getPenaltyAmount());

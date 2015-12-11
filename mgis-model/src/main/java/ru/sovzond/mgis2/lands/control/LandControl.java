@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "lands_land_control")
@@ -184,6 +185,7 @@ public class LandControl implements Cloneable {
 		control.setInspectionReasonDescription(inspectionReasonDescription);
 		control.setInspectionResultAvailabilityOfViolations(inspectionResultAvailabilityOfViolations != null ? inspectionResultAvailabilityOfViolations.clone() : null);
 		control.setInspectionResultDescription(inspectionResultDescription);
+		control.setInspectionResultDocuments(inspectionResultDocuments.stream().map(document -> document.clone()).collect(Collectors.toList()));
 		control.setInspectionSubject(inspectionSubject != null ? inspectionSubject.clone() : null);
 		control.setInspectionType(inspectionType != null ? inspectionType.clone() : null);
 		control.setPenaltyAmount(penaltyAmount);
