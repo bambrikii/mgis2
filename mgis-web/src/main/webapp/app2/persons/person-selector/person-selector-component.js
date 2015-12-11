@@ -5,6 +5,25 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 ])
 	.constant("NATURAL_PERSON_TYPE", "NaturalPerson")
 	.constant("LEGAL_PERSON_TYPE", "LegalPerson")
+	.directive("personFormatter", function () {
+		return {
+			restrict: "E",
+			scope: {
+				person: "="
+			},
+			template: "{{personDescription}}",
+			controller: function ($scope, $filter) {
+				var person = $scope.person;
+				if (person) {
+					if (person.name) {
+						$scope.personDescription = person.name + " (" + $filter("translate")("LegalPerson.Short") + ")";
+					} else {
+						$scope.personDescription = person.surname + " " + person.firstName + " " + person.patronymic + " (" + $filter("translate")("NaturalPerson.Short") + ")";
+					}
+				}
+			}
+		}
+	})
 	.directive("personSelector", function (MGISCommonsModalForm, $rootScope) {
 		//<person-selector ng-selected="selected(personObject, personType)"></person-selector>
 		return {
