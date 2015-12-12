@@ -1,10 +1,12 @@
 angular.module("mgis.reports.report", [
 	"mgis.commons",
+	"mgis.commons.forms",
 	"mgis.reports.report.service"
 ])
-	.factory("ReportsReportCRUDService", function ($rootScope, $filter, ReportsReportService, MGISCommonsModalForm) {
+	.factory("ReportsReportCRUDService", function ($rootScope, $filter, ReportsReportService, MGISCommonsModalForm, NUMBER_PATTERN) {
 		var edit = function (item, refresh) {
 			var modalScope = $rootScope.$new();
+			modalScope.NUMBER_PATTERN = NUMBER_PATTERN;
 			modalScope.item = {};
 			angular.copy(item, modalScope.item);
 			var landFilter = {id: "Lands", name: "Lands"};

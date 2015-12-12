@@ -415,5 +415,8 @@
   "Calendar.Clear": "Очистить",
   "Calendar.Done": "Готово",
   "Reports": "Отчёты",
-  "Report": "Отчёт"
+  "Report": "Отчёт",
+  "Filters": "Фильтры",
+  "Filter": "Фильтр",
+  "File": "Файл"
 }

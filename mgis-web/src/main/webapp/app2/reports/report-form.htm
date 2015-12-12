@@ -7,6 +7,8 @@
 
 			<commons-forms-text form="reportForm" name="code" property="item.code" title="Code" required="true"></commons-forms-text>
 			<commons-forms-text form="reportForm" name="name" property="item.name" title="Name" required="true"></commons-forms-text>
+			<commons-forms-text form="reportForm" name="sortOrder" property="item.sortOrder" title="SortOrder"
+								pattern="NUMBER_PATTERN"></commons-forms-text>
 
 			<div class="form-group row">
 				<div class="col-sm-4">
@@ -54,6 +56,6 @@
 	</div>
 </div>
 <div class="modal-footer">
-	<button type="submit" class="btn btn-primary" ng-disabled="naturalPersonForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="submit" class="btn btn-primary" ng-disabled="reportForm.$invalid" ng-click="ok()" translate>Submit</button>
 	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
 </div>
