@@ -16,7 +16,7 @@ public class Report implements Cloneable {
 	@Column
 	private Long id;
 
-	@Column
+	@Column(unique = true, nullable = false)
 	private String code;
 
 	@Column
@@ -27,7 +27,7 @@ public class Report implements Cloneable {
 
 	@ElementCollection
 	@CollectionTable(name = "mgis2_reports_report_filters")
-	@Column(name = "filters")
+	@Column(name = "filter")
 	private Set<String> filters = new HashSet<>();
 
 	public Long getId() {
@@ -75,7 +75,7 @@ public class Report implements Cloneable {
 		report.setId(id);
 		report.setCode(code);
 		report.setName(name);
-		report.setBytes(bytes);
+		//		report.setBytes(bytes);
 		report.setFilters(filters);
 		return report;
 	}

@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2015-12-11T23:36:45 -->
+<!-- 2015-12-12T17:03:43 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5eab381-93f6-448e-a3f5-d5b6b4b363fa">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
-	<subDataset name="Dataset1" uuid="41845fd4-fe69-48ee-9849-18a6a1c85d69">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-		<queryString>
-			<![CDATA[]]>
-		</queryString>
-	</subDataset>
-	<queryString>
-		<![CDATA[]]>
+	<queryString language="json">
+		<![CDATA[*]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[id]]></fieldDescription>
@@ -35,7 +29,12 @@
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="127" y="20" width="100" height="30" uuid="fdbbb22b-7862-47af-8c8c-887a42a1014b"/>
+				<text><![CDATA[Column Header]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
 		<band height="227" splitType="Stretch">
@@ -51,10 +50,19 @@
 				<reportElement x="0" y="60" width="100" height="20" uuid="4e0dee7e-463f-441f-857c-ea9d5da844b4"/>
 				<textFieldExpression><![CDATA[$F{comment}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="103" y="119" width="100" height="30" uuid="6f70c07d-dda6-4c7c-ae03-281c8159ac6c"/>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="18" width="100" height="30" uuid="d0fbe96d-0237-4fee-addc-ae53eb02d5fa"/>
+				<text><![CDATA[Column Footer]]></text>
+			</staticText>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch">

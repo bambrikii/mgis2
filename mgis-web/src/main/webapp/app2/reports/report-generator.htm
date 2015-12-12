@@ -1,10 +1,9 @@
 <div>
-	<div ng-repeat="report in availableReports" class="row">
+	<div ng-repeat="report in availableReports" class="row mgis-grid-row">
 		<div class="col-sm-4">{{report.name}}</div>
 		<div class="col-sm-4">
-			<button class="btn btn-sm btn-information" ng-click="generateReport('PDF', report.id)" translate>PDF</button>
-			<button class="btn btn-sm btn-information" ng-click="generateReport('HTML', report.id)" translate>HTML</button>
-			<button class="btn btn-sm btn-information" ng-click="generateReport('XML', report.id)" translate>XML</button>
+			<button class="btn btn-sm btn-info" ng-click="generateReport(report.id, 'PDF')" translate>PDF</button>
+			<button class="btn btn-sm btn-info" ng-click="generateReport(report.id, 'XML')" translate>XML</button>
 		</div>
 	</div>
 </div>

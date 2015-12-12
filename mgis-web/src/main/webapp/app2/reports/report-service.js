@@ -3,10 +3,11 @@ angular.module("mgis.reports.report.service", ["ngResource",
 ])
 	.factory("ReportsReportService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/reports/:id.json');
+		var resGen = $resource('rest/reports/:id/generate.json');
 		return {
-			get: function (id, first, max, code) {
+			get: function (id, first, max, filter) {
 				var deferred = $q.defer();
-				var requestParams = {id: id, first: first, max: max, code: code};
+				var requestParams = {id: id, first: first, max: max, filter: filter};
 				res.get(requestParams, {}, function (data) {
 					deferred.resolve(data);
 				}, function (error) {
@@ -38,15 +39,16 @@ angular.module("mgis.reports.report.service", ["ngResource",
 			},
 			generate: function (json, reportId, format) {
 				var deferred = $q.defer();
-				res.generate({
-					id: reportId,
-					format: format,
-					json: json
-				}, function (data) {
-					deferred.resolve(data);
-				}, function (error) {
-					MGISErrorService.handleError(error);
-				});
+				resGen.save(
+					{id: reportId},
+					{id: reportId, format: format, json: json},
+					function (data) {
+						deferred.resolve(data);
+					}, function (error) {
+						MGISErrorService.handleError(error);
+					});
+				return deferred.promise;
 			}
 		}
 	})
+;

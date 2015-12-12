@@ -40,8 +40,8 @@ public class ReportRESTService implements Serializable {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<Report> list(@RequestParam(value = "name", defaultValue = "") String name, @RequestParam(value = "orderBy", defaultValue = "") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		return reportBean.list(orderBy, first, max);
+	public PageableContainer<Report> list(@RequestParam(value = "filter", defaultValue = "") String filter, @RequestParam(value = "orderBy", defaultValue = "") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
+		return reportBean.list(filter, orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -109,13 +109,29 @@ public class ReportRESTService implements Serializable {
 		return new ResponseEntity<>(previewBytes, headers, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value = "/generate")
+	/**
+	 * @param id      - report id
+	 * @param request :json - jsod data for report
+	 *                : format - resulting report format
+	 * @return - generated report bytes
+	 * @throws ReportManagerException
+	 */
+	@RequestMapping(value = "/{id}/generate", headers = "Accept=*/*", produces = "application/json", method = RequestMethod.POST)
 	@Transactional
-	public ResponseEntity<byte[]> generate(@PathVariable("id") Long reportId, @RequestParam("json") String json, @RequestParam("format") ReportOutputFormat format) throws ReportManagerException {
+	public ResponseEntity<GeneratedResponse> generate(@PathVariable("id") Long id, @RequestBody GeneratedRequest request) throws ReportManagerException {
 		final HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-		Report report = reportBean.load(reportId);
-		headers.setContentDispositionFormData(report.getName(), report.getName() + "_" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(Calendar.getInstance().getTime()) + "." + format.toString().toLowerCase());
-		return new ResponseEntity<>(reportBean.generate(report, format, json), headers, HttpStatus.CREATED);
+		Report report = reportBean.load(id);
+		String format = request.getFormat();
+		String json = request.getJson();
+		String name = report.getName();
+		String filename = name + "_" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(Calendar.getInstance().getTime()) + "." + format.toString().toLowerCase();
+		headers.setContentDispositionFormData(name, filename);
+		GeneratedResponse response = new GeneratedResponse();
+		response.setBytes(reportBean.generate(report, ReportOutputFormat.valueOf(format), json));
+		response.setName(name);
+		response.setFilename(filename);
+		return new ResponseEntity<>(response, headers, HttpStatus.CREATED);
 	}
+
 }

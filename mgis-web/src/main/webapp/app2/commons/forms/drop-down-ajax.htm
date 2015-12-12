@@ -3,17 +3,17 @@
 		<label translate>{{title}}</label>
 	</div>
 	<div class="col-sm-8">
-		<p class="input-group input-group-sm">
-			<ui-select ng-model="item.value" theme="select2" style="width: 450px;" on-select="elementSelected($item)">
+		<div class="input-group input-group-sm" style="width: 100%;">
+			<ui-select ng-model="item.value" theme="select2" style="width: 100%;" on-select="elementSelected($item)">
 				<ui-select-match placeholder="">{{$eval(matchLabel)}}</ui-select-match>
 				<ui-select-choices repeat="{{choices}}"
 								   refresh="refreshAvailableElements($select.search)"
 
 								   refresh-delay="0">
 					{{$eval(displayLabel)}}
-					<div ng-bind-html="$eval(displayLabel)"></div>
+					<!--<div ng-bind-html="$eval(displayLabel)"></div>-->
 				</ui-select-choices>
 			</ui-select>
-		</p>
+		</div>
 	</div>
 </div>

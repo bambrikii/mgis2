@@ -239,4 +239,19 @@ angular.module("mgis.commons", ["ui.bootstrap",
 			}
 		}
 	})
+	.factory("BytesConversionService", function () {
+		function dataURItoBlob(dataURI) {
+			var byteString = atob(dataURI);
+			var ab = new ArrayBuffer(byteString.length);
+			var ia = new Uint8Array(ab);
+			for (var i = 0; i < byteString.length; i++) {
+				ia[i] = byteString.charCodeAt(i);
+			}
+			return ia;
+		}
+
+		return {
+			base64ToBlob: dataURItoBlob
+		}
+	})
 ;

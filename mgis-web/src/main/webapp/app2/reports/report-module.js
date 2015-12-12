@@ -100,14 +100,22 @@ angular.module("mgis.reports.report", [
 				data: "="
 			},
 			templateUrl: "app2/reports/report-generator.htm",
-			controller: function ($scope, ReportsReportService) {
+			controller: function ($scope, ReportsReportService, BytesConversionService) {
 				ReportsReportService.get(null, 0, 0, $scope.filter).then(function (data) {
-					$scope.list = data;
+					$scope.availableReports = data.list;
 				});
-				$scope.generateReport = function (format, reportId) {
-					var json = JSON.stringify(data);
-					ReportsReportService.generate(json, format, reportId).then(function (data) {
-						console.log(data);
+				$scope.generateReport = function (reportId, format) {
+					var json = JSON.stringify($scope.data);
+					ReportsReportService.generate(json, reportId, format).then(function (data) {
+						var array = BytesConversionService.base64ToBlob(data.bytes);
+						var blob = new Blob([array], {type: "application/octet-stream"});
+						var a = window.document.createElement('a');
+						var objectUrl = window.URL.createObjectURL(blob);
+						a.href = objectUrl;
+						a.download = data.filename;
+						document.body.appendChild(a)
+						a.click();
+						document.body.removeChild(a)
 					});
 				}
 			}
