@@ -28,14 +28,14 @@ public class ReportDao extends CRUDDaoBase<Report> {
 
 		@Override
 		protected Pageable apply(Session session) {
-			StringBuilder queryBuilder = new StringBuilder(" FROM Report r JOIN r.filters filters");
+			StringBuilder queryBuilder = new StringBuilder(" FROM Report r LEFT JOIN r.filters filters");
 			if (isFilterSet()) {
 				queryBuilder.append(" WHERE filters = :q");
 			}
 			return new Pageable() {
 				@Override
 				public List list() {
-					String queryString = "SELECT r " + queryBuilder.toString();
+					String queryString = "SELECT DISTINCT r " + queryBuilder.toString();
 					Query query = session.createQuery(queryString);
 					if (isFilterSet()) {
 						query.setParameter("q", filter);
