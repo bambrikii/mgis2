@@ -1,7 +1,6 @@
 <div ng-controller="LegalPersonsController">
 	<h3 translate>LegalPersons</h3>
 
-
 	<div ng-if="legalPersonsPager.list.length">
 		<div class="row mgis-row-header">
 			<div class="col-sm-2" translate>LegalPerson.Name</div>
@@ -32,8 +31,9 @@
 					class="pagination-sm" previous-text="&lsaquo;"
 					next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
 
-		<div>
-			<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
-		</div>
 	</div>
+	<div>
+		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
+	</div>
+
 </div>

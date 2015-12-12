@@ -63,11 +63,14 @@ angular.module("mgis.reports.report", [
 				});
 			},
 			remove: function (id, refresh) {
-				ReportsReportService.remove(id).then(function () {
-					if (refresh) {
-						refresh();
-					}
-				});
+				MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
+					ReportsReportService.remove(id).then(function () {
+						modalInstance.close();
+						if (refresh) {
+							refresh();
+						}
+					});
+				})
 			}
 		}
 	})

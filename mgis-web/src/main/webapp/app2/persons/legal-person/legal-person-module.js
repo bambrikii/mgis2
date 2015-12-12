@@ -1,6 +1,7 @@
 angular.module("mgis.persons.person.legal", ["ui.router", "ui.bootstrap", //
 	"mgis.persons.person.legal.service",
 	"mgis.commons",
+	"mgis.commons.forms",
 	"mgis.nc.services",
 	"mgis.address"
 ])
@@ -134,11 +135,11 @@ angular.module("mgis.persons.person.legal", ["ui.router", "ui.bootstrap", //
 			templateUrl: "app2/persons/legal-person/legal-person-selector.htm"
 		}
 	})
-	.controller("LegalPersonsController", function ($scope, LegalPersonModule, LegalPersonService) {
+	.controller("LegalPersonsController", function ($scope, LegalPersonModule, LegalPersonService, CommonsPagerManager) {
 		$scope.currentPage = 1;
-		$scope.itemsPerPage = 15;
+		$scope.itemsPerPage = CommonsPagerManager.pageSize();
 		function updateGrid() {
-			LegalPersonService.get("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage).then(function (data) {
+			LegalPersonService.get("", CommonsPagerManager.offset($scope.currentPage), $scope.itemsPerPage).then(function (data) {
 				$scope.legalPersonsPager = data;
 			})
 		}
