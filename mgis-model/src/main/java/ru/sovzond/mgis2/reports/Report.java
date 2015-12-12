@@ -23,6 +23,9 @@ public class Report implements Cloneable {
 	private String name;
 
 	@Column
+	private String sortOrder;
+
+	@Column
 	private byte[] bytes;
 
 	@ElementCollection
@@ -54,6 +57,14 @@ public class Report implements Cloneable {
 		this.name = name;
 	}
 
+	public String getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(String sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+
 	public byte[] getBytes() {
 		return bytes;
 	}
@@ -75,7 +86,7 @@ public class Report implements Cloneable {
 		report.setId(id);
 		report.setCode(code);
 		report.setName(name);
-		//		report.setBytes(bytes);
+		report.setSortOrder(sortOrder);
 		report.setFilters(filters);
 		return report;
 	}

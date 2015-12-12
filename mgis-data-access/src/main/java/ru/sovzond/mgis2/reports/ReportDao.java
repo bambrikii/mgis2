@@ -35,7 +35,7 @@ public class ReportDao extends CRUDDaoBase<Report> {
 			return new Pageable() {
 				@Override
 				public List list() {
-					String queryString = "SELECT DISTINCT r " + queryBuilder.toString();
+					String queryString = "SELECT DISTINCT r " + queryBuilder.toString() + " ORDER BY r.sortOrder";
 					Query query = session.createQuery(queryString);
 					if (isFilterSet()) {
 						query.setParameter("q", filter);
