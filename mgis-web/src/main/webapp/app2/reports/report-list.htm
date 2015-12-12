@@ -1,1 +1,33 @@
-Reports list
+<div ng-controller="ReportsReportListController">
+
+	<div ng-if="reportsPager.list.length">
+		<div class="row mgis-row-header">
+			<div class="col-sm-2" translate>Code</div>
+			<div class="col-sm-2" translate>Name</div>
+			<div class="col-sm-4" translate>Filter</div>
+			<div class="col-sm-4">
+			</div>
+		</div>
+
+		<div ng-repeat="item in reportsPager.list" class="row" style="padding-bottom: 7px;">
+			<div class="col-sm-2">{{item.code}}</div>
+			<div class="col-sm-2">{{item.name}}</div>
+			<div class="col-sm-4">
+				<div ng-repeat="filter in item.filters">{{filter}}</div>
+			</div>
+			<div class="col-sm-4">
+				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
+				<button class="btn btn-danger btn-sm" ng-click="removeItem(item.id)" translate>Delete</button>
+			</div>
+		</div>
+
+		<pagination total-items="naturalPersonsPager.totalNumberOfItems" ng-model="currentPage"
+					items-per-page="itemsPerPage" ng-change="pageChanged()" max-size="pagerMaxSize"
+					class="pagination-sm" previous-text="&lsaquo;"
+					next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+
+	</div>
+	<div>
+		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
+	</div>
+</div>

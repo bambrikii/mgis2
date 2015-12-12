@@ -413,5 +413,7 @@
   "Commons.DisplayFullMessage": "Посмотреть детали",
   "Calendar.Today": "Сегодня",
   "Calendar.Clear": "Очистить",
-  "Calendar.Done": "Готово"
+  "Calendar.Done": "Готово",
+  "Reports": "Отчёты",
+  "Report": "Отчёт"
 }

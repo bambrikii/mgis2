@@ -1,16 +1,33 @@
 package ru.sovzond.mgis2.reports;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by Alexander Arakelyan on 11/12/15.
  */
+@Entity
+@Table(name = "mgis2_reports_report")
 public class Report implements Cloneable {
+	@Id
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "mgis2_report_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+	@Column
 	private Long id;
+
+	@Column
 	private String code;
+
+	@Column
 	private String name;
+
+	@Column
 	private byte[] bytes;
+
+	@ElementCollection
+	@CollectionTable(name = "mgis2_reports_report_filters")
+	@Column(name = "filters")
 	private Set<String> filters = new HashSet<>();
 
 	public Long getId() {

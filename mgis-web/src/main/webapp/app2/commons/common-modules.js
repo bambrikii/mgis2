@@ -147,6 +147,7 @@ angular.module("mgis.commons", ["ui.bootstrap",
 						headers: {
 							'Content-Type': 'multipart/form-data; charset=utf-8'
 						},
+						fields: $scope.uploadFields,
 						file: file
 					}).progress(function (event) {
 						var progressPercentage = parseInt(100.0 * event.loaded / event.total);

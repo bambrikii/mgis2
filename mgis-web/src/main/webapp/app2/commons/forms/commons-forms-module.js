@@ -13,6 +13,9 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 			},
 			maxSize: function () {
 				return PAGER__MAX_SIZE;
+			},
+			offset: function (pageNumber) {
+				return PAGER__PAGE_SIZE * (pageNumber - 1);
 			}
 		}
 	})

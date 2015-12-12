@@ -1,1 +1,59 @@
-report form
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title"><span translate>Report</span>: {{item.name + (item.code?" (" + item.code+")":"")}}</h3>
+	</div>
+	<div class="modal-body">
+		<form name="reportForm" novalidate>
+
+			<commons-forms-text form="reportForm" name="code" property="item.code" title="Code" required="true"></commons-forms-text>
+			<commons-forms-text form="reportForm" name="name" property="item.name" title="Name" required="true"></commons-forms-text>
+
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>Filters</label>
+				</div>
+
+				<div class="col-sm-8">
+					<div ng-repeat="filter in item.filters" class="row mgis-grid-row">
+						<div class="col-sm-8">{{filter|translate}}</div>
+						<div class="col-sm-4">
+							<button class="btn btn-sm btn-danger" ng-click="removeFilter(item.filters, filter)" translate>Remove</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-8">
+							<multiselect
+									ng-model="currentFilter"
+									options="c.name|translate for c in availableFilters"
+									data-multiple="false"
+									data-compare-by="id"
+									scroll-after-rows="15"
+									ms-header="{{'Select'|translate}}">
+							</multiselect>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn btn-sm btn-info" ng-if="currentFilter" ng-click="addFilter(item.filters, currentFilter)"
+									translate>
+								Add</i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-4">
+					<label translate>File</label>
+				</div>
+				<div class="col-sm-8">
+					<div ng-include src="'app2/reports/report-form-upload.htm'"></div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-disabled="naturalPersonForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
+</div>

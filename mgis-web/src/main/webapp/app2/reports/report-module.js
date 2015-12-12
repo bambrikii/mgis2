@@ -2,11 +2,45 @@ angular.module("mgis.reports.report", [
 	"mgis.commons",
 	"mgis.reports.report.service"
 ])
-	.factory("ReportsReportCRUDService", function ($rootScope, ReportsReportService, MGISCommonsModalForm) {
+	.factory("ReportsReportCRUDService", function ($rootScope, $filter, ReportsReportService, MGISCommonsModalForm) {
 		var edit = function (item, refresh) {
 			var modalScope = $rootScope.$new();
 			modalScope.item = {};
 			angular.copy(item, modalScope.item);
+			var landFilter = {id: "Lands", name: "Lands"};
+			var occFilter = {id: "CapitalConstructs", name: "CapitalConstructs"};
+			modalScope.itemId = modalScope.item.id;
+			modalScope.availableFilters = new Array();
+			modalScope.availableFilters.push(landFilter);
+			modalScope.availableFilters.push(occFilter);
+			modalScope.currentFilter = undefined;
+			modalScope.addFilter = function (filters, filter) {
+				if (filter) {
+					for (var i in filters) {
+						if (filters[i] == filter.id) {
+							return
+						}
+					}
+					filters.push(filter.id);
+				}
+			}
+			modalScope.removeFilter = function (filters, filter) {
+				if (filter) {
+					for (var i in filters) {
+						if (filters[i] == filter) {
+							filters.splice(i, 1);
+						}
+					}
+				}
+			}
+			modalScope.uploadComplete = function (data) {
+				if (!modalScope.item.id) {
+					modalScope.item.id = data;
+					modalScope.itemId = modalScope.item.id;
+				} else {
+					modalScope.itemId = "0" + modalScope.item.id;
+				}
+			}
 			MGISCommonsModalForm.edit("app2/reports/report-form.htm", modalScope, function (scope, modalInstance) {
 				ReportsReportService.save(scope.item).then(function () {
 					if (refresh) {
@@ -17,11 +51,11 @@ angular.module("mgis.reports.report", [
 			});
 		}
 		return {
-			add: function () {
-				var item = {id: 0}
+			add: function (refresh) {
+				var item = {id: 0, filters: new Array()}
 				edit(item, refresh);
 			},
-			edit: function (id) {
+			edit: function (id, refresh) {
 				ReportsReportService.get(id).then(function (item) {
 					edit(item, refresh)
 				});
@@ -38,19 +72,45 @@ angular.module("mgis.reports.report", [
 	.controller("ReportsReportListController", function ($scope, ReportsReportCRUDService, ReportsReportService, CommonsPagerManager) {
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = CommonsPagerManager.pageSize();
+		$scope.pagerMaxSize = CommonsPagerManager.maxSize();
 		var refresh = function () {
-			ReportsReportService.get(null, $scope.itemsPerPage * ($scope.currentPage - 1), $scope.itemsPerPage).then(function (data) {
-				$scope.pager = data;
+			ReportsReportService.get(null, CommonsPagerManager.offset($scope.currentPage), $scope.itemsPerPage).then(function (data) {
+				$scope.reportsPager = data;
 			});
 		}
-		$scope.add = function () {
+		$scope.pageChanged = function () {
+			refresh();
+		}
+		$scope.addItem = function () {
 			ReportsReportCRUDService.add(refresh);
 		}
-		$scope.edit = function (id) {
+		$scope.editItem = function (id) {
 			ReportsReportCRUDService.edit(id, refresh);
 		}
-		$scope.remove = function (id) {
+		$scope.removeItem = function (id) {
 			ReportsReportCRUDService.remove(id, refresh);
+		}
+		refresh();
+	})
+	.directive("reportsGenerator", function () {
+		return {
+			restrict: "E",
+			scope: {
+				filter: "@",
+				data: "="
+			},
+			templateUrl: "app2/reports/report-generator.htm",
+			controller: function ($scope, ReportsReportService) {
+				ReportsReportService.get(null, 0, 0, $scope.filter).then(function (data) {
+					$scope.list = data;
+				});
+				$scope.generateReport = function (format, reportId) {
+					var json = JSON.stringify(data);
+					ReportsReportService.generate(json, format, reportId).then(function (data) {
+						console.log(data);
+					});
+				}
+			}
 		}
 	})
 ;

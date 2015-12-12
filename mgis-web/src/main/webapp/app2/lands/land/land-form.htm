@@ -50,6 +50,12 @@
 				</tab-heading>
 				<div ng-if="landMapSelected" ng-include src="'app2/lands/land/land-form-map.htm'"></div>
 			</tab>
+			<tab>
+				<tab-heading>
+					<span translate>Reports</span>
+				</tab-heading>
+				<reports-generator filter="Lands" data="land"></reports-generator>
+			</tab>
 		</tabset>
 	</form>
 

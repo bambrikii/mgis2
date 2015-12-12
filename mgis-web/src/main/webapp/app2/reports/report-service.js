@@ -36,5 +36,17 @@ angular.module("mgis.reports.report.service", ["ngResource",
 				});
 				return deferred.promise;
 			},
+			generate: function (json, reportId, format) {
+				var deferred = $q.defer();
+				res.generate({
+					id: reportId,
+					format: format,
+					json: json
+				}, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+			}
 		}
 	})

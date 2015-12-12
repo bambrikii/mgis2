@@ -1,0 +1,16 @@
+<div ng-controller="MGISUploadFileController"
+	 ng-init="init('rest/reports/upload-definition', {'id':item.id}, uploadProgress, uploadComplete)"
+	 class="mgis-document-content row">
+	<div class="mgis-content-list-region col-sm-6">
+		<div class="col-sm-2 mgis-content-preview">
+			<img src="rest/reports/{{itemId}}/preview"/>
+		</div>
+	</div>
+	<div class="mgis-content-upload-region col-sm-6">
+		<div ngf-drop ng-model="files" class="drop-box"
+			 ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+			 ngf-accept="''"><span translate>DropFilesHereToUpload</span>
+		</div>
+		<div ngf-no-file-drop><span translate>YourBrowserDoesNotSupportDragAndDropFeature</span></div>
+	</div>
+</div>

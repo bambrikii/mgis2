@@ -1,7 +1,9 @@
 package ru.sovzond.mgis2.preview;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
+import org.springframework.stereotype.Service;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.awt.image.VolatileImage;
@@ -9,10 +11,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import javax.imageio.ImageIO;
-
-import org.springframework.stereotype.Service;
 
 /**
  * Created by Alexander Arakelyan on 16.07.15.
@@ -31,8 +29,12 @@ public class ImageManipulationBean {
 	}
 
 	public BufferedImage toBufferedImage(final Image image, final int type) {
-		if (image instanceof BufferedImage) { return (BufferedImage) image; }
-		if (image instanceof VolatileImage) { return ((VolatileImage) image).getSnapshot(); }
+		if (image instanceof BufferedImage) {
+			return (BufferedImage) image;
+		}
+		if (image instanceof VolatileImage) {
+			return ((VolatileImage) image).getSnapshot();
+		}
 		loadImage(image);
 		final BufferedImage buffImg = new BufferedImage(image.getWidth(null), image.getHeight(null), type);
 		final Graphics2D g2 = buffImg.createGraphics();
@@ -80,7 +82,15 @@ public class ImageManipulationBean {
 	 */
 
 	public byte[] createDocThumbnail() throws IOException {
-		try (InputStream is = ImageManipulationBean.class.getResourceAsStream("document-48x48.png")) {
+		return createThumbnailFromResource("document-48x48.png");
+	}
+
+	public byte[] createNoDataThumbnail() throws IOException {
+		return createThumbnailFromResource("unknown-document-48x48.png");
+	}
+
+	private byte[] createThumbnailFromResource(String resourceName) throws IOException {
+		try (InputStream is = ImageManipulationBean.class.getResourceAsStream(resourceName)) {
 			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 			int nRead;
 			byte[] data = new byte[16384];
