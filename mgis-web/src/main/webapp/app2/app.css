@@ -261,3 +261,8 @@ multiselect button.btn {
 .mgis-field-required {
 	color: red;
 }
+
+.mgis-time-spent-label {
+	font-size: xx-small;
+	color: darkgray;
+}

@@ -1,6 +1,8 @@
 <div>
 	<div ng-repeat="report in availableReports" class="row mgis-grid-row">
-		<div class="col-sm-4">{{report.name}}</div>
+		<div class="col-sm-6">{{report.name}}</div>
+		<div class="col-sm-2">{{reportStatus[report.id].status|translate}} <span ng-if="reportStatus[report.id].time" class="mgis-time-spent-label">({{reportStatus[report.id].time}} {{'MilliSeconds'|translate}})</span>
+		</div>
 		<div class="col-sm-4">
 			<button class="btn btn-sm btn-info" ng-click="generateReport(report.id, 'PDF')" translate>PDF</button>
 			<button class="btn btn-sm btn-info" ng-click="generateReport(report.id, 'XML')" translate>XML</button>

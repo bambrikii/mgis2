@@ -30,6 +30,8 @@
   "Close": "Закрыть",
   "Select": "Выбрать",
   "List": "Список",
+  "InProgress": "В процессе",
+  "Complete": "Готово",
   "DropFilesHereToUpload": "Для загрузки файла перетащите его сюда",
   "YourBrowserDoesNotSupportDragAndDropFeature": "Фаш браузер не поддерживает Drag and Drop.",
   "Download": "Скачать",
@@ -418,5 +420,6 @@
   "Report": "Отчёт",
   "Filters": "Фильтры",
   "Filter": "Фильтр",
-  "File": "Файл"
+  "File": "Файл",
+  "MilliSeconds": "мс"
 }
