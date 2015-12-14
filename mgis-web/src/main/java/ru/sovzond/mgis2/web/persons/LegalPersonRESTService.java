@@ -9,6 +9,7 @@ import ru.sovzond.mgis2.address.AddressBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.national_classifiers.*;
 import ru.sovzond.mgis2.persons.LegalPersonBean;
+import ru.sovzond.mgis2.persons.PersonBean;
 import ru.sovzond.mgis2.registers.national_classifiers.OKATO;
 import ru.sovzond.mgis2.registers.national_classifiers.OKOGU;
 import ru.sovzond.mgis2.registers.national_classifiers.OKOPF;
@@ -48,6 +49,9 @@ public class LegalPersonRESTService implements Serializable {
 	@Autowired
 	private AddressBean addressBean;
 
+	@Autowired
+	private PersonBean personBean;
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
 	public PageableContainer<LegalPerson> list(@RequestParam(value = "name", defaultValue = "") String name, @RequestParam(value = "orderBy", defaultValue = "") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
@@ -63,16 +67,12 @@ public class LegalPersonRESTService implements Serializable {
 		} else {
 			legalPerson1 = legalPersonBean.load(id);
 		}
-		BeanUtils.copyProperties(legalPerson, legalPerson1, new String[]{"id", "ownershipForm", "founders", "activityType", "okogu",
-				"organizationalForm", "actualAddressTerritoryOkatoCode", "actualAddress",
-				"legalAddressTerritoryOkatoCode", "legalAddress",
-		});
+		BeanUtils.copyProperties(legalPerson, legalPerson1, new String[]{"id", "ownershipForm", "founders", "activityType", "okogu", "organizationalForm", "actualAddressTerritoryOkatoCode", "actualAddress", "legalAddressTerritoryOkatoCode", "legalAddress",});
 		legalPerson1.setOwnershipForm(legalPerson.getOwnershipForm() != null ? ownershipFormBean.load(legalPerson.getOwnershipForm().getId()) : null);
 		if (legalPerson.getFounders() != null && legalPerson.getFounders().size() > 0) {
 			legalPerson1.getFounders().clear();
-			List<Long> founderIds = legalPerson.getFounders().stream().map(person -> person.getId())
-					.collect(Collectors.toList());
-			legalPerson1.getFounders().addAll(legalPersonBean.load(founderIds));
+			List<Long> founderIds = legalPerson.getFounders().stream().map(person -> person.getId()).collect(Collectors.toList());
+			legalPerson1.getFounders().addAll(personBean.load(founderIds));
 		}
 
 		OKVED activityType = legalPerson.getActivityType();

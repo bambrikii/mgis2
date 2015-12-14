@@ -511,6 +511,8 @@ public class LegalPerson extends Person {
 				lp.setId(p.getId());
 				lp.setName(((LegalPerson) p).getName());
 				return lp;
+			} else if (p instanceof NaturalPerson) {
+				return p.clone();
 			}
 			return p.clone();
 		}).collect(Collectors.toList()));

@@ -33,8 +33,8 @@
 				<address-formatter address="item.address"></address-formatter>
 			</div>
 			<div class="col-sm-1">{{item.rights.totalArea}}</div>
-			<div class="col-sm-2">{{formatPersonName(item.rights.rightOwner)}}
-				<person-formatter person="item.rights.rightOwner"></person-formatter>
+			<div class="col-sm-2">
+				{{item.rights.rightOwner|personFormatter}}
 			</div>
 			<div class="col-sm-4">
 				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>

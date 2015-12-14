@@ -5,23 +5,16 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 ])
 	.constant("NATURAL_PERSON_TYPE", "NaturalPerson")
 	.constant("LEGAL_PERSON_TYPE", "LegalPerson")
-	.directive("personFormatter", function () {
-		return {
-			restrict: "E",
-			scope: {
-				person: "="
-			},
-			template: "{{personDescription}}",
-			controller: function ($scope, $filter) {
-				var person = $scope.person;
-				if (person) {
-					if (person.name) {
-						$scope.personDescription = person.name + " (" + $filter("translate")("LegalPerson.Short") + ")";
-					} else {
-						$scope.personDescription = person.surname + " " + person.firstName + " " + person.patronymic + " (" + $filter("translate")("NaturalPerson.Short") + ")";
-					}
+	.filter("personFormatter", function ($filter) {
+		return function (person) {
+			if (person) {
+				if (person.name) {
+					return person.name + " (" + $filter("translate")("LegalPerson.Short") + ")";
+				} else {
+					return person.surname + " " + person.firstName + " " + person.patronymic + " (" + $filter("translate")("NaturalPerson.Short") + ")";
 				}
 			}
+			return undefined;
 		}
 	})
 	.directive("personSelector", function (MGISCommonsModalForm, $rootScope) {
@@ -38,9 +31,6 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 					$scope.personType = $scope.person.surname ? NATURAL_PERSON_TYPE : LEGAL_PERSON_TYPE;
 				} else {
 					$scope.personType = "";
-				}
-				$scope.formatPersonName = function (person) {
-					return person ? (person.name ? person.name : (person.surname + ' ' + person.firstName + ' ' + person.patronymic)) : "?";
 				}
 				$scope.openSelector = function (person, personType) {
 					var modalScope = $rootScope.$new();
