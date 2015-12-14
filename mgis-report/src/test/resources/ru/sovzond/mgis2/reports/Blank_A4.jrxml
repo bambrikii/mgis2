@@ -1,23 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2015-12-12T17:03:43 -->
+<!-- 2015-12-14T12:01:33 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5eab381-93f6-448e-a3f5-d5b6b4b363fa">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JSON Data Adapter "/>
 	<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 	<queryString language="json">
-		<![CDATA[*]]>
+		<![CDATA[]]>
 	</queryString>
-	<field name="id" class="java.lang.Integer">
+	<field name="id" class="java.lang.String">
 		<fieldDescription><![CDATA[id]]></fieldDescription>
 	</field>
 	<field name="name" class="java.lang.String">
 		<fieldDescription><![CDATA[name]]></fieldDescription>
 	</field>
-	<field name="comment" class="java.lang.String">
-		<fieldDescription><![CDATA[comment]]></fieldDescription>
+	<field name="type" class="java.lang.String">
+		<fieldDescription><![CDATA[type]]></fieldDescription>
 	</field>
-	<field name="list" class="java.util.List">
-		<fieldDescription><![CDATA[list]]></fieldDescription>
+	<field name="objectPurpose" class="java.lang.String">
+		<fieldDescription><![CDATA[objectPurpose]]></fieldDescription>
+	</field>
+	<field name="cadastralNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[cadastralNumber]]></fieldDescription>
+	</field>
+	<field name="conditionalNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[conditionalNumber]]></fieldDescription>
+	</field>
+	<field name="inventoryNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[inventoryNumber]]></fieldDescription>
+	</field>
+	<field name="overallArea" class="java.lang.String">
+		<fieldDescription><![CDATA[overallArea]]></fieldDescription>
+	</field>
+	<field name="municipalEntity" class="java.lang.String">
+		<fieldDescription><![CDATA[municipalEntity]]></fieldDescription>
+	</field>
+	<field name="address" class="java.lang.String">
+		<fieldDescription><![CDATA[address]]></fieldDescription>
+	</field>
+	<field name="placement" class="java.lang.String">
+		<fieldDescription><![CDATA[placement]]></fieldDescription>
+	</field>
+	<field name="letter" class="java.lang.String">
+		<fieldDescription><![CDATA[letter]]></fieldDescription>
+	</field>
+	<field name="technicalAccountingStatementDate" class="java.lang.String">
+		<fieldDescription><![CDATA[technicalAccountingStatementDate]]></fieldDescription>
+	</field>
+	<field name="actualUsage" class="java.lang.String">
+		<fieldDescription><![CDATA[actualUsage]]></fieldDescription>
+	</field>
+	<field name="operationStartYear" class="java.lang.String">
+		<fieldDescription><![CDATA[operationStartYear]]></fieldDescription>
+	</field>
+	<field name="buildCompletionYear" class="java.lang.String">
+		<fieldDescription><![CDATA[buildCompletionYear]]></fieldDescription>
+	</field>
+	<field name="lastReconstructionDate" class="java.lang.String">
+		<fieldDescription><![CDATA[lastReconstructionDate]]></fieldDescription>
+	</field>
+	<field name="rebuildingLastYear" class="java.lang.String">
+		<fieldDescription><![CDATA[rebuildingLastYear]]></fieldDescription>
+	</field>
+	<field name="rights" class="java.lang.String">
+		<fieldDescription><![CDATA[rights]]></fieldDescription>
+	</field>
+	<field name="characteristics" class="java.lang.String">
+		<fieldDescription><![CDATA[characteristics]]></fieldDescription>
+	</field>
+	<field name="constructiveElements" class="java.lang.String">
+		<fieldDescription><![CDATA[constructiveElements]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -48,7 +99,7 @@
 			</textField>
 			<textField pattern="">
 				<reportElement x="0" y="60" width="100" height="20" uuid="4e0dee7e-463f-441f-857c-ea9d5da844b4"/>
-				<textFieldExpression><![CDATA[$F{comment}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cadastralNumber}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="103" y="119" width="100" height="30" uuid="6f70c07d-dda6-4c7c-ae03-281c8159ac6c"/>
