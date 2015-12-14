@@ -3,31 +3,46 @@
 		<h3 translate>GeneralInfo</h3>
 	</div>
 	<div class="panel-body">
+
 		<commons-forms-drop-down title="CapitalConstructs.Construct.Type" property="item.type"
-								 available-elements="availableTypes"></commons-forms-drop-down>
-		<commons-forms-text title="CapitalConstructs.Construct.Name" property="item.name"></commons-forms-text>
-		<commons-forms-text title="CapitalConstructs.Construct.ObjectPurpose" property="item.objectPurpose"></commons-forms-text>
-		<commons-forms-text title="CadastralNumber" property="item.cadastralNumber"></commons-forms-text>
-		<commons-forms-text title="ConditionalNumber" property="item.conditionalNumber"></commons-forms-text>
-		<commons-forms-text title="InventoryNumber" property="item.inventoryNumber"></commons-forms-text>
-		<commons-forms-text title="OverallArea" property="item.overallArea"></commons-forms-text>
+								 available-elements="availableTypes" form="constructForm" name="constructType"
+								 required="true"></commons-forms-drop-down>
+		<commons-forms-text title="CapitalConstructs.Construct.Name" property="item.name" form="constructForm" name="constructName"
+							required="true"></commons-forms-text>
+		<commons-forms-text title="CapitalConstructs.Construct.ObjectPurpose" property="item.objectPurpose" form="constructForm"
+							name="objectPurpose"></commons-forms-text>
+		<commons-forms-text title="CadastralNumber" property="item.cadastralNumber" form="constructForm" name="cadastralNumber"></commons-forms-text>
+		<commons-forms-text title="ConditionalNumber" property="item.conditionalNumber" form="constructForm"
+							name="conditionalNumber"></commons-forms-text>
+		<commons-forms-text title="InventoryNumber" property="item.inventoryNumber" form="constructForm" name="inventoryNumber"></commons-forms-text>
+		<commons-forms-text title="OverallArea" property="item.overallArea" form="constructForm" name="overalArea"></commons-forms-text>
 		<commons-forms-drop-down-ajax title="MunicipalEntity" property="item.municipalEntity"
 									  available-elements="availableMunicipalEntities"
-									  refresh="refreshAvailableMunicipalEntities(name)"></commons-forms-drop-down-ajax>
-		<div class="form-group row">
-			<div class="col-sm-4"><label translate>Address</label></div>
-			<div class="col-sm-8">
-				<address-selector address="item.address"></address-selector>
-			</div>
-		</div>
-		<commons-forms-text title="CapitalConstructs.Construct.Placement" property="item.placement"></commons-forms-text>
-		<commons-forms-text title="CapitalConstructs.Construct.Letter" property="item.letter"></commons-forms-text>
+									  refresh="refreshAvailableMunicipalEntities(name)" form="constructForm"
+									  name="municipalEntity"></commons-forms-drop-down-ajax>
+		<forms-address-selector address="item.address" form="constructForm" name="address" required="true"></forms-address-selector>
+		<!--<div class="form-group row">-->
+		<!--<div class="col-sm-4"><label translate>Address</label></div>-->
+		<!--<div class="col-sm-8">-->
+		<!--<address-selector address="item.address"></address-selector>-->
+		<!--</div>-->
+		<!--</div>-->
+		<commons-forms-text title="CapitalConstructs.Construct.Placement" property="item.placement" form="constructForm"
+							name="placement"></commons-forms-text>
+		<commons-forms-text title="CapitalConstructs.Construct.Letter" property="item.letter" form="constructForm" name="letter"></commons-forms-text>
 		<commons-forms-date title="CapitalConstructs.Construct.TechnicalAccountingStatementDate"
-							property="item.technicalAccountingStatementDate"></commons-forms-date>
-		<commons-forms-text title="CapitalConstructs.Construct.ActualUsage" property="item.actualUsage"></commons-forms-text>
-		<commons-forms-text title="CapitalConstructs.Construct.OperationStartYear" property="item.operationStartYear"></commons-forms-text>
-		<commons-forms-text title="CapitalConstructs.Construct.BuildCompletionYear" property="item.buildCompletionYear"></commons-forms-text>
-		<commons-forms-date title="CapitalConstructs.Construct.LastReconstructionDate" property="item.lastReconstructionDate"></commons-forms-date>
-		<commons-forms-text title="CapitalConstructs.Construct.RebuildingLastYear" property="item.rebuildingLastYear"></commons-forms-text>
+							property="item.technicalAccountingStatementDate" form="constructForm"
+							name="technicalAccountingStatementDate"></commons-forms-date>
+		<commons-forms-text title="CapitalConstructs.Construct.ActualUsage" property="item.actualUsage" form="constructForm"
+							name="actualUsage"></commons-forms-text>
+		<commons-forms-text title="CapitalConstructs.Construct.OperationStartYear" property="item.operationStartYear" form="constructForm"
+							name="operationStartYear"></commons-forms-text>
+		<commons-forms-text title="CapitalConstructs.Construct.BuildCompletionYear" property="item.buildCompletionYear" form="constructForm"
+							name="buildingCompletionYear"></commons-forms-text>
+		<commons-forms-date title="CapitalConstructs.Construct.LastReconstructionDate" property="item.lastReconstructionDate" form="constructForm"
+							name="lastReconstructionDate"></commons-forms-date>
+		<commons-forms-text title="CapitalConstructs.Construct.RebuildingLastYear" property="item.rebuildingLastYear" form="constructForm"
+							name="rebulidingLastYear"></commons-forms-text>
+
 	</div>
 </div>

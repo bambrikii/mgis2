@@ -107,6 +107,7 @@ public class CapitalConstructRESTService {
 				"municipalEntity", //
 				"address", //
 				"rights", //
+				"characteristics", //
 				"constructiveElements", //
 
 		});

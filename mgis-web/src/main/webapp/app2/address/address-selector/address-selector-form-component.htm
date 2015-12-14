@@ -1,0 +1,12 @@
+<div class="form-group row" ng-class="{'has-error': required && form[name].$invalid}">
+	<div class="col-sm-4">
+		<label translate>Lands.Land.Address</label><span class="mgis-field-required" ng-if="required">*</span>
+	</div>
+
+	<div class="col-sm-8">
+		<address-selector address="address"></address-selector>
+		<input type="hidden" name="{{name}}" ng-model="address.id" ng-required="required"/>
+
+		<p ng-show="required && form[name].$invalid" class="help-block" translate>FieldInvalid</p>
+	</div>
+</div>

@@ -3,6 +3,22 @@ angular.module("mgis.address.selector", ["ui.bootstrap",
 	"mgis.address",
 	"mgis.address.service"
 ])
+	.directive("formsAddressSelector", function () {
+		return {
+			restrict: "E",
+			scope: {
+				address: "=",
+				form: "=",
+				name: "@",
+				required: "=",
+				selectClicked: "&"
+			},
+			templateUrl: "app2/address/address-selector/address-selector-form-component.htm",
+			controller: function ($scope, $rootScope) {
+
+			}
+		}
+	})
 	.directive("addressSelector", function () {
 		return {
 			restrict: "E",

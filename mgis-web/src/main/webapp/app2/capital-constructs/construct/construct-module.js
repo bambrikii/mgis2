@@ -14,15 +14,15 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 				templateUrl: "app2/capital-constructs/construct/construct-list.htm"
 			});
 	})
-	.controller("CapitalConstructsConstructController", function ($scope,
-																  $rootScope,
-																  CapitalConstructsConstructService,
-																  CapitalConstructEconomicCharacteristicsCRUDService,
-																  CapitalConstructTechnicalCharacteristicsCRUDService,
-																  CapitalConstructsConstructTypeService,
-																  MGISCommonsModalForm,
-																  CapitalConstructsConstructiveElementCRUDService,
-																  NcOKTMOService) {
+	.controller("CapitalConstructsConstructListController", function ($scope,
+																	  $rootScope,
+																	  CapitalConstructsConstructService,
+																	  CapitalConstructEconomicCharacteristicsCRUDService,
+																	  CapitalConstructTechnicalCharacteristicsCRUDService,
+																	  CapitalConstructsConstructTypeService,
+																	  MGISCommonsModalForm,
+																	  CapitalConstructsConstructiveElementCRUDService,
+																	  NcOKTMOService) {
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = 15;
 		function updateGrid() {
@@ -80,6 +80,12 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 			});
 		}
 
+	})
+	.controller("CapitalConstructsConstructController", function ($scope,
+																  CapitalConstructEconomicCharacteristicsCRUDService,
+																  CapitalConstructTechnicalCharacteristicsCRUDService,
+																  CapitalConstructsConstructiveElementCRUDService) {
+
 		// Economic Characteristics
 		$scope.addEconomicCharacteristic = function (item) {
 			CapitalConstructEconomicCharacteristicsCRUDService.add(item);
@@ -112,6 +118,5 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		$scope.removeConstructiveElement = function (item, element) {
 			CapitalConstructsConstructiveElementCRUDService.remove(item, element);
 		}
-
 	})
 ;

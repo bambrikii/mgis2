@@ -7,7 +7,7 @@
 			<div class="col-sm-12"><label translate>CapitalConstructs.Construct.Characteristics.EconomicCharacteristics</label></div>
 		</div>
 		<div class="form-group row">
-			<div class="col-sm-12">
+			<div class="col-sm-12" ng-controller="CapitalConstructsConstructController">
 				<div ng-repeat="chr in item.characteristics.economicCharacteristics" class="row mgis-grid-row">
 					<div class="col-sm-2">{{chr.priceIndicator.name}}</div>
 					<div class="col-sm-2">{{chr.priceIndicator.unitOfMeasure.name}}</div>
@@ -35,7 +35,7 @@
 			<div class="col-sm-12"><label translate>CapitalConstructs.Construct.Characteristics.TechnicalCharacteristics</label></div>
 		</div>
 		<div class="form-group row">
-			<div class="col-sm-12">
+			<div class="col-sm-12" ng-controller="CapitalConstructsConstructController">
 				<div ng-repeat="chr in item.characteristics.technicalCharacteristics" class="row mgis-grid-row">
 					<div class="col-sm-2">{{chr.constructType.name}}</div>
 					<div class="col-sm-2">{{chr.technicalIndicator.name}}</div>

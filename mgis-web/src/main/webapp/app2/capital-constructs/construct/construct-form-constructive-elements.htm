@@ -2,7 +2,7 @@
 	<div class="panel-heading">
 		<h3 translate>CapitalConstructs.Construct.ConstructiveElements</h3>
 	</div>
-	<div class="panel-body">
+	<div class="panel-body" ng-controller="CapitalConstructsConstructController">
 		<div ng-repeat="element in item.constructiveElements track by $index" class="row mgis-grid-row">
 			<div class="col-sm-2">{{element.type.name}}</div>
 			<div class="col-sm-2">{{element.description}}</div>
