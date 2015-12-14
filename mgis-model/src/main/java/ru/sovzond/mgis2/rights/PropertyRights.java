@@ -144,24 +144,9 @@ public class PropertyRights implements Cloneable {
 		rights.setRightKind(rightKind != null ? rightKind.clone() : null);
 		rights.setOwnershipForm(ownershipForm != null ? ownershipForm.clone() : null);
 		rights.setShare(share);
-		rights.setRegistrationDocuments(registrationDocuments != null ? registrationDocuments.stream().map(document -> {
-			Document doc2 = new Document();
-			doc2.setId(document.getId());
-			doc2.setName(document.getName());
-			return doc2;
-		}).collect(Collectors.toList()) : null);
-		rights.setDocumentsCertifyingRights(documentsCertifyingRights != null ? documentsCertifyingRights.stream().map(document -> {
-			Document doc2 = new Document();
-			doc2.setId(document.getId());
-			doc2.setName(document.getName());
-			return doc2;
-		}).collect(Collectors.toList()) : null);
-		rights.setDocumentsCertifyingRights(otherDocuments != null ? otherDocuments.stream().map(document -> {
-			Document doc2 = new Document();
-			doc2.setId(document.getId());
-			doc2.setName(document.getName());
-			return doc2;
-		}).collect(Collectors.toList()) : null);
+		rights.setRegistrationDocuments(getRegistrationDocuments() != null ? getRegistrationDocuments().stream().map(document -> new Document(document.getId(), document.getName())).collect(Collectors.toList()) : null);
+		rights.setDocumentsCertifyingRights(getDocumentsCertifyingRights() != null ? getDocumentsCertifyingRights().stream().map(document -> new Document(document.getId(), document.getName())).collect(Collectors.toList()) : null);
+		rights.setOtherDocuments(getOtherDocuments() != null ? getOtherDocuments().stream().map(document -> new Document(document.getId(), document.getName())).collect(Collectors.toList()) : null);
 		return rights;
 	}
 }

@@ -130,17 +130,17 @@ public class CapitalConstructRESTService {
 			} else {
 				rights2.setDocumentsCertifyingRights(documentBean.load(rights.getDocumentsCertifyingRights().stream().map(document -> document.getId()).collect(Collectors.toList())));
 			}
+			if (rights.getRegistrationDocuments() == null || rights.getRegistrationDocuments().size() == 0) {
+				rights2.getRegistrationDocuments().clear();
+			} else {
+				rights2.setRegistrationDocuments(documentBean.load(rights.getRegistrationDocuments().stream().map(document -> document.getId()).collect(Collectors.toList())));
+			}
 			if (rights.getOtherDocuments() == null || rights.getOtherDocuments().size() == 0) {
 				rights2.getOtherDocuments().clear();
 			} else {
 				rights2.setOtherDocuments(documentBean.load(rights.getOtherDocuments().stream().map(document -> document.getId()).collect(Collectors.toList())));
 			}
 			rights2.setOwnershipForm(rights.getOwnershipForm() != null ? okfsBean.load(rights.getOwnershipForm().getId()) : null);
-			if (rights.getRegistrationDocuments() == null || rights.getRegistrationDocuments().size() == 0) {
-				rights2.getRegistrationDocuments().clear();
-			} else {
-				rights2.setRegistrationDocuments(documentBean.load(rights.getRegistrationDocuments().stream().map(document -> document.getId()).collect(Collectors.toList())));
-			}
 			rights2.setRightKind(rights.getRightKind() != null ? landRightKindBean.load(rights.getRightKind().getId()) : null);
 			rights2.setRightOwner(rights.getRightOwner() != null ? personBean.load(rights.getRightOwner().getId()) : null);
 			propertyRightsBean.save(rights2);
