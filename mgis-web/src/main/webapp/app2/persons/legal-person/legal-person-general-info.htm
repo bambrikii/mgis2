@@ -5,30 +5,11 @@
 	<div class="panel-body">
 
 		<!-- Name -->
-		<div class="form-group row"
-			 ng-class="{'has-error': legalPersonForm.name.$invalid && (!legalPersonForm.name.$pristine || legalPersonForm.name.$touched)}">
-			<div class="col-sm-4">
-				<label translate>LegalPerson.Name</label>
-			</div>
-
-			<div class="col-sm-8">
-				<input type="text" class="form-control" name="name" ng-model="item.name" required/>
-
-				<p ng-show="legalPersonForm.name.$invalid && (!legalPersonForm.name.$pristine || legalPersonForm.name.$touched)"
-				   class="help-block" translate>
-					LegalPerson.Name</p>
-			</div>
-		</div>
+		<commons-forms-text form="legalPersonForm" name="name" property="item.name" title="LegalPerson.Name" required="true"></commons-forms-text>
 
 		<!-- ShortName -->
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>LegalPerson.ShortName</label>
-			</div>
-			<div class="col-sm-8">
-				<input type="text" class="form-control" ng-model="item.shortName" required/>
-			</div>
-		</div>
+		<commons-forms-text form="legalPersonForm" name="name" property="item.shortName" title="LegalPerson.ShortName"
+							required="true"></commons-forms-text>
 
 		<!-- NameInAForeignLanguage -->
 		<div class="form-group row">
@@ -219,7 +200,7 @@
 							max-date="currentDate"
 							title="LegalPerson.StatusStartDate"></commons-forms-date>
 		<!-- RegistrationDate -->
-		<commons-forms-date form="legalPersonForm" name="registrationDat" property="item.registrationDate"
+		<commons-forms-date form="legalPersonForm" name="registrationDate" property="item.registrationDate"
 							max-date="currentDate"
 							title="LegalPerson.RegistrationDate"></commons-forms-date>
 		<!-- RegistrationCertificate -->

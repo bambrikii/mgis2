@@ -1,2 +1,2 @@
-<address-as-string address="address"></address-as-string>
-<button class="btn btn-sm btn-info" ng-click="open()" translate>Select</button>
+{{address|addressFormatter}}
+<button class="btn btn-sm btn-info" ng-click="open()">{{(address.id?'Edit':'Select')|translate}}</button>

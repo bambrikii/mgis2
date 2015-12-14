@@ -22,7 +22,7 @@
 			<div>
 				<div ng-repeat="item in addressPager.list" class="row" style="padding-bottom: 7px;">
 					<div class="col-sm-7">
-						<address-as-string address="item"></address-as-string>
+						{{item|addressFormatter}}
 					</div>
 					<div class="col-sm-5">
 						<button class="btn btn-sm btn-primary" ng-click="select(item)" translate>Select</button>

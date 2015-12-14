@@ -30,7 +30,7 @@
 			 ng-class="inSelectedIds(item.id)?'mgis-row-selected mgis-grid-row row':'mgis-grid-row row'">
 			<div class="col-sm-2">{{item.cadastralNumber}}</div>
 			<div class="col-sm-3">
-				<address-formatter address="item.address"></address-formatter>
+				{{item.address|addressFormatter}}
 			</div>
 			<div class="col-sm-1">{{item.rights.totalArea}}</div>
 			<div class="col-sm-2">

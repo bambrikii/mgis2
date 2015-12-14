@@ -3,7 +3,7 @@
 
 	<div ng-repeat="item in addressPager.list" class="row" style="padding-bottom: 7px;">
 		<div class="col-sm-8">
-			<address-as-string address="item"></address-as-string>
+			{{item|addressFormatter}}
 		</div>
 		<div class="col-sm-4">
 			<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>

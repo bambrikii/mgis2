@@ -3,10 +3,9 @@
 		<h3 class="modal-title"><span translate>LegalPerson</span>: {{item.name}}</h3>
 	</div>
 	<div class="modal-body">
+
 		<form name="legalPersonForm">
-
 			<tabset>
-
 				<tab>
 					<tab-heading>
 						<span translate>GeneralInfo</span>
@@ -26,11 +25,11 @@
 					<div ng-include src="'app2/persons/legal-person/legal-person-contacts.htm'"></div>
 				</tab>
 			</tabset>
-
 		</form>
+
 	</div>
 </div>
 <div class="modal-footer">
-	<button type="submit" class="btn btn-primary" ng-disabled="LegalPersonForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="submit" class="btn btn-primary" ng-disabled="legalPersonForm.$invalid" ng-click="ok()" translate>Submit</button>
 	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
 </div>

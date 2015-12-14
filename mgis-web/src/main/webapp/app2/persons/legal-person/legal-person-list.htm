@@ -16,7 +16,7 @@
 			<div class="col-sm-2">{{item.name}}</div>
 			<div class="col-sm-2">{{item.organizationalForm.name}}</div>
 			<div class="col-sm-2">
-				<address-formatter address="item.actualAddress"></address-formatter>
+				{{item.actualAddress|addressFormatter}}
 			</div>
 			<div class="col-sm-2">{{item.contactPhone}}</div>
 			<div class="col-sm-2">{{item.contactEmail}}</div>
