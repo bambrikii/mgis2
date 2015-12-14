@@ -1,7 +1,6 @@
 package ru.sovzond.mgis2.rights;
 
 import ru.sovzond.mgis2.isogd.document.Document;
-import ru.sovzond.mgis2.lands.Land;
 import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
 import ru.sovzond.mgis2.registers.national_classifiers.OKFS;
 import ru.sovzond.mgis2.registers.persons.Person;
@@ -50,6 +49,10 @@ public class PropertyRights implements Cloneable {
 	@ManyToMany(cascade = {CascadeType.ALL})
 	@JoinTable(name = "mgis2_property_rights_cert_docs", joinColumns = @JoinColumn(name = "mgis2_property_rights_id"), inverseJoinColumns = @JoinColumn(name = "cert_doc_id"))
 	private List<Document> documentsCertifyingRights = new ArrayList<>();
+
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JoinTable(name = "mgis2_property_rights_other_docs", joinColumns = @JoinColumn(name = "mgis2_property_rights_id"), inverseJoinColumns = @JoinColumn(name = "other_doc_id"))
+	private List<Document> otherDocuments = new ArrayList<>();
 
 
 	public Long getId() {
@@ -124,6 +127,14 @@ public class PropertyRights implements Cloneable {
 		this.documentsCertifyingRights = documentsCertifyingRights;
 	}
 
+	public List<Document> getOtherDocuments() {
+		return otherDocuments;
+	}
+
+	public void setOtherDocuments(List<Document> otherDocuments) {
+		this.otherDocuments = otherDocuments;
+	}
+
 	public PropertyRights clone() {
 		PropertyRights rights = new PropertyRights();
 		rights.setId(id);
@@ -140,6 +151,12 @@ public class PropertyRights implements Cloneable {
 			return doc2;
 		}).collect(Collectors.toList()) : null);
 		rights.setDocumentsCertifyingRights(documentsCertifyingRights != null ? documentsCertifyingRights.stream().map(document -> {
+			Document doc2 = new Document();
+			doc2.setId(document.getId());
+			doc2.setName(document.getName());
+			return doc2;
+		}).collect(Collectors.toList()) : null);
+		rights.setDocumentsCertifyingRights(otherDocuments != null ? otherDocuments.stream().map(document -> {
 			Document doc2 = new Document();
 			doc2.setId(document.getId());
 			doc2.setName(document.getName());

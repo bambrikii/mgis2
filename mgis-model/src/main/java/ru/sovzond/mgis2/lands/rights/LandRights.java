@@ -83,18 +83,9 @@ public class LandRights extends PropertyRights {
 		rights.setShare(getShare());
 		rights.setAnnualTax(annualTax);
 		rights.setTotalArea(totalArea);
-		rights.setRegistrationDocuments(getRegistrationDocuments() != null ? getRegistrationDocuments().stream().map(document -> {
-			Document doc2 = new Document();
-			doc2.setId(document.getId());
-			doc2.setName(document.getName());
-			return doc2;
-		}).collect(Collectors.toList()) : null);
-		rights.setDocumentsCertifyingRights(getDocumentsCertifyingRights() != null ? getDocumentsCertifyingRights().stream().map(document -> {
-			Document doc2 = new Document();
-			doc2.setId(document.getId());
-			doc2.setName(document.getName());
-			return doc2;
-		}).collect(Collectors.toList()) : null);
+		rights.setRegistrationDocuments(getRegistrationDocuments() != null ? getRegistrationDocuments().stream().map(document -> new Document(document.getId(), document.getName())).collect(Collectors.toList()) : null);
+		rights.setDocumentsCertifyingRights(getDocumentsCertifyingRights() != null ? getDocumentsCertifyingRights().stream().map(document -> new Document(document.getId(), document.getName())).collect(Collectors.toList()) : null);
+		rights.setOtherDocuments(getOtherDocuments() != null ? getOtherDocuments().stream().map(document -> new Document(document.getId(), document.getName())).collect(Collectors.toList()) : null);
 		return rights;
 	}
 

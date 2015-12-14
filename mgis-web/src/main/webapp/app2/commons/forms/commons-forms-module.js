@@ -129,6 +129,9 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				$scope.$watch("property", function (value) {
 					$scope.property__flag = !$scope.property || angular.equals({}, $scope.property) ? null : true;
 				});
+				$scope.emptyValue = function () {
+					$scope.property = null;
+				}
 			}
 		}
 	})

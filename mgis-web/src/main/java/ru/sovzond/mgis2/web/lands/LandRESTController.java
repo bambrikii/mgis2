@@ -202,6 +202,11 @@ public class LandRESTController implements Serializable {
 				List<Document> load = documentBean.load(rights.getDocumentsCertifyingRights().stream().map(document -> document.getId()).collect(Collectors.toList()));
 				rights2.getDocumentsCertifyingRights().addAll(load);
 			}
+			rights2.getOtherDocuments().clear();
+			if (rights.getOtherDocuments() != null && rights.getOtherDocuments().size() > 0) {
+				List<Document> load = documentBean.load(rights.getOtherDocuments().stream().map(document -> document.getId()).collect(Collectors.toList()));
+				rights2.getOtherDocuments().addAll(load);
+			}
 		}
 		LandCharacteristics chars = land.getCharacteristics();
 		if (chars != null) {

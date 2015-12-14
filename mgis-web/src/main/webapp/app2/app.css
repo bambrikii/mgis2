@@ -266,3 +266,8 @@ multiselect button.btn {
 	font-size: xx-small;
 	color: darkgray;
 }
+
+.mgis-pagination-total-label {
+	margin: 25px 0px 0px 15px;
+	vertical-align: top;
+}

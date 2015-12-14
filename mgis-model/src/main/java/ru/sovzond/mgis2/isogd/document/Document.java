@@ -57,6 +57,14 @@ public class Document implements Cloneable {
 	@JoinColumn(name = "author_id")
 	private Person author;
 
+	public Document() {
+	}
+
+	public Document(Long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -12,6 +12,8 @@
 					scroll-after-rows="15"
 					ms-header="{{'Select'|translate}}">
 			</multiselect>
+			<span ng-if="!required &amp;&amp; property" class="select2-search-choice-close ng-scope" ng-click="emptyValue()"
+				  style="z-index: 2;"></span>
 			<input type="hidden" name="{{name}}" ng-model="property__flag" ng-required="required"/>
 		</p>
 		<p ng-show="form[name].$invalid" class="help-block" translate>FieldInvalid</p>

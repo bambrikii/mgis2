@@ -37,6 +37,13 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 			return null;
 		}
 
+		function buildOtherDocuments(control) {
+			if (control.otherDocuments && control.otherDocuments.length) {
+				return new Array().concat(control.otherDocuments);
+			}
+			return null;
+		}
+
 		return {
 			get: function (id, first, max, cadastralNumber, ids) {
 				var deferred = $q.defer();
@@ -90,7 +97,8 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 						annualTax: rights.annualTax,
 						totalArea: rights.totalArea,
 						registrationDocuments: buildRegistrationDocuments(rights),
-						documentsCertifyingRights: buildDocumentsCertifyingRights(rights)
+						documentsCertifyingRights: buildDocumentsCertifyingRights(rights),
+						otherDocuments: buildOtherDocuments(rights)
 					},
 					characteristics: {
 						cadastralCost: characteristics.cadastralCost,

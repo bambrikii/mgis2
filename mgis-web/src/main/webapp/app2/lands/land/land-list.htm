@@ -43,12 +43,18 @@
 		</div>
 	</div>
 
-	<pagination total-items="landsPager.totalNumberOfItems" ng-model="currentPage"
-				items-per-page="itemsPerPage" ng-change="pageChanged()"
-				class="pagination-sm" previous-text="&lsaquo;"
-				next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
-				max-size="pagerMaxSize"
-			></pagination>
+	<div>
+		<div>
+			<pagination total-items="landsPager.totalNumberOfItems" ng-model="currentPage"
+						items-per-page="itemsPerPage" ng-change="pageChanged()"
+						class="pagination-sm" previous-text="&lsaquo;"
+						next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+						max-size="pagerMaxSize"
+					></pagination>
+			<label class="mgis-pagination-total-label">{{'Total'|translate}} :
+				{{landsPager.totalNumberOfItems}}</label>
+		</div>
+	</div>
 
 	<div>
 		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
