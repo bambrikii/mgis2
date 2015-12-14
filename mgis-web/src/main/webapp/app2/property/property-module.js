@@ -26,7 +26,8 @@ angular.module("mgis.property", ["ui.router", "ui.bootstrap", "ui.select",
 		return {
 			restrict: "E",
 			scope: {
-				payments: "="
+				payments: "=",
+				form: "="
 			},
 			templateUrl: "app2/property/property-payments.htm",
 			controller: function ($scope,
