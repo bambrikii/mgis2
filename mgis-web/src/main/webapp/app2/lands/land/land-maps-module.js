@@ -56,6 +56,9 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", //
 
 				function unselectLandHandler(event, land) {
 					LandsLandSelectorService.remove(land);
+					reloadLands(function () {
+						map.fitBounds(landsLayer.getBounds());
+					});
 				}
 
 
@@ -85,8 +88,22 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", //
 					}
 
 
-					var customParams = {
-						bbox: map.getBounds().toBBoxString(),
+					var customParams = {}
+					var ids = LandsLandSelectorService.ids();
+					if (ids && ids.length) {
+						var idsString = "";
+						for (var i in ids) {
+							var id = ids[i];
+							if (id) {
+								if (idsString) {
+									idsString += ",";
+								}
+								idsString += id;
+							}
+						}
+						customParams.cql_filter = "id in (" + idsString + ")";
+					} else {
+						customParams.bbox = map.getBounds().toBBoxString();
 					}
 					var parameters = L.Util.extend(defaultParameters, customParams);
 

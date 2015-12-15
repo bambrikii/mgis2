@@ -33,7 +33,7 @@ L.Control.MGIS2LandsSelector = L.Control.extend({
 			.on(container, 'mouseover', function (event) {
 				this._toggleExpand(event, true && me._landsList.innerHTML != "");
 			}, this)
-			.on(container, 'mouseout', function (event) {
+			.on(container, 'click', function (event) {
 				this._toggleExpand(event, false);
 			}, this)
 			.on(toggleLink, 'click', function (event) {
