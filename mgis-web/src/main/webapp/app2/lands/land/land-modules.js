@@ -161,12 +161,6 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		$scope.pagerMaxSize = CommonsPagerManager.maxSize();
 		$scope.searchText = "";
 
-		$scope.checkLandSelected = "n";
-
-		$scope.inSelectedIds = function (id) {
-			return $scope.selectedIds && $scope.selectedIds.indexOf(id) > -1;
-		}
-
 		function updateGrid() {
 			$scope.selectedIds = LandsLandSelectorService.ids();
 			LandsLandService.get("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage,
@@ -203,19 +197,11 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		$scope.deleteSelectedItems = function () {
 			MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
 				var ids = LandsLandSelectorService.ids();
-				var n = ids.length;
-				for (var i = 0; i < n; i++) {
-					var id = ids[i];
-					if (i < n - 1) {
-						LandsLandService.remove(id);
-					} else {
-						LandsLandService.remove(id).then(function () {
-							updateGrid();
-							modalInstance.close();
-						});
-					}
-					LandsLandSelectorService.remove({id: id})
-				}
+				LandsLandService.removeSelected(ids).then(function (data) {
+					LandsLandSelectorService.removeByIds(data.ids);
+					updateGrid();
+					modalInstance.close();
+				});
 			});
 		}
 
@@ -235,7 +221,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 					LandsLandSelectorService.remove(land);
 					break;
 			}
-			updateGrid();
+			$scope.selectedIds = LandsLandSelectorService.ids();
+			//updateGrid();
 		}
 
 	})

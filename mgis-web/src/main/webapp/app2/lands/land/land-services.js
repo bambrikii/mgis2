@@ -159,6 +159,15 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 					MGISErrorService.handleError(error);
 				});
 				return deferred.promise;
+			},
+			removeSelected: function (ids) {
+				var deferred = $q.defer();
+				resRemoveSelected.save({}, ids, function (data) {
+					deferred.resolve(data);
+				}, function (error) {
+					MGISErrorService.handleError(error);
+				});
+				return deferred.promise;
 			}
 		}
 
@@ -303,6 +312,12 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 					}
 				}
 				return false;
+			},
+			removeByIds: function (ids) {
+				for (var i in ids) {
+					var id = ids[i];
+					this.remove({id: id});
+				}
 			},
 			list: function () {
 				var result = new Array();

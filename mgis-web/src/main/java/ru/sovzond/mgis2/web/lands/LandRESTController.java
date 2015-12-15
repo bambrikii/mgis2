@@ -302,10 +302,14 @@ public class LandRESTController implements Serializable {
 		landBean.remove(landBean.load(id));
 	}
 
-	@RequestMapping(value = "/remove-selected", method = RequestMethod.DELETE, consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/remove-selected", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@Transactional
-	public void delete(@RequestParam Long[] ids) {
-		landBean.load(Arrays.asList(ids)).forEach(landBean::remove);
+	public ResultIds delete(@RequestBody Long[] ids) {
+		List<Long> list = Arrays.asList(ids);
+		landBean.load(list).forEach(landBean::remove);
+		ResultIds resultIds = new ResultIds();
+		resultIds.setIds(list);
+		return resultIds;
 	}
 
 	@RequestMapping(value = "/{id}/spatial-attribute", method = RequestMethod.POST)

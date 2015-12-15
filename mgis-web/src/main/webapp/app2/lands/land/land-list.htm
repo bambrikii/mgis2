@@ -28,7 +28,7 @@
 		</div>
 
 		<div ng-repeat="item in landsPager.list"
-			 ng-class="inSelectedIds(item.id)?'mgis-row-selected mgis-grid-row row':'mgis-grid-row row'">
+			 ng-class="selectedIds.indexOf(item.id)>-1?'mgis-row-selected mgis-grid-row row':'mgis-grid-row row'">
 			<div class="col-sm-2">
 				<input type="checkbox" ng-init="checked=(selectedIds.indexOf(item.id)>-1?'y':'n')" ng-model="checked"
 					   ng-click="checkLandSelected(checked,item)" ng-true-value="'y'" ng-false-value="'n'"/>
