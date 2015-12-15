@@ -21,6 +21,7 @@ import ru.sovzond.mgis2.persons.PersonBean;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -299,6 +300,12 @@ public class LandRESTController implements Serializable {
 	@Transactional
 	public void delete(@PathVariable Long id) {
 		landBean.remove(landBean.load(id));
+	}
+
+	@RequestMapping(value = "/remove-selected", method = RequestMethod.DELETE, consumes = "application/json", produces = "application/json")
+	@Transactional
+	public void delete(@RequestParam Long[] ids) {
+		landBean.load(Arrays.asList(ids)).forEach(landBean::remove);
 	}
 
 	@RequestMapping(value = "/{id}/spatial-attribute", method = RequestMethod.POST)

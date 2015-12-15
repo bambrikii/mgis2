@@ -6,6 +6,7 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 	})
 	.factory("LandsLandService", function ($resource, $q, MGISErrorService) {
 		var res = $resource('rest/lands/land/:id.json');
+		var resRemoveSelected = $resource('rest/lands/land/remove-selected.json');
 
 		function buildLandAreas(landAreas) {
 			var landAreas2 = [];
