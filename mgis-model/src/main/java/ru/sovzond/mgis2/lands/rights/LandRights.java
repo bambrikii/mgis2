@@ -1,5 +1,7 @@
 package ru.sovzond.mgis2.lands.rights;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.registers.national_classifiers.LandEncumbrance;
 import ru.sovzond.mgis2.rights.PropertyRights;
@@ -12,6 +14,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "lands_land_right")
+@OnDelete(action = OnDeleteAction.CASCADE)
 public class LandRights extends PropertyRights {
 
 	@Column
