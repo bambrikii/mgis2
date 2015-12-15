@@ -158,8 +158,9 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = CommonsPagerManager.pageSize();
 		$scope.pagerMaxSize = CommonsPagerManager.maxSize();
+		$scope.searchText = "";
 
-		$scope.selectedIds;
+		$scope.checkLandSelected = "n";
 
 		$scope.inSelectedIds = function (id) {
 			return $scope.selectedIds && $scope.selectedIds.indexOf(id) > -1;
@@ -203,6 +204,21 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		$scope.displayOnTheMap = function () {
 			$state.go("^.maps");
 		}
+
+		$scope.checkLandSelected = function (checked, item) {
+			console.log(item);
+			var land = {id: item.id, cadastralnumber: item.cadastralNumber}
+			switch (checked) {
+				case "y":
+					LandsLandSelectorService.add(land);
+					break;
+				case "n":
+					LandsLandSelectorService.remove(land);
+					break;
+			}
+			updateGrid();
+		}
+
 	})
 	.controller("LandsLandAreaController", function ($scope, $rootScope, MGISCommonsModalForm, LandsLandAreaTypeService) {
 
