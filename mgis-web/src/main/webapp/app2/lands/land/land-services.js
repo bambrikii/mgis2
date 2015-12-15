@@ -71,20 +71,9 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 				//var documentsCertifyingRights2 = buildDocumentsCertifyingRights(rights);
 				//console.log("registrationDocuments" + JSON.stringify(registrationDocuments2));
 				//console.log("documentsCertifyingRights" + JSON.stringify(documentsCertifyingRights2));
-				var land = {
-					id: item.id,
-					cadastralNumber: item.cadastralNumber,
-					stateRealEstateCadastreaStaging: item.stateRealEstateCadastreaStaging,
-					landAreas: landAreas2,
-					landCategory: item.landCategory ? {id: item.landCategory.id} : null,
-					allowedUsageByDictionary: item.allowedUsageByDictionary ? {id: item.allowedUsageByDictionary.id} : null,
-					allowedUsageByDocument: item.allowedUsageByDocument,
-					allowedUsageByTerritorialZone: item.allowedUsageByTerritorialZone ? {id: item.allowedUsageByTerritorialZone.id} : null,
-					addressOfMunicipalEntity: item.addressOfMunicipalEntity ? {id: item.addressOfMunicipalEntity.id} : null,
-					addressOfPlacementType: item.addressOfPlacementType ? {id: item.addressOfPlacementType.id} : null,
-					addressPlacement: item.addressPlacement,
-					address: item.address ? {id: item.address.id} : null,
-					rights: {
+				var rights2;
+				if (rights) {
+					rights2 = {
 						ownershipForm: rights.ownershipForm ? {id: rights.ownershipForm.id} : null,
 						rightKind: rights.rightKind ? {id: rights.rightKind.id} : null,
 						rightOwner: rights.rightOwner ? {id: rights.rightOwner.id} : null,
@@ -99,7 +88,25 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 						registrationDocuments: buildRegistrationDocuments(rights),
 						documentsCertifyingRights: buildDocumentsCertifyingRights(rights),
 						otherDocuments: buildOtherDocuments(rights)
-					},
+
+					}
+				} else {
+					rights2 = {}
+				}
+				var land = {
+					id: item.id,
+					cadastralNumber: item.cadastralNumber,
+					stateRealEstateCadastreaStaging: item.stateRealEstateCadastreaStaging,
+					landAreas: landAreas2,
+					landCategory: item.landCategory ? {id: item.landCategory.id} : null,
+					allowedUsageByDictionary: item.allowedUsageByDictionary ? {id: item.allowedUsageByDictionary.id} : null,
+					allowedUsageByDocument: item.allowedUsageByDocument,
+					allowedUsageByTerritorialZone: item.allowedUsageByTerritorialZone ? {id: item.allowedUsageByTerritorialZone.id} : null,
+					addressOfMunicipalEntity: item.addressOfMunicipalEntity ? {id: item.addressOfMunicipalEntity.id} : null,
+					addressOfPlacementType: item.addressOfPlacementType ? {id: item.addressOfPlacementType.id} : null,
+					addressPlacement: item.addressPlacement,
+					address: item.address ? {id: item.address.id} : null,
+					rights: rights2,
 					characteristics: {
 						cadastralCost: characteristics.cadastralCost,
 						specificIndexOfCadastralCost: characteristics.specificIndexOfCadastralCost,
