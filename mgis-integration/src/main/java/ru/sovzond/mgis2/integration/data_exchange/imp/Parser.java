@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import ru.sovzond.mgis2.integration.data_exchange.imp.impl.RegionCadastrLandsImporter;
+import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.region_cadastr.RegionCadastrLandsImporter;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;

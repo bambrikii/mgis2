@@ -1,12 +1,11 @@
-package ru.sovzond.mgis2.integration.data_exchange.imp.impl;
+package ru.sovzond.mgis2.integration.data_exchange.imp.handlers.region_cadastr;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.integration.data_exchange.imp.LandImportResolverBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.LandResolver;
 import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.Region_CadastrHandler;
+import ru.sovzond.mgis2.integration.data_exchange.imp.impl.LandImportBase;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 
 import java.io.InputStream;

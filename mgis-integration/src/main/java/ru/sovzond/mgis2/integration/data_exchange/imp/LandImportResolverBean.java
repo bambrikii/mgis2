@@ -72,6 +72,9 @@ public class LandImportResolverBean {
 	@Autowired
 	private SpatialGroupBean spatialGroupBean;
 
+	@Autowired
+	private LandRightsBean landRightsBean;
+
 	private Pattern cadastralNumberPattern = Pattern.compile(CADASTRAL_BLOCK_PATTERN);
 
 
@@ -183,14 +186,20 @@ public class LandImportResolverBean {
 			land.getCharacteristics().setCadastralCost(landDTO.getCadastralCostValue().floatValue());
 		}
 		if (landDTO.getArea() != null) {
-			land.getRights().setTotalArea(landDTO.getArea().floatValue());
+			LandRights rights = land.getRights();
+			if(rights==null){
+				rights = new LandRights();
+				landRightsBean.save(rights);
+				land.setRights(rights);
+			}
+			rights.setTotalArea(landDTO.getArea().floatValue());
 			if (landDTO.getRights() != null) {
 				switch (landDTO.getRights().size()) {
 					case 0:
 						throw new IllegalArgumentException("No land right found while land.rights node container exists.");
 					case 1:
 						LandRightDTO landRightDTO = landDTO.getRights().get(0);
-						land.getRights().setRightKind(resolveLandRightKind(landRightDTO.getName(), landRightDTO.getType()));
+						rights.setRightKind(resolveLandRightKind(landRightDTO.getName(), landRightDTO.getType()));
 						break;
 					default:
 						throw new IllegalArgumentException("More than one land right found in node land.rights node container exists.");
@@ -314,7 +323,15 @@ public class LandImportResolverBean {
 	}
 
 	private LandCategory resolveLandCategory(String category) {
-		return landCategoryBean.findByCode(category);
+		if (category != null) {
+			LandCategory landCategory = landCategoryBean.findByCode(category);
+			if (landCategory == null) {
+				String category2 = category.replaceFirst("^0+", "");
+				landCategory = landCategoryBean.findByCode(category2);
+			}
+			return landCategory;
+		}
+		return null;
 	}
 
 	private OKTMO resolveOKTMO(String code) {

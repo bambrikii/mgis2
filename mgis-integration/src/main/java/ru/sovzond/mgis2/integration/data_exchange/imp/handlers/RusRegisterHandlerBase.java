@@ -7,18 +7,19 @@ import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.NamespaceSupport;
 import ru.sovzond.mgis2.integration.data_exchange.imp.ILandResolver;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
+import ru.sovzond.mgis2.integration.data_exchange.imp.impl.NodeNamesAdapter;
+import ru.sovzond.mgis2.integration.data_exchange.imp.impl.PropertyExtractor;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Alexander Arakelyan on 02.12.15.
  */
-abstract class RusRegisterHandlerBase extends DefaultHandler {
+public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 	public static final String YYYY_MM_DD = "yyyy-MM-dd";
 
@@ -164,41 +165,31 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 	boolean t_Appointment = false;
 	boolean t_FIO = false;
 	SimpleDateFormat dateFormat = new SimpleDateFormat(YYYY_MM_DD);
-	private Map<String, String> nodeNames = new HashMap<>();
 	private NamespaceSupport namespaceSupport;
 	private String[] qNames = new String[3];
 
-	RusRegisterHandlerBase(ILandResolver landResolver, String propertyClassName) {
+	private PropertyExtractor<LandDTO, String> categoryPropertyExtractor;
+	private NodeNamesAdapter extractor;
+
+	public RusRegisterHandlerBase(ILandResolver landResolver,
+								  Class<?> propertyClass,
+								  PropertyExtractor<LandDTO, String> categoryPropertyExtractor
+	) {
 		this.landResolver = landResolver;
-		loadProperties(propertyClassName);
+		this.categoryPropertyExtractor = categoryPropertyExtractor;
+		extractor = new NodeNamesAdapter(propertyClass);
 	}
 
-	private void loadProperties(String propertyClassName) {
-		Properties prop = new Properties();
-		try (InputStream in = getClass().getResourceAsStream(propertyClassName + ".properties")) {
-			prop.load(in);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		Enumeration<?> propertyNames = prop.propertyNames();
-		while (propertyNames.hasMoreElements()) {
-			String name = (String) propertyNames.nextElement();
-			String value = prop.getProperty(name);
-			nodeNames.put(name, value);
-		}
-	}
-
-	private boolean byNode(String qName, String name) {
-		return qName.equalsIgnoreCase(nodeNames.get(name));
-	}
-
-	private boolean byNodeEndsWith(String qName, String name) {
-		return qName.endsWith(nodeNames.get(name));
+	private boolean byNode(String qName, String regionCadastr) {
+		return extractor.byNode(qName, regionCadastr);
 	}
 
 	private String byNodeAttr(Attributes attributes, String name) {
-		return attributes.getValue(nodeNames.get(name));
+		return extractor.byNodeAttr(attributes, name);
+	}
+
+	private boolean byNodeEndsWith(String qName, String area) {
+		return extractor.byNodeEndsWith(qName, area);
 	}
 
 	@Override
@@ -337,8 +328,7 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 		//-------Category-----------------------
 		if (byNode(qName2, CATEGORY) && t_Parcel) {
 			t_Category = true;
-			landDTO.setCategory(byNodeAttr(attributes, CATEGORY_ATTR));
-			t_Category = false;
+			categoryPropertyExtractor.extractFromAttribute(landDTO, () -> byNodeAttr(attributes, CATEGORY_ATTR));
 		}
 
 		//-------Utiliz--------------------------
@@ -441,6 +431,9 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 		if (t_Location && t_Placed && byNodeEndsWith(qName, PLACED)) {
 			t_Placed = false;
 		}
+		if (t_Parcel && byNodeEndsWith(qName, CATEGORY)) {
+			t_Category = false;
+		}
 		if (t_Address && t_Code_OKATO && byNodeEndsWith(qName, CODE_OKATO)) {
 			t_Code_OKATO = false;
 		}
@@ -537,6 +530,11 @@ abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 		if (t_Placed) {
 			landDTO.setLocationPlaced(String.valueOf(ch, start, length));
+		}
+
+		//----------CATEGORY----------
+		if (t_Category) {
+			categoryPropertyExtractor.extractFromChars(landDTO, () -> String.valueOf(ch, start, length));
 		}
 
 		//----------ADDRESS-----------

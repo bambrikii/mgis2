@@ -1,10 +1,11 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.handlers;
 
 import ru.sovzond.mgis2.integration.data_exchange.imp.ILandResolver;
+import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.region_cadastr.Region_CadastrCategoryPropertyExtractor;
 
 /**
  * Created by Alexander Arakelyan on 18.11.15.
- * <p/>
+ * <p>
  * Region
  * - Package
  * -  Cadastral_Blocks
@@ -75,7 +76,7 @@ import ru.sovzond.mgis2.integration.data_exchange.imp.ILandResolver;
 public class Region_CadastrHandler extends RusRegisterHandlerBase {
 
 	public Region_CadastrHandler(ILandResolver landResolver) {
-		super(landResolver, Region_CadastrHandler.class.getSimpleName());
+		super(landResolver, Region_CadastrHandler.class, new Region_CadastrCategoryPropertyExtractor());
 	}
 
 }

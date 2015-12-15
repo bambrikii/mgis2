@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import ru.sovzond.mgis2.integration.data_exchange.imp.impl.KptLandsImporter;
-import ru.sovzond.mgis2.integration.data_exchange.imp.impl.RegionCadastrLandsImporter;
+import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.kpt.KptLandsImporter;
+import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.region_cadastr.RegionCadastrLandsImporter;
 import ru.sovzond.mgis2.web.data_exchange.imp.UploadControllerBase;
 
 import javax.transaction.Transactional;

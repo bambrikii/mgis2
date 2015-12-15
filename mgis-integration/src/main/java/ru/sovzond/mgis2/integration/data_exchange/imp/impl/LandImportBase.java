@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Alexander Arakelyan on 01/12/15.
  */
-abstract class LandImportBase implements Importable {
+public abstract class LandImportBase implements Importable {
 
 	private static final Logger logger = LoggerFactory.getLogger(LandImportBase.class);
 
@@ -33,7 +33,7 @@ abstract class LandImportBase implements Importable {
 	}
 
 
-	void doImport(InputStream inputStream, DefaultHandler handler) {
+	public void doImport(InputStream inputStream, DefaultHandler handler) {
 		Parser parser = new Parser();
 		try {
 			parser.parse(inputStream, handler);
