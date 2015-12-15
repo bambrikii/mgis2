@@ -270,6 +270,7 @@ public class LandRESTController implements Serializable {
 			}
 			spatialGroup2 = spatialDataBean.save(spatialGroup, spatialGroup2);
 			land2.setSpatialData(spatialGroup2);
+			// TODO: land2.setGeometry( ... );
 		}
 
 		landBean.save(land2);

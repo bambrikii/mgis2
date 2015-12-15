@@ -42,15 +42,15 @@ public class PropertyRights implements Cloneable {
 	@Column
 	private float share;
 
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 	@JoinTable(name = "mgis2_property_rights_reg_docs", joinColumns = @JoinColumn(name = "mgis2_property_rights_id"), inverseJoinColumns = @JoinColumn(name = "registration_doc_id"))
 	private List<Document> registrationDocuments = new ArrayList<>();
 
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 	@JoinTable(name = "mgis2_property_rights_cert_docs", joinColumns = @JoinColumn(name = "mgis2_property_rights_id"), inverseJoinColumns = @JoinColumn(name = "cert_doc_id"))
 	private List<Document> documentsCertifyingRights = new ArrayList<>();
 
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
 	@JoinTable(name = "mgis2_property_rights_other_docs", joinColumns = @JoinColumn(name = "mgis2_property_rights_id"), inverseJoinColumns = @JoinColumn(name = "other_doc_id"))
 	private List<Document> otherDocuments = new ArrayList<>();
 

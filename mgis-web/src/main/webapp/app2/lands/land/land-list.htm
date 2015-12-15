@@ -31,6 +31,7 @@
 			 ng-class="inSelectedIds(item.id)?'mgis-row-selected mgis-grid-row row':'mgis-grid-row row'">
 			<div class="col-sm-2">
 				<a href="javascript:void(0)" ng-click="editItem(item.id)">{{item.cadastralNumber}}</a>
+				<span class="glyphicon glyphicon-map-marker" ng-if="item.spatialData|spatialDataExistsFilter"></span>
 			</div>
 			<div class="col-sm-3">{{item.address|addressFormatter}}</div>
 			<div class="col-sm-1">{{item.rights.totalArea}}</div>

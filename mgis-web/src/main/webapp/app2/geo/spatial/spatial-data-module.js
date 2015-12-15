@@ -2,6 +2,26 @@ angular.module("mgis.geo.spatial.data", [
 	"mgis.commons",
 	"mgis.geo.coordinate-system.service"
 ])
+	.filter("spatialDataExistsFilter", function () {
+		return function (data) {
+			var result = false;
+			if (data) {
+				if (data.coordinateSystem && data.coordinateSystem.id) {
+					f1: for (var i in data.spatialElements) {
+						var elem = data.spatialElements[i];
+						for (var j in elem.coordinates) {
+							var coord = elem.coordinates[j];
+							if (coord.id) {
+								result = true;
+								break f1;
+							}
+						}
+					}
+				}
+			}
+			return result;
+		}
+	})
 	.directive("geoSpatialData", function () {
 		return {
 			restrict: "E",
