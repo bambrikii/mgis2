@@ -160,14 +160,22 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		$scope.itemsPerPage = CommonsPagerManager.pageSize();
 		$scope.pagerMaxSize = CommonsPagerManager.maxSize();
 		$scope.searchText = "";
+		$scope.selectedIds = new Array();
 
 		function updateGrid() {
-			$scope.selectedIds = LandsLandSelectorService.ids();
+			var ids = LandsLandSelectorService.ids();
 			LandsLandService.get("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage,
 				$scope.cadastralNumber,
-				$scope.selectedIds
+				ids
 			).then(function (data) {
 					$scope.landsPager = data;
+					$scope.selectedIds.splice(0, $scope.selectedIds.length);
+					for (var i in data.list) {
+						var land = data.list[i];
+						if (ids.indexOf(land.id) > -1) {
+							$scope.selectedIds[land.id] = {checked: true};
+						}
+					}
 				}
 			);
 		}
@@ -213,16 +221,29 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 
 		$scope.checkLandSelected = function (checked, item) {
 			var land = {id: item.id, cadastralnumber: item.cadastralNumber}
-			switch (checked) {
-				case "y":
-					LandsLandSelectorService.add(land);
-					break;
-				case "n":
-					LandsLandSelectorService.remove(land);
-					break;
+			if (checked) {
+				LandsLandSelectorService.add(land);
+				$scope.selectedIds[item.id] = {checked: true};
+			} else {
+				LandsLandSelectorService.remove(land);
+				delete $scope.selectedIds[item.id];
 			}
-			$scope.selectedIds = LandsLandSelectorService.ids();
+			var ids = LandsLandSelectorService.ids();
+			for (var id in ids) {
+				$scope.selectedIds[id] = {checked: true};
+			}
 			//updateGrid();
+		}
+		$scope.selectAll = function () {
+			for (var i in $scope.landsPager.list) {
+				var id = $scope.landsPager.list[i].id
+				LandsLandSelectorService.add({id: id});
+				$scope.selectedIds[id] = {checked: true};
+			}
+		}
+		$scope.deselectAll = function () {
+			LandsLandSelectorService.removeByIds(Object.keys($scope.selectedIds));
+			$scope.selectedIds.splice(0, $scope.selectedIds.length);
 		}
 
 	})
