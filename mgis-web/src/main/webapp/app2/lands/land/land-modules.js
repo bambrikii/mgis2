@@ -160,7 +160,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		$scope.itemsPerPage = CommonsPagerManager.pageSize();
 		$scope.pagerMaxSize = CommonsPagerManager.maxSize();
 		$scope.searchText = "";
-		$scope.selectedIds = new Array();
+		$scope.selectedIds = {};
 
 		function updateGrid() {
 			var ids = LandsLandSelectorService.ids();
@@ -169,7 +169,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 				ids
 			).then(function (data) {
 					$scope.landsPager = data;
-					$scope.selectedIds.splice(0, $scope.selectedIds.length);
+					$scope.selectedIds = {};
 					for (var i in data.list) {
 						var land = data.list[i];
 						if (ids.indexOf(land.id) > -1) {
@@ -229,12 +229,12 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 				selectLand(item);
 				$scope.selectedIds[item.id] = {checked: true, cadastralNumber: item.cadastralNumber};
 			} else {
-				LandsLandSelectorService.remove(land);
+				LandsLandSelectorService.remove(item);
 				delete $scope.selectedIds[item.id];
 			}
 			var ids = LandsLandSelectorService.ids();
 			for (var id in ids) {
-				$scope.selectedIds[item.id] = {checked: true, cadastralNumber: item.cadastralNumber};
+				$scope.selectedIds[ids[id]] = {checked: true, cadastralNumber: item.cadastralNumber};
 			}
 			//updateGrid();
 		}
@@ -247,7 +247,10 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 		}
 		$scope.deselectAll = function () {
 			LandsLandSelectorService.removeByIds(Object.keys($scope.selectedIds));
-			$scope.selectedIds.splice(0, $scope.selectedIds.length);
+			$scope.selectedIds = {};
+		}
+		$scope.isNotEmpty = function (obj) {
+			return Object.keys(obj).length > 0;
 		}
 
 	})

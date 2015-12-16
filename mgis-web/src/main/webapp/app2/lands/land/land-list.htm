@@ -62,12 +62,13 @@
 	<div>
 		<button class="btn btn-info btn-sm" ng-click="addItem()" translate>Add</button>
 		<button class="btn btn-warning btn-sm" ng-click="selectAll()" translate>Select.All</button>
-		<button class="btn btn-warning btn-sm" ng-click="deselectAll()" ng-if="selectedIds.length" translate>
-			Select.DeselectAll
-		</button>
-		<button class="btn btn-danger btn-sm" ng-if="selectedIds.length" ng-click="deleteSelectedItems()" translate>
-			Delete.Selected
-		</button>
+		<span ng-if="isNotEmpty(selectedIds)">
+			<button class="btn btn-warning btn-sm" ng-click="deselectAll()" translate>
+				Select.DeselectAll
+			</button>
+			<button class="btn btn-danger btn-sm" ng-click="deleteSelectedItems()" translate>
+				Delete.Selected
+			</button>
+		</span>
 	</div>
-
 </div>
