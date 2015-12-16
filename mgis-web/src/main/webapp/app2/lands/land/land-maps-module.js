@@ -48,6 +48,9 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", //
 
 				var addLandToSelectorControlHandler = function (land) {
 					landsSelectorControl.addLand(land);
+					reloadLands(function () {
+						map.fitBounds(landsLayer.getBounds());
+					});
 				}
 
 				var removeLandFromSelectorControlHandler = function (land) {
@@ -90,7 +93,8 @@ angular.module("mgis.lands.maps", ["ui.router", "ui.bootstrap", "ui.select", //
 
 					var customParams = {}
 					var ids = LandsLandSelectorService.ids();
-					if (ids && ids.length) {
+					var idsExist = ids && ids.length;
+					if (idsExist) {
 						var idsString = "";
 						for (var i in ids) {
 							var id = ids[i];

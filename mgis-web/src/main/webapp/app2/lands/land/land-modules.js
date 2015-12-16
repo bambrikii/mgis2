@@ -173,7 +173,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 					for (var i in data.list) {
 						var land = data.list[i];
 						if (ids.indexOf(land.id) > -1) {
-							$scope.selectedIds[land.id] = {checked: true};
+							$scope.selectedIds[land.id] = {checked: true, cadastralNumber: land.cadastralNumber};
 						}
 					}
 				}
@@ -219,26 +219,30 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 			$state.go("^.maps");
 		}
 
+		function selectLand(item) {
+			LandsLandSelectorService.add({id: item.id, cadastralnumber: item.cadastralNumber});
+		}
+
 		$scope.checkLandSelected = function (checked, item) {
-			var land = {id: item.id, cadastralnumber: item.cadastralNumber}
+
 			if (checked) {
-				LandsLandSelectorService.add(land);
-				$scope.selectedIds[item.id] = {checked: true};
+				selectLand(item);
+				$scope.selectedIds[item.id] = {checked: true, cadastralNumber: item.cadastralNumber};
 			} else {
 				LandsLandSelectorService.remove(land);
 				delete $scope.selectedIds[item.id];
 			}
 			var ids = LandsLandSelectorService.ids();
 			for (var id in ids) {
-				$scope.selectedIds[id] = {checked: true};
+				$scope.selectedIds[item.id] = {checked: true, cadastralNumber: item.cadastralNumber};
 			}
 			//updateGrid();
 		}
 		$scope.selectAll = function () {
 			for (var i in $scope.landsPager.list) {
-				var id = $scope.landsPager.list[i].id
-				LandsLandSelectorService.add({id: id});
-				$scope.selectedIds[id] = {checked: true};
+				var land = $scope.landsPager.list[i];
+				selectLand(land);
+				$scope.selectedIds[land.id] = {checked: true, cadastralNumber: land.cadastralNumber};
 			}
 		}
 		$scope.deselectAll = function () {
