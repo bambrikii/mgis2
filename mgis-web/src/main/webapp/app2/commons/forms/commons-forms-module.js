@@ -154,12 +154,31 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				$scope.item = {
 					value: $scope.property
 				}
-				$scope.choices = "elem in availableElements | filter: {" + ($scope.elementFilter ? $scope.elementFilter : "name") + ": $select.search}"
-				var labelExpression = ($scope.elementLabelExpression ? $scope.elementLabelExpression :
-						($scope.elementFilter ? $scope.elementFilter : "name")
-				);
-				$scope.displayLabel = "elem." + labelExpression;
-				$scope.matchLabel = "item.value." + labelExpression;
+				$scope.choices = "element in availableElements | filter: {" + ($scope.elementFilter ? $scope.elementFilter : "name") + ": $select.search}"
+				var displayLabel;
+				var matchLabel;
+				if ($scope.elementFilter) {
+					matchLabel = "item.value." + $scope.elementFilter;
+				}
+				if ($scope.elementLabelExpression) {
+					if (/^[\d\w_]+$/.test($scope.elementLabelExpression)) {
+						displayLabel = "element." + $scope.elementLabelExpression;
+						if (!matchLabel) {
+							matchLabel = "item.value." + $scope.elementLabelExpression;
+						}
+					} else {
+						displayLabel = $scope.elementLabelExpression;
+					}
+				} else if ($scope.elementFilter) {
+					displayLabel = "element." + $scope.elementFilter;
+				} else {
+					displayLabel = "element.name";
+				}
+				if (!matchLabel) {
+					matchLabel = "item.value.name";
+				}
+				$scope.displayLabel = displayLabel;
+				$scope.matchLabel = matchLabel;
 				$scope.refreshAvailableElements = function (name) {
 					if ($scope.availableElementsLoader) {
 						$scope.availableElementsLoader({search: name});

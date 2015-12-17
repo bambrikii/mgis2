@@ -81,6 +81,13 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 												});
 											}
 
+											// Characteristics - AvailableCountrySubjects
+											modalScope.refreshAvailableCountrySubjects = function (name) {
+												NcOKATOService.get("", 0, 15, "__", name).then(function (availableCountrySubjects) {
+													modalScope.availableCountrySubjects = availableCountrySubjects.list;
+												});
+											}
+
 											modalScope.areas = modalScope.land.landAreas;
 
 											MGISCommonsModalForm.edit("app2/lands/land/land-form.htm", modalScope, function (scope, $modalInstance) {

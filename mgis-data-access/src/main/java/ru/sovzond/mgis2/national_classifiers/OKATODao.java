@@ -34,7 +34,7 @@ public class OKATODao extends CRUDDaoBase<OKATO> {
 		@Override
 		protected void applyFilter(Criteria criteria) {
 			if (code != null && code.length() > 0) {
-				criteria.add(Restrictions.like("code", code + "%"));
+				criteria.add(Restrictions.like("code", code));
 			}
 			if (name != null && name.length() > 0) {
 				criteria.add(Restrictions.like("name", "%" + name + "%"));

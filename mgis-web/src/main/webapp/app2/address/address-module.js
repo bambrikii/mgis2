@@ -52,12 +52,12 @@ angular.module("mgis.address", ["ui.bootstrap", "ui.select",
 			}
 
 			modalScope.refreshAvailableOKATOs = function (name) {
-				NcOKATOService.get("", min, max, "", name).then(function (data) {
+				NcOKATOService.get("", min, max, null, name).then(function (data) {
 					modalScope.availableOKATOs = data.list;
 				});
 			}
 			modalScope.refreshAvailableOKTMOs = function (name) {
-				NcOKTMOService.get("", min, max, "", name).then(function (data) {
+				NcOKTMOService.get("", min, max, null, name).then(function (data) {
 					modalScope.availableOKTMOs = data.list;
 				});
 			}
