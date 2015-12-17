@@ -5,7 +5,7 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 	.constant("INTEGER_PATTERN", /^[+-]?\d+?$/)
 	.constant("FLOAT_PATTERN", /^[+-]\d+(\.\d+)?$/)
 	.constant("PAGER__PAGE_SIZE", 15)
-	.constant("PAGER__MAX_SIZE", 5)
+	.constant("PAGER__MAX_SIZE", 10)
 	.factory("CommonsPagerManager", function (PAGER__PAGE_SIZE, PAGER__MAX_SIZE) {
 		return {
 			pageSize: function () {
