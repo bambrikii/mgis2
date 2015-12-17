@@ -134,6 +134,7 @@
 
 	<link type="text/css" rel="stylesheet" href="app2/lands/land/lands-leaflet-control.css">
 	<script type="text/javascript" src="app2/lands/land/lands-leaflet-control.js"></script>
+	<script type="text/javascript" src="app2/lands/land-selector/land-selector-module.js"></script>
 	<script type="text/javascript" src="app2/lands/lands.js"></script>
 	<script type="text/javascript" src="app2/lands/land/land-services.js"></script>
 	<script type="text/javascript" src="app2/lands/land/land-map-module.js"></script>

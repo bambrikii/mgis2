@@ -68,6 +68,7 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 				var control = item.control ? item.control : {};
 				var landAreas = item.landAreas;
 				var landAreas2 = buildLandAreas(landAreas);
+				var includedObjects = item.includedObjects;
 				//var registrationDocuments2 = buildRegistrationDocuments(rights);
 				//var documentsCertifyingRights2 = buildDocumentsCertifyingRights(rights);
 				//console.log("registrationDocuments" + JSON.stringify(registrationDocuments2));
@@ -93,6 +94,13 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 					}
 				} else {
 					rights2 = {}
+				}
+				var includedObjects2;
+				if (includedObjects) {
+					includedObjects2 = {
+						landDealDocument: includedObjects.landDealDocument ? {id: includedObjects.landDealDocument.id} : null,
+						inventoryDealDocument: includedObjects.inventoryDealDocument ? {id: includedObjects.inventoryDealDocument.id} : null
+					};
 				}
 				var land = {
 					id: item.id,
@@ -140,6 +148,7 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 						penaltyAmount: control.penaltyAmount,
 						timelineForViolations: control.timelineForViolations
 					},
+					includedObjects: includedObjects2,
 					spatialData: item.spatialData
 				};
 				res.save({id: item.id}, land, function (data) {

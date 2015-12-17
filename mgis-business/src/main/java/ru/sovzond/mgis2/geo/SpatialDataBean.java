@@ -12,11 +12,6 @@ public class SpatialDataBean {
 	@Autowired
 	private CoordinateSystemBean coordinateSystemBean;
 
-	@Autowired
-	private CoordinateBean coordinateBean;
-
-	@Autowired
-	private SpatialElementBean spatialElementBean;
 
 	@Autowired
 	private SpatialGroupBean spatialGroupBean;

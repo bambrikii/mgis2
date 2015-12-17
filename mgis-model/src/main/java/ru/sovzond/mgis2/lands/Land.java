@@ -253,6 +253,7 @@ public class Land implements Cloneable {
 		land.setRights(rights != null ? rights.clone() : null);
 		land.setCharacteristics(characteristics != null ? characteristics.clone() : null);
 		land.setControl(control != null ? control.clone() : null);
+		land.setIncludedObjects(includedObjects != null ? includedObjects.clone() : null);
 		land.getLandAreas().addAll(landAreas.stream().map(landArea1 -> landArea1.clone()).collect(Collectors.toList()));
 		land.setSpatialData(spatialData != null ? spatialData.clone() : null);
 		return land;

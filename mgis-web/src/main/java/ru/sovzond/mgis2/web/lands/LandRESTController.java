@@ -15,6 +15,7 @@ import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.lands.characteristics.LandCharacteristics;
 import ru.sovzond.mgis2.lands.control.LandControl;
+import ru.sovzond.mgis2.lands.includes.LandIncludedObjects;
 import ru.sovzond.mgis2.lands.rights.LandRights;
 import ru.sovzond.mgis2.national_classifiers.*;
 import ru.sovzond.mgis2.persons.PersonBean;
@@ -106,6 +107,9 @@ public class LandRESTController implements Serializable {
 
 	@Autowired
 	private SpatialDataBean spatialDataBean;
+
+	@Autowired
+	private LandIncludedObjectsBean landIncludedObjectsBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -263,6 +267,18 @@ public class LandRESTController implements Serializable {
 			control2.setInspectionType(control.getInspectionType() != null ? landControlInspectionTypeBean.load(control.getInspectionType().getId()) : null);
 			control2.setPenaltyAmount(control.getPenaltyAmount());
 			control2.setTimelineForViolations(control.getTimelineForViolations());
+		}
+		LandIncludedObjects includedObjects = land.getIncludedObjects();
+		if (includedObjects != null) {
+			LandIncludedObjects includedObjects2 = land2.getIncludedObjects();
+			if (includedObjects2 == null) {
+				includedObjects2 = new LandIncludedObjects();
+				land2.setIncludedObjects(includedObjects2);
+				;
+				landIncludedObjectsBean.save(includedObjects2);
+			}
+			includedObjects2.setInventoryDealDocument(includedObjects.getInventoryDealDocument() != null ? documentBean.load(includedObjects.getInventoryDealDocument().getId()) : null);
+			includedObjects2.setLandDealDocument(includedObjects.getLandDealDocument() != null ? documentBean.load(includedObjects.getLandDealDocument().getId()) : null);
 		}
 
 		SpatialGroup spatialGroup = land.getSpatialData();

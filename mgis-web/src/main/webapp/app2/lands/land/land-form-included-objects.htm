@@ -5,19 +5,10 @@
 	<div class="panel-body">
 
 		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.IncludedObjects.LandDealDocument</label>
-			</div>
-
+			<div class="col-sm-4"><label translate>Lands.Land.IncludedObjects.LandDealDocument</label></div>
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.includedObjects.landDealDocument"
-							options="c.name for c in availableLandDealDocuments"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
+					<isogd-document-selector document="land.includedObjects.landDealDocument"/>
 				</p>
 			</div>
 		</div>
@@ -42,10 +33,9 @@
 				</div>
 			</div>
 		</div>
-
+		<lands-selector lands="land.includedObjects.includedLands"></lands-selector>
 	</div>
 
-</div>
 </div>
 
 <div class="panel panel-default">
@@ -55,19 +45,10 @@
 	<div class="panel-body">
 
 		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>Lands.Land.IncludedObjects.InventoryDealDocument</label>
-			</div>
-
+			<div class="col-sm-4"><label translate>Lands.Land.IncludedObjects.InventoryDealDocument</label></div>
 			<div class="col-sm-8">
 				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.includedObjects.inventoryDealDocument"
-							options="c.name for c in availableInventoryDealDocuments"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
+					<isogd-document-selector document="land.includedObjects.inventoryDealDocument"/>
 				</p>
 			</div>
 		</div>
@@ -94,25 +75,25 @@
 			</div>
 		</div>
 
-        <!--------------UrbanPlanningDocuments------>
+		<!--------------UrbanPlanningDocuments------>
 		<!--<div class="form-group row">-->
-			<!--<div class="col-sm-4">-->
-				<!--<label translate>Lands.Land.IncludedObjects.UrbanPlanningDocuments</label>-->
-			<!--</div>-->
-			<!--<div class="col-sm-8">-->
-				<!--<div class="row">-->
-					<!--<div class="col-sm-8" translate>Name</div>-->
-					<!--<div class="col-sm-4"></div>-->
-				<!--</div>-->
-				<!--<div class="row" ng-repeat="includedLand in land.includedObjects.includedLands">-->
-					<!--<div class="col-sm-8">{{name}}</div>-->
-					<!--<div class="col-sm-4">-->
-						<!--<button class="btn btn-info btn-sm" translate>Change</button>-->
-						<!--<button class="btn btn-danger btn-sm" translate>Remove</button>-->
-					<!--</div>-->
-				<!--</div>-->
-				<!--<button class="btn btn-info btn-sm" translate>Add</button>-->
-			<!--</div>-->
+		<!--<div class="col-sm-4">-->
+		<!--<label translate>Lands.Land.IncludedObjects.UrbanPlanningDocuments</label>-->
+		<!--</div>-->
+		<!--<div class="col-sm-8">-->
+		<!--<div class="row">-->
+		<!--<div class="col-sm-8" translate>Name</div>-->
+		<!--<div class="col-sm-4"></div>-->
+		<!--</div>-->
+		<!--<div class="row" ng-repeat="includedLand in land.includedObjects.includedLands">-->
+		<!--<div class="col-sm-8">{{name}}</div>-->
+		<!--<div class="col-sm-4">-->
+		<!--<button class="btn btn-info btn-sm" translate>Change</button>-->
+		<!--<button class="btn btn-danger btn-sm" translate>Remove</button>-->
+		<!--</div>-->
+		<!--</div>-->
+		<!--<button class="btn btn-info btn-sm" translate>Add</button>-->
+		<!--</div>-->
 		<!--</div>-->
 
 	</div>

@@ -24,7 +24,7 @@ public class CapitalConstruction implements Cloneable {
 	@Column
 	private Long id;
 
-	@Column
+	@Column(unique = true, nullable = false)
 	private String name;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)

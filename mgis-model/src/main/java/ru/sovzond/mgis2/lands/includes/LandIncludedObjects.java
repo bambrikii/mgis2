@@ -1,19 +1,20 @@
 package ru.sovzond.mgis2.lands.includes;
 
+import ru.sovzond.mgis2.capital_constructs.CapitalConstruction;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.lands.Land;
-import ru.sovzond.mgis2.registers.oks.RusRegisterCapitalConstruction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Alexander Arakelyan on 22.07.15.
  */
 @Entity
 @Table(name = "lands_included_objects")
-public class LandIncludedObjects {
+public class LandIncludedObjects implements Cloneable {
 
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "lands_seq", allocationSize = 1)
@@ -31,7 +32,7 @@ public class LandIncludedObjects {
 	private Document inventoryDealDocument;
 
 	@OneToMany
-	private List<RusRegisterCapitalConstruction> includedCapitalConstructions = new ArrayList<>();
+	private List<CapitalConstruction> includedCapitalConstructions = new ArrayList<>();
 
 	@OneToMany
 	private List<Document> urbanPlanningDocuments = new ArrayList<>();
@@ -70,11 +71,11 @@ public class LandIncludedObjects {
 		this.inventoryDealDocument = inventoryDealDocument;
 	}
 
-	public List<RusRegisterCapitalConstruction> getIncludedCapitalConstructions() {
+	public List<CapitalConstruction> getIncludedCapitalConstructions() {
 		return includedCapitalConstructions;
 	}
 
-	public void setIncludedCapitalConstructions(List<RusRegisterCapitalConstruction> includedCapitalConstructions) {
+	public void setIncludedCapitalConstructions(List<CapitalConstruction> includedCapitalConstructions) {
 		this.includedCapitalConstructions = includedCapitalConstructions;
 	}
 
@@ -86,4 +87,29 @@ public class LandIncludedObjects {
 		this.urbanPlanningDocuments = urbanPlanningDocuments;
 	}
 
+	public LandIncludedObjects clone() {
+		LandIncludedObjects ic = new LandIncludedObjects();
+		ic.setId(id);
+		ic.getIncludedLands().addAll(includedLands.stream().map(land -> {
+			Land land1 = new Land();
+			land1.setId(id);
+			land1.setCadastralNumber(land.getCadastralNumber());
+			land1.setStateRealEstateCadastreaStaging(land.getStateRealEstateCadastreaStaging());
+			land1.setLandCategory(land.getLandCategory() != null ? land.getLandCategory().clone() : null);
+			land1.setAddress(land.getAddress() != null ? land.getAddress().clone() : null);
+			return land1;
+		}).collect(Collectors.toList()));
+		ic.getIncludedCapitalConstructions().addAll(includedCapitalConstructions.stream().map(capitalConstruction -> {
+			CapitalConstruction cc1 = new CapitalConstruction();
+			cc1.setCadastralNumber(capitalConstruction.getCadastralNumber());
+			cc1.setName(capitalConstruction.getName());
+			cc1.setType(capitalConstruction.getType() != null ? capitalConstruction.getType().clone() : null);
+			cc1.setAddress(capitalConstruction.getAddress() != null ? capitalConstruction.getAddress().clone() : null);
+			return cc1;
+		}).collect(Collectors.toList()));
+		ic.setInventoryDealDocument(inventoryDealDocument != null ? inventoryDealDocument.clone() : null);
+		ic.setLandDealDocument(landDealDocument != null ? landDealDocument.clone() : null);
+		ic.setUrbanPlanningDocuments(urbanPlanningDocuments.stream().map(document -> document.clone()).collect(Collectors.toList()));
+		return ic;
+	}
 }
