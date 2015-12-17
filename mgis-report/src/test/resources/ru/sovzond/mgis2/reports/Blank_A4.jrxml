@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2015-12-14T12:01:33 -->
+<!-- 2015-12-16T20:48:02 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5eab381-93f6-448e-a3f5-d5b6b4b363fa">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JSON Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 	<queryString language="json">
 		<![CDATA[]]>
@@ -82,8 +82,8 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="127" y="20" width="100" height="30" uuid="fdbbb22b-7862-47af-8c8c-887a42a1014b"/>
-				<text><![CDATA[Column Header]]></text>
+				<reportElement x="127" y="20" width="283" height="30" uuid="fdbbb22b-7862-47af-8c8c-887a42a1014b"/>
+				<text><![CDATA[Column Header йцуйцуйуц]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -105,6 +105,10 @@
 				<reportElement x="103" y="119" width="100" height="30" uuid="6f70c07d-dda6-4c7c-ae03-281c8159ac6c"/>
 				<text><![CDATA[Static Text]]></text>
 			</staticText>
+			<textField pattern="">
+				<reportElement x="240" y="20" width="100" height="20" uuid="4c52a5df-6474-4c4c-9be5-e17fa6b2c103"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
