@@ -1,12 +1,23 @@
 <div ng-controller="CapitalConstructsConstructListController">
 	<h3><span translate>CapitalConstructs.Constructs</span></h3>
 
+
+	<div class="row mgis-row-header">
+		<div class="col-sm-2" translate>CapitalConstructs.Construct.Name</div>
+		<div class="col-sm-2" translate>CadastralNumber</div>
+		<div class="col-sm-3" translate>Address</div>
+		<div class="col-sm-2" translate>CapitalConstructs.Construct.ActualUsage</div>
+		<div class="col-sm-3">
+		</div>
+	</div>
+
 	<div>
 		<div ng-repeat="item in constructsPager.list" class="row" style="padding: 5px;">
-			<div class="col-sm-1">{{item.id}}</div>
-			<div class="col-sm-3">{{item.type.name}}</div>
-			<div class="col-sm-4">{{item.cadastralNumber}}</div>
-			<div class="col-sm-4">
+			<div class="col-sm-2">{{item.name}}</div>
+			<div class="col-sm-2">{{item.cadastralNumber}}</div>
+			<div class="col-sm-3">{{item.address|addressFormatter}}</div>
+			<div class="col-sm-2">{{item.actualUsage}}</div>
+			<div class="col-sm-3">
 				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
 				<button class="btn btn-danger btn-sm" ng-click="deleteItem(item.id)" translate>Delete</button>
 			</div>
