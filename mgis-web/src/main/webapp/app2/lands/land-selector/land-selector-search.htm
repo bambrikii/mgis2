@@ -2,24 +2,44 @@
 	<h3 class="modal-title"><span translate>Lands.Land</span>: {{land.cadastralNumber}}</h3>
 </div>
 <div class="modal-body">
-	<form name="landSelectionForm" class="" novalidate>
-		<div class="panel-body">
-			<div class="control-group">
-				<label for="cadastralNumber" translate>CadastralNumber</label>
 
-				<div class="controls form-inline">
-					<input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber" class="form-control"/>
-					<button class="btn btn-sm btn-primary" ng-click="find(cadastralNumber)" translate>Find</button>
-					<button class="btn btn-sm btn-info" ng-click="add()" translate>Add</button>
+	<div ng-controller="LandsLandSelectorController">
+		<div class="row mgis-row-header">
+			<div class="col-sm-2" translate>CadastralNumber</div>
+			<div class="col-sm-3" translate>Address</div>
+			<div class="col-sm-1" translate>Lands.Land.Rights.TotalArea</div>
+			<div class="col-sm-2" translate>Lands.Land.Rights.RightsSubject</div>
+			<div class="col-sm-4"></div>
+		</div>
+
+		<div ng-repeat="item in selectedLands" class="row">
+			<div class="col-sm-2">
+				<a href="javascript:void(0)" ng-click="editItem(item.id)">{{item.cadastralNumber}}</a>
+				<span class="glyphicon glyphicon-map-marker" ng-if="item.spatialData|spatialDataExistsFilter"></span>
+			</div>
+			<div class="col-sm-3">{{item.address|addressFormatter}}</div>
+			<div class="col-sm-1">{{item.rights.totalArea}}</div>
+			<div class="col-sm-2">{{item.rights.rightOwner|personFormatter}}</div>
+			<div class="col-sm-4">
+				<button class="btn btn-danger btn-sm" ng-click="deselect(item.id)" translate>Delete</button>
+			</div>
+		</div>
+
+		<form name="landSelectionForm" class="" novalidate>
+			<div class="panel-body">
+				<div class="control-group">
+					<label for="cadastralNumber" translate>CadastralNumber</label>
+
+					<div class="controls form-inline">
+						<!-- CadastralNumber -->
+						<input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber" class="form-control"/>
+						<button class="btn btn-sm btn-primary" ng-click="find(cadastralNumber)" translate>Find</button>
+						<button class="btn btn-sm btn-info" ng-click="add()" translate>Add</button>
+					</div>
 				</div>
 			</div>
-			<!-- CadastralNumber -->
-			<commons-forms-text form="landForm" name="cadastralNumber" property="land.cadastralNumber" required="true"
-								pattern="LAND_CADASTRAL_NUMBER" title="CadastralNumber"></commons-forms-text>
-		</div>
-	</form>
+		</form>
 
-	<div>
 		<div class="row mgis-row-header">
 			<div class="col-sm-2" translate>CadastralNumber</div>
 			<div class="col-sm-3" translate>Address</div>
@@ -29,12 +49,8 @@
 			</div>
 		</div>
 
-		<div ng-repeat="item in landsPager.list"
-			 ng-class="selectedIds[item.id].checked?'mgis-row-selected mgis-grid-row row':'mgis-grid-row row'">
+		<div ng-repeat="item in landsSelectorPager.list" class="row">
 			<div class="col-sm-2">
-				<input type="checkbox" ng-model="selectedIds[item.id].checked"
-					   ng-click="checkLandSelected(selectedIds[item.id].checked,item)" ng-true-value="true"
-					   ng-false-value="false"/>
 				<a href="javascript:void(0)" ng-click="editItem(item.id)">{{item.cadastralNumber}}</a>
 				<span class="glyphicon glyphicon-map-marker" ng-if="item.spatialData|spatialDataExistsFilter"></span>
 			</div>
@@ -42,14 +58,14 @@
 			<div class="col-sm-1">{{item.rights.totalArea}}</div>
 			<div class="col-sm-2">{{item.rights.rightOwner|personFormatter}}</div>
 			<div class="col-sm-4">
+				<button class="btn btn-info btn-sm" ng-click="selectItem(item)" translate>Select</button>
 				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
 				<button class="btn btn-danger btn-sm" ng-click="deleteItem(item.id)" translate>Delete</button>
 			</div>
 		</div>
-	</div>
 
-	<div>
 		<div>
+			{{currentPage}}
 			<pagination total-items="landsSelectorPager.totalNumberOfItems" ng-model="currentPage"
 						items-per-page="itemsPerPage" ng-change="pageChanged()"
 						class="pagination-sm" previous-text="&lsaquo;"
@@ -60,6 +76,8 @@
 				{{landsPager.totalNumberOfItems}}</label>
 		</div>
 	</div>
+
+</div>
 
 </div>
 <div class="modal-footer">
