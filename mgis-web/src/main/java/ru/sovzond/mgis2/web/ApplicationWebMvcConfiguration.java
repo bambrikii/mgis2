@@ -7,6 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -21,7 +23,9 @@ import org.springframework.web.servlet.view.JstlView;
 import ru.sovzond.mgis2.web.resolvers.JsonViewResolver;
 
 import javax.sql.DataSource;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -161,5 +165,16 @@ public class ApplicationWebMvcConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
+	}
+
+	@Bean
+	public HttpMessageConverter<String> responseBodyConverter() {
+		StringHttpMessageConverter converter = new StringHttpMessageConverter();
+		converter.setSupportedMediaTypes(Arrays.asList( //
+				new MediaType[]{ //
+						new MediaType("text", "plain", Charset.forName("UTF-8")), //
+						new MediaType("text", "html", Charset.forName("UTF-8")) //
+				}));
+		return converter;
 	}
 }

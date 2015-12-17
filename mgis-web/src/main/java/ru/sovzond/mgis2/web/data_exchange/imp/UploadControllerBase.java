@@ -76,7 +76,7 @@ public abstract class UploadControllerBase {
 				if (info.checkIfUploadComplete()) {
 					//Check if all chunks uploaded, and change filename
 					FlowInfoStorage.getInstance().remove(info);
-					result.append("All finished.");
+					result.append("All finished.\n");
 					File file = new File(info.getFlowFilePath());
 					try (InputStream is = new FileInputStream(file)) {
 						result.append(importProcessable.doImport(is));
@@ -102,27 +102,32 @@ public abstract class UploadControllerBase {
 		return info;
 	}
 
-	protected String doUploadChunk(@RequestParam(FLOW_CHUNK_NUMBER) int flowChunkNumber, @RequestParam(FLOW_CHUNK_SIZE) int flowChunkSize, @RequestParam(FLOW_TOTAL_SIZE) long flowTotalSize, @RequestParam(FLOW_IDENTIFIER) String flowIdentifier, @RequestParam(FLOW_FILENAME) String flowFileName, @RequestParam(FLOW_RELATIVE_PATH) String flowRelativePath, @RequestParam(FLOW_FILE) MultipartFile file, Importable importable) {
+	protected ResponseEntity<String> doUploadChunk(@RequestParam(FLOW_CHUNK_NUMBER) int flowChunkNumber, @RequestParam(FLOW_CHUNK_SIZE) int flowChunkSize, @RequestParam(FLOW_TOTAL_SIZE) long flowTotalSize, @RequestParam(FLOW_IDENTIFIER) String flowIdentifier, @RequestParam(FLOW_FILENAME) String flowFileName, @RequestParam(FLOW_RELATIVE_PATH) String flowRelativePath, @RequestParam(FLOW_FILE) MultipartFile file, Importable importable) {
 		FlowInfo info = writeFlowInfo(flowChunkSize, flowTotalSize, flowIdentifier, flowFileName, flowRelativePath);
-		return processStream(flowChunkNumber, info, file, inputStream -> {
+		return new ResponseEntity<>(processStream(flowChunkNumber, info, file, inputStream -> {
 			List<ReportRecord> result = importable.imp(inputStream);
 			StringBuilder sb = new StringBuilder();
 			for (ReportRecord record : result) {
 				sb.append(record.getIdentifier()).append(", ").append(record.getMessage()).append(", ").append(record.getOutcome());
 				if (ReportOutcome.ERROR.equals(record.getOutcome())) {
-					sb.append(", ").append(record.getDetails());
+					sb.append("\n").append(record.getDetails());
 				}
 				sb.append("\n");
 			}
-			return sb.toString();
-		});
+			String resultString = sb.toString();
+			try {
+				return new String(resultString.getBytes(), "ISO-8859-1");
+			} catch (UnsupportedEncodingException ex) {
+				return resultString + "\n" + ex.getMessage();
+			}
+		}), HttpStatus.OK);
 	}
 
 	protected ResponseEntity<String> doCheckCunk(@RequestParam(FLOW_CHUNK_NUMBER) int flowChunkNumber, @RequestParam(FLOW_IDENTIFIER) String flowIdentifier) {
 		StringBuilder result = new StringBuilder();
 		FlowInfo info = readFlowInfo(flowIdentifier);
 		if (info != null && info.containsChunk(flowChunkNumber)) {
-			result.append("Uploaded."); //This Chunk has been Uploaded.
+			result.append("Uploaded.");
 			return new ResponseEntity<>(result.toString(), HttpStatus.OK);
 		} else {
 			result.append("The chunk ").append(flowChunkNumber).append(" of ").append(flowIdentifier).append(" not found.");

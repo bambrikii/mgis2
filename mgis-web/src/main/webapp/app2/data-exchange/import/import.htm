@@ -10,10 +10,10 @@
 
 <h4><span translate>DataExchange.Import.RusRegister.Lands</span></h4>
 
-Region_Cadastr
+{{'RusRegister.Schemes.Region_Cadastr'|translate}}
 
 <div ng-controller="RusRegisterImportController">
-	<div flow-init="{target: 'data-exchange/import/lands/rusregister/regcad',testChunks:false}"
+	<div flow-init="{target: 'data-exchange/import/lands/rusregister/regcad',testChunks:false,chunkSize:1024*1024}"
 		 flow-files-submitted="$flow.upload()"
 		 flow-file-success="$file.msg = $message"
 		 flow-file-success="someHandlerMethod( $file, $message, $flow )"
@@ -32,7 +32,7 @@ Region_Cadastr
 
 		<input type="file" ng-style="rusregisterUploadStyle" flow-btn class="btn">
 
-		<div ng-repeat="file in $flow.files">
+		<div ng-repeat="file in $flow.files | mgisCommonsReverse">
 			<div class="row mgis-grid-row">
 				<div class="col-sm-12">{{file.name}} ({{$index+1}})
 					<mgis-shortened-message message="file.msg"></mgis-shortened-message>
@@ -48,11 +48,10 @@ Region_Cadastr
 
 	</div>
 </div>
-
-KPT
-
+</div>
+{{'RusRegister.Schemes.KPTv9'|translate}}
 <div ng-controller="RusRegisterImportController">
-	<div flow-init="{target: 'data-exchange/import/lands/rusregister/kpt',testChunks:false}"
+	<div flow-init="{target: 'data-exchange/import/lands/rusregister/kpt',testChunks:false,chunkSize:1024*1024}"
 		 flow-files-submitted="$flow.upload()"
 		 flow-file-success="$file.msg = $message"
 		 flow-file-success="someHandlerMethod( $file, $message, $flow )"
@@ -71,7 +70,7 @@ KPT
 
 		<input type="file" ng-style="rusregisterUploadStyle" flow-btn class="btn">
 
-		<div ng-repeat="file in $flow.files">
+		<div ng-repeat="file in $flow.files | mgisCommonsReverse">
 			<div class="row mgis-grid-row">
 				<div class="col-sm-12">{{file.name}} ({{$index+1}})
 					<mgis-shortened-message message="file.msg"></mgis-shortened-message>

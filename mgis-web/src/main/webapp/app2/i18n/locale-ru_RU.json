@@ -25,7 +25,7 @@
   "Delete": "Удалить",
   "Delete.Selected": "Удалить выбранные",
   "Select.All": "Ввыделить все",
-  "Select.DeselectAll":"Убрать выделение",
+  "Select.DeselectAll": "Убрать выделение",
   "Find": "Найти",
   "Search": "Искать",
   "Add": "Добавить",
@@ -426,5 +426,7 @@
   "Filters": "Фильтры",
   "Filter": "Фильтр",
   "File": "Файл",
-  "MilliSeconds": "мс"
+  "MilliSeconds": "мс",
+  "RusRegister.Schemes.Region_Cadastr": "Кадастровое деление",
+  "RusRegister.Schemes.KPTv9": "КПТ версия 9"
 }

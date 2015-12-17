@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 import ru.sovzond.mgis2.web.proxy.ProxyServlet;
@@ -68,6 +69,12 @@ public class ApplicationStarterConfiguration implements WebApplicationInitialize
 
 		FilterRegistration expiredFilter = servletContext.addFilter("expired-filter", new ExpiredSessionFilter());
 		expiredFilter.addMappingForUrlPatterns(null, false, "/rest/*");
+
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+		characterEncodingFilter.setForceEncoding(true);
+		FilterRegistration encodingFilter = servletContext.addFilter("encoding-filter", characterEncodingFilter);
+		encodingFilter.addMappingForUrlPatterns(null, false, "/rest/*");
 
 	}
 
