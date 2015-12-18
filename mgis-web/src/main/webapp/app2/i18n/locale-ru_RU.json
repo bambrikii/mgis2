@@ -262,6 +262,7 @@
   "NaturalPerson.FirstName": "Имя",
   "NaturalPerson.Surname": "Фамилия",
   "NaturalPerson.Patronymic": "Отчество",
+  "NaturalPerson.CertificateType": "Тип документа",
   "OKATO": "ОКАТО",
   "KLADR": "КЛАДР",
   "Address.Selector": "Выбрать адрес",

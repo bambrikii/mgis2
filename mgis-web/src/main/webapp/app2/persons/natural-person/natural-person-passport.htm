@@ -1,29 +1,30 @@
 <div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 translate>Document.Identity.Data</h3>
-    </div>
-    <div class="panel-body">
+	<div class="panel-heading">
+		<h3 translate>Document.Identity.Data</h3>
+	</div>
+	<div class="panel-body">
 
-        <div class="form-group row">
-            <div class="col-sm-4"><label translate>Passport.Series</label></div>
-            <div class="col-sm-8"><input type="text" class="form-control" name="name" ng-model="item.passportSeries"/>
-            </div>
-        </div>
+		<commons-forms-drop-down form="naturalPersonForm" name="landCategory" property="item.certificateType"
+								 required="true"
+								 title="NaturalPerson.CertificateType"
+								 available-elements="availableCertificateTypes"></commons-forms-drop-down>
 
-        <div class="form-group row">
-            <div class="col-sm-4"><label translate>Passport.Number</label></div>
-            <div class="col-sm-8"><input type="text" class="form-control" name="name" ng-model="item.passportNumber"/>
-            </div>
-        </div>
+		<commons-forms-text form="naturalPersonForm" name="passportSeries" property="item.passportSeries"
+							required="true" title="Passport.Series"
+				></commons-forms-text>
 
-        <commons-forms-date form="naturalPersonForm" name="'passportDateOfIssue'" property="item.passportDateOfIssue"
-                            title="Passport.DateOfIssue"></commons-forms-date>
+		<commons-forms-text form="naturalPersonForm" name="passportNumber" property="item.passportNumber"
+							required="true" title="Passport.Number"
+				></commons-forms-text>
 
-        <div class="form-group row">
-            <div class="col-sm-4"><label translate>Passport.IssuerDepartment</label></div>
-            <div class="col-sm-8"><input type="text" class="form-control" name="name"
-                                         ng-model="item.passportIssuerDepartment"/></div>
-        </div>
+		<commons-forms-date form="naturalPersonForm" name="'passportDateOfIssue'" property="item.passportDateOfIssue"
+							title="Passport.DateOfIssue" required="true"></commons-forms-date>
 
-    </div>
+		<div class="form-group row">
+			<div class="col-sm-4"><label translate>Passport.IssuerDepartment</label></div>
+			<div class="col-sm-8"><input type="text" class="form-control" name="name"
+										 ng-model="item.passportIssuerDepartment"/></div>
+		</div>
+
+	</div>
 </div>

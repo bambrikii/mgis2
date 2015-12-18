@@ -144,6 +144,8 @@
 	<script type="text/javascript" src="app2/terr-zones/zone/zone-service.js"></script>
 	<script type="text/javascript" src="app2/terr-zones/zone/zone-module.js"></script>
 
+
+	<script type="text/javascript" src="app2/persons/natural-person/natural-person-certificate-service.js"></script>
 	<script type="text/javascript" src="app2/persons/natural-person/natural-person-service.js"></script>
 	<script type="text/javascript" src="app2/persons/natural-person/natural-person-module.js"></script>
 	<script type="text/javascript" src="app2/persons/legal-person/legal-person-service.js"></script>

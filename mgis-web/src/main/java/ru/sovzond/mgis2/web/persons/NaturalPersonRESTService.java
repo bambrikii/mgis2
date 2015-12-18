@@ -8,8 +8,10 @@ import ru.sovzond.mgis2.address.AddressBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.national_classifiers.OKVEDBean;
 import ru.sovzond.mgis2.persons.NaturalPersonBean;
+import ru.sovzond.mgis2.persons.NaturalPersonCertificateTypeBean;
 import ru.sovzond.mgis2.registers.persons.NaturalPerson;
 
+import javax.security.cert.Certificate;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 
@@ -28,6 +30,10 @@ public class NaturalPersonRESTService implements Serializable {
 
 	@Autowired
 	private OKVEDBean okvedBean;
+
+	@Autowired
+	private NaturalPersonCertificateTypeBean naturalPersonCertificateTypeBean;
+
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -53,11 +59,15 @@ public class NaturalPersonRESTService implements Serializable {
 		if (legalAddressId != null && legalAddressId != 0) {
 			naturalPerson1.setLegalAddress(addressBean.load(legalAddressId));
 		}
-
 		Long activityTypeId = naturalPerson.getActivityType() != null ? naturalPerson.getActivityType().getId() : null;
 		if (activityTypeId != null && activityTypeId != 0) {
 			naturalPerson1.setActivityType(okvedBean.load(activityTypeId));
 		}
+		Long naturalPersonSertTypeId = naturalPerson.getCertificateType() != null ? naturalPerson.getCertificateType().getId() : null;
+		if (naturalPersonSertTypeId != null && naturalPersonSertTypeId != 0) {
+			naturalPerson1.setCertificateType(naturalPersonCertificateTypeBean.load(naturalPersonSertTypeId));
+		}
+
 		return naturalPersonBean.save(naturalPerson1).clone();
 	}
 
