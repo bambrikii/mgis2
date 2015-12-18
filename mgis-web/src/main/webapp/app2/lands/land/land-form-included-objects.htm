@@ -44,10 +44,10 @@
 					<div class="col-sm-4">
 					</div>
 				</div>
-				<div class="row" ng-repeat="includedLand in land.includedObjects.includedLands">
-					<div class="col-sm-2">{{id}}</div>
-					<div class="col-sm-4">{{name}}</div>
-					<div class="col-sm-2">{{cadastralNumber}}</div>
+				<div class="row" ng-repeat="includedCapitalConstruction in land.includedObjects.includedCapitalConstructions">
+					<div class="col-sm-2">{{includedCapitalConstruction.id}}</div>
+					<div class="col-sm-4">{{includedCapitalConstruction.name}}</div>
+					<div class="col-sm-2">{{includedCapitalConstruction.cadastralNumber}}</div>
 					<div class="col-sm-4">
 						<button class="btn btn-info btn-sm" translate>Change</button>
 						<button class="btn btn-danger btn-sm" translate>Remove</button>

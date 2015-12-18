@@ -91,21 +91,22 @@ public class LandIncludedObjects implements Cloneable {
 		LandIncludedObjects ic = new LandIncludedObjects();
 		ic.setId(id);
 		ic.getIncludedLands().addAll(includedLands.stream().map(land -> {
-			Land land1 = new Land();
-			land1.setId(id);
-			land1.setCadastralNumber(land.getCadastralNumber());
-			land1.setStateRealEstateCadastreaStaging(land.getStateRealEstateCadastreaStaging());
-			land1.setLandCategory(land.getLandCategory() != null ? land.getLandCategory().clone() : null);
-			land1.setAddress(land.getAddress() != null ? land.getAddress().clone() : null);
-			return land1;
+			Land landClone = new Land();
+			landClone.setId(land.getId());
+			landClone.setCadastralNumber(land.getCadastralNumber());
+			landClone.setStateRealEstateCadastreaStaging(land.getStateRealEstateCadastreaStaging());
+			landClone.setLandCategory(land.getLandCategory() != null ? land.getLandCategory().clone() : null);
+			landClone.setAddress(land.getAddress() != null ? land.getAddress().clone() : null);
+			landClone.setRights(land.getRights() != null ? land.getRights().clone() : null);
+			return landClone;
 		}).collect(Collectors.toList()));
 		ic.getIncludedCapitalConstructions().addAll(includedCapitalConstructions.stream().map(capitalConstruction -> {
-			CapitalConstruction cc1 = new CapitalConstruction();
-			cc1.setCadastralNumber(capitalConstruction.getCadastralNumber());
-			cc1.setName(capitalConstruction.getName());
-			cc1.setType(capitalConstruction.getType() != null ? capitalConstruction.getType().clone() : null);
-			cc1.setAddress(capitalConstruction.getAddress() != null ? capitalConstruction.getAddress().clone() : null);
-			return cc1;
+			CapitalConstruction ccClone = new CapitalConstruction();
+			ccClone.setCadastralNumber(capitalConstruction.getCadastralNumber());
+			ccClone.setName(capitalConstruction.getName());
+			ccClone.setType(capitalConstruction.getType() != null ? capitalConstruction.getType().clone() : null);
+			ccClone.setAddress(capitalConstruction.getAddress() != null ? capitalConstruction.getAddress().clone() : null);
+			return ccClone;
 		}).collect(Collectors.toList()));
 		ic.setInventoryDealDocument(inventoryDealDocument != null ? inventoryDealDocument.clone() : null);
 		ic.setLandDealDocument(landDealDocument != null ? landDealDocument.clone() : null);

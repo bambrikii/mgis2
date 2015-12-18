@@ -45,6 +45,29 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 			return null;
 		}
 
+		function copyArray(arr) {
+			var result = new Array();
+			for (var i in arr) {
+				var land = arr[i];
+				result.push({id: land.id});
+			}
+			return result;
+		}
+
+		function buildIncludedLands(includedObjects) {
+			if (includedObjects && includedObjects.includedLands) {
+				return copyArray(includedObjects.includedLands);
+			}
+			return null;
+		}
+
+		function buildIncludedCapitalConstructions(includedObjects) {
+			if (includedObjects && includedObjects.includedCapitalConstructions) {
+				return copyArray(includedObjects.includedCapitalConstructions);
+			}
+			return null;
+		}
+
 		return {
 			get: function (id, first, max, cadastralNumber, ids) {
 				var deferred = $q.defer();
@@ -71,8 +94,6 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 				var includedObjects = item.includedObjects;
 				//var registrationDocuments2 = buildRegistrationDocuments(rights);
 				//var documentsCertifyingRights2 = buildDocumentsCertifyingRights(rights);
-				//console.log("registrationDocuments" + JSON.stringify(registrationDocuments2));
-				//console.log("documentsCertifyingRights" + JSON.stringify(documentsCertifyingRights2));
 				var rights2;
 				if (rights) {
 					rights2 = {
@@ -99,7 +120,9 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 				if (includedObjects) {
 					includedObjects2 = {
 						landDealDocument: includedObjects.landDealDocument ? {id: includedObjects.landDealDocument.id} : null,
-						inventoryDealDocument: includedObjects.inventoryDealDocument ? {id: includedObjects.inventoryDealDocument.id} : null
+						inventoryDealDocument: includedObjects.inventoryDealDocument ? {id: includedObjects.inventoryDealDocument.id} : null,
+						includedLands: buildIncludedLands(includedObjects),
+						includedCapitalConstructions: buildIncludedCapitalConstructions(includedObjects),
 					};
 				}
 				var land = {

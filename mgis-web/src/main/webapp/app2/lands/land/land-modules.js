@@ -147,10 +147,22 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 			});
 		}
 
+		function reloadItemInList(id, list) {
+			LandsLandService.get(id).then(function (data) {
+				for (var i in list) {
+					var land = list[i];
+					if (land.id == data.id) {
+						list[i] = data;
+					}
+				}
+			});
+		}
+
 		return {
 			addItem: addItem,
 			editItem: editItem,
-			deleteItem: deleteItem
+			deleteItem: deleteItem,
+			reloadItemInList: reloadItemInList
 		}
 
 	}) //
