@@ -3,17 +3,7 @@ angular.module("mgis.error", [
 	"mgis.error.service"
 
 ])
-	.controller("MGISErrorPanelController", function ($scope, $rootScope, MGISErrorService, MGISCommonsModalForm) {
-		$scope.showErrors = function () {
-			var modalScope = $rootScope.$new();
-			var modal = MGISCommonsModalForm.edit("app2/errors/error-list.htm", modalScope, function (data, modalInstance) {
-				MGISErrorService.removeAllErrors();
-				modalInstance.close();
-			});
-		}
-		$scope.errors = MGISErrorService.errors;
-	})
-	.controller("MGISErrorListController", function ($scope, $rootScope, MGISErrorService, $modal) {
+	.factory("MGISErrorPreviewService", function ($rootScope, $modal, MGISCommonsModalForm, MGISErrorService) {
 		function trimTitle(data) {
 			var arr = /<title>([^<]*)<\/title>/.exec(data);
 			if (arr.length > 1) {
@@ -31,11 +21,17 @@ angular.module("mgis.error", [
 			return result;
 		}
 
-		$scope.viewErrorDetails = function (error) {
+		function previewError(error) {
 			var modalScope = $rootScope.$new();
 			modalScope.status = error.status;
-			var title = trimTitle(error.data);
-			var data = trimStacktrace(error.data);
+			var title = null;
+			var data = null;
+			try {
+				title = trimTitle(error.data);
+				data = trimStacktrace(error.data);
+			} catch (ex) {
+				console.log(ex);
+			}
 			if (title && data) {
 				modalScope.title = title;
 				modalScope.statusText = error.statusText;
@@ -58,7 +54,24 @@ angular.module("mgis.error", [
 					}
 				}
 			});
+		}
 
+		function previewList() {
+			var modalScope = $rootScope.$new();
+			var modal = MGISCommonsModalForm.edit("app2/errors/error-list.htm", modalScope, function (data, modalInstance) {
+				MGISErrorService.removeAllErrors();
+				modalInstance.close();
+			});
+		}
+
+		return {
+			preview: previewError,
+			list: previewList
+		}
+	})
+	.controller("MGISErrorListController", function ($scope, $rootScope, MGISErrorService, MGISErrorPreviewService) {
+		$scope.viewErrorDetails = function (error) {
+			MGISErrorPreviewService.preview(error);
 		}
 
 		$scope.removeError = function (error) {
@@ -70,7 +83,18 @@ angular.module("mgis.error", [
 		return {
 			restrict: "E",
 			scope: {},
-			templateUrl: "app2/errors/error-panel.htm"
+			templateUrl: "app2/errors/error-panel.htm",
+			controller: function ($scope, $rootScope, MGISErrorService, MGISCommonsModalForm, MGISErrorPreviewService) {
+				$scope.showErrors = function () {
+					MGISErrorPreviewService.list();
+				}
+				$scope.errors = MGISErrorService.errors;
+				$scope.$watch("errors.length", function (length, oldLength) {
+					if (length > oldLength) {
+						MGISErrorPreviewService.preview($scope.errors[$scope.errors.length - 1]);
+					}
+				});
+			}
 		}
 	})
 ;

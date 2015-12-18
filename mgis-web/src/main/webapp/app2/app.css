@@ -281,3 +281,7 @@ multiselect button.btn {
 	p-adding: 5px 5px 5px 5px;
 	padding: .5% .5% .5% .5%;
 }
+
+.mgis-error-handling-modal .modal-dialog {
+	top: 165px;
+}
