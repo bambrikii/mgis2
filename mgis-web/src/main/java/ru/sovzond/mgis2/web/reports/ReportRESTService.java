@@ -44,7 +44,7 @@ public class ReportRESTService implements Serializable {
 		return reportBean.list(filter, orderBy, first, max);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json;charset=UTF-8")
 	@Transactional
 	public Report save(@PathVariable("id") Long id, @RequestBody Report report) {
 		Report report2;
@@ -71,7 +71,7 @@ public class ReportRESTService implements Serializable {
 	}
 
 
-	@RequestMapping(value = "/upload-definition", headers = "Accept=*/*", produces = "application/json", method = RequestMethod.POST)
+	@RequestMapping(value = "/upload-definition", headers = "Accept=*/*", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
 	@Transactional
 	@ResponseBody
 	public String uploadReportDefinition(@RequestParam("id") Long id, @RequestParam("file") MultipartFile file) throws IOException {
@@ -116,7 +116,7 @@ public class ReportRESTService implements Serializable {
 	 * @return - generated report bytes
 	 * @throws ReportManagerException
 	 */
-	@RequestMapping(value = "/{id}/generate", headers = "Accept=*/*", produces = "application/json", method = RequestMethod.POST)
+	@RequestMapping(value = "/{id}/generate", headers = "Accept=*/*", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
 	@Transactional
 	public ResponseEntity<GeneratedResponse> generate(@PathVariable("id") Long id, @RequestBody GeneratedRequest request) throws ReportManagerException {
 		final HttpHeaders headers = new HttpHeaders();
