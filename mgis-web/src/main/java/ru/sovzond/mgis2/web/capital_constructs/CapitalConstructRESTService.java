@@ -88,8 +88,11 @@ public class CapitalConstructRESTService {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
-	public PageableContainer<CapitalConstruction> list(@RequestParam(value = "orderBy", defaultValue = "id DESC") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max) {
-		return capitalConstructBean.list(orderBy, first, max);
+	public PageableContainer<CapitalConstruction> list(@RequestParam(value = "orderBy", defaultValue = "id DESC") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max,
+													   @RequestParam(value = "cadastralNumber", defaultValue = "") String cadastralNumber,
+													   @RequestParam(value = "name", defaultValue = "") String name
+	) {
+		return capitalConstructBean.list(cadastralNumber, name, orderBy, first, max);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")

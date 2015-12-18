@@ -1,20 +1,20 @@
 <div class="modal-header">
-	<h3 class="modal-title"><span translate>Lands</span></h3>
+	<h3 class="modal-title"><span translate>CapitalConstructs.Constructs</span></h3>
 </div>
 <div class="modal-body">
 
-	<div ng-controller="LandsLandSelectorController">
+	<div ng-controller="CapitalConstructsConstructSelectorController">
 		<div ng-repeat="item in selectedItems" class="row mgis-grid-row">
-			<div class="col-sm-2"><a href="javascript:void(0)" ng-click="editItem(item.id)">{{item.cadastralNumber}}</a></div>
-			<div class="col-sm-4">{{item.address|addressFormatter}}</div>
-			<div class="col-sm-2">{{item.rights.totalArea}}</div>
+			<div class="col-sm-2">{{item.cadastralNumber}}</div>
+			<div class="col-sm-3">{{item.name}}</div>
+			<div class="col-sm-3">{{item.address|addressFormatter}}</div>
 			<div class="col-sm-4">
 				<button class="btn btn-danger btn-sm" ng-click="deselect(item.id)" translate>Deselect</button>
 				<button class="btn btn-warning btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
 			</div>
 		</div>
 
-		<form name="landSelectionForm" class="" novalidate>
+		<form name="constructSearchForm" class="" novalidate>
 			<div class="panel-body">
 				<div class="control-group">
 					<label for="cadastralNumber" translate>CadastralNumber</label>
@@ -30,21 +30,15 @@
 
 		<div class="row mgis-row-header">
 			<div class="col-sm-2" translate>CadastralNumber</div>
+			<div class="col-sm-3" translate>CapitalConstructs.Construct.Name</div>
 			<div class="col-sm-3" translate>Address</div>
-			<div class="col-sm-1" translate>Lands.Land.Rights.TotalArea</div>
-			<div class="col-sm-2" translate>Lands.Land.Rights.RightsSubject</div>
-			<div class="col-sm-4">
-			</div>
+			<div class="col-sm-4"></div>
 		</div>
 
-		<div ng-repeat="item in landsSelectorPager.list" class="row">
-			<div class="col-sm-2">
-				{{item.cadastralNumber}}
-				<span class="glyphicon glyphicon-map-marker" ng-if="item.spatialData|spatialDataExistsFilter"></span>
-			</div>
+		<div ng-repeat="item in constructsSelectorPager.list" class="row">
+			<div class="col-sm-2">{{item.cadastralNumber}}</div>
+			<div class="col-sm-3">{{item.name}}</div>
 			<div class="col-sm-3">{{item.address|addressFormatter}}</div>
-			<div class="col-sm-1">{{item.rights.totalArea}}</div>
-			<div class="col-sm-2">{{item.rights.rightOwner|personFormatter}}</div>
 			<div class="col-sm-4">
 				<button class="btn btn-info btn-sm" ng-click="selectItem(item)" translate>Select</button>
 				<button class="btn btn-warning btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
@@ -53,7 +47,7 @@
 		</div>
 
 		<div>
-			<pagination total-items="landsSelectorPager.totalNumberOfItems" ng-model="currentPage"
+			<pagination total-items="constructsSelectorPager.totalNumberOfItems" ng-model="currentPage"
 						items-per-page="itemsPerPage" ng-change="pageChanged()"
 						class="pagination-sm" previous-text="&lsaquo;"
 						next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
@@ -65,8 +59,7 @@
 	</div>
 
 </div>
-
 <div class="modal-footer">
-	<button type="submit" class="btn btn-primary" ng-disabled="landSelectionForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="submit" class="btn btn-primary" ng-disabled="constructSearchForm.$invalid" ng-click="ok()" translate>Submit</button>
 	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
 </div>

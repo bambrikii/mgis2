@@ -12,7 +12,8 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.geo.spatial.data",
 	"mgis.address",
 	"mgis.reports.report",
-	"mgis.lands.land-selector"
+	"mgis.lands.land-selector",
+	"mgis.capital-constructs.construct-selector"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider

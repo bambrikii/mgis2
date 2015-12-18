@@ -123,6 +123,7 @@
 	<script type="text/javascript" src="app2/admin/privileges/admin-privileges-module.js"></script>
 
 	<!-- Capital Constructs -->
+	<script type="text/javascript" src="app2/capital-constructs/capital-construct-selector/capital-construct-selector-module.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/capital-constructs.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/characteristics/characteristics-module.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/characteristics/characteristics-services.js"></script>

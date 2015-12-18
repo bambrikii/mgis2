@@ -10,16 +10,16 @@ angular.module("mgis.lands.land-selector", ["ui.bootstrap",
 				lands: "="
 			},
 			templateUrl: "app2/lands/land-selector/lands-selector-component.htm",
-			controller: function ($scope, $rootScope, MGISCommonsModalForm, LandsLandCRUDService, MGISCommonsModalForm) {
+			controller: function ($scope, $rootScope, MGISCommonsModalForm, LandsLandCRUDService) {
 				$scope.select = function () {
 					var modalScope = $rootScope.$new();
-					modalScope.selectedLands = new Array();
+					modalScope.selectedItems = new Array();
 					for (var i in $scope.lands) {
 						var land = $scope.lands[i];
-						modalScope.selectedLands.push(land);
+						modalScope.selectedItems.push(land);
 					}
 					MGISCommonsModalForm.edit("app2/lands/land-selector/land-selector-search.htm", modalScope, function (scope, modalInstance) {
-						$scope.lands = scope.selectedLands;
+						$scope.lands = scope.selectedItems;
 						modalInstance.close();
 					}, {windowClass: "mgis-land-modal-form"});
 
@@ -58,11 +58,11 @@ angular.module("mgis.lands.land-selector", ["ui.bootstrap",
 		$scope.editItem = function (id) {
 			LandsLandCRUDService.editItem(id, function () {
 				updateList();
-				LandsLandCRUDService.reloadItemInList(id, $scope.selectedLands);
+				LandsLandCRUDService.reloadItemInList(id, $scope.selectedItems);
 			});
 		}
 		$scope.removeItem = function (id) {
-			LandsLandCRUDService.removeItem(id, updateList);
+			LandsLandCRUDService.deleteItem(id, updateList);
 		}
 		$scope.pageChanged = function () {
 			updateList();
@@ -71,18 +71,18 @@ angular.module("mgis.lands.land-selector", ["ui.bootstrap",
 			updateList();
 		}
 		$scope.selectItem = function (land) {
-			for (var i in $scope.selectedLands) {
-				if ($scope.selectedLands[i].id == land.id) {
+			for (var i in $scope.selectedItems) {
+				if ($scope.selectedItems[i].id == land.id) {
 					return;
 				}
 			}
-			$scope.selectedLands.push(land);
+			$scope.selectedItems.push(land);
 		}
 		$scope.deselect = function (landId) {
 			MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
-				for (var i in $scope.selectedLands) {
-					if ($scope.selectedLands[i].id == landId) {
-						$scope.selectedLands.splice(i, 1);
+				for (var i in $scope.selectedItems) {
+					if ($scope.selectedItems[i].id == landId) {
+						$scope.selectedItems.splice(i, 1);
 					}
 				}
 				modalInstance.close();

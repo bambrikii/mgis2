@@ -102,6 +102,7 @@ public class LandIncludedObjects implements Cloneable {
 		}).collect(Collectors.toList()));
 		ic.getIncludedCapitalConstructions().addAll(includedCapitalConstructions.stream().map(capitalConstruction -> {
 			CapitalConstruction ccClone = new CapitalConstruction();
+			ccClone.setId(capitalConstruction.getId());
 			ccClone.setCadastralNumber(capitalConstruction.getCadastralNumber());
 			ccClone.setName(capitalConstruction.getName());
 			ccClone.setType(capitalConstruction.getType() != null ? capitalConstruction.getType().clone() : null);

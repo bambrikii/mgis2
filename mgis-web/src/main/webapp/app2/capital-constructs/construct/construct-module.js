@@ -1,5 +1,6 @@
 angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap",
 	"mgis.commons",
+	"mgis.commons.forms",
 	"mgis.capital-constructs.construct.service",
 	"mgis.property",
 	"mgis.capital-constructs.characteristics",
@@ -14,24 +15,10 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 				templateUrl: "app2/capital-constructs/construct/construct-list.htm"
 			});
 	})
-	.controller("CapitalConstructsConstructListController", function ($scope,
-																	  $rootScope,
-																	  CapitalConstructsConstructService,
-																	  CapitalConstructEconomicCharacteristicsCRUDService,
-																	  CapitalConstructTechnicalCharacteristicsCRUDService,
-																	  CapitalConstructsConstructTypeService,
-																	  MGISCommonsModalForm,
-																	  CapitalConstructsConstructiveElementCRUDService,
-																	  NcOKTMOService) {
-		$scope.currentPage = 1;
-		$scope.itemsPerPage = 15;
-		function updateGrid() {
-			CapitalConstructsConstructService.get("", ($scope.currentPage - 1) * $scope.itemsPerPage, $scope.itemsPerPage).then(function (data) {
-				$scope.constructsPager = data;
-			});
-		}
-
-		function editItem(modalScope, updateHandler) {
+	.factory("CapitalConstructsConstructCRUDService", function ($rootScope, CapitalConstructsConstructService, CapitalConstructsConstructTypeService, NcOKTMOService, MGISCommonsModalForm) {
+		function editItem0(item, updateHandler) {
+			var modalScope = $rootScope.$new();
+			modalScope.item = item;
 			// AddressMunicipalEntities
 			modalScope.availableMunicipalEntities = new Array();
 			modalScope.refreshAvailableMunicipalEntities = function (name) {
@@ -52,32 +39,77 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 			});
 		}
 
-		updateGrid();
 
-		$scope.addItem = function () {
-			var modalScope = $rootScope.$new();
-			modalScope.item = {id: 0};
-			editItem(modalScope, function () {
-				updateGrid();
-			});
+		function addItem(updateHandler) {
+			editItem0({id: 0}, updateHandler);
 		}
 
-		$scope.editItem = function (id) {
-			var modalScope = $rootScope.$new();
+		function editItem(id, updateHandler) {
 			CapitalConstructsConstructService.get(id).then(function (data) {
-				modalScope.item = data;
-				editItem(modalScope, function () {
-					updateGrid();
-				});
+				editItem0(data, updateHandler);
 			});
 		}
-		$scope.deleteItem = function (id) {
+
+		function removeItem(id, updateHandler) {
 			MGISCommonsModalForm.confirmRemoval(function ($modalInstance) {
 				CapitalConstructsConstructService.remove(id).then(function () {
 					$modalInstance.close();
-					updateGrid();
+					if (updateHandler) {
+						updateHandler();
+					}
 				});
 			});
+
+		}
+
+		function reloadItemInList(id, list) {
+			CapitalConstructsConstructService.get(id).then(function (data) {
+				for (var i in list) {
+					var item = list[i];
+					if (item.id == data.id) {
+						list[i] = data;
+					}
+				}
+			});
+		}
+
+		return {
+			addItem: addItem,
+			editItem: editItem,
+			removeItem: removeItem,
+			reloadItemInList: reloadItemInList
+		}
+	})
+	.controller("CapitalConstructsConstructListController", function ($scope,
+																	  $rootScope,
+																	  CapitalConstructsConstructService,
+																	  CapitalConstructEconomicCharacteristicsCRUDService,
+																	  CapitalConstructTechnicalCharacteristicsCRUDService,
+																	  CapitalConstructsConstructTypeService,
+																	  MGISCommonsModalForm,
+																	  CapitalConstructsConstructiveElementCRUDService,
+																	  NcOKTMOService,
+																	  CommonsPagerManager,
+																	  CapitalConstructsConstructCRUDService) {
+		$scope.currentPage = 1;
+		$scope.itemsPerPage = CommonsPagerManager.pageSize();
+		function updateGrid() {
+			CapitalConstructsConstructService.get("", CommonsPagerManager.offset($scope.currentPage), $scope.itemsPerPage).then(function (data) {
+				$scope.constructsPager = data;
+			});
+		}
+
+		updateGrid();
+
+		$scope.addItem = function () {
+			CapitalConstructsConstructCRUDService.addItem(updateGrid);
+		}
+
+		$scope.editItem = function (id) {
+			CapitalConstructsConstructCRUDService.editItem(id, updateGrid);
+		}
+		$scope.deleteItem = function (id) {
+			CapitalConstructsConstructCRUDService.removeItem(id, updateGrid);
 		}
 
 	})

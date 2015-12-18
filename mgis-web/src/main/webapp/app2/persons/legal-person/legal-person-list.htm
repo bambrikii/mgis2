@@ -6,9 +6,9 @@
 			<div class="col-sm-2" translate>LegalPerson.Name</div>
 			<div class="col-sm-2" translate>OKOPF</div>
 			<div class="col-sm-2" translate>LegalPerson.ActualAddress</div>
-			<div class="col-sm-2" translate>Phone</div>
-			<div class="col-sm-2" translate>Email</div>
-			<div class="col-sm-2">
+			<div class="col-sm-1" translate>Phone</div>
+			<div class="col-sm-1" translate>Email</div>
+			<div class="col-sm-4">
 			</div>
 		</div>
 
@@ -18,9 +18,9 @@
 			<div class="col-sm-2">
 				{{item.actualAddress|addressFormatter}}
 			</div>
-			<div class="col-sm-2">{{item.contactPhone}}</div>
-			<div class="col-sm-2">{{item.contactEmail}}</div>
-			<div class="col-sm-2">
+			<div class="col-sm-1">{{item.contactPhone}}</div>
+			<div class="col-sm-1">{{item.contactEmail}}</div>
+			<div class="col-sm-4">
 				<button class="btn btn-info btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
 				<button class="btn btn-danger btn-sm" ng-click="removeItem(item.id)" translate>Delete</button>
 			</div>

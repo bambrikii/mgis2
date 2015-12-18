@@ -3,9 +3,15 @@ angular.module("mgis.capital-constructs.construct.service", ["ngResource",
 	.factory("CapitalConstructsConstructService", function ($q, $resource, MGISErrorService) {
 		var res = $resource('rest/capital-constructs/constructs/:id.json');
 		return {
-			get: function (id, first, max) {
+			get: function (id, first, max, cadastralNumber, name) {
 				var deferred = $q.defer();
-				res.get({id: id, first: first, max: max}, {}, function (data) {
+				res.get({
+					id: id,
+					first: first,
+					max: max,
+					cadastralNumber: cadastralNumber,
+					name: name
+				}, {}, function (data) {
 					deferred.resolve(data);
 				}, function (error) {
 					MGISErrorService.handleError(error);
