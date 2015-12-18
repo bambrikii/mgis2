@@ -22,5 +22,9 @@ angular.module("mgis", //
 			prefix: 'app2/i18n/locale-',
 			suffix: '.json'
 		});
-
+		$stateProvider
+			.state("default", {
+				url: "",
+				templateUrl: "app2/default/page.htm"
+			});
 	});

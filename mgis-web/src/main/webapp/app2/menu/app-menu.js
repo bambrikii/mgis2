@@ -45,10 +45,6 @@ angular.module("mgis.menu.main", ["ui.router", "ui.bootstrap"]) //
 			$scope.geoMenuActive = trie;
 		}
 
-		$scope.toggleNavCollapsed = function () {
-			//$scope.navCollapsed = !$scope.navCollapsed;
-		}
-
 		$scope.menuStates = {}
 		$scope.updateMenu = function (state) {
 			for (var i in $scope.menuStates) {
