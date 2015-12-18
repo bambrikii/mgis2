@@ -1,7 +1,8 @@
 angular.module("mgis.persons.person.natural", ["ui.router", "ui.bootstrap", //
 	"mgis.persons.person.natural.service",
 	"mgis.commons",
-	"mgis.nc.services"
+	"mgis.nc.services",
+	"mgis.persons.person.natural.certs.service"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -10,7 +11,7 @@ angular.module("mgis.persons.person.natural", ["ui.router", "ui.bootstrap", //
 				templateUrl: "app2/persons/natural-person/natural-person-list.htm"
 			})
 	})
-	.factory("NaturalPersonModule", function (NaturalPersonService, MGISCommonsModalForm, $rootScope, NcOKVEDService) {
+	.factory("NaturalPersonModule", function (NaturalPersonService, MGISCommonsModalForm, $rootScope, NcOKVEDService, NaturalPersonCertificateTypeService) {
 
 		function editItem0(modalScope, updateFunction) {
 			modalScope.refreshAvailableActivityTypes = function (name) {
@@ -18,6 +19,18 @@ angular.module("mgis.persons.person.natural", ["ui.router", "ui.bootstrap", //
 					modalScope.availableActivityTypes = okveds.list;
 				});
 			}
+			NaturalPersonCertificateTypeService.get().then(function (certTypes) {
+				modalScope.availableCertificateTypes = certTypes.list;
+				if (modalScope.item.id == 0) {
+					for (var i in modalScope.availableCertificateTypes) {
+						var type = modalScope.availableCertificateTypes[i];
+						if (type.code == "21") {
+							modalScope.item.certificateType = type;
+						}
+					}
+				}
+			});
+
 			MGISCommonsModalForm.edit("app2/persons/natural-person/natural-person-form.htm", modalScope, function (scope, $modalInstance) {
 				NaturalPersonService.save(scope.item).then(function (data) {
 					$modalInstance.close();

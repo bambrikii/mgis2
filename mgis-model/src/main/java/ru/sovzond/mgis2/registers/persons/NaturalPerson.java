@@ -69,6 +69,10 @@ public class NaturalPerson extends Person {
 	private Address legalAddress;
 
 	// Паспортные данные
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
+	@JoinColumn(name = "cert_type_id")
+	private NaturalPersonCertificateType certificateType;
+
 
 	/**
 	 * Серия
@@ -333,6 +337,14 @@ public class NaturalPerson extends Person {
 		this.issueDate = issueDate;
 	}
 
+	public NaturalPersonCertificateType getCertificateType() {
+		return certificateType;
+	}
+
+	public void setCertificateType(NaturalPersonCertificateType certificateType) {
+		this.certificateType = certificateType;
+	}
+
 
 	public NaturalPerson clone() {
 		NaturalPerson np = new NaturalPerson();
@@ -340,6 +352,7 @@ public class NaturalPerson extends Person {
 		np.setFirstName(firstName);
 		np.setSurname(surname);
 		np.setPatronymic(patronymic);
+		np.setCertificateType(certificateType != null ? certificateType.clone() : null);
 
 		np.setActualAddress(actualAddress != null ? actualAddress.clone() : null);
 		np.setDateOfBirth(dateOfBirth);
