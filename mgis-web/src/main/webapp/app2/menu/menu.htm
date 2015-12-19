@@ -4,10 +4,10 @@
 			<div class="navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
 					<li>
-						<a class="navbar-brand" href="#" class="btn btn-navbar" translate>ApplicationName</a>
+						<a class="navbar-brand" href="#" class="btn btn-navbar" ng-click="updateMenu('main')" translate>ApplicationName</a>
 					</li>
 				</ul>
-				<ul class="nav navbar-nav">
+				<ul class=" nav navbar-nav">
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.isogd}">
 						<a href="#/isogd" data-toggle="dropdown" role="button" aria-expanded="false" ng-click="updateMenu('isogd')">
 							<span translate>ISOGD</span>
@@ -45,8 +45,7 @@
 						<a href="#/addresses" ng-click="updateMenu('address')"><span translate>Addresses</span></a>
 					</li>
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.capitalConstructs}">
-						<a href="#/capital-constructs" ng-click="updateMenu('capitalConstructs')"><span translate>CapitalConstructs</span> <span
-								class="caret"></span></a>
+						<a href="#/capital-constructs" ng-click="updateMenu('capitalConstructs')"><span translate>CapitalConstructs</span></a>
 					</li>
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.geo}">
 						<a href="#/geo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
@@ -64,7 +63,6 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#/data-exchange/import" translate>DataExchange.Import</a></li>
 							<li><a href="#/data-exchange/export" translate>DataExchange.Export</a></li>
-							<li><a href="#/reports" translate>Reports</a></li>
 						</ul>
 					</li>
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.admin}">
@@ -75,6 +73,8 @@
 							<li><a href="#/admin/groups" translate>ADMINISTRATION.Groups</a></li>
 							<li class="divider"></li>
 							<li><a href="#/admin/privileges" translate>ADMINISTRATION.Privileges</a></li>
+							<li class="divider"></li>
+							<li><a href="#/reports" translate>Reports</a></li>
 						</ul>
 					</li>
 					<li ng-class="{'dropdown': true, 'menu-item': true, 'active': menuStates.about}">
