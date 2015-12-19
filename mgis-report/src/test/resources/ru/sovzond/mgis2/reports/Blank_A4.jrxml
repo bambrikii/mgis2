@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2015-12-17T19:55:17 -->
+<!-- 2015-12-19T15:21:05 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5eab381-93f6-448e-a3f5-d5b6b4b363fa">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NEW_DATAADAPTER.xml"/>
 	<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 	<queryString language="json">
 		<![CDATA[]]>
@@ -70,6 +70,9 @@
 	<field name="constructiveElements" class="java.lang.String">
 		<fieldDescription><![CDATA[constructiveElements]]></fieldDescription>
 	</field>
+	<field name="addressSubjectName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.subject.name]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -115,7 +118,7 @@
 			</textField>
 			<textField>
 				<reportElement x="330" y="35" width="216" height="30" uuid="b992b30d-1476-4dee-b9d8-c73619860b49"/>
-				<textFieldExpression><![CDATA[$F{address} +"***"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{addressSubjectName} +"***"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
