@@ -1,21 +1,27 @@
 <div>
 	<div class="form-group row">
 		<div class="col-sm-12">
-			<div class="row mgis-row-header">
-				<div class="col-sm-2" translate>CadastralNumber</div>
-				<div class="col-sm-3" translate>CapitalConstructs.Construct.Name</div>
-				<div class="col-sm-3" translate>Address</div>
-				<div class="col-sm-4"></div>
-			</div>
-			<div class="row mgis-grid-row" ng-repeat="item in constructs">
-				<div class="col-sm-2">{{item.cadastralNumber}}</div>
-				<div class="col-sm-3">{{item.name}}</div>
-				<div class="col-sm-3">{{item.address|addressFormatter}}</div>
-				<div class="col-sm-4">
-					<button class="btn btn-danger btn-sm" ng-click="deselect(item.id)" translate>Deselect</button>
-					<button class="btn btn-warning btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
-				</div>
-			</div>
+			<ul class="list-group" ng-if="constructs.length">
+				<li class="list-group-item mgis-document-selector-list-item">
+					<div class="row mgis-row-header">
+						<div class="col-sm-2" translate>CadastralNumber</div>
+						<div class="col-sm-3" translate>CapitalConstructs.Construct.Name</div>
+						<div class="col-sm-3" translate>Address</div>
+						<div class="col-sm-4"></div>
+					</div>
+				</li>
+				<li class="list-group-item mgis-document-selector-list-item" ng-repeat="item in constructs">
+					<div class="row mgis-grid-row">
+						<div class="col-sm-2">{{item.cadastralNumber}}</div>
+						<div class="col-sm-3">{{item.name}}</div>
+						<div class="col-sm-3">{{item.address|addressFormatter}}</div>
+						<div class="col-sm-4">
+							<button class="btn btn-danger btn-sm" ng-click="deselect(item.id)" translate>Deselect</button>
+							<button class="btn btn-warning btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
+						</div>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 	<button class="btn btn-sm btn-info" ng-click="select()">{{'Select'|translate}}</button>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.address.AddressBean;
+import ru.sovzond.mgis2.capital_construct.CapitalConstructBean;
 import ru.sovzond.mgis2.capital_constructs.CapitalConstruction;
 import ru.sovzond.mgis2.common.classifiers.ExecutivePersonBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
@@ -111,6 +112,9 @@ public class LandRESTController implements Serializable {
 
 	@Autowired
 	private LandIncludedObjectsBean landIncludedObjectsBean;
+
+	@Autowired
+	private CapitalConstructBean capitalConstructBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -275,7 +279,6 @@ public class LandRESTController implements Serializable {
 			if (includedObjects2 == null) {
 				includedObjects2 = new LandIncludedObjects();
 				land2.setIncludedObjects(includedObjects2);
-				;
 				landIncludedObjectsBean.save(includedObjects2);
 			}
 			includedObjects2.setInventoryDealDocument(includedObjects.getInventoryDealDocument() != null ? documentBean.load(includedObjects.getInventoryDealDocument().getId()) : null);
@@ -283,14 +286,14 @@ public class LandRESTController implements Serializable {
 
 			List<Land> includedLands = includedObjects.getIncludedLands();
 			includedObjects2.getIncludedLands().clear();
-			if (includedLands != null) {
-				includedObjects2.getIncludedLands().addAll(includedLands.stream().map(land1 -> land1.clone()).collect(Collectors.toList()));
+			if (includedLands != null && includedLands.size() > 0) {
+				includedObjects2.getIncludedLands().addAll(landBean.load(includedLands.stream().map(land1 -> land1.getId()).collect(Collectors.toList())));
 			}
 
 			List<CapitalConstruction> includedConstructs = includedObjects.getIncludedCapitalConstructions();
 			includedObjects2.getIncludedCapitalConstructions().clear();
-			if (includedConstructs != null) {
-				includedObjects2.getIncludedCapitalConstructions().addAll(includedConstructs.stream().map(construction -> construction.clone()).collect(Collectors.toList()));
+			if (includedConstructs != null && includedConstructs.size() > 0) {
+				includedObjects2.getIncludedCapitalConstructions().addAll(capitalConstructBean.load(includedConstructs.stream().map(construction -> construction.getId()).collect(Collectors.toList())));
 			}
 		}
 

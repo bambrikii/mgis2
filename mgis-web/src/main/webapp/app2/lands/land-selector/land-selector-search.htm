@@ -4,15 +4,19 @@
 <div class="modal-body">
 
 	<div ng-controller="LandsLandSelectorController">
-		<div ng-repeat="item in selectedItems" class="row mgis-grid-row">
-			<div class="col-sm-2"><a href="javascript:void(0)" ng-click="editItem(item.id)">{{item.cadastralNumber}}</a></div>
-			<div class="col-sm-4">{{item.address|addressFormatter}}</div>
-			<div class="col-sm-2">{{item.rights.totalArea}}</div>
-			<div class="col-sm-4">
-				<button class="btn btn-danger btn-sm" ng-click="deselect(item.id)" translate>Deselect</button>
-				<button class="btn btn-warning btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
-			</div>
-		</div>
+		<ul class="list-group">
+			<li class="list-group-item mgis-document-selector-list-item" ng-repeat="item in selectedItems">
+				<div class="row mgis-grid-row">
+					<div class="col-sm-2"><a href="javascript:void(0)" ng-click="editItem(item.id)">{{item.cadastralNumber}}</a></div>
+					<div class="col-sm-4">{{item.address|addressFormatter}}</div>
+					<div class="col-sm-2">{{item.rights.totalArea}}</div>
+					<div class="col-sm-4">
+						<button class="btn btn-danger btn-sm" ng-click="deselect(item.id)" translate>Deselect</button>
+						<button class="btn btn-warning btn-sm" ng-click="editItem(item.id)" translate>Edit</button>
+					</div>
+				</div>
+			</li>
+		</ul>
 
 		<form name="landSelectionForm" class="" novalidate>
 			<div class="panel-body">

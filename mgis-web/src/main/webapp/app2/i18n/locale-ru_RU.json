@@ -35,6 +35,7 @@
   "List": "Список",
   "InProgress": "В процессе",
   "Complete": "Готово",
+  "FieldInvalid": "Поле необходимо корректно заполнить",
   "DropFilesHereToUpload": "Для загрузки файла перетащите его сюда",
   "YourBrowserDoesNotSupportDragAndDropFeature": "Фаш браузер не поддерживает Drag and Drop.",
   "Download": "Скачать",
