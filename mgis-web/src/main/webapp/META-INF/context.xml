@@ -1,3 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context cachingAllowed="false">
+	<ResourceLink name="jdbc/mgis2" global="jdbc/mgis2" auth="Container" type="javax.sql.DataSource"/>
 </Context>
