@@ -3,6 +3,8 @@ package ru.sovzond.mgis2.capital_constructs;
 import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructionCharacteristics;
 import ru.sovzond.mgis2.capital_constructs.constructive_elements.ConstructiveElement;
+import ru.sovzond.mgis2.geo.SpatialGroup;
+import ru.sovzond.mgis2.lands.includes.LandIncludedObjects;
 import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
 import ru.sovzond.mgis2.rights.PropertyRights;
 
@@ -130,6 +132,16 @@ public class CapitalConstruction implements Cloneable {
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
 	private List<ConstructiveElement> constructiveElements = new ArrayList<>();
+
+	@ManyToOne(optional = true, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinTable(name = "lands_included_objects_occ_capital_construction",
+			joinColumns = {@JoinColumn(name = "includedcapitalconstructions_id")},
+			inverseJoinColumns = {@JoinColumn(name = "lands_included_objects_id")})
+	private LandIncludedObjects landIncludedObjects;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name = "spatial_data_id")
+	private SpatialGroup spatialData;
 
 	public Long getId() {
 		return id;
@@ -299,6 +311,23 @@ public class CapitalConstruction implements Cloneable {
 		this.constructiveElements = constructiveElements;
 	}
 
+
+	public LandIncludedObjects getLandIncludedObjects() {
+		return landIncludedObjects;
+	}
+
+	public void setLandIncludedObjects(LandIncludedObjects landIncludedObjects) {
+		this.landIncludedObjects = landIncludedObjects;
+	}
+
+	public SpatialGroup getSpatialData() {
+		return spatialData;
+	}
+
+	public void setSpatialData(SpatialGroup spatialData) {
+		this.spatialData = spatialData;
+	}
+
 	public CapitalConstruction clone() {
 		CapitalConstruction construct = new CapitalConstruction();
 		construct.setId(id);
@@ -323,6 +352,9 @@ public class CapitalConstruction implements Cloneable {
 		construct.setType(type != null ? type.clone() : null);
 		construct.setCharacteristics(characteristics != null ? characteristics.clone() : null);
 		construct.setConstructiveElements(constructiveElements.stream().map(ConstructiveElement::clone).collect(Collectors.toList()));
+		construct.setLandIncludedObjects(landIncludedObjects != null ? landIncludedObjects.clone() : null);
+		construct.setSpatialData(spatialData != null ? spatialData.clone() : null);
 		return construct;
 	}
+
 }
