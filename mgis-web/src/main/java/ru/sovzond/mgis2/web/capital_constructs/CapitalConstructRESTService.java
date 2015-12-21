@@ -126,9 +126,16 @@ public class CapitalConstructRESTService {
 			rights2 = propertyRightsBean.load(rights.getId());
 		}
 		if (rights != null) {
-			rights2.setOwnershipDate(rights.getOwnershipDate());
-			rights2.setShare(rights.getShare());
-			rights2.setTerminationDate(rights.getTerminationDate());
+			BeanUtils.copyProperties(rights, rights2, new String[]{
+							"id",
+							"documentsCertifyingRights",
+							"registrationDocuments",
+							"otherDocuments",
+							"ownershipForm",
+							"rightKind",
+							"rightOwner"
+					}
+			);
 			if (rights.getDocumentsCertifyingRights() == null || rights.getDocumentsCertifyingRights().size() == 0) {
 				rights2.getDocumentsCertifyingRights().clear();
 			} else {

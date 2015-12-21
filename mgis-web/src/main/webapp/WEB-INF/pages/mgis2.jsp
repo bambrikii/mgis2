@@ -34,7 +34,8 @@
 	<script type="text/javascript"
 			src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
 	<script type="text/javascript" src="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.js"></script>
-	<script type="text/javascript" src="bower_components/angular-bootstrap-multiselect/angular-bootstrap-multiselect.js"></script>
+	<script type="text/javascript"
+			src="bower_components/angular-bootstrap-multiselect/angular-bootstrap-multiselect.js"></script>
 	<script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
 	<script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload.js"></script>
 	<!-- <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script> -->
@@ -48,8 +49,10 @@
 	<link type="text/css" rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
 	<script type="text/javascript" src="bower_components/leaflet/dist/leaflet-src.js"></script>
 	<%--<script type="text/javascript" src="bower_components/leaflet.activelayers/src/ActiveLayers.js"></script>--%>
-	<link type="text/css" rel="stylesheet" href="bower_components/leaflet-groupedlayercontrol/src/leaflet.groupedlayercontrol.css">
-	<script type="text/javascript" src="bower_components/leaflet-groupedlayercontrol/src/leaflet.groupedlayercontrol.js"></script>
+	<link type="text/css" rel="stylesheet"
+		  href="bower_components/leaflet-groupedlayercontrol/src/leaflet.groupedlayercontrol.css">
+	<script type="text/javascript"
+			src="bower_components/leaflet-groupedlayercontrol/src/leaflet.groupedlayercontrol.js"></script>
 	<%--<script type="text/javascript" src="bower_components/leaflet-plugins/layer/tile/Google.js"></script>--%>
 	<%--<script type="text/javascript" src="bower_components/leaflet-plugins/layer/tile/Bing.js"></script>--%>
 	<%--<script type="text/javascript" src="bower_components/leaflet-plugins/layer/tile/Yandex.js"></script>--%>
@@ -66,9 +69,12 @@
 	<script src="bower_components/leaflet-plugins/layer/tile/Google.js"></script>
 	<script src="bower_components/leaflet-plugins/layer/tile/Bing.js"></script>
 
-	<link type="text/css" rel="stylesheet" href="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.css">
-	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.js"></script>
-	<script type="text/javascript" src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control-wfs-zoom.js"></script>
+	<link type="text/css" rel="stylesheet"
+		  href="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.css">
+	<script type="text/javascript"
+			src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control.js"></script>
+	<script type="text/javascript"
+			src="bower_components/leaflet-layer-tree-plugin/src/leaflet-layer-tree-control-wfs-zoom.js"></script>
 
 	<!-- https://github.com/flowjs/ng-flow -->
 	<%--<script type="text/javascript" src="bower_components/ng-flow/dist/ng-flow-standalone.min.js"></script>--%>
@@ -88,6 +94,7 @@
 	<script type="text/javascript" src="app2/nc/nc-caching-module.js"></script>
 
 	<!-- Property -->
+	<script type="text/javascript" src="app2/property/property-service.js"></script>
 	<script type="text/javascript" src="app2/property/property-module.js"></script>
 
 	<!-- Indicators -->
@@ -107,12 +114,16 @@
 	<script type="text/javascript" src="app2/isogd/document/isogd-documents-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/document/isogd-documents-module.js"></script>
 	<script type="text/javascript" src="app2/isogd/classifiers/classifiers.js"></script>
-	<script type="text/javascript" src="app2/isogd/classifiers/documents/structure/isogd-docs-structure-service.js"></script>
-	<script type="text/javascript" src="app2/isogd/classifiers/documents/structure/isogd-docs-structure-module.js"></script>
+	<script type="text/javascript"
+			src="app2/isogd/classifiers/documents/structure/isogd-docs-structure-service.js"></script>
+	<script type="text/javascript"
+			src="app2/isogd/classifiers/documents/structure/isogd-docs-structure-module.js"></script>
 	<script type="text/javascript" src="app2/isogd/classifiers/documents/types/isogd-docs-types-service.js"></script>
 	<script type="text/javascript" src="app2/isogd/classifiers/documents/types/isogd-docs-types-module.js"></script>
-	<script type="text/javascript" src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-service.js"></script>
-	<script type="text/javascript" src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-module.js"></script>
+	<script type="text/javascript"
+			src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-service.js"></script>
+	<script type="text/javascript"
+			src="app2/isogd/classifiers/documents/representation/isogd-docs-representation-module.js"></script>
 	<script type="text/javascript" src="app2/isogd/document-selector/document-selector-component.js"></script>
 	<script type="text/javascript" src="app2/isogd/document-search/document-search-module.js"></script>
 	<script type="text/javascript" src="app2/isogd/document-search/document-search-service.js"></script>
@@ -127,9 +138,12 @@
 	<script type="text/javascript" src="app2/capital-constructs/capital-constructs.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/characteristics/characteristics-module.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/characteristics/characteristics-services.js"></script>
-	<script type="text/javascript" src="app2/capital-constructs/constructive-element/constructive-element-module.js"></script>
-	<script type="text/javascript" src="app2/capital-constructs/constructive-element-type/constructive-element-type-module.js"></script>
-	<script type="text/javascript" src="app2/capital-constructs/constructive-element-type/constructive-element-type-service.js"></script>
+	<script type="text/javascript"
+			src="app2/capital-constructs/constructive-element/constructive-element-module.js"></script>
+	<script type="text/javascript"
+			src="app2/capital-constructs/constructive-element-type/constructive-element-type-module.js"></script>
+	<script type="text/javascript"
+			src="app2/capital-constructs/constructive-element-type/constructive-element-type-service.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/construct/construct-module.js"></script>
 	<script type="text/javascript" src="app2/capital-constructs/construct/construct-service.js"></script>
 

@@ -1,7 +1,10 @@
 angular.module("mgis.capital-constructs.construct.service", ["ngResource",
-	"mgis.error.service"])
-	.factory("CapitalConstructsConstructService", function ($q, $resource, MGISErrorService) {
+	"mgis.error.service",
+	"mgis.property.service"
+])
+	.factory("CapitalConstructsConstructService", function ($q, $resource, MGISErrorService, MGISPropertyRightsService) {
 		var res = $resource('rest/capital-constructs/constructs/:id.json');
+
 		return {
 			get: function (id, first, max, cadastralNumber, name) {
 				var deferred = $q.defer();
@@ -22,6 +25,7 @@ angular.module("mgis.capital-constructs.construct.service", ["ngResource",
 				var deferred = $q.defer();
 				var p = {}
 				angular.copy(item, p);
+				p.rights = MGISPropertyRightsService.buildRights(item.rights)
 				res.save({id: item.id}, p, function (data) {
 					deferred.resolve(data);
 				}, function (error) {

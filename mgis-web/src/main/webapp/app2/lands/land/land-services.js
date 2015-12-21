@@ -1,10 +1,11 @@
 angular.module("mgis.lands.services", ["ui.router", 'ngResource',
-	"mgis.error.service"
+	"mgis.error.service",
+	"mgis.property.service"
 ])
 	.constant("LandsLandConstants", {
 		LAND_CADASTRAL_NUMBER: /^\d{2}:\d{2}:\d{7}:\d{1}/
 	})
-	.factory("LandsLandService", function ($resource, $q, MGISErrorService) {
+	.factory("LandsLandService", function ($resource, $q, MGISErrorService, MGISPropertyRightsService) {
 		var res = $resource('rest/lands/land/:id.json');
 		var resRemoveSelected = $resource('rest/lands/land/remove-selected.json');
 
@@ -17,30 +18,10 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 			return landAreas2;
 		}
 
-		function buildRegistrationDocuments(rights) {
-			if (rights.registrationDocuments && rights.registrationDocuments.length) {
-				return new Array().concat(rights.registrationDocuments);
-			}
-			return null;
-		}
-
-		function buildDocumentsCertifyingRights(rights) {
-			if (rights.documentsCertifyingRights && rights.documentsCertifyingRights.length) {
-				return new Array().concat(rights.documentsCertifyingRights);
-			}
-			return null;
-		}
 
 		function buildInspectionResultDocuments(control) {
 			if (control.inspectionResultDocuments && control.inspectionResultDocuments.length) {
 				return new Array().concat(control.inspectionResultDocuments);
-			}
-			return null;
-		}
-
-		function buildOtherDocuments(control) {
-			if (control.otherDocuments && control.otherDocuments.length) {
-				return new Array().concat(control.otherDocuments);
 			}
 			return null;
 		}
@@ -86,7 +67,6 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 			},
 			save: function (item) {
 				var deferred = $q.defer();
-				var rights = item.rights;
 				var characteristics = item.characteristics;
 				var control = item.control ? item.control : {};
 				var landAreas = item.landAreas;
@@ -94,28 +74,6 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 				var includedObjects = item.includedObjects;
 				//var registrationDocuments2 = buildRegistrationDocuments(rights);
 				//var documentsCertifyingRights2 = buildDocumentsCertifyingRights(rights);
-				var rights2;
-				if (rights) {
-					rights2 = {
-						ownershipForm: rights.ownershipForm ? {id: rights.ownershipForm.id} : null,
-						rightKind: rights.rightKind ? {id: rights.rightKind.id} : null,
-						rightOwner: rights.rightOwner ? {id: rights.rightOwner.id} : null,
-						encumbrance: rights.encumbrance,
-						obligations: rights.obligations,
-						ownershipDate: rights.ownershipDate,
-						terminationDate: rights.terminationDate,
-						comment: rights.comment,
-						share: rights.share,
-						annualTax: rights.annualTax,
-						totalArea: rights.totalArea,
-						registrationDocuments: buildRegistrationDocuments(rights),
-						documentsCertifyingRights: buildDocumentsCertifyingRights(rights),
-						otherDocuments: buildOtherDocuments(rights)
-
-					}
-				} else {
-					rights2 = {}
-				}
 				var includedObjects2;
 				if (includedObjects) {
 					includedObjects2 = {
@@ -138,7 +96,7 @@ angular.module("mgis.lands.services", ["ui.router", 'ngResource',
 					addressOfPlacementType: item.addressOfPlacementType ? {id: item.addressOfPlacementType.id} : null,
 					addressPlacement: item.addressPlacement,
 					address: item.address ? {id: item.address.id} : null,
-					rights: rights2,
+					rights: MGISPropertyRightsService.buildRights(item.rights),
 					characteristics: {
 						cadastralCost: characteristics.cadastralCost,
 						specificIndexOfCadastralCost: characteristics.specificIndexOfCadastralCost,
