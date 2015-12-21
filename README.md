@@ -154,3 +154,53 @@ inner join lands_territorial_zone tz on l.allowedusagebyterritorialzone_id = tz.
 inner join nc_territorial_zone_type zt on tz.zonetype_id = zt.id
 where zt.name like 'Зона застройки среднеэтажными жилыми домами (Ж3)' and l.geometry is not null
 ```
+
+### Application Server/Container DataSource
+
+#### Apache Tomcat v8
+
+Declare a valid resource in [TomcatAppContainer]/conf/server.xml (please, note url, username and password): 
+
+```xml
+	<Resource name="jdbc/mgis2"
+		global="jdbc/mgis2"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="org.postgresql.Driver"
+		url="jdbc:postgresql://localhost:5432/mgis2"
+		username="mgis2"
+		password="mgis2"
+		maxActive="100"
+		maxIdle="20"
+		minIdle="5"
+		maxWait="10000"
+	/>
+
+```
+
+#### Wildfly:
+
+Declare a valid datasource (node datasources) in [Wildfly]/standalone/configuration/standalone.xml
+
+```xml
+                <datasource jta="true" jndi-name="java:/jdbc/mgis2" pool-name="jdbc/mgis2" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:postgresql://localhost:5432/mgis2</connection-url>
+                    <driver-class>org.postgresql.Driver</driver-class>
+                    <driver>mgis-web.war_org.postgresql.Driver_9_4</driver>
+                    <security>
+                        <user-name>mgis2</user-name>
+                        <password>mgis2</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
+                        <background-validation>true</background-validation>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
+                    </validation>
+                </datasource>
+                <drivers>
+                    <driver name="h2" module="com.h2database.h2">
+                        <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                </drivers>
+
+```
