@@ -12,6 +12,10 @@ import ru.sovzond.mgis2.capital_constructs.characteristics.economical.EconomicCh
 import ru.sovzond.mgis2.capital_constructs.characteristics.technical.TechnicalCharacteristic;
 import ru.sovzond.mgis2.capital_constructs.constructive_elements.ConstructiveElement;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
+import ru.sovzond.mgis2.geo.CoordinateSystem;
+import ru.sovzond.mgis2.geo.GeometryConverter;
+import ru.sovzond.mgis2.geo.SpatialDataBean;
+import ru.sovzond.mgis2.geo.SpatialGroup;
 import ru.sovzond.mgis2.indicators.PriceIndicatorBean;
 import ru.sovzond.mgis2.indicators.TechnicalIndicatorBean;
 import ru.sovzond.mgis2.isogd.business.DocumentBean;
@@ -86,6 +90,9 @@ public class CapitalConstructRESTService {
 	@Autowired
 	private OKEIBean okeiBean;
 
+	@Autowired
+	private SpatialDataBean spatialDataBean;
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
 	public PageableContainer<CapitalConstruction> list(@RequestParam(value = "orderBy", defaultValue = "id DESC") String orderBy, @RequestParam(defaultValue = "0") int first, @RequestParam(defaultValue = "0") int max,
@@ -112,6 +119,7 @@ public class CapitalConstructRESTService {
 				"rights", //
 				"characteristics", //
 				"constructiveElements", //
+				"spatialData" //
 
 		});
 		capitalConstruct2.setType(capitalConstruct.getType() != null ? constructTypeBean.load(capitalConstruct.getType().getId()) : null);
@@ -188,6 +196,28 @@ public class CapitalConstructRESTService {
 		}
 		// Constructive Elements
 		syncConstructiveElements(capitalConstruct2.getConstructiveElements(), capitalConstruct.getConstructiveElements());
+
+		// Spatial Data
+		SpatialGroup spatialGroup = capitalConstruct.getSpatialData();
+		if (spatialGroup != null) {
+			SpatialGroup spatialGroup2 = capitalConstruct2.getSpatialData();
+			if (spatialGroup2 == null) {
+				spatialGroup2 = new SpatialGroup();
+			}
+			spatialGroup2 = spatialDataBean.save(spatialGroup, spatialGroup2);
+			capitalConstruct2.setSpatialData(spatialGroup2);
+			if (spatialGroup2 != null) {
+				CoordinateSystem coordinateSystem = spatialGroup2.getCoordinateSystem();
+				if (coordinateSystem != null) {
+					String conversionRules = coordinateSystem.getConversionRules();
+					if (conversionRules != null && conversionRules.length() > 0) {
+						GeometryConverter converter = new GeometryConverter(conversionRules);
+						capitalConstruct2.setGeometry(converter.convert(converter.createMultipolygon(spatialGroup2.getSpatialElements())));
+					}
+				}
+			}
+
+		}
 
 		capitalConstructBean.save(capitalConstruct2);
 		return capitalConstruct2.clone();

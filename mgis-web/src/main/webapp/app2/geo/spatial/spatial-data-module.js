@@ -95,13 +95,14 @@ angular.module("mgis.geo.spatial.data", [
 			})
 		}
 		$scope.removeCoordinate = function (coordinate) {
-			MGISCommonsModalForm.confirmRemoval(function () {
+			MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
 				var element = $scope.item;
 				for (var i in element.coordinates) {
 					if (coordinate == element.coordinates[i]) {
 						element.coordinates.splice(i, 1);
 					}
 				}
+				modalInstance.close();
 			});
 		}
 	})
