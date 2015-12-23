@@ -143,10 +143,23 @@ angular.module("mgis.isogd.documents", ["ui.router", "ui.bootstrap", "ngFileUplo
 			});
 		}
 
+
+		function reloadItemInList(id, list) {
+			ISOGDDocumentsService.get(id).then(function (data) {
+				for (var i in list) {
+					var item = list[i];
+					if (item.id == data.id) {
+						list[i] = data;
+					}
+				}
+			});
+		}
+
 		return {
 			addItem: addItem,
 			editItem: editItem,
-			removeItem: removeItem
+			removeItem: removeItem,
+			reloadItemInList: reloadItemInList
 		}
 	})
 ;

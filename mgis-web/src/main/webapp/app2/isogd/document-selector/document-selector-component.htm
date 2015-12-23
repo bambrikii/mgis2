@@ -1,7 +1,17 @@
 <span ng-if="!multipleDocuments && document.id">{{document.name}}</span>
 <div ng-if="multipleDocuments && documents && documents.length">
 	<ul class="list-group">
-		<li ng-repeat="item in documents" class="list-group-item">{{item.name}}</li>
+		<li ng-repeat="item in documents" class="list-group-item">
+			<div class="row">
+				<div class="col-sm-6">
+					<a href="javascript:void(0)" ng-click="editDocument(item.id)">{{item.name}}</a>
+				</div>
+				<div class="col-sm-6">
+					<button class="btn btn-warning btn-sm" ng-click="editDocument(item.id)" translate>Edit</button>
+					<button class="btn btn-danger btn-sm" ng-click="deselect(item.id)" translate>Deselect</button>
+				</div>
+			</div>
+		</li>
 	</ul>
 </div>
 <button ng-click="openSelector()" class="btn btn-info btn-sm">

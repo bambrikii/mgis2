@@ -6,7 +6,7 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 	"mgis.isogd.volumes.service",
 	"mgis.isogd.documents.service"
 ])
-	.directive("isogdDocumentSelector", function ($rootScope, MGISCommonsModalForm) {
+	.directive("isogdDocumentSelector", function ($rootScope) {
 		return {
 			restrict: "E",
 			scope: {
@@ -16,7 +16,7 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 				selectClicked: "&"
 			},
 			templateUrl: "app2/isogd/document-selector/document-selector-component.htm",
-			controller: function ($scope) {
+			controller: function ($scope, ISOGDDocumentCRUDService, MGISCommonsModalForm) {
 				$scope.openSelector = function () {
 					var modalScope = $rootScope.$new();
 					modalScope.selectedDocuments = new Array();
@@ -41,7 +41,8 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 							}
 							$scope.selectClicked(result);
 						}
-					};
+					}
+
 					var modal = MGISCommonsModalForm.edit("app2/isogd/document-selector/document-selector-form.htm", modalScope, function (scope, $modalInstance) {
 						selectionCompleteHandler(scope.selectedDocuments);
 						$modalInstance.close();
@@ -51,7 +52,21 @@ angular.module("mgis.isogd.document.selector", ["ui.bootstrap", "ui.select", //
 						selectionCompleteHandler(selectedDocuments);
 						modal.close();
 					}
-
+				}
+				$scope.editDocument = function (id) {
+					ISOGDDocumentCRUDService.editItem(id, function () {
+						ISOGDDocumentCRUDService.reloadItemInList(id, $scope.documents);
+					});
+				}
+				$scope.deselect = function (id) {
+					MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
+						for (var i in $scope.documents) {
+							if ($scope.documents[i].id == id) {
+								$scope.documents.splice(i, 1);
+							}
+						}
+						modalInstance.close();
+					});
 				}
 			}
 		}

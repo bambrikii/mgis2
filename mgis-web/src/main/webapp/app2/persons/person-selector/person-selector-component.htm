@@ -1,4 +1,5 @@
 <span ng-if="person.id">{{person|personFormatter}}</span>
-<button ng-click="openSelector(person,personType)" class="btn btn-info btn-sm">{{person.id?'Edit':'Select'|translate}}
-</button>
-
+<!--<button ng-click="openSelector(person)" class="btn btn-info btn-sm">{{person.id?'Edit':'Select'|translate}}</button>-->
+<button ng-click="openSelector(person)" class="btn btn-info btn-sm" ng-if="!person.id" translate>Select</button>
+<button ng-click="openSelector(person)" class="btn btn-warning btn-sm" ng-if="person.id" translate>Edit</button>
+<button ng-click="clearSelection()" class="btn btn-danger btn-sm" ng-if="person.id">{{'Clear'|translate}}</button>

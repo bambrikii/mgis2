@@ -18,7 +18,7 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 		}
 	})
 	.directive("personSelector", function (MGISCommonsModalForm, $rootScope) {
-		//<person-selector ng-selected="selected(personObject, personType)"></person-selector>
+		//<person-selector ng-selected="selected(person)"></person-selector>
 		return {
 			restrict: "E",
 			scope: {
@@ -26,40 +26,31 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 				selectClicked: "&"
 			},
 			templateUrl: "app2/persons/person-selector/person-selector-component.htm",
-			controller: function ($scope, NATURAL_PERSON_TYPE, LEGAL_PERSON_TYPE) {
-				if ($scope.person) {
-					$scope.personType = $scope.person.surname ? NATURAL_PERSON_TYPE : LEGAL_PERSON_TYPE;
-				} else {
-					$scope.personType = "";
-				}
-				$scope.openSelector = function (person, personType) {
+			controller: function ($scope) {
+				$scope.openSelector = function (person) {
 					var modalScope = $rootScope.$new();
 					modalScope.person = {};
 					angular.copy(person, modalScope.person);
-					modalScope.personType = personType;
-					modalScope.naturalPersonTabActive = !personType || personType == NATURAL_PERSON_TYPE;
-					modalScope.legalPersonTabActive = personType == LEGAL_PERSON_TYPE;
+					var isLegalPerson = person && person.name;
+					modalScope.naturalPersonTabActive = !isLegalPerson;
+					modalScope.legalPersonTabActive = isLegalPerson;
 					var modal = MGISCommonsModalForm.edit("app2/persons/person-selector/person-selector-form.htm", modalScope, function (scope, $modalInstance) {
 						$scope.person = scope.person;
-						$scope.personType = scope.personType;
 						$modalInstance.close();
 					});
-					modalScope.naturalPersonSelectClicked = function (id, name) {
-						$scope.person = {id: id, name: name};
-						$scope.personType = NATURAL_PERSON_TYPE;
+					modalScope.personSelectClicked = function (person) {
+						$scope.person = person;
 						if ($scope.selectClicked) {
-							$scope.selectClicked({id: id, name: name, type: NATURAL_PERSON_TYPE});
+							$scope.selectClicked(person);
 						}
 						modal.close();
 					}
-					modalScope.legalPersonSelectClicked = function (id, name) {
-						$scope.person = {id: id, name: name};
-						$scope.personType = LEGAL_PERSON_TYPE;
-						if ($scope.selectClicked) {
-							$scope.selectClicked({id: id, name: name, type: LEGAL_PERSON_TYPE});
-						}
-						modal.close();
-					}
+				}
+				$scope.clearSelection = function () {
+					MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
+						$scope.person = null;
+						modalInstance.close();
+					});
 				}
 			}
 		}
@@ -106,7 +97,7 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 			}
 		}
 	})
-	.controller("PersonsSelectorController", function ($scope, NATURAL_PERSON_TYPE, LEGAL_PERSON_TYPE) {
+	.controller("PersonsSelectorController", function ($scope, MGISCommonsModalForm) {
 		function personExists(id) {
 			var persons = $scope.persons;
 			for (var i in persons) {
@@ -117,29 +108,32 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 			return false;
 		}
 
-		$scope.naturalPersonSelectClicked = function (id, name) {
+		$scope.personSelectClicked = function (person) {
 			if (!$scope.multiple) {
 				$scope.persons.slice(0, $scope.persons.length);
 			}
-			if (!personExists(id)) {
-				$scope.persons.push({id: id, name: name, personType: NATURAL_PERSON_TYPE});
+			if (!personExists(person.id)) {
+				$scope.persons.push(person);
 			}
 		}
-		$scope.legalPersonSelectClicked = function (id, name) {
+		$scope.legalPersonSelectClicked = function (person) {
 			if (!$scope.multiple) {
 				$scope.persons.slice(0, $scope.persons.length);
 			}
-			if (!personExists(id)) {
-				$scope.persons.push({id: id, name: name, personType: LEGAL_PERSON_TYPE});
+			if (!personExists(person.id)) {
+				$scope.persons.push(person);
 			}
 		}
 		$scope.removePerson = function (id) {
-			for (var i in $scope.persons) {
-				var p = $scope.persons[i];
-				if (p.id == id) {
-					$scope.persons.splice(i, 1);
+			MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
+				for (var i in $scope.persons) {
+					var p = $scope.persons[i];
+					if (p.id == id) {
+						$scope.persons.splice(i, 1);
+					}
 				}
-			}
+				modalInstance.close();
+			});
 		}
 	})
 ;
