@@ -1,5 +1,7 @@
 package ru.sovzond.mgis2.capital_constructs;
 
+import com.vividsolutions.jts.geom.MultiPolygon;
+import org.hibernate.annotations.Type;
 import ru.sovzond.mgis2.address.Address;
 import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructionCharacteristics;
 import ru.sovzond.mgis2.capital_constructs.constructive_elements.ConstructiveElement;
@@ -142,6 +144,10 @@ public class CapitalConstruction implements Cloneable {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "spatial_data_id")
 	private SpatialGroup spatialData;
+
+	@Type(type = "org.hibernate.spatial.GeometryType")
+	@Column(name = "geometry")
+	private MultiPolygon geometry;
 
 	public Long getId() {
 		return id;
@@ -357,4 +363,11 @@ public class CapitalConstruction implements Cloneable {
 		return construct;
 	}
 
+	public void setGeometry(MultiPolygon geometry) {
+		this.geometry = geometry;
+	}
+
+	public MultiPolygon getGeometry() {
+		return geometry;
+	}
 }
