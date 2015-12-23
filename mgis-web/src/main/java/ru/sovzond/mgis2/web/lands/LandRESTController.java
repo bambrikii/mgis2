@@ -311,7 +311,7 @@ public class LandRESTController implements Serializable {
 					String conversionRules = coordinateSystem.getConversionRules();
 					if (conversionRules != null && conversionRules.length() > 0) {
 						GeometryConverter converter = new GeometryConverter(conversionRules);
-						land.setGeometry(converter.convert(converter.createMultipolygon(spatialGroup2.getSpatialElements())));
+						land2.setGeometry(converter.convert(converter.createMultipolygon(spatialGroup2.getSpatialElements())));
 					}
 				}
 			}
