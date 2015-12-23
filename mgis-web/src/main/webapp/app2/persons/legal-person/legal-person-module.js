@@ -119,7 +119,7 @@ angular.module("mgis.persons.person.legal", ["ui.router", "ui.bootstrap", //
 		$scope.select = function (id) {
 			LegalPersonService.get(id).then(function (item) {
 				if ($scope.selectClicked) {
-					$scope.selectClicked({id: id, name: item.name});
+					$scope.selectClicked({person: item});
 				}
 			});
 		}

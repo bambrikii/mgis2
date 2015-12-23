@@ -23,7 +23,7 @@ public class CommonPart implements Cloneable {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Document document;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<DocumentContent> documentContents = new ArrayList<>();
 
 	public Long getId() {

@@ -21,7 +21,7 @@ public class SpecialPart implements Cloneable {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Document document;
 
-	@OneToMany(cascade = CascadeType.REMOVE)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<DocumentContent> documentContents = new ArrayList<>();
 
 	public Long getId() {
