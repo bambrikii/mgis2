@@ -44,6 +44,12 @@
 			<!--</tab-heading>-->
 			<!--<div ng-include src="'app2/capital-constructs/construct/construct-form-works.htm'"></div>-->
 			<!--</tab>-->
+			<tab select="constructSelected=true" deselect="constructSelected=false">
+				<tab-heading>
+					<span translate>Lands.Land.Map</span>
+				</tab-heading>
+				<div ng-if="constructSelected" ng-include src="'app2/capital-constructs/construct/construct-form-map.htm'"></div>
+			</tab>
 			<tab>
 				<tab-heading>
 					<span translate>Reports</span>
