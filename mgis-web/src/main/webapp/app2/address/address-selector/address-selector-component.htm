@@ -1,2 +1,4 @@
 {{address|addressFormatter}}
-<button class="btn btn-sm btn-info" ng-click="open()">{{(address.id?'Edit':'Select')|translate}}</button>
+<button class="btn btn-sm btn-warning" ng-click="open()" ng-if="address.id" translate>Edit</button>
+<button class="btn btn-sm btn-danger" ng-click="clearSelection()" ng-if="address.id" translate>Clear</button>
+<button class="btn btn-sm btn-info" ng-click="open()" ng-if="!address.id" translate>Select</button>

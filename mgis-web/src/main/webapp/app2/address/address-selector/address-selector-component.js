@@ -56,6 +56,12 @@ angular.module("mgis.address.selector", ["ui.bootstrap",
 						modal.close();
 					}
 				}
+				$scope.clearSelection = function () {
+					MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
+						$scope.address = null
+						modalInstance.close();
+					});
+				}
 			}
 		}
 	})
