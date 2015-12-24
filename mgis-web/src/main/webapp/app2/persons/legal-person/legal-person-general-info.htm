@@ -32,22 +32,9 @@
 		</div>
 
 		<!-- OwnershipForm -->
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>LegalPerson.OwnershipForm</label>
-			</div>
-			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="item.ownershipForm"
-							options="(c.name + (c.gatheringParent?' ('+c.gatheringParent.name+')' : '')) for c in availableOKFSs"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
-				</p>
-			</div>
-		</div>
+		<commons-forms-drop-down title="LegalPerson.OwnershipForm" property="item.ownershipForm" form="legalPersonForm"
+								 available-elements="availableOKFSs"
+								 element-label-expression="(element.name + (element.gatheringParent?' ('+element.gatheringParent.name+')' : ''))"></commons-forms-drop-down>
 
 		<!-- PreviousCompanyName -->
 		<div class="form-group row">

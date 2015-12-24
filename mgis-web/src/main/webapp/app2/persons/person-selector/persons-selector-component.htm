@@ -2,8 +2,17 @@
 <div ng-if="multiple && persons">
 	<ul class="list-group">
 		<li ng-repeat="personItem in persons" class="list-group-item">
-			{{personItem|personFormatter}}
+			<div class="row">
+				<div class="col-sm-6">
+					{{personItem|personFormatter}}
+				</div>
+				<div class="col-sm-4">
+					<button ng-click="clearSelection(personItem.id)" class="btn btn-danger btn-sm" translate>Deselect</button>
+				</div>
+			</div>
 		</li>
 	</ul>
 </div>
-<button ng-click="openSelector()" class="btn btn-info btn-sm">{{persons.length?'Edit':'Select'|translate}}</button>
+<button ng-click="openSelector()" class="btn btn-warning btn-sm" ng-if="person.id" translate>Edit</button>
+<button ng-click="openSelector()" class="btn btn-warning btn-sm" ng-if="persons.length" translate>Edit</button>
+<button ng-click="openSelector()" class="btn btn-info btn-sm" ng-if="!persons.length">Select</button>

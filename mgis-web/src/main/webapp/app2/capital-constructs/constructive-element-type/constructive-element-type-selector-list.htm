@@ -5,11 +5,10 @@
 <div class="modal-body">
 	<div class="panel-body">
 		<div ng-repeat="listItem in pager.list" class="row" style="padding-bottom: 7px;">
-			<div class="col-sm-1">{{listItem.id}}</div>
-			<div class="col-sm-2">{{listItem.name}}</div>
+			<div class="col-sm-5">{{listItem.name}}</div>
 			<div class="col-sm-7">
 				<button class="btn btn-sm btn-primary" ng-click="select(listItem)" translate>Select</button>
-				<button class="btn btn-sm btn-info" ng-click="edit(listItem.id)" translate>Edit</button>
+				<button class="btn btn-sm btn-warning" ng-click="edit(listItem.id)" translate>Edit</button>
 				<button class="btn btn-sm btn-danger" ng-click="remove(listItem.id)" translate>Remove</button>
 			</div>
 		</div>

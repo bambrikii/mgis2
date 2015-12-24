@@ -73,6 +73,11 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 	private static final String ORD_ATTR = "ORD_ATTR";
 	private static final String CS_ID_ATTR = "CS_ID_ATTR";
 	private static final String NAME_COORD_SYS_ATTR = "NAME_COORD_SYS_ATTR";
+	// TODO:
+	public static final String OBJECT_REALTY = "ObjectRealty";
+	public static final String BUILDING = "Building";
+	public static final String UNCOMPLETED = "Uncompleted";
+	public static final String POSTAL_CODE = "PostalCode";
 
 	private ILandResolver landResolver;
 	AddressDTO addressDTO;
@@ -170,6 +175,25 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 	private PropertyExtractor<LandDTO, String> categoryPropertyExtractor;
 	private NodeNamesAdapter extractor;
+	private boolean t_objectRealty;
+	private boolean t_building;
+	private boolean t_incomplete;
+
+	private BuildingDTO building;
+	private IncompleteDTO incomplete;
+	private boolean t_buildingArea;
+	private boolean t_incompleteArea;
+	private boolean t_buildingAddress;
+	private boolean t_incompleteAddress;
+	private boolean t_buildingAddressOkato;
+	private boolean t_buildingAddressKladr;
+	private boolean t_buildingAddressPostalCode;
+	private boolean t_buildingAddressDistrict;
+	private boolean t_buildingAddressRegion;
+	private boolean t_buildingAddressLocality;
+	private boolean t_buildingAddressStreet;
+	private boolean t_buildingAddressLevel1;
+	private boolean t_buildingAddressNote;
 
 	public RusRegisterHandlerBase(ILandResolver landResolver,
 								  Class<?> propertyClass,
@@ -407,6 +431,88 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 			t_Coord_System = false;
 		}
 
+		// Capital Constructs
+		if (byNode(qName2, OBJECT_REALTY)) {
+			t_objectRealty = true;
+		}
+
+		startsWithBuilding(attributes, qName2);
+		startsWithIncompleteConstruction(attributes, qName2);
+	}
+
+	private void startsWithBuilding(Attributes attributes, String qName2) {
+		if (byNode(qName2, BUILDING)) {
+			t_building = true;
+			building = new BuildingDTO();
+			building.setCadastralNumber(byNodeAttr(attributes, CADASTRAL_NUMBER_ATTR));
+		}
+		if (t_building && byNode(qName2, AREA)) {
+			t_buildingArea = true;
+		}
+		if (t_building && byNode(qName2, ADDRESS)) {
+			t_buildingAddress = true;
+			building.setAddress(new AddressDTO());
+		}
+		if (t_buildingAddress && byNode(qName2, CODE_OKATO)) {
+			t_buildingAddressOkato = true;
+		}
+		if (t_buildingAddress && byNode(qName2, CODE_KLADR)) {
+			t_buildingAddressKladr = true;
+		}
+		if (t_buildingAddress && byNode(qName2, POSTAL_CODE)) {
+			t_buildingAddressPostalCode = true;
+		}
+		if (t_buildingAddress && byNode(qName2, REGION)) {
+			t_buildingAddressRegion = true;
+		}
+		if (t_buildingAddress && byNode(qName2, DISTRICT)) {
+			t_buildingAddressDistrict = true;
+			building.getAddress().setDistrictName(byNodeAttr(attributes, NAME_ATTR));
+			building.getAddress().setDistrictType(byNodeAttr(attributes, TYPE_ALL_ATTR));
+		}
+		if (t_buildingAddress && byNode(qName2, LOCALITY)) {
+			t_buildingAddressLocality = true;
+			building.getAddress().setLocalityName(byNodeAttr(attributes, NAME_ATTR));
+			building.getAddress().setLocalityType(byNodeAttr(attributes, TYPE_ALL_ATTR));
+		}
+		if (t_buildingAddress && byNode(qName2, STREET)) {
+			t_buildingAddressStreet = true;
+			building.getAddress().setLocalityName(byNodeAttr(attributes, NAME_ATTR));
+			building.getAddress().setLocalityType(byNodeAttr(attributes, TYPE_ALL_ATTR));
+		}
+		if (t_buildingAddress && byNode(qName2, LEVEL_1)) {
+			t_buildingAddressLevel1 = true;
+			building.getAddress().setLocalityType(byNodeAttr(attributes, TYPE_ALL_ATTR));
+			building.getAddress().setLocalityName(byNodeAttr(attributes, VALUE_ATTR));
+		}
+		if (t_buildingAddress && byNode(qName2, NOTE)) {
+			t_buildingAddressNote = true;
+		}
+		if (t_building && byNode(qName2, CADASTRAL_COST)) {
+			building.setCadastralCostValue(Double.parseDouble(byNodeAttr(attributes, VALUE_ATTR)));
+			building.setCadastralCostUnit(Integer.parseInt(byNodeAttr(attributes, UNIT)));
+		}
+		if (t_building && byNode(qName2, ENTITY_SPATIAL)) {
+			// TODO: ...
+		}
+	}
+
+	private void startsWithIncompleteConstruction(Attributes attributes, String qName2) {
+		if (byNode(qName2, UNCOMPLETED)) {
+			t_incomplete = true;
+			incomplete = new IncompleteDTO();
+			incomplete.setCadastralNumber(byNodeAttr(attributes, CADASTRAL_NUMBER_ATTR));
+		}
+
+		if (t_incomplete && byNode(qName2, AREA)) {
+			t_incompleteArea = true;
+		}
+
+		if (t_incomplete && byNode(qName2, ADDRESS)) {
+			t_incompleteAddress = true;
+			incomplete.setAddress(new AddressDTO());
+		}
+
 	}
 
 	@Override
@@ -509,6 +615,19 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 		}
 		if (t_Region_Cadastr && byNodeEndsWith(qName, REGION_CADASTR)) {
 			t_Region_Cadastr = false;
+		}
+
+		// Capital Constructs
+		if (t_objectRealty && byNodeEndsWith(qName, OBJECT_REALTY)) {
+			t_objectRealty = false;
+		}
+		if (t_building && byNodeEndsWith(qName, BUILDING)) {
+			t_building = false;
+			building = null;
+		}
+		if (t_incomplete && byNodeEndsWith(qName, UNCOMPLETED)) {
+			t_incomplete = false;
+			incomplete = null;
 		}
 	}
 

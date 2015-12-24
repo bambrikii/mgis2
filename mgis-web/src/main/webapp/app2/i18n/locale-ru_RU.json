@@ -399,7 +399,7 @@
   "CapitalConstructs.Construct.OperationStartYear": "Год ввода в эксплуатацию",
   "CapitalConstructs.Construct.BuildCompletionYear": "Год постройки",
   "CapitalConstructs.Construct.LastReconstructionDate": "Дата последней реконструкции",
-  "CapitalConstructs.Construct.RebuildingLastYear": "Год последнего кап. ремонта",
+  "CapitalConstructs.Construct.RebuildingLastYear": "Год последнего капитального ремонта",
   "CapitalConstructs.Construct.ActualUsage": "Фактическое использование",
   "CapitalConstructs.Construct.Placement": "Местоположение",
   "CapitalConstructs.Construct.ObjectPurpose": "Назначение объекта",

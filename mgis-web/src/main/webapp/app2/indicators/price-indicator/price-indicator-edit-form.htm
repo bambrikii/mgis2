@@ -6,9 +6,9 @@
 
 	<form name="editForm" class="" ng-controller="IndicatorsPriceIndicatorFormController" novalidate>
 		<commons-forms-text title="Name" property="item.name" required></commons-forms-text>
-		<commons-forms-drop-down-ajax title="NationalClassifiers.UnitOfMeasure" property="item.unitOfMeasure"
+		<commons-forms-drop-down-ajax form="editForm" title="NationalClassifiers.UnitOfMeasure" property="item.unitOfMeasure"
 									  available-elements="availableOKEIs"
-									  refresh="refreshAvailableOKEIs(name)"></commons-forms-drop-down-ajax>
+									  available-elements-loader="refreshAvailableOKEIs(name)"></commons-forms-drop-down-ajax>
 	</form>
 
 </div>

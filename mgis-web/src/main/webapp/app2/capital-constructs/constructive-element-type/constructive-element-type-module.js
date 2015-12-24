@@ -56,6 +56,13 @@ angular.module("mgis.capital-constructs.constructive-element-type", ["ui.bootstr
 						modalInstance.close();
 					}
 				}
+
+				$scope.clearSelection = function () {
+					MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
+						$scope.value = null;
+						modalInstance.close();
+					})
+				}
 			}
 		}
 	})
