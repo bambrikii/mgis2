@@ -94,6 +94,21 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 						$modalInstance.close();
 					});
 				}
+				$scope.clearSelection = function (id) {
+					MGISCommonsModalForm.confirmRemoval(function (modalInstance) {
+						if ($scope.persons) {
+							for (var i in $scope.persons) {
+								var person = $scope.persons[i];
+								if (person.id == id) {
+									$scope.persons.splice(i, 1);
+								}
+							}
+						} else if ($scope.person) {
+							$scope.person = null;
+						}
+						modalInstance.close();
+					});
+				}
 			}
 		}
 	})
