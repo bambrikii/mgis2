@@ -1,2 +1,4 @@
 <span ng-if="value.id">{{value.name}}</span>
-<button ng-click="openSelector(value)" class="btn btn-info btn-sm" translate>Select</button>
+<button ng-click="openSelector(value)" class="btn btn-warning btn-sm" ng-if="value.id" translate>Edit</button>
+<button ng-click="openSelector(value)" class="btn btn-info btn-sm" ng-if="!value.id" translate>Select</button>
+<button ng-click="clearSelection(value)" class="btn btn-danger btn-sm" ng-if="value.id" translate>Clear</button>
