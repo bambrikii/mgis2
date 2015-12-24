@@ -17,9 +17,10 @@
 		<commons-forms-text title="InventoryNumber" property="item.inventoryNumber" form="constructForm" name="inventoryNumber"></commons-forms-text>
 		<commons-forms-text title="OverallArea" property="item.overallArea" form="constructForm" name="overalArea"></commons-forms-text>
 		<commons-forms-drop-down-ajax title="MunicipalEntity" property="item.municipalEntity"
+									  form="constructForm" name="municipalEntity"
 									  available-elements="availableMunicipalEntities"
-									  refresh="refreshAvailableMunicipalEntities(name)" form="constructForm"
-									  name="municipalEntity"></commons-forms-drop-down-ajax>
+									  available-elements-loader="refreshAvailableMunicipalEntities(search)"
+				></commons-forms-drop-down-ajax>
 		<forms-address-selector address="item.address" form="constructForm" name="address" required="true"></forms-address-selector>
 		<!--<div class="form-group row">-->
 		<!--<div class="col-sm-4"><label translate>Address</label></div>-->
