@@ -175,12 +175,17 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 	private PropertyExtractor<LandDTO, String> categoryPropertyExtractor;
 	private NodeNamesAdapter extractor;
-	private boolean t_objectRealty;
-	private boolean t_building;
-	private boolean t_incomplete;
-
 	private BuildingDTO building;
 	private IncompleteDTO incomplete;
+	private EntitySpatialDTO buildingEntitySpatial;
+	private SpatialElementDTO buildingEntitySpatialElement;
+	private SpatialElementUnitDTO buildingSpelementUnit;
+	private OrdinateDTO buildingOrdinate;
+	private boolean t_objectRealty;
+	private boolean t_building;
+
+	private boolean t_incomplete;
+
 	private boolean t_buildingArea;
 	private boolean t_incompleteArea;
 	private boolean t_buildingAddress;
@@ -194,6 +199,10 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 	private boolean t_buildingAddressStreet;
 	private boolean t_buildingAddressLevel1;
 	private boolean t_buildingAddressNote;
+	private boolean t_buildingEntitySpatial;
+	private boolean t_buildingEntitySpatialElement;
+	private boolean t_buildingSpelementUnit;
+	private boolean t_buildingOrdinate;
 
 	public RusRegisterHandlerBase(ILandResolver landResolver,
 								  Class<?> propertyClass,
@@ -493,7 +502,24 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 			building.setCadastralCostUnit(Integer.parseInt(byNodeAttr(attributes, UNIT)));
 		}
 		if (t_building && byNode(qName2, ENTITY_SPATIAL)) {
-			// TODO: ...
+			buildingEntitySpatial = new EntitySpatialDTO();
+			buildingEntitySpatial.setEntSys(byNodeAttr(attributes, ENT_SYS_ATTR));
+			t_buildingEntitySpatial = true;
+		}
+		if (t_buildingEntitySpatial && byNode(qName2, SPATIAL_ELEMENT)) {
+			buildingEntitySpatialElement = new SpatialElementDTO();
+			t_buildingEntitySpatialElement = true;
+		}
+		if (t_buildingEntitySpatialElement && byNode(qName2, SPELEMENT_UNIT)) {
+			buildingSpelementUnit = new SpatialElementUnitDTO();
+			t_buildingSpelementUnit = true;
+		}
+		if (t_buildingSpelementUnit && byNode(qName2, SPELEMENT_UNIT)) {
+			buildingOrdinate = new OrdinateDTO();
+			buildingOrdinate.setOrdNumber(Integer.parseInt(byNodeAttr(attributes, ORD_ATTR)));
+			buildingOrdinate.setX(Double.parseDouble(byNodeAttr(attributes, X_ATTR)));
+			buildingOrdinate.setY(Double.parseDouble(byNodeAttr(attributes, Y_ATTR)));
+			t_buildingOrdinate = true;
 		}
 	}
 
