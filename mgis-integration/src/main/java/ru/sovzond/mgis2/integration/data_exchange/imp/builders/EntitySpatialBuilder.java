@@ -24,7 +24,10 @@ public class EntitySpatialBuilder extends HeirarchialNodeBuilder<EntitySpatialDT
 
 	public EntitySpatialBuilder(NodeBuilder parent, Predicate<String> entitySpatialPredicate, Predicate<String> spatialElementPredicate, Predicate<String> spelementUnitPredicate, Predicate<String> ordinatePredicate) {
 		super(parent, entitySpatialPredicate);
-		spatialElement = new SpatialElementBuilder(this, spatialElementPredicate, spelementUnitPredicate, ordinatePredicate, builder -> spatialElements.add(builder.build()));
+		spatialElement = new SpatialElementBuilder(this, spatialElementPredicate, spelementUnitPredicate, ordinatePredicate, builder -> {
+			spatialElements.add(builder.build());
+			builder.reset();
+		});
 	}
 
 	public EntitySpatialBuilder end() {
@@ -53,13 +56,13 @@ public class EntitySpatialBuilder extends HeirarchialNodeBuilder<EntitySpatialDT
 	}
 
 	@Override
-	protected boolean contentCascade(Object content) {
+	protected boolean contentCascade(String content) {
 		return spatialElement.content(content);
 	}
 
 	@Override
 	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
-		entSys = (String) attributeValueExtractor.attribute(ENT_SYS_ATTR);
+		entSys = attributeValueExtractor.attribute(ENT_SYS_ATTR);
 	}
 
 	@Override

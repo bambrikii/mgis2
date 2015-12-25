@@ -100,7 +100,7 @@ public class AddressBuilder extends HeirarchialNodeBuilder<AddressDTO> {
 	}
 
 	@Override
-	protected boolean contentCascade(Object content) {
+	protected boolean contentCascade(String content) {
 		return okato.content(content)
 				|| kladr.content(content)
 				|| region.content(content)

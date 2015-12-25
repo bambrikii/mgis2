@@ -1,24 +1,19 @@
-package ru.sovzond.mgis2.integration.data_exchange.imp;
+package ru.sovzond.mgis2.integration.data_exchange.imp.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.sovzond.mgis2.address.Address;
-import ru.sovzond.mgis2.address.AddressBean;
-import ru.sovzond.mgis2.address.AddressFilterBuilder;
 import ru.sovzond.mgis2.geo.*;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
-import ru.sovzond.mgis2.kladr.KLADRLocality;
-import ru.sovzond.mgis2.kladr.KLADRLocalityDao;
-import ru.sovzond.mgis2.kladr.KLADRStreet;
-import ru.sovzond.mgis2.kladr.KLADRStreetDao;
 import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.lands.characteristics.LandCharacteristics;
 import ru.sovzond.mgis2.lands.rights.LandRights;
 import ru.sovzond.mgis2.national_classifiers.LandCategoryBean;
 import ru.sovzond.mgis2.national_classifiers.LandRightKindBean;
-import ru.sovzond.mgis2.national_classifiers.OKATOBean;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
-import ru.sovzond.mgis2.registers.national_classifiers.*;
+import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
+import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
+import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
+import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZoneType;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -30,7 +25,7 @@ import java.util.regex.Pattern;
  * Created by Alexander Arakelyan on 19.11.15.
  */
 @Service
-public class LandImportResolverBean {
+public class LandResolverBean {
 
 	public static final String CADASTRAL_BLOCK_PATTERN = "(\\d+):(\\d+):(\\d{2})(\\d{2})(\\d+).*";
 	public static final String EPSG4326 = "EPSG:4326";
@@ -38,9 +33,6 @@ public class LandImportResolverBean {
 
 	@Autowired
 	private LandBean landBean;
-
-	@Autowired
-	private AddressBean addressBean;
 
 	@Autowired
 	private LandRightKindBean landRightKindBean;
@@ -61,67 +53,15 @@ public class LandImportResolverBean {
 	private TerritorialZoneBean territorialZoneBean;
 
 	@Autowired
-	private KLADRLocalityDao kladrLocalityDao;
-
-	@Autowired
-	private KLADRStreetDao kladrStreetDao;
-
-	@Autowired
-	private OKATOBean okatoBean;
-
-	@Autowired
 	private SpatialGroupBean spatialGroupBean;
 
 	@Autowired
 	private LandRightsBean landRightsBean;
 
+	@Autowired
+	private AddressResolverBean addressResolverBean;
+
 	private Pattern cadastralNumberPattern = Pattern.compile(CADASTRAL_BLOCK_PATTERN);
-
-
-	private Address resolveAddress(AddressDTO addressDTO) {
-		AddressFilterBuilder filterBuilder = addressBean.createfilterBuilder();
-		filterBuilder //
-				.subjectCode(addressDTO.getRegion()) //
-				.region(addressDTO.getDistrictName(), addressDTO.getDistrictType()) //
-				.locality(addressDTO.getLocalityName(), addressDTO.getLocalityType()) //
-				.street(addressDTO.getStreetName(), addressDTO.getStreetType()) //
-				.home(addressDTO.getLevelValue()).housing(addressDTO.getLevelType()) //
-		;
-		List<Address> addresses = addressBean.find(filterBuilder.build());
-		switch (addresses.size()) {
-			case 0:
-				return updateAddress(new Address(), addressDTO);
-			case 1:
-				return updateAddress(addresses.get(0), addressDTO);
-			default:
-				throw new UnsupportedOperationException("More than one address found for dto: " + addressDTO);
-		}
-	}
-
-	private Address updateAddress(Address address, AddressDTO addressDTO) {
-		address.setApartment(null);
-		address.setBuilding(null);
-		address.setHousing(null);
-		address.setHousing(addressDTO.getLevelType());
-		address.setHome(addressDTO.getLevelValue());
-
-		KLADRLocality subject = kladrLocalityDao.findSubjectByCode(addressDTO.getRegion());
-		KLADRLocality region = kladrLocalityDao.findRegion(subject.getCode(), addressDTO.getDistrictName(), addressDTO.getDistrictType()).get(0);
-		KLADRLocality locality = kladrLocalityDao.findLocality(region.getCode(), addressDTO.getLocalityName(), addressDTO.getLocalityType()).get(0);
-		KLADRStreet street = kladrStreetDao.findStreet(locality.getCode(), addressDTO.getStreetName(), addressDTO.getStreetType()).get(0);
-
-		address.setSubject(subject);
-		address.setRegion(region);
-		address.setLocality(locality);
-		address.setStreet(street);
-
-		OKATO okato = okatoBean.findByCode(addressDTO.getOkato());
-		address.setOkato(okato);
-
-		address.setOther(addressDTO.getNote());
-		addressBean.save(address);
-		return address;
-	}
 
 	private LandRightKind resolveLandRightKind(String name, String type) {
 		return landRightKindBean.find(type);
@@ -171,7 +111,7 @@ public class LandImportResolverBean {
 	private void updateLand0(LandDTO landDTO, Land land) {
 		land.setCadastralNumber(landDTO.getCadastralNumber());
 		land.setStateRealEstateCadastreaStaging(landDTO.getDateCreated());
-		land.setAddress(resolveAddress(landDTO.getAddress()));
+		land.setAddress(addressResolverBean.resolveAddress(landDTO.getAddress()));
 //		land.setAddressOfMunicipalEntity(resolveOKTMO(null));
 		land.setLandCategory(resolveLandCategory(landDTO.getCategory()));
 		String locationPlaced = landDTO.getLocationPlaced();
@@ -187,7 +127,7 @@ public class LandImportResolverBean {
 		}
 		if (landDTO.getArea() != null) {
 			LandRights rights = land.getRights();
-			if(rights==null){
+			if (rights == null) {
 				rights = new LandRights();
 				landRightsBean.save(rights);
 				land.setRights(rights);

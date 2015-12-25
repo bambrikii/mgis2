@@ -22,7 +22,10 @@ public class SpatialElementBuilder extends HeirarchialNodeBuilder<SpatialElement
 
 	public SpatialElementBuilder(NodeBuilder parent, Predicate<String> spatialElementPredicate, Predicate<String> spelementUnitPredicate, Predicate<String> ordinatePredicate, NodeBuilderEndEvent<SpatialElementDTO> endEvent) {
 		super(parent, spatialElementPredicate, endEvent);
-		spatialElementUnit = new SpatialElementUnitBuilder(this, spelementUnitPredicate, ordinatePredicate, builder -> spatialElementUnits.add(builder.build()));
+		spatialElementUnit = new SpatialElementUnitBuilder(this, spelementUnitPredicate, ordinatePredicate, builder -> {
+			spatialElementUnits.add(builder.build());
+			builder.reset();
+		});
 	}
 
 	@Override
@@ -44,7 +47,7 @@ public class SpatialElementBuilder extends HeirarchialNodeBuilder<SpatialElement
 	}
 
 	@Override
-	protected boolean contentCascade(Object content) {
+	protected boolean contentCascade(String content) {
 		return spatialElementUnit.content(content);
 	}
 

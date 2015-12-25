@@ -1,5 +1,6 @@
-package ru.sovzond.mgis2.integration.data_exchange.imp;
+package ru.sovzond.mgis2.integration.data_exchange.imp.resolvers;
 
+import ru.sovzond.mgis2.integration.data_exchange.imp.beans.LandResolverBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportFactory;
@@ -14,12 +15,12 @@ import java.util.Map;
 /**
  * Created by Alexander Arakelyan on 26.11.15.
  */
-public class LandResolver implements ILandResolver {
+public class LandResolver implements ILandResolver<LandDTO> {
 	private Map<String, List<Long>> ids = new HashMap<>();
-	private LandImportResolverBean landImportResolverBean;
+	private LandResolverBean landImportResolverBean;
 	private List<ReportRecord> reports = new ArrayList<>();
 
-	public LandResolver(LandImportResolverBean landImportResolverBean) {
+	public LandResolver(LandResolverBean landImportResolverBean) {
 		this.landImportResolverBean = landImportResolverBean;
 	}
 

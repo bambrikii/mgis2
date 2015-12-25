@@ -7,10 +7,10 @@ import java.util.function.Predicate;
  */
 public abstract class NodeBuilder<T> {
 	private boolean condition;
-	protected Object content;
+	protected String content;
 	protected final NodeBuilderEndEvent<T> endEvent;
-	private final NodeBuilder parent;
-	private final Predicate<String> evaluator;
+	protected final NodeBuilder parent;
+	protected final Predicate<String> evaluator;
 
 	public NodeBuilder(NodeBuilder parent, Predicate<String> evaluator) {
 		this.parent = parent;
@@ -39,7 +39,7 @@ public abstract class NodeBuilder<T> {
 
 	}
 
-	public boolean content(Object content) {
+	public boolean content(String content) {
 		if (isValid()) {
 			this.content = content;
 		}
@@ -48,7 +48,6 @@ public abstract class NodeBuilder<T> {
 
 	public boolean end(String qName) {
 		if (isValid() && evaluator.test(qName)) {
-			content = null;
 			setInvalid();
 			if (endEvent != null) {
 				endEvent.end(this);

@@ -17,15 +17,22 @@ public abstract class HeirarchialNodeBuilder<T> extends NodeBuilder<T> {
 
 	@Override
 	public boolean start(String qName, AttributeValueExtractor attributeValueExtractor) {
-		boolean result = super.start(qName, attributeValueExtractor);
-		if (!result) {
-			return startCascade(qName, attributeValueExtractor);
+		if (parent == null) {
+			throw new IllegalArgumentException("Parent required for condition checking.");
 		}
-		return result;
+		if (parent.isValid()) {
+			if (evaluator.test(qName)) {
+				setValid();
+				extractAttributes(attributeValueExtractor);
+			} else {
+				return startCascade(qName, attributeValueExtractor);
+			}
+		}
+		return isValid();
 	}
 
 	@Override
-	public boolean content(Object content) {
+	public boolean content(String content) {
 		if (isValid()) {
 			contentCascade(content);
 		}
@@ -34,16 +41,22 @@ public abstract class HeirarchialNodeBuilder<T> extends NodeBuilder<T> {
 
 	@Override
 	public boolean end(String qName) {
-		boolean result = super.end(qName);
-		if (!result) {
-			return endCascade(qName);
+		if (isValid()) {
+			if (evaluator.test(qName)) {
+				setInvalid();
+				if (endEvent != null) {
+					endEvent.end(this);
+				}
+			} else {
+				return endCascade(qName);
+			}
 		}
-		return result;
+		return isValid();
 	}
 
 	protected abstract boolean startCascade(String qName, AttributeValueExtractor attributeValueExtractor);
 
 	protected abstract boolean endCascade(String qName);
 
-	protected abstract boolean contentCascade(Object content);
+	protected abstract boolean contentCascade(String content);
 }

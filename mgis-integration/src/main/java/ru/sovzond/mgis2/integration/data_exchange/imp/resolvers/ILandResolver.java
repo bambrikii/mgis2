@@ -1,17 +1,16 @@
-package ru.sovzond.mgis2.integration.data_exchange.imp;
+package ru.sovzond.mgis2.integration.data_exchange.imp.resolvers;
 
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
-import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandDTO;
 
 /**
  * Created by Alexander Arakelyan on 26.11.15.
  */
-public interface ILandResolver {
+public interface ILandResolver<T> {
 
 	/**
-	 * @param land Resolve Coordinate Sytem
+	 * @param obj Resolve Coordinate Sytem
 	 */
-	void resolve(LandDTO land);
+	void resolve(T obj);
 
 	/**
 	 * @param coordinateSystemDTO Update Coordinate System for all the lands found and registered by resolve(...) method

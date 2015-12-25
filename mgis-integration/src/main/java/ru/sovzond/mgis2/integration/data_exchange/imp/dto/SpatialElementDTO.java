@@ -1,5 +1,7 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.dto;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.util.List;
 
 /**
@@ -16,5 +18,10 @@ public class SpatialElementDTO {
 
 	public void setSpatialElementUnits(List<SpatialElementUnitDTO> spatialElementUnits) {
 		this.spatialElementUnits = spatialElementUnits;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("spatialElementUnits", spatialElementUnits).toString();
 	}
 }

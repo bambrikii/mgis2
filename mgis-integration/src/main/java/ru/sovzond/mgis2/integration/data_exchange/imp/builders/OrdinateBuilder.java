@@ -24,9 +24,9 @@ public class OrdinateBuilder extends NodeBuilder<OrdinateDTO> {
 
 	@Override
 	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
-		ordNumber = (Integer) attributeValueExtractor.attribute(ORD_ATTR);
-		x = (Double) attributeValueExtractor.attribute(X_ATTR);
-		y = (Double) attributeValueExtractor.attribute(Y_ATTR);
+		ordNumber = Integer.parseInt(attributeValueExtractor.attribute(ORD_ATTR));
+		x = Double.parseDouble(attributeValueExtractor.attribute(X_ATTR));
+		y = Double.parseDouble(attributeValueExtractor.attribute(Y_ATTR));
 	}
 
 	@Override

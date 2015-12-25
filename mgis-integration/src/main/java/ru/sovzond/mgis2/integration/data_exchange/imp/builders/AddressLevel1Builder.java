@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 
 import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegisterFieldKeys.TYPE_ALL_ATTR;
 import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegisterFieldKeys.VALUE_ATTR;
+
 /**
  * Created by Alexander Arakelyan on 24.12.15.
  */
@@ -34,6 +35,6 @@ public class AddressLevel1Builder extends NodeBuilder<String[]> {
 
 	@Override
 	public String[] build() {
-		return new String[]{value, type};
+		return new String[]{type, value};
 	}
 }

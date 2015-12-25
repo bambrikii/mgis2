@@ -10,6 +10,7 @@ import ru.sovzond.mgis2.integration.HibernateConfiguration;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
 import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.kpt.KptLandsImporter;
 import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.region_cadastr.RegionCadastrLandsImporter;
+import ru.sovzond.mgis2.integration.data_exchange.imp.beans.LandResolverBean;
 import ru.sovzond.mgis2.lands.Land;
 
 import javax.transaction.Transactional;
@@ -36,7 +37,7 @@ public class LandsImporterTest {
 	private KptLandsImporter kptLandsImporter;
 
 	@Autowired
-	private LandImportResolverBean landImportResolverBean;
+	private LandResolverBean landImportResolverBean;
 
 	@Test
 	@Transactional

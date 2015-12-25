@@ -1,5 +1,7 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.dto;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * Created by Alexander Arakelyan on 24.12.15.
  */
@@ -75,5 +77,17 @@ public class ConstructDTO {
 
 	public void setEntitySpatial(EntitySpatialDTO entitySpatial) {
 		this.entitySpatial = entitySpatial;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("cadastralNumber", cadastralNumber)
+				.append("objectType", objectType)
+				.append("cadastralCostValue", cadastralCostValue)
+				.append("cadastralCostUnit", cadastralCostUnit)
+				.append("assignationBuilding", assignationBuilding)
+				.append("entitySpatial", entitySpatial)
+				.toString();
 	}
 }

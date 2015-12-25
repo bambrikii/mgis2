@@ -26,7 +26,10 @@ public class SpatialElementUnitBuilder extends HeirarchialNodeBuilder<SpatialEle
 
 	public SpatialElementUnitBuilder(NodeBuilder parent, Predicate<String> spelementUnitPredicate, Predicate<String> ordinatePredicate, NodeBuilderEndEvent<SpatialElementUnitDTO> endEvent) {
 		super(parent, spelementUnitPredicate, endEvent);
-		ordinate = new OrdinateBuilder(this, ordinatePredicate, builder -> ordinates.add(builder.build()));
+		ordinate = new OrdinateBuilder(this, ordinatePredicate, builder -> {
+			ordinates.add(builder.build());
+			builder.reset();
+		});
 	}
 
 	@Override
@@ -42,8 +45,8 @@ public class SpatialElementUnitBuilder extends HeirarchialNodeBuilder<SpatialEle
 	@Override
 	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
 		super.extractAttributes(attributeValueExtractor);
-		suNumb = (Integer) attributeValueExtractor.attribute(SU_NMB_ATTR);
-		typeUnit = (String) attributeValueExtractor.attribute(TYPE_UNIT_ATTR);
+		suNumb = Integer.parseInt(attributeValueExtractor.attribute(SU_NMB_ATTR));
+		typeUnit = attributeValueExtractor.attribute(TYPE_UNIT_ATTR);
 	}
 
 	@Override
@@ -57,7 +60,7 @@ public class SpatialElementUnitBuilder extends HeirarchialNodeBuilder<SpatialEle
 	}
 
 	@Override
-	protected boolean contentCascade(Object content) {
+	protected boolean contentCascade(String content) {
 		return ordinate.content(content);
 	}
 

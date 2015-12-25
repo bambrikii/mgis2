@@ -5,12 +5,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.NamespaceSupport;
-import ru.sovzond.mgis2.integration.data_exchange.imp.ILandResolver;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.BuildingBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.IncompleteBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
 import ru.sovzond.mgis2.integration.data_exchange.imp.impl.NodeNamesAdapter;
 import ru.sovzond.mgis2.integration.data_exchange.imp.impl.PropertyExtractor;
+import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.ILandResolver;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -25,7 +25,6 @@ import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegiste
  */
 public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
-	private ILandResolver landResolver;
 	AddressDTO addressDTO;
 	EntitySpatialDTO entitySpatialDTO;
 	LandDTO landDTO;
@@ -125,12 +124,20 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 	private final BuildingBuilder buildingBuilder;
 	private final IncompleteBuilder incompleteBuilder;
 	private boolean t_objectRealty;
+	private ILandResolver<LandDTO> landResolver;
+	private ILandResolver<BuildingDTO> buildingResolver;
+	private ILandResolver<IncompleteDTO> incompleteConstructResolver;
 
-	public RusRegisterHandlerBase(ILandResolver landResolver,
-								  Class<?> propertyClass,
-								  PropertyExtractor<LandDTO, String> categoryPropertyExtractor
+	public RusRegisterHandlerBase(
+			ILandResolver<LandDTO> landResolver,
+			ILandResolver<BuildingDTO> buildingResolver,
+			ILandResolver<IncompleteDTO> incompleteConstructResolver,
+			Class<?> propertyClass,
+			PropertyExtractor<LandDTO, String> categoryPropertyExtractor
 	) {
 		this.landResolver = landResolver;
+		this.buildingResolver = buildingResolver;
+		this.incompleteConstructResolver = incompleteConstructResolver;
 		this.categoryPropertyExtractor = categoryPropertyExtractor;
 		extractor = new NodeNamesAdapter(propertyClass);
 
@@ -152,7 +159,12 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 				qName -> byNode(qName, ENTITY_SPATIAL),
 				qName -> byNode(qName, SPATIAL_ELEMENT),
 				qName -> byNode(qName, SPELEMENT_UNIT),
-				qName -> byNode(qName, ORDINATE)
+				qName -> byNode(qName, ORDINATE),
+				nodeBuilder -> {
+					BuildingDTO result = nodeBuilder.build();
+					buildingResolver.resolve(result);
+					nodeBuilder.reset();
+				}
 		);
 		incompleteBuilder = new IncompleteBuilder(
 				qName -> byNode(qName, INCOMPLETE),
@@ -172,7 +184,12 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 				qName -> byNode(qName, ENTITY_SPATIAL),
 				qName -> byNode(qName, SPATIAL_ELEMENT),
 				qName -> byNode(qName, SPELEMENT_UNIT),
-				qName -> byNode(qName, ORDINATE)
+				qName -> byNode(qName, ORDINATE),
+				nodeBuilder -> {
+					IncompleteDTO result = nodeBuilder.build();
+					incompleteConstructResolver.resolve(result);
+					nodeBuilder.reset();
+				}
 		);
 	}
 
@@ -415,6 +432,9 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 
+		namespaceSupport.processName(qName, qNames, false);
+		String qName2 = qNames[1];
+
 		//-----Area--------------
 		if (t_Area && byNodeEndsWith(qName, AREA) && !t_AreaIn && !flagAreaIn) {
 			t_Area = false;
@@ -519,8 +539,8 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 			t_objectRealty = false;
 		}
 
-		buildingBuilder.end(qName);
-		incompleteBuilder.end(qName);
+		buildingBuilder.end(qName2);
+		incompleteBuilder.end(qName2);
 	}
 
 	@Override

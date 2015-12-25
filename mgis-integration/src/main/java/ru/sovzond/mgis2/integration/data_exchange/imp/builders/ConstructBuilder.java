@@ -10,7 +10,7 @@ import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegiste
 /**
  * Created by Alexander Arakelyan on 24.12.15.
  */
-public class ConstructBuilder extends NodeBuilder<ConstructDTO> {
+public abstract class ConstructBuilder<T extends ConstructDTO> extends HeirarchialNodeBuilder<T> {
 
 	protected String cadastralNumber;
 	public final StringNodeBuilder objectType;
@@ -21,7 +21,7 @@ public class ConstructBuilder extends NodeBuilder<ConstructDTO> {
 	public final EntitySpatialBuilder entitySpatial;
 
 	public ConstructBuilder(
-			Predicate<String> buildingPredicate,
+			Predicate<String> constructPredicate,
 			Predicate<String> assignationBuildingPredicate,
 			Predicate<String> objectTypePredicate,
 			Predicate<String> areaPredicate,
@@ -38,9 +38,10 @@ public class ConstructBuilder extends NodeBuilder<ConstructDTO> {
 			Predicate<String> entitySpatialPredicate,
 			Predicate<String> spatialElementPredicate,
 			Predicate<String> spelementUnitPredicate,
-			Predicate<String> ordinatePredicate
+			Predicate<String> ordinatePredicate,
+			NodeBuilderEndEvent<T> endEvent
 	) {
-		super(NodeBuilderFactory.createTrue(), buildingPredicate);
+		super(NodeBuilderFactory.createTrue(), constructPredicate, endEvent);
 		address = new AddressBuilder(this,
 				addressPredicate,
 				okatoPredicate,
@@ -61,31 +62,11 @@ public class ConstructBuilder extends NodeBuilder<ConstructDTO> {
 
 	@Override
 	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
-		cadastralNumber = (String) attributeValueExtractor.attribute(CADASTRAL_NUMBER_ATTR);
+		cadastralNumber = attributeValueExtractor.attribute(CADASTRAL_NUMBER_ATTR);
 	}
 
 	@Override
-	public ConstructDTO build() {
-
-		ConstructDTO constructDTO = new ConstructDTO();
-
-		constructDTO.setCadastralNumber(cadastralNumber);
-		constructDTO.setArea(area.build());
-
-		constructDTO.setObjectType(objectType.build());
-
-		constructDTO.setAssignationBuilding(assignationBuilding.build());
-
-		constructDTO.setAddress(address.build());
-
-		Number[] cadastralCost = this.cadastralCost.build();
-		constructDTO.setCadastralCostValue((Double) cadastralCost[0]);
-		constructDTO.setCadastralCostUnit((Integer) cadastralCost[1]);
-
-		constructDTO.setEntitySpatial(entitySpatial.build());
-
-		return constructDTO;
-	}
+	public abstract T build();
 
 	@Override
 	public void reset() {
@@ -97,5 +78,38 @@ public class ConstructBuilder extends NodeBuilder<ConstructDTO> {
 		address.reset();
 		cadastralCost.reset();
 		entitySpatial.reset();
+	}
+
+	@Override
+	protected boolean startCascade(String qName, AttributeValueExtractor attributeValueExtractor) {
+		return objectType.start(qName, attributeValueExtractor)
+				|| assignationBuilding.start(qName, attributeValueExtractor)
+				|| area.start(qName, attributeValueExtractor)
+				|| address.start(qName, attributeValueExtractor)
+				|| cadastralCost.start(qName, attributeValueExtractor)
+				|| entitySpatial.start(qName, attributeValueExtractor)
+				;
+	}
+
+	@Override
+	protected boolean endCascade(String qName) {
+		return objectType.end(qName)
+				|| assignationBuilding.end(qName)
+				|| area.end(qName)
+				|| address.end(qName)
+				|| cadastralCost.end(qName)
+				|| entitySpatial.end(qName)
+				;
+	}
+
+	@Override
+	protected boolean contentCascade(String content) {
+		return objectType.content(content)
+				|| assignationBuilding.content(content)
+				|| area.content(content)
+				|| address.content(content)
+				|| cadastralCost.content(content)
+				|| entitySpatial.content(content)
+				;
 	}
 }

@@ -21,8 +21,8 @@ public class CadastralCostBuilder extends NodeBuilder<Number[]> {
 
 	@Override
 	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
-		value = (Double) attributeValueExtractor.attribute(CADASTRAL_COST_VALUE_ATTR);
-		unit = (Integer) attributeValueExtractor.attribute(CADASTRAL_COST_UNIT_ATTR);
+		value = Double.parseDouble(attributeValueExtractor.attribute(CADASTRAL_COST_VALUE_ATTR));
+		unit = Integer.parseInt(attributeValueExtractor.attribute(CADASTRAL_COST_UNIT_ATTR));
 	}
 
 	@Override
@@ -35,7 +35,6 @@ public class CadastralCostBuilder extends NodeBuilder<Number[]> {
 		super.reset();
 		value = null;
 		unit = null;
-
 	}
 
 }
