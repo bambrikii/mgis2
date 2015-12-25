@@ -1,0 +1,47 @@
+package ru.sovzond.mgis2.integration.data_exchange.imp.builders;
+
+import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.AttributeValueExtractor;
+import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilder;
+import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilderEndEvent;
+import ru.sovzond.mgis2.integration.data_exchange.imp.dto.OrdinateDTO;
+
+import java.util.function.Predicate;
+
+import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegisterFieldKeys.*;
+
+/**
+ * Created by Alexander Arakelyan on 25.12.15.
+ */
+public class OrdinateBuilder extends NodeBuilder<OrdinateDTO> {
+
+	private Integer ordNumber;
+	private Double x;
+	private Double y;
+
+	public OrdinateBuilder(NodeBuilder parent, Predicate<String> ordinatePredicate, NodeBuilderEndEvent<OrdinateDTO> endEvent) {
+		super(parent, ordinatePredicate, endEvent);
+	}
+
+	@Override
+	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
+		ordNumber = (Integer) attributeValueExtractor.attribute(ORD_ATTR);
+		x = (Double) attributeValueExtractor.attribute(X_ATTR);
+		y = (Double) attributeValueExtractor.attribute(Y_ATTR);
+	}
+
+	@Override
+	public OrdinateDTO build() {
+		OrdinateDTO ordinateDTO = new OrdinateDTO();
+		ordinateDTO.setOrdNumber(ordNumber);
+		ordinateDTO.setX(x);
+		ordinateDTO.setY(y);
+		return ordinateDTO;
+	}
+
+	@Override
+	public void reset() {
+		ordNumber = null;
+		x = null;
+		y = null;
+	}
+}

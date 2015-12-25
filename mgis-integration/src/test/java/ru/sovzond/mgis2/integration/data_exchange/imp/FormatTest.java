@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static ru.sovzond.mgis2.integration.data_exchange.imp.LandImportResolverBean.CADASTRAL_BLOCK_PATTERN;
-import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.Region_CadastrHandler.YYYY_MM_DD;
+import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegisterFieldKeys.YYYY_MM_DD;
 
 /**
  * Created by Alexander Arakelyan on 20.11.15.
