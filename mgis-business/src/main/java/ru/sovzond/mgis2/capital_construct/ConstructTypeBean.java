@@ -34,4 +34,8 @@ public class ConstructTypeBean extends CRUDBeanBase<ConstructionType> {
 		PageableContainer<ConstructionType> pager = super.list(orderBy, first, max);
 		return new PageableContainer<>(pager.getList().stream().map(ConstructionType::clone).collect(Collectors.toList()), pager.getTotalNumberOfItems(), pager.getCurrentPosition(), pager.getItemsPerPage());
 	}
+
+	public ConstructionType findByCode(String code) {
+		return dao.findByCode(code);
+	}
 }

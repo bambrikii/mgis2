@@ -5,10 +5,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.NamespaceSupport;
-import ru.sovzond.mgis2.integration.data_exchange.imp.ILandResolver;
+import ru.sovzond.mgis2.integration.data_exchange.imp.builders.BuildingBuilder;
+import ru.sovzond.mgis2.integration.data_exchange.imp.builders.IncompleteBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
 import ru.sovzond.mgis2.integration.data_exchange.imp.impl.NodeNamesAdapter;
 import ru.sovzond.mgis2.integration.data_exchange.imp.impl.PropertyExtractor;
+import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.ILandResolver;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -16,70 +18,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegisterFieldKeys.*;
+
 /**
  * Created by Alexander Arakelyan on 02.12.15.
  */
 public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
-	public static final String YYYY_MM_DD = "yyyy-MM-dd";
-
-	public static final String REGION_CADASTR = "REGION_CADASTR";
-	public static final String CADASTRAL_BLOCKS = "CADASTRAL_BLOCKS";
-	public static final String CADASTRAL_BLOCK = "CADASTRAL_BLOCK";
-	public static final String PARCELS = "PARCELS";
-	public static final String PARCEL = "PARCEL";
-	public static final String AREA = "AREA";
-	public static final String UNIT = "UNIT";
-	public static final String LOCATION = "LOCATION";
-	public static final String IN_BOUNDS = "IN_BOUNDS";
-	public static final String PLACED = "PLACED";
-	public static final String ADDRESS = "ADDRESS";
-	public static final String CODE_OKATO = "CODE_OKATO";
-	public static final String CODE_KLADR = "CODE_KLADR";
-	public static final String REGION = "REGION";
-	public static final String DISTRICT = "DISTRICT";
-	public static final String LOCALITY = "LOCALITY";
-	public static final String STREET = "STREET";
-	public static final String LEVEL_1 = "LEVEL_1";
-	public static final String NOTE = "NOTE";
-	public static final String CATEGORY = "CATEGORY";
-	public static final String UTILIZATION = "UTILIZATION";
-	public static final String RIGHTS = "RIGHTS";
-	public static final String RIGHT = "RIGHT";
-	public static final String NAME = "NAME";
-	public static final String TYPE = "TYPE";
-	public static final String CADASTRAL_COST = "CADASTRAL_COST";
-	public static final String ENTITY_SPATIAL = "ENTITY_SPATIAL";
-	public static final String SPATIAL_ELEMENT = "SPATIAL_ELEMENT";
-	public static final String SPELEMENT_UNIT = "SPELEMENT_UNIT";
-	public static final String ORDINATE = "ORDINATE";
-	public static final String COORD_SYSTEM = "COORD_SYSTEM";
-	private static final String CADASTRAL_NUMBER_ATTR = "CADASTRAL_NUMBER_ATTR";
-	private static final String NAME_ATTR = "NAME_ATTR";
-	private static final String STATE_ATTR = "STATE_ATTR";
-	private static final String DATE_CR_ATTR = "DATE_CR_ATTR";
-	private static final String NAME_ALL_ATTR = "NAME_ALL_ATTR";
-	private static final String TYPE_ALL_ATTR = "TYPE_ALL_ATTR";
-	private static final String VALUE_ATTR = "VALUE_ATTR";
-	private static final String CATEGORY_ATTR = "CATEGORY_ATTR";
-	private static final String UTILIZ_ATTR = "UTILIZ_ATTR";
-	private static final String CADASTRAL_COST_VALUE_ATTR = "CADASTRAL_COST_VALUE_ATTR";
-	private static final String CADASTRAL_COST_UNIT_ATTR = "CADASTRAL_COST_UNIT_ATTR";
-	private static final String ENT_SYS_ATTR = "ENT_SYS_ATTR";
-	private static final String TYPE_UNIT_ATTR = "TYPE_UNIT_ATTR";
-	private static final String SU_NMB_ATTR = "SU_NMB_ATTR";
-	private static final String X_ATTR = "X_ATTR";
-	private static final String Y_ATTR = "Y_ATTR";
-	private static final String ORD_ATTR = "ORD_ATTR";
-	private static final String CS_ID_ATTR = "CS_ID_ATTR";
-	private static final String NAME_COORD_SYS_ATTR = "NAME_COORD_SYS_ATTR";
-	// TODO:
-	public static final String OBJECT_REALTY = "ObjectRealty";
-	public static final String BUILDING = "Building";
-	public static final String UNCOMPLETED = "Uncompleted";
-	public static final String POSTAL_CODE = "PostalCode";
-
-	private ILandResolver landResolver;
 	AddressDTO addressDTO;
 	EntitySpatialDTO entitySpatialDTO;
 	LandDTO landDTO;
@@ -175,33 +120,81 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 	private PropertyExtractor<LandDTO, String> categoryPropertyExtractor;
 	private NodeNamesAdapter extractor;
+
+	private final BuildingBuilder buildingBuilder;
+	private final IncompleteBuilder incompleteBuilder;
 	private boolean t_objectRealty;
-	private boolean t_building;
-	private boolean t_incomplete;
+	private ILandResolver<LandDTO> landResolver;
+	private ILandResolver<BuildingDTO> buildingResolver;
+	private ILandResolver<IncompleteDTO> incompleteConstructResolver;
 
-	private BuildingDTO building;
-	private IncompleteDTO incomplete;
-	private boolean t_buildingArea;
-	private boolean t_incompleteArea;
-	private boolean t_buildingAddress;
-	private boolean t_incompleteAddress;
-	private boolean t_buildingAddressOkato;
-	private boolean t_buildingAddressKladr;
-	private boolean t_buildingAddressPostalCode;
-	private boolean t_buildingAddressDistrict;
-	private boolean t_buildingAddressRegion;
-	private boolean t_buildingAddressLocality;
-	private boolean t_buildingAddressStreet;
-	private boolean t_buildingAddressLevel1;
-	private boolean t_buildingAddressNote;
-
-	public RusRegisterHandlerBase(ILandResolver landResolver,
-								  Class<?> propertyClass,
-								  PropertyExtractor<LandDTO, String> categoryPropertyExtractor
+	public RusRegisterHandlerBase(
+			ILandResolver<LandDTO> landResolver,
+			ILandResolver<BuildingDTO> buildingResolver,
+			ILandResolver<IncompleteDTO> incompleteConstructResolver,
+			Class<?> propertyClass,
+			PropertyExtractor<LandDTO, String> categoryPropertyExtractor
 	) {
 		this.landResolver = landResolver;
+		this.buildingResolver = buildingResolver;
+		this.incompleteConstructResolver = incompleteConstructResolver;
 		this.categoryPropertyExtractor = categoryPropertyExtractor;
 		extractor = new NodeNamesAdapter(propertyClass);
+
+		buildingBuilder = new BuildingBuilder(
+				qName -> byNode(qName, BUILDING),
+				qName -> byNode(qName, ASSIGNATION_BUILDING),
+				qName -> byNode(qName, OBJECT_TYPE),
+				qName -> byNode(qName, AREA),
+				qName -> byNode(qName, ADDRESS),
+				qName -> byNode(qName, CODE_OKATO),
+				qName -> byNode(qName, CODE_KLADR),
+				qName -> byNode(qName, REGION),
+				qName -> byNode(qName, DISTRICT),
+				qName -> byNode(qName, LOCALITY),
+				qName -> byNode(qName, STREET),
+				qName -> byNode(qName, LEVEL_1),
+				qName -> byNode(qName, NOTE),
+				qName -> byNode(qName, CADASTRAL_COST),
+				qName -> byNode(qName, ENTITY_SPATIAL),
+				qName -> byNode(qName, SPATIAL_ELEMENT),
+				qName -> byNode(qName, SPELEMENT_UNIT),
+				qName -> byNode(qName, ORDINATE),
+				nodeBuilder -> {
+					BuildingDTO result = nodeBuilder.build();
+					if (result != null) {
+						this.buildingResolver.resolve(result);
+					}
+					nodeBuilder.reset();
+				}
+		);
+		incompleteBuilder = new IncompleteBuilder(
+				qName -> byNode(qName, INCOMPLETE),
+				qName -> byNode(qName, ASSIGNATION_BUILDING),
+				qName -> byNode(qName, OBJECT_TYPE),
+				qName -> byNode(qName, AREA),
+				qName -> byNode(qName, ADDRESS),
+				qName -> byNode(qName, CODE_OKATO),
+				qName -> byNode(qName, CODE_KLADR),
+				qName -> byNode(qName, REGION),
+				qName -> byNode(qName, DISTRICT),
+				qName -> byNode(qName, LOCALITY),
+				qName -> byNode(qName, STREET),
+				qName -> byNode(qName, LEVEL_1),
+				qName -> byNode(qName, NOTE),
+				qName -> byNode(qName, CADASTRAL_COST),
+				qName -> byNode(qName, ENTITY_SPATIAL),
+				qName -> byNode(qName, SPATIAL_ELEMENT),
+				qName -> byNode(qName, SPELEMENT_UNIT),
+				qName -> byNode(qName, ORDINATE),
+				nodeBuilder -> {
+					IncompleteDTO result = nodeBuilder.build();
+					if (result != null) {
+						this.incompleteConstructResolver.resolve(result);
+					}
+					nodeBuilder.reset();
+				}
+		);
 	}
 
 	private boolean byNode(String qName, String regionCadastr) {
@@ -381,7 +374,7 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 		}
 
 		//-----------Cadastral cost----------------
-		if (byNode(qName2, CADASTRAL_COST)) {
+		if (byNode(qName2, CADASTRAL_COST) && t_Parcel) {
 			t_CadastralCost = true;
 			landDTO.setCadastralCostValue(Double.valueOf(byNodeAttr(attributes, CADASTRAL_COST_VALUE_ATTR)));
 			landDTO.setCadastralCostUnit(Integer.valueOf(byNodeAttr(attributes, CADASTRAL_COST_UNIT_ATTR)));
@@ -424,11 +417,10 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 		if (byNode(qName2, COORD_SYSTEM) && t_Cadastral_Block) {
 			t_Coord_System = true;
-			coordinateSystemDTO = new CoordinateSystemDTO();
-			coordinateSystemDTO.setId(byNodeAttr(attributes, CS_ID_ATTR));
-			coordinateSystemDTO.setName(byNodeAttr(attributes, NAME_COORD_SYS_ATTR));
+			buildCoordSystem(attributes);
 			landResolver.updateCoordinateSystem(coordinateSystemDTO);
-			t_Coord_System = false;
+			buildingResolver.updateCoordinateSystem(coordinateSystemDTO);
+			incompleteConstructResolver.updateCoordinateSystem(coordinateSystemDTO);
 		}
 
 		// Capital Constructs
@@ -436,87 +428,21 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 			t_objectRealty = true;
 		}
 
-		startsWithBuilding(attributes, qName2);
-		startsWithIncompleteConstruction(attributes, qName2);
+		buildingBuilder.start(qName2, attrName -> byNodeAttr(attributes, attrName));
+		incompleteBuilder.start(qName2, attrName -> byNodeAttr(attributes, attrName));
 	}
 
-	private void startsWithBuilding(Attributes attributes, String qName2) {
-		if (byNode(qName2, BUILDING)) {
-			t_building = true;
-			building = new BuildingDTO();
-			building.setCadastralNumber(byNodeAttr(attributes, CADASTRAL_NUMBER_ATTR));
-		}
-		if (t_building && byNode(qName2, AREA)) {
-			t_buildingArea = true;
-		}
-		if (t_building && byNode(qName2, ADDRESS)) {
-			t_buildingAddress = true;
-			building.setAddress(new AddressDTO());
-		}
-		if (t_buildingAddress && byNode(qName2, CODE_OKATO)) {
-			t_buildingAddressOkato = true;
-		}
-		if (t_buildingAddress && byNode(qName2, CODE_KLADR)) {
-			t_buildingAddressKladr = true;
-		}
-		if (t_buildingAddress && byNode(qName2, POSTAL_CODE)) {
-			t_buildingAddressPostalCode = true;
-		}
-		if (t_buildingAddress && byNode(qName2, REGION)) {
-			t_buildingAddressRegion = true;
-		}
-		if (t_buildingAddress && byNode(qName2, DISTRICT)) {
-			t_buildingAddressDistrict = true;
-			building.getAddress().setDistrictName(byNodeAttr(attributes, NAME_ATTR));
-			building.getAddress().setDistrictType(byNodeAttr(attributes, TYPE_ALL_ATTR));
-		}
-		if (t_buildingAddress && byNode(qName2, LOCALITY)) {
-			t_buildingAddressLocality = true;
-			building.getAddress().setLocalityName(byNodeAttr(attributes, NAME_ATTR));
-			building.getAddress().setLocalityType(byNodeAttr(attributes, TYPE_ALL_ATTR));
-		}
-		if (t_buildingAddress && byNode(qName2, STREET)) {
-			t_buildingAddressStreet = true;
-			building.getAddress().setLocalityName(byNodeAttr(attributes, NAME_ATTR));
-			building.getAddress().setLocalityType(byNodeAttr(attributes, TYPE_ALL_ATTR));
-		}
-		if (t_buildingAddress && byNode(qName2, LEVEL_1)) {
-			t_buildingAddressLevel1 = true;
-			building.getAddress().setLocalityType(byNodeAttr(attributes, TYPE_ALL_ATTR));
-			building.getAddress().setLocalityName(byNodeAttr(attributes, VALUE_ATTR));
-		}
-		if (t_buildingAddress && byNode(qName2, NOTE)) {
-			t_buildingAddressNote = true;
-		}
-		if (t_building && byNode(qName2, CADASTRAL_COST)) {
-			building.setCadastralCostValue(Double.parseDouble(byNodeAttr(attributes, VALUE_ATTR)));
-			building.setCadastralCostUnit(Integer.parseInt(byNodeAttr(attributes, UNIT)));
-		}
-		if (t_building && byNode(qName2, ENTITY_SPATIAL)) {
-			// TODO: ...
-		}
-	}
-
-	private void startsWithIncompleteConstruction(Attributes attributes, String qName2) {
-		if (byNode(qName2, UNCOMPLETED)) {
-			t_incomplete = true;
-			incomplete = new IncompleteDTO();
-			incomplete.setCadastralNumber(byNodeAttr(attributes, CADASTRAL_NUMBER_ATTR));
-		}
-
-		if (t_incomplete && byNode(qName2, AREA)) {
-			t_incompleteArea = true;
-		}
-
-		if (t_incomplete && byNode(qName2, ADDRESS)) {
-			t_incompleteAddress = true;
-			incomplete.setAddress(new AddressDTO());
-		}
-
+	private void buildCoordSystem(Attributes attributes) {
+		coordinateSystemDTO = new CoordinateSystemDTO();
+		coordinateSystemDTO.setId(byNodeAttr(attributes, CS_ID_ATTR));
+		coordinateSystemDTO.setName(byNodeAttr(attributes, NAME_COORD_SYS_ATTR));
 	}
 
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
+
+		namespaceSupport.processName(qName, qNames, false);
+		String qName2 = qNames[1];
 
 		//-----Area--------------
 		if (t_Area && byNodeEndsWith(qName, AREA) && !t_AreaIn && !flagAreaIn) {
@@ -617,18 +543,17 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 			t_Region_Cadastr = false;
 		}
 
+		if (t_Cadastral_Block && byNode(qName2, COORD_SYSTEM)) {
+			t_Coord_System = false;
+		}
+
 		// Capital Constructs
 		if (t_objectRealty && byNodeEndsWith(qName, OBJECT_REALTY)) {
 			t_objectRealty = false;
 		}
-		if (t_building && byNodeEndsWith(qName, BUILDING)) {
-			t_building = false;
-			building = null;
-		}
-		if (t_incomplete && byNodeEndsWith(qName, UNCOMPLETED)) {
-			t_incomplete = false;
-			incomplete = null;
-		}
+
+		buildingBuilder.end(qName2);
+		incompleteBuilder.end(qName2);
 	}
 
 	@Override
@@ -679,6 +604,8 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 			landRightDTO.setType(String.valueOf(ch, start, length));
 		}
 
+		buildingBuilder.content(String.valueOf(ch, start, length));
+		incompleteBuilder.content(String.valueOf(ch, start, length));
 	}
 
 	@Override

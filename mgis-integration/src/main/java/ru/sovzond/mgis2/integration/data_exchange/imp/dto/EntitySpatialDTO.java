@@ -1,5 +1,7 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.dto;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.util.List;
 
 /**
@@ -26,5 +28,8 @@ public class EntitySpatialDTO {
 		this.spatialElements = spatialElements;
 	}
 
-
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("entSys", entSys).append("spatialElements", spatialElements).toString();
+	}
 }

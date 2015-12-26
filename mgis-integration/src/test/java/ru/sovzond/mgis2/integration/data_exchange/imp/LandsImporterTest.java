@@ -10,6 +10,7 @@ import ru.sovzond.mgis2.integration.HibernateConfiguration;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
 import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.kpt.KptLandsImporter;
 import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.region_cadastr.RegionCadastrLandsImporter;
+import ru.sovzond.mgis2.integration.data_exchange.imp.beans.LandResolverBean;
 import ru.sovzond.mgis2.lands.Land;
 
 import javax.transaction.Transactional;
@@ -20,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.Region_CadastrHandler.YYYY_MM_DD;
+import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegisterFieldKeys.YYYY_MM_DD;
 
 /**
  * Created by Alexander Arakelyan on 18.11.15.
@@ -36,7 +37,7 @@ public class LandsImporterTest {
 	private KptLandsImporter kptLandsImporter;
 
 	@Autowired
-	private LandImportResolverBean landImportResolverBean;
+	private LandResolverBean landImportResolverBean;
 
 	@Test
 	@Transactional
@@ -49,6 +50,13 @@ public class LandsImporterTest {
 	@Test
 	public void testKptImport() throws IOException {
 		try (InputStream inputStream = LandsImporterTest.class.getResourceAsStream("doc-test-kpt_v09.xml")) {
+			kptLandsImporter.imp(inputStream);
+		}
+	}
+
+	@Test
+	public void testKptCapitalConstructsImport() throws IOException {
+		try (InputStream inputStream = LandsImporterTest.class.getResourceAsStream("doc-test-kpt_v09-object-realty.xml")) {
 			kptLandsImporter.imp(inputStream);
 		}
 	}

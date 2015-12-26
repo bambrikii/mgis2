@@ -2,11 +2,15 @@ package ru.sovzond.mgis2.integration.data_exchange.imp.handlers.kpt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.sovzond.mgis2.integration.data_exchange.imp.LandImportResolverBean;
-import ru.sovzond.mgis2.integration.data_exchange.imp.LandResolver;
+import ru.sovzond.mgis2.integration.data_exchange.imp.beans.BuildingResolverBean;
+import ru.sovzond.mgis2.integration.data_exchange.imp.beans.LandResolverBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.KptHandler;
 import ru.sovzond.mgis2.integration.data_exchange.imp.impl.LandImportBase;
+import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportCollector;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
+import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.BuildingResolver;
+import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.IncompleteConstructResolver;
+import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.LandResolver;
 
 import java.io.InputStream;
 import java.util.List;
@@ -18,12 +22,18 @@ import java.util.List;
 public class KptLandsImporter extends LandImportBase {
 
 	@Autowired
-	private LandImportResolverBean landImportResolverBean;
+	private LandResolverBean landImportResolverBean;
+
+	@Autowired
+	private BuildingResolverBean buildingResolverBean;
 
 	@Override
 	public List<ReportRecord> imp(InputStream inputStream) {
-		LandResolver landResolver = new LandResolver(landImportResolverBean);
-		doImport(inputStream, new KptHandler(landResolver));
-		return landResolver.getReports();
+		ReportCollector reportCollector = new ReportCollector();
+		LandResolver landResolver = new LandResolver(landImportResolverBean, reportCollector);
+		BuildingResolver buildingResolver = new BuildingResolver(buildingResolverBean, reportCollector);
+		IncompleteConstructResolver incompleteConstructResolver = new IncompleteConstructResolver(buildingResolverBean, reportCollector);
+		doImport(inputStream, new KptHandler(landResolver, buildingResolver, incompleteConstructResolver));
+		return reportCollector.getReports();
 	}
 }

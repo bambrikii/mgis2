@@ -1,27 +1,27 @@
-package ru.sovzond.mgis2.integration.data_exchange.imp;
+package ru.sovzond.mgis2.integration.data_exchange.imp.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.sovzond.mgis2.address.Address;
-import ru.sovzond.mgis2.address.AddressBean;
-import ru.sovzond.mgis2.address.AddressFilterBuilder;
-import ru.sovzond.mgis2.geo.*;
-import ru.sovzond.mgis2.integration.data_exchange.imp.dto.*;
-import ru.sovzond.mgis2.kladr.KLADRLocality;
-import ru.sovzond.mgis2.kladr.KLADRLocalityDao;
-import ru.sovzond.mgis2.kladr.KLADRStreet;
-import ru.sovzond.mgis2.kladr.KLADRStreetDao;
+import ru.sovzond.mgis2.geo.CoordinateSystem;
+import ru.sovzond.mgis2.geo.GeometryConverter;
+import ru.sovzond.mgis2.geo.SpatialGroup;
+import ru.sovzond.mgis2.geo.SpatialGroupBean;
+import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
+import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandDTO;
+import ru.sovzond.mgis2.integration.data_exchange.imp.dto.LandRightDTO;
+import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.LandSourceDecorator;
+import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.LandTargetDecorator;
 import ru.sovzond.mgis2.lands.*;
 import ru.sovzond.mgis2.lands.characteristics.LandCharacteristics;
 import ru.sovzond.mgis2.lands.rights.LandRights;
 import ru.sovzond.mgis2.national_classifiers.LandCategoryBean;
 import ru.sovzond.mgis2.national_classifiers.LandRightKindBean;
-import ru.sovzond.mgis2.national_classifiers.OKATOBean;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
-import ru.sovzond.mgis2.registers.national_classifiers.*;
+import ru.sovzond.mgis2.registers.national_classifiers.LandCategory;
+import ru.sovzond.mgis2.registers.national_classifiers.LandRightKind;
+import ru.sovzond.mgis2.registers.national_classifiers.OKTMO;
+import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZoneType;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,17 +30,12 @@ import java.util.regex.Pattern;
  * Created by Alexander Arakelyan on 19.11.15.
  */
 @Service
-public class LandImportResolverBean {
+public class LandResolverBean {
 
 	public static final String CADASTRAL_BLOCK_PATTERN = "(\\d+):(\\d+):(\\d{2})(\\d{2})(\\d+).*";
-	public static final String EPSG4326 = "EPSG:4326";
-	public static final String EPSG4326_CONVERSION_RULES = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
 
 	@Autowired
 	private LandBean landBean;
-
-	@Autowired
-	private AddressBean addressBean;
 
 	@Autowired
 	private LandRightKindBean landRightKindBean;
@@ -52,22 +47,10 @@ public class LandImportResolverBean {
 	private OKTMOBean oktmoBean;
 
 	@Autowired
-	private CoordinateSystemBean coordinateSystemBean;
-
-	@Autowired
 	private TerritorialZoneTypeBean territorialZoneTypeBean;
 
 	@Autowired
 	private TerritorialZoneBean territorialZoneBean;
-
-	@Autowired
-	private KLADRLocalityDao kladrLocalityDao;
-
-	@Autowired
-	private KLADRStreetDao kladrStreetDao;
-
-	@Autowired
-	private OKATOBean okatoBean;
 
 	@Autowired
 	private SpatialGroupBean spatialGroupBean;
@@ -75,53 +58,13 @@ public class LandImportResolverBean {
 	@Autowired
 	private LandRightsBean landRightsBean;
 
+	@Autowired
+	private AddressResolverBean addressResolverBean;
+
+	@Autowired
+	private SpatialDataResolverBean spatialDataResolverBean;
+
 	private Pattern cadastralNumberPattern = Pattern.compile(CADASTRAL_BLOCK_PATTERN);
-
-
-	private Address resolveAddress(AddressDTO addressDTO) {
-		AddressFilterBuilder filterBuilder = addressBean.createfilterBuilder();
-		filterBuilder //
-				.subjectCode(addressDTO.getRegion()) //
-				.region(addressDTO.getDistrictName(), addressDTO.getDistrictType()) //
-				.locality(addressDTO.getLocalityName(), addressDTO.getLocalityType()) //
-				.street(addressDTO.getStreetName(), addressDTO.getStreetType()) //
-				.home(addressDTO.getLevelValue()).housing(addressDTO.getLevelType()) //
-		;
-		List<Address> addresses = addressBean.find(filterBuilder.build());
-		switch (addresses.size()) {
-			case 0:
-				return updateAddress(new Address(), addressDTO);
-			case 1:
-				return updateAddress(addresses.get(0), addressDTO);
-			default:
-				throw new UnsupportedOperationException("More than one address found for dto: " + addressDTO);
-		}
-	}
-
-	private Address updateAddress(Address address, AddressDTO addressDTO) {
-		address.setApartment(null);
-		address.setBuilding(null);
-		address.setHousing(null);
-		address.setHousing(addressDTO.getLevelType());
-		address.setHome(addressDTO.getLevelValue());
-
-		KLADRLocality subject = kladrLocalityDao.findSubjectByCode(addressDTO.getRegion());
-		KLADRLocality region = kladrLocalityDao.findRegion(subject.getCode(), addressDTO.getDistrictName(), addressDTO.getDistrictType()).get(0);
-		KLADRLocality locality = kladrLocalityDao.findLocality(region.getCode(), addressDTO.getLocalityName(), addressDTO.getLocalityType()).get(0);
-		KLADRStreet street = kladrStreetDao.findStreet(locality.getCode(), addressDTO.getStreetName(), addressDTO.getStreetType()).get(0);
-
-		address.setSubject(subject);
-		address.setRegion(region);
-		address.setLocality(locality);
-		address.setStreet(street);
-
-		OKATO okato = okatoBean.findByCode(addressDTO.getOkato());
-		address.setOkato(okato);
-
-		address.setOther(addressDTO.getNote());
-		addressBean.save(address);
-		return address;
-	}
 
 	private LandRightKind resolveLandRightKind(String name, String type) {
 		return landRightKindBean.find(type);
@@ -132,7 +75,7 @@ public class LandImportResolverBean {
 		Land land = landBean.load(landId);
 		SpatialGroup spatialData = land.getSpatialData();
 		if (spatialData != null) {
-			CoordinateSystem coordinateSystem = resolveCoordinateSystem(coordinateSystemDTO.getName(), null);
+			CoordinateSystem coordinateSystem = spatialDataResolverBean.resolveCoordinateSystem(coordinateSystemDTO.getName(), null);
 			spatialData.setCoordinateSystem(coordinateSystem);
 			spatialGroupBean.save(spatialData);
 			GeometryConverter converter = new GeometryConverter(coordinateSystem.getConversionRules());
@@ -171,7 +114,7 @@ public class LandImportResolverBean {
 	private void updateLand0(LandDTO landDTO, Land land) {
 		land.setCadastralNumber(landDTO.getCadastralNumber());
 		land.setStateRealEstateCadastreaStaging(landDTO.getDateCreated());
-		land.setAddress(resolveAddress(landDTO.getAddress()));
+		land.setAddress(addressResolverBean.resolveAddress(landDTO.getAddress()));
 //		land.setAddressOfMunicipalEntity(resolveOKTMO(null));
 		land.setLandCategory(resolveLandCategory(landDTO.getCategory()));
 		String locationPlaced = landDTO.getLocationPlaced();
@@ -187,7 +130,7 @@ public class LandImportResolverBean {
 		}
 		if (landDTO.getArea() != null) {
 			LandRights rights = land.getRights();
-			if(rights==null){
+			if (rights == null) {
 				rights = new LandRights();
 				landRightsBean.save(rights);
 				land.setRights(rights);
@@ -206,58 +149,17 @@ public class LandImportResolverBean {
 				}
 			}
 		}
-		if (landDTO.getEntitySpatial() != null) {
-			String entSys = landDTO.getEntitySpatial().getEntSys();
-			//
-			List<SpatialElementDTO> elements = landDTO.getEntitySpatial().getSpatialElements();
-			if (elements != null) {
-				SpatialGroup spatialGroup = new SpatialGroup();
-				for (int i = 0; i < elements.size(); i++) {
-					SpatialElementDTO element = elements.get(i);
-					List<SpatialElementUnitDTO> units = element.getSpatialElementUnits();
-					//
-					SpatialElement spatialElement = new SpatialElement();
-					spatialGroup.getSpatialElements().add(spatialElement);
-					spatialElement.setPosition(BigDecimal.valueOf(i + 1));
-					int accumulatedPosition = 0;
-					for (SpatialElementUnitDTO unit : units) {
-						int suNumb = unit.getSuNumb();
-						String typeUnit = unit.getTypeUnit();
-						List<OrdinateDTO> ordinates = unit.getOrdinates();
-						for (OrdinateDTO ordinate : ordinates) {
-							int ordNumber = ordinate.getOrdNumber();
-							accumulatedPosition += ordNumber - 1;
-							double x = ordinate.getX();
-							double y = ordinate.getY();
-							//
-							Coordinate coordinate = new Coordinate();
-							coordinate.setPosition(BigInteger.valueOf(suNumb == 1 ? 1 : (suNumb + accumulatedPosition)));
-							coordinate.setX(BigDecimal.valueOf(x));
-							coordinate.setY(BigDecimal.valueOf(y));
-							spatialElement.getCoordinates().add(coordinate);
-						}
-					}
-				}
-				CoordinateSystem coordinateSystem = resolveCoordinateSystem(EPSG4326, EPSG4326_CONVERSION_RULES);
-				spatialGroup.setCoordinateSystem(coordinateSystem);
-				land.setSpatialData(spatialGroup);
-			} else {
-				land.setSpatialData(null);
-			}
-		} else {
-			land.setSpatialData(null);
-		}
+		fillSpatialData(landDTO, land);
 	}
 
-	private CoordinateSystem resolveCoordinateSystem(String code, String rules) {
-		CoordinateSystem coordinateSystem = coordinateSystemBean.findByCode(code);
-		if (coordinateSystem == null) {
-			coordinateSystem = new CoordinateSystem();
-			coordinateSystem.setCode(code);
-			coordinateSystem.setConversionRules(rules);
-			coordinateSystemBean.save(coordinateSystem);
-		}
-		return coordinateSystem;
+	private void fillSpatialData(LandDTO landDTO, Land land) {
+		LandSourceDecorator landSourceDecorator = new LandSourceDecorator();
+		landSourceDecorator.wrap(landDTO);
+
+		LandTargetDecorator landTargetDecorator = new LandTargetDecorator();
+		landTargetDecorator.wrap(land);
+
+		spatialDataResolverBean.fillSpatialData(landSourceDecorator, landTargetDecorator);
 	}
 
 	private TerritorialZone resolveTerritorialZone(String landCadastralNumber, TerritorialZoneType territorialZoneType) {

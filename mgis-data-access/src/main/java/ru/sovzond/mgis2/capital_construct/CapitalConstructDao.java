@@ -16,6 +16,10 @@ public class CapitalConstructDao extends CRUDDaoBase<CapitalConstruction> {
 		return new CapitalConstructFilter(cadastralNumber, name, orderBy, first, max);
 	}
 
+	public CapitalConstruction findByCadastralNumber(String cadastralNumber) {
+		return (CapitalConstruction) createCriteria().add(Restrictions.eq("cadastralNumber", cadastralNumber)).uniqueResult();
+	}
+
 	private class CapitalConstructFilter extends PagerBuilderCriteria<CapitalConstruction> {
 
 		private final String cadastralNumber;
