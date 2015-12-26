@@ -55,7 +55,7 @@ public class BuildingBuilder extends ConstructBuilder<BuildingDTO> {
 	}
 
 	@Override
-	public BuildingDTO build() {
+	public BuildingDTO buildImpl() {
 		BuildingDTO constructDTO = new BuildingDTO();
 
 		constructDTO.setCadastralNumber(cadastralNumber);

@@ -1,6 +1,5 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.builders;
 
-import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.AttributeValueExtractor;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.HeirarchialNodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilderEndEvent;
@@ -29,7 +28,7 @@ public class SpatialElementBuilder extends HeirarchialNodeBuilder<SpatialElement
 	}
 
 	@Override
-	public SpatialElementDTO build() {
+	public SpatialElementDTO buildImpl() {
 		SpatialElementDTO spatialElementDTO = new SpatialElementDTO();
 		spatialElementDTO.setSpatialElementUnits(new ArrayList(spatialElementUnits));
 		spatialElementUnits.clear();
@@ -37,24 +36,13 @@ public class SpatialElementBuilder extends HeirarchialNodeBuilder<SpatialElement
 	}
 
 	@Override
-	protected boolean startCascade(String qName, AttributeValueExtractor attributeValueExtractor) {
-		return spatialElementUnit.start(qName, attributeValueExtractor);
+	protected NodeBuilder[] children() {
+		return new NodeBuilder[]{spatialElementUnit};
 	}
 
 	@Override
-	protected boolean endCascade(String qName) {
-		return spatialElementUnit.end(qName);
-	}
-
-	@Override
-	protected boolean contentCascade(String content) {
-		return spatialElementUnit.content(content);
-	}
-
-	@Override
-	public void reset() {
-		super.reset();
+	public void resetImpl() {
 		spatialElementUnits.clear();
-		spatialElementUnit.reset();
+		spatialElementUnit.resetImpl();
 	}
 }

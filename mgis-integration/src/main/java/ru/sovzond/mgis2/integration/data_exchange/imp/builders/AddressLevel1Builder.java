@@ -13,8 +13,7 @@ import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegiste
  */
 public class AddressLevel1Builder extends NodeBuilder<String[]> {
 
-	private String value;
-	private String type;
+	private String[] values = new String[2];
 
 	public AddressLevel1Builder(NodeBuilder parent, Predicate<String> evaluator) {
 		super(parent, evaluator);
@@ -22,19 +21,19 @@ public class AddressLevel1Builder extends NodeBuilder<String[]> {
 
 	@Override
 	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
-		type = (String) attributeValueExtractor.attribute(TYPE_ALL_ATTR);
-		value = (String) attributeValueExtractor.attribute(VALUE_ATTR);
+		values[0] = attributeValueExtractor.attribute(TYPE_ALL_ATTR);
+		values[1] = attributeValueExtractor.attribute(VALUE_ATTR);
 	}
 
 	@Override
-	public void reset() {
-		super.reset();
-		type = null;
-		value = null;
+	public void resetImpl() {
+		super.resetImpl();
+		values[0] = null;
+		values[1] = null;
 	}
 
 	@Override
-	public String[] build() {
-		return new String[]{type, value};
+	public String[] buildImpl() {
+		return values;
 	}
 }

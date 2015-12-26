@@ -30,7 +30,7 @@ public class OrdinateBuilder extends NodeBuilder<OrdinateDTO> {
 	}
 
 	@Override
-	public OrdinateDTO build() {
+	public OrdinateDTO buildImpl() {
 		OrdinateDTO ordinateDTO = new OrdinateDTO();
 		ordinateDTO.setOrdNumber(ordNumber);
 		ordinateDTO.setX(x);
@@ -39,7 +39,8 @@ public class OrdinateBuilder extends NodeBuilder<OrdinateDTO> {
 	}
 
 	@Override
-	public void reset() {
+	public void resetImpl() {
+		super.resetImpl();
 		ordNumber = null;
 		x = null;
 		y = null;

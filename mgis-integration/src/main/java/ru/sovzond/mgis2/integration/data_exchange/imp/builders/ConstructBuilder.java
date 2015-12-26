@@ -66,50 +66,18 @@ public abstract class ConstructBuilder<T extends ConstructDTO> extends Heirarchi
 	}
 
 	@Override
-	public abstract T build();
+	public abstract T buildImpl();
 
 	@Override
-	public void reset() {
-		super.reset();
+	protected NodeBuilder[] children() {
+		return new NodeBuilder[]{objectType, assignationBuilding, area, address, cadastralCost, entitySpatial};
+	}
+
+	@Override
+	public void resetImpl() {
+		super.resetImpl();
 		cadastralNumber = null;
-		objectType.reset();
-		assignationBuilding.reset();
-		area.reset();
-		address.reset();
-		cadastralCost.reset();
-		entitySpatial.reset();
 	}
 
-	@Override
-	protected boolean startCascade(String qName, AttributeValueExtractor attributeValueExtractor) {
-		return objectType.start(qName, attributeValueExtractor)
-				|| assignationBuilding.start(qName, attributeValueExtractor)
-				|| area.start(qName, attributeValueExtractor)
-				|| address.start(qName, attributeValueExtractor)
-				|| cadastralCost.start(qName, attributeValueExtractor)
-				|| entitySpatial.start(qName, attributeValueExtractor)
-				;
-	}
 
-	@Override
-	protected boolean endCascade(String qName) {
-		return objectType.end(qName)
-				|| assignationBuilding.end(qName)
-				|| area.end(qName)
-				|| address.end(qName)
-				|| cadastralCost.end(qName)
-				|| entitySpatial.end(qName)
-				;
-	}
-
-	@Override
-	protected boolean contentCascade(String content) {
-		return objectType.content(content)
-				|| assignationBuilding.content(content)
-				|| area.content(content)
-				|| address.content(content)
-				|| cadastralCost.content(content)
-				|| entitySpatial.content(content)
-				;
-	}
 }

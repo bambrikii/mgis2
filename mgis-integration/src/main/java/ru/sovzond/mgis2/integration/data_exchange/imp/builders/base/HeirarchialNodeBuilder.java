@@ -20,30 +20,30 @@ public abstract class HeirarchialNodeBuilder<T> extends NodeBuilder<T> {
 		if (parent == null) {
 			throw new IllegalArgumentException("Parent required for condition checking.");
 		}
-		if (parent.isValid()) {
+		if (parent.isActive()) {
 			if (evaluator.test(qName)) {
-				setValid();
+				setActive();
 				extractAttributes(attributeValueExtractor);
 			} else {
 				return startCascade(qName, attributeValueExtractor);
 			}
 		}
-		return isValid();
+		return isActive();
 	}
 
 	@Override
 	public boolean content(String content) {
-		if (isValid()) {
+		if (isActive()) {
 			contentCascade(content);
 		}
-		return isValid();
+		return isActive();
 	}
 
 	@Override
 	public boolean end(String qName) {
-		if (isValid()) {
+		if (isActive()) {
 			if (evaluator.test(qName)) {
-				setInvalid();
+				setInactive();
 				if (endEvent != null) {
 					endEvent.end(this);
 				}
@@ -51,12 +51,47 @@ public abstract class HeirarchialNodeBuilder<T> extends NodeBuilder<T> {
 				return endCascade(qName);
 			}
 		}
-		return isValid();
+		return isActive();
 	}
 
-	protected abstract boolean startCascade(String qName, AttributeValueExtractor attributeValueExtractor);
+	protected abstract NodeBuilder[] children();
 
-	protected abstract boolean endCascade(String qName);
+	private final boolean startCascade(String qName, AttributeValueExtractor attributeValueExtractor) {
+		NodeBuilder[] children = children();
+		for (int i = 0; i < children.length; i++) {
+			if (children[i].start(qName, attributeValueExtractor)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-	protected abstract boolean contentCascade(String content);
+	private final boolean endCascade(String qName) {
+		NodeBuilder[] children = children();
+		for (int i = 0; i < children.length; i++) {
+			if (children[i].end(qName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private final boolean contentCascade(String content) {
+		NodeBuilder[] children = children();
+		for (int i = 0; i < children.length; i++) {
+			if (children[i].content(content)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public void resetImpl() {
+		NodeBuilder[] children = children();
+		for (int i = 0; i < children.length; i++) {
+			children[i].reset();
+		}
+	}
+
 }

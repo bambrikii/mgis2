@@ -18,8 +18,7 @@ import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegiste
 public class EntitySpatialBuilder extends HeirarchialNodeBuilder<EntitySpatialDTO> {
 
 	private final List<SpatialElementDTO> spatialElements = new ArrayList<>();
-
-	public final SpatialElementBuilder spatialElement;
+	private final SpatialElementBuilder spatialElement;
 	private String entSys;
 
 	public EntitySpatialBuilder(NodeBuilder parent, Predicate<String> entitySpatialPredicate, Predicate<String> spatialElementPredicate, Predicate<String> spelementUnitPredicate, Predicate<String> ordinatePredicate) {
@@ -31,33 +30,18 @@ public class EntitySpatialBuilder extends HeirarchialNodeBuilder<EntitySpatialDT
 	}
 
 	public EntitySpatialBuilder end() {
-		if (isValid()) {
-			setInvalid();
+		if (isActive()) {
+			setInactive();
 		}
 		return this;
 	}
 
 	@Override
-	public EntitySpatialDTO build() {
+	public EntitySpatialDTO buildImpl() {
 		EntitySpatialDTO entitySpatialDTO = new EntitySpatialDTO();
 		entitySpatialDTO.setEntSys(entSys);
 		entitySpatialDTO.setSpatialElements(new ArrayList<>(spatialElements));
 		return entitySpatialDTO;
-	}
-
-	@Override
-	protected boolean startCascade(String qName, AttributeValueExtractor attributeValueExtractor) {
-		return spatialElement.start(qName, attributeValueExtractor);
-	}
-
-	@Override
-	protected boolean endCascade(String qName) {
-		return spatialElement.end(qName);
-	}
-
-	@Override
-	protected boolean contentCascade(String content) {
-		return spatialElement.content(content);
 	}
 
 	@Override
@@ -66,9 +50,13 @@ public class EntitySpatialBuilder extends HeirarchialNodeBuilder<EntitySpatialDT
 	}
 
 	@Override
-	public void reset() {
+	protected NodeBuilder[] children() {
+		return new NodeBuilder[]{spatialElement};
+	}
+
+	@Override
+	public void resetImpl() {
 		spatialElements.clear();
-		spatialElement.reset();
 		entSys = null;
 	}
 }

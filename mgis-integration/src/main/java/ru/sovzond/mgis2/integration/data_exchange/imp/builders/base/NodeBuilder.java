@@ -6,11 +6,12 @@ import java.util.function.Predicate;
  * Created by Alexander Arakelyan on 24.12.15.
  */
 public abstract class NodeBuilder<T> {
-	private boolean condition;
+	private boolean active;
 	protected String content;
 	protected final NodeBuilderEndEvent<T> endEvent;
 	protected final NodeBuilder parent;
 	protected final Predicate<String> evaluator;
+	private boolean visited;
 
 	public NodeBuilder(NodeBuilder parent, Predicate<String> evaluator) {
 		this.parent = parent;
@@ -26,13 +27,13 @@ public abstract class NodeBuilder<T> {
 
 	public boolean start(String qName, AttributeValueExtractor attributeValueExtractor) {
 		if (parent == null) {
-			throw new IllegalArgumentException("Parent required for condition checking.");
+			throw new IllegalArgumentException("Parent required for active checking.");
 		}
-		if (parent.isValid() && evaluator.test(qName)) {
-			setValid();
+		if (parent.isActive() && evaluator.test(qName)) {
+			setActive();
 			extractAttributes(attributeValueExtractor);
 		}
-		return isValid();
+		return isActive();
 	}
 
 	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
@@ -40,38 +41,56 @@ public abstract class NodeBuilder<T> {
 	}
 
 	public boolean content(String content) {
-		if (isValid()) {
+		if (isActive()) {
 			this.content = content;
 		}
-		return isValid();
+		return isActive();
 	}
 
 	public boolean end(String qName) {
-		if (isValid() && evaluator.test(qName)) {
-			setInvalid();
+		if (isActive() && evaluator.test(qName)) {
+			setInactive();
 			if (endEvent != null) {
 				endEvent.end(this);
 			}
 		}
-		return isValid();
+		return isActive();
 	}
 
-	public abstract T build();
+	public final T build() {
+		if (isVisited()) {
+			return buildImpl();
+		}
+		return null;
+	}
 
-	public void reset() {
+	public abstract T buildImpl();
+
+	public final void reset() {
 		content = null;
+		active = false;
+		visited = false;
+		resetImpl();
 	}
 
-	public boolean isValid() {
-		return condition;
+	protected void resetImpl() {
 	}
 
-	public void setValid() {
-		condition = true;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setInvalid() {
-		condition = false;
+	public void setActive() {
+		active = true;
+		visited = true;
+	}
+
+	public final void setInactive() {
+		active = false;
+	}
+
+	public final boolean isVisited() {
+		return visited;
 	}
 
 }

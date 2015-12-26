@@ -26,13 +26,13 @@ public class CadastralCostBuilder extends NodeBuilder<Number[]> {
 	}
 
 	@Override
-	public Number[] build() {
+	public Number[] buildImpl() {
 		return new Number[]{value, unit};
 	}
 
 	@Override
-	public void reset() {
-		super.reset();
+	public void resetImpl() {
+		super.resetImpl();
 		value = null;
 		unit = null;
 	}

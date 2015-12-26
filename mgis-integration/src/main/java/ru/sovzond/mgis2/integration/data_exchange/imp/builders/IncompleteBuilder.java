@@ -54,7 +54,7 @@ public class IncompleteBuilder extends ConstructBuilder<IncompleteDTO> {
 	}
 
 	@Override
-	public IncompleteDTO build() {
+	public IncompleteDTO buildImpl() {
 		IncompleteDTO constructDTO = new IncompleteDTO();
 
 		constructDTO.setCadastralNumber(cadastralNumber);

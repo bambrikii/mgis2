@@ -11,7 +11,7 @@ public class DoubleNodeBuilder extends NodeBuilder<Double> {
 	}
 
 	@Override
-	public Double build() {
+	public Double buildImpl() {
 		return Double.parseDouble(content);
 	}
 }

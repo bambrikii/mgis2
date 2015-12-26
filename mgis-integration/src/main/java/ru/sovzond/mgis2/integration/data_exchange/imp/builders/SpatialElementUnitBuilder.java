@@ -33,7 +33,7 @@ public class SpatialElementUnitBuilder extends HeirarchialNodeBuilder<SpatialEle
 	}
 
 	@Override
-	public SpatialElementUnitDTO build() {
+	public SpatialElementUnitDTO buildImpl() {
 		SpatialElementUnitDTO spatialElementUnitDTO = new SpatialElementUnitDTO();
 		spatialElementUnitDTO.setOrdinates(new ArrayList<>(this.ordinates));
 		spatialElementUnitDTO.setSuNumb(suNumb);
@@ -50,22 +50,12 @@ public class SpatialElementUnitBuilder extends HeirarchialNodeBuilder<SpatialEle
 	}
 
 	@Override
-	protected boolean startCascade(String qName, AttributeValueExtractor attributeValueExtractor) {
-		return ordinate.start(qName, attributeValueExtractor);
+	protected NodeBuilder[] children() {
+		return new NodeBuilder[]{ordinate};
 	}
 
 	@Override
-	protected boolean endCascade(String qName) {
-		return ordinate.end(qName);
-	}
-
-	@Override
-	protected boolean contentCascade(String content) {
-		return ordinate.content(content);
-	}
-
-	@Override
-	public void reset() {
+	public void resetImpl() {
 		ordinates.clear();
 		suNumb = null;
 		typeUnit = null;
