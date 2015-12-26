@@ -33,4 +33,8 @@ public class CapitalConstructBean extends CRUDBeanBase<CapitalConstruction> {
 		Pageable<CapitalConstruction> pager = dao.pager(dao.createFilter(cadastralNumber, name, orderBy, first, max));
 		return new PageableContainer<>(pager.list().stream().map(CapitalConstruction::clone).collect(Collectors.toList()), pager.count(), first, max);
 	}
+
+	public CapitalConstruction findByCadastralNumber(String cadastralNumber) {
+		return dao.findByCadastralNumber(cadastralNumber);
+	}
 }

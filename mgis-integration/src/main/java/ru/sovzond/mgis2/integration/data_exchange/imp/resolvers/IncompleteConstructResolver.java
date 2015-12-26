@@ -12,7 +12,7 @@ import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportCollector;
  */
 public class IncompleteConstructResolver extends ResolverBase<IncompleteDTO> {
 	private SourceDecorator<IncompleteDTO> sourceDecorator;
-	private CapitalConstructionTargetDecorator targetDecorator;
+	private ConstructionTargetDecorator targetDecorator;
 	private BuildingResolverBean buildingResolverBean;
 
 	private class IncompleteConstructSourceResolver implements SourceDecorator<IncompleteDTO> {
@@ -39,7 +39,7 @@ public class IncompleteConstructResolver extends ResolverBase<IncompleteDTO> {
 		super(reportCollector);
 		this.buildingResolverBean = buildingResolverBean;
 		sourceDecorator = new IncompleteConstructSourceResolver();
-		targetDecorator = new CapitalConstructionTargetDecorator();
+		targetDecorator = new ConstructionTargetDecorator();
 	}
 
 	@Override

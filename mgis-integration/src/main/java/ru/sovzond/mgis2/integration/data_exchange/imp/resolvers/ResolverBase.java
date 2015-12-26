@@ -25,13 +25,13 @@ public abstract class ResolverBase<T> implements ILandResolver<T> {
 		SourceDecorator sourceDecorator = wrapSource(land);
 		String name = sourceDecorator.getName();
 		try {
+			TargetDecorator<T> targetDecorator = resolveImpl(land);
 			EntitySpatialDTO entitySpatial = sourceDecorator.getEntitySpatial();
 			if (entitySpatial != null) {
 				String entSys = entitySpatial.getEntSys();
 				if (!ids.containsKey(entSys)) {
 					ids.put(entSys, new ArrayList<>());
 				}
-				TargetDecorator<T> targetDecorator = resolveImpl(land);
 				ids.get(entSys).add(targetDecorator.getId());
 			}
 			reportCollector.report(name);

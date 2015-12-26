@@ -8,7 +8,7 @@ import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
 public interface ILandResolver<T> {
 
 	/**
-	 * @param obj Resolve Coordinate Sytem
+	 * @param obj Resolve Coordinate System
 	 */
 	void resolve(T obj);
 

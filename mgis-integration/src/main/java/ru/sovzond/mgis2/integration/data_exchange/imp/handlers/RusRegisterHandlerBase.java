@@ -162,7 +162,9 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 				qName -> byNode(qName, ORDINATE),
 				nodeBuilder -> {
 					BuildingDTO result = nodeBuilder.build();
-					buildingResolver.resolve(result);
+					if (result != null) {
+						this.buildingResolver.resolve(result);
+					}
 					nodeBuilder.reset();
 				}
 		);
@@ -187,7 +189,9 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 				qName -> byNode(qName, ORDINATE),
 				nodeBuilder -> {
 					IncompleteDTO result = nodeBuilder.build();
-					incompleteConstructResolver.resolve(result);
+					if (result != null) {
+						this.incompleteConstructResolver.resolve(result);
+					}
 					nodeBuilder.reset();
 				}
 		);
@@ -413,9 +417,7 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 		if (byNode(qName2, COORD_SYSTEM) && t_Cadastral_Block) {
 			t_Coord_System = true;
-			coordinateSystemDTO = new CoordinateSystemDTO();
-			coordinateSystemDTO.setId(byNodeAttr(attributes, CS_ID_ATTR));
-			coordinateSystemDTO.setName(byNodeAttr(attributes, NAME_COORD_SYS_ATTR));
+			buildCoordSystem(attributes);
 			landResolver.updateCoordinateSystem(coordinateSystemDTO);
 			t_Coord_System = false;
 		}
@@ -427,6 +429,17 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 		buildingBuilder.start(qName2, attrName -> byNodeAttr(attributes, attrName));
 		incompleteBuilder.start(qName2, attrName -> byNodeAttr(attributes, attrName));
+		if (t_objectRealty && byNode(qName2, COORD_SYSTEM)) {
+			buildCoordSystem(attributes);
+			buildingResolver.updateCoordinateSystem(coordinateSystemDTO);
+			incompleteConstructResolver.updateCoordinateSystem(coordinateSystemDTO);
+		}
+	}
+
+	private void buildCoordSystem(Attributes attributes) {
+		coordinateSystemDTO = new CoordinateSystemDTO();
+		coordinateSystemDTO.setId(byNodeAttr(attributes, CS_ID_ATTR));
+		coordinateSystemDTO.setName(byNodeAttr(attributes, NAME_COORD_SYS_ATTR));
 	}
 
 	@Override
