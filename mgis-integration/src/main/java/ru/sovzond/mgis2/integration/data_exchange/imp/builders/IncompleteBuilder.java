@@ -68,8 +68,10 @@ public class IncompleteBuilder extends ConstructBuilder<IncompleteDTO> {
 		constructDTO.setAddress(address.build());
 
 		Number[] cadastralCost = this.cadastralCost.build();
-		constructDTO.setCadastralCostValue((Double) cadastralCost[0]);
-		constructDTO.setCadastralCostUnit((Integer) cadastralCost[1]);
+		if (cadastralCost != null) {
+			constructDTO.setCadastralCostValue((Double) cadastralCost[0]);
+			constructDTO.setCadastralCostUnit((Integer) cadastralCost[1]);
+		}
 
 		constructDTO.setEntitySpatial(entitySpatial.build());
 

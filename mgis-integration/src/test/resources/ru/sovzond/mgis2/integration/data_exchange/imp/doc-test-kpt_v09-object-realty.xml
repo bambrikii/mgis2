@@ -2103,45 +2103,45 @@
 						<!--<CadastralCost Value="1396266.34" Unit="383"/>-->
 					<!--</Building>-->
 				<!--</ObjectRealty>-->
-				<!--<ObjectRealty>-->
-					<!--<Uncompleted CadastralNumber="01:05:3000010:538">-->
-						<!--<ObjectType>002001005000</ObjectType>-->
-						<!--<AssignationName></AssignationName>-->
-						<!--<KeyParameters>-->
-							<!--<ns4:KeyParameter Type="05" Value="46.5"/>-->
-						<!--</KeyParameters>-->
-						<!--<Address>-->
-							<!--<ns2:OKATO>79230000009</ns2:OKATO>-->
-							<!--<ns2:KLADR>01005000009003000</ns2:KLADR>-->
-							<!--<ns2:Region>01</ns2:Region>-->
-							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
-							<!--<ns2:City Name="Старобжегокайское" Type="с/п"/>-->
-							<!--<ns2:Locality Name="Новая Адыгея" Type="аул"/>-->
-							<!--<ns2:Street Name="Северная Дамба" Type="ул"/>-->
-							<!--<ns2:Level1 Type="д" Value="15/1"/>-->
-							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, аул Новая Адыгея, ул Северная Дамба, д 15/1</ns2:Note>-->
-						<!--</Address>-->
-						<!--<EntitySpatial EntSys="ID1">-->
-							<!--<ns3:SpatialElement>-->
-								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">-->
-									<!--<ns3:Ordinate X="476402.46" Y="1375657.17" OrdNmb="1" DeltaGeopoint="0.10"/>-->
-								<!--</ns3:SpelementUnit>-->
-								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="2">-->
-									<!--<ns3:Ordinate X="476395.21" Y="1375659.09" OrdNmb="1" DeltaGeopoint="0.10"/>-->
-								<!--</ns3:SpelementUnit>-->
-								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="3">-->
-									<!--<ns3:Ordinate X="476396.80" Y="1375665.09" OrdNmb="1" DeltaGeopoint="0.10"/>-->
-								<!--</ns3:SpelementUnit>-->
-								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="4">-->
-									<!--<ns3:Ordinate X="476404.05" Y="1375663.17" OrdNmb="1" DeltaGeopoint="0.10"/>-->
-								<!--</ns3:SpelementUnit>-->
-								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">-->
-									<!--<ns3:Ordinate X="476402.46" Y="1375657.17" OrdNmb="1" DeltaGeopoint="0.10"/>-->
-								<!--</ns3:SpelementUnit>-->
-							<!--</ns3:SpatialElement>-->
-						<!--</EntitySpatial>-->
-					<!--</Uncompleted>-->
-				<!--</ObjectRealty>-->
+				<ObjectRealty>
+					<Uncompleted CadastralNumber="01:05:3000010:538">
+						<ObjectType>002001005000</ObjectType>
+						<AssignationName></AssignationName>
+						<KeyParameters>
+							<ns4:KeyParameter Type="05" Value="46.5"/>
+						</KeyParameters>
+						<Address>
+							<ns2:OKATO>79230000009</ns2:OKATO>
+							<ns2:KLADR>01005000009003000</ns2:KLADR>
+							<ns2:Region>01</ns2:Region>
+							<ns2:District Name="Тахтамукайский" Type="р-н"/>
+							<ns2:City Name="Старобжегокайское" Type="с/п"/>
+							<ns2:Locality Name="Новая Адыгея" Type="аул"/>
+							<ns2:Street Name="Западная Дамба" Type="ул"/>
+							<ns2:Level1 Type="д" Value="15/1"/>
+							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, аул Новая Адыгея, ул Северная Дамба, д 15/1</ns2:Note>
+						</Address>
+						<EntitySpatial EntSys="ID1">
+							<ns3:SpatialElement>
+								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">
+									<ns3:Ordinate X="476402.46" Y="1375657.17" OrdNmb="1" DeltaGeopoint="0.10"/>
+								</ns3:SpelementUnit>
+								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="2">
+									<ns3:Ordinate X="476395.21" Y="1375659.09" OrdNmb="1" DeltaGeopoint="0.10"/>
+								</ns3:SpelementUnit>
+								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="3">
+									<ns3:Ordinate X="476396.80" Y="1375665.09" OrdNmb="1" DeltaGeopoint="0.10"/>
+								</ns3:SpelementUnit>
+								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="4">
+									<ns3:Ordinate X="476404.05" Y="1375663.17" OrdNmb="1" DeltaGeopoint="0.10"/>
+								</ns3:SpelementUnit>
+								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">
+									<ns3:Ordinate X="476402.46" Y="1375657.17" OrdNmb="1" DeltaGeopoint="0.10"/>
+								</ns3:SpelementUnit>
+							</ns3:SpatialElement>
+						</EntitySpatial>
+					</Uncompleted>
+				</ObjectRealty>
 				<!--<ObjectRealty>-->
 					<!--<Building CadastralNumber="01:05:3000010:548">-->
 						<!--<ObjectType>002001002000</ObjectType>-->
