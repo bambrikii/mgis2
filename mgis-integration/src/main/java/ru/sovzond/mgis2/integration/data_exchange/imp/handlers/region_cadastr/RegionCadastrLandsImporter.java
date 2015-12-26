@@ -3,10 +3,10 @@ package ru.sovzond.mgis2.integration.data_exchange.imp.handlers.region_cadastr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.integration.data_exchange.imp.beans.BuildingResolverBean;
-import ru.sovzond.mgis2.integration.data_exchange.imp.beans.IncompleteConstructResolverBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.beans.LandResolverBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.handlers.Region_CadastrHandler;
 import ru.sovzond.mgis2.integration.data_exchange.imp.impl.LandImportBase;
+import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportCollector;
 import ru.sovzond.mgis2.integration.data_exchange.imp.report.ReportRecord;
 import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.BuildingResolver;
 import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.IncompleteConstructResolver;
@@ -27,14 +27,13 @@ public class RegionCadastrLandsImporter extends LandImportBase {
 	@Autowired
 	private BuildingResolverBean buildingResolverBean;
 
-	@Autowired
-	private IncompleteConstructResolverBean incompleteConstructResolverBean;
-
+	@Override
 	public List<ReportRecord> imp(InputStream inputStream) {
-		LandResolver landResolver = new LandResolver(landImportResolverBean);
-		BuildingResolver buildingResolver = new BuildingResolver(buildingResolverBean);
-		IncompleteConstructResolver incompleteConstructResolver = new IncompleteConstructResolver(incompleteConstructResolverBean);
+		ReportCollector reportCollector = new ReportCollector();
+		LandResolver landResolver = new LandResolver(landImportResolverBean, reportCollector);
+		BuildingResolver buildingResolver = new BuildingResolver(buildingResolverBean, reportCollector);
+		IncompleteConstructResolver incompleteConstructResolver = new IncompleteConstructResolver(buildingResolverBean, reportCollector);
 		doImport(inputStream, new Region_CadastrHandler(landResolver, buildingResolver, incompleteConstructResolver));
-		return landResolver.getReports();
+		return reportCollector.getReports();
 	}
 }

@@ -12,8 +12,5 @@ public interface ILandResolver<T> {
 	 */
 	void resolve(T obj);
 
-	/**
-	 * @param coordinateSystemDTO Update Coordinate System for all the lands found and registered by resolve(...) method
-	 */
 	void updateCoordinateSystem(CoordinateSystemDTO coordinateSystemDTO);
 }
