@@ -42,41 +42,6 @@ angular.module("mgis.commons", ["ui.bootstrap",
 			}
 		}
 	})
-	.controller("MGISDateTimeController", function ($scope) {
-
-		$scope.showWeeks = true;
-		$scope.toggleWeeks = function () {
-			$scope.showWeeks = !$scope.showWeeks;
-		}
-
-		$scope.clear = function () {
-			$scope.dt = null;
-		}
-
-		// Disable weekend selection
-		$scope.disabled = function (date, mode) {
-			return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-		}
-
-		$scope.open = function ($event) {
-			$event.preventDefault();
-			$event.stopPropagation();
-
-			$scope.opened = true;
-		}
-
-		$scope.dateOptions = {
-			'year-format': "'yy'",
-			'starting-day': 1
-		}
-
-		$scope.format = "dd.MM.yyyy";
-		$scope.valueChangedInternal = function () {
-			if ($scope.valueChanged) {
-				$scope.valueChanged({newValue: $scope.value});
-			}
-		}
-	})
 	.directive("commonsDate", function () {
 		return {
 			restrict: "E",
@@ -100,9 +65,8 @@ angular.module("mgis.commons", ["ui.bootstrap",
 					$scope.dt = null;
 				}
 
-				// Disable weekend selection
-				$scope.disabled = function (date, mode) {
-					return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+				$scope.dateDisabled = function (date, mode) {
+					return false;
 				}
 
 				$scope.open = function ($event) {

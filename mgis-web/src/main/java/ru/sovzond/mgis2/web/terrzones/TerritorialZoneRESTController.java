@@ -5,11 +5,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.isogd.business.DocumentBean;
+import ru.sovzond.mgis2.lands.TerritorialZone;
 import ru.sovzond.mgis2.lands.TerritorialZoneBean;
 import ru.sovzond.mgis2.lands.TerritorialZoneTypeBean;
 import ru.sovzond.mgis2.national_classifiers.LandAllowedUsageBean;
 import ru.sovzond.mgis2.national_classifiers.OKTMOBean;
-import ru.sovzond.mgis2.lands.TerritorialZone;
+import ru.sovzond.mgis2.registers.national_classifiers.TerritorialZoneType;
 
 import javax.transaction.Transactional;
 
@@ -66,7 +67,8 @@ public class TerritorialZoneRESTController {
 		zone2.setName(zone.getName());
 		zone2.setNumber(zone.getNumber());
 		zone2.setPlacement(zone.getPlacement());
-		zone2.setZoneType(zone != null ? territorialZoneTypeBean.load(zone.getId()) : null);
+		TerritorialZoneType zoneType = zone.getZoneType();
+		zone2.setZoneType(zoneType != null ? territorialZoneTypeBean.load(zoneType.getId()) : null);
 		zone2.setAccountNumber(zone.getAccountNumber());
 		zone2.setAllowedUsageKind(zone.getAllowedUsageKind() != null ? landAllowedUsageBean.load(zone.getAllowedUsageKind().getId()) : null);
 		zone2.setAllowedUsageKindAsText(zone.getAllowedUsageKindAsText());

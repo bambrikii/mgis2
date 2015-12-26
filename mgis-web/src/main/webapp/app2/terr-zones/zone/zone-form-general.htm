@@ -13,88 +13,20 @@
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="name" ng-model="zone.name" required/>
 
-				<p ng-show="zoneForm.name.$invalid && (!zoneForm.name.$pristine || zoneForm.name.$touched)" class="help-block" translate>
+				<p ng-show="zoneForm.name.$invalid && (!zoneForm.name.$pristine || zoneForm.name.$touched)"
+				   class="help-block" translate>
 					Name.Required</p>
 			</div>
 		</div>
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>TerritorialZones.Zone.CreationDate</label>
-			</div>
+		<commons-forms-date form="zoneForm" name="creationDate" property="zone.creationDate"
+							title="TerritorialZones.Zone.CreationDate"></commons-forms-date>
 
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="zone.creationDate"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							/>
-                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-				</p>
-			</div>
-		</div>
+		<commons-forms-date form="zoneForm" name="correctionDate" property="zone.correctionDate"
+							title="TerritorialZones.Zone.CorrectionDate"></commons-forms-date>
 
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>TerritorialZones.Zone.CorrectionDate</label>
-			</div>
-
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="zone.correctionDate"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							/>
-                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-				</p>
-			</div>
-		</div>
-
-		<div class="form-group row">
-			<div class="col-sm-4">
-				<label translate>TerritorialZones.Zone.LiquidationDate</label>
-			</div>
-
-			<div class="col-sm-8">
-				<p class="input-group" ng-controller="MGISDateTimeController">
-                <span class="input-group-btn mgis-input-group-date">
-                    <input
-							type="text"
-							class="form-control"
-							name="docDate"
-							datepicker-popup="{{format}}"
-							ng-model="zone.liquidationDate"
-							is-open="opened"
-							datepicker-options="dateOptions"
-							date-disabled="disabled(date, mode)"
-							close-text="{{Close|translate}}"
-							ng-click="open($event)"
-							/>
-                    <button class="btn btn-default " ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-				</p>
-			</div>
-		</div>
+		<commons-forms-date form="zoneForm" name="liquidationDate" property="zone.liquidationDate"
+							title="TerritorialZones.Zone.LiquidationDate"></commons-forms-date>
 
 		<div class="form-group row">
 			<div class="col-sm-4">
@@ -105,9 +37,10 @@
 
 					<ui-select ng-model="zone.administrativeTerritorialEntity" theme="select2" style="width: 450px;">
 						<ui-select-match placeholder="">{{zone.administrativeTerritorialEntity.name}}</ui-select-match>
-						<ui-select-choices repeat="admTerrEntity in availableAdministrativeTerritorialEntities | filter: {name: $select.search}"
-										   refresh="refreshAvailableAdministrativeTerritorialEntities($select.search)"
-										   refresh-delay="0">
+						<ui-select-choices
+								repeat="admTerrEntity in availableAdministrativeTerritorialEntities | filter: {name: $select.search}"
+								refresh="refreshAvailableAdministrativeTerritorialEntities($select.search)"
+								refresh-delay="0">
 							{{admTerrEntity.name}}
 							<div ng-bind-html="admTerrEntity.name"></div>
 						</ui-select-choices>
@@ -143,7 +76,8 @@
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="number" ng-model="zone.number" required/>
 
-				<p ng-show="zoneForm.number.$invalid && (!zoneForm.number.$pristine || zoneForm.number.$touched)" class="help-block" translate>
+				<p ng-show="zoneForm.number.$invalid && (!zoneForm.number.$pristine || zoneForm.number.$touched)"
+				   class="help-block" translate>
 					TerritorialZones.Zone.Number.Required</p>
 			</div>
 		</div>
@@ -157,7 +91,8 @@
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="index" ng-model="zone.index" required/>
 
-				<p ng-show="zoneForm.index.$invalid && (!zoneForm.index.$pristine || zoneForm.index.$touched)" class="help-block" translate>
+				<p ng-show="zoneForm.index.$invalid && (!zoneForm.index.$pristine || zoneForm.index.$touched)"
+				   class="help-block" translate>
 					TerritorialZones.Zone.Index.Required</p>
 			</div>
 		</div>
@@ -171,7 +106,8 @@
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="placement" ng-model="zone.placement" required/>
 
-				<p ng-show="zoneForm.placement.$invalid && (!zoneForm.placement.$pristine || zoneForm.placement.$touched)" class="help-block"
+				<p ng-show="zoneForm.placement.$invalid && (!zoneForm.placement.$pristine || zoneForm.placement.$touched)"
+				   class="help-block"
 				   translate>
 					TerritorialZones.Zone.Placement.Required</p>
 			</div>
@@ -184,7 +120,8 @@
 			</div>
 
 			<div class="col-sm-8">
-				<textarea class="form-control" name="additionalDescription" ng-model="zone.additionalDescription" rows="3" required/>
+				<textarea class="form-control" name="additionalDescription" ng-model="zone.additionalDescription"
+						  rows="3" required/>
 
 				<p ng-show="zoneForm.additionalDescription.$invalid && (!zoneForm.additionalDescription.$pristine || zoneForm.additionalDescription.$touched)"
 				   class="help-block"

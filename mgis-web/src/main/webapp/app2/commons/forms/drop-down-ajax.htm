@@ -8,7 +8,6 @@
 				<ui-select-match placeholder="" allow-clear="{{!required}}">{{$eval(matchLabel)}}</ui-select-match>
 				<ui-select-choices repeat="{{choices}}"
 								   refresh="refreshAvailableElements($select.search)"
-
 								   refresh-delay="0">
 					{{$eval(displayLabel)}}
 					<!--<div ng-bind-html="$eval(displayLabel)"></div>-->

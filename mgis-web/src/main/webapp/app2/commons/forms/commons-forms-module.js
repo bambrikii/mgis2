@@ -96,15 +96,50 @@ angular.module("mgis.commons.forms", ["ui.bootstrap",
 				minDate: "=",
 				maxDate: "=",
 				required: "=",
-				pattern: "="
+				pattern: "=",
+				disabledHandler: "&"
 			},
 			templateUrl: "app2/commons/forms/date.htm",
+			link: function (scope, elem, attrs) {
+				scope.disabledHandlerDefined = function () {
+					return angular.isDefined(attrs.disabledHandler);
+				}
+			},
 			controller: function ($scope) {
+				$scope.showWeeks = true;
+				$scope.format = "dd.MM.yyyy";
+				$scope.dateOptions = {
+					'year-format': "'yy'",
+					'starting-day': 1
+				}
+
 				$scope.item = {
 					value: $scope.property
 				}
 				$scope.dateChanged = function () {
 					$scope.property = $scope.item.value;
+				}
+				$scope.dateDisabled = function (date, mode) {
+					if ($scope.disabledHandlerDefined) {
+						return $scope.disabledHandler(date, mode);
+					}
+					return false;
+				}
+
+
+				$scope.toggleWeeks = function () {
+					$scope.showWeeks = !$scope.showWeeks;
+				}
+
+				$scope.clear = function () {
+					$scope.dt = null;
+				}
+
+				$scope.open = function ($event) {
+					$event.preventDefault();
+					$event.stopPropagation();
+
+					$scope.opened = !$scope.opened;
 				}
 
 			}

@@ -19,6 +19,8 @@ import ru.sovzond.mgis2.geo.SpatialGroup;
 import ru.sovzond.mgis2.indicators.PriceIndicatorBean;
 import ru.sovzond.mgis2.indicators.TechnicalIndicatorBean;
 import ru.sovzond.mgis2.isogd.business.DocumentBean;
+import ru.sovzond.mgis2.lands.LandBean;
+import ru.sovzond.mgis2.lands.includes.LandIncludedObjects;
 import ru.sovzond.mgis2.national_classifiers.*;
 import ru.sovzond.mgis2.persons.PersonBean;
 import ru.sovzond.mgis2.property.PropertyRightsBean;
@@ -67,9 +69,6 @@ public class CapitalConstructRESTService {
 	private PersonBean personBean;
 
 	@Autowired
-	private ConstructCharacteristicsBean constructCharacteristicsBean;
-
-	@Autowired
 	private EconomicCharacteristicBean economicCharacteristicBean;
 
 	@Autowired
@@ -92,6 +91,9 @@ public class CapitalConstructRESTService {
 
 	@Autowired
 	private SpatialDataBean spatialDataBean;
+
+	@Autowired
+	private LandBean landBean;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@Transactional
@@ -119,6 +121,7 @@ public class CapitalConstructRESTService {
 				"rights", //
 				"characteristics", //
 				"constructiveElements", //
+				"landIncludedObjects", //
 				"spatialData" //
 
 		});
@@ -172,8 +175,9 @@ public class CapitalConstructRESTService {
 			ConstructionCharacteristics characteristics2 = capitalConstruct2.getCharacteristics();
 			if (characteristics2 == null || characteristics2.getId() == null || characteristics2.getId() == 0) {
 				characteristics2 = new ConstructionCharacteristics();
-			} else {
-				characteristics2 = constructCharacteristicsBean.load(characteristics.getId());
+				capitalConstruct2.setCharacteristics(characteristics2);
+//			} else {
+//				characteristics2 = constructCharacteristicsBean.load(characteristics.getId());
 			}
 
 			// Economic Characteristics
@@ -183,7 +187,7 @@ public class CapitalConstructRESTService {
 				characteristics2.getEconomicCharacteristics().forEach(economicCharacteristicBean::remove);
 				characteristics2.getEconomicCharacteristics().clear();
 			}
-			constructCharacteristicsBean.save(characteristics2);
+//			constructCharacteristicsBean.save(characteristics2);
 			// Technical Characteristics
 			if (characteristics.getTechnicalCharacteristics() != null && characteristics.getTechnicalCharacteristics().size() > 0) {
 				syncTechnicalCharacteristics(characteristics2.getTechnicalCharacteristics(), characteristics.getTechnicalCharacteristics());
@@ -191,11 +195,42 @@ public class CapitalConstructRESTService {
 				characteristics2.getTechnicalCharacteristics().forEach(technicalCharacteristicBean::remove);
 				characteristics2.getTechnicalCharacteristics().clear();
 			}
-			constructCharacteristicsBean.save(characteristics2);
-			capitalConstruct2.setCharacteristics(characteristics2);
+//			constructCharacteristicsBean.save(characteristics2);
 		}
 		// Constructive Elements
 		syncConstructiveElements(capitalConstruct2.getConstructiveElements(), capitalConstruct.getConstructiveElements());
+
+		// Included Objects
+		LandIncludedObjects landIncludedObjects = capitalConstruct.getLandIncludedObjects();
+		if (landIncludedObjects != null) {
+			LandIncludedObjects landIncludedObjects2 = capitalConstruct2.getLandIncludedObjects();
+			if (landIncludedObjects2 == null) {
+				landIncludedObjects2 = new LandIncludedObjects();
+				capitalConstruct2.setLandIncludedObjects(landIncludedObjects2);
+			}
+			landIncludedObjects2.setLandDealDocument(landIncludedObjects.getLandDealDocument() != null ? documentBean.load(landIncludedObjects.getLandDealDocument().getId()) : null);
+			landIncludedObjects2.setInventoryDealDocument(landIncludedObjects.getInventoryDealDocument() != null ? documentBean.load(landIncludedObjects.getInventoryDealDocument().getId()) : null);
+			// Urban planning documents
+			landIncludedObjects2.getUrbanPlanningDocuments().clear();
+			if (landIncludedObjects.getUrbanPlanningDocuments().size() > 0) {
+				landIncludedObjects2.getUrbanPlanningDocuments().addAll(documentBean.load(landIncludedObjects.getUrbanPlanningDocuments().stream().map(document -> document.getId()).collect(Collectors.toList())));
+			}
+			// Included lands
+			landIncludedObjects2.getIncludedLands().clear();
+			if (landIncludedObjects.getIncludedLands().size() > 0) {
+				landIncludedObjects2.getIncludedLands().addAll(landBean.load(landIncludedObjects.getIncludedLands().stream().map(land -> land.getId()).collect(Collectors.toList())));
+			}
+			// Included constructs
+			landIncludedObjects2.getIncludedCapitalConstructions().clear();
+			if (landIncludedObjects.getIncludedCapitalConstructions().size() > 0) {
+				landIncludedObjects2.getIncludedCapitalConstructions().addAll(capitalConstructBean.load(landIncludedObjects.getIncludedCapitalConstructions().stream().map(construction -> construction.getId()).collect(Collectors.toList())));
+			}
+		} else {
+			if (capitalConstruct2.getLandIncludedObjects() == null) {
+				landIncludedObjects = new LandIncludedObjects();
+				capitalConstruct2.setLandIncludedObjects(landIncludedObjects);
+			}
+		}
 
 		// Spatial Data
 		SpatialGroup spatialGroup = capitalConstruct.getSpatialData();
