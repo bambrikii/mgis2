@@ -6,6 +6,7 @@ import ru.sovzond.mgis2.capital_construct.CapitalConstructBean;
 import ru.sovzond.mgis2.capital_construct.ConstructTypeBean;
 import ru.sovzond.mgis2.capital_constructs.CapitalConstruction;
 import ru.sovzond.mgis2.capital_constructs.ConstructionType;
+import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructionCharacteristics;
 import ru.sovzond.mgis2.geo.CoordinateSystem;
 import ru.sovzond.mgis2.geo.GeometryConverter;
 import ru.sovzond.mgis2.geo.SpatialGroup;
@@ -16,6 +17,8 @@ import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.IncompleteDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.ConstructSourceDecorator;
 import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.ConstructionTargetDecorator;
+import ru.sovzond.mgis2.lands.includes.LandIncludedObjects;
+import ru.sovzond.mgis2.rights.PropertyRights;
 
 /**
  * Created by Alexander Arakelyan on 25/12/15.
@@ -55,19 +58,36 @@ public class BuildingResolverBean {
 	private void updateConstruct(CapitalConstruction capitalConstruction, ConstructDTO constructDTO) {
 		String cadastralNumber = constructDTO.getCadastralNumber();
 		capitalConstruction.setCadastralNumber(cadastralNumber);
-		// ? "CONSTRUCT"
+		ConstructionType type;
 		if (constructDTO instanceof BuildingDTO) {
-			ConstructionType type = resolveType("BUILDING");
-			capitalConstruction.setType(type);
-			capitalConstruction.setName(type.getName() + " " + cadastralNumber);
+			type = resolveType("BUILDING");
 		} else if (constructDTO instanceof IncompleteDTO) {
-			ConstructionType type = resolveType("INCOMPLETE_CONSTRUCT");
-			capitalConstruction.setType(type);
-			capitalConstruction.setName(type.getName() + " " + cadastralNumber);
+			type = resolveType("INCOMPLETE_CONSTRUCT");
 		} else {
-			capitalConstruction.setName(cadastralNumber);
+			type = resolveType("CONSTRUCT");
 		}
+		capitalConstruction.setType(type);
+		capitalConstruction.setName(type.getName() + " " + cadastralNumber);
 		capitalConstruction.setAddress(addressResolverBean.resolveAddress(constructDTO.getAddress()));
+
+		PropertyRights rights = capitalConstruction.getRights();
+		if (rights == null) {
+			rights = new PropertyRights();
+			capitalConstruction.setRights(rights);
+		}
+
+		ConstructionCharacteristics constructionCharacteristics = capitalConstruction.getCharacteristics();
+		if (constructionCharacteristics == null) {
+			constructionCharacteristics = new ConstructionCharacteristics();
+			capitalConstruction.setCharacteristics(constructionCharacteristics);
+		}
+
+		LandIncludedObjects landIncludedObjects = capitalConstruction.getLandIncludedObjects();
+		if (landIncludedObjects == null) {
+			landIncludedObjects = new LandIncludedObjects();
+			capitalConstruction.setLandIncludedObjects(landIncludedObjects);
+		}
+
 		fillSpatialData(constructDTO, capitalConstruction);
 	}
 
