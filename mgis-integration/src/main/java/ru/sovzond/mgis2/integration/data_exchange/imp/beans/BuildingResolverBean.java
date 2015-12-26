@@ -6,6 +6,10 @@ import ru.sovzond.mgis2.capital_construct.CapitalConstructBean;
 import ru.sovzond.mgis2.capital_construct.ConstructTypeBean;
 import ru.sovzond.mgis2.capital_constructs.CapitalConstruction;
 import ru.sovzond.mgis2.capital_constructs.ConstructionType;
+import ru.sovzond.mgis2.geo.CoordinateSystem;
+import ru.sovzond.mgis2.geo.GeometryConverter;
+import ru.sovzond.mgis2.geo.SpatialGroup;
+import ru.sovzond.mgis2.geo.SpatialGroupBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.BuildingDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.ConstructDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
@@ -27,6 +31,9 @@ public class BuildingResolverBean {
 
 	@Autowired
 	private ConstructTypeBean constructTypeBean;
+
+	@Autowired
+	private SpatialGroupBean spatialGroupBean;
 
 	@Autowired
 	private SpatialDataResolverBean spatialDataResolverBean;
@@ -78,11 +85,16 @@ public class BuildingResolverBean {
 		return constructTypeBean.findByCode(code);
 	}
 
-	public CapitalConstruction resolve(IncompleteDTO obj) {
-		throw new UnsupportedOperationException("Not yet implemented");
-	}
-
 	public void updateCoordinateSystem(Long id, CoordinateSystemDTO coordinateSystemDTO) {
-		throw new UnsupportedOperationException("Not yet implemented");
+		CapitalConstruction construct = capitalConstructBean.load(id);
+		SpatialGroup spatialData = construct.getSpatialData();
+		if (spatialData != null) {
+			CoordinateSystem coordinateSystem = spatialDataResolverBean.resolveCoordinateSystem(coordinateSystemDTO.getName(), null);
+			spatialData.setCoordinateSystem(coordinateSystem);
+			spatialGroupBean.save(spatialData);
+			GeometryConverter converter = new GeometryConverter(coordinateSystem.getConversionRules());
+			construct.setGeometry(converter.convert(converter.createMultipolygon(spatialData.getSpatialElements())));
+			capitalConstructBean.save(construct);
+		}
 	}
 }

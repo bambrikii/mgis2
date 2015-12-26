@@ -12,573 +12,573 @@
 				<Unit>059</Unit>
 			</Area>
 			<ObjectsRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:378">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>127.6</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="19"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 19</ns2:Note>
-						</Address>
-						<CadastralCost Value="861652.18" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:379">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>164.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>0100500006000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, снт. Здоровье</ns2:Note>
-						</Address>
-						<CadastralCost Value="1629859.67" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:380">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>216.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>0100500006000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Level1 Type="д" Value="142"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, д. 142</ns2:Note>
-						</Address>
-						<CadastralCost Value="2144448.03" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:381">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>60.3</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="8-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="148-149"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 148-149</ns2:Note>
-						</Address>
-						<CadastralCost Value="596724.58" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:382">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>106.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="102"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 102</ns2:Note>
-						</Address>
-						<CadastralCost Value="1050947.77" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:383">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>97.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>0100500006000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Level1 Type="д" Value="17"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, д 17</ns2:Note>
-						</Address>
-						<CadastralCost Value="959905.21" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:384">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>53.1</Area>
-						<Address>
-							<ns2:OKATO>79230000009</ns2:OKATO>
-							<ns2:KLADR>0100500003400</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Мелиоратор (Старобжегокайское с/п)" Type="снт"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Мелиоратор (Старобжегокайское с/п)</ns2:Note>
-						</Address>
-						<CadastralCost Value="525313.52" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:385">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>81.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>0100500001900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Старобжегокай" Type="аул"/>
-							<ns2:Level1 Type="д" Value="77"/>
-							<ns2:Note>Республика Адыгея, Тахтамукайский р-н, ДНТ "Здоровье", 4-я улица №77</ns2:Note>
-						</Address>
-						<CadastralCost Value="808497.48" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:386">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>42.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="58"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 58</ns2:Note>
-						</Address>
-						<CadastralCost Value="288342.85" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:387">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>169.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="1-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="12"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 12</ns2:Note>
-						</Address>
-						<CadastralCost Value="1677360.14" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:388">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>56.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="1-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="11"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 11</ns2:Note>
-						</Address>
-						<CadastralCost Value="554172.08" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:389">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>102.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>0100500006000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Level1 Type="д" Value="б/н"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, д б/н</ns2:Note>
-						</Address>
-						<CadastralCost Value="1010066.11" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:390">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>161.9</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="52"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 52</ns2:Note>
-						</Address>
-						<CadastralCost Value="1093271.84" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:391">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>52.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="1-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="10"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 10</ns2:Note>
-						</Address>
-						<CadastralCost Value="514588.36" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:392">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>111.4</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="1-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="9"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 9</ns2:Note>
-						</Address>
-						<CadastralCost Value="752257.46" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:393">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>118.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001700</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="9-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="159"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 9-я, д 159</ns2:Note>
-						</Address>
-						<CadastralCost Value="798176.23" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:394">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>91.3</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="8-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="132"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 132</ns2:Note>
-						</Address>
-						<CadastralCost Value="616526.99" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:395">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>114.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="91"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 91</ns2:Note>
-						</Address>
-						<CadastralCost Value="1133083.99" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:396">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>164.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="95"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 95</ns2:Note>
-						</Address>
-						<CadastralCost Value="1624911.71" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:397">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>161.8</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="54"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 54</ns2:Note>
-						</Address>
-						<CadastralCost Value="1601161.47" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:398">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>101.9</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="97"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 97</ns2:Note>
-						</Address>
-						<CadastralCost Value="1008395.27" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:399">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>56.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="86"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 86</ns2:Note>
-						</Address>
-						<CadastralCost Value="382881.49" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:400">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>94.4</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="74"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 74</ns2:Note>
-						</Address>
-						<CadastralCost Value="934175.79" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:401">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>31.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="55"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 55</ns2:Note>
-						</Address>
-						<CadastralCost Value="311721.79" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:403">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>42.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="48"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 48</ns2:Note>
-						</Address>
-						<CadastralCost Value="415629.06" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:404">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>34.8</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="36"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 36</ns2:Note>
-						</Address>
-						<CadastralCost Value="344378.36" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:405">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>40.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="79"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 79</ns2:Note>
-						</Address>
-						<CadastralCost Value="396826.79" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:406">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>90.4</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="38"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 38</ns2:Note>
-						</Address>
-						<CadastralCost Value="894592.07" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:407">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>35.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>0100500006000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Other>участок №80</ns2:Other>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, снт Здоровье, участок №80</ns2:Note>
-						</Address>
-						<CadastralCost Value="236346.6" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:408">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>120.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="60"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 60</ns2:Note>
-						</Address>
-						<CadastralCost Value="1188501.19" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:409">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>111.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="66"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 66</ns2:Note>
-						</Address>
-						<CadastralCost Value="749556.36" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:410">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>156.8</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="28"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 28</ns2:Note>
-						</Address>
-						<CadastralCost Value="1058832.77" Unit="383"/>
-					</Building>
-				</ObjectRealty>
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:378">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>127.6</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="19"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 19</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="861652.18" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:379">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>164.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>0100500006000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, снт. Здоровье</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1629859.67" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:380">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>216.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>0100500006000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Level1 Type="д" Value="142"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, д. 142</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="2144448.03" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:381">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>60.3</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="8-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="148-149"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 148-149</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="596724.58" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:382">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>106.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="102"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 102</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1050947.77" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:383">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>97.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>0100500006000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Level1 Type="д" Value="17"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, д 17</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="959905.21" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:384">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>53.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000009</ns2:OKATO>-->
+							<!--<ns2:KLADR>0100500003400</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Мелиоратор (Старобжегокайское с/п)" Type="снт"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Мелиоратор (Старобжегокайское с/п)</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="525313.52" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:385">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>81.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>0100500001900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Старобжегокай" Type="аул"/>-->
+							<!--<ns2:Level1 Type="д" Value="77"/>-->
+							<!--<ns2:Note>Республика Адыгея, Тахтамукайский р-н, ДНТ "Здоровье", 4-я улица №77</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="808497.48" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:386">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>42.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="58"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 58</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="288342.85" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:387">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>169.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="1-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="12"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 12</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1677360.14" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:388">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>56.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="1-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="11"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 11</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="554172.08" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:389">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>102.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>0100500006000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Level1 Type="д" Value="б/н"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, д б/н</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1010066.11" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:390">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>161.9</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="52"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 52</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1093271.84" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:391">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>52.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="1-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="10"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 10</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="514588.36" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:392">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>111.4</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="1-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="9"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 9</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="752257.46" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:393">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>118.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001700</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="9-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="159"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 9-я, д 159</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="798176.23" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:394">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>91.3</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="8-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="132"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 132</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="616526.99" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:395">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>114.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="91"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 91</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1133083.99" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:396">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>164.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="95"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 95</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1624911.71" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:397">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>161.8</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="54"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 54</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1601161.47" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:398">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>101.9</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="97"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 97</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1008395.27" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:399">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>56.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="86"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 86</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="382881.49" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:400">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>94.4</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="74"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 74</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="934175.79" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:401">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>31.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="55"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 55</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="311721.79" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:403">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>42.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="48"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 48</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="415629.06" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:404">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>34.8</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="36"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 36</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="344378.36" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:405">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>40.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="79"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 79</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="396826.79" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:406">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>90.4</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="38"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 38</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="894592.07" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:407">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>35.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>0100500006000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Other>участок №80</ns2:Other>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, снт Здоровье, участок №80</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="236346.6" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:408">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>120.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="60"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 60</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1188501.19" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:409">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>111.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="66"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 66</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="749556.36" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:410">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>156.8</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="28"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 28</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1058832.77" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
 				<ObjectRealty>
 					<Building CadastralNumber="01:05:3000010:415">
 						<ObjectType>002001002000</ObjectType>
@@ -677,819 +677,819 @@
 						</EntitySpatial>
 					</Building>
 				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:416">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>253.4</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000800</ns2:KLADR>
-							<ns2:PostalCode>385000</ns2:PostalCode>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Street Name="Сливовая" Type="ул"/>
-							<ns2:Level1 Type="д" Value="14"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул Сливовая, д 14</ns2:Note>
-						</Address>
-						<CadastralCost Value="2091018.79" Unit="383"/>
-						<EntitySpatial EntSys="ID1">
-							<ns3:SpatialElement>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">
-									<ns3:Ordinate X="475641.38" Y="1375915.86" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="2">
-									<ns3:Ordinate X="475641.39" Y="1375916.25" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="3">
-									<ns3:Ordinate X="475641.76" Y="1375916.24" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="4">
-									<ns3:Ordinate X="475642.45" Y="1375916.51" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="5">
-									<ns3:Ordinate X="475642.98" Y="1375917.01" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="6">
-									<ns3:Ordinate X="475643.28" Y="1375917.69" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="7">
-									<ns3:Ordinate X="475643.30" Y="1375918.44" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="8">
-									<ns3:Ordinate X="475643.03" Y="1375919.13" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="9">
-									<ns3:Ordinate X="475642.53" Y="1375919.66" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="10">
-									<ns3:Ordinate X="475641.85" Y="1375919.96" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="11">
-									<ns3:Ordinate X="475641.48" Y="1375919.97" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="12">
-									<ns3:Ordinate X="475641.61" Y="1375925" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="13">
-									<ns3:Ordinate X="475641.98" Y="1375924.99" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="14">
-									<ns3:Ordinate X="475642.67" Y="1375925.26" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="15">
-									<ns3:Ordinate X="475643.20" Y="1375925.77" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="16">
-									<ns3:Ordinate X="475643.50" Y="1375926.45" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="17">
-									<ns3:Ordinate X="475643.52" Y="1375927.19" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="18">
-									<ns3:Ordinate X="475643.25" Y="1375927.88" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="19">
-									<ns3:Ordinate X="475642.75" Y="1375928.41" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="20">
-									<ns3:Ordinate X="475642.07" Y="1375928.72" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="21">
-									<ns3:Ordinate X="475641.70" Y="1375928.72" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="22">
-									<ns3:Ordinate X="475641.71" Y="1375929.11" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="23">
-									<ns3:Ordinate X="475630.09" Y="1375929.40" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="24">
-									<ns3:Ordinate X="475629.77" Y="1375916.15" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">
-									<ns3:Ordinate X="475641.38" Y="1375915.86" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-							</ns3:SpatialElement>
-						</EntitySpatial>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:421">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>96.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001400</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="129"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 129</ns2:Note>
-						</Address>
-						<CadastralCost Value="956902.58" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:422">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>9.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="39"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 39</ns2:Note>
-						</Address>
-						<CadastralCost Value="91039.33" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:423">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>72.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001400</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="127"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 127</ns2:Note>
-						</Address>
-						<CadastralCost Value="712481.76" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:424">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>74.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="24"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 24</ns2:Note>
-						</Address>
-						<CadastralCost Value="737220.71" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:425">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>207.3</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="1-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="2,3"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 2,3</ns2:Note>
-						</Address>
-						<CadastralCost Value="2051353.73" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:426">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>80.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="уч" Value="62"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, уч 62</ns2:Note>
-						</Address>
-						<CadastralCost Value="791646.4" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:427">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>45.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001400</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="121"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 121</ns2:Note>
-						</Address>
-						<CadastralCost Value="445301.1" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:428">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>169.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="1-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="12"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 12</ns2:Note>
-						</Address>
-						<CadastralCost Value="1677300.81" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:429">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>164.8</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="54"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 54</ns2:Note>
-						</Address>
-						<CadastralCost Value="1630791.58" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:431">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>409.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001800</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="10-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="170"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 10-я, д 170</ns2:Note>
-						</Address>
-						<CadastralCost Value="4052240.01" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:432">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>150.6</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="49"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 49</ns2:Note>
-						</Address>
-						<CadastralCost Value="1490274.34" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:433">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>41.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="26"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 26</ns2:Note>
-						</Address>
-						<CadastralCost Value="405718.78" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:434">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>64.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="84"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 84</ns2:Note>
-						</Address>
-						<CadastralCost Value="633317.12" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:435">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>161.9</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="52"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 3-я, д 52</ns2:Note>
-						</Address>
-						<CadastralCost Value="1335974.52" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:440">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>150.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000700</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="87"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 4-я, д 87</ns2:Note>
-						</Address>
-						<CadastralCost Value="1486316.12" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:441">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>42.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000700</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="58"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 3-я, д 58</ns2:Note>
-						</Address>
-						<CadastralCost Value="422541.27" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:443">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>747.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000700</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Street Name="16-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="128"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 16-я, д 128</ns2:Note>
-						</Address>
-						<CadastralCost Value="7398925.17" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:444">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>120.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="60"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 60</ns2:Note>
-						</Address>
-						<CadastralCost Value="1188459.16" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:445">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>106.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="102"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 102</ns2:Note>
-						</Address>
-						<CadastralCost Value="1050910.6" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:446">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>111.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001400</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="131"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 131</ns2:Note>
-						</Address>
-						<CadastralCost Value="1103357.17" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:447">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>102.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001700</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="9-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="154"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 9-я, д 154</ns2:Note>
-						</Address>
-						<CadastralCost Value="1010338.72" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:448">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>78.6</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>0100500006000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Level1 Type="д" Value="75"/>
-							<ns2:Other>ул. 4-я</ns2:Other>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул. 4-я, д 75</ns2:Note>
-						</Address>
-						<CadastralCost Value="777792.59" Unit="383"/>
-						<EntitySpatial EntSys="ID1">
-							<ns3:SpatialElement>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">
-									<ns3:Ordinate X="476283.30" Y="1375860.39" OrdNmb="1" DeltaGeopoint="0.20"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="2">
-									<ns3:Ordinate X="476283.22" Y="1375863.38" OrdNmb="1" DeltaGeopoint="0.20"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="3">
-									<ns3:Ordinate X="476280.55" Y="1375863.35" OrdNmb="1" DeltaGeopoint="0.20"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="4">
-									<ns3:Ordinate X="476280.34" Y="1375869.64" OrdNmb="1" DeltaGeopoint="0.20"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="5">
-									<ns3:Ordinate X="476272.09" Y="1375869.28" OrdNmb="1" DeltaGeopoint="0.20"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="6">
-									<ns3:Ordinate X="476272.33" Y="1375862.57" OrdNmb="1" DeltaGeopoint="0.20"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="7">
-									<ns3:Ordinate X="476277.46" Y="1375862.88" OrdNmb="1" DeltaGeopoint="0.20"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="8">
-									<ns3:Ordinate X="476277.48" Y="1375860.26" OrdNmb="1" DeltaGeopoint="0.20"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">
-									<ns3:Ordinate X="476283.30" Y="1375860.39" OrdNmb="1" DeltaGeopoint="0.20"/>
-								</ns3:SpelementUnit>
-							</ns3:SpatialElement>
-						</EntitySpatial>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:449">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>94.4</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000700</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="74"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 4-я, д 74</ns2:Note>
-						</Address>
-						<CadastralCost Value="934142.75" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:450">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>40.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="21"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 21</ns2:Note>
-						</Address>
-						<CadastralCost Value="396812.76" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:451">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>31.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000700</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="55"/>
-							<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 3-я, д 55</ns2:Note>
-						</Address>
-						<CadastralCost Value="311710.77" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:452">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>95.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="71"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 71</ns2:Note>
-						</Address>
-						<CadastralCost Value="942059.22" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:453">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>159.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="103"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 103</ns2:Note>
-						</Address>
-						<CadastralCost Value="1575376.34" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:454">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>30.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="Грушевая" Type="ул"/>
-							<ns2:Level1 Type="д" Value="2/1"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул Грушевая, д 2/1</ns2:Note>
-						</Address>
-						<CadastralCost Value="296867.4" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:455">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>106.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="93"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 93</ns2:Note>
-						</Address>
-						<CadastralCost Value="880472.4" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:456">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>164.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001700</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="9-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="168"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 9-я, д 168</ns2:Note>
-						</Address>
-						<CadastralCost Value="1629802.03" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:457">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>57.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001400</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="130"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 6-я, д 130</ns2:Note>
-						</Address>
-						<CadastralCost Value="564048.06" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:458">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>216.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="8-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="142"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 142</ns2:Note>
-						</Address>
-						<CadastralCost Value="2144372.19" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:459">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>628.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="Грушевая" Type="ул"/>
-							<ns2:Level1 Type="д" Value="10"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул Грушевая, д 10</ns2:Note>
-						</Address>
-						<CadastralCost Value="6214424.24" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:460">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>238.8</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="8-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="132"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 132</ns2:Note>
-						</Address>
-						<CadastralCost Value="2363064.5" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:462">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>40.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="79"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 79</ns2:Note>
-						</Address>
-						<CadastralCost Value="396812.76" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:463">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>156.8</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="28"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 2-я, д 28</ns2:Note>
-						</Address>
-						<CadastralCost Value="1293890.08" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:464">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>120.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="118"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 118</ns2:Note>
-						</Address>
-						<CadastralCost Value="1188459.16" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:465">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>109.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="119"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 119</ns2:Note>
-						</Address>
-						<CadastralCost Value="1080597.34" Unit="383"/>
-					</Building>
-				</ObjectRealty>
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:416">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>253.4</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000800</ns2:KLADR>-->
+							<!--<ns2:PostalCode>385000</ns2:PostalCode>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Street Name="Сливовая" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="14"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул Сливовая, д 14</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="2091018.79" Unit="383"/>-->
+						<!--<EntitySpatial EntSys="ID1">-->
+							<!--<ns3:SpatialElement>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">-->
+									<!--<ns3:Ordinate X="475641.38" Y="1375915.86" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="2">-->
+									<!--<ns3:Ordinate X="475641.39" Y="1375916.25" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="3">-->
+									<!--<ns3:Ordinate X="475641.76" Y="1375916.24" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="4">-->
+									<!--<ns3:Ordinate X="475642.45" Y="1375916.51" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="5">-->
+									<!--<ns3:Ordinate X="475642.98" Y="1375917.01" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="6">-->
+									<!--<ns3:Ordinate X="475643.28" Y="1375917.69" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="7">-->
+									<!--<ns3:Ordinate X="475643.30" Y="1375918.44" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="8">-->
+									<!--<ns3:Ordinate X="475643.03" Y="1375919.13" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="9">-->
+									<!--<ns3:Ordinate X="475642.53" Y="1375919.66" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="10">-->
+									<!--<ns3:Ordinate X="475641.85" Y="1375919.96" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="11">-->
+									<!--<ns3:Ordinate X="475641.48" Y="1375919.97" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="12">-->
+									<!--<ns3:Ordinate X="475641.61" Y="1375925" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="13">-->
+									<!--<ns3:Ordinate X="475641.98" Y="1375924.99" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="14">-->
+									<!--<ns3:Ordinate X="475642.67" Y="1375925.26" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="15">-->
+									<!--<ns3:Ordinate X="475643.20" Y="1375925.77" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="16">-->
+									<!--<ns3:Ordinate X="475643.50" Y="1375926.45" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="17">-->
+									<!--<ns3:Ordinate X="475643.52" Y="1375927.19" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="18">-->
+									<!--<ns3:Ordinate X="475643.25" Y="1375927.88" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="19">-->
+									<!--<ns3:Ordinate X="475642.75" Y="1375928.41" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="20">-->
+									<!--<ns3:Ordinate X="475642.07" Y="1375928.72" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="21">-->
+									<!--<ns3:Ordinate X="475641.70" Y="1375928.72" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="22">-->
+									<!--<ns3:Ordinate X="475641.71" Y="1375929.11" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="23">-->
+									<!--<ns3:Ordinate X="475630.09" Y="1375929.40" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="24">-->
+									<!--<ns3:Ordinate X="475629.77" Y="1375916.15" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">-->
+									<!--<ns3:Ordinate X="475641.38" Y="1375915.86" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+							<!--</ns3:SpatialElement>-->
+						<!--</EntitySpatial>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:421">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>96.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001400</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="129"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 129</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="956902.58" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:422">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>9.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="39"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 39</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="91039.33" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:423">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>72.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001400</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="127"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 127</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="712481.76" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:424">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>74.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="24"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 24</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="737220.71" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:425">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>207.3</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="1-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="2,3"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 2,3</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="2051353.73" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:426">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>80.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="уч" Value="62"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, уч 62</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="791646.4" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:427">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>45.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001400</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="121"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 121</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="445301.1" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:428">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>169.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="1-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="12"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 1-я, д 12</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1677300.81" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:429">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>164.8</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="54"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 54</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1630791.58" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:431">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>409.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001800</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="10-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="170"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 10-я, д 170</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="4052240.01" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:432">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>150.6</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="49"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 49</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1490274.34" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:433">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>41.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="26"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 26</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="405718.78" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:434">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>64.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="84"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 84</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="633317.12" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:435">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>161.9</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="52"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 3-я, д 52</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1335974.52" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:440">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>150.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000700</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="87"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 4-я, д 87</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1486316.12" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:441">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>42.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000700</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="58"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 3-я, д 58</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="422541.27" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:443">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>747.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000700</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Street Name="16-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="128"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 16-я, д 128</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="7398925.17" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:444">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>120.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="60"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 60</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1188459.16" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:445">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>106.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="102"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 102</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1050910.6" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:446">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>111.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001400</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="131"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 131</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1103357.17" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:447">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>102.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001700</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="9-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="154"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 9-я, д 154</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1010338.72" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:448">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>78.6</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>0100500006000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Level1 Type="д" Value="75"/>-->
+							<!--<ns2:Other>ул. 4-я</ns2:Other>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул. 4-я, д 75</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="777792.59" Unit="383"/>-->
+						<!--<EntitySpatial EntSys="ID1">-->
+							<!--<ns3:SpatialElement>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">-->
+									<!--<ns3:Ordinate X="476283.30" Y="1375860.39" OrdNmb="1" DeltaGeopoint="0.20"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="2">-->
+									<!--<ns3:Ordinate X="476283.22" Y="1375863.38" OrdNmb="1" DeltaGeopoint="0.20"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="3">-->
+									<!--<ns3:Ordinate X="476280.55" Y="1375863.35" OrdNmb="1" DeltaGeopoint="0.20"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="4">-->
+									<!--<ns3:Ordinate X="476280.34" Y="1375869.64" OrdNmb="1" DeltaGeopoint="0.20"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="5">-->
+									<!--<ns3:Ordinate X="476272.09" Y="1375869.28" OrdNmb="1" DeltaGeopoint="0.20"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="6">-->
+									<!--<ns3:Ordinate X="476272.33" Y="1375862.57" OrdNmb="1" DeltaGeopoint="0.20"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="7">-->
+									<!--<ns3:Ordinate X="476277.46" Y="1375862.88" OrdNmb="1" DeltaGeopoint="0.20"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="8">-->
+									<!--<ns3:Ordinate X="476277.48" Y="1375860.26" OrdNmb="1" DeltaGeopoint="0.20"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">-->
+									<!--<ns3:Ordinate X="476283.30" Y="1375860.39" OrdNmb="1" DeltaGeopoint="0.20"/>-->
+								<!--</ns3:SpelementUnit>-->
+							<!--</ns3:SpatialElement>-->
+						<!--</EntitySpatial>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:449">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>94.4</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000700</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="74"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 4-я, д 74</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="934142.75" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:450">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>40.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="21"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 21</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="396812.76" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:451">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>31.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000700</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="55"/>-->
+							<!--<ns2:Note>Адыгея респ, р-н Тахтамукайский, днт Здоровье, ул 3-я, д 55</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="311710.77" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:452">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>95.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="71"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 71</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="942059.22" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:453">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>159.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="103"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 103</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1575376.34" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:454">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>30.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="Грушевая" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="2/1"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул Грушевая, д 2/1</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="296867.4" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:455">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>106.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="93"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 93</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="880472.4" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:456">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>164.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001700</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="9-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="168"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 9-я, д 168</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1629802.03" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:457">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>57.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001400</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="130"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 6-я, д 130</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="564048.06" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:458">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>216.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="8-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="142"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 142</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="2144372.19" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:459">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>628.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="Грушевая" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="10"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул Грушевая, д 10</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="6214424.24" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:460">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>238.8</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="8-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="132"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 132</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="2363064.5" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:462">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>40.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="79"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 79</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="396812.76" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:463">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>156.8</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="28"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 2-я, д 28</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1293890.08" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:464">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>120.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="118"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 118</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1188459.16" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:465">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>109.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="119"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 119</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1080597.34" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
 				<ObjectRealty>
 					<Building CadastralNumber="01:05:3000010:466">
 						<ObjectType>002001002000</ObjectType>
@@ -1527,478 +1527,478 @@
 						</EntitySpatial>
 					</Building>
 				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:473">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>145.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001400</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="123"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 6-я, д 123</ns2:Note>
-						</Address>
-						<CadastralCost Value="1436838.22" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:477">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>30.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="Грушевая" Type="ул"/>
-							<ns2:Level1 Type="д" Value="14/а"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул Грушевая, д 14/а</ns2:Note>
-						</Address>
-						<CadastralCost Value="296867.4" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:478">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>35.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="Грушевая" Type="ул"/>
-							<ns2:Level1 Type="д" Value="1/1"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул Грушевая, д 1/1</ns2:Note>
-						</Address>
-						<CadastralCost Value="346345.3" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:479">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>40.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="Грушевая" Type="ул"/>
-							<ns2:Level1 Type="д" Value="1/2"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул Грушевая, д 1/2</ns2:Note>
-						</Address>
-						<CadastralCost Value="395822.34" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:480">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>75.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="83"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 83</ns2:Note>
-						</Address>
-						<CadastralCost Value="747116.29" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:481">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>187.3</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="8-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="136"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 136</ns2:Note>
-						</Address>
-						<CadastralCost Value="1853442.13" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:482">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>78.6</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="75"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 75</ns2:Note>
-						</Address>
-						<CadastralCost Value="777792.59" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:483">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>56.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="86"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 86</ns2:Note>
-						</Address>
-						<CadastralCost Value="561079.39" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:484">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>81.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="77"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 77</ns2:Note>
-						</Address>
-						<CadastralCost Value="808468.89" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:485">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>34.8</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="11-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="36"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 11-я, д 36</ns2:Note>
-						</Address>
-						<CadastralCost Value="344366.18" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Uncompleted CadastralNumber="01:05:3000010:487">
-						<ObjectType>002001005000</ObjectType>
-						<AssignationName>Нежилое</AssignationName>
-						<KeyParameters>
-							<ns4:KeyParameter Type="05" Value="80.7"/>
-						</KeyParameters>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="115"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 115</ns2:Note>
-						</Address>
-					</Uncompleted>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:488">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>97.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="17"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 17</ns2:Note>
-						</Address>
-						<CadastralCost Value="959871.26" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:489">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>112.5</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="92"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 92</ns2:Note>
-						</Address>
-						<CadastralCost Value="1113252.75" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:490">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>66.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="110"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 110</ns2:Note>
-						</Address>
-						<CadastralCost Value="653108.28" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:491">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>142.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="18"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 18</ns2:Note>
-						</Address>
-						<CadastralCost Value="1171762.7" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Uncompleted CadastralNumber="01:05:3000010:492">
-						<ObjectType>002001005000</ObjectType>
-						<AssignationName>Нежилое</AssignationName>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001400</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="126"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 126</ns2:Note>
-						</Address>
-					</Uncompleted>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Uncompleted CadastralNumber="01:05:3000010:493">
-						<ObjectType>002001005000</ObjectType>
-						<AssignationName>Нежилое</AssignationName>
-						<KeyParameters>
-							<ns4:KeyParameter Type="05" Value="72.8"/>
-						</KeyParameters>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="94"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 94</ns2:Note>
-						</Address>
-					</Uncompleted>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:494">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>127.6</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="19"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 19</ns2:Note>
-						</Address>
-						<CadastralCost Value="1262676.01" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:495">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>16.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="61"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 61</ns2:Note>
-						</Address>
-						<CadastralCost Value="160308.4" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Uncompleted CadastralNumber="01:05:3000010:496">
-						<ObjectType>002001005000</ObjectType>
-						<AssignationName>Нежилое</AssignationName>
-						<KeyParameters>
-							<ns4:KeyParameter Type="05" Value="107.5"/>
-						</KeyParameters>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="107"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 107</ns2:Note>
-						</Address>
-					</Uncompleted>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:497">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>86.8</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001200</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="4-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="91"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 91</ns2:Note>
-						</Address>
-						<CadastralCost Value="858936.34" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:500">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>232.4</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:PostalCode>385100</ns2:PostalCode>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-Я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="108"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-Я, д 108</ns2:Note>
-						</Address>
-						<CadastralCost Value="2299732.79" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:515">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>74.6</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:PostalCode>385100</ns2:PostalCode>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="68"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 68</ns2:Note>
-						</Address>
-						<CadastralCost Value="738210.27" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:516">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>116.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="8-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="139"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 8-я, д 139</ns2:Note>
-						</Address>
-						<CadastralCost Value="958039.79" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:517">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>112.7</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001600</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="8-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="139"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 8-я, д 139</ns2:Note>
-						</Address>
-						<CadastralCost Value="929983.5" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:518">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>118.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001600</ns2:KLADR>
-							<ns2:PostalCode>385100</ns2:PostalCode>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="8-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="140"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 8-я, д 140</ns2:Note>
-						</Address>
-						<CadastralCost Value="974543.49" Unit="383"/>
-					</Building>
-				</ObjectRealty>
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:473">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>145.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001400</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="123"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 6-я, д 123</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1436838.22" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:477">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>30.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="Грушевая" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="14/а"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул Грушевая, д 14/а</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="296867.4" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:478">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>35.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="Грушевая" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="1/1"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул Грушевая, д 1/1</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="346345.3" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:479">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>40.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="Грушевая" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="1/2"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул Грушевая, д 1/2</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="395822.34" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:480">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>75.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="83"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 83</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="747116.29" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:481">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>187.3</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="8-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="136"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 8-я, д 136</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1853442.13" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:482">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>78.6</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="75"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 75</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="777792.59" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:483">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>56.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="86"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 86</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="561079.39" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:484">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>81.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="77"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 77</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="808468.89" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:485">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>34.8</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="11-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="36"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 11-я, д 36</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="344366.18" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Uncompleted CadastralNumber="01:05:3000010:487">-->
+						<!--<ObjectType>002001005000</ObjectType>-->
+						<!--<AssignationName>Нежилое</AssignationName>-->
+						<!--<KeyParameters>-->
+							<!--<ns4:KeyParameter Type="05" Value="80.7"/>-->
+						<!--</KeyParameters>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="115"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 115</ns2:Note>-->
+						<!--</Address>-->
+					<!--</Uncompleted>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:488">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>97.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="17"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 17</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="959871.26" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:489">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>112.5</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="92"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 92</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1113252.75" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:490">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>66.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="110"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 110</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="653108.28" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:491">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>142.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="18"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 18</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1171762.7" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Uncompleted CadastralNumber="01:05:3000010:492">-->
+						<!--<ObjectType>002001005000</ObjectType>-->
+						<!--<AssignationName>Нежилое</AssignationName>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001400</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="126"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 126</ns2:Note>-->
+						<!--</Address>-->
+					<!--</Uncompleted>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Uncompleted CadastralNumber="01:05:3000010:493">-->
+						<!--<ObjectType>002001005000</ObjectType>-->
+						<!--<AssignationName>Нежилое</AssignationName>-->
+						<!--<KeyParameters>-->
+							<!--<ns4:KeyParameter Type="05" Value="72.8"/>-->
+						<!--</KeyParameters>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="94"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 94</ns2:Note>-->
+						<!--</Address>-->
+					<!--</Uncompleted>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:494">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>127.6</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="19"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 19</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1262676.01" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:495">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>16.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="61"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 61</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="160308.4" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Uncompleted CadastralNumber="01:05:3000010:496">-->
+						<!--<ObjectType>002001005000</ObjectType>-->
+						<!--<AssignationName>Нежилое</AssignationName>-->
+						<!--<KeyParameters>-->
+							<!--<ns4:KeyParameter Type="05" Value="107.5"/>-->
+						<!--</KeyParameters>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="107"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 107</ns2:Note>-->
+						<!--</Address>-->
+					<!--</Uncompleted>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:497">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>86.8</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001200</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="4-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="91"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 4-я, д 91</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="858936.34" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:500">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>232.4</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:PostalCode>385100</ns2:PostalCode>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-Я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="108"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-Я, д 108</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="2299732.79" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:515">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>74.6</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:PostalCode>385100</ns2:PostalCode>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="68"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 68</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="738210.27" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:516">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>116.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="8-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="139"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 8-я, д 139</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="958039.79" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:517">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>112.7</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001600</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="8-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="139"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 8-я, д 139</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="929983.5" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:518">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>118.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001600</ns2:KLADR>-->
+							<!--<ns2:PostalCode>385100</ns2:PostalCode>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="8-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="140"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 8-я, д 140</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="974543.49" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
 				<ObjectRealty>
 					<Building CadastralNumber="01:05:3000010:521">
 						<ObjectType>002001002000</ObjectType>
@@ -2050,116 +2050,116 @@
 						</EntitySpatial>
 					</Building>
 				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:522">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>155.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="днт"/>
-							<ns2:Street Name="1-я" Type="ул"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 1-я</ns2:Note>
-						</Address>
-						<CadastralCost Value="1535794.02" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:523">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>96.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000700</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="122"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 122</ns2:Note>
-						</Address>
-						<CadastralCost Value="792177.6" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:528">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>141.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="1-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="8"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 1-я, д 8</ns2:Note>
-						</Address>
-						<CadastralCost Value="1396266.34" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Uncompleted CadastralNumber="01:05:3000010:538">
-						<ObjectType>002001005000</ObjectType>
-						<AssignationName></AssignationName>
-						<KeyParameters>
-							<ns4:KeyParameter Type="05" Value="46.5"/>
-						</KeyParameters>
-						<Address>
-							<ns2:OKATO>79230000009</ns2:OKATO>
-							<ns2:KLADR>01005000009003000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:City Name="Старобжегокайское" Type="с/п"/>
-							<ns2:Locality Name="Новая Адыгея" Type="аул"/>
-							<ns2:Street Name="Северная Дамба" Type="ул"/>
-							<ns2:Level1 Type="д" Value="15/1"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, аул Новая Адыгея, ул Северная Дамба, д 15/1</ns2:Note>
-						</Address>
-						<EntitySpatial EntSys="ID1">
-							<ns3:SpatialElement>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">
-									<ns3:Ordinate X="476402.46" Y="1375657.17" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="2">
-									<ns3:Ordinate X="476395.21" Y="1375659.09" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="3">
-									<ns3:Ordinate X="476396.80" Y="1375665.09" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="4">
-									<ns3:Ordinate X="476404.05" Y="1375663.17" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-								<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">
-									<ns3:Ordinate X="476402.46" Y="1375657.17" OrdNmb="1" DeltaGeopoint="0.10"/>
-								</ns3:SpelementUnit>
-							</ns3:SpatialElement>
-						</EntitySpatial>
-					</Uncompleted>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:548">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>137.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001300</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="5-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="112"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 112</ns2:Note>
-						</Address>
-						<CadastralCost Value="1357673.58" Unit="383"/>
-					</Building>
-				</ObjectRealty>
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:522">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>155.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="днт"/>-->
+							<!--<ns2:Street Name="1-я" Type="ул"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 1-я</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1535794.02" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:523">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>96.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000700</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="122"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 6-я, д 122</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="792177.6" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:528">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>141.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="1-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="8"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 1-я, д 8</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1396266.34" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Uncompleted CadastralNumber="01:05:3000010:538">-->
+						<!--<ObjectType>002001005000</ObjectType>-->
+						<!--<AssignationName></AssignationName>-->
+						<!--<KeyParameters>-->
+							<!--<ns4:KeyParameter Type="05" Value="46.5"/>-->
+						<!--</KeyParameters>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000009</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000009003000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:City Name="Старобжегокайское" Type="с/п"/>-->
+							<!--<ns2:Locality Name="Новая Адыгея" Type="аул"/>-->
+							<!--<ns2:Street Name="Северная Дамба" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="15/1"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, аул Новая Адыгея, ул Северная Дамба, д 15/1</ns2:Note>-->
+						<!--</Address>-->
+						<!--<EntitySpatial EntSys="ID1">-->
+							<!--<ns3:SpatialElement>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">-->
+									<!--<ns3:Ordinate X="476402.46" Y="1375657.17" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="2">-->
+									<!--<ns3:Ordinate X="476395.21" Y="1375659.09" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="3">-->
+									<!--<ns3:Ordinate X="476396.80" Y="1375665.09" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="4">-->
+									<!--<ns3:Ordinate X="476404.05" Y="1375663.17" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+								<!--<ns3:SpelementUnit TypeUnit="Точка" SuNmb="1">-->
+									<!--<ns3:Ordinate X="476402.46" Y="1375657.17" OrdNmb="1" DeltaGeopoint="0.10"/>-->
+								<!--</ns3:SpelementUnit>-->
+							<!--</ns3:SpatialElement>-->
+						<!--</EntitySpatial>-->
+					<!--</Uncompleted>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:548">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>137.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001300</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="5-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="112"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 5-я, д 112</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1357673.58" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
 				<ObjectRealty>
 					<Building CadastralNumber="01:05:3000010:549">
 						<ObjectType>002001002000</ObjectType>
@@ -2215,97 +2215,97 @@
 						</EntitySpatial>
 					</Building>
 				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:555">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>155.2</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060000900</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="1-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="13"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 1-я, д 13</ns2:Note>
-						</Address>
-						<CadastralCost Value="1535794.02" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:564">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>144.9</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001400</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="120"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 6-я, д 120</ns2:Note>
-						</Address>
-						<CadastralCost Value="1433869.54" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:569">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>48.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001400</ns2:KLADR>
-							<ns2:PostalCode>385100</ns2:PostalCode>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="6-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="129/1"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 6-я, д 129/1</ns2:Note>
-						</Address>
-						<CadastralCost Value="474987.84" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:3000010:575">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204001000000</AssignationBuilding>
-						<Area>103.1</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001100</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="3-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="67"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 67</ns2:Note>
-						</Address>
-						<CadastralCost Value="1020234.3" Unit="383"/>
-					</Building>
-				</ObjectRealty>
-				<ObjectRealty>
-					<Building CadastralNumber="01:05:0000000:820">
-						<ObjectType>002001002000</ObjectType>
-						<AssignationBuilding>204002000000</AssignationBuilding>
-						<Area>35.0</Area>
-						<Address>
-							<ns2:OKATO>79230000019</ns2:OKATO>
-							<ns2:KLADR>01005000060001000</ns2:KLADR>
-							<ns2:Region>01</ns2:Region>
-							<ns2:District Name="Тахтамукайский" Type="р-н"/>
-							<ns2:Locality Name="Здоровье" Type="снт"/>
-							<ns2:Street Name="2-я" Type="ул"/>
-							<ns2:Level1 Type="д" Value="30"/>
-							<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 30</ns2:Note>
-						</Address>
-						<CadastralCost Value="288814.75" Unit="383"/>
-					</Building>
-				</ObjectRealty>
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:555">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>155.2</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060000900</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="1-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="13"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 1-я, д 13</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1535794.02" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:564">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>144.9</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001400</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="120"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 6-я, д 120</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1433869.54" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:569">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>48.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001400</ns2:KLADR>-->
+							<!--<ns2:PostalCode>385100</ns2:PostalCode>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="6-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="129/1"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, днт Здоровье, ул 6-я, д 129/1</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="474987.84" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:3000010:575">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204001000000</AssignationBuilding>-->
+						<!--<Area>103.1</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001100</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="3-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="67"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 3-я, д 67</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="1020234.3" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
+				<!--<ObjectRealty>-->
+					<!--<Building CadastralNumber="01:05:0000000:820">-->
+						<!--<ObjectType>002001002000</ObjectType>-->
+						<!--<AssignationBuilding>204002000000</AssignationBuilding>-->
+						<!--<Area>35.0</Area>-->
+						<!--<Address>-->
+							<!--<ns2:OKATO>79230000019</ns2:OKATO>-->
+							<!--<ns2:KLADR>01005000060001000</ns2:KLADR>-->
+							<!--<ns2:Region>01</ns2:Region>-->
+							<!--<ns2:District Name="Тахтамукайский" Type="р-н"/>-->
+							<!--<ns2:Locality Name="Здоровье" Type="снт"/>-->
+							<!--<ns2:Street Name="2-я" Type="ул"/>-->
+							<!--<ns2:Level1 Type="д" Value="30"/>-->
+							<!--<ns2:Note>Республика Адыгея, р-н Тахтамукайский, снт Здоровье, ул 2-я, д 30</ns2:Note>-->
+						<!--</Address>-->
+						<!--<CadastralCost Value="288814.75" Unit="383"/>-->
+					<!--</Building>-->
+				<!--</ObjectRealty>-->
 			</ObjectsRealty>
 			<OMSPoints>
 				<OMSPoint>

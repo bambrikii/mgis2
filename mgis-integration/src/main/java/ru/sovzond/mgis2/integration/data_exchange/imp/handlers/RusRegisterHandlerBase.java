@@ -419,7 +419,8 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 			t_Coord_System = true;
 			buildCoordSystem(attributes);
 			landResolver.updateCoordinateSystem(coordinateSystemDTO);
-			t_Coord_System = false;
+			buildingResolver.updateCoordinateSystem(coordinateSystemDTO);
+			incompleteConstructResolver.updateCoordinateSystem(coordinateSystemDTO);
 		}
 
 		// Capital Constructs
@@ -429,11 +430,6 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 
 		buildingBuilder.start(qName2, attrName -> byNodeAttr(attributes, attrName));
 		incompleteBuilder.start(qName2, attrName -> byNodeAttr(attributes, attrName));
-		if (t_objectRealty && byNode(qName2, COORD_SYSTEM)) {
-			buildCoordSystem(attributes);
-			buildingResolver.updateCoordinateSystem(coordinateSystemDTO);
-			incompleteConstructResolver.updateCoordinateSystem(coordinateSystemDTO);
-		}
 	}
 
 	private void buildCoordSystem(Attributes attributes) {
@@ -545,6 +541,10 @@ public abstract class RusRegisterHandlerBase extends DefaultHandler {
 		}
 		if (t_Region_Cadastr && byNodeEndsWith(qName, REGION_CADASTR)) {
 			t_Region_Cadastr = false;
+		}
+
+		if (t_Cadastral_Block && byNode(qName2, COORD_SYSTEM)) {
+			t_Coord_System = false;
 		}
 
 		// Capital Constructs

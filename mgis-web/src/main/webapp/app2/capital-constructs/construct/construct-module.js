@@ -111,6 +111,9 @@ angular.module("mgis.capital-constructs.construct", ["ui.router", "ui.bootstrap"
 		$scope.deleteItem = function (id) {
 			CapitalConstructsConstructCRUDService.removeItem(id, updateGrid);
 		}
+		$scope.pageChanged = function () {
+			updateGrid();
+		}
 
 	})
 	.controller("CapitalConstructsConstructController", function ($scope,

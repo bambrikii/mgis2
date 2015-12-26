@@ -37,6 +37,7 @@ public class DocumentContentRESTController {
 	public static final String WORD_DOCUMENT = "word";
 	public static final String PDF = "pdf";
 	public static final String UPLOAD_CHARSET = "iso8859-1";
+	private static final int MAX_ALLOWED_PREVIEW_BYTES_SIZE = 512 * 1024;
 
 	@Autowired
 	private DocumentContentBean documentContentBean;
@@ -80,6 +81,13 @@ public class DocumentContentRESTController {
 		}
 	}
 
+	private byte[] previewImage(byte[] bytes) throws IOException {
+		if (bytes.length <= MAX_ALLOWED_PREVIEW_BYTES_SIZE) {
+			return imageManipulationBean.createThumbnailFromImage(bytes);
+		}
+		return imageManipulationBean.createDocThumbnail();
+	}
+
 	@RequestMapping(value = "/{contentId}/preview")
 	@Transactional
 	public ResponseEntity<byte[]> preview(@PathVariable("contentId") Long contentId) throws IOException {
@@ -91,15 +99,15 @@ public class DocumentContentRESTController {
 			String format2 = format.toLowerCase();
 			if (format2.contains(JPEG) || format2.contains(JPG)) {
 				defaultFormat = MediaType.IMAGE_JPEG;
-				previewBytes = imageManipulationBean.createThumbnailFromImage(documentContent.getBytes());
+				previewBytes = previewImage(documentContent.getBytes());
 				break;
 			} else if (format2.contains(PNG)) {
 				defaultFormat = MediaType.IMAGE_PNG;
-				previewBytes = imageManipulationBean.createThumbnailFromImage(documentContent.getBytes());
+				previewBytes = previewImage(documentContent.getBytes());
 				break;
 			} else if (format2.contains(GIF)) {
 				defaultFormat = MediaType.IMAGE_GIF;
-				previewBytes = imageManipulationBean.createThumbnailFromImage(documentContent.getBytes());
+				previewBytes = previewImage(documentContent.getBytes());
 				break;
 			} else if (format2.contains(DOC) || format2.contains(WORD_DOCUMENT)) {
 				defaultFormat = MediaType.IMAGE_PNG;

@@ -12,7 +12,7 @@ public class ConstructionTargetDecorator implements TargetDecorator<CapitalConst
 	@Override
 	public ConstructionTargetDecorator wrap(CapitalConstruction capitalConstruction) {
 		this.capitalConstruction = capitalConstruction;
-		return null;
+		return this;
 	}
 
 	@Override
