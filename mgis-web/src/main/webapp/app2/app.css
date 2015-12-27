@@ -284,3 +284,7 @@ multiselect button.btn {
 .mgis-error-handling-modal .modal-dialog {
 	top: 165px;
 }
+
+.leaflet-layer-tree-control-leaf-wfs-zoom-to {
+	border-radius: 0px !important;
+}
