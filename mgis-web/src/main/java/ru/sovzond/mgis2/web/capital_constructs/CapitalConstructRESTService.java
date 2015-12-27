@@ -12,8 +12,6 @@ import ru.sovzond.mgis2.capital_constructs.characteristics.economical.EconomicCh
 import ru.sovzond.mgis2.capital_constructs.characteristics.technical.TechnicalCharacteristic;
 import ru.sovzond.mgis2.capital_constructs.constructive_elements.ConstructiveElement;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
-import ru.sovzond.mgis2.geo.CoordinateSystem;
-import ru.sovzond.mgis2.geo.GeometryConverter;
 import ru.sovzond.mgis2.geo.SpatialDataBean;
 import ru.sovzond.mgis2.geo.SpatialGroup;
 import ru.sovzond.mgis2.indicators.PriceIndicatorBean;
@@ -225,11 +223,13 @@ public class CapitalConstructRESTService {
 			if (landIncludedObjects.getIncludedCapitalConstructions().size() > 0) {
 				landIncludedObjects2.getIncludedCapitalConstructions().addAll(capitalConstructBean.load(landIncludedObjects.getIncludedCapitalConstructions().stream().map(construction -> construction.getId()).collect(Collectors.toList())));
 			}
+			capitalConstructBean.save(capitalConstruct2);
 		} else {
 			if (capitalConstruct2.getLandIncludedObjects() == null) {
 				landIncludedObjects = new LandIncludedObjects();
 				capitalConstruct2.setLandIncludedObjects(landIncludedObjects);
 			}
+			capitalConstructBean.save(capitalConstruct2);
 		}
 
 		// Spatial Data
@@ -241,17 +241,7 @@ public class CapitalConstructRESTService {
 			}
 			spatialGroup2 = spatialDataBean.save(spatialGroup, spatialGroup2);
 			capitalConstruct2.setSpatialData(spatialGroup2);
-			if (spatialGroup2 != null) {
-				CoordinateSystem coordinateSystem = spatialGroup2.getCoordinateSystem();
-				if (coordinateSystem != null) {
-					String conversionRules = coordinateSystem.getConversionRules();
-					if (conversionRules != null && conversionRules.length() > 0) {
-						GeometryConverter converter = new GeometryConverter(conversionRules);
-						capitalConstruct2.setGeometry(converter.convert(converter.createMultipolygon(spatialGroup2.getSpatialElements())));
-					}
-				}
-			}
-
+			capitalConstruct2.setGeometry(spatialDataBean.buildGeometry(spatialGroup2));
 		}
 
 		capitalConstructBean.save(capitalConstruct2);
