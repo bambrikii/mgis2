@@ -5,13 +5,13 @@ import java.util.function.Predicate;
 /**
  * Created by Alexander Arakelyan on 25.12.15.
  */
-public abstract class HeirarchialNodeBuilder<T> extends NodeBuilder<T> {
+public abstract class HierarchicalNodeBuilder<T> extends NodeBuilder<T> {
 
-	public HeirarchialNodeBuilder(NodeBuilder parent, Predicate<String> evaluator) {
+	public HierarchicalNodeBuilder(NodeBuilder parent, Predicate<String> evaluator) {
 		super(parent, evaluator);
 	}
 
-	public HeirarchialNodeBuilder(NodeBuilder parent, Predicate<String> evaluator, NodeBuilderEndEvent<T> endEvent) {
+	public HierarchicalNodeBuilder(NodeBuilder parent, Predicate<String> evaluator, NodeBuilderEndEvent<T> endEvent) {
 		super(parent, evaluator, endEvent);
 	}
 

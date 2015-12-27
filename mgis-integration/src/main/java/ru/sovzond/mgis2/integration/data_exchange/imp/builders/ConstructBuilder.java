@@ -10,7 +10,7 @@ import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegiste
 /**
  * Created by Alexander Arakelyan on 24.12.15.
  */
-public abstract class ConstructBuilder<T extends ConstructDTO> extends HeirarchialNodeBuilder<T> {
+public abstract class ConstructBuilder<T extends ConstructDTO> extends HierarchicalNodeBuilder<T> {
 
 	protected String cadastralNumber;
 	public final StringNodeBuilder objectType;

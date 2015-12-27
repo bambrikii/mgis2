@@ -1,7 +1,7 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.builders;
 
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.AttributeValueExtractor;
-import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.HeirarchialNodeBuilder;
+import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.HierarchicalNodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.EntitySpatialDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.SpatialElementDTO;
@@ -15,7 +15,7 @@ import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegiste
 /**
  * Created by Alexander Arakelyan on 25.12.15.
  */
-public class EntitySpatialBuilder extends HeirarchialNodeBuilder<EntitySpatialDTO> {
+public class EntitySpatialBuilder extends HierarchicalNodeBuilder<EntitySpatialDTO> {
 
 	private final List<SpatialElementDTO> spatialElements = new ArrayList<>();
 	private final SpatialElementBuilder spatialElement;
