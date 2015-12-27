@@ -17,7 +17,6 @@ import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.IncompleteDTO;
 import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.ConstructSourceDecorator;
 import ru.sovzond.mgis2.integration.data_exchange.imp.resolvers.ConstructionTargetDecorator;
-import ru.sovzond.mgis2.lands.includes.LandIncludedObjects;
 import ru.sovzond.mgis2.rights.PropertyRights;
 
 /**
@@ -83,12 +82,6 @@ public class BuildingResolverBean {
 		if (constructionCharacteristics == null) {
 			constructionCharacteristics = new ConstructionCharacteristics();
 			capitalConstruction.setCharacteristics(constructionCharacteristics);
-		}
-
-		LandIncludedObjects landIncludedObjects = capitalConstruction.getLandIncludedObjects();
-		if (landIncludedObjects == null) {
-			landIncludedObjects = new LandIncludedObjects();
-			capitalConstruction.setLandIncludedObjects(landIncludedObjects);
 		}
 
 		fillSpatialData(constructDTO, capitalConstruction);

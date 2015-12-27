@@ -1,5 +1,7 @@
 package ru.sovzond.mgis2.lands.includes;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import ru.sovzond.mgis2.capital_constructs.CapitalConstruction;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.lands.Land;
@@ -14,6 +16,7 @@ import java.util.stream.Collectors;
  */
 @Entity
 @Table(name = "lands_included_objects")
+@OnDelete(action = OnDeleteAction.CASCADE)
 public class LandIncludedObjects implements Cloneable {
 
 	@Id
