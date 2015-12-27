@@ -8,7 +8,7 @@ import ru.sovzond.mgis2.capital_constructs.CapitalConstruction;
 import ru.sovzond.mgis2.capital_constructs.ConstructionType;
 import ru.sovzond.mgis2.capital_constructs.characteristics.ConstructionCharacteristics;
 import ru.sovzond.mgis2.geo.CoordinateSystem;
-import ru.sovzond.mgis2.geo.GeometryConverter;
+import ru.sovzond.mgis2.geo.SpatialDataBean;
 import ru.sovzond.mgis2.geo.SpatialGroup;
 import ru.sovzond.mgis2.geo.SpatialGroupBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.BuildingDTO;
@@ -37,6 +37,9 @@ public class BuildingResolverBean {
 
 	@Autowired
 	private SpatialGroupBean spatialGroupBean;
+
+	@Autowired
+	private SpatialDataBean spatialDataBean;
 
 	@Autowired
 	private SpatialDataResolverBean spatialDataResolverBean;
@@ -112,8 +115,7 @@ public class BuildingResolverBean {
 			CoordinateSystem coordinateSystem = spatialDataResolverBean.resolveCoordinateSystem(coordinateSystemDTO.getName(), null);
 			spatialData.setCoordinateSystem(coordinateSystem);
 			spatialGroupBean.save(spatialData);
-			GeometryConverter converter = new GeometryConverter(coordinateSystem.getConversionRules());
-			construct.setGeometry(converter.convert(converter.createMultipolygon(spatialData.getSpatialElements())));
+			construct.setGeometry(spatialDataBean.buildGeometry(spatialData));
 			capitalConstructBean.save(construct);
 		}
 	}

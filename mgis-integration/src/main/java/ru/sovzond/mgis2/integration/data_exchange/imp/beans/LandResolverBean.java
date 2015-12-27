@@ -3,7 +3,7 @@ package ru.sovzond.mgis2.integration.data_exchange.imp.beans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sovzond.mgis2.geo.CoordinateSystem;
-import ru.sovzond.mgis2.geo.GeometryConverter;
+import ru.sovzond.mgis2.geo.SpatialDataBean;
 import ru.sovzond.mgis2.geo.SpatialGroup;
 import ru.sovzond.mgis2.geo.SpatialGroupBean;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.CoordinateSystemDTO;
@@ -64,6 +64,9 @@ public class LandResolverBean {
 	@Autowired
 	private SpatialDataResolverBean spatialDataResolverBean;
 
+	@Autowired
+	private SpatialDataBean spatialDataBean;
+
 	private Pattern cadastralNumberPattern = Pattern.compile(CADASTRAL_BLOCK_PATTERN);
 
 	private LandRightKind resolveLandRightKind(String name, String type) {
@@ -78,8 +81,7 @@ public class LandResolverBean {
 			CoordinateSystem coordinateSystem = spatialDataResolverBean.resolveCoordinateSystem(coordinateSystemDTO.getName(), null);
 			spatialData.setCoordinateSystem(coordinateSystem);
 			spatialGroupBean.save(spatialData);
-			GeometryConverter converter = new GeometryConverter(coordinateSystem.getConversionRules());
-			land.setGeometry(converter.convert(converter.createMultipolygon(spatialData.getSpatialElements())));
+			land.setGeometry(spatialDataBean.buildGeometry(spatialData));
 			landBean.save(land);
 		}
 	}
