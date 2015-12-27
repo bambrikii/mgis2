@@ -20,20 +20,20 @@ public class AddressLevel1Builder extends NodeBuilder<String[]> {
 	}
 
 	@Override
-	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
+	protected void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
 		values[0] = attributeValueExtractor.attribute(TYPE_ALL_ATTR);
 		values[1] = attributeValueExtractor.attribute(VALUE_ATTR);
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		super.resetImpl();
 		values[0] = null;
 		values[1] = null;
 	}
 
 	@Override
-	public String[] buildImpl() {
+	protected String[] buildImpl() {
 		return values;
 	}
 }

@@ -7,11 +7,11 @@ import java.util.function.Predicate;
  */
 public abstract class HierarchicalNodeBuilder<T> extends NodeBuilder<T> {
 
-	public HierarchicalNodeBuilder(NodeBuilder parent, Predicate<String> evaluator) {
+	protected HierarchicalNodeBuilder(NodeBuilder parent, Predicate<String> evaluator) {
 		super(parent, evaluator);
 	}
 
-	public HierarchicalNodeBuilder(NodeBuilder parent, Predicate<String> evaluator, NodeBuilderEndEvent<T> endEvent) {
+	protected HierarchicalNodeBuilder(NodeBuilder parent, Predicate<String> evaluator, NodeBuilderEndEvent<T> endEvent) {
 		super(parent, evaluator, endEvent);
 	}
 
@@ -87,7 +87,7 @@ public abstract class HierarchicalNodeBuilder<T> extends NodeBuilder<T> {
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		NodeBuilder[] children = children();
 		for (int i = 0; i < children.length; i++) {
 			children[i].reset();

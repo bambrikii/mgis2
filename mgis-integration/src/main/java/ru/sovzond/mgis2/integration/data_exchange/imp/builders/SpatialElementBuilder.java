@@ -28,7 +28,7 @@ public class SpatialElementBuilder extends HierarchicalNodeBuilder<SpatialElemen
 	}
 
 	@Override
-	public SpatialElementDTO buildImpl() {
+	protected SpatialElementDTO buildImpl() {
 		SpatialElementDTO spatialElementDTO = new SpatialElementDTO();
 		spatialElementDTO.setSpatialElementUnits(new ArrayList(spatialElementUnits));
 		spatialElementUnits.clear();
@@ -41,7 +41,7 @@ public class SpatialElementBuilder extends HierarchicalNodeBuilder<SpatialElemen
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		spatialElementUnits.clear();
 		spatialElementUnit.resetImpl();
 	}

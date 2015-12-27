@@ -23,12 +23,12 @@ public class NodeBuilderFactory {
 			}
 
 			@Override
-			public boolean isActive() {
+			protected boolean isActive() {
 				return true;
 			}
 
 			@Override
-			public T buildImpl() {
+			protected T buildImpl() {
 				throw new NotImplementedException();
 			}
 		};

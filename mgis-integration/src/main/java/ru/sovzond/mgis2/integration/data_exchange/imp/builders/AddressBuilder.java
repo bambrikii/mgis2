@@ -44,7 +44,7 @@ public class AddressBuilder extends HierarchicalNodeBuilder<AddressDTO> {
 	}
 
 	@Override
-	public AddressDTO buildImpl() {
+	protected AddressDTO buildImpl() {
 		AddressDTO addressDTO = new AddressDTO();
 
 		addressDTO.setOkato(okato.build());

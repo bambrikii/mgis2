@@ -11,7 +11,7 @@ public class StringNodeBuilder extends NodeBuilder<String> {
 	}
 
 	@Override
-	public String buildImpl() {
+	protected String buildImpl() {
 		return content;
 	}
 }

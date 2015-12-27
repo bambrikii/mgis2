@@ -37,7 +37,7 @@ public class EntitySpatialBuilder extends HierarchicalNodeBuilder<EntitySpatialD
 	}
 
 	@Override
-	public EntitySpatialDTO buildImpl() {
+	protected EntitySpatialDTO buildImpl() {
 		EntitySpatialDTO entitySpatialDTO = new EntitySpatialDTO();
 		entitySpatialDTO.setEntSys(entSys);
 		entitySpatialDTO.setSpatialElements(new ArrayList<>(spatialElements));
@@ -45,7 +45,7 @@ public class EntitySpatialBuilder extends HierarchicalNodeBuilder<EntitySpatialD
 	}
 
 	@Override
-	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
+	protected void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
 		entSys = attributeValueExtractor.attribute(ENT_SYS_ATTR);
 	}
 
@@ -55,7 +55,7 @@ public class EntitySpatialBuilder extends HierarchicalNodeBuilder<EntitySpatialD
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		spatialElements.clear();
 		entSys = null;
 	}

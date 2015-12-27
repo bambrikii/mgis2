@@ -33,7 +33,7 @@ public class SpatialElementUnitBuilder extends HierarchicalNodeBuilder<SpatialEl
 	}
 
 	@Override
-	public SpatialElementUnitDTO buildImpl() {
+	protected SpatialElementUnitDTO buildImpl() {
 		SpatialElementUnitDTO spatialElementUnitDTO = new SpatialElementUnitDTO();
 		spatialElementUnitDTO.setOrdinates(new ArrayList<>(this.ordinates));
 		spatialElementUnitDTO.setSuNumb(suNumb);
@@ -43,7 +43,7 @@ public class SpatialElementUnitBuilder extends HierarchicalNodeBuilder<SpatialEl
 	}
 
 	@Override
-	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
+	protected void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
 		super.extractAttributes(attributeValueExtractor);
 		suNumb = Integer.parseInt(attributeValueExtractor.attribute(SU_NMB_ATTR));
 		typeUnit = attributeValueExtractor.attribute(TYPE_UNIT_ATTR);
@@ -55,7 +55,7 @@ public class SpatialElementUnitBuilder extends HierarchicalNodeBuilder<SpatialEl
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		ordinates.clear();
 		suNumb = null;
 		typeUnit = null;
