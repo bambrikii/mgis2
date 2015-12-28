@@ -1,6 +1,6 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.builders;
 
-import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.HeirarchialNodeBuilder;
+import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.HierarchicalNodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.StringNodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.AddressDTO;
@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 /**
  * Created by Alexander Arakelyan on 24.12.15.
  */
-public class AddressBuilder extends HeirarchialNodeBuilder<AddressDTO> {
+public class AddressBuilder extends HierarchicalNodeBuilder<AddressDTO> {
 
 	public final StringNodeBuilder okato;
 	public final StringNodeBuilder kladr;
@@ -44,7 +44,7 @@ public class AddressBuilder extends HeirarchialNodeBuilder<AddressDTO> {
 	}
 
 	@Override
-	public AddressDTO buildImpl() {
+	protected AddressDTO buildImpl() {
 		AddressDTO addressDTO = new AddressDTO();
 
 		addressDTO.setOkato(okato.build());

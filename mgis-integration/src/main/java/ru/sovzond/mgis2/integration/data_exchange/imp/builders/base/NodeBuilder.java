@@ -13,13 +13,13 @@ public abstract class NodeBuilder<T> {
 	protected final Predicate<String> evaluator;
 	private boolean visited;
 
-	public NodeBuilder(NodeBuilder parent, Predicate<String> evaluator) {
+	protected NodeBuilder(NodeBuilder parent, Predicate<String> evaluator) {
 		this.parent = parent;
 		this.endEvent = null;
 		this.evaluator = evaluator;
 	}
 
-	public NodeBuilder(NodeBuilder parent, Predicate<String> evaluator, NodeBuilderEndEvent<T> endEvent) {
+	protected NodeBuilder(NodeBuilder parent, Predicate<String> evaluator, NodeBuilderEndEvent<T> endEvent) {
 		this.parent = parent;
 		this.endEvent = endEvent;
 		this.evaluator = evaluator;
@@ -36,7 +36,7 @@ public abstract class NodeBuilder<T> {
 		return isActive();
 	}
 
-	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
+	protected void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
 
 	}
 
@@ -64,7 +64,7 @@ public abstract class NodeBuilder<T> {
 		return null;
 	}
 
-	public abstract T buildImpl();
+	protected abstract T buildImpl();
 
 	public final void reset() {
 		content = null;
@@ -76,20 +76,20 @@ public abstract class NodeBuilder<T> {
 	protected void resetImpl() {
 	}
 
-	public boolean isActive() {
+	protected boolean isActive() {
 		return active;
 	}
 
-	public void setActive() {
+	protected void setActive() {
 		active = true;
 		visited = true;
 	}
 
-	public final void setInactive() {
+	protected final void setInactive() {
 		active = false;
 	}
 
-	public final boolean isVisited() {
+	protected final boolean isVisited() {
 		return visited;
 	}
 

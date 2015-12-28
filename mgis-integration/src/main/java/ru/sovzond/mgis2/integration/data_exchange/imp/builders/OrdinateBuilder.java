@@ -23,14 +23,14 @@ public class OrdinateBuilder extends NodeBuilder<OrdinateDTO> {
 	}
 
 	@Override
-	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
+	protected void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
 		ordNumber = Integer.parseInt(attributeValueExtractor.attribute(ORD_ATTR));
 		x = Double.parseDouble(attributeValueExtractor.attribute(X_ATTR));
 		y = Double.parseDouble(attributeValueExtractor.attribute(Y_ATTR));
 	}
 
 	@Override
-	public OrdinateDTO buildImpl() {
+	protected OrdinateDTO buildImpl() {
 		OrdinateDTO ordinateDTO = new OrdinateDTO();
 		ordinateDTO.setOrdNumber(ordNumber);
 		ordinateDTO.setX(x);
@@ -39,7 +39,7 @@ public class OrdinateBuilder extends NodeBuilder<OrdinateDTO> {
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		super.resetImpl();
 		ordNumber = null;
 		x = null;

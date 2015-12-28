@@ -14,7 +14,10 @@
 	<div>
 		<div ng-repeat="item in constructsPager.list" class="row" style="padding: 5px;">
 			<div class="col-sm-2">{{item.name}}</div>
-			<div class="col-sm-2">{{item.cadastralNumber}}</div>
+			<div class="col-sm-2">
+				{{item.cadastralNumber}}
+				<span class="glyphicon glyphicon-map-marker" ng-if="item.spatialData|spatialDataExistsFilter"></span>
+			</div>
 			<div class="col-sm-3">{{item.address|addressFormatter}}</div>
 			<div class="col-sm-2">{{item.actualUsage}}</div>
 			<div class="col-sm-3">

@@ -15,23 +15,23 @@ public class CadastralCostBuilder extends NodeBuilder<Number[]> {
 	private Double value;
 	private Integer unit;
 
-	public CadastralCostBuilder(ConstructBuilder constructBuilder, Predicate<String> cadastralCostPredicate) {
+	protected CadastralCostBuilder(ConstructBuilder constructBuilder, Predicate<String> cadastralCostPredicate) {
 		super(constructBuilder, cadastralCostPredicate);
 	}
 
 	@Override
-	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
+	protected void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
 		value = Double.parseDouble(attributeValueExtractor.attribute(CADASTRAL_COST_VALUE_ATTR));
 		unit = Integer.parseInt(attributeValueExtractor.attribute(CADASTRAL_COST_UNIT_ATTR));
 	}
 
 	@Override
-	public Number[] buildImpl() {
+	protected Number[] buildImpl() {
 		return new Number[]{value, unit};
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		super.resetImpl();
 		value = null;
 		unit = null;

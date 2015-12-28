@@ -1,6 +1,6 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.builders;
 
-import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.HeirarchialNodeBuilder;
+import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.HierarchicalNodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilderEndEvent;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.SpatialElementDTO;
@@ -13,7 +13,7 @@ import java.util.function.Predicate;
 /**
  * Created by Alexander Arakelyan on 25.12.15.
  */
-public class SpatialElementBuilder extends HeirarchialNodeBuilder<SpatialElementDTO> {
+public class SpatialElementBuilder extends HierarchicalNodeBuilder<SpatialElementDTO> {
 
 	private List<SpatialElementUnitDTO> spatialElementUnits = new ArrayList<>();
 
@@ -28,7 +28,7 @@ public class SpatialElementBuilder extends HeirarchialNodeBuilder<SpatialElement
 	}
 
 	@Override
-	public SpatialElementDTO buildImpl() {
+	protected SpatialElementDTO buildImpl() {
 		SpatialElementDTO spatialElementDTO = new SpatialElementDTO();
 		spatialElementDTO.setSpatialElementUnits(new ArrayList(spatialElementUnits));
 		spatialElementUnits.clear();
@@ -41,7 +41,7 @@ public class SpatialElementBuilder extends HeirarchialNodeBuilder<SpatialElement
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		spatialElementUnits.clear();
 		spatialElementUnit.resetImpl();
 	}

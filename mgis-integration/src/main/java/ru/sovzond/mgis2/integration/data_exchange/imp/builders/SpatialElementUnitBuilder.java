@@ -1,7 +1,7 @@
 package ru.sovzond.mgis2.integration.data_exchange.imp.builders;
 
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.AttributeValueExtractor;
-import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.HeirarchialNodeBuilder;
+import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.HierarchicalNodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilder;
 import ru.sovzond.mgis2.integration.data_exchange.imp.builders.base.NodeBuilderEndEvent;
 import ru.sovzond.mgis2.integration.data_exchange.imp.dto.OrdinateDTO;
@@ -17,7 +17,7 @@ import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegiste
 /**
  * Created by Alexander Arakelyan on 25.12.15.
  */
-public class SpatialElementUnitBuilder extends HeirarchialNodeBuilder<SpatialElementUnitDTO> {
+public class SpatialElementUnitBuilder extends HierarchicalNodeBuilder<SpatialElementUnitDTO> {
 
 	private List<OrdinateDTO> ordinates = new ArrayList<>();
 	public final OrdinateBuilder ordinate;
@@ -33,7 +33,7 @@ public class SpatialElementUnitBuilder extends HeirarchialNodeBuilder<SpatialEle
 	}
 
 	@Override
-	public SpatialElementUnitDTO buildImpl() {
+	protected SpatialElementUnitDTO buildImpl() {
 		SpatialElementUnitDTO spatialElementUnitDTO = new SpatialElementUnitDTO();
 		spatialElementUnitDTO.setOrdinates(new ArrayList<>(this.ordinates));
 		spatialElementUnitDTO.setSuNumb(suNumb);
@@ -43,7 +43,7 @@ public class SpatialElementUnitBuilder extends HeirarchialNodeBuilder<SpatialEle
 	}
 
 	@Override
-	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
+	protected void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
 		super.extractAttributes(attributeValueExtractor);
 		suNumb = Integer.parseInt(attributeValueExtractor.attribute(SU_NMB_ATTR));
 		typeUnit = attributeValueExtractor.attribute(TYPE_UNIT_ATTR);
@@ -55,7 +55,7 @@ public class SpatialElementUnitBuilder extends HeirarchialNodeBuilder<SpatialEle
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		ordinates.clear();
 		suNumb = null;
 		typeUnit = null;

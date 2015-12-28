@@ -7,7 +7,7 @@
 								ng-model="value"
 								is-open="opened"
 								datepicker-options="dateOptions"
-								date-disabled="disabled(date, mode)"
+								date-disabled="dateDisabled(date, mode)"
 								ng-click="open($event)"
 								ng-change="valueChangedInternal()"
 								close-text="{{'Calendar.Done'|translate}}"
@@ -15,8 +15,8 @@
 								current-text="{{'Calendar.Today'|translate}}"
 								min-date="minDate"
 								max-date="maxDate"
-                                name="{{name}}"
-                                ng-required="{{required}}"
+								name="{{name}}"
+								ng-required="{{required}}"
 								/>
 						<button class="btn btn-default" ng-click="open($event)"><i
 								class="glyphicon glyphicon-calendar"></i></button>

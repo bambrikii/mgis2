@@ -1,5 +1,6 @@
 package ru.sovzond.mgis2.geo;
 
+import com.vividsolutions.jts.geom.MultiPolygon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +43,20 @@ public class SpatialDataBean {
 		return persistent;
 	}
 
+	public MultiPolygon buildGeometry(SpatialGroup spatialGroup2) {
+		if (spatialGroup2 != null) {
+			CoordinateSystem coordinateSystem = spatialGroup2.getCoordinateSystem();
+			if (coordinateSystem != null) {
+				String conversionRules = coordinateSystem.getConversionRules();
+				if (conversionRules != null && conversionRules.length() > 0) {
+					GeometryConverter converter = new GeometryConverter(conversionRules);
+					MultiPolygon multipolygon = converter.createMultipolygon(spatialGroup2.getSpatialElements());
+					if (!(multipolygon == null || multipolygon.isEmpty())) {
+						return converter.convert(multipolygon);
+					}
+				}
+			}
+		}
+		return null;
+	}
 }

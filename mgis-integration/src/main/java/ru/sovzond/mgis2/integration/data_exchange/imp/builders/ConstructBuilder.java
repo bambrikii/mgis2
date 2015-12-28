@@ -10,15 +10,15 @@ import static ru.sovzond.mgis2.integration.data_exchange.imp.handlers.RusRegiste
 /**
  * Created by Alexander Arakelyan on 24.12.15.
  */
-public abstract class ConstructBuilder<T extends ConstructDTO> extends HeirarchialNodeBuilder<T> {
+public abstract class ConstructBuilder<T extends ConstructDTO> extends HierarchicalNodeBuilder<T> {
 
 	protected String cadastralNumber;
-	public final StringNodeBuilder objectType;
-	public StringNodeBuilder assignationBuilding;
-	public final DoubleNodeBuilder area;
-	public final AddressBuilder address;
-	public final CadastralCostBuilder cadastralCost;
-	public final EntitySpatialBuilder entitySpatial;
+	protected final StringNodeBuilder objectType;
+	protected StringNodeBuilder assignationBuilding;
+	protected final DoubleNodeBuilder area;
+	protected final AddressBuilder address;
+	protected final CadastralCostBuilder cadastralCost;
+	protected final EntitySpatialBuilder entitySpatial;
 
 	public ConstructBuilder(
 			Predicate<String> constructPredicate,
@@ -61,12 +61,12 @@ public abstract class ConstructBuilder<T extends ConstructDTO> extends Heirarchi
 	}
 
 	@Override
-	public void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
+	protected void extractAttributes(AttributeValueExtractor attributeValueExtractor) {
 		cadastralNumber = attributeValueExtractor.attribute(CADASTRAL_NUMBER_ATTR);
 	}
 
 	@Override
-	public abstract T buildImpl();
+	protected abstract T buildImpl();
 
 	@Override
 	protected NodeBuilder[] children() {
@@ -74,7 +74,7 @@ public abstract class ConstructBuilder<T extends ConstructDTO> extends Heirarchi
 	}
 
 	@Override
-	public void resetImpl() {
+	protected void resetImpl() {
 		super.resetImpl();
 		cadastralNumber = null;
 	}

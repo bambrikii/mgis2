@@ -8,8 +8,6 @@ import ru.sovzond.mgis2.capital_construct.CapitalConstructBean;
 import ru.sovzond.mgis2.capital_constructs.CapitalConstruction;
 import ru.sovzond.mgis2.common.classifiers.ExecutivePersonBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
-import ru.sovzond.mgis2.geo.CoordinateSystem;
-import ru.sovzond.mgis2.geo.GeometryConverter;
 import ru.sovzond.mgis2.geo.SpatialDataBean;
 import ru.sovzond.mgis2.geo.SpatialGroup;
 import ru.sovzond.mgis2.isogd.business.DocumentBean;
@@ -305,17 +303,7 @@ public class LandRESTController implements Serializable {
 			}
 			spatialGroup2 = spatialDataBean.save(spatialGroup, spatialGroup2);
 			land2.setSpatialData(spatialGroup2);
-			if (spatialGroup2 != null) {
-				CoordinateSystem coordinateSystem = spatialGroup2.getCoordinateSystem();
-				if (coordinateSystem != null) {
-					String conversionRules = coordinateSystem.getConversionRules();
-					if (conversionRules != null && conversionRules.length() > 0) {
-						GeometryConverter converter = new GeometryConverter(conversionRules);
-						land2.setGeometry(converter.convert(converter.createMultipolygon(spatialGroup2.getSpatialElements())));
-					}
-				}
-			}
-
+			land2.setGeometry(spatialDataBean.buildGeometry(spatialGroup2));
 		}
 
 		landBean.save(land2);
