@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.sovzond.mgis2.address.AddressBean;
 import ru.sovzond.mgis2.capital_construct.CapitalConstructBean;
 import ru.sovzond.mgis2.capital_constructs.CapitalConstruction;
-import ru.sovzond.mgis2.common.classifiers.ExecutivePersonBean;
+import ru.sovzond.mgis2.persons.ExecutivePersonBean;
 import ru.sovzond.mgis2.dataaccess.base.PageableContainer;
 import ru.sovzond.mgis2.geo.SpatialDataBean;
 import ru.sovzond.mgis2.geo.SpatialGroup;

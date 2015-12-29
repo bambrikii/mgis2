@@ -285,6 +285,10 @@ multiselect button.btn {
 	top: 165px;
 }
 
+.search-control-group{
+padding: 0px 0px 20px;
+}
+
 .leaflet-layer-tree-control-leaf-wfs-zoom-to {
 	border-radius: 0px !important;
 }

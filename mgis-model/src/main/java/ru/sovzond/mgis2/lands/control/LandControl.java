@@ -1,6 +1,6 @@
 package ru.sovzond.mgis2.lands.control;
 
-import ru.sovzond.mgis2.common.classifiers.ExecutivePerson;
+import ru.sovzond.mgis2.registers.persons.ExecutivePerson;
 import ru.sovzond.mgis2.isogd.document.Document;
 import ru.sovzond.mgis2.registers.persons.Person;
 

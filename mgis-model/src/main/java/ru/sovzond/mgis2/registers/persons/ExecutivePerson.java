@@ -1,4 +1,4 @@
-package ru.sovzond.mgis2.common.classifiers;
+package ru.sovzond.mgis2.registers.persons;
 
 import javax.persistence.*;
 
@@ -14,12 +14,20 @@ public class ExecutivePerson implements Cloneable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column
 	private Long id;
+	/**
+	 * ФИО
+	 */
+	@Column
+	private String firstName;
+
+	@Column
+	private String surname;
+
+	@Column
+	private String patronymic;
 
 	@Column
 	private String position;
-
-	@Column(name = "full_name")
-	private String fullName;
 
 
 	public Long getId() {
@@ -30,6 +38,31 @@ public class ExecutivePerson implements Cloneable {
 		this.id = id;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getPatronymic() {
+		return patronymic;
+	}
+
+	public void setPatronymic(String patronymic) {
+		this.patronymic = patronymic;
+	}
+
+
 	public String getPosition() {
 		return position;
 	}
@@ -38,19 +71,14 @@ public class ExecutivePerson implements Cloneable {
 		this.position = position;
 	}
 
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String name) {
-		this.fullName = name;
-	}
 
 	public ExecutivePerson clone() {
 		ExecutivePerson person = new ExecutivePerson();
 		person.setId(id);
+		person.setFirstName(firstName);
+		person.setSurname(surname);
+		person.setPatronymic(patronymic);
 		person.setPosition(position);
-		person.setFullName(fullName);
 		return person;
 	}
 

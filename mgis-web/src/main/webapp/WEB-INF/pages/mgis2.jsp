@@ -166,6 +166,10 @@
 	<script type="text/javascript" src="app2/persons/legal-person/legal-person-service.js"></script>
 	<script type="text/javascript" src="app2/persons/legal-person/legal-person-module.js"></script>
 	<script type="text/javascript" src="app2/persons/person-selector/person-selector-component.js"></script>
+	<script type="text/javascript" src="app2/persons/executive-person/executive-person-selector-component.js"></script>
+	<script type="text/javascript" src="app2/persons/executive-person/executive-person-list-module.js"></script>
+	<script type="text/javascript" src="app2/persons/executive-person/executive-person-list-service.js"></script>
+
 
 	<script type="text/javascript" src="app2/address/address-service.js"></script>
 	<script type="text/javascript" src="app2/address/address-module.js"></script>
