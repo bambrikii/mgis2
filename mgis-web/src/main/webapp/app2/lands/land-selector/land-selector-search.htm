@@ -7,7 +7,8 @@
 		<ul class="list-group">
 			<li class="list-group-item mgis-document-selector-list-item" ng-repeat="item in selectedItems">
 				<div class="row mgis-grid-row">
-					<div class="col-sm-2"><a href="javascript:void(0)" ng-click="editItem(item.id)">{{item.cadastralNumber}}</a></div>
+					<div class="col-sm-2"><a href="javascript:void(0)" ng-click="editItem(item.id)">{{item.cadastralNumber}}</a>
+					</div>
 					<div class="col-sm-4">{{item.address|addressFormatter}}</div>
 					<div class="col-sm-2">{{item.rights.totalArea}}</div>
 					<div class="col-sm-4">
@@ -24,7 +25,8 @@
 					<label for="cadastralNumber" translate>CadastralNumber</label>
 
 					<div class="controls form-inline">
-						<input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber" class="form-control"/>
+						<input type="text" id="cadastralNumber" name="cadastralNumber" ng-model="cadastralNumber"
+							   class="form-control"/>
 						<button class="btn btn-sm btn-primary" ng-click="find(cadastralNumber)" translate>Find</button>
 						<button class="btn btn-sm btn-info" ng-click="addItem()" translate>Add</button>
 					</div>
@@ -71,6 +73,8 @@
 </div>
 
 <div class="modal-footer">
-	<button type="submit" class="btn btn-primary" ng-disabled="landSelectionForm.$invalid" ng-click="ok()" translate>Submit</button>
+	<button type="submit" class="btn btn-primary" ng-disabled="landSelectionForm.$invalid" ng-click="ok()" translate>
+		Submit
+	</button>
 	<button type="button" class="btn btn-default" ng-click="cancel()" translate>Cancel</button>
 </div>

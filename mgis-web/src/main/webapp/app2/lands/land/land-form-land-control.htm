@@ -12,6 +12,7 @@
 			<div class="col-sm-8">
 				<person-selector person="land.control.inspectedPerson"/>
 			</div>
+
 		</div>
 
 		<div class="form-group row">
@@ -20,15 +21,7 @@
 			</div>
 
 			<div class="col-sm-8">
-				<p class="input-group input-group-sm">
-					<multiselect
-							ng-model="land.control.executivePerson"
-							options="(c.fullName+' ('+c.position+')') for c in availableExecutivePersons"
-							data-multiple="false"
-							data-compare-by="id"
-							scroll-after-rows="15">
-					</multiselect>
-				</p>
+				<executive-person-selector person="land.control.executivePerson"/>
 			</div>
 		</div>
 

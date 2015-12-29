@@ -265,6 +265,10 @@
   "NaturalPerson.Surname": "Фамилия",
   "NaturalPerson.Patronymic": "Отчество",
   "NaturalPerson.CertificateType": "Тип документа",
+  "ExecutivePerson.Selector": "Выбрать должностное лицо",
+  "ExecutivePerson.Edit": "Редактировать должностное лицо",
+  "ExecutivePerson.Position": "Позиция",
+  "ExecutivePerson.MainInformation": "Основная информация",
   "OKATO": "ОКАТО",
   "KLADR": "КЛАДР",
   "Address.Selector": "Выбрать адрес",
@@ -432,5 +436,8 @@
   "File": "Файл",
   "MilliSeconds": "мс",
   "RusRegister.Schemes.Region_Cadastr": "КПТ версия -",
-  "RusRegister.Schemes.KPTv9": "КПТ версия 9"
+  "RusRegister.Schemes.KPTv9": "КПТ версия 9",
+  "FirstName": "Имя",
+  "Surname": "Фамилия",
+  "Patronymic": "Отчество"
 }

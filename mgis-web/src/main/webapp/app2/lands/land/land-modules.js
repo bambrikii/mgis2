@@ -3,7 +3,6 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.commons.forms", //
 	"mgis.lands.services",
 	"mgis.nc.services",
-	"mgis.commons.executive_person.service",
 	"mgis.terr-zones.zone.service",
 	"mgis.persons.person",
 	"mgis.lands.land.map",
@@ -13,7 +12,9 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 	"mgis.address",
 	"mgis.reports.report",
 	"mgis.lands.land-selector",
-	"mgis.capital-constructs.construct-selector"
+	"mgis.capital-constructs.construct-selector",
+	"mgis.persons.executive.person",
+	"mgis.persons.executive.person.list.service"
 ])
 	.config(function ($stateProvider) {
 		$stateProvider
@@ -31,7 +32,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 											   NcLandCategoryService,
 											   NcOKFSService,
 											   NcLandEncumbranceService,
-											   CommonExecutivePersonService,
+											   ExecutivePersonService,
 											   LandsInspectionKindService,
 											   LandsInspectionTypeService,
 											   LandsAvailabilityOfViolationsService,
@@ -51,7 +52,7 @@ angular.module("mgis.lands.lands", ["ui.router", "ui.bootstrap", "ui.select", //
 							modalScope.availableInspectionReasons = inspectionReasons.list;
 							LandsInspectionSubjectService.get().then(function (inspectionSubjects) {
 								modalScope.availableInspectionSubjects = inspectionSubjects.list;
-								CommonExecutivePersonService.get().then(function (executivePersons) {
+								ExecutivePersonService.get().then(function (executivePersons) {
 									modalScope.availableExecutivePersons = executivePersons.list;
 									NcLandCategoryService.get().then(function (availableLandCategories) {
 										modalScope.availableLandCategories = availableLandCategories.list;
