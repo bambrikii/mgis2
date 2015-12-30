@@ -8,7 +8,7 @@ angular.module("mgis.persons.executive.person", ["ui.router", "ui.bootstrap", "u
 	.filter("executivePersonFormatter", function ($filter) {
 		return function (person) {
 			if (person) {
-				return person.surname + " " + person.firstName + " " + person.patronymic + " (" + $filter("translate")("Position")+" : "+ person.position + ")";
+				return person.surname + " " + person.firstName + (person.patronymic ? " " + person.patronymic : "") + " (" + $filter("translate")("Position") + " : " + person.position + ")";
 			}
 			return undefined;
 		}

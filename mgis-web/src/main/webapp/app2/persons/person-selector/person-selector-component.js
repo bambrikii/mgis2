@@ -11,7 +11,7 @@ angular.module("mgis.persons.person", ["ui.router", "ui.bootstrap", "ui.select",
 				if (person.name) {
 					return person.name + " (" + $filter("translate")("LegalPerson.Short") + ")";
 				} else {
-					return person.surname + " " + person.firstName + " " + person.patronymic + " (" + $filter("translate")("NaturalPerson.Short") + ")";
+					return person.surname + " " + person.firstName + (person.patronymic ? " " + person.patronymic : "") + " (" + $filter("translate")("NaturalPerson.Short") + ")";
 				}
 			}
 			return undefined;
