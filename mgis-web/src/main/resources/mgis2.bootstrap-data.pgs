@@ -7,9 +7,9 @@ BEGIN
 
 	insert into mgis2_privilege (id, name) values (nextval('mgis2_entity_seq'), 'ROLE_USER');
 	insert into mgis2_privilege (id, name) values (nextval('mgis2_entity_seq'), 'ROLE_ADMIN');
-	insert into mgis2_user (id, active, "password", username) values (nextval('mgis2_entity_seq'), true, 'asd', 'asd');
+	insert into mgis2_user (id, active, "password", username) values (nextval('mgis2_entity_seq'), true, 'mgis2', 'mgis2');
 
-	set @user_id = select id from mgis2_user where username = 'asd';
+	set @user_id = select id from mgis2_user where username = 'mgis2';
 	set @priv_id_user = select id from mgis2_privilege where "name" = 'ROLE_USER';
 	set @priv_id_group = select id from mgis2_privilege where "name" = 'ROLE_ADMIN';
 

@@ -104,7 +104,7 @@ CREATE EXTENSION postgis_topology;
 
 2. run cmd, sql
 ```bash
-mgis2/mgis-initial-data/KLADR/convert-all.sh
+mgis2/mgis-initial-data/KLADR/prepare-db-scripts.sh
 ```
 
 3. run the app
@@ -204,3 +204,8 @@ Declare a valid datasource (node datasources) in [Wildfly]/standalone/configurat
                 </drivers>
 
 ```
+
+#### Authentication:
+
+Web app login (username, password): mgis2, mgis2 .
+
